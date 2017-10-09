@@ -49,6 +49,32 @@ class RegisterViewController: UIViewController, DisplayMessage {
         self.createInputViews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(locationFound(_:)), name: Constants.Notifications.locationFound, object: nil)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationFound, object: nil)
+    }
+
+    @IBAction func fetchLocation(_ sender: UIButton) {
+        LocationManager.shared.getCurrentLocation()
+    }
+
+    @objc func locationFound(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo as? [String: String],
+            let locationAddress = userInfo["location"] else {
+            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+            return
+        }
+
+        self.locationTextField.text = locationAddress
+    }
+
     @IBAction func registerButtonPressed(sender: UIButton) {
         guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else { return }
         guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else { return }

@@ -291,6 +291,16 @@
                                             <action selector="registerButtonPressedWithSender:" destination="8o7-Eb-YNp" eventType="touchUpInside" id="6xC-7W-YJN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiD-yD-NAo">
+                                        <rect key="frame" x="348" y="333" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="TRu-F2-070"/>
+                                        </constraints>
+                                        <state key="normal" title="GPS"/>
+                                        <connections>
+                                            <action selector="fetchLocation:" destination="8o7-Eb-YNp" eventType="touchUpInside" id="dkr-Ko-jaH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dZ8-2w-da0" firstAttribute="leading" secondItem="GCa-Ms-eTY" secondAttribute="trailing" constant="8" id="2fo-oW-Mwk"/>
@@ -319,6 +329,7 @@
                                     <constraint firstItem="onK-Db-UxV" firstAttribute="trailing" secondItem="90B-mo-gYk" secondAttribute="trailing" id="R2U-br-TmR"/>
                                     <constraint firstItem="90B-mo-gYk" firstAttribute="top" secondItem="4wr-X5-Gki" secondAttribute="bottom" constant="8" id="SJv-F4-IUh"/>
                                     <constraint firstItem="pyw-s3-MJW" firstAttribute="leading" secondItem="DPe-eM-iLN" secondAttribute="leading" id="VOJ-bq-wbD"/>
+                                    <constraint firstItem="qiD-yD-NAo" firstAttribute="trailing" secondItem="yGl-kY-Za0" secondAttribute="trailing" id="WHv-L4-zqp"/>
                                     <constraint firstItem="yGl-kY-Za0" firstAttribute="trailing" secondItem="pyw-s3-MJW" secondAttribute="trailing" id="Yn1-MJ-s4J"/>
                                     <constraint firstItem="dZ8-2w-da0" firstAttribute="trailing" secondItem="jUt-uv-Xn2" secondAttribute="trailing" id="ZH4-Fz-qo1"/>
                                     <constraint firstItem="yGl-kY-Za0" firstAttribute="leading" secondItem="pyw-s3-MJW" secondAttribute="leading" id="aU4-Kx-2iV"/>
@@ -345,7 +356,9 @@
                                     <constraint firstItem="FP9-Mv-kz5" firstAttribute="leading" secondItem="GCa-Ms-eTY" secondAttribute="leading" id="qjf-RW-913"/>
                                     <constraint firstItem="v0H-EU-HFD" firstAttribute="leading" secondItem="lKW-gl-peV" secondAttribute="leading" id="rMy-iV-pKF"/>
                                     <constraint firstItem="yGb-4s-M2o" firstAttribute="leading" secondItem="KuC-SE-SHZ" secondAttribute="leading" id="rbF-S9-ec1"/>
+                                    <constraint firstItem="qiD-yD-NAo" firstAttribute="top" secondItem="yGl-kY-Za0" secondAttribute="top" id="rr5-Pp-xZS"/>
                                     <constraint firstItem="90B-mo-gYk" firstAttribute="trailing" secondItem="yGl-kY-Za0" secondAttribute="trailing" id="sj3-4W-X3e"/>
+                                    <constraint firstItem="qiD-yD-NAo" firstAttribute="bottom" secondItem="yGl-kY-Za0" secondAttribute="bottom" id="uRH-LB-1nW"/>
                                     <constraint firstItem="lKW-gl-peV" firstAttribute="trailing" secondItem="zAr-7r-VJb" secondAttribute="trailing" id="vZV-Ty-zvs"/>
                                     <constraint firstItem="LE3-hd-VcG" firstAttribute="leading" secondItem="TQX-rk-oKt" secondAttribute="leading" id="wHZ-aT-9tq"/>
                                     <constraint firstAttribute="bottom" secondItem="FP9-Mv-kz5" secondAttribute="bottom" constant="57" id="wNB-do-9S3"/>

@@ -14,6 +14,7 @@ public enum ErrorMessage {
     case parseError(String)
     case signUpFailed
     case loginFailed
+    case locationFailed
     case unknown
 
     public var failureTitle: String {
@@ -30,6 +31,8 @@ public enum ErrorMessage {
             return "Unable to sign-up. Please check your internet connection and try again."
         case .loginFailed:
             return "Unable to sign-up. Please check your internet connection and try again."
+        case .locationFailed:
+            return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
             return "An unknown error occured."
         }
