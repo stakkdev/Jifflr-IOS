@@ -12,7 +12,7 @@
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
-		E9A7177D1F8B89AC00B07414 /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177C1F8B89AC00B07414 /* ExampleModel.swift */; };
+		E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */; };
 		E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177F1F8B89AC00B07414 /* Reachability.swift */; };
 		E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717811F8B89AC00B07414 /* ErrorMessage.swift */; };
 		E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717841F8B89AC00B07414 /* ColorExtensions.swift */; };
@@ -29,6 +29,7 @@
 		E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A717A11F8B89AC00B07414 /* Assets.xcassets */; };
 		E9A717AD1F8B89AC00B07414 /* Ad_M8_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */; };
 		E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */; };
+		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,7 @@
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		E9A717791F8B89AC00B07414 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = Views/CustomView.swift; sourceTree = "<group>"; };
-		E9A7177C1F8B89AC00B07414 /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleModel.swift; path = Models/ExampleModel.swift; sourceTree = "<group>"; };
+		E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PFUser+Extensions.swift"; path = "Models/PFUser+Extensions.swift"; sourceTree = "<group>"; };
 		E9A7177F1F8B89AC00B07414 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Helpers/Reachability.swift; sourceTree = "<group>"; };
 		E9A717811F8B89AC00B07414 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorMessage.swift; path = Helpers/ErrorMessage.swift; sourceTree = "<group>"; };
 		E9A717841F8B89AC00B07414 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorExtensions.swift; path = Extensions/ColorExtensions.swift; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad_M8_iOSTests.swift; sourceTree = "<group>"; };
 		E9A717AE1F8B89AC00B07414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
+		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +175,7 @@
 		E9A7177B1F8B89AC00B07414 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E9A7177C1F8B89AC00B07414 /* ExampleModel.swift */,
+				E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -183,6 +185,7 @@
 			children = (
 				E9A7177F1F8B89AC00B07414 /* Reachability.swift */,
 				E9A717811F8B89AC00B07414 /* ErrorMessage.swift */,
+				E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -456,9 +459,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */,
-				E9A7177D1F8B89AC00B07414 /* ExampleModel.swift in Sources */,
+				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,

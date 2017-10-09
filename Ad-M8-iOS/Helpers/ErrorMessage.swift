@@ -11,18 +11,27 @@ import UIKit
 
 public enum ErrorMessage {
     case noInternetConnection
+    case parseError(String)
+    case signUpFailed
+    case loginFailed
+    case unknown
 
     public var failureTitle: String {
-        switch self {
-        case .noInternetConnection:
-            return NSLocalizedString("Error - No internet connection.", comment: "")
-        }
+        return "Error"
     }
 
     public var failureDescription: String {
         switch self {
         case .noInternetConnection:
-            return NSLocalizedString("Please check your internet connection and try again.", comment: "")
+            return "Please check your internet connection and try again."
+        case .parseError(let details):
+            return "An error occured: \(details)"
+        case .signUpFailed:
+            return "Unable to sign-up. Please check your internet connection and try again."
+        case .loginFailed:
+            return "Unable to sign-up. Please check your internet connection and try again."
+        case .unknown:
+            return "An unknown error occured."
         }
     }
 }

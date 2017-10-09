@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = ParseClientConfiguration {
             $0.applicationId = "ad-m8"
             $0.server = "https://adm8.thecore.thedistance.co.uk/parse"
-            $0.isLocalDatastoreEnabled = false
+            $0.isLocalDatastoreEnabled = true
         }
         Parse.initialize(with: configuration)
 

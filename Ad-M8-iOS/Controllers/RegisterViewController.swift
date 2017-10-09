@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, DisplayMessage {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -57,10 +57,32 @@ class RegisterViewController: UIViewController {
         guard let location = self.locationTextField.text, !location.isEmpty else { return }
         guard let dob = self.dobTextField.text, !dob.isEmpty else { return }
         guard let gender = self.genderTextField.text, !gender.isEmpty else { return }
-        guard let invitationCode = self.invitationCodeTextField.text, !invitationCode.isEmpty else { return }
+        guard let invitationCodeString = self.invitationCodeTextField.text, !invitationCodeString.isEmpty else { return }
+        guard let invitationCode = Int(invitationCodeString) else { return }
         guard self.termsAndConditionsSwitch.isOn == true else { return }
 
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        guard let dateOfBirth = dateFormatter.date(from: dob) else { return }
+
+        var userInfo = [AnyHashable: Any]()
+        userInfo["firstName"] = firstName
+        userInfo["lastName"] = lastName
+        userInfo["email"] = email
+        userInfo["password"] = password
+        userInfo["location"] = location
+        userInfo["dateOfBirth"] = dateOfBirth
+        userInfo["gender"] = gender
+        userInfo["invitationCode"] = invitationCode
+
+        UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+            guard error == nil else {
+                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                return
+            }
+
+            print("Signed Up")
+        }
     }
 
     func createInputViews() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, DisplayMessage {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -29,6 +29,15 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: UIButton) {
         guard let email = self.emailTextField.text, !email.isEmpty else { return }
         guard let password = self.passwordTextField.text, !password.isEmpty else { return }
+
+        UserManager.shared.login(withUsername: email, password: password) { (_, error) in
+            guard error == nil else {
+                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                return
+            }
+
+            print("Logged in")
+        }
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {

@@ -27,7 +27,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el9-dq-vPZ">
                                 <rect key="frame" x="20" y="84" width="41" height="21"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tal-7Z-boy">
                                 <rect key="frame" x="20" y="163" width="74" height="21"/>
@@ -129,7 +129,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcR-T4-1dG">
                                         <rect key="frame" x="20" y="20" width="374" height="21"/>
@@ -147,7 +147,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKW-gl-peV">
                                         <rect key="frame" x="20" y="91" width="374" height="21"/>
@@ -165,7 +165,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mql-xa-dah">
                                         <rect key="frame" x="20" y="162" width="374" height="21"/>
@@ -183,7 +183,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGb-4s-M2o">
                                         <rect key="frame" x="20" y="233" width="374" height="21"/>
@@ -201,7 +201,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="location"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyw-s3-MJW">
                                         <rect key="frame" x="20" y="304" width="374" height="21"/>
