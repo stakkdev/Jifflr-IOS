@@ -10,7 +10,7 @@
 		579CD078AD25BDB0F3D770B9 /* Pods_Ad_M8_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4B9A9BE20B6172ABBF5ADC /* Pods_Ad_M8_iOS.framework */; };
 		D1073B82673BD251B8AE1C31 /* Pods_Ad_M8_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
-		E9A717771F8B89AC00B07414 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* ViewController.swift */; };
+		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
 		E9A7177D1F8B89AC00B07414 /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177C1F8B89AC00B07414 /* ExampleModel.swift */; };
 		E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177F1F8B89AC00B07414 /* Reachability.swift */; };
@@ -28,6 +28,7 @@
 		E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A7179E1F8B89AC00B07414 /* Main.storyboard */; };
 		E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A717A11F8B89AC00B07414 /* Assets.xcassets */; };
 		E9A717AD1F8B89AC00B07414 /* Ad_M8_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */; };
+		E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,7 @@
 		E54E1291EB796CC1BF42599D /* Pods-Ad-M8-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOSTests.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOSTests/Pods-Ad-M8-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Ad-M8-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad-M8-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9A717761F8B89AC00B07414 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		E9A717791F8B89AC00B07414 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = Views/CustomView.swift; sourceTree = "<group>"; };
 		E9A7177C1F8B89AC00B07414 /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleModel.swift; path = Models/ExampleModel.swift; sourceTree = "<group>"; };
 		E9A7177F1F8B89AC00B07414 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Helpers/Reachability.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		E9A717A81F8B89AC00B07414 /* Ad-M8-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ad-M8-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad_M8_iOSTests.swift; sourceTree = "<group>"; };
 		E9A717AE1F8B89AC00B07414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,8 @@
 		E9A717751F8B89AC00B07414 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E9A717761F8B89AC00B07414 /* ViewController.swift */,
+				E9A717761F8B89AC00B07414 /* LoginViewController.swift */,
+				E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -454,8 +457,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
-				E9A717771F8B89AC00B07414 /* ViewController.swift in Sources */,
+				E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* ExampleModel.swift in Sources */,
+				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
