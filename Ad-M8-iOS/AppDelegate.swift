@@ -11,6 +11,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import Firebase
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FirebaseApp.configure()
         
         Fabric.with([Crashlytics.self])
-        
+
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "ad-m8"
+            $0.server = "https://adm8.thecore.thedistance.co.uk/parse"
+            $0.isLocalDatastoreEnabled = false
+        }
+        Parse.initialize(with: configuration)
+
         return true
     }
     
