@@ -11,6 +11,10 @@
 		D1073B82673BD251B8AE1C31 /* Pods_Ad_M8_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */; };
 		E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */; };
 		E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC01F8CCDF100697862 /* DashboardViewController.swift */; };
+		E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC41F8CEF4500697862 /* TeamViewController.swift */; };
+		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
+		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
+		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
@@ -55,6 +59,10 @@
 		E54E1291EB796CC1BF42599D /* Pods-Ad-M8-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOSTests.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOSTests/Pods-Ad-M8-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/LocationRequiredViewController.swift; sourceTree = "<group>"; };
 		E9488EC01F8CCDF100697862 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/DashboardViewController.swift; sourceTree = "<group>"; };
+		E9488EC41F8CEF4500697862 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamViewController.swift; path = Controllers/TeamViewController.swift; sourceTree = "<group>"; };
+		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
+		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
+		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Ad-M8-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad-M8-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 				E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */,
 				E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */,
 				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
+				E9488EC41F8CEF4500697862 /* TeamViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */,
+				E9488EC91F8CFC4300697862 /* PendingUser.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -196,6 +206,7 @@
 				E9A7177F1F8B89AC00B07414 /* Reachability.swift */,
 				E9A717811F8B89AC00B07414 /* ErrorMessage.swift */,
 				E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */,
+				E9488ECB1F8D032700697862 /* PendingUserManager.swift */,
 				E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */,
 			);
 			name = Helpers;
@@ -239,6 +250,7 @@
 			children = (
 				E9A7179B1F8B89AC00B07414 /* LaunchScreen.storyboard */,
 				E9A7179E1F8B89AC00B07414 /* Main.storyboard */,
+				E9488EC61F8CEFC900697862 /* Dashboard.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -357,6 +369,7 @@
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
 				E9A717951F8B89AC00B07414 /* Cartfile.private in Resources */,
 				E9A7178E1F8B89AC00B07414 /* setup.sh in Resources */,
+				E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */,
 				E9A717881F8B89AC00B07414 /* Settings.bundle in Resources */,
 				E9A717911F8B89AC00B07414 /* podfile in Resources */,
 				E9A717991F8B89AC00B07414 /* ReadMe.md in Resources */,
@@ -473,6 +486,7 @@
 			files = (
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
+				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
 				E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */,
@@ -481,9 +495,11 @@
 				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
+				E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
+				E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +522,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E9488EC61F8CEFC900697862 /* Dashboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9488EC71F8CEFC900697862 /* Base */,
+			);
+			name = Dashboard.storyboard;
+			sourceTree = "<group>";
+		};
 		E9A7179B1F8B89AC00B07414 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

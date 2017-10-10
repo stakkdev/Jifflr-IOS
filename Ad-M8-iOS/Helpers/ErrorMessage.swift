@@ -17,6 +17,7 @@ public enum ErrorMessage {
     case loginFailed
     case locationFailed
     case unknown
+    case pendingUsersFailed
 
     public var failureTitle: String {
         return "Error"
@@ -38,6 +39,8 @@ public enum ErrorMessage {
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
             return "An unknown error occured."
+        case .pendingUsersFailed:
+            return "Unable to fetch pending users. Please check your internet connection and try again."
         }
     }
 }

@@ -25,7 +25,7 @@ class DashboardViewController: UIViewController {
     }
 
     class func instantiateFromStoryboard() -> DashboardViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
     }
 
@@ -47,7 +47,7 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {
-
+        self.navigationController?.pushViewController(TeamViewController.instantiateFromStoryboard(), animated: true)
     }
 
     @IBAction func cashOutButtonPressed(_ sender: UIButton) {
