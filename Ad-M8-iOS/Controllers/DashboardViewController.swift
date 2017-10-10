@@ -10,6 +10,13 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
+    @IBOutlet weak var playAdsButton: UIButton!
+    @IBOutlet weak var teamButton: UIButton!
+    @IBOutlet weak var cashOutButton: UIButton!
+    @IBOutlet weak var earningsButton: UIButton!
+    @IBOutlet weak var adsViewedButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
+
     class func presentAsRootViewController() {
         let navigationController = UINavigationController()
         navigationController.viewControllers = [self.instantiateFromStoryboard()]
@@ -26,5 +33,24 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Ad-M8"
+
+        let profileBarButton = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(self.profileButtonPressed(_:)))
+        self.navigationItem.rightBarButtonItem = profileBarButton
+    }
+
+    @objc func profileButtonPressed(_ sender: UIBarButtonItem) {
+
+    }
+
+    @IBAction func playAdsButtonPressed(_ sender: UIButton) {
+
+    }
+
+    @IBAction func teamButtonPressed(_ sender: UIButton) {
+
+    }
+
+    @IBAction func cashOutButtonPressed(_ sender: UIButton) {
+
     }
 }
