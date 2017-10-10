@@ -23,7 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Fetch location to help registration.</string>
+	<string>Ad-M8 fetches your location to help with registration.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Ad-M8 uses your contacts to provide suggestions of users to invite.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

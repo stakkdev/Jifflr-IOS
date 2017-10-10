@@ -15,6 +15,7 @@
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
+		E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
@@ -63,6 +64,7 @@
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
+		E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/ContactsManager.swift; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Ad-M8-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad-M8-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */,
 				E9488ECB1F8D032700697862 /* PendingUserManager.swift */,
 				E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */,
+				E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */,
 				E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
+				E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */,
 				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
@@ -666,6 +670,7 @@
 				INFOPLIST_FILE = "Ad-M8-iOS/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "${PRODUCT_NAME}/Supporting Files/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -685,6 +690,7 @@
 				INFOPLIST_FILE = "Ad-M8-iOS/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "${PRODUCT_NAME}/Supporting Files/App-Info.h";
 				INFOPLIST_PREPROCESS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -14,19 +14,39 @@ import Parse
 final class PendingUser: PFObject {
 
     var sender: PFUser {
-        return self["sender"] as! PFUser
+        get {
+            return self["sender"] as! PFUser
+        }
+        set {
+            self["sender"] = newValue
+        }
     }
 
     var invitationCode: Int {
-        return self["invitationCode"] as! Int
+        get {
+            return self["invitationCode"] as! Int
+        }
+        set {
+            self["invitationCode"] = newValue
+        }
     }
 
     var name: String {
-        return self["name"] as! String
+        get {
+            return self["name"] as! String
+        }
+        set {
+            self["name"] = newValue
+        }
     }
 
     var email: String {
-        return self["email"] as! String
+        get {
+            return self["email"] as! String
+        }
+        set {
+            self["email"] = newValue
+        }
     }
 }
 

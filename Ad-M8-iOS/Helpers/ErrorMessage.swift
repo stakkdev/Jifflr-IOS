@@ -18,6 +18,9 @@ public enum ErrorMessage {
     case locationFailed
     case unknown
     case pendingUsersFailed
+    case contactsAccessFailed
+    case inviteAlreadySent
+    case inviteSendFailed
 
     public var failureTitle: String {
         return "Error"
@@ -41,6 +44,12 @@ public enum ErrorMessage {
             return "An unknown error occured."
         case .pendingUsersFailed:
             return "Unable to fetch pending users. Please check your internet connection and try again."
+        case .contactsAccessFailed:
+            return "Unable to access contacts. Please allow Ad-M8 access to your contacts through the Settings app."
+        case .inviteAlreadySent:
+            return "An invite has already been sent to this email address."
+        case .inviteSendFailed:
+            return "Unable to send invite. Please check your internet connection and try again."
         }
     }
 }
