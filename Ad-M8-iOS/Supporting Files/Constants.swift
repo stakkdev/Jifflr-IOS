@@ -9,5 +9,6 @@
 struct Constants {
     struct Notifications {
         static let locationFound = Notification.Name(rawValue: "locationFound")
+        static let locationPermissionsChanged = Notification.Name(rawValue: "locationPermissionsChanged")
     }
 }

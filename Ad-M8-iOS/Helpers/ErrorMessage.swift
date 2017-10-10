@@ -13,6 +13,7 @@ public enum ErrorMessage {
     case noInternetConnection
     case parseError(String)
     case signUpFailed
+    case userAlreadyExists
     case loginFailed
     case locationFailed
     case unknown
@@ -29,6 +30,8 @@ public enum ErrorMessage {
             return "An error occured: \(details)"
         case .signUpFailed:
             return "Unable to sign-up. Please check your internet connection and try again."
+        case .userAlreadyExists:
+            return "A user with that email address already exists. Please choose a different email address."
         case .loginFailed:
             return "Unable to sign-up. Please check your internet connection and try again."
         case .locationFailed:

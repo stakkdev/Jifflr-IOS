@@ -36,7 +36,12 @@ class LoginViewController: UIViewController, DisplayMessage {
                 return
             }
 
-            print("Logged in")
+            if LocationManager.shared.locationServicesEnabled() == true {
+                DashboardViewController.presentAsRootViewController()
+            } else {
+                let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
+                self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
+            }
         }
     }
 

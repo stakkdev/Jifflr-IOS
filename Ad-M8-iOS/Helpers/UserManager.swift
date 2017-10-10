@@ -29,27 +29,37 @@ class UserManager: NSObject {
         newUser.gender = userInfo["gender"] as! String
         newUser.invitationCode = userInfo["invitationCode"] as! Int
 
-        newUser.signUpInBackground { (succeeded, error) in
-            if succeeded {
-                newUser.pinInBackground(block: { (succeeded, error) in
-                    DispatchQueue.main.async {
-                        if error != nil {
-                            completion(ErrorMessage.parseError(error!.localizedDescription))
-                        } else {
-                            completion(nil)
-                        }
-                    }
-                })
-            } else {
+        let query = PFUser.query()
+        query?.whereKey("username", equalTo: newUser.email!)
+        query?.getFirstObjectInBackground(block: { (user, error) in
+            if user != nil, error == nil {
                 DispatchQueue.main.async {
-                    if error != nil {
-                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                    completion(ErrorMessage.userAlreadyExists)
+                }
+            } else {
+                newUser.signUpInBackground { (succeeded, error) in
+                    if succeeded {
+                        newUser.pinInBackground(block: { (succeeded, error) in
+                            DispatchQueue.main.async {
+                                if error != nil {
+                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                } else {
+                                    completion(nil)
+                                }
+                            }
+                        })
                     } else {
-                        completion(ErrorMessage.unknown)
+                        DispatchQueue.main.async {
+                            if error != nil {
+                                completion(ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                completion(ErrorMessage.unknown)
+                            }
+                        }
                     }
                 }
             }
-        }
+        })
     }
 
     func login(withUsername username: String, password: String, completion: @escaping (PFUser?, ErrorMessage?) -> Void) {

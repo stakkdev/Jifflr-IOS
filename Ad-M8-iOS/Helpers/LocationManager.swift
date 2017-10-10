@@ -21,6 +21,25 @@ class LocationManager: NSObject {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
+
+    func requestLocationPermissions() {
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+    }
+
+    func locationServicesEnabled() -> Bool {
+        if CLLocationManager.locationServicesEnabled() {
+            switch (CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            }
+        }
+
+        return false
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -66,6 +85,14 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: nil)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        DispatchQueue.main.async {
+            var notificationDict:[String: CLAuthorizationStatus] = [:]
+            notificationDict["status"] = status
+            NotificationCenter.default.post(name: Constants.Notifications.locationPermissionsChanged, object: self, userInfo: notificationDict)
         }
     }
 }

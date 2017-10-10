@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		579CD078AD25BDB0F3D770B9 /* Pods_Ad_M8_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4B9A9BE20B6172ABBF5ADC /* Pods_Ad_M8_iOS.framework */; };
 		D1073B82673BD251B8AE1C31 /* Pods_Ad_M8_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */; };
+		E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */; };
+		E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC01F8CCDF100697862 /* DashboardViewController.swift */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
@@ -51,6 +53,8 @@
 		2380966C0858B174DFF812D2 /* Pods-Ad-M8-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOS.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOS/Pods-Ad-M8-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3EB7AD52FCD41C25D42A21EB /* Pods-Ad-M8-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOS.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOS/Pods-Ad-M8-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E54E1291EB796CC1BF42599D /* Pods-Ad-M8-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOSTests.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOSTests/Pods-Ad-M8-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/LocationRequiredViewController.swift; sourceTree = "<group>"; };
+		E9488EC01F8CCDF100697862 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/DashboardViewController.swift; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Ad-M8-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad-M8-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 			children = (
 				E9A717761F8B89AC00B07414 /* LoginViewController.swift */,
 				E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */,
+				E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */,
+				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -469,8 +475,10 @@
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
+				E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */,
 				E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
+				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
