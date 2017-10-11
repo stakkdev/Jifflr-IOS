@@ -18,6 +18,8 @@ class UserManager: NSObject {
 
     func signUp(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (ErrorMessage?) -> Void) {
 
+        let group = DispatchGroup()
+
         let newUser = PFUser()
         newUser.firstName = userInfo["firstName"] as! String
         newUser.lastName = userInfo["lastName"] as! String
@@ -27,39 +29,61 @@ class UserManager: NSObject {
         newUser.location = userInfo["location"] as! String
         newUser.dateOfBirth = userInfo["dateOfBirth"] as! Date
         newUser.gender = userInfo["gender"] as! String
-        newUser.invitationCode = userInfo["invitationCode"] as! Int
+        newUser.invitationCode = Int(arc4random_uniform(999999) + 1)
 
-        let query = PFUser.query()
-        query?.whereKey("username", equalTo: newUser.email!)
-        query?.getFirstObjectInBackground(block: { (user, error) in
-            if user != nil, error == nil {
-                DispatchQueue.main.async {
-                    completion(ErrorMessage.userAlreadyExists)
+        if let invitationCode = userInfo["invitationCode"] as? Int {
+            group.enter()
+            PendingUserManager.shared.fetchSenderAndPendingUser(invitationCode: invitationCode, email: newUser.email!, completion: { (sender, pendingUser, error) in
+                if let sender = sender, error == nil {
+                    newUser.friends = [sender]
                 }
-            } else {
-                newUser.signUpInBackground { (succeeded, error) in
-                    if succeeded {
-                        newUser.pinInBackground(block: { (succeeded, error) in
+
+                group.leave()
+
+                if let pendingUser = pendingUser, error == nil {
+                    PendingUserManager.shared.delete(pendingUser: pendingUser, completion: { (success) in
+                        print("Pending User Deleted Success: \(success)")
+                    })
+                }
+            })
+        } else {
+            newUser.friends = []
+        }
+
+        group.notify(queue: DispatchQueue.main) {
+
+            let query = PFUser.query()
+            query?.whereKey("username", equalTo: newUser.email!)
+            query?.getFirstObjectInBackground(block: { (user, error) in
+                if user != nil, error == nil {
+                    DispatchQueue.main.async {
+                        completion(ErrorMessage.userAlreadyExists)
+                    }
+                } else {
+                    newUser.signUpInBackground { (succeeded, error) in
+                        if succeeded {
+                            newUser.pinInBackground(block: { (succeeded, error) in
+                                DispatchQueue.main.async {
+                                    if error != nil {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        completion(nil)
+                                    }
+                                }
+                            })
+                        } else {
                             DispatchQueue.main.async {
                                 if error != nil {
                                     completion(ErrorMessage.parseError(error!.localizedDescription))
                                 } else {
-                                    completion(nil)
+                                    completion(ErrorMessage.unknown)
                                 }
-                            }
-                        })
-                    } else {
-                        DispatchQueue.main.async {
-                            if error != nil {
-                                completion(ErrorMessage.parseError(error!.localizedDescription))
-                            } else {
-                                completion(ErrorMessage.unknown)
                             }
                         }
                     }
                 }
-            }
-        })
+            })
+        }
     }
 
     func login(withUsername username: String, password: String, completion: @escaping (PFUser?, ErrorMessage?) -> Void) {

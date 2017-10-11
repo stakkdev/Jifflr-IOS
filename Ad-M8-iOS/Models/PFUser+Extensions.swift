@@ -65,4 +65,40 @@ extension PFUser {
             self["invitationCode"] = newValue
         }
     }
+
+    var friends: [PFUser] {
+        get {
+            if let friends = self["friends"] as? [PFUser] {
+                return friends
+            }
+            return []
+        }
+        set {
+            self["friends"] = newValue
+        }
+    }
+
+    func addFriend(friend: PFUser) {
+        var senderFriends = self.friends
+        senderFriends.append(friend)
+        self.friends = senderFriends
+    }
+
+    func fetchFriends(completion: @escaping ([PFUser]) -> Void) {
+        guard let currentUser = UserManager.shared.currentUser else {
+            completion([])
+            return
+        }
+
+        let query = PFUser.query()
+        query?.includeKey("friends")
+        query?.getObjectInBackground(withId: currentUser.objectId!, block: { (user, error) in
+            guard let user = user as? PFUser, error == nil else {
+                completion([])
+                return
+            }
+
+            completion(user.friends)
+        })
+    }
 }

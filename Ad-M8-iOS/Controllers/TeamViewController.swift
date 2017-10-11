@@ -9,6 +9,7 @@
 import UIKit
 import ContactsUI
 import MessageUI
+import Parse
 
 class TeamViewController: UIViewController, DisplayMessage {
 
@@ -16,7 +17,7 @@ class TeamViewController: UIViewController, DisplayMessage {
     @IBOutlet weak var tableView: UITableView!
 
     var pendingFriendsData:[PendingUser] = []
-    var friendsData:[String] = []
+    var friendsData:[PFUser] = []
 
     class func instantiateFromStoryboard() -> TeamViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
@@ -38,17 +39,28 @@ class TeamViewController: UIViewController, DisplayMessage {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        let group = DispatchGroup()
+
+        group.enter()
         PendingUserManager.shared.fetchPendingUsers { (pendingUsers, error) in
-            guard pendingUsers.count > 0, error == nil else {
+            guard error == nil else {
+                group.leave()
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
                 return
             }
 
             self.pendingFriendsData = pendingUsers
+            group.leave()
+        }
 
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        group.enter()
+        UserManager.shared.currentUser?.fetchFriends(completion: { (friends) in
+            self.friendsData = friends
+            group.leave()
+        })
+
+        group.notify(queue: DispatchQueue.main) {
+            self.tableView.reloadData()
         }
     }
 
@@ -94,8 +106,9 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            cell.textLabel?.text = "James Shaw"
-            cell.detailTextLabel?.text = "james.shaw@thedistance.co.uk"
+            let friend = self.friendsData[indexPath.row]
+            cell.textLabel?.text = "\(friend.firstName) \(friend.lastName)"
+            cell.detailTextLabel?.text = friend.email
         } else {
             let pendingUser = self.pendingFriendsData[indexPath.row]
             cell.textLabel?.text = pendingUser.name

@@ -83,8 +83,6 @@ class RegisterViewController: UIViewController, DisplayMessage {
         guard let location = self.locationTextField.text, !location.isEmpty else { return }
         guard let dob = self.dobTextField.text, !dob.isEmpty else { return }
         guard let gender = self.genderTextField.text, !gender.isEmpty else { return }
-        guard let invitationCodeString = self.invitationCodeTextField.text, !invitationCodeString.isEmpty else { return }
-        guard let invitationCode = Int(invitationCodeString) else { return }
         guard self.termsAndConditionsSwitch.isOn == true else { return }
 
         let dateFormatter = DateFormatter()
@@ -99,7 +97,12 @@ class RegisterViewController: UIViewController, DisplayMessage {
         userInfo["location"] = location
         userInfo["dateOfBirth"] = dateOfBirth
         userInfo["gender"] = gender
-        userInfo["invitationCode"] = invitationCode
+
+        if let invitationCodeString = self.invitationCodeTextField.text, !invitationCodeString.isEmpty {
+            if let invitationCode = Int(invitationCodeString) {
+                userInfo["invitationCode"] = invitationCode
+            }
+        }
 
         UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
             guard error == nil else {
