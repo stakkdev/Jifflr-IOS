@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Advert View Controller-->
+        <scene sceneID="EHs-bP-0c3">
+            <objects>
+                <viewController storyboardIdentifier="AdvertViewController" id="PVv-QB-J0J" customClass="AdvertViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rgf-Ug-CVY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V14-XK-Vtl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OpR-d6-GfZ"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Advert" id="BLN-gX-u5j"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V14-XK-Vtl" firstAttribute="leading" secondItem="Rgf-Ug-CVY" secondAttribute="leading" id="6dg-9n-Aqz"/>
+                            <constraint firstItem="V14-XK-Vtl" firstAttribute="top" secondItem="1Fu-0s-S9J" secondAttribute="top" id="73f-GB-c28"/>
+                            <constraint firstAttribute="trailing" secondItem="V14-XK-Vtl" secondAttribute="trailing" id="Ctv-K9-iv7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Fu-0s-S9J"/>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="V14-XK-Vtl" id="IWh-Iv-LEe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJ5-ss-OMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92" y="157"/>
+        </scene>
+    </scenes>
+</document>

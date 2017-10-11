@@ -124,6 +124,7 @@ extension TeamViewController: CNContactPickerDelegate {
         picker.dismiss(animated: true, completion: {
 
             guard contact.emailAddresses.count > 0 else {
+                self.displayMessage(title: ErrorMessage.unknown.failureTitle, message: ErrorMessage.unknown.failureDescription)
                 return
             }
 

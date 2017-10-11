@@ -43,7 +43,7 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
-
+        self.navigationController?.present(AdvertViewController.instantiateFromStoryboard(), animated: true, completion: nil)
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {

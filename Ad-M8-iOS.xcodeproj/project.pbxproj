@@ -16,6 +16,8 @@
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
 		E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */; };
+		E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9691F271F8E5281006070F6 /* AdvertViewController.swift */; };
+		E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9691F291F8E52EC006070F6 /* Advert.storyboard */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717761F8B89AC00B07414 /* LoginViewController.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
@@ -65,6 +67,8 @@
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
 		E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/ContactsManager.swift; sourceTree = "<group>"; };
+		E9691F271F8E5281006070F6 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = Controllers/AdvertViewController.swift; sourceTree = "<group>"; };
+		E9691F2A1F8E52EC006070F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Advert.storyboard; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Ad-M8-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad-M8-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717761F8B89AC00B07414 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */,
 				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
 				E9488EC41F8CEF4500697862 /* TeamViewController.swift */,
+				E9691F271F8E5281006070F6 /* AdvertViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				E9A7179B1F8B89AC00B07414 /* LaunchScreen.storyboard */,
 				E9A7179E1F8B89AC00B07414 /* Main.storyboard */,
 				E9488EC61F8CEFC900697862 /* Dashboard.storyboard */,
+				E9691F291F8E52EC006070F6 /* Advert.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A7179D1F8B89AC00B07414 /* LaunchScreen.storyboard in Resources */,
+				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
 				E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */,
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
@@ -503,6 +510,7 @@
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
+				E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */,
 				E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +540,14 @@
 				E9488EC71F8CEFC900697862 /* Base */,
 			);
 			name = Dashboard.storyboard;
+			sourceTree = "<group>";
+		};
+		E9691F291F8E52EC006070F6 /* Advert.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9691F2A1F8E52EC006070F6 /* Base */,
+			);
+			name = Advert.storyboard;
 			sourceTree = "<group>";
 		};
 		E9A7179B1F8B89AC00B07414 /* LaunchScreen.storyboard */ = {
