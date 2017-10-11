@@ -27,12 +27,30 @@
                                     <navigationItem title="Advert" id="BLN-gX-u5j"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-fB-3Dk">
+                                <rect key="frame" x="115" y="318" width="145" height="30"/>
+                                <state key="normal" title="Play Rewarded Video"/>
+                                <connections>
+                                    <action selector="playRewardedVideo:" destination="PVv-QB-J0J" eventType="touchUpInside" id="zHa-xp-Sp3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKB-rS-4Qd">
+                                <rect key="frame" x="137" y="373" width="101" height="30"/>
+                                <state key="normal" title="Play Interstitial"/>
+                                <connections>
+                                    <action selector="playInterstitial:" destination="PVv-QB-J0J" eventType="touchUpInside" id="TXf-lA-fbl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2qc-fB-3Dk" firstAttribute="centerX" secondItem="Rgf-Ug-CVY" secondAttribute="centerX" id="3dT-0i-5MV"/>
                             <constraint firstItem="V14-XK-Vtl" firstAttribute="leading" secondItem="Rgf-Ug-CVY" secondAttribute="leading" id="6dg-9n-Aqz"/>
                             <constraint firstItem="V14-XK-Vtl" firstAttribute="top" secondItem="1Fu-0s-S9J" secondAttribute="top" id="73f-GB-c28"/>
                             <constraint firstAttribute="trailing" secondItem="V14-XK-Vtl" secondAttribute="trailing" id="Ctv-K9-iv7"/>
+                            <constraint firstItem="QKB-rS-4Qd" firstAttribute="centerX" secondItem="2qc-fB-3Dk" secondAttribute="centerX" id="D8B-bO-LwK"/>
+                            <constraint firstItem="QKB-rS-4Qd" firstAttribute="top" secondItem="2qc-fB-3Dk" secondAttribute="bottom" constant="25" id="Ent-Ug-cce"/>
+                            <constraint firstItem="2qc-fB-3Dk" firstAttribute="centerY" secondItem="Rgf-Ug-CVY" secondAttribute="centerY" id="PTq-k1-oUh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Fu-0s-S9J"/>
                     </view>

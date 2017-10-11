@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import Firebase
 import Parse
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //FirebaseApp.configure()
         //Fabric.with([Crashlytics.self])
+
+        // AdMob
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
 
         let configuration = ParseClientConfiguration {
             $0.applicationId = "ad-m8"
