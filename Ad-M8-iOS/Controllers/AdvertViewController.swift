@@ -24,6 +24,10 @@ class AdvertViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationBar.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         self.interstitial = self.createAndLoadInterstitial()
         self.createAndLoadRewardedVideo()
@@ -51,11 +55,15 @@ class AdvertViewController: UIViewController {
     @IBAction func playInterstitial(_ sender: UIButton) {
         self.interstitial.present(fromRootViewController: self)
     }
+
+    @IBAction func close(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AdvertViewController: GADInterstitialDelegate {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        self.interstitial = self.createAndLoadInterstitial()
+        self.present(BinaryFeedbackViewController.instantiateFromStoryboard(), animated: true, completion: nil)
     }
 }
 
@@ -65,12 +73,11 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        self.createAndLoadRewardedVideo()
+        self.present(BinaryFeedbackViewController.instantiateFromStoryboard(), animated: true, completion: nil)
     }
 }
 
 extension AdvertViewController: UINavigationBarDelegate {
-
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }

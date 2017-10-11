@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1045EA651F8EA79D0011FADF /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */; };
+		1045EA671F8EA7D70011FADF /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */; };
+		1045EA691F8EB9A80011FADF /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */; };
+		1045EA6B1F8EBA900011FADF /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */; };
 		579CD078AD25BDB0F3D770B9 /* Pods_Ad_M8_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4B9A9BE20B6172ABBF5ADC /* Pods_Ad_M8_iOS.framework */; };
 		D1073B82673BD251B8AE1C31 /* Pods_Ad_M8_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */; };
 		E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EBE1F8CC4C400697862 /* LocationRequiredViewController.swift */; };
@@ -55,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		0D4B9A9BE20B6172ABBF5ADC /* Pods_Ad_M8_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ad_M8_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackViewController.swift; path = "Controllers/Feedback View Controllers/FeedbackViewController.swift"; sourceTree = "<group>"; };
+		1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BinaryFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/BinaryFeedbackViewController.swift"; sourceTree = "<group>"; };
+		1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RatingFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/RatingFeedbackViewController.swift"; sourceTree = "<group>"; };
+		1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QAFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/QAFeedbackViewController.swift"; sourceTree = "<group>"; };
 		1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ad_M8_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DEB2D3C8A90A7832029F73 /* Pods-Ad-M8-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOSTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOSTests/Pods-Ad-M8-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2380966C0858B174DFF812D2 /* Pods-Ad-M8-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOS.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOS/Pods-Ad-M8-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,7 +90,7 @@
 		E9A7178A1F8B89AC00B07414 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Supporting Files/Bridging-Header.h"; sourceTree = "<group>"; };
 		E9A7178B1F8B89AC00B07414 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Supporting Files/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9A7178D1F8B89AC00B07414 /* setup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = setup.sh; path = "Supporting Files/setup.sh"; sourceTree = "<group>"; };
-		E9A717901F8B89AC00B07414 /* podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = podfile; path = ../Libraries/podfile; sourceTree = "<group>"; };
+		E9A717901F8B89AC00B07414 /* podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = podfile; path = ../Libraries/podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E9A717921F8B89AC00B07414 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Libraries/Cartfile; sourceTree = "<group>"; };
 		E9A717941F8B89AC00B07414 /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile.private; path = ../Libraries/Cartfile.private; sourceTree = "<group>"; };
 		E9A717961F8B89AC00B07414 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = "Supporting Files/.gitignore"; sourceTree = "<group>"; };
@@ -120,6 +128,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1045EA631F8EA75C0011FADF /* Feedback View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */,
+				1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */,
+				1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */,
+				1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */,
+			);
+			name = "Feedback View Controllers";
+			sourceTree = "<group>";
+		};
 		33DC5748B12C12E7B5F90575 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +205,7 @@
 				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
 				E9488EC41F8CEF4500697862 /* TeamViewController.swift */,
 				E9691F271F8E5281006070F6 /* AdvertViewController.swift */,
+				1045EA631F8EA75C0011FADF /* Feedback View Controllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -497,12 +517,15 @@
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
+				1045EA651F8EA79D0011FADF /* FeedbackViewController.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
+				1045EA6B1F8EBA900011FADF /* QAFeedbackViewController.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
 				E9488EBF1F8CC4C400697862 /* LocationRequiredViewController.swift in Sources */,
 				E9A717771F8B89AC00B07414 /* LoginViewController.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */,
+				1045EA671F8EA7D70011FADF /* BinaryFeedbackViewController.swift in Sources */,
 				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
@@ -511,6 +534,7 @@
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */,
+				1045EA691F8EB9A80011FADF /* RatingFeedbackViewController.swift in Sources */,
 				E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
