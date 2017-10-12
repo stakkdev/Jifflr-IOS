@@ -26,6 +26,8 @@ class AdvertViewController: UIViewController {
 
         self.navigationBar.delegate = self
 
+        self.createAndLoadRewardedVideo()
+
         AdvertManager.shared.fetchFirstAdvert { (advert) in
             guard let advert = advert else {
                 return
@@ -39,7 +41,7 @@ class AdvertViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.interstitial = self.createAndLoadInterstitial()
-        self.createAndLoadRewardedVideo()
+        //self.createAndLoadRewardedVideo()
     }
 
     func createAndLoadInterstitial() -> GADInterstitial {
