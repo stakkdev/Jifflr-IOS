@@ -21,6 +21,8 @@ public enum ErrorMessage {
     case contactsAccessFailed
     case inviteAlreadySent
     case inviteSendFailed
+    case feedbackSaveFailed
+    case locationNotSupported
 
     public var failureTitle: String {
         return "Error"
@@ -50,6 +52,10 @@ public enum ErrorMessage {
             return "An invite has already been sent to this email address."
         case .inviteSendFailed:
             return "Unable to send invite. Please check your internet connection and try again."
+        case .feedbackSaveFailed:
+            return "Unable to save advert feedback. Please check your internet connection and try again."
+        case .locationNotSupported:
+            return "You're location is not supported."
         }
     }
 }

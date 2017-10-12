@@ -10,9 +10,11 @@ import UIKit
 
 class RatingFeedbackViewController: FeedbackViewController {
 
-    class func instantiateFromStoryboard() -> RatingFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> RatingFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "RatingFeedbackViewController") as! RatingFeedbackViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "RatingFeedbackViewController") as! RatingFeedbackViewController
+        controller.advert = advert
+        return controller
     }
 
     override func viewDidLoad() {
@@ -21,6 +23,6 @@ class RatingFeedbackViewController: FeedbackViewController {
     }
 
     @IBAction func nextAd(_ sender: UIButton) {
-        self.saveRatingFeedback(rating: 1)
+        
     }
 }

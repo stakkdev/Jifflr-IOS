@@ -10,9 +10,11 @@ import UIKit
 
 class QAFeedbackViewController: FeedbackViewController {
 
-    class func instantiateFromStoryboard() -> QAFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> QAFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "QAFeedbackViewController") as! QAFeedbackViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "QAFeedbackViewController") as! QAFeedbackViewController
+        controller.advert = advert
+        return controller
     }
 
     override func viewDidLoad() {
@@ -21,6 +23,6 @@ class QAFeedbackViewController: FeedbackViewController {
     }
 
     @IBAction func nextAd(_ sender: UIButton) {
-        self.saveAnswerFeedback(answers: [1, 2, 3])
+        
     }
 }

@@ -39,9 +39,9 @@ final class UserSeenAdvert: PFObject {
         }
     }
 
-    var userFeedback: PFObject {
+    var userFeedback: UserFeedback {
         get {
-            return self["userFeedback"] as! PFObject
+            return self["userFeedback"] as! UserFeedback
         }
         set {
             self["userFeedback"] = newValue

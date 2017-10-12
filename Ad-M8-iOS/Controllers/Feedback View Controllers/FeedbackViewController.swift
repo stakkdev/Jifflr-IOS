@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FeedbackViewController: UIViewController, DisplayMessage {
 
@@ -14,10 +15,16 @@ class FeedbackViewController: UIViewController, DisplayMessage {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var nextAdButton: UIButton!
 
+    var isoCountryCode = ""
+    var fetchedLocation = false
+
+    var advert: Advert!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationBar.delegate = self
+        self.questionLabel.text = advert.feedbackQuestion.question
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,26 +48,29 @@ class FeedbackViewController: UIViewController, DisplayMessage {
                 return
         }
 
-        print(isoCountryCode)
+        self.isoCountryCode = isoCountryCode
+        self.fetchedLocation = true
     }
 
     @IBAction func close(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func saveBinaryFeedback(like: Bool) {
-        // TODO: SAVE FEEDBACK
-        self.dismiss(animated: true, completion: nil)
-    }
+    func saveFeedback(userFeedback: UserFeedback) {
+        guard self.fetchedLocation == true else {
+            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+            LocationManager.shared.getCurrentLocation()
+            return
+        }
 
-    func saveRatingFeedback(rating: Int) {
-        // TODO: SAVE FEEDBACK
-        self.dismiss(animated: true, completion: nil)
-    }
+        FeedbackManager.shared.saveFeedback(userFeedback: userFeedback, isoCountryCode: self.isoCountryCode, advert: self.advert) { (error) in
+            guard error == nil else {
+                self.displayMessage(title: ErrorMessage.feedbackSaveFailed.failureTitle, message: ErrorMessage.feedbackSaveFailed.failureDescription)
+                return
+            }
 
-    func saveAnswerFeedback(answers: [Int]) {
-        // TODO: SAVE FEEDBACK
-        self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

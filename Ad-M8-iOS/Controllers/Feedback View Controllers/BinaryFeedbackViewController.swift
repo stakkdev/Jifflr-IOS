@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import Parse
 
 class BinaryFeedbackViewController: FeedbackViewController {
 
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
 
-    class func instantiateFromStoryboard() -> BinaryFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> BinaryFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "BinaryFeedbackViewController") as! BinaryFeedbackViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "BinaryFeedbackViewController") as! BinaryFeedbackViewController
+        controller.advert = advert
+        return controller
     }
 
     override func viewDidLoad() {
@@ -48,7 +51,9 @@ class BinaryFeedbackViewController: FeedbackViewController {
             return
         }
 
-        let like = self.likeButton.tag == 1 ? true : false
-        self.saveBinaryFeedback(like: like)
+        let likes = self.likeButton.tag == 1 ? true : false
+        let binaryFeedback = UserFeedback()
+        binaryFeedback.likes = likes
+        self.saveFeedback(userFeedback: binaryFeedback)
     }
 }

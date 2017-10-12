@@ -14,6 +14,7 @@ class AdvertViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
 
     var interstitial: GADInterstitial!
+    var advert: Advert?
 
     class func instantiateFromStoryboard() -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -24,6 +25,14 @@ class AdvertViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationBar.delegate = self
+
+        AdvertManager.shared.fetchFirstAdvert { (advert) in
+            guard let advert = advert else {
+                return
+            }
+
+            self.advert = advert
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,11 +68,25 @@ class AdvertViewController: UIViewController {
     @IBAction func close(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+
+    func presentFeedback() {
+        guard let advert = self.advert else {
+            return
+        }
+
+        if advert.feedbackType.id == 0 {
+            self.present(BinaryFeedbackViewController.instantiateFromStoryboard(advert: advert), animated: true, completion: nil)
+        } else if advert.feedbackType.id == 1 {
+            // Present Rating
+        } else {
+            // Present QAFeedback
+        }
+    }
 }
 
 extension AdvertViewController: GADInterstitialDelegate {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        self.present(BinaryFeedbackViewController.instantiateFromStoryboard(), animated: true, completion: nil)
+        self.presentFeedback()
     }
 }
 
@@ -73,7 +96,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        self.present(BinaryFeedbackViewController.instantiateFromStoryboard(), animated: true, completion: nil)
+        self.presentFeedback()
     }
 }
 
