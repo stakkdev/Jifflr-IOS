@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedbackViewController: UIViewController {
+class FeedbackViewController: UIViewController, DisplayMessage {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var questionLabel: UILabel!
@@ -18,6 +18,30 @@ class FeedbackViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationBar.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(locationFound(_:)), name: Constants.Notifications.locationFound, object: nil)
+
+        LocationManager.shared.getCurrentLocation()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationFound, object: nil)
+    }
+
+    @objc func locationFound(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo as? [String: String],
+            let isoCountryCode = userInfo["isoCountryCode"] else {
+                self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+                return
+        }
+
+        print(isoCountryCode)
     }
 
     @IBAction func close(_ sender: UIBarButtonItem) {

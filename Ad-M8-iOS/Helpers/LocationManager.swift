@@ -77,6 +77,7 @@ extension LocationManager: CLLocationManagerDelegate {
             DispatchQueue.main.async {
                 var notificationDict:[String: String] = [:]
                 notificationDict["location"] = addressString
+                notificationDict["isoCountryCode"] = placemark.isoCountryCode
                 NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: notificationDict)
             }
         }
