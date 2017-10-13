@@ -16,6 +16,8 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var earningsButton: UIButton!
     @IBOutlet weak var adsViewedButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var noOfFriendsLabel: UILabel!
+    @IBOutlet weak var noOfAdvertViewsLabel: UILabel!
 
     class func presentAsRootViewController() {
         let navigationController = UINavigationController()
@@ -36,6 +38,18 @@ class DashboardViewController: UIViewController {
 
         let profileBarButton = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(self.profileButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = profileBarButton
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let currentUser = UserManager.shared.currentUser {
+            self.noOfFriendsLabel.text = "Team Size: \(currentUser.friends.count)"
+
+            AdvertManager.shared.fetchNumberOfAdvertViews(user: currentUser, completion: { (count) in
+                self.noOfAdvertViewsLabel.text = "Advert Views: \(count)"
+            })
+        }
     }
 
     @objc func profileButtonPressed(_ sender: UIBarButtonItem) {

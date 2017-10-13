@@ -77,21 +77,39 @@
                                     <action selector="cashOutButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="N66-Qe-4ak"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of friends:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-8Y-Nlq">
+                                <rect key="frame" x="20" y="40" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advert Views:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO4-4M-FoY">
+                                <rect key="frame" x="20" y="81" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uO4-4M-FoY" firstAttribute="top" secondItem="Zra-8Y-Nlq" secondAttribute="bottom" constant="20" id="4pB-F0-wLU"/>
                             <constraint firstItem="FVB-7c-0dS" firstAttribute="centerX" secondItem="HY8-cC-C0f" secondAttribute="centerX" id="7FD-zg-8a9"/>
                             <constraint firstItem="1eR-zd-WWo" firstAttribute="centerX" secondItem="Yfx-xH-dnu" secondAttribute="centerX" id="7l8-u5-Vqq"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="leading" secondItem="FVB-7c-0dS" secondAttribute="trailing" id="88a-TR-Sek"/>
                             <constraint firstItem="1eR-zd-WWo" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" id="BU8-eW-0LF"/>
+                            <constraint firstItem="Zra-8Y-Nlq" firstAttribute="top" secondItem="dqY-Mw-HSP" secondAttribute="bottom" constant="20" id="Ep3-G2-GNP"/>
                             <constraint firstItem="1eR-zd-WWo" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="trailing" id="LG4-B9-aQ0"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="Xbd-Jb-48s" secondAttribute="centerY" id="MT3-7o-qNA"/>
+                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="uO4-4M-FoY" secondAttribute="trailing" constant="20" id="N20-Cu-UFW"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="centerX" secondItem="Xbd-Jb-48s" secondAttribute="centerX" id="RQT-dE-j5i"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="top" secondItem="Yfx-xH-dnu" secondAttribute="bottom" id="Rfl-mb-KKD"/>
+                            <constraint firstItem="uO4-4M-FoY" firstAttribute="leading" secondItem="YEq-1W-hQK" secondAttribute="leading" constant="20" id="Tuh-eM-Zrb"/>
                             <constraint firstItem="FXj-Rh-x82" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" constant="150" id="Xea-pZ-hza"/>
+                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="Zra-8Y-Nlq" secondAttribute="trailing" constant="20" id="c9v-Uw-S7R"/>
                             <constraint firstItem="Yfx-xH-dnu" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="trailing" id="cVG-zv-aby"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="leading" secondItem="HY8-cC-C0f" secondAttribute="trailing" id="dqA-8S-qqb"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="top" secondItem="HY8-cC-C0f" secondAttribute="bottom" id="hlj-0M-Hzi"/>
+                            <constraint firstItem="Zra-8Y-Nlq" firstAttribute="leading" secondItem="YEq-1W-hQK" secondAttribute="leading" constant="20" id="pb9-Wu-dSM"/>
                             <constraint firstItem="FVB-7c-0dS" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" id="rQh-nd-4dC"/>
                             <constraint firstItem="FXj-Rh-x82" firstAttribute="centerX" secondItem="Uso-3q-TdT" secondAttribute="centerX" id="uvh-Ld-YGX"/>
                         </constraints>
@@ -102,13 +120,15 @@
                         <outlet property="cashOutButton" destination="1eR-zd-WWo" id="Dvn-5c-EW0"/>
                         <outlet property="earningsButton" destination="FVB-7c-0dS" id="3p6-aS-fcS"/>
                         <outlet property="helpButton" destination="FXj-Rh-x82" id="JuE-ad-apc"/>
+                        <outlet property="noOfAdvertViewsLabel" destination="uO4-4M-FoY" id="dv6-xu-NIL"/>
+                        <outlet property="noOfFriendsLabel" destination="Zra-8Y-Nlq" id="usR-k1-4Ot"/>
                         <outlet property="playAdsButton" destination="Uso-3q-TdT" id="SLe-Sk-Tlx"/>
                         <outlet property="teamButton" destination="HY8-cC-C0f" id="4di-Uv-8mF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnC-PQ-paG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2529" y="20"/>
+            <point key="canvasLocation" x="2528.8000000000002" y="19.340329835082461"/>
         </scene>
         <!--Team View Controller-->
         <scene sceneID="XpX-Dk-lYr">

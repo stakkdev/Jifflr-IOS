@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AdvertManager: NSObject {
     static let shared = AdvertManager()
@@ -22,6 +23,19 @@ class AdvertManager: NSObject {
             }
 
             completion(advert)
+        })
+    }
+
+    func fetchNumberOfAdvertViews(user: PFUser, completion: @escaping (Int) -> Void) {
+        let query = UserSeenAdvert.query()
+        query?.whereKey("user", equalTo: user)
+        query?.countObjectsInBackground(block: { (count, error) in
+            guard error == nil else {
+                completion(0)
+                return
+            }
+
+            completion(Int(count))
         })
     }
 }
