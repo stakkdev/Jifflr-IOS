@@ -20,6 +20,9 @@
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
 		E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */; };
+		E95179471F90B4470000A08D /* CashoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95179461F90B4470000A08D /* CashoutViewController.swift */; };
+		E95179491F90D15E0000A08D /* UserCashout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95179481F90D15E0000A08D /* UserCashout.swift */; };
+		E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951794A1F90D1CC0000A08D /* CashoutManager.swift */; };
 		E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9691F271F8E5281006070F6 /* AdvertViewController.swift */; };
 		E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9691F291F8E52EC006070F6 /* Advert.storyboard */; };
 		E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */; };
@@ -83,6 +86,9 @@
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
 		E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/ContactsManager.swift; sourceTree = "<group>"; };
+		E95179461F90B4470000A08D /* CashoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutViewController.swift; path = Controllers/CashoutViewController.swift; sourceTree = "<group>"; };
+		E95179481F90D15E0000A08D /* UserCashout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserCashout.swift; path = Models/UserCashout.swift; sourceTree = "<group>"; };
+		E951794A1F90D1CC0000A08D /* CashoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutManager.swift; path = Helpers/CashoutManager.swift; sourceTree = "<group>"; };
 		E9691F271F8E5281006070F6 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = Controllers/AdvertViewController.swift; sourceTree = "<group>"; };
 		E9691F2A1F8E52EC006070F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Advert.storyboard; sourceTree = "<group>"; };
 		E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Advert.swift; path = Models/Advert.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
 				E9488EC41F8CEF4500697862 /* TeamViewController.swift */,
 				E9691F271F8E5281006070F6 /* AdvertViewController.swift */,
+				E95179461F90B4470000A08D /* CashoutViewController.swift */,
 				1045EA631F8EA75C0011FADF /* Feedback View Controllers */,
 			);
 			name = Controllers;
@@ -245,6 +252,7 @@
 				E9A2CF521F8F7D87008A7F40 /* Location.swift */,
 				E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */,
 				E9A2CF561F8F7F4F008A7F40 /* UserFeedback.swift */,
+				E95179481F90D15E0000A08D /* UserCashout.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -260,6 +268,7 @@
 				E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */,
 				E9A2CF581F8F90CA008A7F40 /* FeedbackManager.swift */,
 				E9A2CF5A1F8FA4A0008A7F40 /* AdvertManager.swift */,
+				E951794A1F90D1CC0000A08D /* CashoutManager.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -540,6 +549,7 @@
 			files = (
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
+				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
 				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
@@ -555,7 +565,9 @@
 				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,
 				E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
+				E95179471F90B4470000A08D /* CashoutViewController.swift in Sources */,
 				1045EA671F8EA7D70011FADF /* BinaryFeedbackViewController.swift in Sources */,
+				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
 				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
 				E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,

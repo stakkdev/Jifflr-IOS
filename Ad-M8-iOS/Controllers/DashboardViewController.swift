@@ -51,6 +51,6 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func cashOutButtonPressed(_ sender: UIButton) {
-
+        self.navigationController?.pushViewController(CashoutViewController.instantiateFromStoryboard(), animated: true)
     }
 }

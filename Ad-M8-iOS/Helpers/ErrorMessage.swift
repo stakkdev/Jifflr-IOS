@@ -23,6 +23,7 @@ public enum ErrorMessage {
     case inviteSendFailed
     case feedbackSaveFailed
     case locationNotSupported
+    case cashoutFetchFailed
 
     public var failureTitle: String {
         return "Error"
@@ -56,6 +57,8 @@ public enum ErrorMessage {
             return "Unable to save advert feedback. Please check your internet connection and try again."
         case .locationNotSupported:
             return "You're location is not supported."
+        case .cashoutFetchFailed:
+            return "Unable to fetch cashouts. Please check your internet connection and try again."
         }
     }
 }
