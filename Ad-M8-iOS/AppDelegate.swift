@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
         //FirebaseApp.configure()
-        //Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self])
 
         // AdMob
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
