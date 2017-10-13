@@ -33,6 +33,8 @@ class CashoutViewController: UIViewController, DisplayMessage {
             return
         }
 
+        self.moneyAvailableLabel.text = "Money available: \(currentUser.cashAvailable)"
+
         CashoutManager.shared.fetchCashouts(user: currentUser) { userCashouts, error in
             guard error == nil else {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)

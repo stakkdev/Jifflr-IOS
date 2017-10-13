@@ -78,6 +78,15 @@ extension PFUser {
         }
     }
 
+    var cashAvailable: Float {
+        get {
+            return self["cashAvailable"] as! Float
+        }
+        set {
+            self["cashAvailable"] = newValue
+        }
+    }
+
     func addFriend(friend: PFUser) {
         var senderFriends = self.friends
         senderFriends.append(friend)
