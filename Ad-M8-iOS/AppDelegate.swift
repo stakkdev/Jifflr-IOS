@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import Firebase
 import Parse
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,15 +22,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
         //FirebaseApp.configure()
-        
         Fabric.with([Crashlytics.self])
+
+        // AdMob
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
 
         let configuration = ParseClientConfiguration {
             $0.applicationId = "ad-m8"
             $0.server = "https://adm8.thecore.thedistance.co.uk/parse"
-            $0.isLocalDatastoreEnabled = false
+            $0.isLocalDatastoreEnabled = true
         }
         Parse.initialize(with: configuration)
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let navController = UINavigationController()
+        if PFUser.current() == nil {
+            navController.viewControllers = [LoginViewController.instantiateFromStoryboard()]
+            navController.setNavigationBarHidden(false, animated: false)
+            self.window!.rootViewController = navController
+            self.window?.makeKeyAndVisible()
+        } else {
+            navController.viewControllers = [DashboardViewController.instantiateFromStoryboard()]
+            navController.setNavigationBarHidden(false, animated: false)
+            self.window!.rootViewController = navController
+            self.window?.makeKeyAndVisible()
+        }
 
         return true
     }
@@ -55,7 +72,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
 }
 

@@ -26,11 +26,14 @@ target 'Ad-M8-iOS' do
     #pod 'EZSwiftExtensions' Waiting for Swift 4 support
     pod 'Alamofire'
     pod 'Parse'
+    pod 'Google-Mobile-Ads-SDK'
 
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header
 target 'Ad-M8-iOSTests' do
-
+    inherit! :search_paths
+    pod 'Firebase'
     pod 'GoogleAnalytics'
+    pod 'Parse'
 end

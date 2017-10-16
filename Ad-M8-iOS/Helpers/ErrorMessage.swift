@@ -11,18 +11,54 @@ import UIKit
 
 public enum ErrorMessage {
     case noInternetConnection
+    case parseError(String)
+    case signUpFailed
+    case userAlreadyExists
+    case loginFailed
+    case locationFailed
+    case unknown
+    case pendingUsersFailed
+    case contactsAccessFailed
+    case inviteAlreadySent
+    case inviteSendFailed
+    case feedbackSaveFailed
+    case locationNotSupported
+    case cashoutFetchFailed
 
     public var failureTitle: String {
-        switch self {
-        case .noInternetConnection:
-            return NSLocalizedString("Error - No internet connection.", comment: "")
-        }
+        return "Error"
     }
 
     public var failureDescription: String {
         switch self {
         case .noInternetConnection:
-            return NSLocalizedString("Please check your internet connection and try again.", comment: "")
+            return "Please check your internet connection and try again."
+        case .parseError(let details):
+            return "An error occured: \(details)"
+        case .signUpFailed:
+            return "Unable to sign-up. Please check your internet connection and try again."
+        case .userAlreadyExists:
+            return "A user with that email address already exists. Please choose a different email address."
+        case .loginFailed:
+            return "Unable to sign-up. Please check your internet connection and try again."
+        case .locationFailed:
+            return "Unable to fetch location. Please check your internet connection and try again."
+        case .unknown:
+            return "An unknown error occured."
+        case .pendingUsersFailed:
+            return "Unable to fetch pending users. Please check your internet connection and try again."
+        case .contactsAccessFailed:
+            return "Unable to access contacts. Please allow Ad-M8 access to your contacts through the Settings app."
+        case .inviteAlreadySent:
+            return "An invite has already been sent to this email address."
+        case .inviteSendFailed:
+            return "Unable to send invite. Please check your internet connection and try again."
+        case .feedbackSaveFailed:
+            return "Unable to save advert feedback. Please check your internet connection and try again."
+        case .locationNotSupported:
+            return "You're location is not supported."
+        case .cashoutFetchFailed:
+            return "Unable to fetch cashouts. Please check your internet connection and try again."
         }
     }
 }
