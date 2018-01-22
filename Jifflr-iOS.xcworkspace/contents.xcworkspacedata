@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Ad-M8-iOS.xcodeproj">
+      location = "group:/Users/jamesshaw/Repos/Ad-M8-iOS/Jifflr-iOS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Libraries/Pods/Pods.xcodeproj">

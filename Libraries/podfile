@@ -10,10 +10,10 @@ inhibit_all_warnings!
 use_frameworks!
 
 # define
-workspace '../Ad-M8-iOS.xcworkspace'
-project '../Ad-M8-iOS.xcodeproj'
+workspace '../Jifflr-iOS.xcworkspace'
+project '../Jifflr-iOS.xcodeproj'
 
-target 'Ad-M8-iOS' do
+target 'Jifflr-iOS' do
 
     ### DISTRIBUTION PODS ###
     pod 'TheDistanceCore'
@@ -31,7 +31,7 @@ target 'Ad-M8-iOS' do
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header
-target 'Ad-M8-iOSTests' do
+target 'Jifflr-iOSTests' do
     inherit! :search_paths
     pod 'Firebase'
     pod 'GoogleAnalytics'

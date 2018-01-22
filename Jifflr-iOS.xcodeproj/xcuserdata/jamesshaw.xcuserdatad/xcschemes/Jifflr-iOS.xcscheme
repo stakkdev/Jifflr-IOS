@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E9A7176E1F8B89AC00B07414"
-               BuildableName = "Ad-M8-iOS.app"
-               BlueprintName = "Ad-M8-iOS"
-               ReferencedContainer = "container:Ad-M8-iOS.xcodeproj">
+               BuildableName = "Jifflr-iOS.app"
+               BlueprintName = "Jifflr-iOS"
+               ReferencedContainer = "container:Jifflr-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E9A717A71F8B89AC00B07414"
-               BuildableName = "Ad-M8-iOSTests.xctest"
-               BlueprintName = "Ad-M8-iOSTests"
-               ReferencedContainer = "container:Ad-M8-iOS.xcodeproj">
+               BuildableName = "Jifflr-iOSTests.xctest"
+               BlueprintName = "Jifflr-iOSTests"
+               ReferencedContainer = "container:Jifflr-iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9A7176E1F8B89AC00B07414"
-            BuildableName = "Ad-M8-iOS.app"
-            BlueprintName = "Ad-M8-iOS"
-            ReferencedContainer = "container:Ad-M8-iOS.xcodeproj">
+            BuildableName = "Jifflr-iOS.app"
+            BlueprintName = "Jifflr-iOS"
+            ReferencedContainer = "container:Jifflr-iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9A7176E1F8B89AC00B07414"
-            BuildableName = "Ad-M8-iOS.app"
-            BlueprintName = "Ad-M8-iOS"
-            ReferencedContainer = "container:Ad-M8-iOS.xcodeproj">
+            BuildableName = "Jifflr-iOS.app"
+            BlueprintName = "Jifflr-iOS"
+            ReferencedContainer = "container:Jifflr-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -88,9 +88,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9A7176E1F8B89AC00B07414"
-            BuildableName = "Ad-M8-iOS.app"
-            BlueprintName = "Ad-M8-iOS"
-            ReferencedContainer = "container:Ad-M8-iOS.xcodeproj">
+            BuildableName = "Jifflr-iOS.app"
+            BlueprintName = "Jifflr-iOS"
+            ReferencedContainer = "container:Jifflr-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
