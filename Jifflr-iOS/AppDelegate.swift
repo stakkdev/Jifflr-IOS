@@ -13,6 +13,7 @@ import Crashlytics
 import Firebase
 import Parse
 import GoogleMobileAds
+import Localize_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,11 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
         print("Running environment: \(Constants.currentEnvironment.rawValue)")
+        print("Running language: \(Locale.current.languageCode ?? "")")
 
         //FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         self.configParse(in: application, with: launchOptions)
         self.configAdmob()
+        self.configLanguage()
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navController = UINavigationController()
@@ -95,5 +98,12 @@ extension AppDelegate {
 extension AppDelegate {
     func configAdmob() {
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
+    }
+}
+
+extension AppDelegate {
+    func configLanguage() {
+        guard let languageCode = Locale.current.languageCode else { return }
+        Localize.setCurrentLanguage(languageCode)
     }
 }

@@ -59,6 +59,7 @@
 		E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A7179E1F8B89AC00B07414 /* Main.storyboard */; };
 		E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A717A11F8B89AC00B07414 /* Assets.xcassets */; };
 		E9A717AD1F8B89AC00B07414 /* Ad_M8_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */; };
+		E9DBBC3920163485000B8835 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DBBC3B20163485000B8835 /* Localizable.strings */; };
 		E9E0B5581F8BA63700CBBA72 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */; };
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
@@ -147,6 +148,8 @@
 		E9A717A81F8B89AC00B07414 /* Jifflr-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jifflr-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad_M8_iOSTests.swift; sourceTree = "<group>"; };
 		E9A717AE1F8B89AC00B07414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9DBBC3A20163485000B8835 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9DBBC3C20163494000B8835 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9E0B5571F8BA63700CBBA72 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/RegisterViewController.swift; sourceTree = "<group>"; };
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 		E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Helpers/LocationManager.swift; sourceTree = "<group>"; };
@@ -359,6 +362,7 @@
 				E9A717961F8B89AC00B07414 /* .gitignore */,
 				E9A717981F8B89AC00B07414 /* ReadMe.md */,
 				E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */,
+				E9DBBC3B20163485000B8835 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -480,6 +484,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = E9A717661F8B89AC00B07414;
 			productRefGroup = E9A717701F8B89AC00B07414 /* Products */;
@@ -500,6 +505,7 @@
 				E9A7179D1F8B89AC00B07414 /* LaunchScreen.storyboard in Resources */,
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
+				E9DBBC3920163485000B8835 /* Localizable.strings in Resources */,
 				E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */,
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
@@ -557,6 +563,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -569,6 +576,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -760,6 +768,16 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		E9DBBC3B20163485000B8835 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9DBBC3A20163485000B8835 /* en */,
+				E9DBBC3C20163494000B8835 /* fr */,
+			);
+			name = Localizable.strings;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -767,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -824,6 +843,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -954,6 +974,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1051,6 +1072,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class LoginViewController: UIViewController, DisplayMessage {
 
@@ -23,7 +24,7 @@ class LoginViewController: UIViewController, DisplayMessage {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Login"
+        self.title = "login.navigation.title".localized()
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
