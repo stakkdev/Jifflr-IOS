@@ -859,6 +859,7 @@
 			baseConfigurationReference = FBBDAE828BA926418DF52CD9 /* Pods-Jifflr-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				INFOPLIST_FILE = "$(SRCROOT)/Jifflr-iOS/Info.plist";
@@ -879,6 +880,7 @@
 			baseConfigurationReference = FB810922D73664E8DEB64CDE /* Pods-Jifflr-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				INFOPLIST_FILE = "$(SRCROOT)/Jifflr-iOS/Info.plist";
