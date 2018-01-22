@@ -14,6 +14,7 @@ import Firebase
 import Parse
 import GoogleMobileAds
 import Localize_Swift
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         self.configParse(in: application, with: launchOptions)
         self.configAdmob()
+        self.configKeyboard()
         self.configLanguage()
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -99,9 +101,11 @@ extension AppDelegate {
     func configAdmob() {
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
     }
-}
 
-extension AppDelegate {
+    func configKeyboard() {
+        IQKeyboardManager.sharedManager().enable = true
+    }
+
     func configLanguage() {
         guard let languageCode = Locale.current.languageCode else { return }
         Localize.setCurrentLanguage(languageCode)

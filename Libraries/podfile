@@ -28,6 +28,7 @@ target 'Jifflr-iOS' do
     pod 'Parse'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Localize-Swift'
+    pod 'IQKeyboardManagerSwift'
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header
