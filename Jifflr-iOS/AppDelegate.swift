@@ -33,20 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configKeyboard()
         self.configLanguage()
 
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let navController = UINavigationController()
-        if PFUser.current() == nil {
-            navController.viewControllers = [LoginViewController.instantiateFromStoryboard()]
-            navController.setNavigationBarHidden(false, animated: false)
-            self.window!.rootViewController = navController
-            self.window?.makeKeyAndVisible()
-        } else {
-            navController.viewControllers = [DashboardViewController.instantiateFromStoryboard()]
-            navController.setNavigationBarHidden(false, animated: false)
-            self.window!.rootViewController = navController
-            self.window?.makeKeyAndVisible()
-        }
-
         return true
     }
     

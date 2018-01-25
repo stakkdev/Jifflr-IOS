@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GBl-tJ-h34">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gk6-wG-sJO">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Landing View Controller-->
+        <scene sceneID="cRY-sz-P0z">
+            <objects>
+                <viewController id="Gk6-wG-sJO" customClass="LandingViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="COb-6e-6K5"/>
+                        <viewControllerLayoutGuide type="bottom" id="nYd-Ja-XOO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="woh-aU-7q5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BwI-zm-Nki" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-59" y="32"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0V-Tm-oDV">
-                                <rect key="frame" x="20" y="113" width="374" height="30"/>
+                                <rect key="frame" x="20" y="69" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zF6-ey-JON"/>
                                 </constraints>
@@ -31,13 +49,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el9-dq-vPZ">
-                                <rect key="frame" x="20" y="84" width="41" height="21"/>
+                                <rect key="frame" x="20" y="40" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wIb-DH-G4Y">
-                                <rect key="frame" x="20" y="192" width="374" height="30"/>
+                                <rect key="frame" x="20" y="148" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="m6N-Rv-Taa"/>
                                 </constraints>
@@ -46,13 +64,13 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tal-7Z-boy">
-                                <rect key="frame" x="20" y="163" width="74" height="21"/>
+                                <rect key="frame" x="20" y="119" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgG-eO-X5E">
-                                <rect key="frame" x="20" y="242" width="374" height="30"/>
+                                <rect key="frame" x="20" y="198" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ffG-fL-gdb"/>
                                 </constraints>
@@ -63,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQp-Dx-FkV">
-                                <rect key="frame" x="20" y="338" width="374" height="30"/>
+                                <rect key="frame" x="20" y="294" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xFp-7T-Efh"/>
                                 </constraints>
@@ -111,7 +129,7 @@
         <!--Register View Controller-->
         <scene sceneID="Bgb-Lc-olM">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="8o7-Eb-YNp" customClass="RegisterViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="8o7-Eb-YNp" customClass="RegisterViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1ea-jM-6Ue"/>
                         <viewControllerLayoutGuide type="bottom" id="Eqe-B2-AY1"/>
@@ -397,7 +415,7 @@
         <!--Location Required View Controller-->
         <scene sceneID="wEs-0r-GFd">
             <objects>
-                <viewController storyboardIdentifier="LocationRequiredViewController" id="bpU-JH-3aY" customClass="LocationRequiredViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationRequiredViewController" id="bpU-JH-3aY" customClass="LocationRequiredViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KzQ-cK-GLL"/>
                         <viewControllerLayoutGuide type="bottom" id="ewb-VK-R7q"/>
@@ -441,24 +459,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGz-cG-AC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2263.768115942029" y="31.793478260869566"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="PRa-kV-pvI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GBl-tJ-h34" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S0u-bh-G5B">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="daA-dN-GXM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wba-zt-tDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="32" y="32.383808095952027"/>
         </scene>
     </scenes>
 </document>
