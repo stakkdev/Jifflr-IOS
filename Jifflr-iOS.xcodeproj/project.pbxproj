@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0D70147B0701131D6414DE5F /* Pods_Jifflr_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */; };
-		1045EA651F8EA79D0011FADF /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */; };
-		1045EA671F8EA7D70011FADF /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */; };
-		1045EA691F8EB9A80011FADF /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */; };
-		1045EA6B1F8EBA900011FADF /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		D1073B82673BD251B8AE1C31 /* Pods_Ad_M8_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
@@ -20,16 +16,12 @@
 		E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */; };
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
-		E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC01F8CCDF100697862 /* DashboardViewController.swift */; };
-		E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC41F8CEF4500697862 /* TeamViewController.swift */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
 		E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */; };
-		E95179471F90B4470000A08D /* CashoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95179461F90B4470000A08D /* CashoutViewController.swift */; };
 		E95179491F90D15E0000A08D /* UserCashout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95179481F90D15E0000A08D /* UserCashout.swift */; };
 		E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951794A1F90D1CC0000A08D /* CashoutManager.swift */; };
-		E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9691F271F8E5281006070F6 /* AdvertViewController.swift */; };
 		E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9691F291F8E52EC006070F6 /* Advert.storyboard */; };
 		E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */; };
 		E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */; };
@@ -37,6 +29,14 @@
 		E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C13201A41AB00E8A7D2 /* LandingViewController.swift */; };
 		E9798C16201A430D00E8A7D2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C15201A430D00E8A7D2 /* Session.swift */; };
 		E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */; };
+		E9798C1B201A4B5700E8A7D2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */; };
+		E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */; };
+		E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */; };
+		E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */; };
+		E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */; };
+		E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */; };
+		E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */; };
+		E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */; };
 		E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */; };
 		E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */; };
 		E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */; };
@@ -82,10 +82,6 @@
 /* Begin PBXFileReference section */
 		0D4B9A9BE20B6172ABBF5ADC /* Pods_Ad_M8_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ad_M8_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED41ABA1C2F0B2DA5F0C041 /* Pods-Jifflr-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackViewController.swift; path = "Controllers/Feedback View Controllers/FeedbackViewController.swift"; sourceTree = "<group>"; };
-		1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BinaryFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/BinaryFeedbackViewController.swift"; sourceTree = "<group>"; };
-		1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RatingFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/RatingFeedbackViewController.swift"; sourceTree = "<group>"; };
-		1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QAFeedbackViewController.swift; path = "Controllers/Feedback View Controllers/QAFeedbackViewController.swift"; sourceTree = "<group>"; };
 		1FF4F428DC6F036365223DB8 /* Pods_Ad_M8_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ad_M8_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21DEB2D3C8A90A7832029F73 /* Pods-Ad-M8-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOSTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOSTests/Pods-Ad-M8-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2380966C0858B174DFF812D2 /* Pods-Ad-M8-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ad-M8-iOS.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Ad-M8-iOS/Pods-Ad-M8-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,16 +102,12 @@
 		E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTests.swift; sourceTree = "<group>"; };
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
-		E9488EC01F8CCDF100697862 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/DashboardViewController.swift; sourceTree = "<group>"; };
-		E9488EC41F8CEF4500697862 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamViewController.swift; path = Controllers/TeamViewController.swift; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
 		E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/ContactsManager.swift; sourceTree = "<group>"; };
-		E95179461F90B4470000A08D /* CashoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutViewController.swift; path = Controllers/CashoutViewController.swift; sourceTree = "<group>"; };
 		E95179481F90D15E0000A08D /* UserCashout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserCashout.swift; path = Models/UserCashout.swift; sourceTree = "<group>"; };
 		E951794A1F90D1CC0000A08D /* CashoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutManager.swift; path = Helpers/CashoutManager.swift; sourceTree = "<group>"; };
-		E9691F271F8E5281006070F6 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = Controllers/AdvertViewController.swift; sourceTree = "<group>"; };
 		E9691F2A1F8E52EC006070F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Advert.storyboard; sourceTree = "<group>"; };
 		E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Onboarding/RegisterViewController.swift; sourceTree = "<group>"; };
 		E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/Onboarding/LocationRequiredViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +115,14 @@
 		E9798C13201A41AB00E8A7D2 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingViewController.swift; path = Controllers/Onboarding/LandingViewController.swift; sourceTree = "<group>"; };
 		E9798C15201A430D00E8A7D2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Helpers/Session.swift; sourceTree = "<group>"; };
 		E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerExtensions.swift; path = Extensions/ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = "Jifflr-iOS/Controllers/Dashboard/DashboardViewController.swift"; sourceTree = SOURCE_ROOT; };
+		E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamViewController.swift; path = Controllers/Team/TeamViewController.swift; sourceTree = "<group>"; };
+		E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CashoutViewController.swift; path = "Controllers/My Money/CashoutViewController.swift"; sourceTree = "<group>"; };
+		E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = "Controllers/Play Advert/AdvertViewController.swift"; sourceTree = "<group>"; };
+		E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Advert.swift; path = Models/Advert.swift; sourceTree = "<group>"; };
 		E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackQuestion.swift; path = Models/FeedbackQuestion.swift; sourceTree = "<group>"; };
 		E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackType.swift; path = Models/FeedbackType.swift; sourceTree = "<group>"; };
@@ -187,17 +187,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1045EA631F8EA75C0011FADF /* Feedback View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1045EA641F8EA79D0011FADF /* FeedbackViewController.swift */,
-				1045EA661F8EA7D70011FADF /* BinaryFeedbackViewController.swift */,
-				1045EA681F8EB9A70011FADF /* RatingFeedbackViewController.swift */,
-				1045EA6A1F8EBA900011FADF /* QAFeedbackViewController.swift */,
-			);
-			name = "Feedback View Controllers";
-			sourceTree = "<group>";
-		};
 		33DC5748B12C12E7B5F90575 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +248,58 @@
 			name = Onboarding;
 			sourceTree = "<group>";
 		};
+		E9798C19201A4AE200E8A7D2 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E9798C1C201A4B8400E8A7D2 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */,
+			);
+			name = Team;
+			sourceTree = "<group>";
+		};
+		E9798C1D201A4B8D00E8A7D2 /* Ads Viewed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Ads Viewed";
+			sourceTree = "<group>";
+		};
+		E9798C20201A4BE200E8A7D2 /* My Money */ = {
+			isa = PBXGroup;
+			children = (
+				E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */,
+			);
+			name = "My Money";
+			sourceTree = "<group>";
+		};
+		E9798C23201A4C2B00E8A7D2 /* Play Advert */ = {
+			isa = PBXGroup;
+			children = (
+				E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */,
+				E9798C26201A4C8E00E8A7D2 /* Feedback */,
+			);
+			name = "Play Advert";
+			sourceTree = "<group>";
+		};
+		E9798C26201A4C8E00E8A7D2 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
+				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
+				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
+				E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */,
+			);
+			name = Feedback;
+			path = Controllers/Feedback;
+			sourceTree = "<group>";
+		};
 		E9A717661F8B89AC00B07414 = {
 			isa = PBXGroup;
 			children = (
@@ -309,11 +350,11 @@
 			isa = PBXGroup;
 			children = (
 				E9798C0C201A3FF100E8A7D2 /* Onboarding */,
-				E9488EC01F8CCDF100697862 /* DashboardViewController.swift */,
-				E9488EC41F8CEF4500697862 /* TeamViewController.swift */,
-				E9691F271F8E5281006070F6 /* AdvertViewController.swift */,
-				E95179461F90B4470000A08D /* CashoutViewController.swift */,
-				1045EA631F8EA75C0011FADF /* Feedback View Controllers */,
+				E9798C19201A4AE200E8A7D2 /* Dashboard */,
+				E9798C1C201A4B8400E8A7D2 /* Team */,
+				E9798C1D201A4B8D00E8A7D2 /* Ads Viewed */,
+				E9798C20201A4BE200E8A7D2 /* My Money */,
+				E9798C23201A4C2B00E8A7D2 /* Play Advert */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -695,41 +736,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9798C16201A430D00E8A7D2 /* Session.swift in Sources */,
+				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
 				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
-				1045EA651F8EA79D0011FADF /* FeedbackViewController.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E9A2CF591F8F90CA008A7F40 /* FeedbackManager.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
-				1045EA6B1F8EBA900011FADF /* QAFeedbackViewController.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,
 				E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */,
+				E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
-				E95179471F90B4470000A08D /* CashoutViewController.swift in Sources */,
-				1045EA671F8EA7D70011FADF /* BinaryFeedbackViewController.swift in Sources */,
+				E9798C1B201A4B5700E8A7D2 /* DashboardViewController.swift in Sources */,
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
-				E9488EC11F8CCDF100697862 /* DashboardViewController.swift in Sources */,
+				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
+				E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */,
+				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
 				E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */,
 				E9A2CF5B1F8FA4A0008A7F40 /* AdvertManager.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
-				E9691F281F8E5281006070F6 /* AdvertViewController.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
-				1045EA691F8EB9A80011FADF /* RatingFeedbackViewController.swift in Sources */,
+				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
+				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
 				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
-				E9488EC51F8CEF4500697862 /* TeamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
