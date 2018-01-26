@@ -20,7 +20,7 @@ class TeamViewController: UIViewController, DisplayMessage {
     var friendsData:[PFUser] = []
 
     class func instantiateFromStoryboard() -> TeamViewController {
-        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        let storyboard = UIStoryboard(name: "MyTeam", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "TeamViewController") as! TeamViewController
     }
 

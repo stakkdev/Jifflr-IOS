@@ -29,7 +29,6 @@
 		E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C13201A41AB00E8A7D2 /* LandingViewController.swift */; };
 		E9798C16201A430D00E8A7D2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C15201A430D00E8A7D2 /* Session.swift */; };
 		E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */; };
-		E9798C1B201A4B5700E8A7D2 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */; };
 		E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */; };
 		E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */; };
 		E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */; };
@@ -67,6 +66,9 @@
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
 		E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */; };
+		E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F89D80201B423E00860FE3 /* DashboardViewController.swift */; };
+		E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D82201B446700860FE3 /* MyTeam.storyboard */; };
+		E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +117,6 @@
 		E9798C13201A41AB00E8A7D2 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingViewController.swift; path = Controllers/Onboarding/LandingViewController.swift; sourceTree = "<group>"; };
 		E9798C15201A430D00E8A7D2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Helpers/Session.swift; sourceTree = "<group>"; };
 		E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerExtensions.swift; path = Extensions/ViewControllerExtensions.swift; sourceTree = "<group>"; };
-		E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = "Jifflr-iOS/Controllers/Dashboard/DashboardViewController.swift"; sourceTree = SOURCE_ROOT; };
 		E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamViewController.swift; path = Controllers/Team/TeamViewController.swift; sourceTree = "<group>"; };
 		E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CashoutViewController.swift; path = "Controllers/My Money/CashoutViewController.swift"; sourceTree = "<group>"; };
 		E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = "Controllers/Play Advert/AdvertViewController.swift"; sourceTree = "<group>"; };
@@ -160,6 +161,9 @@
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 		E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Helpers/LocationManager.swift; sourceTree = "<group>"; };
 		E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
+		E9F89D80201B423E00860FE3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/Dashboard/DashboardViewController.swift; sourceTree = "<group>"; };
+		E9F89D83201B446700860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyTeam.storyboard; sourceTree = "<group>"; };
+		E9F89D86201B45CB00860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyMoney.storyboard; sourceTree = "<group>"; };
 		F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB810922D73664E8DEB64CDE /* Pods-Jifflr-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		FBBDAE828BA926418DF52CD9 /* Pods-Jifflr-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.debug.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -246,14 +250,6 @@
 				E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */,
 			);
 			name = Onboarding;
-			sourceTree = "<group>";
-		};
-		E9798C19201A4AE200E8A7D2 /* Dashboard */ = {
-			isa = PBXGroup;
-			children = (
-				E9798C1A201A4B5700E8A7D2 /* DashboardViewController.swift */,
-			);
-			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		E9798C1C201A4B8400E8A7D2 /* Team */ = {
@@ -350,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				E9798C0C201A3FF100E8A7D2 /* Onboarding */,
-				E9798C19201A4AE200E8A7D2 /* Dashboard */,
+				E9F89D7F201B422E00860FE3 /* Dashboard */,
 				E9798C1C201A4B8400E8A7D2 /* Team */,
 				E9798C1D201A4B8D00E8A7D2 /* Ads Viewed */,
 				E9798C20201A4BE200E8A7D2 /* My Money */,
@@ -442,6 +438,8 @@
 				E9A7179E1F8B89AC00B07414 /* Main.storyboard */,
 				E9488EC61F8CEFC900697862 /* Dashboard.storyboard */,
 				E9691F291F8E52EC006070F6 /* Advert.storyboard */,
+				E9F89D82201B446700860FE3 /* MyTeam.storyboard */,
+				E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -456,6 +454,14 @@
 				E9A717AE1F8B89AC00B07414 /* Info.plist */,
 			);
 			path = "Jifflr-iOSTests";
+			sourceTree = "<group>";
+		};
+		E9F89D7F201B422E00860FE3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E9F89D80201B423E00860FE3 /* DashboardViewController.swift */,
+			);
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 		FC9D84FDF4D3E3E4640D1D3A /* Frameworks */ = {
@@ -567,7 +573,9 @@
 				E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */,
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
+				E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */,
 				E9A717951F8B89AC00B07414 /* Cartfile.private in Resources */,
+				E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */,
 				E9A7178E1F8B89AC00B07414 /* setup.sh in Resources */,
 				E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */,
 				E9A717881F8B89AC00B07414 /* Settings.bundle in Resources */,
@@ -753,8 +761,8 @@
 				E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
-				E9798C1B201A4B5700E8A7D2 /* DashboardViewController.swift in Sources */,
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
+				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
@@ -839,6 +847,22 @@
 			);
 			name = Localizable.strings;
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9F89D82201B446700860FE3 /* MyTeam.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9F89D83201B446700860FE3 /* Base */,
+			);
+			name = MyTeam.storyboard;
+			sourceTree = "<group>";
+		};
+		E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9F89D86201B45CB00860FE3 /* Base */,
+			);
+			name = MyMoney.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

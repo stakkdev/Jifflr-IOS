@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cashout View Controller-->
+        <scene sceneID="mdV-pK-Uy0">
+            <objects>
+                <viewController storyboardIdentifier="CashoutViewController" id="guH-fI-DUM" customClass="CashoutViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PU3-y6-Cmm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUe-JH-HS6">
+                                <rect key="frame" x="155" y="102.5" width="64" height="30"/>
+                                <state key="normal" title="Cash Out"/>
+                                <connections>
+                                    <action selector="cashoutButtonPressed:" destination="guH-fI-DUM" eventType="touchUpInside" id="DET-vm-Dkq"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6MN-Ea-xB1">
+                                <rect key="frame" x="0.0" y="212" width="375" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cashoutHistoryCell" textLabel="zus-z8-8ZT" detailTextLabel="nBj-KM-rIS" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="pSd-BN-ZHv">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pSd-BN-ZHv" id="EHq-x5-hco">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zus-z8-8ZT">
+                                                    <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nBj-KM-rIS">
+                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWk-wr-1yN">
+                                <rect key="frame" x="20" y="171" width="55" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money available: £0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-v1-Q3I">
+                                <rect key="frame" x="99.5" y="52" width="176.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6MN-Ea-xB1" firstAttribute="bottom" secondItem="zgh-ni-PyE" secondAttribute="bottom" id="4eS-CU-t1J"/>
+                            <constraint firstItem="PUe-JH-HS6" firstAttribute="leading" secondItem="CWk-wr-1yN" secondAttribute="trailing" constant="80" id="5HE-Js-tJh"/>
+                            <constraint firstItem="6MN-Ea-xB1" firstAttribute="top" secondItem="CWk-wr-1yN" secondAttribute="bottom" constant="20" id="GAJ-UO-lIG"/>
+                            <constraint firstItem="PUe-JH-HS6" firstAttribute="top" secondItem="h3a-v1-Q3I" secondAttribute="bottom" constant="30" id="Lfr-Ht-27R"/>
+                            <constraint firstItem="PUe-JH-HS6" firstAttribute="centerX" secondItem="h3a-v1-Q3I" secondAttribute="centerX" id="Lus-tU-a9C"/>
+                            <constraint firstItem="6MN-Ea-xB1" firstAttribute="leading" secondItem="zgh-ni-PyE" secondAttribute="leading" id="Ov3-a6-v5v"/>
+                            <constraint firstItem="CWk-wr-1yN" firstAttribute="leading" secondItem="zgh-ni-PyE" secondAttribute="leading" constant="20" id="PiN-o1-mmL"/>
+                            <constraint firstItem="h3a-v1-Q3I" firstAttribute="centerX" secondItem="PU3-y6-Cmm" secondAttribute="centerX" id="gC6-PA-soP"/>
+                            <constraint firstItem="6MN-Ea-xB1" firstAttribute="trailing" secondItem="zgh-ni-PyE" secondAttribute="trailing" id="keq-IL-plN"/>
+                            <constraint firstItem="CWk-wr-1yN" firstAttribute="top" secondItem="PUe-JH-HS6" secondAttribute="bottom" constant="38.5" id="klC-DT-GUA"/>
+                            <constraint firstItem="h3a-v1-Q3I" firstAttribute="top" secondItem="zgh-ni-PyE" secondAttribute="top" constant="32" id="lTj-um-ek5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zgh-ni-PyE"/>
+                    </view>
+                    <connections>
+                        <outlet property="cashOutButton" destination="PUe-JH-HS6" id="ZTQ-vk-i3Q"/>
+                        <outlet property="moneyAvailableLabel" destination="h3a-v1-Q3I" id="r3a-HO-yq5"/>
+                        <outlet property="tableView" destination="6MN-Ea-xB1" id="RDs-ad-VDN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Erm-7k-FDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3260" y="19"/>
+        </scene>
+    </scenes>
+</document>

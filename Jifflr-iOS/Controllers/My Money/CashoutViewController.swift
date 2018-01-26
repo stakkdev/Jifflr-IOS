@@ -17,7 +17,7 @@ class CashoutViewController: UIViewController, DisplayMessage {
     var cashoutData:[UserCashout] = []
 
     class func instantiateFromStoryboard() -> CashoutViewController {
-        let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
+        let storyboard = UIStoryboard(name: "MyMoney", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "CashoutViewController") as! CashoutViewController
     }
 

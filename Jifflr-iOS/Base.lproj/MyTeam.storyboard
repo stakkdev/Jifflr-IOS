@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Team View Controller-->
+        <scene sceneID="Sbv-ZZ-BwT">
+            <objects>
+                <viewController storyboardIdentifier="TeamViewController" id="vJA-3L-vdx" customClass="TeamViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J6g-NJ-aO7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GSD-XR-Kos">
+                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="UxN-zD-WRT"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Friends"/>
+                                    <segment title="Pending"/>
+                                </segments>
+                                <connections>
+                                    <action selector="valueChanged:" destination="vJA-3L-vdx" eventType="valueChanged" id="7ce-WT-400"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6v-qf-XVr">
+                                <rect key="frame" x="0.0" y="92" width="375" height="575"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamCell" textLabel="DkP-QJ-Ea8" detailTextLabel="eV3-pv-zFd" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="Bba-Ne-HTX">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bba-Ne-HTX" id="DVL-ac-mlh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DkP-QJ-Ea8">
+                                                    <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eV3-pv-zFd">
+                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H6v-qf-XVr" firstAttribute="bottom" secondItem="UHs-Ub-qR4" secondAttribute="bottom" id="BOE-lb-mFX"/>
+                            <constraint firstItem="H6v-qf-XVr" firstAttribute="leading" secondItem="UHs-Ub-qR4" secondAttribute="leading" id="KRl-v2-xYz"/>
+                            <constraint firstItem="H6v-qf-XVr" firstAttribute="trailing" secondItem="UHs-Ub-qR4" secondAttribute="trailing" id="Rd6-rE-De2"/>
+                            <constraint firstItem="GSD-XR-Kos" firstAttribute="trailing" secondItem="J6g-NJ-aO7" secondAttribute="trailing" id="UhP-iM-MWR"/>
+                            <constraint firstItem="GSD-XR-Kos" firstAttribute="leading" secondItem="J6g-NJ-aO7" secondAttribute="leading" id="eyt-lO-yoT"/>
+                            <constraint firstItem="H6v-qf-XVr" firstAttribute="top" secondItem="GSD-XR-Kos" secondAttribute="bottom" id="lAU-YR-9VP"/>
+                            <constraint firstItem="GSD-XR-Kos" firstAttribute="top" secondItem="J6g-NJ-aO7" secondAttribute="top" constant="64" id="w9L-sR-Wjt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UHs-Ub-qR4"/>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="GSD-XR-Kos" id="Lep-qb-yHC"/>
+                        <outlet property="tableView" destination="H6v-qf-XVr" id="a4M-W7-p1J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pu-SO-jRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2886" y="-486"/>
+        </scene>
+    </scenes>
+</document>
