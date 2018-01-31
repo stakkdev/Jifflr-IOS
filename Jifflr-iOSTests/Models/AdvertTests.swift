@@ -8,7 +8,7 @@
 
 import XCTest
 import Parse
-@testable import Ad_M8_iOS
+@testable import Jifflr_iOS
 
 class AdvertTests: XCTestCase {
 

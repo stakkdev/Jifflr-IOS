@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Ad_M8_iOS
+@testable import Jifflr_iOS
 
 class RegistrationViewControllerTests: XCTestCase {
 
