@@ -1029,9 +1029,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
-				INFOPLIST_FILE = "Ad-M8-iOSTests/Info.plist";
+				INFOPLIST_FILE = "Jifflr-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Jifflr-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1047,9 +1047,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
-				INFOPLIST_FILE = "Ad-M8-iOSTests/Info.plist";
+				INFOPLIST_FILE = "Jifflr-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Jifflr-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1145,9 +1145,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
-				INFOPLIST_FILE = "Ad-M8-iOSTests/Info.plist";
+				INFOPLIST_FILE = "Jifflr-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Jifflr-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1236,9 +1236,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
-				INFOPLIST_FILE = "Ad-M8-iOSTests/Info.plist";
+				INFOPLIST_FILE = "Jifflr-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Ad-M8-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thedistance.Jifflr-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
