@@ -2,7 +2,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 # Private Pods Repo
-source 'https://jsh8w@bitbucket.org/thedistance/thedistancekit-cocoapods.git'
+source 'git@bitbucket.org:thedistance/thedistancekit-cocoapods.git'
 
 # pod configuration
 platform :ios, '8.0'
