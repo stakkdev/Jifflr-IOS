@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D70147B0701131D6414DE5F /* Pods_Jifflr_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */; };
+		1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		0ED41ABA1C2F0B2DA5F0C041 /* Pods-Jifflr-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF98737963D7F5B4AB1E447 /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		5ECFD93B67F4BD2D51848E3E /* Pods-Jifflr-iOSTests.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (production).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (production).xcconfig"; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 		E9A717751F8B89AC00B07414 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */,
 				E9798C0C201A3FF100E8A7D2 /* Onboarding */,
 				E9F89D7F201B422E00860FE3 /* Dashboard */,
 				E9798C1C201A4B8400E8A7D2 /* Team */,
@@ -740,6 +743,7 @@
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E9A2CF591F8F90CA008A7F40 /* FeedbackManager.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
+				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,

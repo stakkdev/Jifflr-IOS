@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Running environment: \(Constants.currentEnvironment.rawValue)")
         print("Running language: \(Locale.current.languageCode ?? "")")
 
+        UIApplication.shared.statusBarStyle = .lightContent
+
         //FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         self.configParse(in: application, with: launchOptions)

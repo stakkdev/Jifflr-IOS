@@ -49,7 +49,7 @@ class LocationRequiredViewController: UIViewController, DisplayMessage {
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             self.dismiss(animated: true, completion: {
-                DashboardViewController.presentAsRootViewController()
+                self.rootDashboardViewController()
             })
         }
     }

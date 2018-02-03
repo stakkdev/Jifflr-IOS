@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: BaseViewController {
 
     @IBOutlet weak var playAdsButton: UIButton!
     @IBOutlet weak var teamButton: UIButton!
@@ -18,13 +18,6 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var noOfFriendsLabel: UILabel!
     @IBOutlet weak var noOfAdvertViewsLabel: UILabel!
-
-    class func presentAsRootViewController() {
-        let navigationController = UINavigationController()
-        navigationController.viewControllers = [self.instantiateFromStoryboard()]
-        navigationController.setNavigationBarHidden(false, animated: false)
-        UIApplication.shared.delegate?.window??.rootViewController = navigationController
-    }
 
     class func instantiateFromStoryboard() -> DashboardViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)

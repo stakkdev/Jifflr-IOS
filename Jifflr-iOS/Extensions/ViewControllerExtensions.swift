@@ -12,7 +12,7 @@ extension UIViewController {
     func rootLoginViewController() {
         let loginVC = LoginViewController.instantiateFromStoryboard()
         let navVC = UINavigationController(rootViewController: loginVC)
-        navVC.isNavigationBarHidden = true
+        navVC.isNavigationBarHidden = false
 
         self.set(root: navVC)
     }

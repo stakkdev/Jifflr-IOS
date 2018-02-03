@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, DisplayMessage {
+class RegisterViewController: BaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -111,7 +111,7 @@ class RegisterViewController: UIViewController, DisplayMessage {
             }
 
             if LocationManager.shared.locationServicesEnabled() == true {
-                DashboardViewController.presentAsRootViewController()
+                self.rootDashboardViewController()
             } else {
                 let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
                 self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)

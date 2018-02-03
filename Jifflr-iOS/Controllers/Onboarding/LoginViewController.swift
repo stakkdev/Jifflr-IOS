@@ -9,7 +9,7 @@
 import UIKit
 import Localize_Swift
 
-class LoginViewController: UIViewController, DisplayMessage {
+class LoginViewController: BaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, DisplayMessage {
             }
 
             if LocationManager.shared.locationServicesEnabled() == true {
-                DashboardViewController.presentAsRootViewController()
+                self.rootDashboardViewController()
             } else {
                 let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
                 self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
