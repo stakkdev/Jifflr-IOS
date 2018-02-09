@@ -15,6 +15,10 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: JifflrButton!
     @IBOutlet weak var registerButton: JifflrButton!
+    @IBOutlet weak var jifflrLogoTop: NSLayoutConstraint!
+    @IBOutlet weak var jifflrLogoBottom: NSLayoutConstraint!
+    @IBOutlet weak var jifflrLogoHeight: NSLayoutConstraint!
+    @IBOutlet weak var registerButtonBottom: NSLayoutConstraint!
 
     class func instantiateFromStoryboard() -> LoginViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -24,6 +28,10 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupUI()
+    }
+
+    func setupUI() {
         self.title = "login.navigation.title".localized()
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
 
@@ -31,6 +39,13 @@ class LoginViewController: BaseViewController {
         self.loginButton.setTitle("login.loginButton.title".localized(), for: .normal)
         self.registerButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         self.registerButton.setTitle("login.registerButton.title".localized(), for: .normal)
+
+        if Constants.isSmallScreen {
+            self.jifflrLogoTop.constant = 12.0
+            self.jifflrLogoBottom.constant = 22.0
+            self.jifflrLogoHeight.constant = 42.0
+            self.registerButtonBottom.constant = 30.0
+        }
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
