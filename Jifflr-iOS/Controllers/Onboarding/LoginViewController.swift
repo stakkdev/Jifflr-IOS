@@ -19,6 +19,9 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var jifflrLogoBottom: NSLayoutConstraint!
     @IBOutlet weak var jifflrLogoHeight: NSLayoutConstraint!
     @IBOutlet weak var registerButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var emailHeadingLabel: UILabel!
+    @IBOutlet weak var passwordHeadingLabel: UILabel!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
 
     class func instantiateFromStoryboard() -> LoginViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -32,13 +35,11 @@ class LoginViewController: BaseViewController {
     }
 
     func setupUI() {
-        self.title = "login.navigation.title".localized()
-        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+        self.setupLocalization()
 
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.loginButton.setBackgroundColor(color: UIColor.mainPink)
-        self.loginButton.setTitle("login.loginButton.title".localized(), for: .normal)
         self.registerButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
-        self.registerButton.setTitle("login.registerButton.title".localized(), for: .normal)
 
         if Constants.isSmallScreen {
             self.jifflrLogoTop.constant = 12.0
@@ -46,6 +47,17 @@ class LoginViewController: BaseViewController {
             self.jifflrLogoHeight.constant = 42.0
             self.registerButtonBottom.constant = 30.0
         }
+    }
+
+    func setupLocalization() {
+        self.title = "login.navigation.title".localized()
+        self.loginButton.setTitle("login.loginButton.title".localized(), for: .normal)
+        self.registerButton.setTitle("login.registerButton.title".localized(), for: .normal)
+        self.forgotPasswordButton.setTitle("login.forgotPasswordButton.title".localized(), for: .normal)
+        self.emailHeadingLabel.text = "login.email.heading".localized()
+        self.passwordHeadingLabel.text = "login.password.heading".localized()
+        self.emailTextField.placeholder = "login.email.placeholder".localized()
+        self.passwordTextField.placeholder = "login.password.placeholder".localized()
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {

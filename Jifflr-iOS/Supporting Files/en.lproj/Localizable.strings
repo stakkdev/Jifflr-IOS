@@ -15,5 +15,10 @@
 "onboarding.skipButton" = "Skip";
 
 "login.navigation.title" = "Login";
+"login.email.heading" = "Email";
+"login.email.placeholder" = "Enter your email";
+"login.password.heading" = "Password";
+"login.password.placeholder" = "Enter your password";
 "login.loginButton.title" = "LOGIN";
 "login.registerButton.title" = "REGISTER";
+"login.forgotPasswordButton.title" = "Forgot Password?";

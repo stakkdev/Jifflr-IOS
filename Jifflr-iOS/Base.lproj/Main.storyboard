@@ -162,11 +162,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="rL3-IB-gKW"/>
                     <connections>
+                        <outlet property="emailHeadingLabel" destination="el9-dq-vPZ" id="hea-uB-IqU"/>
                         <outlet property="emailTextField" destination="Y0V-Tm-oDV" id="8qu-zE-jyh"/>
+                        <outlet property="forgotPasswordButton" destination="Gz1-ou-RYE" id="aCW-46-qfI"/>
                         <outlet property="jifflrLogoBottom" destination="oTS-O3-swg" id="wwX-wE-uOE"/>
                         <outlet property="jifflrLogoHeight" destination="DCd-sy-rvF" id="9rv-PB-6F4"/>
                         <outlet property="jifflrLogoTop" destination="uND-FP-AY4" id="sHz-XT-X1Z"/>
                         <outlet property="loginButton" destination="tgG-eO-X5E" id="3i3-GI-Qar"/>
+                        <outlet property="passwordHeadingLabel" destination="tal-7Z-boy" id="a3U-wS-X0C"/>
                         <outlet property="passwordTextField" destination="wIb-DH-G4Y" id="3Zj-a3-wxg"/>
                         <outlet property="registerButton" destination="RQp-Dx-FkV" id="4Ux-oj-2l7"/>
                         <outlet property="registerButtonBottom" destination="53V-dz-7W1" id="Bxs-0H-Bni"/>
@@ -356,7 +359,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Register"/>
                                         <connections>
-                                            <action selector="registerButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0c0-Zi-F1F"/>
                                             <action selector="registerButtonPressedWithSender:" destination="8o7-Eb-YNp" eventType="touchUpInside" id="6xC-7W-YJN"/>
                                         </connections>
                                     </button>
