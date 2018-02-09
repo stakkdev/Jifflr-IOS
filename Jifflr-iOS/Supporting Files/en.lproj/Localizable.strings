@@ -15,3 +15,5 @@
 "onboarding.skipButton" = "Skip";
 
 "login.navigation.title" = "Login";
+"login.loginButton.title" = "LOGIN";
+"login.registerButton.title" = "REGISTER";

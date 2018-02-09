@@ -65,6 +65,9 @@
 		E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A7179E1F8B89AC00B07414 /* Main.storyboard */; };
 		E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A717A11F8B89AC00B07414 /* Assets.xcassets */; };
 		E9A717AD1F8B89AC00B07414 /* Ad_M8_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */; };
+		E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */; };
+		E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */; };
+		E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */; };
 		E9DBBC3920163485000B8835 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DBBC3B20163485000B8835 /* Localizable.strings */; };
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
@@ -157,6 +160,9 @@
 		E9A717A81F8B89AC00B07414 /* Jifflr-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jifflr-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717AC1F8B89AC00B07414 /* Ad_M8_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad_M8_iOSTests.swift; sourceTree = "<group>"; };
 		E9A717AE1F8B89AC00B07414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrButton.swift; path = Views/JifflrButton.swift; sourceTree = "<group>"; };
+		E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextField.swift; path = Views/TextFields/JifflrTextField.swift; sourceTree = "<group>"; };
+		E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldPassword.swift; path = Views/TextFields/JifflrTextFieldPassword.swift; sourceTree = "<group>"; };
 		E9DBBC3A20163485000B8835 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DBBC3C20163494000B8835 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
@@ -364,7 +370,9 @@
 		E9A717781F8B89AC00B07414 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E9AC1FB3202DFB6500FAA9A7 /* TextFields */,
 				E9A717791F8B89AC00B07414 /* CustomView.swift */,
+				E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -462,6 +470,15 @@
 				E9A717AE1F8B89AC00B07414 /* Info.plist */,
 			);
 			path = "Jifflr-iOSTests";
+			sourceTree = "<group>";
+		};
+		E9AC1FB3202DFB6500FAA9A7 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */,
+				E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */,
+			);
+			name = TextFields;
 			sourceTree = "<group>";
 		};
 		E9F89D7F201B422E00860FE3 /* Dashboard */ = {
@@ -756,6 +773,7 @@
 				E9798C16201A430D00E8A7D2 /* Session.swift in Sources */,
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
+				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
@@ -782,10 +800,12 @@
 				E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */,
+				E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */,
 				E9A717821F8B89AC00B07414 /* ErrorMessage.swift in Sources */,
 				E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */,
 				E9A2CF5B1F8FA4A0008A7F40 /* AdvertManager.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
+				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,

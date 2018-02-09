@@ -43,7 +43,8 @@ class BaseViewController: UIViewController, DisplayMessage {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20.0), NSAttributedStringKey.foregroundColor: UIColor.white]
+        let font = UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationBar.tintColor = UIColor.white
 
         let backBarButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)

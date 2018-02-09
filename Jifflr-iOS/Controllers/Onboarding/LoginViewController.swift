@@ -13,8 +13,8 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var loginButton: JifflrButton!
+    @IBOutlet weak var registerButton: JifflrButton!
 
     class func instantiateFromStoryboard() -> LoginViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -25,6 +25,12 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
 
         self.title = "login.navigation.title".localized()
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+
+        self.loginButton.setBackgroundColor(color: UIColor.mainPink)
+        self.loginButton.setTitle("login.loginButton.title".localized(), for: .normal)
+        self.registerButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
+        self.registerButton.setTitle("login.registerButton.title".localized(), for: .normal)
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
