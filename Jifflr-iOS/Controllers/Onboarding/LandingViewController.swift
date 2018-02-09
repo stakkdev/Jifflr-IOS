@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TDOnboarding
 
 class LandingViewController: UIViewController {
 
@@ -27,9 +28,22 @@ class LandingViewController: UIViewController {
 
     func determineAppRoute() {
         if Session.shared.currentUser == nil {
-            self.rootLoginViewController()
+            if UserDefaultsManager.shared.onboardingViewed() == true {
+                self.rootLoginViewController()
+            } else {
+                let onboarding = TDOnboarding(titles: Onboarding.titles, subTitles: Onboarding.subTitles, images: Onboarding.images, backgroundImage: Onboarding.bgImage, options: OnboardingCustomizable())
+                onboarding.delegate = self
+                onboarding.presentOnboardingVC(from: self, animated: true)
+            }
         } else {
             self.rootDashboardViewController()
         }
+    }
+}
+
+extension LandingViewController: TDOnboardingDelegate {
+    func onboardingShouldSkip() {
+        UserDefaultsManager.shared.setOnboardingViewed()
+        self.rootLoginViewController()
     }
 }

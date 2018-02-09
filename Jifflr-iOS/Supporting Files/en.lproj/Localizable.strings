@@ -6,4 +6,11 @@
   Copyright © 2018 The Distance. All rights reserved.
 */
 
+"onboarding.title1" = "Earn up to £500 a month.";
+"onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
+"onboarding.title2" = "Remember to build your team.";
+"onboarding.description2" = "A big team makes big money. Ideally invite 5 or 6 friends to join your team, encourage them to invite their friends and watch your team grow. There’s no limit to how big your team can be!";
+"onboarding.title3" = "Run market research campaigns.";
+"onboarding.description3" = "Use Ad Builder to easily create your own ads together with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
+
 "login.navigation.title" = "Login";
