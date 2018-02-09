@@ -12,5 +12,6 @@
 "onboarding.description2" = "A big team makes big money. Ideally invite 5 or 6 friends to join your team, encourage them to invite their friends and watch your team grow. There’s no limit to how big your team can be!";
 "onboarding.title3" = "Run market research campaigns.";
 "onboarding.description3" = "Use Ad Builder to easily create your own ads together with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
+"onboarding.skipButton" = "Skip";
 
 "login.navigation.title" = "Login";

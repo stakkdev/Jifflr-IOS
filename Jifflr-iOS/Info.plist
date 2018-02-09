@@ -65,5 +65,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GothamBold.otf</string>
+		<string>GothamBook.otf</string>
+	</array>
 </dict>
 </plist>

@@ -23,6 +23,11 @@ struct Constants {
         static let locationFound = Notification.Name(rawValue: "locationFound")
         static let locationPermissionsChanged = Notification.Name(rawValue: "locationPermissionsChanged")
     }
+
+    struct FontNames {
+        static let GothamBold = "GothamBold"
+        static let GothamBook = "GothamBook"
+    }
 }
 
 enum Environment: String {
@@ -41,7 +46,19 @@ enum Environment: String {
 
 struct OnboardingCustomizable: TDOnboardingCustomizable {
     var titleTextColor: UIColor {
+        return UIColor.clear
+    }
+
+    var titleFont: UIFont? {
+        return UIFont(name: Constants.FontNames.GothamBold, size: 18.0)
+    }
+
+    var bottomTitleTextColor: UIColor? {
         return UIColor.mainBlue
+    }
+
+    var bottomTitleFont: UIFont? {
+        return UIFont(name: Constants.FontNames.GothamBold, size: 18.0)
     }
 
     var pageControlSelectedTintColor: UIColor {
@@ -49,23 +66,35 @@ struct OnboardingCustomizable: TDOnboardingCustomizable {
     }
 
     var pageControlTintColor: UIColor {
-        return UIColor.red
-    }
-
-    var subtitleFontSize: CGFloat {
-        return 13.5
+        return UIColor.mainBlueTransparent40
     }
 
     var subtitleTextColor: UIColor {
         return UIColor.mainBlue
     }
 
+    var subTitleFont: UIFont? {
+        return UIFont(name: Constants.FontNames.GothamBook, size: 13.5)
+    }
+
+    var subtitleLineHeight: CGFloat? {
+        return 19
+    }
+
     var closeButtonTitle: String {
-        return "Skip"
+        return "onboarding.skipButton".localized()
     }
 
     var skipButtonTitle: String {
-        return "Skip"
+        return "onboarding.skipButton".localized()
+    }
+
+    var skipButtonFont: UIFont? {
+        return UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
+    }
+
+    var skipButtonColor: UIColor? {
+        return UIColor.white
     }
 
     var specialLastChild: Bool {
@@ -74,18 +103,6 @@ struct OnboardingCustomizable: TDOnboardingCustomizable {
 
     var bgImageOverlayColor: UIColor {
         return UIColor.clear
-    }
-
-    var subTitleFont: UIFont? {
-        return UIFont.systemFont(ofSize: 13.5, weight: .semibold)
-    }
-
-    var skipButtonFont: UIFont? {
-        return UIFont.systemFont(ofSize: 16.0, weight: .semibold)
-    }
-
-    var skipButtonColor: UIColor? {
-        return UIColor.white
     }
 
     var textBackgroundColor: UIColor? {
@@ -119,6 +136,6 @@ struct Onboarding {
     }
 
     static var bgImage: UIImage {
-        return #imageLiteral(resourceName: "Onboarding1")
+        return #imageLiteral(resourceName: "OnboardingBackground")
     }
 }

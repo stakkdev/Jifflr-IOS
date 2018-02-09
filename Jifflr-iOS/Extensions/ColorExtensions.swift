@@ -13,8 +13,12 @@ extension UIColor {
         return UIColor(red: 39/255, green: 35/255, blue: 97/255, alpha: 1)
     }
 
-    static var mainBlueTransparent: UIColor {
+    static var mainBlueTransparent80: UIColor {
         return UIColor(red: 39/255, green: 35/255, blue: 97/255, alpha: 0.8)
+    }
+
+    static var mainBlueTransparent40: UIColor {
+        return UIColor(red: 39/255, green: 35/255, blue: 97/255, alpha: 0.4)
     }
 
     static var mainPink: UIColor {
