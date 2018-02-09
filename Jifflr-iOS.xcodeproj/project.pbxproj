@@ -16,6 +16,9 @@
 		E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */; };
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
+		E9328A56202DB72100D79CF7 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9328A55202DB72100D79CF7 /* UserDefaultsManager.swift */; };
+		E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A58202DBDAE00D79CF7 /* GothamBold.otf */; };
+		E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A59202DBDAE00D79CF7 /* GothamBook.otf */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
@@ -99,6 +102,9 @@
 		E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTests.swift; sourceTree = "<group>"; };
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		E9328A55202DB72100D79CF7 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = Helpers/UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E9328A58202DBDAE00D79CF7 /* GothamBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBold.otf; path = "Supporting Files/Fonts/GothamBold.otf"; sourceTree = "<group>"; };
+		E9328A59202DBDAE00D79CF7 /* GothamBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBook.otf; path = "Supporting Files/Fonts/GothamBook.otf"; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
@@ -229,6 +235,15 @@
 				E90C20091FA8DE0100A42461 /* UserManagerTests.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E9328A57202DBD8400D79CF7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E9328A58202DBDAE00D79CF7 /* GothamBold.otf */,
+				E9328A59202DBDAE00D79CF7 /* GothamBook.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		E9798C0C201A3FF100E8A7D2 /* Onboarding */ = {
@@ -376,6 +391,7 @@
 				E9798C15201A430D00E8A7D2 /* Session.swift */,
 				E9A7177F1F8B89AC00B07414 /* Reachability.swift */,
 				E9A717811F8B89AC00B07414 /* ErrorMessage.swift */,
+				E9328A55202DB72100D79CF7 /* UserDefaultsManager.swift */,
 				E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */,
 				E9488ECB1F8D032700697862 /* PendingUserManager.swift */,
 				E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */,
@@ -399,6 +415,7 @@
 		E9A717861F8B89AC00B07414 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E9328A57202DBD8400D79CF7 /* Fonts */,
 				E9A717871F8B89AC00B07414 /* Settings.bundle */,
 				E9A717891F8B89AC00B07414 /* App-Info.h */,
 				E9A7178A1F8B89AC00B07414 /* Bridging-Header.h */,
@@ -555,6 +572,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */,
+				E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */,
 				E9A7179D1F8B89AC00B07414 /* LaunchScreen.storyboard in Resources */,
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
@@ -623,6 +642,7 @@
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/TDOnboarding/TDOnboarding.framework",
 				"${BUILT_PRODUCTS_DIR}/TheDistanceComponents/TDCAppDependencies.framework",
 				"${BUILT_PRODUCTS_DIR}/TheDistanceCore/TheDistanceCore.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -637,6 +657,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TDOnboarding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TDCAppDependencies.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TheDistanceCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -756,6 +777,7 @@
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
+				E9328A56202DB72100D79CF7 /* UserDefaultsManager.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
 				E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
@@ -985,7 +1007,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug (Staging)";
 		};
@@ -1008,7 +1030,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Release (Staging)";
 		};
@@ -1124,7 +1146,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug (Production)";
 		};
@@ -1215,7 +1237,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PRODUCT_NAME}/Supporting Files/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Release (Production) ";
 		};

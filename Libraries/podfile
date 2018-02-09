@@ -29,6 +29,7 @@ target 'Jifflr-iOS' do
     pod 'Google-Mobile-Ads-SDK'
     pod 'Localize-Swift'
     pod 'IQKeyboardManagerSwift'
+    pod 'TDOnboarding', :git => 'git@bitbucket.org:thedistance/tdonboarding-ios.git'
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header
