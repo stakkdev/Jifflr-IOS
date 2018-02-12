@@ -8,6 +8,7 @@
 
 "error.title" = "Error";
 "error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
+"error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -33,3 +34,6 @@
 "forgotPassword.email.heading" = "Email";
 "forgotPassword.email.placeholder" = "Enter your email";
 "forgotPassword.button.title" = "PASSWORD RESET";
+
+"locationRequired.navigation.title" = "Location Required";
+"locationRequired.button.title" = "ENABLE";

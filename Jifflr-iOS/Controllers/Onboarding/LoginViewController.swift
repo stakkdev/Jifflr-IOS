@@ -61,10 +61,21 @@ class LoginViewController: BaseViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
-        guard let email = self.emailTextField.text, !email.isEmpty else { return }
-        guard let password = self.passwordTextField.text, !password.isEmpty else { return }
+        guard let email = self.emailTextField.text, !email.isEmpty else {
+            self.displayMessage(title: ErrorMessage.loginFailed.failureTitle, message: ErrorMessage.loginFailed.failureDescription)
+            return
+        }
+
+        guard let password = self.passwordTextField.text, !password.isEmpty else {
+            self.displayMessage(title: ErrorMessage.loginFailed.failureTitle, message: ErrorMessage.loginFailed.failureDescription)
+            return
+        }
+
+        self.loginButton.animate()
 
         UserManager.shared.login(withUsername: email, password: password) { (_, error) in
+            self.loginButton.stopAnimating()
+            
             guard error == nil else {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
                 return
@@ -74,7 +85,7 @@ class LoginViewController: BaseViewController {
                 self.rootDashboardViewController()
             } else {
                 let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
-                self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
+                self.navigationController?.pushViewController(locationRequiredViewController, animated: true)
             }
         }
     }

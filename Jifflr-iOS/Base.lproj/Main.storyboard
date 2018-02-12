@@ -479,16 +479,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-qO-Uo4">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="JjK-tj-xWr"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Location Required" id="zoO-vc-XIJ"/>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="98" y="350" width="218" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Enable Location Services"/>
@@ -499,16 +490,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="C1V-qO-Uo4" secondAttribute="trailing" id="A1G-e9-YB6"/>
                             <constraint firstItem="u2N-XN-vf6" firstAttribute="centerX" secondItem="ctW-ef-m6A" secondAttribute="centerX" id="Vn9-5A-sJr"/>
-                            <constraint firstItem="C1V-qO-Uo4" firstAttribute="top" secondItem="ctW-ef-m6A" secondAttribute="top" constant="20" id="Z7K-HQ-riT"/>
-                            <constraint firstItem="C1V-qO-Uo4" firstAttribute="leading" secondItem="ctW-ef-m6A" secondAttribute="leading" id="a25-lx-b24"/>
                             <constraint firstItem="u2N-XN-vf6" firstAttribute="centerY" secondItem="ctW-ef-m6A" secondAttribute="centerY" id="fZO-gS-gGN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="enableButton" destination="u2N-XN-vf6" id="XEn-tL-Qk8"/>
-                        <outlet property="navigationBar" destination="C1V-qO-Uo4" id="h8E-aV-MBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGz-cG-AC5" userLabel="First Responder" sceneMemberID="firstResponder"/>

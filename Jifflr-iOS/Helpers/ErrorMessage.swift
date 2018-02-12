@@ -41,7 +41,7 @@ public enum ErrorMessage {
         case .userAlreadyExists:
             return "A user with that email address already exists. Please choose a different email address."
         case .loginFailed:
-            return "Unable to sign-up. Please check your internet connection and try again."
+            return "error.login.message".localized()
         case .resetPasswordFailed:
             return "error.resetPassword.message".localized()
         case .locationFailed:
