@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Localize_Swift
 
 public enum ErrorMessage {
     case noInternetConnection

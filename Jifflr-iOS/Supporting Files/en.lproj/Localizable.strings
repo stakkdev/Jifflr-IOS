@@ -37,3 +37,27 @@
 
 "locationRequired.navigation.title" = "Location Required";
 "locationRequired.button.title" = "ENABLE";
+
+"register.navigation.title" = "Register";
+"register.firstName.heading" = "First Name";
+"register.firstName.placeholder" = "Enter first name";
+"register.lastName.heading" = "Last Name";
+"register.lastName.placeholder" = "Enter last name";
+"register.email.heading" = "Email";
+"register.email.placeholder" = "Enter email";
+"register.password.heading" = "Password";
+"register.password.placeholder" = "Enter password";
+"register.location.heading" = "Location";
+"register.location.placeholder" = "Enter Location";
+"register.dob.heading" = "Date of Birth";
+"register.dob.placeholder" = "Choose date of birth";
+"register.gender.heading" = "Gender";
+"register.gender.placeholder" = "Choose gender";
+"register.invitationCode.heading" = "Invitation Code (Optional)";
+"register.invitationCode.placeholder" = "Enter invitation code";
+"register.termsAndConditions.heading" = "I accept the Terms and Conditions";
+"register.registerButton.title" = "REGISTER";
+
+"termsAndConditions.navigation.title" = "Terms & Conditions";
+"termsAndConditions.content" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
+

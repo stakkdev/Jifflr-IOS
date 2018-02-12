@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Localize_Swift
 
 class LocationRequiredViewController: BaseViewController {
 
