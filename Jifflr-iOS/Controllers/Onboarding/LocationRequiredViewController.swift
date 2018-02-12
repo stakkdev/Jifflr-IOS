@@ -9,10 +9,9 @@
 import UIKit
 import CoreLocation
 
-class LocationRequiredViewController: UIViewController, DisplayMessage {
+class LocationRequiredViewController: BaseViewController {
 
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var enableButton: UIButton!
+    @IBOutlet weak var enableButton: JifflrButton!
 
     class func instantiateFromStoryboard() -> LocationRequiredViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -22,7 +21,20 @@ class LocationRequiredViewController: UIViewController, DisplayMessage {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.delegate = self
+        self.setupUI()
+    }
+
+    func setupUI() {
+        self.setupLocalization()
+
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+        self.enableButton.setBackgroundColor(color: UIColor.mainPink)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+    }
+
+    func setupLocalization() {
+        self.title = "locationRequired.navigation.title".localized()
+        self.enableButton.setTitle("locationRequired.button.title".localized(), for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,22 +54,12 @@ class LocationRequiredViewController: UIViewController, DisplayMessage {
     }
 
     @objc func locationPermissionsChanged(_ notification: NSNotification) {
-        guard let userInfo = notification.userInfo as? [String: CLAuthorizationStatus],
-            let status = userInfo["status"] else {
-                return
+        guard let userInfo = notification.userInfo as? [String: CLAuthorizationStatus], let status = userInfo["status"] else {
+            return
         }
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
-            self.dismiss(animated: true, completion: {
-                self.rootDashboardViewController()
-            })
+            self.rootDashboardViewController()
         }
-    }
-}
-
-extension LocationRequiredViewController: UINavigationBarDelegate {
-
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
     }
 }

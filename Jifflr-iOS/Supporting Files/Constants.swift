@@ -28,6 +28,10 @@ struct Constants {
         static let GothamBold = "GothamBold"
         static let GothamBook = "GothamBook"
     }
+
+    static var isSmallScreen: Bool {
+        return UIScreen.main.nativeBounds.height <= 1136
+    }
 }
 
 enum Environment: String {

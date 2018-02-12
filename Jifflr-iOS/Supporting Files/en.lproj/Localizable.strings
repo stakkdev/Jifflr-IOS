@@ -6,6 +6,13 @@
   Copyright © 2018 The Distance. All rights reserved.
 */
 
+"error.title" = "Error";
+"error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
+"error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";
+
+"alert.resetEmailSent.title" = "Success";
+"alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
+
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
 "onboarding.title2" = "Remember to build your team.";
@@ -15,3 +22,18 @@
 "onboarding.skipButton" = "Skip";
 
 "login.navigation.title" = "Login";
+"login.email.heading" = "Email";
+"login.email.placeholder" = "Enter your email";
+"login.password.heading" = "Password";
+"login.password.placeholder" = "Enter your password";
+"login.loginButton.title" = "LOGIN";
+"login.registerButton.title" = "REGISTER";
+"login.forgotPasswordButton.title" = "Forgot Password?";
+
+"forgotPassword.navigation.title" = "Reset Password";
+"forgotPassword.email.heading" = "Email";
+"forgotPassword.email.placeholder" = "Enter your email";
+"forgotPassword.button.title" = "PASSWORD RESET";
+
+"locationRequired.navigation.title" = "Location Required";
+"locationRequired.button.title" = "ENABLE";

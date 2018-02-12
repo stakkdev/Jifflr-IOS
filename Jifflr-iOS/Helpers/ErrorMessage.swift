@@ -24,9 +24,10 @@ public enum ErrorMessage {
     case feedbackSaveFailed
     case locationNotSupported
     case cashoutFetchFailed
+    case resetPasswordFailed
 
     public var failureTitle: String {
-        return "Error"
+        return "error.title".localized()
     }
 
     public var failureDescription: String {
@@ -40,7 +41,9 @@ public enum ErrorMessage {
         case .userAlreadyExists:
             return "A user with that email address already exists. Please choose a different email address."
         case .loginFailed:
-            return "Unable to sign-up. Please check your internet connection and try again."
+            return "error.login.message".localized()
+        case .resetPasswordFailed:
+            return "error.resetPassword.message".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
@@ -59,6 +62,24 @@ public enum ErrorMessage {
             return "You're location is not supported."
         case .cashoutFetchFailed:
             return "Unable to fetch cashouts. Please check your internet connection and try again."
+        }
+    }
+}
+
+public enum AlertMessage {
+    case resetEmailSent
+
+    public var title: String {
+        switch self {
+        case .resetEmailSent:
+            return "alert.resetEmailSent.title".localized()
+        }
+    }
+
+    public var message: String {
+        switch self {
+        case .resetEmailSent:
+            return "alert.resetEmailSent.message".localized()
         }
     }
 }

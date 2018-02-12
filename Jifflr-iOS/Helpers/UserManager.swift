@@ -90,23 +90,19 @@ class UserManager: NSObject {
         PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
 
             guard let user = user, error == nil else {
-                DispatchQueue.main.async {
-                    if let error = error {
-                        completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                    } else {
-                        completion(nil, ErrorMessage.unknown)
-                    }
+                if let error = error {
+                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(nil, ErrorMessage.unknown)
                 }
                 return
             }
 
             user.pinInBackground(block: { (succeeded, error) in
-                DispatchQueue.main.async {
-                    if error != nil {
-                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                    } else {
-                        completion(user, nil)
-                    }
+                if error != nil {
+                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                } else {
+                    completion(user, nil)
                 }
             })
         }
@@ -122,5 +118,16 @@ class UserManager: NSObject {
                 }
             }
         }
+    }
+
+    func resetPassword(email: String, completion: @escaping (ErrorMessage?) -> Void) {
+        PFUser.requestPasswordResetForEmail(inBackground: email, block: { (success, error) -> Void in
+            if error == nil && success == true {
+                completion(nil)
+            } else {
+                print("Error: \(error?.localizedDescription ?? "")")
+                completion(ErrorMessage.resetPasswordFailed)
+            }
+        })
     }
 }
