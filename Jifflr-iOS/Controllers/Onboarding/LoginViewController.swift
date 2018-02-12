@@ -83,5 +83,10 @@ class LoginViewController: BaseViewController {
         let registerViewController = RegisterViewController.instantiateFromStoryboard()
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
+
+    @IBAction func forgotPasswordPressed(sender: UIButton) {
+        let forgotPasswordViewController = ForgotPasswordViewController.instantiateFromStoryboard()
+        self.navigationController?.pushViewController(forgotPasswordViewController, animated: true)
+    }
 }
 

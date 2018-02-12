@@ -72,6 +72,7 @@
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
 		E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */; };
+		E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE6329203198A700188AA1 /* ForgotPasswordViewController.swift */; };
 		E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F89D80201B423E00860FE3 /* DashboardViewController.swift */; };
 		E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D82201B446700860FE3 /* MyTeam.storyboard */; };
 		E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */; };
@@ -168,6 +169,7 @@
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 		E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Helpers/LocationManager.swift; sourceTree = "<group>"; };
 		E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
+		E9EE6329203198A700188AA1 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = Controllers/Onboarding/ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		E9F89D80201B423E00860FE3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/Dashboard/DashboardViewController.swift; sourceTree = "<group>"; };
 		E9F89D83201B446700860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyTeam.storyboard; sourceTree = "<group>"; };
 		E9F89D86201B45CB00860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyMoney.storyboard; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				E9798C0F201A416500E8A7D2 /* LoginViewController.swift */,
 				E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */,
 				E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */,
+				E9EE6329203198A700188AA1 /* ForgotPasswordViewController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
 				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
+				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E9A2CF591F8F90CA008A7F40 /* FeedbackManager.swift in Sources */,
