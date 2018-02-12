@@ -484,22 +484,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="98" y="350" width="218" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Enable Location Services"/>
-                                <connections>
-                                    <action selector="enableButtonPressed:" destination="bpU-JH-3aY" eventType="touchUpInside" id="x6e-24-tNf"/>
-                                </connections>
-                            </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XF7-H6-kcx">
+                                <rect key="frame" x="20" y="50" width="374" height="656"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="548" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="HoL-M4-f5u"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="ENABLE"/>
+                                        <connections>
+                                            <action selector="enableButtonPressed:" destination="bpU-JH-3aY" eventType="touchUpInside" id="x6e-24-tNf"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationRequired" translatesAutoresizingMaskIntoConstraints="NO" id="7Qd-0G-Yfl">
+                                        <rect key="frame" x="139" y="142.33333333333334" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="96" id="Twm-j0-z0L"/>
+                                            <constraint firstAttribute="height" constant="96" id="iKQ-yS-avo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kq-Yo-7fB">
+                                        <rect key="frame" x="20" y="271.33333333333331" width="334" height="113.33333333333331"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Jifflr would like to know your hometown or city so we can start to tailor the ads that we will send you.
+
+We won’t share your detailed location information with anyone.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="GothamBook"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="7Qd-0G-Yfl" firstAttribute="centerX" secondItem="XF7-H6-kcx" secondAttribute="centerX" id="C9e-RA-kBu"/>
+                                    <constraint firstAttribute="bottom" secondItem="u2N-XN-vf6" secondAttribute="bottom" constant="58" id="DaN-0d-o5i"/>
+                                    <constraint firstItem="u2N-XN-vf6" firstAttribute="leading" secondItem="XF7-H6-kcx" secondAttribute="leading" constant="20" id="Md3-EB-foT"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kq-Yo-7fB" secondAttribute="trailing" constant="20" id="atL-XA-dmJ"/>
+                                    <constraint firstItem="2kq-Yo-7fB" firstAttribute="leading" secondItem="XF7-H6-kcx" secondAttribute="leading" constant="20" id="d52-GJ-KK8"/>
+                                    <constraint firstAttribute="trailing" secondItem="u2N-XN-vf6" secondAttribute="trailing" constant="20" id="m98-mg-Cz0"/>
+                                    <constraint firstItem="2kq-Yo-7fB" firstAttribute="top" secondItem="7Qd-0G-Yfl" secondAttribute="bottom" constant="33" id="qvw-jf-lIS"/>
+                                    <constraint firstItem="2kq-Yo-7fB" firstAttribute="centerY" secondItem="XF7-H6-kcx" secondAttribute="centerY" id="rau-h5-1kJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="u2N-XN-vf6" firstAttribute="centerX" secondItem="ctW-ef-m6A" secondAttribute="centerX" id="Vn9-5A-sJr"/>
-                            <constraint firstItem="u2N-XN-vf6" firstAttribute="centerY" secondItem="ctW-ef-m6A" secondAttribute="centerY" id="fZO-gS-gGN"/>
+                            <constraint firstAttribute="trailing" secondItem="XF7-H6-kcx" secondAttribute="trailing" constant="20" id="8q2-tf-fIQ"/>
+                            <constraint firstItem="ewb-VK-R7q" firstAttribute="top" secondItem="XF7-H6-kcx" secondAttribute="bottom" constant="30" id="L8M-cF-eF6"/>
+                            <constraint firstItem="XF7-H6-kcx" firstAttribute="leading" secondItem="ctW-ef-m6A" secondAttribute="leading" constant="20" id="RCT-1j-SQ5"/>
+                            <constraint firstItem="XF7-H6-kcx" firstAttribute="top" secondItem="KzQ-cK-GLL" secondAttribute="bottom" constant="30" id="zbQ-Y0-LgO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="2kq-Yo-7fB" id="02T-ds-A70"/>
                         <outlet property="enableButton" destination="u2N-XN-vf6" id="XEn-tL-Qk8"/>
                     </connections>
                 </viewController>
@@ -687,6 +738,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
     </scenes>
     <resources>
         <image name="JifflrLogo" width="255" height="71"/>
+        <image name="LocationRequired" width="96" height="96"/>
         <image name="MainBackground" width="375" height="667"/>
     </resources>
 </document>

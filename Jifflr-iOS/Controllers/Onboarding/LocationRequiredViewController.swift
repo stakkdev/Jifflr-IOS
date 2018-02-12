@@ -13,6 +13,7 @@ import Localize_Swift
 class LocationRequiredViewController: BaseViewController {
 
     @IBOutlet weak var enableButton: JifflrButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     class func instantiateFromStoryboard() -> LocationRequiredViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -36,6 +37,24 @@ class LocationRequiredViewController: BaseViewController {
     func setupLocalization() {
         self.title = "locationRequired.navigation.title".localized()
         self.enableButton.setTitle("locationRequired.button.title".localized(), for: .normal)
+
+        if UserDefaultsManager.shared.locationPermissionsRequested() {
+            self.setupPermissionDeniedUI()
+        } else {
+            self.setupNoPermissionsUI()
+        }
+    }
+
+    func setupNoPermissionsUI() {
+        self.descriptionLabel.text = "locationRequired.description".localized()
+        self.enableButton.isEnabled = true
+        self.enableButton.isHidden = false
+    }
+
+    func setupPermissionDeniedUI() {
+        self.descriptionLabel.text = "locationRequired.permissionDeniedDescription".localized()
+        self.enableButton.isHidden = true
+        self.enableButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +80,8 @@ class LocationRequiredViewController: BaseViewController {
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             self.rootDashboardViewController()
+        } else {
+            self.setupPermissionDeniedUI()
         }
     }
 }
