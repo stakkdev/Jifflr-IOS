@@ -114,18 +114,64 @@ class RegisterViewController: BaseViewController {
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {
-        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else { return }
-        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else { return }
-        guard let email = self.emailTextField.text, !email.isEmpty else { return }
-        guard let password = self.passwordTextField.text, !password.isEmpty else { return }
-        guard let location = self.locationTextField.text, !location.isEmpty else { return }
-        guard let dob = self.dobTextField.text, !dob.isEmpty else { return }
-        guard let gender = self.genderTextField.text, !gender.isEmpty else { return }
-        guard self.termsAndConditionsSwitch.isOn == true else { return }
+        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else {
+            let error = ErrorMessage.invalidField("register.firstName.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else {
+            let error = ErrorMessage.invalidField("register.lastName.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let email = self.emailTextField.text, !email.isEmpty else {
+            let error = ErrorMessage.invalidField("register.email.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let password = self.passwordTextField.text, !password.isEmpty, password.count >= 8 else {
+            let error = ErrorMessage.invalidPassword
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+        
+        guard let location = self.locationTextField.text, !location.isEmpty else {
+            let error = ErrorMessage.invalidField("register.location.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        guard let dateOfBirth = dateFormatter.date(from: dob) else { return }
+        
+        guard let dob = self.dobTextField.text, !dob.isEmpty, let dateOfBirth = dateFormatter.date(from: dob) else {
+            let error = ErrorMessage.invalidField("register.dob.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let minimumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()), minimumDate > dateOfBirth else {
+            let error = ErrorMessage.invalidDob
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let gender = self.genderTextField.text, !gender.isEmpty else {
+            let error = ErrorMessage.invalidGender
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard self.termsAndConditionsSwitch.isOn == true else {
+            let error = ErrorMessage.invalidTermsAndConditions
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        self.registerButton.animate()
 
         var userInfo = [AnyHashable: Any]()
         userInfo["firstName"] = firstName
@@ -143,6 +189,8 @@ class RegisterViewController: BaseViewController {
         }
 
         UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+            self.registerButton.stopAnimating()
+            
             guard error == nil else {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
                 return

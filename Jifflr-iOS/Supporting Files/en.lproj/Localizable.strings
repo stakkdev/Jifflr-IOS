@@ -9,6 +9,12 @@
 "error.title" = "Error";
 "error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
 "error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";
+"error.register.invalidField" = "Unable to register. Please enter a valid:";
+"error.register.invalidPassword" = "Unable to register. Please enter a valid password that is at least 8 characters.";
+"error.register.invalidDob" = "Users must be 18 years or over, please check that you have entered your correct date of birth.";
+"error.register.invalidGender" = "Unable to register. Please select a gender.";
+"error.register.termsAndConditions" = "Unable to register. Please accept Jifflr's terms and conditions.";
+"error.register.userAlreadyExists" = "Email already registered. Please use a different email address that has not already been registered.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

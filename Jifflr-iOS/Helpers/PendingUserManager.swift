@@ -23,7 +23,7 @@ class PendingUserManager: NSObject {
         newUser.sender = currentUser
         newUser.name = userInfo["name"] as! String
         newUser.email = userInfo["email"] as! String
-        newUser.invitationCode = currentUser.invitationCode
+        newUser.invitationCode = currentUser.invitationCode!
 
         let query = PendingUser.query()
         query?.whereKey("email", equalTo: newUser.email)
@@ -65,7 +65,7 @@ class PendingUserManager: NSObject {
         }
 
         let query = PendingUser.query()
-        query?.whereKey("invitationCode", equalTo: currentUser.invitationCode)
+        query?.whereKey("invitationCode", equalTo: currentUser.invitationCode!)
         query?.order(byDescending: "createdAt")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let pendingUsers = objects as? [PendingUser] else {
