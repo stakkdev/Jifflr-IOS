@@ -77,6 +77,25 @@ class PendingUserManager: NSObject {
         })
     }
 
+    func fetchInvitationCode(email: String, completion: @escaping (Int?) -> Void) {
+        guard let minimumDate = Calendar.current.date(byAdding: .hour, value: -48, to: Date()) else {
+            completion(nil)
+            return
+        }
+
+        let query = PendingUser.query()
+        query?.whereKey("email", equalTo: email)
+        query?.whereKey("createdAt", greaterThanOrEqualTo: minimumDate)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let pendingUsers = objects as? [PendingUser], pendingUsers.count == 1 else {
+                completion(nil)
+                return
+            }
+
+            completion(pendingUsers.first!.invitationCode)
+        })
+    }
+
     func fetchSenderAndPendingUser(invitationCode: Int, email: String, completion: @escaping (PFUser?, PendingUser?, ErrorMessage?) -> Void) {
 
         let query = PendingUser.query()

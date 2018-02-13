@@ -27,7 +27,7 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var genderHeadingLabel: UILabel!
     @IBOutlet weak var genderTextField: JifflrTextFieldSelection!
     @IBOutlet weak var invitationCodeHeadingLabel: UILabel!
-    @IBOutlet weak var invitationCodeTextField: JifflrTextField!
+    @IBOutlet weak var invitationCodeTextField: JifflrTextFieldInvitation!
     @IBOutlet weak var termsAndConditionsHeadingButton: UIButton!
     @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
     @IBOutlet weak var registerButton: JifflrButton!
@@ -250,16 +250,18 @@ class RegisterViewController: BaseViewController {
 }
 
 extension RegisterViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let point = textField.frame.origin
-        if point.y > self.scrollView.frame.height - 300.0 {
-            self.scrollView.contentOffset = point
-            self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900.0)
-        }
-    }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900.0)
+        if let email = textField.text, !email.isEmpty, textField == self.emailTextField {
+            self.invitationCodeTextField.animate()
+
+            PendingUserManager.shared.fetchInvitationCode(email: email, completion: { (invitationCode) in
+                self.invitationCodeTextField.stopAnimating()
+
+                guard let invitationCode = invitationCode else { return }
+                self.invitationCodeTextField.text = "\(invitationCode)"
+            })
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
