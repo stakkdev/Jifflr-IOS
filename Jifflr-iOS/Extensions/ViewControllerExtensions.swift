@@ -17,6 +17,14 @@ extension UIViewController {
         self.set(root: navVC)
     }
 
+    func rootLocationRequiredViewController() {
+        let loginVC = LocationRequiredViewController.instantiateFromStoryboard()
+        let navVC = UINavigationController(rootViewController: loginVC)
+        navVC.isNavigationBarHidden = false
+
+        self.set(root: navVC)
+    }
+
     func rootDashboardViewController() {
         let dashboardVC = DashboardViewController.instantiateFromStoryboard()
         let navVC = UINavigationController(rootViewController: dashboardVC)

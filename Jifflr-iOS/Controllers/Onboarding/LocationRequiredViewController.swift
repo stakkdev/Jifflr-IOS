@@ -32,17 +32,17 @@ class LocationRequiredViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.enableButton.setBackgroundColor(color: UIColor.mainPink)
         self.navigationItem.setHidesBackButton(true, animated: false)
-    }
-
-    func setupLocalization() {
-        self.title = "locationRequired.navigation.title".localized()
-        self.enableButton.setTitle("locationRequired.button.title".localized(), for: .normal)
 
         if UserDefaultsManager.shared.locationPermissionsRequested() {
             self.setupPermissionDeniedUI()
         } else {
             self.setupNoPermissionsUI()
         }
+    }
+
+    func setupLocalization() {
+        self.title = "locationRequired.navigation.title".localized()
+        self.enableButton.setTitle("locationRequired.button.title".localized(), for: .normal)
     }
 
     func setupNoPermissionsUI() {
@@ -61,16 +61,23 @@ class LocationRequiredViewController: BaseViewController {
         super.viewWillAppear(animated)
 
         NotificationCenter.default.addObserver(self, selector: #selector(locationPermissionsChanged(_:)), name: Constants.Notifications.locationPermissionsChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationPermissionsChanged, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 
     @IBAction func enableButtonPressed(_ sender: UIButton) {
         LocationManager.shared.requestLocationPermissions()
+    }
+
+    @objc func checkPermissions() {
+        if LocationManager.shared.locationServicesEnabled() == true {
+            self.rootDashboardViewController()
+        }
     }
 
     @objc func locationPermissionsChanged(_ notification: NSNotification) {

@@ -91,6 +91,8 @@ extension LocationManager: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         DispatchQueue.main.async {
+            UserDefaultsManager.shared.setLocationPermissionsRequested()
+
             var notificationDict:[String: CLAuthorizationStatus] = [:]
             notificationDict["status"] = status
             NotificationCenter.default.post(name: Constants.Notifications.locationPermissionsChanged, object: self, userInfo: notificationDict)
