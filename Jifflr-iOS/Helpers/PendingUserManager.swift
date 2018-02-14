@@ -23,7 +23,7 @@ class PendingUserManager: NSObject {
         newUser.sender = currentUser
         newUser.name = userInfo["name"] as! String
         newUser.email = userInfo["email"] as! String
-        newUser.invitationCode = currentUser.invitationCode
+        newUser.invitationCode = currentUser.invitationCode!
 
         let query = PendingUser.query()
         query?.whereKey("email", equalTo: newUser.email)
@@ -65,7 +65,7 @@ class PendingUserManager: NSObject {
         }
 
         let query = PendingUser.query()
-        query?.whereKey("invitationCode", equalTo: currentUser.invitationCode)
+        query?.whereKey("invitationCode", equalTo: currentUser.invitationCode!)
         query?.order(byDescending: "createdAt")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let pendingUsers = objects as? [PendingUser] else {
@@ -74,6 +74,25 @@ class PendingUserManager: NSObject {
             }
 
             completion(pendingUsers, nil)
+        })
+    }
+
+    func fetchInvitationCode(email: String, completion: @escaping (Int?) -> Void) {
+        guard let minimumDate = Calendar.current.date(byAdding: .hour, value: -48, to: Date()) else {
+            completion(nil)
+            return
+        }
+
+        let query = PendingUser.query()
+        query?.whereKey("email", equalTo: email)
+        query?.whereKey("createdAt", greaterThanOrEqualTo: minimumDate)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let pendingUsers = objects as? [PendingUser], pendingUsers.count == 1 else {
+                completion(nil)
+                return
+            }
+
+            completion(pendingUsers.first!.invitationCode)
         })
     }
 

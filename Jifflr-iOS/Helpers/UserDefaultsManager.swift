@@ -19,4 +19,13 @@ class UserDefaultsManager: NSObject {
     func setOnboardingViewed() {
         UserDefaults.standard.set(true, forKey: "onboardingViewed")
     }
+
+    func setLocationPermissionsRequested() {
+        UserDefaults.standard.set(true, forKey: "locationPermissionsRequested")
+    }
+
+    func locationPermissionsRequested() -> Bool {
+        let viewed = UserDefaults.standard.bool(forKey: "locationPermissionsRequested")
+        return viewed
+    }
 }

@@ -11,13 +11,11 @@ import UIKit
 class DashboardViewController: BaseViewController {
 
     @IBOutlet weak var playAdsButton: UIButton!
-    @IBOutlet weak var teamButton: UIButton!
-    @IBOutlet weak var cashOutButton: UIButton!
-    @IBOutlet weak var earningsButton: UIButton!
-    @IBOutlet weak var adsViewedButton: UIButton!
-    @IBOutlet weak var helpButton: UIButton!
-    @IBOutlet weak var noOfFriendsLabel: UILabel!
-    @IBOutlet weak var noOfAdvertViewsLabel: UILabel!
+    @IBOutlet weak var myTeamButton: DashboardButtonLeft!
+    @IBOutlet weak var myMoneyButton: DashboardButtonLeft!
+    @IBOutlet weak var adBuilderButton: DashboardButtonRight!
+    @IBOutlet weak var adsViewedButton: DashboardButtonRight!
+    @IBOutlet weak var helpButton: JifflrButton!
 
     class func instantiateFromStoryboard() -> DashboardViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
@@ -27,25 +25,26 @@ class DashboardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Ad-M8"
-
-        let profileBarButton = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(self.profileButtonPressed(_:)))
-        self.navigationItem.rightBarButtonItem = profileBarButton
+        self.setupUI()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setupUI() {
+        self.setupLocalization()
 
-        if let currentUser = UserManager.shared.currentUser {
-            self.noOfFriendsLabel.text = "Team Size: \(currentUser.friends.count)"
+        self.setBackgroundImage(image: UIImage(named: "DashboardBackground"))
 
-            AdvertManager.shared.fetchNumberOfAdvertViews(user: currentUser, completion: { (count) in
-                self.noOfAdvertViewsLabel.text = "Advert Views: \(count)"
-            })
-        }
+        self.helpButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
+        self.myTeamButton.setBackgroundColor(color: UIColor.mainOrange)
+        self.adsViewedButton.setBackgroundColor(color: UIColor.mainPink)
+        self.myMoneyButton.setBackgroundColor(color: UIColor.mainGreen)
+        self.adBuilderButton.setBackgroundColor(color: UIColor.mainLightBlue)
     }
 
-    @objc func profileButtonPressed(_ sender: UIBarButtonItem) {
+    func setupLocalization() {
+
+    }
+
+    @IBAction func profileButtonPressed(sender: UIButton) {
 
     }
 

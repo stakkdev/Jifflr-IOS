@@ -7,22 +7,32 @@
 //
 
 import UIKit
+import Localize_Swift
 
 class RegisterViewController: BaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var dobTextField: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
-    @IBOutlet weak var invitationCodeTextField: UITextField!
+    @IBOutlet weak var firstNameHeadingLabel: UILabel!
+    @IBOutlet weak var firstNameTextField: JifflrTextField!
+    @IBOutlet weak var lastNameHeadingLabel: UILabel!
+    @IBOutlet weak var lastNameTextField: JifflrTextField!
+    @IBOutlet weak var emailHeadingLabel: UILabel!
+    @IBOutlet weak var emailTextField: JifflrTextField!
+    @IBOutlet weak var passwordHeadingLabel: UILabel!
+    @IBOutlet weak var passwordTextField: JifflrTextFieldPassword!
+    @IBOutlet weak var locationHeadingLabel: UILabel!
+    @IBOutlet weak var locationTextField: JifflrTextFieldLocation!
+    @IBOutlet weak var dobHeadingLabel: UILabel!
+    @IBOutlet weak var dobTextField: JifflrTextFieldSelection!
+    @IBOutlet weak var genderHeadingLabel: UILabel!
+    @IBOutlet weak var genderTextField: JifflrTextFieldSelection!
+    @IBOutlet weak var invitationCodeHeadingLabel: UILabel!
+    @IBOutlet weak var invitationCodeTextField: JifflrTextFieldInvitation!
+    @IBOutlet weak var termsAndConditionsHeadingButton: UIButton!
     @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
-    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var registerButton: JifflrButton!
 
-    let genders = ["Male", "Female"]
+    let genders = Constants.RegistrationGenders
     var genderPickerView: UIPickerView!
     var datePicker: UIDatePicker!
 
@@ -34,19 +44,56 @@ class RegisterViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Register"
-        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 730.0)
+        self.setupUI()
+        self.createInputViews()
+    }
+
+    func setupUI() {
+        self.setupLocalization()
+
+        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900.0)
+        self.registerButton.setBackgroundColor(color: UIColor.mainPink)
 
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.locationTextField.delegate = self
+        self.locationTextField.locationDelegate = self
         self.dobTextField.delegate = self
         self.genderTextField.delegate = self
         self.invitationCodeTextField.delegate = self
 
-        self.createInputViews()
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+    }
+
+    func setupLocalization() {
+        self.title = "register.navigation.title".localized()
+        self.firstNameHeadingLabel.text = "register.firstName.heading".localized()
+        self.firstNameTextField.placeholder = "register.firstName.placeholder".localized()
+        self.lastNameHeadingLabel.text = "register.lastName.heading".localized()
+        self.lastNameTextField.placeholder = "register.lastName.placeholder".localized()
+        self.emailHeadingLabel.text = "register.email.heading".localized()
+        self.emailTextField.placeholder = "register.email.placeholder".localized()
+        self.passwordHeadingLabel.text = "register.password.heading".localized()
+        self.passwordTextField.placeholder = "register.password.placeholder".localized()
+        self.locationHeadingLabel.text = "register.location.heading".localized()
+        self.locationTextField.placeholder = "register.location.placeholder".localized()
+        self.dobHeadingLabel.text = "register.dob.heading".localized()
+        self.dobTextField.placeholder = "register.dob.placeholder".localized()
+        self.genderHeadingLabel.text = "register.gender.heading".localized()
+        self.genderTextField.placeholder = "register.gender.placeholder".localized()
+        self.invitationCodeHeadingLabel.text = "register.invitationCode.heading".localized()
+        self.invitationCodeTextField.placeholder = "register.invitationCode.placeholder".localized()
+        self.registerButton.setTitle("register.registerButton.title".localized(), for: .normal)
+
+        let font = UIFont(name: Constants.FontNames.GothamBold, size: 12.0)!
+        let attributes = [NSAttributedStringKey.font: font,
+             NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+        ] as [NSAttributedStringKey: Any]
+        let attributedText = NSAttributedString(string: "register.termsAndConditions.heading".localized(), attributes: attributes)
+        self.termsAndConditionsHeadingButton.setAttributedTitle(attributedText, for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,33 +108,70 @@ class RegisterViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationFound, object: nil)
     }
 
-    @IBAction func fetchLocation(_ sender: UIButton) {
-        LocationManager.shared.getCurrentLocation()
-    }
-
-    @objc func locationFound(_ notification: NSNotification) {
-        guard let userInfo = notification.userInfo as? [String: String],
-            let locationAddress = userInfo["location"] else {
-            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
-            return
-        }
-
-        self.locationTextField.text = locationAddress
+    @IBAction func termsAndConditionsPressed(sender: UIButton) {
+        let termsAndConditions = TermsAndConditionsViewController.instantiateFromStoryboard()
+        self.navigationController?.present(termsAndConditions, animated: true, completion: nil)
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {
-        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else { return }
-        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else { return }
-        guard let email = self.emailTextField.text, !email.isEmpty else { return }
-        guard let password = self.passwordTextField.text, !password.isEmpty else { return }
-        guard let location = self.locationTextField.text, !location.isEmpty else { return }
-        guard let dob = self.dobTextField.text, !dob.isEmpty else { return }
-        guard let gender = self.genderTextField.text, !gender.isEmpty else { return }
-        guard self.termsAndConditionsSwitch.isOn == true else { return }
+        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else {
+            let error = ErrorMessage.invalidField("register.firstName.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else {
+            let error = ErrorMessage.invalidField("register.lastName.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let email = self.emailTextField.text, !email.isEmpty else {
+            let error = ErrorMessage.invalidField("register.email.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let password = self.passwordTextField.text, !password.isEmpty, password.count >= 8 else {
+            let error = ErrorMessage.invalidPassword
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+        
+        guard let location = self.locationTextField.text, !location.isEmpty else {
+            let error = ErrorMessage.invalidField("register.location.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        guard let dateOfBirth = dateFormatter.date(from: dob) else { return }
+        
+        guard let dob = self.dobTextField.text, !dob.isEmpty, let dateOfBirth = dateFormatter.date(from: dob) else {
+            let error = ErrorMessage.invalidField("register.dob.heading".localized())
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let minimumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()), minimumDate > dateOfBirth else {
+            let error = ErrorMessage.invalidDob
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard let gender = self.genderTextField.text, !gender.isEmpty else {
+            let error = ErrorMessage.invalidGender
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        guard self.termsAndConditionsSwitch.isOn == true else {
+            let error = ErrorMessage.invalidTermsAndConditions
+            self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+            return
+        }
+
+        self.registerButton.animate()
 
         var userInfo = [AnyHashable: Any]()
         userInfo["firstName"] = firstName
@@ -105,6 +189,8 @@ class RegisterViewController: BaseViewController {
         }
 
         UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+            self.registerButton.stopAnimating()
+            
             guard error == nil else {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
                 return
@@ -123,7 +209,6 @@ class RegisterViewController: BaseViewController {
         self.genderPickerView = UIPickerView()
         self.genderPickerView.delegate = self
         self.genderPickerView.dataSource = self
-        self.genderPickerView.backgroundColor = UIColor.lightGray
         self.genderTextField.inputView = self.genderPickerView
 
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
@@ -165,21 +250,40 @@ class RegisterViewController: BaseViewController {
 }
 
 extension RegisterViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        let point = textField.frame.origin
-        if point.y > self.scrollView.frame.height - 300.0 {
-            self.scrollView.contentOffset = point
-            self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900.0)
-        }
-    }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 730.0)
+        if let email = textField.text, !email.isEmpty, textField == self.emailTextField {
+            self.invitationCodeTextField.animate()
+
+            PendingUserManager.shared.fetchInvitationCode(email: email, completion: { (invitationCode) in
+                self.invitationCodeTextField.stopAnimating()
+
+                guard let invitationCode = invitationCode else { return }
+                self.invitationCodeTextField.text = "\(invitationCode)"
+            })
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension RegisterViewController: LocationTextFieldDelegate {
+    func gpsPressed() {
+        LocationManager.shared.getCurrentLocation()
+    }
+
+    @objc func locationFound(_ notification: NSNotification) {
+        self.locationTextField.stopAnimating()
+        
+        guard let userInfo = notification.userInfo as? [String: String], let locationAddress = userInfo["location"] else {
+            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+            return
+        }
+
+        self.locationTextField.text = locationAddress
     }
 }
 

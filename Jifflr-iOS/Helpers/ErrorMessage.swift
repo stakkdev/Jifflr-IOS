@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
+import Localize_Swift
 
 public enum ErrorMessage {
     case noInternetConnection
     case parseError(String)
-    case signUpFailed
     case userAlreadyExists
     case loginFailed
     case locationFailed
@@ -25,6 +25,11 @@ public enum ErrorMessage {
     case locationNotSupported
     case cashoutFetchFailed
     case resetPasswordFailed
+    case invalidField(String)
+    case invalidPassword
+    case invalidDob
+    case invalidGender
+    case invalidTermsAndConditions
 
     public var failureTitle: String {
         return "error.title".localized()
@@ -36,10 +41,18 @@ public enum ErrorMessage {
             return "Please check your internet connection and try again."
         case .parseError(let details):
             return "An error occured: \(details)"
-        case .signUpFailed:
-            return "Unable to sign-up. Please check your internet connection and try again."
+        case .invalidField(let details):
+            return "\("error.register.invalidField".localized()) \(details)"
+        case .invalidPassword:
+            return "error.register.invalidPassword".localized()
+        case .invalidDob:
+            return "error.register.invalidDob".localized()
+        case .invalidGender:
+            return "error.register.invalidGender".localized()
+        case .invalidTermsAndConditions:
+            return "error.register.termsAndConditions".localized()
         case .userAlreadyExists:
-            return "A user with that email address already exists. Please choose a different email address."
+            return "error.register.userAlreadyExists".localized()
         case .loginFailed:
             return "error.login.message".localized()
         case .resetPasswordFailed:

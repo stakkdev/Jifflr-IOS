@@ -46,4 +46,21 @@ class JifflrTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, self.insets)
     }
+
+    func addRightButton(image: UIImage, for target: Any?, action: Selector?) {
+        let rightWrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+
+        rightButton.setImage(image, for: .normal)
+
+        if let target = target, let action = action {
+            rightButton.addTarget(target, action: action, for: .touchUpInside)
+        } else {
+            rightButton.addTarget(self, action: #selector(becomeFirstResponder), for: .touchUpInside)
+        }
+
+        rightWrapperView.addSubview(rightButton)
+        self.rightView = rightWrapperView
+        self.rightViewMode = .always
+    }
 }

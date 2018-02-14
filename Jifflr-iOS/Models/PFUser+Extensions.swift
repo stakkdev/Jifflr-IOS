@@ -55,9 +55,9 @@ extension PFUser {
         }
     }
 
-    var invitationCode: Int {
+    var invitationCode: Int? {
         get {
-            return self["invitationCode"] as! Int
+            return self["invitationCode"] as? Int
         }
         set {
             self["invitationCode"] = newValue

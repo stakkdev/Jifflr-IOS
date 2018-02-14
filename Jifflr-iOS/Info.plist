@@ -39,9 +39,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSContactsUsageDescription</key>
-	<string>Ad-M8 uses your contacts to provide suggestions of users to invite.</string>
+	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ad-M8 fetches your location to help with registration.</string>
+	<string>Jifflr fetches your location to help with registration.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

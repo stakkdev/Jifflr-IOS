@@ -164,7 +164,7 @@ extension TeamViewController: CNContactPickerDelegate {
         let invitationCode = currentUser.invitationCode
         let sender = "\(currentUser.firstName) \(currentUser.lastName)"
 
-        let body = "Hello \(name),\n\n\(sender) has sent you an invite code! Here you go: \(invitationCode)"
+        let body = "Hello \(name),\n\n\(sender) has sent you an invite code! Here you go: \(invitationCode ?? 0)"
         composeViewController.setMessageBody(body, isHTML: false)
 
         self.navigationController?.present(composeViewController, animated: true, completion: nil)

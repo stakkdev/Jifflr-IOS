@@ -6,9 +6,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Dashboard View Controller-->
         <scene sceneID="1qs-b7-1Bm">
@@ -22,27 +30,61 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT">
-                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JifflrLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QKi-dV-7Z2">
+                                <rect key="frame" x="126.5" y="29" width="122" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Awf-RQ-znD"/>
-                                    <constraint firstAttribute="height" constant="80" id="sHJ-F8-9v0"/>
+                                    <constraint firstAttribute="width" constant="122" id="4bb-jQ-7EJ"/>
+                                    <constraint firstAttribute="height" constant="34" id="pbU-6n-bBT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Play Ads"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT PAYS TO PLAY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVW-Fa-OTs">
+                                <rect key="frame" x="125" y="107" width="125" height="62"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="28"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxb-p9-NXm">
+                                <rect key="frame" x="325" y="32" width="20" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="0zG-Fj-8Hm"/>
+                                    <constraint firstAttribute="height" constant="24" id="elj-1K-3dO"/>
+                                </constraints>
+                                <state key="normal" image="ProfileButton"/>
                                 <connections>
-                                    <action selector="playAdsButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="sEN-vp-0YS"/>
+                                    <action selector="profileButtonPressedWithSender:" destination="19K-4C-w7K" eventType="touchUpInside" id="y9h-eL-aYb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXj-Rh-x82">
-                                <rect key="frame" x="111" y="523.5" width="152" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Need some help?"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-cC-C0f">
-                                <rect key="frame" x="59.5" y="213.5" width="88" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-zd-WWo" customClass="DashboardButtonRight" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="192.5" y="378.5" width="125" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="LyR-QH-YDR"/>
+                                    <constraint firstAttribute="width" secondItem="1eR-zd-WWo" secondAttribute="height" multiplier="1:1" id="s5K-ef-VrE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ad Builder"/>
+                                <connections>
+                                    <action selector="cashOutButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="N66-Qe-4ak"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-7c-0dS" customClass="DashboardButtonLeft" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="57.5" y="378.5" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FVB-7c-0dS" secondAttribute="height" multiplier="1:1" id="AUh-L7-RvW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="My Money"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfx-xH-dnu" customClass="DashboardButtonRight" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="192.5" y="243.5" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yfx-xH-dnu" secondAttribute="height" multiplier="1:1" id="uJl-08-v7o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Ads Viewed"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-cC-C0f" customClass="DashboardButtonLeft" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="57.5" y="243.5" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HY8-cC-C0f" secondAttribute="height" multiplier="1:1" id="YfH-D8-pbl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Team Size"/>
@@ -50,80 +92,63 @@
                                     <action selector="teamButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="evd-t8-lqw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfx-xH-dnu">
-                                <rect key="frame" x="227.5" y="213.5" width="103" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXj-Rh-x82" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="38" y="569" width="299" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="w8q-hZ-XAR"/>
+                                    <constraint firstAttribute="height" constant="50" id="8rE-Be-sPa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Ads Viewed"/>
+                                <state key="normal" title="NEED SOME HELP?"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-7c-0dS">
-                                <rect key="frame" x="59.5" y="373.5" width="88" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT">
+                                <rect key="frame" x="140.5" y="326.5" width="94" height="94"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="SlL-bX-ITC"/>
+                                    <constraint firstAttribute="width" secondItem="Uso-3q-TdT" secondAttribute="height" multiplier="1:1" id="OOQ-dA-6O4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Earnings"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eR-zd-WWo">
-                                <rect key="frame" x="227.5" y="373.5" width="101.5" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="1h7-Di-hln"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Cash-out"/>
+                                <state key="normal" image="PlayButton"/>
                                 <connections>
-                                    <action selector="cashOutButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="N66-Qe-4ak"/>
+                                    <action selector="playAdsButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="sEN-vp-0YS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of friends:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-8Y-Nlq">
-                                <rect key="frame" x="20" y="40" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advert Views:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO4-4M-FoY">
-                                <rect key="frame" x="20" y="81" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uO4-4M-FoY" firstAttribute="top" secondItem="Zra-8Y-Nlq" secondAttribute="bottom" constant="20" id="4pB-F0-wLU"/>
-                            <constraint firstItem="FVB-7c-0dS" firstAttribute="centerX" secondItem="HY8-cC-C0f" secondAttribute="centerX" id="7FD-zg-8a9"/>
-                            <constraint firstItem="1eR-zd-WWo" firstAttribute="centerX" secondItem="Yfx-xH-dnu" secondAttribute="centerX" id="7l8-u5-Vqq"/>
-                            <constraint firstItem="Uso-3q-TdT" firstAttribute="leading" secondItem="FVB-7c-0dS" secondAttribute="trailing" id="88a-TR-Sek"/>
-                            <constraint firstItem="1eR-zd-WWo" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" id="BU8-eW-0LF"/>
-                            <constraint firstItem="Zra-8Y-Nlq" firstAttribute="top" secondItem="dqY-Mw-HSP" secondAttribute="bottom" constant="20" id="Ep3-G2-GNP"/>
-                            <constraint firstItem="1eR-zd-WWo" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="trailing" id="LG4-B9-aQ0"/>
-                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="Xbd-Jb-48s" secondAttribute="centerY" id="MT3-7o-qNA"/>
-                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="uO4-4M-FoY" secondAttribute="trailing" constant="20" id="N20-Cu-UFW"/>
+                            <constraint firstItem="FXj-Rh-x82" firstAttribute="leading" secondItem="YEq-1W-hQK" secondAttribute="leading" constant="38" id="3L6-NP-Tii"/>
+                            <constraint firstItem="IVW-Fa-OTs" firstAttribute="top" secondItem="QKi-dV-7Z2" secondAttribute="bottom" constant="44" id="63N-gM-ZP3"/>
+                            <constraint firstItem="QKi-dV-7Z2" firstAttribute="centerY" secondItem="bxb-p9-NXm" secondAttribute="centerY" constant="2" id="7RI-eE-eUS"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerX" secondItem="FVB-7c-0dS" secondAttribute="trailing" constant="5" id="88a-TR-Sek"/>
+                            <constraint firstItem="1eR-zd-WWo" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="centerY" constant="5" id="BU8-eW-0LF"/>
+                            <constraint firstItem="1eR-zd-WWo" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="centerX" constant="5" id="LG4-B9-aQ0"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="Xbd-Jb-48s" secondAttribute="centerY" constant="40" id="MT3-7o-qNA"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="width" secondItem="Xbd-Jb-48s" secondAttribute="width" multiplier="1:4" id="QWp-5X-CL1"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="centerX" secondItem="Xbd-Jb-48s" secondAttribute="centerX" id="RQT-dE-j5i"/>
-                            <constraint firstItem="Uso-3q-TdT" firstAttribute="top" secondItem="Yfx-xH-dnu" secondAttribute="bottom" id="Rfl-mb-KKD"/>
-                            <constraint firstItem="uO4-4M-FoY" firstAttribute="leading" secondItem="YEq-1W-hQK" secondAttribute="leading" constant="20" id="Tuh-eM-Zrb"/>
-                            <constraint firstItem="FXj-Rh-x82" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" constant="150" id="Xea-pZ-hza"/>
-                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="Zra-8Y-Nlq" secondAttribute="trailing" constant="20" id="c9v-Uw-S7R"/>
-                            <constraint firstItem="Yfx-xH-dnu" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="trailing" id="cVG-zv-aby"/>
-                            <constraint firstItem="Uso-3q-TdT" firstAttribute="leading" secondItem="HY8-cC-C0f" secondAttribute="trailing" id="dqA-8S-qqb"/>
-                            <constraint firstItem="Uso-3q-TdT" firstAttribute="top" secondItem="HY8-cC-C0f" secondAttribute="bottom" id="hlj-0M-Hzi"/>
-                            <constraint firstItem="Zra-8Y-Nlq" firstAttribute="leading" secondItem="YEq-1W-hQK" secondAttribute="leading" constant="20" id="pb9-Wu-dSM"/>
-                            <constraint firstItem="FVB-7c-0dS" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="bottom" id="rQh-nd-4dC"/>
-                            <constraint firstItem="FXj-Rh-x82" firstAttribute="centerX" secondItem="Uso-3q-TdT" secondAttribute="centerX" id="uvh-Ld-YGX"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="Yfx-xH-dnu" secondAttribute="bottom" constant="5" id="Rfl-mb-KKD"/>
+                            <constraint firstItem="k1Y-xf-gEE" firstAttribute="top" secondItem="FXj-Rh-x82" secondAttribute="bottom" priority="750" constant="48" id="WYz-Oz-mUF"/>
+                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="FXj-Rh-x82" secondAttribute="trailing" constant="38" id="YqG-4Y-lfM"/>
+                            <constraint firstItem="YEq-1W-hQK" firstAttribute="trailing" secondItem="bxb-p9-NXm" secondAttribute="trailing" constant="30" id="ZZA-pK-RTA"/>
+                            <constraint firstItem="bxb-p9-NXm" firstAttribute="top" secondItem="dqY-Mw-HSP" secondAttribute="bottom" constant="12" id="b3N-sh-c98"/>
+                            <constraint firstItem="Yfx-xH-dnu" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="centerX" constant="5" id="cVG-zv-aby"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerX" secondItem="HY8-cC-C0f" secondAttribute="trailing" constant="5" id="dqA-8S-qqb"/>
+                            <constraint firstItem="FXj-Rh-x82" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FVB-7c-0dS" secondAttribute="bottom" constant="50" id="ejB-pA-r7a"/>
+                            <constraint firstItem="k1Y-xf-gEE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FXj-Rh-x82" secondAttribute="bottom" constant="20" id="gFF-bJ-cMC"/>
+                            <constraint firstItem="1eR-zd-WWo" firstAttribute="width" secondItem="HY8-cC-C0f" secondAttribute="width" id="hRT-p8-iWQ"/>
+                            <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="HY8-cC-C0f" secondAttribute="bottom" constant="5" id="hlj-0M-Hzi"/>
+                            <constraint firstItem="Yfx-xH-dnu" firstAttribute="width" secondItem="HY8-cC-C0f" secondAttribute="width" id="iQm-2M-auW"/>
+                            <constraint firstItem="FVB-7c-0dS" firstAttribute="width" secondItem="HY8-cC-C0f" secondAttribute="width" id="lmK-Ra-aEF"/>
+                            <constraint firstItem="QKi-dV-7Z2" firstAttribute="centerX" secondItem="YEq-1W-hQK" secondAttribute="centerX" id="n5U-bV-1m9"/>
+                            <constraint firstItem="HY8-cC-C0f" firstAttribute="width" secondItem="Xbd-Jb-48s" secondAttribute="width" multiplier="1:3" id="oye-rR-4kg"/>
+                            <constraint firstItem="IVW-Fa-OTs" firstAttribute="centerX" secondItem="Xbd-Jb-48s" secondAttribute="centerX" id="qKB-Sa-bJD"/>
+                            <constraint firstItem="FVB-7c-0dS" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="centerY" constant="5" id="rQh-nd-4dC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YEq-1W-hQK"/>
                     </view>
                     <connections>
+                        <outlet property="adBuilderButton" destination="1eR-zd-WWo" id="ka4-gG-rIC"/>
                         <outlet property="adsViewedButton" destination="Yfx-xH-dnu" id="OlL-wt-evR"/>
-                        <outlet property="cashOutButton" destination="1eR-zd-WWo" id="Dvn-5c-EW0"/>
-                        <outlet property="earningsButton" destination="FVB-7c-0dS" id="3p6-aS-fcS"/>
                         <outlet property="helpButton" destination="FXj-Rh-x82" id="JuE-ad-apc"/>
-                        <outlet property="noOfAdvertViewsLabel" destination="uO4-4M-FoY" id="dv6-xu-NIL"/>
-                        <outlet property="noOfFriendsLabel" destination="Zra-8Y-Nlq" id="usR-k1-4Ot"/>
+                        <outlet property="myMoneyButton" destination="FVB-7c-0dS" id="n7G-Di-Zfb"/>
+                        <outlet property="myTeamButton" destination="HY8-cC-C0f" id="R4t-Ii-kBQ"/>
                         <outlet property="playAdsButton" destination="Uso-3q-TdT" id="SLe-Sk-Tlx"/>
-                        <outlet property="teamButton" destination="HY8-cC-C0f" id="4di-Uv-8mF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnC-PQ-paG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,4 +240,9 @@
             <point key="canvasLocation" x="3260" y="19"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="JifflrLogo" width="255" height="71"/>
+        <image name="PlayButton" width="114" height="114"/>
+        <image name="ProfileButton" width="20" height="24"/>
+    </resources>
 </document>

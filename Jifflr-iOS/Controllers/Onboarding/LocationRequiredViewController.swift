@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreLocation
+import Localize_Swift
 
 class LocationRequiredViewController: BaseViewController {
 
     @IBOutlet weak var enableButton: JifflrButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     class func instantiateFromStoryboard() -> LocationRequiredViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -30,6 +32,12 @@ class LocationRequiredViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.enableButton.setBackgroundColor(color: UIColor.mainPink)
         self.navigationItem.setHidesBackButton(true, animated: false)
+
+        if UserDefaultsManager.shared.locationPermissionsRequested() {
+            self.setupPermissionDeniedUI()
+        } else {
+            self.setupNoPermissionsUI()
+        }
     }
 
     func setupLocalization() {
@@ -37,20 +45,39 @@ class LocationRequiredViewController: BaseViewController {
         self.enableButton.setTitle("locationRequired.button.title".localized(), for: .normal)
     }
 
+    func setupNoPermissionsUI() {
+        self.descriptionLabel.text = "locationRequired.description".localized()
+        self.enableButton.isEnabled = true
+        self.enableButton.isHidden = false
+    }
+
+    func setupPermissionDeniedUI() {
+        self.descriptionLabel.text = "locationRequired.permissionDeniedDescription".localized()
+        self.enableButton.isHidden = true
+        self.enableButton.isEnabled = false
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         NotificationCenter.default.addObserver(self, selector: #selector(locationPermissionsChanged(_:)), name: Constants.Notifications.locationPermissionsChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkPermissions), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
-        NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationPermissionsChanged, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 
     @IBAction func enableButtonPressed(_ sender: UIButton) {
         LocationManager.shared.requestLocationPermissions()
+    }
+
+    @objc func checkPermissions() {
+        if LocationManager.shared.locationServicesEnabled() == true {
+            self.rootDashboardViewController()
+        }
     }
 
     @objc func locationPermissionsChanged(_ notification: NSNotification) {
@@ -60,6 +87,8 @@ class LocationRequiredViewController: BaseViewController {
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             self.rootDashboardViewController()
+        } else {
+            self.setupPermissionDeniedUI()
         }
     }
 }

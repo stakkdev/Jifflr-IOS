@@ -32,6 +32,8 @@ struct Constants {
     static var isSmallScreen: Bool {
         return UIScreen.main.nativeBounds.height <= 1136
     }
+
+    static let RegistrationGenders = ["Female", "Male", "MtF Female", "FtM Male", "Intersex", "Other", "Prefer not to say"]
 }
 
 enum Environment: String {

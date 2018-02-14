@@ -36,7 +36,11 @@ class LandingViewController: UIViewController {
                 onboarding.presentOnboardingVC(from: self, animated: true)
             }
         } else {
-            self.rootDashboardViewController()
+            if LocationManager.shared.locationServicesEnabled() == true {
+                self.rootDashboardViewController()
+            } else {
+                self.rootLocationRequiredViewController()
+            }
         }
     }
 }
