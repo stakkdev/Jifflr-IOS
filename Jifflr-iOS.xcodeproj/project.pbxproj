@@ -25,6 +25,8 @@
 		E9488ECE1F8D0C1C00697862 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */; };
 		E95179491F90D15E0000A08D /* UserCashout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95179481F90D15E0000A08D /* UserCashout.swift */; };
 		E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951794A1F90D1CC0000A08D /* CashoutManager.swift */; };
+		E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */; };
+		E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9608F16203459290055EFE7 /* DashboardButtonRight.swift */; };
 		E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9691F291F8E52EC006070F6 /* Advert.storyboard */; };
 		E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */; };
 		E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */; };
@@ -119,6 +121,8 @@
 		E9488ECD1F8D0C1C00697862 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/ContactsManager.swift; sourceTree = "<group>"; };
 		E95179481F90D15E0000A08D /* UserCashout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserCashout.swift; path = Models/UserCashout.swift; sourceTree = "<group>"; };
 		E951794A1F90D1CC0000A08D /* CashoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutManager.swift; path = Helpers/CashoutManager.swift; sourceTree = "<group>"; };
+		E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardButtonLeft.swift; path = Views/DashboardButtonLeft.swift; sourceTree = "<group>"; };
+		E9608F16203459290055EFE7 /* DashboardButtonRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardButtonRight.swift; path = Views/DashboardButtonRight.swift; sourceTree = "<group>"; };
 		E9691F2A1F8E52EC006070F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Advert.storyboard; sourceTree = "<group>"; };
 		E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Onboarding/RegisterViewController.swift; sourceTree = "<group>"; };
 		E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/Onboarding/LocationRequiredViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 				E9AC1FB3202DFB6500FAA9A7 /* TextFields */,
 				E9A717791F8B89AC00B07414 /* CustomView.swift */,
 				E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */,
+				E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */,
+				E9608F16203459290055EFE7 /* DashboardButtonRight.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
+				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */,
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
@@ -824,6 +831,7 @@
 				E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */,
 				E9A2CF5B1F8FA4A0008A7F40 /* AdvertManager.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
+				E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
