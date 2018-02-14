@@ -149,6 +149,7 @@
                         <outlet property="myMoneyButton" destination="FVB-7c-0dS" id="n7G-Di-Zfb"/>
                         <outlet property="myTeamButton" destination="HY8-cC-C0f" id="R4t-Ii-kBQ"/>
                         <outlet property="playAdsButton" destination="Uso-3q-TdT" id="SLe-Sk-Tlx"/>
+                        <outlet property="sloganLabel" destination="IVW-Fa-OTs" id="feZ-um-ZNL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnC-PQ-paG" userLabel="First Responder" sceneMemberID="firstResponder"/>
