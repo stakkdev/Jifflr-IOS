@@ -100,7 +100,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="NEED SOME HELP?"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT" customClass="PulsePlayButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="140.5" y="326.5" width="94" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Uso-3q-TdT" secondAttribute="height" multiplier="1:1" id="OOQ-dA-6O4"/>

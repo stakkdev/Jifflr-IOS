@@ -28,6 +28,7 @@
 		E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */; };
 		E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9608F16203459290055EFE7 /* DashboardButtonRight.swift */; };
 		E9608F19203478E20055EFE7 /* GothamMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9608F18203478AC0055EFE7 /* GothamMedium.otf */; };
+		E9608F1B203482AD0055EFE7 /* PulsePlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */; };
 		E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9691F291F8E52EC006070F6 /* Advert.storyboard */; };
 		E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */; };
 		E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */; };
@@ -125,6 +126,7 @@
 		E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardButtonLeft.swift; path = Views/DashboardButtonLeft.swift; sourceTree = "<group>"; };
 		E9608F16203459290055EFE7 /* DashboardButtonRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardButtonRight.swift; path = Views/DashboardButtonRight.swift; sourceTree = "<group>"; };
 		E9608F18203478AC0055EFE7 /* GothamMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamMedium.otf; path = "Supporting Files/Fonts/GothamMedium.otf"; sourceTree = "<group>"; };
+		E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PulsePlayButton.swift; path = Views/PulsePlayButton.swift; sourceTree = "<group>"; };
 		E9691F2A1F8E52EC006070F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Advert.storyboard; sourceTree = "<group>"; };
 		E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Onboarding/RegisterViewController.swift; sourceTree = "<group>"; };
 		E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/Onboarding/LocationRequiredViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */,
 				E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */,
 				E9608F16203459290055EFE7 /* DashboardButtonRight.swift */,
+				E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				E9A2CF5B1F8FA4A0008A7F40 /* AdvertManager.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
 				E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */,
+				E9608F1B203482AD0055EFE7 /* PulsePlayButton.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,

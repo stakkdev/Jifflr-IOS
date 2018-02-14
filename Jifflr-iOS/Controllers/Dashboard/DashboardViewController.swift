@@ -10,7 +10,9 @@ import UIKit
 
 class DashboardViewController: BaseViewController {
 
-    @IBOutlet weak var playAdsButton: UIButton!
+    var timer: Timer?
+
+    @IBOutlet weak var playAdsButton: PulsePlayButton!
     @IBOutlet weak var myTeamButton: DashboardButtonLeft!
     @IBOutlet weak var myMoneyButton: DashboardButtonLeft!
     @IBOutlet weak var adBuilderButton: DashboardButtonRight!
@@ -27,6 +29,21 @@ class DashboardViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
+            self.playAdsButton.pulse()
+        })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.timer?.invalidate()
+        self.timer = nil
     }
 
     func setupUI() {
