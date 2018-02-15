@@ -27,17 +27,24 @@ class PulsePlayButton: UIButton {
     func pulse() {
         CATransaction.begin()
         CATransaction.setCompletionBlock({
-
+            let animation = CABasicAnimation(keyPath: "transform.scale")
+            animation.duration = 0.2
+            animation.repeatCount = 1
+            animation.autoreverses = true
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.fromValue = 1.0
+            animation.toValue = 1.4
+            self.layer.add(animation, forKey: "scale")
         })
 
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.duration = 0.2
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.duration = 0.6
         animation.repeatCount = 1
-        animation.autoreverses = true
+        animation.autoreverses = false
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.fromValue = 1.0
-        animation.toValue = 1.3
-        self.layer.add(animation, forKey: "scale")
+        animation.fromValue = 0.0
+        animation.toValue = Double.pi * 4.0
+        self.layer.add(animation, forKey: "rotation")
 
         CATransaction.commit()
     }
