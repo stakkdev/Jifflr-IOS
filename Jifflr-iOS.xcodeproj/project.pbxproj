@@ -75,6 +75,8 @@
 		E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */; };
 		E9DBBC3920163485000B8835 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DBBC3B20163485000B8835 /* Localizable.strings */; };
 		E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */; };
+		E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD581A2035C3CC000735C3 /* TeamSizeCell.swift */; };
+		E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD581C2035C6BE000735C3 /* TeamFriendCell.swift */; };
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
 		E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */; };
@@ -181,6 +183,8 @@
 		E9DBBC3A20163485000B8835 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DBBC3C20163494000B8835 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrSegmentedControl.swift; path = Views/JifflrSegmentedControl.swift; sourceTree = "<group>"; };
+		E9DD581A2035C3CC000735C3 /* TeamSizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamSizeCell.swift; path = Controllers/Team/Cells/TeamSizeCell.swift; sourceTree = "<group>"; };
+		E9DD581C2035C6BE000735C3 /* TeamFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamFriendCell.swift; path = Controllers/Team/Cells/TeamFriendCell.swift; sourceTree = "<group>"; };
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 		E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Helpers/LocationManager.swift; sourceTree = "<group>"; };
 		E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */,
+				E9DD58192035C387000735C3 /* Cells */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -509,6 +514,15 @@
 				E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */,
 			);
 			name = TextFields;
+			sourceTree = "<group>";
+		};
+		E9DD58192035C387000735C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9DD581A2035C3CC000735C3 /* TeamSizeCell.swift */,
+				E9DD581C2035C6BE000735C3 /* TeamFriendCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		E9F89D7F201B422E00860FE3 /* Dashboard */ = {
@@ -804,12 +818,14 @@
 				E9798C16201A430D00E8A7D2 /* Session.swift in Sources */,
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
+				E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */,
 				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
 				E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */,
 				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
+				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E9A2CF591F8F90CA008A7F40 /* FeedbackManager.swift in Sources */,

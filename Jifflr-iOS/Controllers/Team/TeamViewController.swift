@@ -40,16 +40,18 @@ class TeamViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
 
-        self.segmentedControl.setButton1Title(text: "FRIENDS")
-        self.segmentedControl.setButton2Title(text: "PENDING")
+        self.segmentedControl.delegate = self
         self.tableView.tableHeaderView = segmentedControl
-
+        self.tableView.estimatedRowHeight = 70.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
 
     func setupLocalization() {
         self.title = "myTeam.navigation.title".localized()
+        self.segmentedControl.setButton1Title(text: "myTeam.segmentedControlButton1.title".localized())
+        self.segmentedControl.setButton2Title(text: "myTeam.segmentedControlButton2.title".localized())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -93,8 +95,10 @@ class TeamViewController: BaseViewController {
             self.navigationController?.present(contactPickerViewController, animated: true, completion: nil)
         }
     }
+}
 
-    @IBAction func valueChanged(_ sender: UISegmentedControl) {
+extension TeamViewController: JifflrSegmentedControlDelegate {
+    func valueChanged() {
         self.tableView.reloadData()
     }
 }
@@ -106,32 +110,35 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            return self.friendsData.count
+            return 3//self.friendsData.count
         }
 
         return self.pendingFriendsData.count
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "teamCell")
-        cell.accessoryType = .none
-        cell.selectionStyle = .none
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            let friend = self.friendsData[indexPath.row]
-            cell.textLabel?.text = "\(friend.firstName) \(friend.lastName)"
-            cell.detailTextLabel?.text = friend.email
-        } else {
-            let pendingUser = self.pendingFriendsData[indexPath.row]
-            cell.textLabel?.text = pendingUser.name
-            cell.detailTextLabel?.text = pendingUser.email
-        }
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TeamSizeCell") as! TeamSizeCell
+                cell.accessoryType = .none
+                cell.selectionStyle = .none
+                cell.sizeLabel.text = "1111"
+                return cell
 
-        return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TeamFriendCell") as! TeamFriendCell
+                cell.accessoryType = .none
+                cell.selectionStyle = .none
+                cell.nameLabel.text = "James Shaw"
+                cell.emailLabel.text = "james@thedistance.co.uk"
+                cell.teamSizeLabel.text = "100 Members"
+                cell.dateLabel.text = "6 April 2016"
+                return cell
+            }
+        } else {
+            return UITableViewCell()
+        }
     }
 }
 

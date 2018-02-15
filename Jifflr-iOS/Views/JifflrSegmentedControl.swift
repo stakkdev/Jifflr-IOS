@@ -9,8 +9,7 @@
 import UIKit
 
 protocol JifflrSegmentedControlDelegate {
-    func button1Pressed()
-    func button2Pressed()
+    func valueChanged()
 }
 
 class JifflrSegmentedControl: UIView {
@@ -136,7 +135,7 @@ class JifflrSegmentedControl: UIView {
         self.button2TopBar.isHidden = true
         self.button1TopBar.isHidden = false
 
-        self.delegate?.button1Pressed()
+        self.delegate?.valueChanged()
     }
 
     @objc func button2Pressed(sender: UIButton) {
@@ -153,7 +152,7 @@ class JifflrSegmentedControl: UIView {
         self.button2TopBar.isHidden = false
         self.button1TopBar.isHidden = true
 
-        self.delegate?.button2Pressed()
+        self.delegate?.valueChanged()
     }
 
     func setButton1Title(text: String) {

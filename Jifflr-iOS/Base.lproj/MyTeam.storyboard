@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+        <array key="GothamBook.otf">
+            <string>GothamBook</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Team View Controller-->
         <scene sceneID="Sbv-ZZ-BwT">
@@ -27,29 +35,130 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamCell" textLabel="DkP-QJ-Ea8" detailTextLabel="eV3-pv-zFd" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="Bba-Ne-HTX">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamSizeCell" rowHeight="98" id="Bba-Ne-HTX" customClass="TeamSizeCell" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bba-Ne-HTX" id="DVL-ac-mlh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DkP-QJ-Ea8">
-                                                    <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eV3-pv-zFd">
-                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TF9-6F-ubS">
+                                                    <rect key="frame" x="18" y="24" width="339" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaK-hu-dgQ">
+                                                            <rect key="frame" x="18" y="14.5" width="102.5" height="22.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11290" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-w6-BPH">
+                                                            <rect key="frame" x="263.5" y="14" width="57.5" height="22.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.95686274509803915" green="0.49411764705882355" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Zud-w6-BPH" secondAttribute="trailing" constant="18" id="2d9-iu-5fb"/>
+                                                        <constraint firstAttribute="height" constant="50" id="DbN-8F-Pvp"/>
+                                                        <constraint firstItem="zaK-hu-dgQ" firstAttribute="centerY" secondItem="TF9-6F-ubS" secondAttribute="centerY" id="I8I-jc-vEs"/>
+                                                        <constraint firstItem="zaK-hu-dgQ" firstAttribute="leading" secondItem="TF9-6F-ubS" secondAttribute="leading" constant="18" id="fp8-ro-DSj"/>
+                                                        <constraint firstItem="Zud-w6-BPH" firstAttribute="centerY" secondItem="TF9-6F-ubS" secondAttribute="centerY" id="jdA-hW-tIo"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="TF9-6F-ubS" secondAttribute="bottom" constant="24" id="Nje-MS-QoF"/>
+                                                <constraint firstAttribute="trailing" secondItem="TF9-6F-ubS" secondAttribute="trailing" constant="18" id="aWd-ys-Nn0"/>
+                                                <constraint firstItem="TF9-6F-ubS" firstAttribute="top" secondItem="DVL-ac-mlh" secondAttribute="top" constant="24" id="qil-Ei-sEN"/>
+                                                <constraint firstItem="TF9-6F-ubS" firstAttribute="leading" secondItem="DVL-ac-mlh" secondAttribute="leading" constant="18" id="wTx-Rn-Dth"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="zaK-hu-dgQ" id="rBO-CO-2nu"/>
+                                            <outlet property="sizeLabel" destination="Zud-w6-BPH" id="xcg-SU-Mcr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamFriendCell" rowHeight="74" id="ved-y8-TQQ" customClass="TeamFriendCell" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="186" width="375" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ved-y8-TQQ" id="YFq-Pc-89V">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuE-IO-7KI">
+                                                    <rect key="frame" x="18" y="0.0" width="339" height="64"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albert Webb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="SOf-DJ-eBc">
+                                                            <rect key="frame" x="20" y="10" width="131" height="22.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                                            <color key="textColor" red="0.95686274509803915" green="0.49411764705882355" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Members" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-Pn-cEZ">
+                                                            <rect key="frame" x="245.5" y="19" width="73.5" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="12"/>
+                                                            <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="albert@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-Zs-nj0">
+                                                            <rect key="frame" x="20" y="36.5" width="144" height="17.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                                            <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 June 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kaz-cA-uu1">
+                                                            <rect key="frame" x="215.5" y="36" width="103.5" height="17.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                                            <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="UKL-Zs-nj0" secondAttribute="bottom" constant="10" id="DH6-ot-3wP"/>
+                                                        <constraint firstItem="SOf-DJ-eBc" firstAttribute="leading" secondItem="PuE-IO-7KI" secondAttribute="leading" constant="20" id="Eyo-6A-80k"/>
+                                                        <constraint firstItem="UKL-Zs-nj0" firstAttribute="leading" secondItem="SOf-DJ-eBc" secondAttribute="leading" id="MY7-BH-3hk"/>
+                                                        <constraint firstItem="SOf-DJ-eBc" firstAttribute="top" secondItem="PuE-IO-7KI" secondAttribute="top" constant="10" id="Njf-mF-skR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="kaz-cA-uu1" secondAttribute="bottom" constant="10" id="QpJ-Lf-sgq"/>
+                                                        <constraint firstItem="kaz-cA-uu1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UKL-Zs-nj0" secondAttribute="trailing" constant="8" id="cHJ-DH-qwJ"/>
+                                                        <constraint firstItem="kaz-cA-uu1" firstAttribute="trailing" secondItem="ij7-Pn-cEZ" secondAttribute="trailing" id="fw0-ik-lOX"/>
+                                                        <constraint firstItem="ij7-Pn-cEZ" firstAttribute="bottom" secondItem="SOf-DJ-eBc" secondAttribute="bottom" id="iVR-ks-RHm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ij7-Pn-cEZ" secondAttribute="trailing" constant="20" id="oOK-vZ-Z42"/>
+                                                        <constraint firstAttribute="height" constant="64" id="p80-ig-ifo"/>
+                                                        <constraint firstItem="ij7-Pn-cEZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SOf-DJ-eBc" secondAttribute="trailing" constant="8" id="yqq-Eb-8KR"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="PuE-IO-7KI" secondAttribute="trailing" constant="18" id="870-gb-7y0"/>
+                                                <constraint firstItem="PuE-IO-7KI" firstAttribute="top" secondItem="YFq-Pc-89V" secondAttribute="top" id="F2O-07-1SF"/>
+                                                <constraint firstAttribute="bottom" secondItem="PuE-IO-7KI" secondAttribute="bottom" constant="10" id="W7D-nb-JSt"/>
+                                                <constraint firstItem="PuE-IO-7KI" firstAttribute="leading" secondItem="YFq-Pc-89V" secondAttribute="leading" constant="18" id="gCy-Fs-NeJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="kaz-cA-uu1" id="hXG-ub-j84"/>
+                                            <outlet property="emailLabel" destination="UKL-Zs-nj0" id="l8b-29-acb"/>
+                                            <outlet property="nameLabel" destination="SOf-DJ-eBc" id="gxM-Pd-HaH"/>
+                                            <outlet property="teamSizeLabel" destination="ij7-Pn-cEZ" id="hZ1-1T-nVM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -70,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pu-SO-jRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2886" y="-486"/>
+            <point key="canvasLocation" x="2885.5999999999999" y="-486.20689655172418"/>
         </scene>
     </scenes>
 </document>

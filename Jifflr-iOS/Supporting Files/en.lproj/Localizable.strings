@@ -77,4 +77,6 @@
 "dashboard.slogan" = "IT PAYS\nTO PLAY"; // Need the \n to wrap onto a new line. The first line will be orange, second will be white.
 
 "myTeam.navigation.title" = "My Team";
+"myTeam.segmentedControlButton1.title" = "FRIENDS";
+"myTeam.segmentedControlButton2.title" = "PENDING";
 
