@@ -48,4 +48,8 @@ extension UIColor {
     static var mainWhiteTransparent50: UIColor {
         return UIColor(white: 1.0, alpha: 0.5)
     }
+
+    static var mainWhiteTransparent60: UIColor {
+        return UIColor(white: 1.0, alpha: 0.5)
+    }
 }

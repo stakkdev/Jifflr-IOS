@@ -15,6 +15,7 @@ class TeamViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: JifflrSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeaderView: UIView!
 
     var pendingFriendsData:[PendingUser] = []
     var friendsData:[PFUser] = []
@@ -41,7 +42,6 @@ class TeamViewController: BaseViewController {
         self.navigationItem.setHidesBackButton(false, animated: false)
 
         self.segmentedControl.delegate = self
-        self.tableView.tableHeaderView = segmentedControl
         self.tableView.estimatedRowHeight = 70.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
@@ -99,6 +99,12 @@ class TeamViewController: BaseViewController {
 
 extension TeamViewController: JifflrSegmentedControlDelegate {
     func valueChanged() {
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            self.tableViewHeaderView.frame.size.height = 60.0
+        } else {
+            self.tableViewHeaderView.frame.size.height = 80.0
+        }
+
         self.tableView.reloadData()
     }
 }
@@ -113,7 +119,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
             return 3//self.friendsData.count
         }
 
-        return self.pendingFriendsData.count
+        return 2//self.pendingFriendsData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,7 +143,21 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TeamPendingFriendCell") as! TeamPendingFriendCell
+            cell.accessoryType = .none
+            cell.selectionStyle = .none
+            cell.nameLabel.text = "James Shaw"
+            cell.emailLabel.text = "james@thedistance.co.uk"
+            cell.codeLabel.text = "CODE xBgFs12"
+            cell.dateLabel.text = "6 April 2016"
+
+            if indexPath.row == 0 {
+                cell.roundedView.alpha = 1.0
+            } else {
+                cell.roundedView.alpha = 0.6
+            }
+
+            return cell
         }
     }
 }
