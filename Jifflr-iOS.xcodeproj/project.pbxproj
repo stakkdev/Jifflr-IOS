@@ -74,6 +74,7 @@
 		E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */; };
 		E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */; };
 		E9DBBC3920163485000B8835 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DBBC3B20163485000B8835 /* Localizable.strings */; };
+		E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */; };
 		E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */; };
 		E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */; };
 		E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */; };
@@ -179,6 +180,7 @@
 		E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldInvitation.swift; path = Views/TextFields/JifflrTextFieldInvitation.swift; sourceTree = "<group>"; };
 		E9DBBC3A20163485000B8835 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DBBC3C20163494000B8835 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrSegmentedControl.swift; path = Views/JifflrSegmentedControl.swift; sourceTree = "<group>"; };
 		E9E0B5591F8BC5A200CBBA72 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Helpers/UserManager.swift; sourceTree = "<group>"; };
 		E9E0B55B1F8BD43500CBBA72 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationManager.swift; path = Helpers/LocationManager.swift; sourceTree = "<group>"; };
 		E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Supporting Files/Constants.swift"; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */,
 				E9608F16203459290055EFE7 /* DashboardButtonRight.swift */,
 				E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */,
+				E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
 				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
+				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

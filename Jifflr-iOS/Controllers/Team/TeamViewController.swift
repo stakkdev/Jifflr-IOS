@@ -11,9 +11,9 @@ import ContactsUI
 import MessageUI
 import Parse
 
-class TeamViewController: UIViewController, DisplayMessage {
+class TeamViewController: BaseViewController {
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: JifflrSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
     var pendingFriendsData:[PendingUser] = []
@@ -27,13 +27,29 @@ class TeamViewController: UIViewController, DisplayMessage {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Team"
+        self.setupUI()
+    }
 
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+    func setupUI() {
+        self.setupLocalization()
 
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonPressed(_:)))
         self.navigationItem.rightBarButtonItem = addBarButton
+
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.setHidesBackButton(false, animated: false)
+
+        self.segmentedControl.setButton1Title(text: "FRIENDS")
+        self.segmentedControl.setButton2Title(text: "PENDING")
+        self.tableView.tableHeaderView = segmentedControl
+
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+    }
+
+    func setupLocalization() {
+        self.title = "myTeam.navigation.title".localized()
     }
 
     override func viewWillAppear(_ animated: Bool) {

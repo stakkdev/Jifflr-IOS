@@ -36,4 +36,16 @@ extension UIColor {
     static var mainLightBlue: UIColor {
         return UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
     }
+
+    static var mainWhiteTransparent20: UIColor {
+        return UIColor(white: 1.0, alpha: 0.2)
+    }
+
+    static var mainWhiteTransparent40: UIColor {
+        return UIColor(white: 1.0, alpha: 0.4)
+    }
+
+    static var mainWhiteTransparent50: UIColor {
+        return UIColor(white: 1.0, alpha: 0.5)
+    }
 }
