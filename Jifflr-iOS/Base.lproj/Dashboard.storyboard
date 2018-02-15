@@ -100,7 +100,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="NEED SOME HELP?"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT" customClass="PulsePlayButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="140.5" y="326.5" width="94" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Uso-3q-TdT" secondAttribute="height" multiplier="1:1" id="OOQ-dA-6O4"/>
@@ -149,6 +149,7 @@
                         <outlet property="myMoneyButton" destination="FVB-7c-0dS" id="n7G-Di-Zfb"/>
                         <outlet property="myTeamButton" destination="HY8-cC-C0f" id="R4t-Ii-kBQ"/>
                         <outlet property="playAdsButton" destination="Uso-3q-TdT" id="SLe-Sk-Tlx"/>
+                        <outlet property="sloganLabel" destination="IVW-Fa-OTs" id="feZ-um-ZNL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnC-PQ-paG" userLabel="First Responder" sceneMemberID="firstResponder"/>

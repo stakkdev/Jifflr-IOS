@@ -27,6 +27,7 @@ struct Constants {
     struct FontNames {
         static let GothamBold = "GothamBold"
         static let GothamBook = "GothamBook"
+        static let GothamMedium = "GothamMedium"
     }
 
     static var isSmallScreen: Bool {

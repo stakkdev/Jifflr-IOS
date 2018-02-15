@@ -69,3 +69,10 @@
 "termsAndConditions.navigation.title" = "Terms & Conditions";
 "termsAndConditions.content" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 
+"dashboard.myTeamButton.title" = "My Team";
+"dashboard.myMoneyButton.title" = "My Money";
+"dashboard.adsViewedButton.title" = "Ads Viewed";
+"dashboard.adBuilderButton.title" = "Ad Builder";
+"dashboard.helpButton.title" = "NEED SOME HELP?"; // The last word before the '?' will be orange.
+"dashboard.slogan" = "IT PAYS\nTO PLAY"; // Need the \n to wrap onto a new line. The first line will be orange, second will be white.
+
