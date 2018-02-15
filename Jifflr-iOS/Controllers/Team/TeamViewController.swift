@@ -14,6 +14,7 @@ import Parse
 class TeamViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: JifflrSegmentedControl!
+    @IBOutlet weak var chart: JifflrTeamChart!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
@@ -46,6 +47,8 @@ class TeamViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+
+        self.chart.setData(data: [(x: 0.0, y: 0.0), (x: 10.0, y: 10.0), (x: 20.0, y: 20.0),(x: 30.0, y: 30.0), (x: 40.0, y: 40.0),(x: 50.0, y: 50.0),(x: 60.0, y: 60.0), (x: 70.0, y: 70.0), (x: 80.0, y: 80.0), (x: 90.0, y: 90.0), (x: 100.0, y: 100.0), (x: 110.0, y: 110.0), (x: 120.0, y: 120.0), (x: 130.0, y: 130.0), (x: 140.0, y: 140.0), (x: 150.0, y: 150.0), (x: 160.0, y: 160.0), (x: 170.0, y: 170.0), (x: 180.0, y: 180.0), (x: 190.0, y: 190.0), (x: 200.0, y: 200.0)])
     }
 
     func setupLocalization() {
@@ -100,9 +103,11 @@ class TeamViewController: BaseViewController {
 extension TeamViewController: JifflrSegmentedControlDelegate {
     func valueChanged() {
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            self.tableViewHeaderView.frame.size.height = 60.0
+            self.tableView.contentOffset.y = 0.0
+            self.tableViewHeaderView.frame.size.height = 240.0
         } else {
-            self.tableViewHeaderView.frame.size.height = 80.0
+            self.tableView.contentOffset.y = 180.0
+            self.tableViewHeaderView.frame.size.height = 260.0
         }
 
         self.tableView.reloadData()

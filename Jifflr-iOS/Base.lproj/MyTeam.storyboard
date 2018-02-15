@@ -26,31 +26,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b1-Wl-gcf">
+                                <rect key="frame" x="0.0" y="28" width="375" height="1"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="3oO-tX-Jut"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6v-qf-XVr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="29" width="375" height="638"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="z2A-0l-dmt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5g-Sp-bg5" customClass="JifflrSegmentedControl" customModule="Jifflr_iOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="180" width="375" height="60"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="1i8-GG-XLs"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-o3-3Fs" customClass="JifflrTeamChart" customModule="Jifflr_iOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="GyL-NL-0Rz"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="b5g-Sp-bg5" firstAttribute="top" secondItem="z2A-0l-dmt" secondAttribute="top" id="F6c-k9-qiX"/>
+                                        <constraint firstItem="b5g-Sp-bg5" firstAttribute="top" secondItem="hgz-o3-3Fs" secondAttribute="bottom" id="3ZJ-rj-xpj"/>
+                                        <constraint firstItem="hgz-o3-3Fs" firstAttribute="leading" secondItem="z2A-0l-dmt" secondAttribute="leading" id="B0W-yC-Cie"/>
                                         <constraint firstAttribute="trailing" secondItem="b5g-Sp-bg5" secondAttribute="trailing" id="HHw-dg-viD"/>
+                                        <constraint firstItem="hgz-o3-3Fs" firstAttribute="top" secondItem="z2A-0l-dmt" secondAttribute="top" id="T8y-TU-abp"/>
                                         <constraint firstItem="b5g-Sp-bg5" firstAttribute="leading" secondItem="z2A-0l-dmt" secondAttribute="leading" id="ohQ-pH-v0G"/>
+                                        <constraint firstAttribute="trailing" secondItem="hgz-o3-3Fs" secondAttribute="trailing" id="tSs-ob-c4E"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamSizeCell" rowHeight="98" id="Bba-Ne-HTX" customClass="TeamSizeCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="98"/>
+                                        <rect key="frame" x="0.0" y="268" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bba-Ne-HTX" id="DVL-ac-mlh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
@@ -103,7 +120,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamFriendCell" rowHeight="74" id="ved-y8-TQQ" customClass="TeamFriendCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="186" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="366" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ved-y8-TQQ" id="YFq-Pc-89V">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -175,7 +192,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamPendingFriendCell" rowHeight="74" id="M5g-p0-0Ym" customClass="TeamPendingFriendCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="260" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="440" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M5g-p0-0Ym" id="dZN-r4-Qfh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -254,12 +271,16 @@
                         <constraints>
                             <constraint firstItem="H6v-qf-XVr" firstAttribute="bottom" secondItem="UHs-Ub-qR4" secondAttribute="bottom" id="BOE-lb-mFX"/>
                             <constraint firstItem="H6v-qf-XVr" firstAttribute="leading" secondItem="UHs-Ub-qR4" secondAttribute="leading" id="KRl-v2-xYz"/>
+                            <constraint firstItem="0b1-Wl-gcf" firstAttribute="top" secondItem="UHs-Ub-qR4" secondAttribute="top" constant="8" id="O9x-vP-DhF"/>
                             <constraint firstItem="H6v-qf-XVr" firstAttribute="trailing" secondItem="UHs-Ub-qR4" secondAttribute="trailing" id="Rd6-rE-De2"/>
-                            <constraint firstItem="H6v-qf-XVr" firstAttribute="top" secondItem="UHs-Ub-qR4" secondAttribute="top" id="v2Y-LS-8jv"/>
+                            <constraint firstItem="0b1-Wl-gcf" firstAttribute="leading" secondItem="UHs-Ub-qR4" secondAttribute="leading" id="WAP-ik-Bbm"/>
+                            <constraint firstItem="UHs-Ub-qR4" firstAttribute="trailing" secondItem="0b1-Wl-gcf" secondAttribute="trailing" id="bbe-RI-MXG"/>
+                            <constraint firstItem="H6v-qf-XVr" firstAttribute="top" secondItem="0b1-Wl-gcf" secondAttribute="bottom" id="hEx-3g-pgP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UHs-Ub-qR4"/>
                     </view>
                     <connections>
+                        <outlet property="chart" destination="hgz-o3-3Fs" id="Igo-vF-aXa"/>
                         <outlet property="segmentedControl" destination="b5g-Sp-bg5" id="HeL-cl-ME9"/>
                         <outlet property="tableView" destination="H6v-qf-XVr" id="a4M-W7-p1J"/>
                         <outlet property="tableViewHeaderView" destination="z2A-0l-dmt" id="MRu-kK-RI4"/>
