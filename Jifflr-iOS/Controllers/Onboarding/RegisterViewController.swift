@@ -8,6 +8,8 @@
 
 import UIKit
 import Localize_Swift
+import CoreLocation
+import Parse
 
 class RegisterViewController: BaseViewController {
 
@@ -138,7 +140,9 @@ class RegisterViewController: BaseViewController {
             return
         }
         
-        guard let location = self.locationTextField.text, !location.isEmpty else {
+        guard let displayLocation = self.locationTextField.text, !displayLocation.isEmpty,
+            let location = self.locationTextField.location,
+            let geoPoint = self.locationTextField.geoPoint else {
             let error = ErrorMessage.invalidField("register.location.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return
@@ -178,7 +182,9 @@ class RegisterViewController: BaseViewController {
         userInfo["lastName"] = lastName
         userInfo["email"] = email
         userInfo["password"] = password
+        userInfo["displayLocation"] = displayLocation
         userInfo["location"] = location
+        userInfo["geoPoint"] = geoPoint
         userInfo["dateOfBirth"] = dateOfBirth
         userInfo["gender"] = gender
 
@@ -260,11 +266,41 @@ extension RegisterViewController: UITextFieldDelegate {
                 self.invitationCodeTextField.text = invitationCode
             })
         }
+
+        if textField == self.locationTextField, let text = textField.text, !text.isEmpty {
+            self.locationTextField.animate()
+
+            let chooseLocation = ChooseLocationViewController.instantiateFromStoryboard()
+            chooseLocation.searchString = text
+            chooseLocation.delegate = self
+            self.present(chooseLocation, animated: true, completion: nil)
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension RegisterViewController: ChooseLocationViewControllerDelegate {
+    func locationChosen(displayLocation: String, isoCountryCode: String, coordinate: CLLocationCoordinate2D) {
+        self.fetchLocation(displayLocation: displayLocation, isoCountryCode: isoCountryCode, coordinate: coordinate)
+    }
+
+    func fetchLocation(displayLocation: String, isoCountryCode: String, coordinate: CLLocationCoordinate2D) {
+        LocationManager.shared.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
+            self.locationTextField.stopAnimating()
+
+            guard let location = location, error == nil else {
+                self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+                return
+            }
+
+            self.locationTextField.text = displayLocation
+            self.locationTextField.geoPoint = PFGeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            self.locationTextField.location = location
+        }
     }
 }
 
@@ -274,14 +310,16 @@ extension RegisterViewController: LocationTextFieldDelegate {
     }
 
     @objc func locationFound(_ notification: NSNotification) {
-        self.locationTextField.stopAnimating()
-        
-        guard let userInfo = notification.userInfo as? [String: String], let locationAddress = userInfo["location"] else {
+        guard let userInfo = notification.userInfo as? [String: Any],
+            let displayLocation = userInfo["location"] as? String,
+            let isoCountryCode = userInfo["isoCountryCode"] as? String,
+            let coordinate = userInfo["geoPoint"] as? CLLocationCoordinate2D else {
+            self.locationTextField.stopAnimating()
             self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
             return
         }
 
-        self.locationTextField.text = locationAddress
+        self.fetchLocation(displayLocation: displayLocation, isoCountryCode: isoCountryCode, coordinate: coordinate)
     }
 }
 

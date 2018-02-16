@@ -18,9 +18,9 @@ final class LocationStatus: PFObject {
         }
     }
 
-    var id: Int {
+    var type: Int {
         get {
-            return self["id"] as! Int
+            return self["type"] as! Int
         }
     }
 }

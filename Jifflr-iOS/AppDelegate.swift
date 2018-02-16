@@ -64,9 +64,8 @@ extension AppDelegate {
     func configParse(in application: UIApplication, with launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
 
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "ad-m8"
+            $0.applicationId = "jifflr"
             $0.server = Constants.currentEnvironment.appURL
-            $0.clientKey = "vmN358nahRWnB3nTeyzxgyX7q28Lz4fN"
             $0.isLocalDatastoreEnabled = true
             $0.networkRetryAttempts = 2
         }

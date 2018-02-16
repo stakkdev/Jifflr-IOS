@@ -25,6 +25,8 @@
 		E937F5B82036F77C00171480 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5B72036F77C00171480 /* Friends.swift */; };
 		E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5B92036F87100171480 /* LocationFinancial.swift */; };
 		E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5BB2036F8DA00171480 /* LocationStatus.swift */; };
+		E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5BD2037125600171480 /* ChooseLocationViewController.swift */; };
+		E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C120371A7700171480 /* TextFieldExtensions.swift */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
@@ -134,6 +136,8 @@
 		E937F5B72036F77C00171480 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Friends.swift; path = Models/Friends.swift; sourceTree = "<group>"; };
 		E937F5B92036F87100171480 /* LocationFinancial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationFinancial.swift; path = Models/LocationFinancial.swift; sourceTree = "<group>"; };
 		E937F5BB2036F8DA00171480 /* LocationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationStatus.swift; path = Models/LocationStatus.swift; sourceTree = "<group>"; };
+		E937F5BD2037125600171480 /* ChooseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseLocationViewController.swift; path = Controllers/Onboarding/ChooseLocationViewController.swift; sourceTree = "<group>"; };
+		E937F5C120371A7700171480 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldExtensions.swift; path = Extensions/TextFieldExtensions.swift; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */,
 				E9EE6329203198A700188AA1 /* ForgotPasswordViewController.swift */,
 				E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */,
+				E937F5BD2037125600171480 /* ChooseLocationViewController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 			children = (
 				E9A717841F8B89AC00B07414 /* ColorExtensions.swift */,
 				E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */,
+				E937F5C120371A7700171480 /* TextFieldExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -899,12 +905,14 @@
 				E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */,
 				E9608F1B203482AD0055EFE7 /* PulsePlayButton.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
+				E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
+				E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */,
 				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
 				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
 				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,

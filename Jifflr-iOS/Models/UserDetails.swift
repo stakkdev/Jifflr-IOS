@@ -39,6 +39,15 @@ final class UserDetails: PFObject {
         }
     }
 
+    var displayLocation: String {
+        get {
+            return self["displayLocation"] as! String
+        }
+        set {
+            self["displayLocation"] = newValue
+        }
+    }
+
     var geoPoint: PFGeoPoint {
         get {
             return self["geoPoint"] as! PFGeoPoint

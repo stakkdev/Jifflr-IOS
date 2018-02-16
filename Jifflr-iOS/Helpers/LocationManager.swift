@@ -40,6 +40,29 @@ class LocationManager: NSObject {
 
         return false
     }
+
+    func geocode(address: String, completion: @escaping ([CLPlacemark]) -> Void) {
+        self.geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) -> Void in
+            guard error == nil, let placemarks = placemarks else {
+                completion([])
+                return
+            }
+
+            completion(placemarks)
+        })
+    }
+
+    func fetchLocation(isoCountryCode: String, completion: @escaping (Location?, ErrorMessage?) -> Void) {
+        let query = Location.query()
+        query?.whereKey("isoCountryCode", equalTo: isoCountryCode)
+        query?.getFirstObjectInBackground(block: { (country, error) in
+            guard let country = country as? Location, error == nil else {
+                return
+            }
+
+            completion(country, nil)
+        })
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -55,29 +78,20 @@ extension LocationManager: CLLocationManagerDelegate {
 
         let location = locations.first!
         self.geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            guard let placemarks = placemarks, placemarks.count > 0, error == nil else {
+            guard let placemark = placemarks?.first, error == nil else {
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: nil)
                 }
                 return
             }
 
-            let placemark = placemarks.first!
-            var addressString = ""
-            if let city = placemark.subAdministrativeArea {
-                addressString = city
-
-                if let country = placemark.country {
-                    addressString.append(", \(country)")
-                }
-            } else if let country = placemark.country {
-                addressString = country
-            }
+            let addressString = placemark.formattedString()
 
             DispatchQueue.main.async {
-                var notificationDict:[String: String] = [:]
+                var notificationDict:[String: Any] = [:]
                 notificationDict["location"] = addressString
                 notificationDict["isoCountryCode"] = placemark.isoCountryCode
+                notificationDict["geoPoint"] = placemark.location?.coordinate
                 NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: notificationDict)
             }
         }
@@ -97,5 +111,23 @@ extension LocationManager: CLLocationManagerDelegate {
             notificationDict["status"] = status
             NotificationCenter.default.post(name: Constants.Notifications.locationPermissionsChanged, object: self, userInfo: notificationDict)
         }
+    }
+}
+
+extension CLPlacemark {
+    func formattedString() -> String {
+        var addressString = ""
+
+        if let city = self.subAdministrativeArea {
+            addressString = city
+
+            if let country = self.country {
+                addressString.append(", \(country)")
+            }
+        } else if let country = self.country {
+            addressString = country
+        }
+
+        return addressString
     }
 }

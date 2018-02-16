@@ -24,9 +24,13 @@ class UserManager: NSObject {
         userDetails.dateOfBirth = userInfo["dateOfBirth"] as! Date
         userDetails.gender = userInfo["gender"] as! String
         userDetails.emailVerified = false
-        userDetails.invitationCode = userInfo["invitationCode"] as? String
         userDetails.location = userInfo["location"] as! Location
         userDetails.geoPoint = userInfo["geoPoint"] as! PFGeoPoint
+        userDetails.displayLocation = userInfo["displayLocation"] as! String
+
+        if let invitationCode = userInfo["invitationCode"] as? String {
+            userDetails.invitationCode = invitationCode
+        }
 
         let newUser = PFUser()
         newUser.details = userDetails
