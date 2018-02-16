@@ -28,6 +28,11 @@
 		E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5BD2037125600171480 /* ChooseLocationViewController.swift */; };
 		E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C120371A7700171480 /* TextFieldExtensions.swift */; };
 		E937F5C420372F1D00171480 /* MockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C320372F1D00171480 /* MockContent.swift */; };
+		E937F5C620373BBC00171480 /* AdsViewedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C520373BBC00171480 /* AdsViewedViewController.swift */; };
+		E937F5C920373BEA00171480 /* AdsViewed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E937F5C720373BEA00171480 /* AdsViewed.storyboard */; };
+		E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5CB203740DA00171480 /* AdsViewedCell.swift */; };
+		E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5CD203741A400171480 /* AdsViewedDetailCell.swift */; };
+		E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5CF203745E200171480 /* AdHistoryCell.swift */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
@@ -140,6 +145,11 @@
 		E937F5BD2037125600171480 /* ChooseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseLocationViewController.swift; path = Controllers/Onboarding/ChooseLocationViewController.swift; sourceTree = "<group>"; };
 		E937F5C120371A7700171480 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldExtensions.swift; path = Extensions/TextFieldExtensions.swift; sourceTree = "<group>"; };
 		E937F5C320372F1D00171480 /* MockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockContent.swift; path = Helpers/MockContent.swift; sourceTree = "<group>"; };
+		E937F5C520373BBC00171480 /* AdsViewedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedViewController.swift; path = "Controllers/Ads Viewed/AdsViewedViewController.swift"; sourceTree = "<group>"; };
+		E937F5C820373BEA00171480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdsViewed.storyboard; sourceTree = "<group>"; };
+		E937F5CB203740DA00171480 /* AdsViewedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedCell.swift; path = "Controllers/Ads Viewed/Cells/AdsViewedCell.swift"; sourceTree = "<group>"; };
+		E937F5CD203741A400171480 /* AdsViewedDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedDetailCell.swift; path = "Controllers/Ads Viewed/Cells/AdsViewedDetailCell.swift"; sourceTree = "<group>"; };
+		E937F5CF203745E200171480 /* AdHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdHistoryCell.swift; path = "Controllers/Ads Viewed/Cells/AdHistoryCell.swift"; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
@@ -307,6 +317,16 @@
 			name = "Local Models";
 			sourceTree = "<group>";
 		};
+		E937F5CA2037407000171480 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E937F5CB203740DA00171480 /* AdsViewedCell.swift */,
+				E937F5CD203741A400171480 /* AdsViewedDetailCell.swift */,
+				E937F5CF203745E200171480 /* AdHistoryCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		E9798C0C201A3FF100E8A7D2 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +353,8 @@
 		E9798C1D201A4B8D00E8A7D2 /* Ads Viewed */ = {
 			isa = PBXGroup;
 			children = (
+				E937F5C520373BBC00171480 /* AdsViewedViewController.swift */,
+				E937F5CA2037407000171480 /* Cells */,
 			);
 			name = "Ads Viewed";
 			sourceTree = "<group>";
@@ -528,6 +550,7 @@
 				E9691F291F8E52EC006070F6 /* Advert.storyboard */,
 				E9F89D82201B446700860FE3 /* MyTeam.storyboard */,
 				E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */,
+				E937F5C720373BEA00171480 /* AdsViewed.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -681,6 +704,7 @@
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
 				E9DBBC3920163485000B8835 /* Localizable.strings in Resources */,
+				E937F5C920373BEA00171480 /* AdsViewed.storyboard in Resources */,
 				E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */,
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
@@ -871,6 +895,7 @@
 				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
+				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E9A2CF591F8F90CA008A7F40 /* FeedbackManager.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
@@ -887,10 +912,12 @@
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
+				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,
 				E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */,
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E9A717801F8B89AC00B07414 /* Reachability.swift in Sources */,
+				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
 				E9328A56202DB72100D79CF7 /* UserDefaultsManager.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
@@ -909,6 +936,7 @@
 				E9608F152034509F0055EFE7 /* DashboardButtonLeft.swift in Sources */,
 				E9608F1B203482AD0055EFE7 /* PulsePlayButton.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
+				E937F5C620373BBC00171480 /* AdsViewedViewController.swift in Sources */,
 				E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
@@ -949,6 +977,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E937F5C720373BEA00171480 /* AdsViewed.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E937F5C820373BEA00171480 /* Base */,
+			);
+			name = AdsViewed.storyboard;
+			sourceTree = "<group>";
+		};
 		E9488EC61F8CEFC900697862 /* Dashboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

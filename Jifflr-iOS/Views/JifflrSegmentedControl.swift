@@ -26,6 +26,14 @@ class JifflrSegmentedControl: UIView {
 
     var selectedSegmentIndex = 0
 
+    var highlightedColor: UIColor? {
+        didSet {
+            self.button1.setButtonEnabled(color: self.highlightedColor ?? UIColor.mainOrange)
+            self.button1BottomBar.backgroundColor = self.highlightedColor ?? UIColor.mainOrange
+            self.button2BottomBar.backgroundColor = self.highlightedColor ?? UIColor.mainOrange
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -47,7 +55,7 @@ class JifflrSegmentedControl: UIView {
         self.button1 = UIButton(type: .custom)
         self.button1.addTarget(self, action: #selector(self.button1Pressed(sender:)), for: .touchUpInside)
         self.button1.translatesAutoresizingMaskIntoConstraints = false
-        self.button1.setButtonEnabled()
+        self.button1.setButtonEnabled(color: self.highlightedColor ?? UIColor.mainOrange)
         self.addSubview(self.button1)
 
         self.button1BottomBar = UIView()
@@ -126,7 +134,7 @@ class JifflrSegmentedControl: UIView {
 
         self.selectedSegmentIndex = 0
 
-        self.button1.setButtonEnabled()
+        self.button1.setButtonEnabled(color: self.highlightedColor ?? UIColor.mainOrange)
         self.button2.setButtonDisabled()
 
         self.button2BottomBar.isHidden = true
@@ -143,7 +151,7 @@ class JifflrSegmentedControl: UIView {
 
         self.selectedSegmentIndex = 1
 
-        self.button2.setButtonEnabled()
+        self.button2.setButtonEnabled(color: self.highlightedColor ?? UIColor.mainOrange)
         self.button1.setButtonDisabled()
 
         self.button2BottomBar.isHidden = false
@@ -165,8 +173,8 @@ class JifflrSegmentedControl: UIView {
 }
 
 extension UIButton {
-    func setButtonEnabled() {
-        self.setTitleColor(UIColor.mainOrange, for: .normal)
+    func setButtonEnabled(color: UIColor) {
+        self.setTitleColor(color, for: .normal)
         self.titleLabel?.font = UIFont(name: Constants.FontNames.GothamBold, size: 16.0)
         self.backgroundColor = UIColor.clear
         self.tag = 1

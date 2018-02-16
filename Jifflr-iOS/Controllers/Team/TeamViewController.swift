@@ -21,7 +21,7 @@ class TeamViewController: BaseViewController {
     var myTeam: MyTeam? {
         didSet {
             self.tableView.reloadData()
-            self.chart.setData(data: self.myTeam!.graph)
+            self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true)
         }
     }
 
@@ -46,6 +46,7 @@ class TeamViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
 
+        self.segmentedControl.highlightedColor = UIColor.mainOrange
         self.segmentedControl.delegate = self
         self.tableView.estimatedRowHeight = 70.0
         self.tableView.rowHeight = UITableViewAutomaticDimension

@@ -143,4 +143,8 @@ class DashboardViewController: BaseViewController {
     @IBAction func cashOutButtonPressed(_ sender: UIButton) {
         //self.navigationController?.pushViewController(CashoutViewController.instantiateFromStoryboard(), animated: true)
     }
+
+    @IBAction func adsViewedPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(AdsViewedViewController.instantiateFromStoryboard(), animated: true)
+    }
 }

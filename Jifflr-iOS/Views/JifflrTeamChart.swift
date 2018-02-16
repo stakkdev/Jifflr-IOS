@@ -75,7 +75,7 @@ class JifflrTeamChart: UIView {
         self.addConstraints([chartLeading, chartTop, chartBottom, chartTrailing])
     }
 
-    func setData(data: [(x: Double, y: Double)]) {
+    func setData(data: [(x: Double, y: Double)], color: UIColor, fill: Bool) {
 
         var maxX = 0.0
         var minX = Double(CGFloat.greatestFiniteMagnitude)
@@ -99,14 +99,19 @@ class JifflrTeamChart: UIView {
 
         let dataSet = LineChartDataSet(values: chartDataEntry, label: "")
         dataSet.axisDependency = .left
-        dataSet.setColor(UIColor.mainOrange)
+        dataSet.setColor(color)
         dataSet.lineWidth = 3.0
         dataSet.drawCircleHoleEnabled = false
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier
-        dataSet.fill = Fill(CGColor: UIColor.mainWhiteTransparent20.cgColor)
-        dataSet.fillAlpha = 1.0
-        dataSet.drawFilledEnabled = true
+
+        if fill == true {
+            dataSet.fill = Fill(CGColor: UIColor.mainWhiteTransparent20.cgColor)
+            dataSet.fillAlpha = 1.0
+            dataSet.drawFilledEnabled = true
+        } else {
+            dataSet.drawFilledEnabled = false
+        }
 
         let dataSets = [dataSet]
         let finalData = LineChartData(dataSets: dataSets)

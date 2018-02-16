@@ -82,3 +82,7 @@
 "myTeam.segmentedControlButton1.title" = "FRIENDS";
 "myTeam.segmentedControlButton2.title" = "PENDING";
 
+"adsViewed.navigation.title" = "Ad Views";
+"adsViewed.segmentedControlButton1.title" = "AD PROGRESS";
+"adsViewed.segmentedControlButton2.title" = "AD HISTORY";
+
