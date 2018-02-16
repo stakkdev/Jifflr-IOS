@@ -10,102 +10,30 @@ import Foundation
 import Parse
 
 extension PFUser {
-    var firstName: String {
+    var email: String {
         get {
-            return self["firstName"] as! String
+            return self["email"] as! String
         }
         set {
-            self["firstName"] = newValue
+            self["email"] = newValue
         }
     }
 
-    var lastName: String {
+    var detailsId: String {
         get {
-            return self["lastName"] as! String
+            return self["detailsId"] as! String
         }
         set {
-            self["lastName"] = newValue
+            self["detailsId"] = newValue
         }
     }
 
-    var location: String {
+    var details: UserDetails {
         get {
-            return self["location"] as! String
+            return self["details"] as! UserDetails
         }
         set {
-            self["location"] = newValue
+            self["details"] = newValue
         }
-    }
-
-    var dateOfBirth: Date {
-        get {
-            return self["dateOfBirth"] as! Date
-        }
-        set {
-            self["dateOfBirth"] = newValue
-        }
-    }
-
-    var gender: String {
-        get {
-            return self["gender"] as! String
-        }
-        set {
-            self["gender"] = newValue
-        }
-    }
-
-    var invitationCode: Int? {
-        get {
-            return self["invitationCode"] as? Int
-        }
-        set {
-            self["invitationCode"] = newValue
-        }
-    }
-
-    var friends: [PFUser] {
-        get {
-            if let friends = self["friends"] as? [PFUser] {
-                return friends
-            }
-            return []
-        }
-        set {
-            self["friends"] = newValue
-        }
-    }
-
-    var cashAvailable: Float {
-        get {
-            return self["cashAvailable"] as! Float
-        }
-        set {
-            self["cashAvailable"] = newValue
-        }
-    }
-
-    func addFriend(friend: PFUser) {
-        var senderFriends = self.friends
-        senderFriends.append(friend)
-        self.friends = senderFriends
-    }
-
-    func fetchFriends(completion: @escaping ([PFUser]) -> Void) {
-        guard let currentUser = UserManager.shared.currentUser else {
-            completion([])
-            return
-        }
-
-        let query = PFUser.query()
-        query?.includeKey("friends")
-        query?.getObjectInBackground(withId: currentUser.objectId!, block: { (user, error) in
-            guard let user = user as? PFUser, error == nil else {
-                completion([])
-                return
-            }
-
-            completion(user.friends)
-        })
     }
 }

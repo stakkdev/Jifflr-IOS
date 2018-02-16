@@ -72,11 +72,16 @@ extension AppDelegate {
         }
 
         // Register Subclasses
+        MyTeam.registerSubclass()
+        UserDetails.registerSubclass()
+        Friends.registerSubclass()
         PendingUser.registerSubclass()
+        Location.registerSubclass()
+        LocationFinancial.registerSubclass()
+        LocationStatus.registerSubclass()
         Advert.registerSubclass()
         FeedbackQuestion.registerSubclass()
         FeedbackType.registerSubclass()
-        Location.registerSubclass()
         UserSeenAdvert.registerSubclass()
         UserFeedback.registerSubclass()
         UserCashout.registerSubclass()

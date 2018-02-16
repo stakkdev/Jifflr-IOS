@@ -182,10 +182,8 @@ class RegisterViewController: BaseViewController {
         userInfo["dateOfBirth"] = dateOfBirth
         userInfo["gender"] = gender
 
-        if let invitationCodeString = self.invitationCodeTextField.text, !invitationCodeString.isEmpty {
-            if let invitationCode = Int(invitationCodeString) {
-                userInfo["invitationCode"] = invitationCode
-            }
+        if let invitationCode = self.invitationCodeTextField.text, !invitationCode.isEmpty {
+            userInfo["invitationCode"] = invitationCode
         }
 
         UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
@@ -259,7 +257,7 @@ extension RegisterViewController: UITextFieldDelegate {
                 self.invitationCodeTextField.stopAnimating()
 
                 guard let invitationCode = invitationCode else { return }
-                self.invitationCodeTextField.text = "\(invitationCode)"
+                self.invitationCodeTextField.text = invitationCode
             })
         }
     }

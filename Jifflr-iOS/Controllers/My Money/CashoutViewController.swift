@@ -33,7 +33,7 @@ class CashoutViewController: UIViewController, DisplayMessage {
             return
         }
 
-        self.moneyAvailableLabel.text = "Money available: \(currentUser.cashAvailable)"
+        self.moneyAvailableLabel.text = "Money available: 0.0"
 
         CashoutManager.shared.fetchCashouts(user: currentUser) { userCashouts, error in
             guard error == nil else {

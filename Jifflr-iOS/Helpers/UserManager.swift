@@ -18,23 +18,24 @@ class UserManager: NSObject {
 
     func signUp(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (ErrorMessage?) -> Void) {
 
+        let userDetails = UserDetails()
+        userDetails.firstName = userInfo["firstName"] as! String
+        userDetails.lastName = userInfo["lastName"] as! String
+        userDetails.dateOfBirth = userInfo["dateOfBirth"] as! Date
+        userDetails.gender = userInfo["gender"] as! String
+        userDetails.emailVerified = false
+        userDetails.invitationCode = userInfo["invitationCode"] as? String
+        userDetails.location = userInfo["location"] as! Location
+        userDetails.geoPoint = userInfo["geoPoint"] as! PFGeoPoint
+
         let newUser = PFUser()
-        newUser.firstName = userInfo["firstName"] as! String
-        newUser.lastName = userInfo["lastName"] as! String
-        newUser.email = userInfo["email"] as? String
+        newUser.details = userDetails
+        newUser.email = userInfo["email"] as! String
         newUser.password = userInfo["password"] as? String
         newUser.username = userInfo["email"] as? String
-        newUser.location = userInfo["location"] as! String
-        newUser.dateOfBirth = userInfo["dateOfBirth"] as! Date
-        newUser.gender = userInfo["gender"] as! String
-        newUser.friends = []
-
-        if let invitationCode = userInfo["invitationCode"] as? Int {
-            newUser.invitationCode = invitationCode
-        }
 
         let query = PFUser.query()
-        query?.whereKey("username", equalTo: newUser.email!)
+        query?.whereKey("username", equalTo: newUser.email)
         query?.getFirstObjectInBackground(block: { (user, error) in
             if user != nil, error == nil {
                 completion(ErrorMessage.userAlreadyExists)

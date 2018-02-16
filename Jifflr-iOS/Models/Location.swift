@@ -18,9 +18,15 @@ final class Location: PFObject {
         }
     }
 
-    var countryName: Int {
+    var name: String {
         get {
-            return self["countryName"] as! Int
+            return self["name"] as! String
+        }
+    }
+
+    var locationStatus: LocationStatus {
+        get {
+            return self["locationStatus"] as! LocationStatus
         }
     }
 }

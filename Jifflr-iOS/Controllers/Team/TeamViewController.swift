@@ -18,8 +18,12 @@ class TeamViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
-    var pendingFriendsData:[PendingUser] = []
-    var friendsData:[PFUser] = []
+    var myTeam: MyTeam? {
+        didSet {
+            self.tableView.reloadData()
+            self.chart.setData(data: self.myTeam!.graph)
+        }
+    }
 
     class func instantiateFromStoryboard() -> TeamViewController {
         let storyboard = UIStoryboard(name: "MyTeam", bundle: nil)
@@ -48,7 +52,7 @@ class TeamViewController: BaseViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
 
-        self.chart.setData(data: [(x: 0.0, y: 0.0), (x: 10.0, y: 10.0), (x: 20.0, y: 20.0),(x: 30.0, y: 30.0), (x: 40.0, y: 40.0),(x: 50.0, y: 50.0),(x: 60.0, y: 60.0), (x: 70.0, y: 70.0), (x: 80.0, y: 80.0), (x: 90.0, y: 90.0), (x: 100.0, y: 100.0), (x: 110.0, y: 110.0), (x: 120.0, y: 120.0), (x: 130.0, y: 130.0), (x: 140.0, y: 140.0), (x: 150.0, y: 150.0), (x: 160.0, y: 160.0), (x: 170.0, y: 170.0), (x: 180.0, y: 180.0), (x: 190.0, y: 190.0), (x: 200.0, y: 200.0)])
+        //self.chart.setData(data: [(x: 0.0, y: 0.0), (x: 10.0, y: 10.0), (x: 20.0, y: 20.0),(x: 30.0, y: 30.0), (x: 40.0, y: 40.0),(x: 50.0, y: 50.0),(x: 60.0, y: 60.0), (x: 70.0, y: 70.0), (x: 80.0, y: 80.0), (x: 90.0, y: 90.0), (x: 100.0, y: 100.0), (x: 110.0, y: 110.0), (x: 120.0, y: 120.0), (x: 130.0, y: 130.0), (x: 140.0, y: 140.0), (x: 150.0, y: 150.0), (x: 160.0, y: 160.0), (x: 170.0, y: 170.0), (x: 180.0, y: 180.0), (x: 190.0, y: 190.0), (x: 200.0, y: 200.0)])
     }
 
     func setupLocalization() {
@@ -60,28 +64,19 @@ class TeamViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let group = DispatchGroup()
+        MyTeamManager.shared.fetchLocal { (myTeam, error) in
+            if let myTeam  = myTeam, error == nil {
+                self.myTeam = myTeam
+            }
+        }
 
-        group.enter()
-        PendingUserManager.shared.fetchPendingUsers { (pendingUsers, error) in
-            guard error == nil else {
-                group.leave()
+        MyTeamManager.shared.fetch { (myTeam, error) in
+            guard let myTeam = myTeam, error == nil else {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
                 return
             }
 
-            self.pendingFriendsData = pendingUsers
-            group.leave()
-        }
-
-        group.enter()
-        UserManager.shared.currentUser?.fetchFriends(completion: { (friends) in
-            self.friendsData = friends
-            group.leave()
-        })
-
-        group.notify(queue: DispatchQueue.main) {
-            self.tableView.reloadData()
+            self.myTeam = myTeam
         }
     }
 
@@ -120,21 +115,25 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let myTeam = self.myTeam else { return 0 }
+
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            return 3//self.friendsData.count
+            return myTeam.friends.count
         }
 
-        return 2//self.pendingFriendsData.count
+        return myTeam.pendingFriends.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let myTeam = self.myTeam else { return UITableViewCell() }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamSizeCell") as! TeamSizeCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.sizeLabel.text = "1111"
+                cell.sizeLabel.text = "\(myTeam.teamSize)"
                 return cell
 
             } else {
@@ -169,53 +168,53 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TeamViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        picker.dismiss(animated: true, completion: {
-
-            guard contact.emailAddresses.count > 0 else {
-                self.displayMessage(title: ErrorMessage.unknown.failureTitle, message: ErrorMessage.unknown.failureDescription)
-                return
-            }
-
-            let name = "\(contact.givenName) \(contact.familyName)"
-            let email = contact.emailAddresses.first!.value as String
-
-            var userInfo = [AnyHashable: Any]()
-            userInfo["name"] = name
-            userInfo["email"] = email
-
-            PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (error) in
-                guard error == nil else {
-                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
-                    return
-                }
-
-                self.presentMail(name: name, email: email)
-            })
-        })
+//        picker.dismiss(animated: true, completion: {
+//
+//            guard contact.emailAddresses.count > 0 else {
+//                self.displayMessage(title: ErrorMessage.unknown.failureTitle, message: ErrorMessage.unknown.failureDescription)
+//                return
+//            }
+//
+//            let name = "\(contact.givenName) \(contact.familyName)"
+//            let email = contact.emailAddresses.first!.value as String
+//
+//            var userInfo = [AnyHashable: Any]()
+//            userInfo["name"] = name
+//            userInfo["email"] = email
+//
+//            PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (error) in
+//                guard error == nil else {
+//                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+//                    return
+//                }
+//
+//                self.presentMail(name: name, email: email)
+//            })
+//        })
     }
 
     func presentMail(name: String, email: String) {
 
-        guard MFMailComposeViewController.canSendMail() == true else {
-            self.displayMessage(title: ErrorMessage.inviteSendFailed.failureTitle, message: ErrorMessage.inviteSendFailed.failureDescription)
-            return
-        }
-
-        let composeViewController = MFMailComposeViewController()
-        composeViewController.mailComposeDelegate = self
-        composeViewController.setToRecipients([email])
-        composeViewController.setSubject("Ad-M8 Invite Code!")
-
-        guard let currentUser = UserManager.shared.currentUser else {
-            return
-        }
-        let invitationCode = currentUser.invitationCode
-        let sender = "\(currentUser.firstName) \(currentUser.lastName)"
-
-        let body = "Hello \(name),\n\n\(sender) has sent you an invite code! Here you go: \(invitationCode ?? 0)"
-        composeViewController.setMessageBody(body, isHTML: false)
-
-        self.navigationController?.present(composeViewController, animated: true, completion: nil)
+//        guard MFMailComposeViewController.canSendMail() == true else {
+//            self.displayMessage(title: ErrorMessage.inviteSendFailed.failureTitle, message: ErrorMessage.inviteSendFailed.failureDescription)
+//            return
+//        }
+//
+//        let composeViewController = MFMailComposeViewController()
+//        composeViewController.mailComposeDelegate = self
+//        composeViewController.setToRecipients([email])
+//        composeViewController.setSubject("Ad-M8 Invite Code!")
+//
+//        guard let currentUser = UserManager.shared.currentUser else {
+//            return
+//        }
+//        let invitationCode = currentUser.invitationCode
+//        let sender = "\(currentUser.firstName) \(currentUser.lastName)"
+//
+//        let body = "Hello \(name),\n\n\(sender) has sent you an invite code! Here you go: \(invitationCode ?? 0)"
+//        composeViewController.setMessageBody(body, isHTML: false)
+//
+//        self.navigationController?.present(composeViewController, animated: true, completion: nil)
     }
 }
 

@@ -21,12 +21,9 @@ final class PendingUser: PFObject {
         }
     }
 
-    var invitationCode: Int {
+    var invitationCode: String {
         get {
-            return self["invitationCode"] as! Int
-        }
-        set {
-            self["invitationCode"] = newValue
+            return self.objectId!
         }
     }
 
