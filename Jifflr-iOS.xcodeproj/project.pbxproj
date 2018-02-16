@@ -27,6 +27,7 @@
 		E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5BB2036F8DA00171480 /* LocationStatus.swift */; };
 		E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5BD2037125600171480 /* ChooseLocationViewController.swift */; };
 		E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C120371A7700171480 /* TextFieldExtensions.swift */; };
+		E937F5C420372F1D00171480 /* MockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5C320372F1D00171480 /* MockContent.swift */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
@@ -138,6 +139,7 @@
 		E937F5BB2036F8DA00171480 /* LocationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationStatus.swift; path = Models/LocationStatus.swift; sourceTree = "<group>"; };
 		E937F5BD2037125600171480 /* ChooseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseLocationViewController.swift; path = Controllers/Onboarding/ChooseLocationViewController.swift; sourceTree = "<group>"; };
 		E937F5C120371A7700171480 /* TextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextFieldExtensions.swift; path = Extensions/TextFieldExtensions.swift; sourceTree = "<group>"; };
+		E937F5C320372F1D00171480 /* MockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockContent.swift; path = Helpers/MockContent.swift; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 		E9A7177E1F8B89AC00B07414 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E937F5C320372F1D00171480 /* MockContent.swift */,
 				E9798C15201A430D00E8A7D2 /* Session.swift */,
 				E9A7177F1F8B89AC00B07414 /* Reachability.swift */,
 				E9A717811F8B89AC00B07414 /* ErrorMessage.swift */,
@@ -892,6 +895,7 @@
 				E9328A56202DB72100D79CF7 /* UserDefaultsManager.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
 				E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */,
+				E937F5C420372F1D00171480 /* MockContent.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */,
 				E937F5B42036E8A000171480 /* MyTeamManager.swift in Sources */,
