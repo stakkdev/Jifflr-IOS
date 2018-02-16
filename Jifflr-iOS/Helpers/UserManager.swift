@@ -50,7 +50,13 @@ class UserManager: NSObject {
                             if error != nil {
                                 completion(ErrorMessage.parseError(error!.localizedDescription))
                             } else {
-                                completion(nil)
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        completion(nil)
+                                    }
+                                })
                             }
                         })
                     } else {
