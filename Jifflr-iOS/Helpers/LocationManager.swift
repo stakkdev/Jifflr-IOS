@@ -118,7 +118,7 @@ extension CLPlacemark {
     func formattedString() -> String {
         var addressString = ""
 
-        if let city = self.subAdministrativeArea {
+        if let city = self.locality {
             addressString = city
 
             if let country = self.country {

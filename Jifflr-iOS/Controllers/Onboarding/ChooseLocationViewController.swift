@@ -11,6 +11,7 @@ import CoreLocation
 
 protocol ChooseLocationViewControllerDelegate: class {
     func locationChosen(displayLocation: String, isoCountryCode: String, coordinate: CLLocationCoordinate2D)
+    func dismissed()
 }
 
 class ChooseLocationViewController: BaseViewController {
@@ -74,6 +75,7 @@ class ChooseLocationViewController: BaseViewController {
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        self.delegate?.dismissed()
         self.dismiss(animated: true, completion: nil)
     }
 

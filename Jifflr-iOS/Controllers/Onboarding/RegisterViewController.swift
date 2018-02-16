@@ -288,6 +288,10 @@ extension RegisterViewController: ChooseLocationViewControllerDelegate {
         self.fetchLocation(displayLocation: displayLocation, isoCountryCode: isoCountryCode, coordinate: coordinate)
     }
 
+    func dismissed() {
+        self.locationTextField.stopAnimating()
+    }
+
     func fetchLocation(displayLocation: String, isoCountryCode: String, coordinate: CLLocationCoordinate2D) {
         LocationManager.shared.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
             self.locationTextField.stopAnimating()

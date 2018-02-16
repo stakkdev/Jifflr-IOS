@@ -77,12 +77,29 @@ class UserManager: NSObject {
                 return
             }
 
-            user.pinInBackground(block: { (succeeded, error) in
-                if error != nil {
-                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                } else {
-                    completion(user, nil)
+            user.details.fetchInBackground(block: { (userDetails, error) in
+                guard let userDetails = userDetails, error == nil else {
+                    if let error = error {
+                        completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                    } else {
+                        completion(nil, ErrorMessage.unknown)
+                    }
+                    return
                 }
+
+                user.pinInBackground(block: { (succeeded, error) in
+                    if error != nil {
+                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                    } else {
+                        userDetails.pinInBackground(block: { (success, error) in
+                            if error != nil {
+                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                completion(user, nil)
+                            }
+                        })
+                    }
+                })
             })
         }
     }
