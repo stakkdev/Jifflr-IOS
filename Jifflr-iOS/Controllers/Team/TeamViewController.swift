@@ -133,6 +133,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.sizeLabel.text = "\(myTeam.teamSize)"
+                cell.nameLabel.text = "myTeam.teamSize.title".localized()
                 return cell
 
             } else {
@@ -141,7 +142,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "James Shaw"
                 cell.emailLabel.text = "james@thedistance.co.uk"
-                cell.teamSizeLabel.text = "100 Members"
+                cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(100)
                 cell.dateLabel.text = "6 April 2016"
                 return cell
             }
@@ -151,7 +152,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.nameLabel.text = "James Shaw"
             cell.emailLabel.text = "james@thedistance.co.uk"
-            cell.codeLabel.text = "CODE xBgFs12"
+            cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat("xBgFs12")
             cell.dateLabel.text = "6 April 2016"
 
             if indexPath.row == 0 {

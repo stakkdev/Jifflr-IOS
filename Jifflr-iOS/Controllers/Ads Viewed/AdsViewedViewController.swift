@@ -85,6 +85,7 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.sizeLabel.text = "9103"
+                cell.nameLabel.text = "adsViewed.adsViewedCell.title".localized()
                 return cell
 
             } else {
@@ -94,20 +95,20 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
 
                 switch indexPath.row {
                 case 1:
-                    cell.mainLabel.text = "Just 20 Ads Per Day"
-                    cell.detailLabel.text = "To receive 100% of income"
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(14)
+                    cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 case 2:
-                    cell.mainLabel.text = "Ad Backlog"
-                    cell.detailLabel.text = "4 ads a day for no backlog"
+                    cell.mainLabel.text = "adsViewed.adBacklog.title".localized()
+                    cell.detailLabel.text = "adsViewed.adBacklogMinimum.title".localizedFormat(5)
                     cell.rightLabel.text = "0"
                 case 3:
-                    cell.mainLabel.text = "% of Team Income Due"
-                    cell.detailLabel.text = "Review more ads to get 100%"
+                    cell.mainLabel.text = "adsViewed.percentageDue.title".localized()
+                    cell.detailLabel.text = "adsViewed.percentageDue.detail".localized()
                     cell.rightLabel.text = "42%"
                 default:
-                    cell.mainLabel.text = "Just 20 Ads Per Day"
-                    cell.detailLabel.text = "To receive 100% of income"
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(14)
+                    cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 }
 
