@@ -15,6 +15,7 @@
 "error.register.invalidGender" = "Unable to register. Please select a gender.";
 "error.register.termsAndConditions" = "Unable to register. Please accept Jifflr's terms and conditions.";
 "error.register.userAlreadyExists" = "Email already registered. Please use a different email address that has not already been registered.";
+"error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -107,4 +108,5 @@
 "myMoney.cashoutCell.heading" = "CASH OUT";
 
 "faqs.navigation.title" = "FAQs";
+"faqsDetail.navigation.title" = "FAQ";
 

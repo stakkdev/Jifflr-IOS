@@ -109,5 +109,52 @@
             </objects>
             <point key="canvasLocation" x="2528.8000000000002" y="19.340329835082461"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="UNF-0H-0OM">
+            <objects>
+                <viewController storyboardIdentifier="FAQDetailViewController" id="eVB-Z5-Hme" customClass="FAQDetailViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CEw-Q6-WXg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofe-MX-hVR">
+                                <rect key="frame" x="18" y="34" width="339" height="609"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="16" name="GothamBook"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ofe-MX-hVR" firstAttribute="leading" secondItem="QPL-UO-1eq" secondAttribute="leading" constant="18" id="kfR-Tc-6zw"/>
+                            <constraint firstItem="QPL-UO-1eq" firstAttribute="bottom" secondItem="ofe-MX-hVR" secondAttribute="bottom" constant="24" id="pGS-9z-hDm"/>
+                            <constraint firstItem="ofe-MX-hVR" firstAttribute="top" secondItem="QPL-UO-1eq" secondAttribute="top" constant="14" id="qpC-ZC-FJv"/>
+                            <constraint firstItem="ofe-MX-hVR" firstAttribute="trailing" secondItem="QPL-UO-1eq" secondAttribute="trailing" constant="-18" id="rYT-Ws-74K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QPL-UO-1eq"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="ofe-MX-hVR" id="6Kn-wc-jYO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nZe-Sk-K2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3250" y="19"/>
+        </scene>
     </scenes>
 </document>

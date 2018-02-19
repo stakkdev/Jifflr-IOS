@@ -69,6 +69,7 @@
 		E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E29203B0D680097BC65 /* FAQCategory.swift */; };
 		E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E2B203B0D7C0097BC65 /* FAQ.swift */; };
 		E97B9E2E203B21310097BC65 /* FAQManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E2D203B21310097BC65 /* FAQManager.swift */; };
+		E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E2F203B32000097BC65 /* FAQDetailViewController.swift */; };
 		E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */; };
 		E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */; };
 		E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */; };
@@ -198,6 +199,7 @@
 		E97B9E29203B0D680097BC65 /* FAQCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQCategory.swift; path = Models/FAQCategory.swift; sourceTree = "<group>"; };
 		E97B9E2B203B0D7C0097BC65 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQ.swift; path = Models/FAQ.swift; sourceTree = "<group>"; };
 		E97B9E2D203B21310097BC65 /* FAQManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQManager.swift; path = Helpers/FAQManager.swift; sourceTree = "<group>"; };
+		E97B9E2F203B32000097BC65 /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQDetailViewController.swift; path = Controllers/FAQs/FAQDetailViewController.swift; sourceTree = "<group>"; };
 		E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Advert.swift; path = Models/Advert.swift; sourceTree = "<group>"; };
 		E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackQuestion.swift; path = Models/FeedbackQuestion.swift; sourceTree = "<group>"; };
 		E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackType.swift; path = Models/FeedbackType.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				E97B9E1F203B04940097BC65 /* FAQViewController.swift */,
+				E97B9E2F203B32000097BC65 /* FAQDetailViewController.swift */,
 				E97B9E26203B08640097BC65 /* Cells */,
 			);
 			name = FAQs;
@@ -978,6 +981,7 @@
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
+				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
 				E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */,
 				E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */,
 				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,

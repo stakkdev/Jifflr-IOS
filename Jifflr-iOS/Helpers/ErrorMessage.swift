@@ -30,6 +30,7 @@ public enum ErrorMessage {
     case invalidDob
     case invalidGender
     case invalidTermsAndConditions
+    case faqsFailed
 
     public var failureTitle: String {
         return "error.title".localized()
@@ -57,6 +58,8 @@ public enum ErrorMessage {
             return "error.login.message".localized()
         case .resetPasswordFailed:
             return "error.resetPassword.message".localized()
+        case .faqsFailed:
+            return "error.faqs.message".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:

@@ -31,18 +31,7 @@ class FAQViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        FAQManager.shared.fetchFAQs { (data, error) in
-            guard let data = data, error == nil else {
-                return
-            }
-
-            self.faqData = data
-        }
+        self.fetchData()
     }
 
     func setupUI() {
@@ -62,6 +51,30 @@ class FAQViewController: BaseViewController {
 
     func setupLocalization() {
         self.title = "faqs.navigation.title".localized()
+    }
+
+    func fetchData() {
+        FAQManager.shared.fetchLocalFAQs { (data, error) in
+            guard let data = data, error == nil else {
+                if let error = error {
+                    self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+                }
+                return
+            }
+
+            self.faqData = data
+        }
+
+        FAQManager.shared.fetchFAQs { (data, error) in
+            guard let data = data, error == nil else {
+                if let error = error {
+                    self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+                }
+                return
+            }
+
+            self.faqData = data
+        }
     }
 }
 
@@ -92,5 +105,14 @@ extension FAQViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = self.faqData?[selectedTab].data[indexPath.row].title
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedTab = self.segmentedControl.selectedSegmentIndex
+        guard let faq = self.faqData?[selectedTab].data[indexPath.row] else { return }
+
+        let viewController = FAQDetailViewController.instantiateFromStoryboard()
+        viewController.faq = faq
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -12,6 +12,8 @@ import Parse
 class FAQManager: NSObject {
     static let shared = FAQManager()
 
+    let pinName = "FAQs"
+
     func fetchFAQs(completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
         let query = FAQ.query()
         query?.whereKey("languageCode", equalTo: Session.shared.currentLanguage)
@@ -19,7 +21,32 @@ class FAQManager: NSObject {
         query?.includeKey("category")
         query?.findObjectsInBackground(block: { (faqs, error) in
             guard let faqs = faqs as? [FAQ], error == nil else {
-                completion(nil, ErrorMessage.cashoutFetchFailed)
+                completion(nil, ErrorMessage.faqsFailed)
+                return
+            }
+
+            PFObject.pinAll(inBackground: faqs, withName: self.pinName, block: { (success, error) in
+                print("FAQs Pinned: \(success)")
+
+                if let error = error {
+                    print("Error: \(error)")
+                }
+            })
+
+            let data = self.parseFAQs(faqs: faqs)
+            completion(data, nil)
+        })
+    }
+
+    func fetchLocalFAQs(completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
+        let query = FAQ.query()
+        query?.whereKey("languageCode", equalTo: Session.shared.currentLanguage)
+        query?.order(byAscending: "index")
+        query?.includeKey("category")
+        query?.fromPin(withName: self.pinName)
+        query?.findObjectsInBackground(block: { (faqs, error) in
+            guard let faqs = faqs as? [FAQ], error == nil else {
+                completion(nil, ErrorMessage.faqsFailed)
                 return
             }
 
