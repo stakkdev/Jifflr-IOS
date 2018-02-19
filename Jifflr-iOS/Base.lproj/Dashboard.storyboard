@@ -61,9 +61,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Ad Builder"/>
-                                <connections>
-                                    <action selector="cashOutButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="N66-Qe-4ak"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-7c-0dS" customClass="DashboardButtonLeft" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="57.5" y="378.5" width="125" height="125"/>
@@ -72,6 +69,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="My Money"/>
+                                <connections>
+                                    <action selector="myMoneyButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="h8x-G5-cSk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfx-xH-dnu" customClass="DashboardButtonRight" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="192.5" y="243.5" width="125" height="125"/>
@@ -80,6 +80,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Ads Viewed"/>
+                                <connections>
+                                    <action selector="adsViewedPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="RgK-sR-LoH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-cC-C0f" customClass="DashboardButtonLeft" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="57.5" y="243.5" width="125" height="125"/>

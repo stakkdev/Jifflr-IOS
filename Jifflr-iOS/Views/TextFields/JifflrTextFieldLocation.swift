@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 protocol LocationTextFieldDelegate {
     func gpsPressed()
@@ -17,6 +18,9 @@ class JifflrTextFieldLocation: JifflrTextField {
     var locationDelegate: LocationTextFieldDelegate?
 
     var activity: UIActivityIndicatorView!
+
+    var location: Location?
+    var geoPoint: PFGeoPoint?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

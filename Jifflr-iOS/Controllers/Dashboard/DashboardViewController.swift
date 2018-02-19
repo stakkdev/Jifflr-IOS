@@ -31,6 +31,12 @@ class DashboardViewController: BaseViewController {
         self.setupUI()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -131,10 +137,14 @@ class DashboardViewController: BaseViewController {
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {
-        //self.navigationController?.pushViewController(TeamViewController.instantiateFromStoryboard(), animated: true)
+        self.navigationController?.pushViewController(TeamViewController.instantiateFromStoryboard(), animated: true)
     }
 
-    @IBAction func cashOutButtonPressed(_ sender: UIButton) {
-        //self.navigationController?.pushViewController(CashoutViewController.instantiateFromStoryboard(), animated: true)
+    @IBAction func myMoneyButtonPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(MyMoneyViewController.instantiateFromStoryboard(), animated: true)
+    }
+
+    @IBAction func adsViewedPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(AdsViewedViewController.instantiateFromStoryboard(), animated: true)
     }
 }

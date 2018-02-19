@@ -64,19 +64,23 @@ extension AppDelegate {
     func configParse(in application: UIApplication, with launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
 
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "ad-m8"
+            $0.applicationId = "jifflr"
             $0.server = Constants.currentEnvironment.appURL
-            $0.clientKey = "vmN358nahRWnB3nTeyzxgyX7q28Lz4fN"
             $0.isLocalDatastoreEnabled = true
             $0.networkRetryAttempts = 2
         }
 
         // Register Subclasses
+        MyTeam.registerSubclass()
+        UserDetails.registerSubclass()
+        Friends.registerSubclass()
         PendingUser.registerSubclass()
+        Location.registerSubclass()
+        LocationFinancial.registerSubclass()
+        LocationStatus.registerSubclass()
         Advert.registerSubclass()
         FeedbackQuestion.registerSubclass()
         FeedbackType.registerSubclass()
-        Location.registerSubclass()
         UserSeenAdvert.registerSubclass()
         UserFeedback.registerSubclass()
         UserCashout.registerSubclass()

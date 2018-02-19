@@ -6,11 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="GothamBold.otf">
             <string>GothamBold</string>
+        </array>
+        <array key="GothamBook.otf">
+            <string>GothamBook</string>
         </array>
     </customFonts>
     <scenes>
@@ -276,7 +280,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="location"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="location"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyw-s3-MJW">
                                         <rect key="frame" x="30" y="384" width="364" height="21"/>
@@ -696,9 +700,103 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
             </objects>
             <point key="canvasLocation" x="1478" y="32"/>
         </scene>
+        <!--Choose Location View Controller-->
+        <scene sceneID="FCj-WB-IWW">
+            <objects>
+                <viewController storyboardIdentifier="ChooseLocationViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="S6H-1k-p89" customClass="ChooseLocationViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OGK-4A-xCW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tbZ-OT-Ya7">
+                                <rect key="frame" x="18" y="152" width="378" height="566"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" textLabel="LDI-TG-rUu" imageView="fW8-ge-uKD" style="IBUITableViewCellStyleDefault" id="22m-L6-5Kw">
+                                        <rect key="frame" x="0.0" y="28" width="378" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="22m-L6-5Kw" id="OFZ-Zh-GQQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="378" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LDI-TG-rUu">
+                                                    <rect key="frame" x="47" y="0.0" width="316" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-Bc-mqX">
+                                                    <rect key="frame" x="50" y="41" width="312" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="LocationGPS" id="fW8-ge-uKD">
+                                                    <rect key="frame" x="15" y="10" width="17" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzG-t3-VM7">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="t0f-g9-STC"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="CbU-PN-eXr"/>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxh-Iv-XVf">
+                                <rect key="frame" x="18" y="84" width="378" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AvM-hg-pBu"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="location"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tbZ-OT-Ya7" firstAttribute="top" secondItem="lxh-Iv-XVf" secondAttribute="bottom" constant="18" id="0VI-ru-G06"/>
+                            <constraint firstItem="FzG-t3-VM7" firstAttribute="top" secondItem="AHP-TC-SdT" secondAttribute="top" id="9tY-pH-OLz"/>
+                            <constraint firstItem="lxh-Iv-XVf" firstAttribute="top" secondItem="FzG-t3-VM7" secondAttribute="bottom" constant="20" id="Ikh-Fh-zd5"/>
+                            <constraint firstItem="AHP-TC-SdT" firstAttribute="bottom" secondItem="tbZ-OT-Ya7" secondAttribute="bottom" constant="18" id="Ocu-nt-lVs"/>
+                            <constraint firstItem="AHP-TC-SdT" firstAttribute="trailing" secondItem="tbZ-OT-Ya7" secondAttribute="trailing" constant="18" id="Op5-8P-LaP"/>
+                            <constraint firstItem="AHP-TC-SdT" firstAttribute="trailing" secondItem="lxh-Iv-XVf" secondAttribute="trailing" constant="18" id="TkF-qE-zWO"/>
+                            <constraint firstItem="FzG-t3-VM7" firstAttribute="leading" secondItem="AHP-TC-SdT" secondAttribute="leading" id="kWG-WT-T8b"/>
+                            <constraint firstItem="FzG-t3-VM7" firstAttribute="trailing" secondItem="AHP-TC-SdT" secondAttribute="trailing" id="m0e-VQ-jQF"/>
+                            <constraint firstItem="tbZ-OT-Ya7" firstAttribute="leading" secondItem="AHP-TC-SdT" secondAttribute="leading" constant="18" id="xs9-96-gBZ"/>
+                            <constraint firstItem="lxh-Iv-XVf" firstAttribute="leading" secondItem="AHP-TC-SdT" secondAttribute="leading" constant="18" id="zpW-n3-b7l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AHP-TC-SdT"/>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="FzG-t3-VM7" id="zlw-Mn-kO4"/>
+                        <outlet property="searchBar" destination="lxh-Iv-XVf" id="miF-Oj-Sda"/>
+                        <outlet property="tableView" destination="tbZ-OT-Ya7" id="Uq5-Eq-UjY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hn9-BO-vug" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4451" y="32"/>
+        </scene>
     </scenes>
     <resources>
         <image name="JifflrLogo" width="255" height="71"/>
+        <image name="LocationGPS" width="17" height="23"/>
         <image name="LocationRequired" width="96" height="96"/>
         <image name="MainBackground" width="375" height="667"/>
     </resources>

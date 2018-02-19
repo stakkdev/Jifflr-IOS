@@ -18,23 +18,28 @@ class UserManager: NSObject {
 
     func signUp(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (ErrorMessage?) -> Void) {
 
-        let newUser = PFUser()
-        newUser.firstName = userInfo["firstName"] as! String
-        newUser.lastName = userInfo["lastName"] as! String
-        newUser.email = userInfo["email"] as? String
-        newUser.password = userInfo["password"] as? String
-        newUser.username = userInfo["email"] as? String
-        newUser.location = userInfo["location"] as! String
-        newUser.dateOfBirth = userInfo["dateOfBirth"] as! Date
-        newUser.gender = userInfo["gender"] as! String
-        newUser.friends = []
+        let userDetails = UserDetails()
+        userDetails.firstName = userInfo["firstName"] as! String
+        userDetails.lastName = userInfo["lastName"] as! String
+        userDetails.dateOfBirth = userInfo["dateOfBirth"] as! Date
+        userDetails.gender = userInfo["gender"] as! String
+        userDetails.emailVerified = false
+        userDetails.location = userInfo["location"] as! Location
+        userDetails.geoPoint = userInfo["geoPoint"] as! PFGeoPoint
+        userDetails.displayLocation = userInfo["displayLocation"] as! String
 
-        if let invitationCode = userInfo["invitationCode"] as? Int {
-            newUser.invitationCode = invitationCode
+        if let invitationCode = userInfo["invitationCode"] as? String {
+            userDetails.invitationCode = invitationCode
         }
 
+        let newUser = PFUser()
+        newUser.details = userDetails
+        newUser.email = userInfo["email"] as! String
+        newUser.password = userInfo["password"] as? String
+        newUser.username = userInfo["email"] as? String
+
         let query = PFUser.query()
-        query?.whereKey("username", equalTo: newUser.email!)
+        query?.whereKey("username", equalTo: newUser.email)
         query?.getFirstObjectInBackground(block: { (user, error) in
             if user != nil, error == nil {
                 completion(ErrorMessage.userAlreadyExists)
@@ -45,7 +50,13 @@ class UserManager: NSObject {
                             if error != nil {
                                 completion(ErrorMessage.parseError(error!.localizedDescription))
                             } else {
-                                completion(nil)
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        completion(nil)
+                                    }
+                                })
                             }
                         })
                     } else {
@@ -72,12 +83,29 @@ class UserManager: NSObject {
                 return
             }
 
-            user.pinInBackground(block: { (succeeded, error) in
-                if error != nil {
-                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                } else {
-                    completion(user, nil)
+            user.details.fetchInBackground(block: { (userDetails, error) in
+                guard let userDetails = userDetails, error == nil else {
+                    if let error = error {
+                        completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                    } else {
+                        completion(nil, ErrorMessage.unknown)
+                    }
+                    return
                 }
+
+                user.pinInBackground(block: { (succeeded, error) in
+                    if error != nil {
+                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                    } else {
+                        userDetails.pinInBackground(block: { (success, error) in
+                            if error != nil {
+                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                completion(user, nil)
+                            }
+                        })
+                    }
+                })
             })
         }
     }

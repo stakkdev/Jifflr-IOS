@@ -44,9 +44,9 @@ enum Environment: String {
     var appURL: String {
         switch self {
         case .staging:
-            return "https://adm8.thecore.thedistance.co.uk/parse"
+            return "https://jifflr.thecore.thedistance.co.uk/parse"
         case .production:
-            return "https://adm8.thedistance.co.uk/parse"
+            return "https://jifflr.thedistance.co.uk/parse"
         }
     }
 }

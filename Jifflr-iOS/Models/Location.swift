@@ -16,11 +16,26 @@ final class Location: PFObject {
         get {
             return self["isoCountryCode"] as! String
         }
+        set {
+            self["isoCountryCode"] = newValue
+        }
     }
 
-    var countryName: Int {
+    var name: String {
         get {
-            return self["countryName"] as! Int
+            return self["name"] as! String
+        }
+        set {
+            self["name"] = newValue
+        }
+    }
+
+    var locationStatus: LocationStatus {
+        get {
+            return self["locationStatus"] as! LocationStatus
+        }
+        set {
+            self["locationStatus"] = newValue
         }
     }
 }

@@ -66,6 +66,8 @@
 "register.termsAndConditions.heading" = "I accept the Terms and Conditions";
 "register.registerButton.title" = "REGISTER";
 
+"yourLocation.navigation.title" = "Your Location";
+
 "termsAndConditions.navigation.title" = "Terms & Conditions";
 "termsAndConditions.content" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 
@@ -75,4 +77,32 @@
 "dashboard.adBuilderButton.title" = "Ad Builder";
 "dashboard.helpButton.title" = "NEED SOME HELP?"; // The last word before the '?' will be orange.
 "dashboard.slogan" = "IT PAYS\nTO PLAY"; // Need the \n to wrap onto a new line. The first line will be orange, second will be white.
+
+"myTeam.navigation.title" = "My Team";
+"myTeam.segmentedControlButton1.title" = "FRIENDS";
+"myTeam.segmentedControlButton2.title" = "PENDING";
+"myTeam.teamSize.title" = "Team Size";
+"myTeam.membersLabel.title" = "%i Members";
+"myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
+
+"adsViewed.navigation.title" = "Ad Views";
+"adsViewed.segmentedControlButton1.title" = "AD PROGRESS";
+"adsViewed.segmentedControlButton2.title" = "AD HISTORY";
+"adsViewed.adsViewedCell.title" = "Ads Viewed";
+"adsViewed.targetLabel.title" = "Just %i Ads Per Day"; // %i required to dynamically insert integer into text.
+"adsViewed.detailLabel.title" = "To receive 100% of income";
+"adsViewed.adBacklog.title" = "Ad Backlog";
+"adsViewed.adBacklogMinimum.title" = "%i ads a day for no backlog";
+"adsViewed.percentageDue.title" = "% of Team Income Due";
+"adsViewed.percentageDue.detail" = "Review more ads to get 100%";
+
+"myMoney.navigation.title" = "My Money";
+"myMoney.segmentedControlButton1.title" = "CASH OUT";
+"myMoney.segmentedControlButton2.title" = "WITHDRAWN";
+"myMoney.totalWithdrawnCell.title" = "Total Withdrawn";
+"myMoney.paypalEmailCell.heading" = "PayPal Email Address";
+"myMoney.paypalEmailCell.placeholder" = "Enter PayPal email address";
+"myMoney.confirmPasswordCell.heading" = "Confirm Jifflr Password";
+"myMoney.confirmPasswordCell.placeholder" = "Enter Jifflr password";
+"myMoney.cashoutCell.heading" = "CASH OUT";
 
