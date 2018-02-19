@@ -140,8 +140,8 @@ class DashboardViewController: BaseViewController {
         self.navigationController?.pushViewController(TeamViewController.instantiateFromStoryboard(), animated: true)
     }
 
-    @IBAction func cashOutButtonPressed(_ sender: UIButton) {
-        //self.navigationController?.pushViewController(CashoutViewController.instantiateFromStoryboard(), animated: true)
+    @IBAction func myMoneyButtonPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(MyMoneyViewController.instantiateFromStoryboard(), animated: true)
     }
 
     @IBAction func adsViewedPressed(_ sender: UIButton) {

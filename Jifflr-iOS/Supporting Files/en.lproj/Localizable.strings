@@ -96,3 +96,13 @@
 "adsViewed.percentageDue.title" = "% of Team Income Due";
 "adsViewed.percentageDue.detail" = "Review more ads to get 100%";
 
+"myMoney.navigation.title" = "My Money";
+"myMoney.segmentedControlButton1.title" = "CASH OUT";
+"myMoney.segmentedControlButton2.title" = "WITHDRAWN";
+"myMoney.totalWithdrawnCell.title" = "Total Withdrawn";
+"myMoney.paypalEmailCell.heading" = "PayPal Email Address";
+"myMoney.paypalEmailCell.placeholder" = "Enter PayPal email address";
+"myMoney.confirmPasswordCell.heading" = "Confirm Jifflr Password";
+"myMoney.confirmPasswordCell.placeholder" = "Enter Jifflr password";
+"myMoney.cashoutCell.heading" = "CASH OUT";
+

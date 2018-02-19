@@ -51,12 +51,17 @@
 		E9798C16201A430D00E8A7D2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C15201A430D00E8A7D2 /* Session.swift */; };
 		E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */; };
 		E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */; };
-		E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */; };
+		E9798C22201A4C0F00E8A7D2 /* MyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C21201A4C0F00E8A7D2 /* MyMoneyViewController.swift */; };
 		E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */; };
 		E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */; };
 		E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */; };
 		E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */; };
 		E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */; };
+		E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */; };
+		E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */; };
+		E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */; };
+		E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E1A203AE4C70097BC65 /* CashoutCell.swift */; };
+		E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E1C203AE9DF0097BC65 /* WithdrawnHistoryCell.swift */; };
 		E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */; };
 		E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */; };
 		E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */; };
@@ -168,12 +173,17 @@
 		E9798C15201A430D00E8A7D2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Helpers/Session.swift; sourceTree = "<group>"; };
 		E9798C17201A43C000E8A7D2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewControllerExtensions.swift; path = Extensions/ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		E9798C1E201A4BD200E8A7D2 /* TeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamViewController.swift; path = Controllers/Team/TeamViewController.swift; sourceTree = "<group>"; };
-		E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CashoutViewController.swift; path = "Controllers/My Money/CashoutViewController.swift"; sourceTree = "<group>"; };
+		E9798C21201A4C0F00E8A7D2 /* MyMoneyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyMoneyViewController.swift; path = "Controllers/My Money/MyMoneyViewController.swift"; sourceTree = "<group>"; };
 		E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = "Controllers/Play Advert/AdvertViewController.swift"; sourceTree = "<group>"; };
 		E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingFeedbackViewController.swift; sourceTree = "<group>"; };
+		E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalWithdrawnCell.swift; path = "Controllers/My Money/Cells/TotalWithdrawnCell.swift"; sourceTree = "<group>"; };
+		E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayPalEmailCell.swift; path = "Controllers/My Money/Cells/PayPalEmailCell.swift"; sourceTree = "<group>"; };
+		E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmPasswordCell.swift; path = "Controllers/My Money/Cells/ConfirmPasswordCell.swift"; sourceTree = "<group>"; };
+		E97B9E1A203AE4C70097BC65 /* CashoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CashoutCell.swift; path = "Controllers/My Money/Cells/CashoutCell.swift"; sourceTree = "<group>"; };
+		E97B9E1C203AE9DF0097BC65 /* WithdrawnHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawnHistoryCell.swift; path = "Controllers/My Money/Cells/WithdrawnHistoryCell.swift"; sourceTree = "<group>"; };
 		E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Advert.swift; path = Models/Advert.swift; sourceTree = "<group>"; };
 		E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackQuestion.swift; path = Models/FeedbackQuestion.swift; sourceTree = "<group>"; };
 		E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackType.swift; path = Models/FeedbackType.swift; sourceTree = "<group>"; };
@@ -362,7 +372,8 @@
 		E9798C20201A4BE200E8A7D2 /* My Money */ = {
 			isa = PBXGroup;
 			children = (
-				E9798C21201A4C0F00E8A7D2 /* CashoutViewController.swift */,
+				E9798C21201A4C0F00E8A7D2 /* MyMoneyViewController.swift */,
+				E97B9E13203ADD8C0097BC65 /* Cells */,
 			);
 			name = "My Money";
 			sourceTree = "<group>";
@@ -386,6 +397,18 @@
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
+			sourceTree = "<group>";
+		};
+		E97B9E13203ADD8C0097BC65 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */,
+				E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */,
+				E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */,
+				E97B9E1A203AE4C70097BC65 /* CashoutCell.swift */,
+				E97B9E1C203AE9DF0097BC65 /* WithdrawnHistoryCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		E9A717661F8B89AC00B07414 = {
@@ -884,6 +907,7 @@
 			files = (
 				E9798C16201A430D00E8A7D2 /* Session.swift in Sources */,
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
+				E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */,
 				E9E0B55A1F8BC5A200CBBA72 /* UserManager.swift in Sources */,
 				E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */,
 				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
@@ -912,6 +936,7 @@
 				E951794B1F90D1CC0000A08D /* CashoutManager.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
+				E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */,
 				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,
 				E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */,
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
@@ -920,8 +945,9 @@
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
 				E9328A56202DB72100D79CF7 /* UserDefaultsManager.swift in Sources */,
+				E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
-				E9798C22201A4C0F00E8A7D2 /* CashoutViewController.swift in Sources */,
+				E9798C22201A4C0F00E8A7D2 /* MyMoneyViewController.swift in Sources */,
 				E937F5C420372F1D00171480 /* MockContent.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */,
@@ -946,9 +972,11 @@
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
 				E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */,
 				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
+				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
 				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
 				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,
 				E937F5B62036F44300171480 /* UserDetails.swift in Sources */,
+				E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
