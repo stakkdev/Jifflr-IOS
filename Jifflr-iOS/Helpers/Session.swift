@@ -16,4 +16,8 @@ final class Session {
     var currentUser: PFUser? {
         return PFUser.current()
     }
+
+    var currentLanguage: String {
+        return Locale.current.languageCode ?? "en"
+    }
 }

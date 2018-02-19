@@ -102,6 +102,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="NEED SOME HELP?"/>
+                                <connections>
+                                    <action selector="helpButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="I3I-PS-mGQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-3q-TdT" customClass="PulsePlayButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="140.5" y="326.5" width="94" height="94"/>
@@ -158,90 +161,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnC-PQ-paG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2528.8000000000002" y="19.340329835082461"/>
-        </scene>
-        <!--Cashout View Controller-->
-        <scene sceneID="shR-vE-wsQ">
-            <objects>
-                <viewController storyboardIdentifier="CashoutViewController" id="LV9-op-5Zi" customClass="CashoutViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kQB-3H-FsI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj2-HR-bWz">
-                                <rect key="frame" x="155" y="102.5" width="64" height="30"/>
-                                <state key="normal" title="Cash Out"/>
-                                <connections>
-                                    <action selector="cashoutButtonPressed:" destination="LV9-op-5Zi" eventType="touchUpInside" id="NGe-qk-1Oy"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sSg-sh-ct6">
-                                <rect key="frame" x="0.0" y="212" width="375" height="455"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cashoutHistoryCell" textLabel="Ywc-Pv-Qv0" detailTextLabel="EEc-UT-qeE" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="JFY-iM-8Hf">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFY-iM-8Hf" id="R1b-mt-dro">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ywc-Pv-Qv0">
-                                                    <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EEc-UT-qeE">
-                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-EP-6h9">
-                                <rect key="frame" x="20" y="171" width="55" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money available: £0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kka-WK-W36">
-                                <rect key="frame" x="99.5" y="52" width="176.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="sSg-sh-ct6" firstAttribute="leading" secondItem="u3e-ee-Ibg" secondAttribute="leading" id="8Rj-FP-avf"/>
-                            <constraint firstItem="hj2-HR-bWz" firstAttribute="top" secondItem="Kka-WK-W36" secondAttribute="bottom" constant="30" id="8oe-7I-J7W"/>
-                            <constraint firstItem="hj2-HR-bWz" firstAttribute="leading" secondItem="8PL-EP-6h9" secondAttribute="trailing" constant="80" id="EKE-h9-bII"/>
-                            <constraint firstItem="sSg-sh-ct6" firstAttribute="top" secondItem="8PL-EP-6h9" secondAttribute="bottom" constant="20" id="ML1-OC-rHz"/>
-                            <constraint firstItem="sSg-sh-ct6" firstAttribute="trailing" secondItem="u3e-ee-Ibg" secondAttribute="trailing" id="Nhz-EO-yZa"/>
-                            <constraint firstItem="8PL-EP-6h9" firstAttribute="top" secondItem="hj2-HR-bWz" secondAttribute="bottom" constant="38.5" id="dlJ-ey-463"/>
-                            <constraint firstItem="hj2-HR-bWz" firstAttribute="centerX" secondItem="Kka-WK-W36" secondAttribute="centerX" id="gzN-3L-YS3"/>
-                            <constraint firstItem="Kka-WK-W36" firstAttribute="top" secondItem="u3e-ee-Ibg" secondAttribute="top" constant="32" id="jCk-eY-Cb1"/>
-                            <constraint firstItem="sSg-sh-ct6" firstAttribute="bottom" secondItem="u3e-ee-Ibg" secondAttribute="bottom" id="lr9-zw-m5Q"/>
-                            <constraint firstItem="8PL-EP-6h9" firstAttribute="leading" secondItem="u3e-ee-Ibg" secondAttribute="leading" constant="20" id="u0G-OI-wqK"/>
-                            <constraint firstItem="Kka-WK-W36" firstAttribute="centerX" secondItem="kQB-3H-FsI" secondAttribute="centerX" id="vJT-MV-x5d"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="u3e-ee-Ibg"/>
-                    </view>
-                    <connections>
-                        <outlet property="cashOutButton" destination="hj2-HR-bWz" id="oDg-7b-p2z"/>
-                        <outlet property="moneyAvailableLabel" destination="Kka-WK-W36" id="IES-ob-q6U"/>
-                        <outlet property="tableView" destination="sSg-sh-ct6" id="2gu-F5-bhv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ryg-fL-7ns" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3260" y="19"/>
         </scene>
     </scenes>
     <resources>

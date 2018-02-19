@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
 
         print("Running environment: \(Constants.currentEnvironment.rawValue)")
-        print("Running language: \(Locale.current.languageCode ?? "")")
+        print("Running language: \(Session.shared.currentLanguage)")
 
         UIApplication.shared.statusBarStyle = .lightContent
 
