@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>19.02.2018</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
@@ -42,6 +42,12 @@
 	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Jifflr fetches your location to help with registration.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GothamBold.otf</string>
+		<string>GothamBook.otf</string>
+		<string>GothamMedium.otf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -65,11 +71,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>GothamBold.otf</string>
-		<string>GothamBook.otf</string>
-		<string>GothamMedium.otf</string>
-	</array>
 </dict>
 </plist>
