@@ -44,6 +44,8 @@ class FAQSegmentedControl: UIView {
 
         guard categories.count > 0 else { return }
 
+        self.resetView()
+
         for (index, category) in categories.enumerated() {
             let button = FAQSegmentedControlButton()
             button.setTitle(category.name, for: .normal)
@@ -105,6 +107,16 @@ class FAQSegmentedControl: UIView {
         sender.setFAQButtonEnabled()
 
         self.delegate?.valueChanged()
+    }
+
+    func resetView() {
+        self.previousButton = nil
+        for subview in self.subviews {
+            if let button = subview as? FAQSegmentedControlButton {
+                self.removeConstraints(button.constraints)
+                button.removeFromSuperview()
+            }
+        }
     }
 }
 
