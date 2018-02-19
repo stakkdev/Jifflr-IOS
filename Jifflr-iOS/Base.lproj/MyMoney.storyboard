@@ -76,7 +76,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDa-mN-vOV">
                                                     <rect key="frame" x="18" y="24" width="339" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Withdrawn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-3a-6Ak">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Withdrawn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-3a-6Ak">
                                                             <rect key="frame" x="18" y="14.5" width="168" height="22.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,6 +94,7 @@
                                                         <constraint firstItem="HS6-3a-6Ak" firstAttribute="centerY" secondItem="fDa-mN-vOV" secondAttribute="centerY" id="09l-4n-6YV"/>
                                                         <constraint firstItem="urr-kp-x1T" firstAttribute="centerY" secondItem="fDa-mN-vOV" secondAttribute="centerY" id="0PM-iP-Rab"/>
                                                         <constraint firstItem="HS6-3a-6Ak" firstAttribute="leading" secondItem="fDa-mN-vOV" secondAttribute="leading" constant="18" id="APg-io-cPe"/>
+                                                        <constraint firstItem="urr-kp-x1T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HS6-3a-6Ak" secondAttribute="trailing" constant="8" id="eS0-lc-Yir"/>
                                                         <constraint firstAttribute="height" constant="50" id="lJM-ak-YdL"/>
                                                         <constraint firstAttribute="trailing" secondItem="urr-kp-x1T" secondAttribute="trailing" constant="18" id="ogI-Rk-QhG"/>
                                                     </constraints>
@@ -132,7 +133,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-qC-Tb3" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-qC-Tb3" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
                                                     <rect key="frame" x="17" y="23" width="341" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="xTm-sS-Ydb"/>
@@ -170,7 +171,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W4w-lJ-FZD" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="W4w-lJ-FZD" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
                                                     <rect key="frame" x="17" y="23" width="341" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="9xv-qq-0Xa"/>
