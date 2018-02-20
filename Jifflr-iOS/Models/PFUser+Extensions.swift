@@ -36,4 +36,16 @@ extension PFUser {
             self["details"] = newValue
         }
     }
+
+    func canEditInvitationCode() -> Bool {
+        guard let createdAt = self.createdAt else {
+            return false
+        }
+
+        guard let minimumDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()), createdAt > minimumDate else {
+            return false
+        }
+
+        return true
+    }
 }

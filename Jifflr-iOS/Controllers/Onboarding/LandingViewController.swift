@@ -36,11 +36,15 @@ class LandingViewController: UIViewController {
                 onboarding.presentOnboardingVC(from: self, animated: true)
             }
         } else {
-            if LocationManager.shared.locationServicesEnabled() == true {
-                self.rootDashboardViewController()
-            } else {
-                self.rootLocationRequiredViewController()
-            }
+            UserManager.shared.syncUser(completion: { (error) in
+                guard error == nil else { return }
+
+                if LocationManager.shared.locationServicesEnabled() == true {
+                    self.rootDashboardViewController()
+                } else {
+                    self.rootLocationRequiredViewController()
+                }
+            })
         }
     }
 }

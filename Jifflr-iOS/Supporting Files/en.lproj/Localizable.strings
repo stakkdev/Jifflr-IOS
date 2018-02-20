@@ -110,3 +110,7 @@
 "faqs.navigation.title" = "FAQs";
 "faqsDetail.navigation.title" = "FAQ";
 
+"profile.navigation.title" = "Profile";
+"profile.logoutButton.title" = "LOGOUT";
+"profile.deleteAccountButton.title" = "DELETE ACCOUNT";
+

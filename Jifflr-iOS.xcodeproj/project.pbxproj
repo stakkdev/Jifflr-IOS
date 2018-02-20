@@ -100,6 +100,8 @@
 		E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */; };
 		E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */; };
 		E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */; };
+		E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */; };
+		E9D8E1C3203C318500F978D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D8E1C1203C318500F978D2 /* Profile.storyboard */; };
 		E9DBBC3920163485000B8835 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DBBC3B20163485000B8835 /* Localizable.strings */; };
 		E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */; };
 		E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD581A2035C3CC000735C3 /* TeamSizeCell.swift */; };
@@ -236,6 +238,8 @@
 		E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextField.swift; path = Views/TextFields/JifflrTextField.swift; sourceTree = "<group>"; };
 		E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldPassword.swift; path = Views/TextFields/JifflrTextFieldPassword.swift; sourceTree = "<group>"; };
 		E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldInvitation.swift; path = Views/TextFields/JifflrTextFieldInvitation.swift; sourceTree = "<group>"; };
+		E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
+		E9D8E1C2203C318500F978D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		E9DBBC3A20163485000B8835 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DBBC3C20163494000B8835 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrSegmentedControl.swift; path = Views/JifflrSegmentedControl.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 				E9798C20201A4BE200E8A7D2 /* My Money */,
 				E9798C23201A4C2B00E8A7D2 /* Play Advert */,
 				E97B9E1E203B03CF0097BC65 /* FAQs */,
+				E9D8E1BE203C312F00F978D2 /* Profile */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */,
 				E937F5C720373BEA00171480 /* AdsViewed.storyboard */,
 				E97B9E21203B04D90097BC65 /* FAQs.storyboard */,
+				E9D8E1C1203C318500F978D2 /* Profile.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -640,6 +646,14 @@
 				E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */,
 			);
 			name = TextFields;
+			sourceTree = "<group>";
+		};
+		E9D8E1BE203C312F00F978D2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		E9DD58192035C387000735C3 /* Cells */ = {
@@ -772,6 +786,7 @@
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
 				E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */,
+				E9D8E1C3203C318500F978D2 /* Profile.storyboard in Resources */,
 				E9A717951F8B89AC00B07414 /* Cartfile.private in Resources */,
 				E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */,
 				E9A7178E1F8B89AC00B07414 /* setup.sh in Resources */,
@@ -968,6 +983,7 @@
 				E97B9E28203B091A0097BC65 /* FAQCell.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
+				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
 				E9E0B55C1F8BD43500CBBA72 /* LocationManager.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,
@@ -1099,6 +1115,14 @@
 				E9A7179F1F8B89AC00B07414 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E9D8E1C1203C318500F978D2 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D8E1C2203C318500F978D2 /* Base */,
+			);
+			name = Profile.storyboard;
 			sourceTree = "<group>";
 		};
 		E9DBBC3B20163485000B8835 /* Localizable.strings */ = {

@@ -129,7 +129,7 @@ class DashboardViewController: BaseViewController {
     }
 
     @IBAction func profileButtonPressed(sender: UIButton) {
-
+        self.navigationController?.pushViewController(ProfileViewController.instantiateFromStoryboard(), animated: true)
     }
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
