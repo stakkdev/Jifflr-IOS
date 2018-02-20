@@ -16,6 +16,8 @@
 "error.register.termsAndConditions" = "Unable to register. Please accept Jifflr's terms and conditions.";
 "error.register.userAlreadyExists" = "Email already registered. Please use a different email address that has not already been registered.";
 "error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
+"error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
+"error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

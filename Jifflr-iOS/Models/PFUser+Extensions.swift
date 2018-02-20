@@ -48,4 +48,23 @@ extension PFUser {
 
         return true
     }
+
+    func saveAndPin(completion: @escaping (ErrorMessage?) -> Void) {
+        self.saveInBackground { (success, error) in
+            guard error == nil else {
+                completion(ErrorMessage.parseError(error!.localizedDescription))
+                return
+            }
+
+            self.pinInBackground(block: { (success, error) in
+                print("User Pinned: \(success)")
+
+                if let error = error {
+                    print("Error: \(error)")
+                }
+
+                completion(nil)
+            })
+        }
+    }
 }

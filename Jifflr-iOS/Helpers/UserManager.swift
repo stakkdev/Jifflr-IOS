@@ -151,6 +151,22 @@ class UserManager: NSObject {
         }
     }
 
+    func usernameAvailable(email: String, completion: @escaping (Bool?, ErrorMessage?) -> Void) {
+        let query = PFUser.query()
+        query?.whereKey("username", equalTo: email)
+        query?.countObjectsInBackground(block: { (count, error) in
+            if error != nil {
+                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+            } else {
+                if count == 0 {
+                    completion(true, nil)
+                } else {
+                    completion(false, nil)
+                }
+            }
+        })
+    }
+
     func logOut(completion: @escaping (ErrorMessage?) -> Void) {
         PFUser.logOutInBackground { error in
             DispatchQueue.main.async {
