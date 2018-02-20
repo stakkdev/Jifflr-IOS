@@ -14,9 +14,49 @@ class FAQManager: NSObject {
 
     let pinName = "FAQs"
 
-    func fetchFAQs(completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
+    func fetchFAQs(languageCode: String, completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
+        if languageCode == Session.shared.englishLanguageCode {
+            self.queryFAQs(languageCode: languageCode, completion: { (faqs, error) in
+                completion(faqs, error)
+                return
+            })
+        } else {
+            self.countFAQs(languageCode: languageCode, completion: { (count, error) in
+                guard let count = count, error == nil else {
+                    completion(nil, error)
+                    return
+                }
+
+                if count == 0 {
+                    self.queryFAQs(languageCode: Session.shared.englishLanguageCode, completion: { (faqs, error) in
+                        completion(faqs, error)
+                    })
+                } else {
+                    self.queryFAQs(languageCode: languageCode, completion: { (faqs, error) in
+                        completion(faqs, error)
+                    })
+                }
+            })
+        }
+    }
+
+    func countFAQs(languageCode: String, completion: @escaping (Int?, ErrorMessage?) -> Void) {
         let query = FAQ.query()
-        query?.whereKey("languageCode", equalTo: Session.shared.currentLanguage)
+        query?.whereKey("languageCode", equalTo: languageCode)
+        query?.order(byAscending: "index")
+        query?.countObjectsInBackground(block: { (count, error) in
+            guard error == nil else {
+                completion(nil, ErrorMessage.faqsFailed)
+                return
+            }
+
+            completion(Int(count), nil)
+        })
+    }
+
+    func queryFAQs(languageCode: String, completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
+        let query = FAQ.query()
+        query?.whereKey("languageCode", equalTo: languageCode)
         query?.order(byAscending: "index")
         query?.includeKey("category")
         query?.findObjectsInBackground(block: { (faqs, error) in
@@ -50,8 +90,27 @@ class FAQManager: NSObject {
                 return
             }
 
-            let data = self.parseFAQs(faqs: faqs)
-            completion(data, nil)
+            if faqs.count > 0 {
+                let data = self.parseFAQs(faqs: faqs)
+                completion(data, nil)
+                return
+
+            } else {
+                let query = FAQ.query()
+                query?.whereKey("languageCode", equalTo: Session.shared.englishLanguageCode)
+                query?.order(byAscending: "index")
+                query?.includeKey("category")
+                query?.fromPin(withName: self.pinName)
+                query?.findObjectsInBackground(block: { (faqsEn, error) in
+                    guard let faqsEn = faqsEn as? [FAQ], error == nil else {
+                        completion(nil, ErrorMessage.faqsFailed)
+                        return
+                    }
+
+                    let data = self.parseFAQs(faqs: faqsEn)
+                    completion(data, nil)
+                })
+            }
         })
     }
 

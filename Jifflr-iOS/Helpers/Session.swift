@@ -20,4 +20,8 @@ final class Session {
     var currentLanguage: String {
         return Locale.current.languageCode ?? "en"
     }
+
+    var englishLanguageCode: String {
+        return "en"
+    }
 }

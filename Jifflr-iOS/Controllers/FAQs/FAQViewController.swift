@@ -65,7 +65,7 @@ class FAQViewController: BaseViewController {
             self.faqData = data
         }
 
-        FAQManager.shared.fetchFAQs { (data, error) in
+        FAQManager.shared.fetchFAQs(languageCode: Session.shared.currentLanguage) { (data, error) in
             guard let data = data, error == nil else {
                 if let error = error {
                     self.displayMessage(title: error.failureTitle, message: error.failureDescription)
