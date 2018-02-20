@@ -42,7 +42,7 @@ extension PFUser {
             return false
         }
 
-        guard let minimumDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()), createdAt > minimumDate else {
+        guard let minimumDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()), createdAt > minimumDate else {
             return false
         }
 

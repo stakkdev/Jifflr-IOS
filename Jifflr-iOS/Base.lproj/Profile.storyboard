@@ -181,6 +181,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="DELETE ACCOUNT"/>
+                                        <connections>
+                                            <action selector="deleteAccountButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="kh8-F4-aan"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0D-rc-ofT" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="20" y="782" width="374" height="50"/>
@@ -189,6 +192,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="LOGOUT"/>
+                                        <connections>
+                                            <action selector="logoutButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="n2A-w1-CI2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -207,7 +213,7 @@
                                     <constraint firstItem="cbe-iW-J0b" firstAttribute="trailing" secondItem="hYt-0f-TV3" secondAttribute="trailing" id="A1a-Qc-age"/>
                                     <constraint firstItem="59m-Sn-V1J" firstAttribute="trailing" secondItem="Y8O-S2-ffF" secondAttribute="trailing" id="CmH-ri-Pzu"/>
                                     <constraint firstItem="Rta-iY-wi7" firstAttribute="top" secondItem="ApE-8l-OO9" secondAttribute="bottom" constant="12" id="DeL-d1-lbR"/>
-                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="l1e-KL-KCf" secondAttribute="bottom" constant="46" id="Ew5-FA-VbW"/>
+                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="mne-yZ-Ea8" secondAttribute="bottom" constant="137" id="Fkq-nK-q9k"/>
                                     <constraint firstItem="1n0-Mc-RGj" firstAttribute="leading" secondItem="59m-Sn-V1J" secondAttribute="leading" id="G9u-36-Htc"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="leading" secondItem="l1e-KL-KCf" secondAttribute="leading" id="GDf-4w-6eq"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="trailing" secondItem="l1e-KL-KCf" secondAttribute="trailing" id="Hat-xP-cLx"/>
@@ -278,6 +284,7 @@
                         <outlet property="locationHeadingLabel" destination="1n0-Mc-RGj" id="6vh-Qd-JcC"/>
                         <outlet property="locationTextField" destination="hYt-0f-TV3" id="ZNr-5o-G2j"/>
                         <outlet property="logoutButton" destination="B0D-rc-ofT" id="Bmp-Mc-fi4"/>
+                        <outlet property="logoutButtonTop" destination="Fkq-nK-q9k" id="qcn-L3-PE5"/>
                         <outlet property="passwordHeadingLabel" destination="59m-Sn-V1J" id="I6t-TV-pUQ"/>
                         <outlet property="passwordTextField" destination="Rx3-5d-sgL" id="WiJ-tD-qXE"/>
                         <outlet property="scrollView" destination="2jp-Uo-lkv" id="Ial-IG-yll"/>
