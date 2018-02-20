@@ -116,3 +116,5 @@
 "profile.logoutButton.title" = "LOGOUT";
 "profile.deleteAccountButton.title" = "DELETE ACCOUNT";
 
+"settings.navigation.title" = "Settings";
+
