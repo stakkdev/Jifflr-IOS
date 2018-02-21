@@ -49,6 +49,10 @@ class SettingsViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
+
+        self.notificationsSwitch.isOn = UserDefaultsManager.shared.notificationsOn()
+        self.crashTrackerSwitch.isOn = UserDefaultsManager.shared.crashTrackerOn()
+        self.analyticsSwitch.isOn = UserDefaultsManager.shared.analyticsOn()
     }
 
     func setupLocalization() {
@@ -60,5 +64,17 @@ class SettingsViewController: BaseViewController {
         self.crashTrackerLabel.text = "settings.crashTracker.message".localized()
         self.analyticsHeadingLabel.text = "settings.analytics.heading".localized()
         self.analyticsLabel.text = "settings.analytics.message".localized()
+    }
+
+    @IBAction func notificationsChanged(sender: UISwitch) {
+        SettingsManager.shared.toggleNotifications(on: sender.isOn)
+    }
+
+    @IBAction func crashTrackerChanged(sender: UISwitch) {
+        SettingsManager.shared.toggleCrashTracker(on: sender.isOn)
+    }
+
+    @IBAction func analyticsChanged(sender: UISwitch) {
+        SettingsManager.shared.toggleAnalytics(on: sender.isOn)
     }
 }

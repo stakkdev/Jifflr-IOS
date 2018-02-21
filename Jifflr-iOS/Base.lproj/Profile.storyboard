@@ -321,6 +321,9 @@
                                             <constraint firstAttribute="width" constant="49" id="Qb8-aH-gwa"/>
                                         </constraints>
                                         <color key="onTintColor" red="0.95686274509803915" green="0.49411764705882355" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="notificationsChangedWithSender:" destination="gLr-t0-fuB" eventType="valueChanged" id="nAV-sL-KSS"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Collections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egQ-l2-K2L">
                                         <rect key="frame" x="18" y="75.5" width="167.5" height="22.5"/>
@@ -353,6 +356,9 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                             <constraint firstAttribute="height" constant="31" id="fBP-eg-Pgv"/>
                                         </constraints>
                                         <color key="onTintColor" red="0.95686274510000002" green="0.4941176471" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="crashTrackerChangedWithSender:" destination="gLr-t0-fuB" eventType="valueChanged" id="XCB-vX-XO7"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crashlytics is used to collect crash reports which help us fix any issues more quickly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zo1-R0-THr">
                                         <rect key="frame" x="18" y="192" width="303" height="17.5"/>
@@ -379,6 +385,9 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                             <constraint firstAttribute="width" constant="49" id="ow4-mu-PQV"/>
                                         </constraints>
                                         <color key="onTintColor" red="0.95686274510000002" green="0.4941176471" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="analyticsChangedWithSender:" destination="gLr-t0-fuB" eventType="valueChanged" id="kmM-bk-1RR"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

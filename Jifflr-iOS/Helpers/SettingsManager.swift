@@ -1,0 +1,25 @@
+//
+//  SettingsManager.swift
+//  Jifflr-iOS
+//
+//  Created by James Shaw on 21/02/2018.
+//  Copyright © 2018 The Distance. All rights reserved.
+//
+
+import UIKit
+
+class SettingsManager: NSObject {
+    static let shared = SettingsManager()
+
+    func toggleNotifications(on: Bool) {
+        UserDefaultsManager.shared.setNotifications(on: on)
+    }
+
+    func toggleCrashTracker(on: Bool) {
+        UserDefaultsManager.shared.setCrashTracker(on: on)
+    }
+
+    func toggleAnalytics(on: Bool) {
+        UserDefaultsManager.shared.setAnalytics(on: on)
+    }
+}
