@@ -11,7 +11,6 @@ import UIKit
 import Localize_Swift
 
 public enum ErrorMessage {
-    case noInternetConnection
     case parseError(String)
     case userAlreadyExists
     case loginFailed
@@ -40,8 +39,6 @@ public enum ErrorMessage {
 
     public var failureDescription: String {
         switch self {
-        case .noInternetConnection:
-            return "Please check your internet connection and try again."
         case .parseError(let details):
             return "An error occured: \(details)"
         case .invalidField(let details):
@@ -90,11 +87,14 @@ public enum ErrorMessage {
 
 public enum AlertMessage {
     case resetEmailSent
+    case noInternetConnection
 
     public var title: String {
         switch self {
         case .resetEmailSent:
             return "alert.resetEmailSent.title".localized()
+        case .noInternetConnection:
+            return "alert.noInternetConnection.title".localized()
         }
     }
 
@@ -102,6 +102,8 @@ public enum AlertMessage {
         switch self {
         case .resetEmailSent:
             return "alert.resetEmailSent.message".localized()
+        case .noInternetConnection:
+            return "alert.noInternetConnection.message".localized()
         }
     }
 }

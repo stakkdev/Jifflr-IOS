@@ -12,6 +12,8 @@ class DashboardViewController: BaseViewController {
 
     var timer: Timer?
 
+    var internetAlertShown = false
+
     @IBOutlet weak var playAdsButton: PulsePlayButton!
     @IBOutlet weak var myTeamButton: DashboardButtonLeft!
     @IBOutlet weak var myMoneyButton: DashboardButtonLeft!
@@ -39,6 +41,11 @@ class DashboardViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        if !Reachability.isConnectedToNetwork() && self.internetAlertShown == false {
+            self.displayMessage(title: AlertMessage.noInternetConnection.title, message: AlertMessage.noInternetConnection.message)
+            self.internetAlertShown = true
+        }
 
         self.timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
             self.playAdsButton.pulse()

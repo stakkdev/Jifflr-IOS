@@ -38,7 +38,7 @@ class PulsePlayButton: UIButton {
         })
 
         let animation = CABasicAnimation(keyPath: "transform.rotation")
-        animation.duration = 0.6
+        animation.duration = 0.2
         animation.repeatCount = 1
         animation.autoreverses = false
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
