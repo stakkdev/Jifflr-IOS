@@ -117,4 +117,11 @@
 "profile.deleteAccountButton.title" = "DELETE ACCOUNT";
 
 "settings.navigation.title" = "Settings";
+"settings.notifications.heading" = "Notifications";
+"settings.dataCollections.heading" = "Data Collections";
+"settings.dataCollections.message" = "Data Collected summary - We collect data on the usage of this app to understand how we can make it better and ensure that it meets your needs. All the data collected is anonymous and cannot be traced to you.";
+"settings.crashTracker.heading" = "Crash Tracker";
+"settings.crashTracker.message" = "Crashlytics is used to collect crash reports which help us fix any issues more quickly.";
+"settings.analytics.heading" = "Analytics";
+"settings.analytics.message" = "Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments.";
 

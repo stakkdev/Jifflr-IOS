@@ -11,6 +11,16 @@ import UIKit
 class SettingsViewController: BaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var notificationsHeadingLabel: UILabel!
+    @IBOutlet weak var notificationsSwitch: UISwitch!
+    @IBOutlet weak var dataCollectionsHeadingLabel: UILabel!
+    @IBOutlet weak var dataCollectionsLabel: UILabel!
+    @IBOutlet weak var crashTrackerHeadingLabel: UILabel!
+    @IBOutlet weak var crashTrackerLabel: UILabel!
+    @IBOutlet weak var crashTrackerSwitch: UISwitch!
+    @IBOutlet weak var analyticsHeadingLabel: UILabel!
+    @IBOutlet weak var analyticsLabel: UILabel!
+    @IBOutlet weak var analyticsSwitch: UISwitch!
 
     class func instantiateFromStoryboard() -> SettingsViewController {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
@@ -23,6 +33,16 @@ class SettingsViewController: BaseViewController {
         self.setupUI()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        self.scrollView.layoutSubviews()
+        
+        let width = self.scrollView.frame.width
+        let height = self.analyticsLabel.frame.origin.y + self.analyticsLabel.frame.size.height + 50.0
+        self.scrollView.contentSize = CGSize(width: width, height: height)
+    }
+
     func setupUI() {
         self.setupLocalization()
 
@@ -33,5 +53,12 @@ class SettingsViewController: BaseViewController {
 
     func setupLocalization() {
         self.title = "settings.navigation.title".localized()
+        self.notificationsHeadingLabel.text = "settings.notifications.heading".localized()
+        self.dataCollectionsHeadingLabel.text = "settings.dataCollections.heading".localized()
+        self.dataCollectionsLabel.text = "settings.dataCollections.message".localized()
+        self.crashTrackerHeadingLabel.text = "settings.crashTracker.heading".localized()
+        self.crashTrackerLabel.text = "settings.crashTracker.message".localized()
+        self.analyticsHeadingLabel.text = "settings.analytics.heading".localized()
+        self.analyticsLabel.text = "settings.analytics.message".localized()
     }
 }

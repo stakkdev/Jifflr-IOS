@@ -425,6 +425,19 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qJv-5F-Lws"/>
                     </view>
+                    <connections>
+                        <outlet property="analyticsHeadingLabel" destination="u4i-yE-NWM" id="6fQ-ng-T8n"/>
+                        <outlet property="analyticsLabel" destination="HLh-CP-CPh" id="PCX-rF-uye"/>
+                        <outlet property="analyticsSwitch" destination="x7G-P8-gQE" id="4Dt-BV-oDk"/>
+                        <outlet property="crashTrackerHeadingLabel" destination="AIE-vB-YhV" id="MOf-OS-28M"/>
+                        <outlet property="crashTrackerLabel" destination="Zo1-R0-THr" id="tri-OS-4Da"/>
+                        <outlet property="crashTrackerSwitch" destination="h0r-KJ-mM9" id="RO7-bq-UX2"/>
+                        <outlet property="dataCollectionsHeadingLabel" destination="egQ-l2-K2L" id="lKF-Oc-WSR"/>
+                        <outlet property="dataCollectionsLabel" destination="DXf-HX-JYl" id="yGR-g4-fQK"/>
+                        <outlet property="notificationsHeadingLabel" destination="Ndj-oH-sSv" id="OpZ-hw-9sG"/>
+                        <outlet property="notificationsSwitch" destination="tXF-Qg-KyF" id="xab-Zk-jFn"/>
+                        <outlet property="scrollView" destination="3HR-De-fNV" id="s42-di-nS7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJz-VT-Rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
