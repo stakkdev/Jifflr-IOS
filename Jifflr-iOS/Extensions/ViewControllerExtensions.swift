@@ -48,4 +48,23 @@ extension UIViewController {
             appDelegate.window!.rootViewController = viewController
         }
     }
+
+    func requestGoToAppSettings(confirm: (() -> Void)?, cancel: (() -> Void)?) {
+        let application = UIApplication.shared
+        let alertVC = UIAlertController(title: "alert.notifications.title".localized(), message: "alert.notifications.message".localized(), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "alert.notifications.cancelButton".localized(), style: .cancel) { _ in
+            cancel?()
+        }
+
+        let confirmAction = UIAlertAction(title: "alert.notifications.goToSettingsButton".localized(), style: .default) { _ in
+            if let settingsURL = URL(string: UIApplicationOpenSettingsURLString), application.canOpenURL(settingsURL) {
+                application.open(settingsURL, options: [:], completionHandler: nil)
+            }
+            confirm?()
+        }
+
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(confirmAction)
+        self.present(alertVC, animated: true, completion: nil)
+    }
 }

@@ -34,6 +34,7 @@
 		E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5CD203741A400171480 /* AdsViewedDetailCell.swift */; };
 		E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5CF203745E200171480 /* AdHistoryCell.swift */; };
 		E941BDD6203D80E600FC9B61 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E941BDD5203D80E600FC9B61 /* SettingsManager.swift */; };
+		E941BDD8203D854800FC9B61 /* PushHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E941BDD7203D854800FC9B61 /* PushHandler.swift */; };
 		E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9488EC61F8CEFC900697862 /* Dashboard.storyboard */; };
 		E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488EC91F8CFC4300697862 /* PendingUser.swift */; };
 		E9488ECC1F8D032700697862 /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9488ECB1F8D032700697862 /* PendingUserManager.swift */; };
@@ -169,6 +170,8 @@
 		E937F5CD203741A400171480 /* AdsViewedDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedDetailCell.swift; path = "Controllers/Ads Viewed/Cells/AdsViewedDetailCell.swift"; sourceTree = "<group>"; };
 		E937F5CF203745E200171480 /* AdHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdHistoryCell.swift; path = "Controllers/Ads Viewed/Cells/AdHistoryCell.swift"; sourceTree = "<group>"; };
 		E941BDD5203D80E600FC9B61 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsManager.swift; path = Helpers/SettingsManager.swift; sourceTree = "<group>"; };
+		E941BDD7203D854800FC9B61 /* PushHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushHandler.swift; path = Helpers/PushHandler.swift; sourceTree = "<group>"; };
+		E941BDD9203D8D3F00FC9B61 /* Jifflr-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Jifflr-iOS.entitlements"; sourceTree = "<group>"; };
 		E9488EC71F8CEFC900697862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Dashboard.storyboard; sourceTree = "<group>"; };
 		E9488EC91F8CFC4300697862 /* PendingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUser.swift; path = Models/PendingUser.swift; sourceTree = "<group>"; };
 		E9488ECB1F8D032700697862 /* PendingUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/PendingUserManager.swift; sourceTree = "<group>"; };
@@ -478,6 +481,7 @@
 		E9A717711F8B89AC00B07414 /* Jifflr-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E941BDD9203D8D3F00FC9B61 /* Jifflr-iOS.entitlements */,
 				E9A717A11F8B89AC00B07414 /* Assets.xcassets */,
 				E9A717A31F8B89AC00B07414 /* Info.plist */,
 				E9A717721F8B89AC00B07414 /* App Delegate */,
@@ -574,6 +578,7 @@
 				E951794A1F90D1CC0000A08D /* CashoutManager.swift */,
 				E97B9E2D203B21310097BC65 /* FAQManager.swift */,
 				E941BDD5203D80E600FC9B61 /* SettingsManager.swift */,
+				E941BDD7203D854800FC9B61 /* PushHandler.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -750,6 +755,11 @@
 					E9A7176E1F8B89AC00B07414 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					E9A717A71F8B89AC00B07414 = {
 						CreatedOnToolsVersion = 9.0;
@@ -1040,6 +1050,7 @@
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E937F5C620373BBC00171480 /* AdsViewedViewController.swift in Sources */,
 				E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */,
+				E941BDD8203D854800FC9B61 /* PushHandler.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,
@@ -1281,6 +1292,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1303,6 +1315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				ENABLE_TESTABILITY = NO;
@@ -1420,6 +1433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1511,6 +1525,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

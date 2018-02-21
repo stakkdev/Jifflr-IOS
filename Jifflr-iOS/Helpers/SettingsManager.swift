@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import Firebase
+import Fabric
+import Crashlytics
 
 class SettingsManager: NSObject {
     static let shared = SettingsManager()
 
     func toggleNotifications(on: Bool) {
-        UserDefaultsManager.shared.setNotifications(on: on)
+        if UserDefaultsManager.shared.notificationsOn() && !on {
+            UIApplication.shared.unregisterForRemoteNotifications()
+            UserDefaultsManager.shared.setNotifications(on: on)
+        } else if !UserDefaultsManager.shared.notificationsOn() && on {
+            PushHandler.requestNotificationEnabled(completionHandler: { (granted) in
+                UserDefaultsManager.shared.setNotifications(on: granted)
+            })
+        } else {
+            UserDefaultsManager.shared.setNotifications(on: on)
+        }
     }
 
     func toggleCrashTracker(on: Bool) {
@@ -20,6 +32,7 @@ class SettingsManager: NSObject {
     }
 
     func toggleAnalytics(on: Bool) {
+        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(on)
         UserDefaultsManager.shared.setAnalytics(on: on)
     }
 }
