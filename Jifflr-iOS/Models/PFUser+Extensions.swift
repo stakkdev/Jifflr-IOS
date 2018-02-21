@@ -36,4 +36,35 @@ extension PFUser {
             self["details"] = newValue
         }
     }
+
+    func canEditInvitationCode() -> Bool {
+        guard let createdAt = self.createdAt else {
+            return false
+        }
+
+        guard let minimumDate = Calendar.current.date(byAdding: .day, value: -14, to: Date()), createdAt > minimumDate else {
+            return false
+        }
+
+        return true
+    }
+
+    func saveAndPin(completion: @escaping (ErrorMessage?) -> Void) {
+        self.saveInBackground { (success, error) in
+            guard error == nil else {
+                completion(ErrorMessage.parseError(error!.localizedDescription))
+                return
+            }
+
+            self.pinInBackground(block: { (success, error) in
+                print("User Pinned: \(success)")
+
+                if let error = error {
+                    print("Error: \(error)")
+                }
+
+                completion(nil)
+            })
+        }
+    }
 }

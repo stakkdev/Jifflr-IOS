@@ -16,9 +16,15 @@
 "error.register.termsAndConditions" = "Unable to register. Please accept Jifflr's terms and conditions.";
 "error.register.userAlreadyExists" = "Email already registered. Please use a different email address that has not already been registered.";
 "error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
+"error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
+"error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
+"alert.notifications.title" = "Go To Settings";
+"alert.notifications.message" = "Notifications have previously been switched off. In order to turn notifications on, please go to the Settings app.";
+"alert.notifications.cancelButton" = "Cancel";
+"alert.notifications.goToSettingsButton" = "Go To Settings";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
@@ -109,4 +115,17 @@
 
 "faqs.navigation.title" = "FAQs";
 "faqsDetail.navigation.title" = "FAQ";
+
+"profile.navigation.title" = "Profile";
+"profile.logoutButton.title" = "LOGOUT";
+"profile.deleteAccountButton.title" = "DELETE ACCOUNT";
+
+"settings.navigation.title" = "Settings";
+"settings.notifications.heading" = "Notifications";
+"settings.dataCollections.heading" = "Data Collections";
+"settings.dataCollections.message" = "Data Collected summary - We collect data on the usage of this app to understand how we can make it better and ensure that it meets your needs. All the data collected is anonymous and cannot be traced to you.";
+"settings.crashTracker.heading" = "Crash Tracker";
+"settings.crashTracker.message" = "Crashlytics is used to collect crash reports which help us fix any issues more quickly.";
+"settings.analytics.heading" = "Analytics";
+"settings.analytics.message" = "Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments.";
 

@@ -32,6 +32,9 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.configNotification(in: UIApplication.shared)
     }
 
     func setupUI() {

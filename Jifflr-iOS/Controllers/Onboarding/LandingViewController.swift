@@ -31,16 +31,23 @@ class LandingViewController: UIViewController {
             if UserDefaultsManager.shared.onboardingViewed() == true {
                 self.rootLoginViewController()
             } else {
+                UserDefaultsManager.shared.setAnalytics(on: true)
+                UserDefaultsManager.shared.setCrashTracker(on: true)
+
                 let onboarding = TDOnboarding(titles: Onboarding.titles, subTitles: Onboarding.subTitles, images: Onboarding.images, backgroundImage: Onboarding.bgImage, options: OnboardingCustomizable())
                 onboarding.delegate = self
                 onboarding.presentOnboardingVC(from: self, animated: true)
             }
         } else {
-            if LocationManager.shared.locationServicesEnabled() == true {
-                self.rootDashboardViewController()
-            } else {
-                self.rootLocationRequiredViewController()
-            }
+            UserManager.shared.syncUser(completion: { (error) in
+                guard error == nil else { return }
+
+                if LocationManager.shared.locationServicesEnabled() == true {
+                    self.rootDashboardViewController()
+                } else {
+                    self.rootLocationRequiredViewController()
+                }
+            })
         }
     }
 }

@@ -28,4 +28,31 @@ class UserDefaultsManager: NSObject {
         let viewed = UserDefaults.standard.bool(forKey: "locationPermissionsRequested")
         return viewed
     }
+
+    func notificationsOn() -> Bool {
+        let on = UserDefaults.standard.bool(forKey: "notificationsOn")
+        return on
+    }
+
+    func setNotifications(on: Bool) {
+        UserDefaults.standard.set(on, forKey: "notificationsOn")
+    }
+
+    func crashTrackerOn() -> Bool {
+        let on = UserDefaults.standard.bool(forKey: "crashTrackerOn")
+        return on
+    }
+
+    func setCrashTracker(on: Bool) {
+        UserDefaults.standard.set(on, forKey: "crashTrackerOn")
+    }
+
+    func analyticsOn() -> Bool {
+        let on = UserDefaults.standard.bool(forKey: "analyticsOn")
+        return on
+    }
+
+    func setAnalytics(on: Bool) {
+        UserDefaults.standard.set(on, forKey: "analyticsOn")
+    }
 }

@@ -110,6 +110,63 @@ class UserManager: NSObject {
         }
     }
 
+    func syncUser(completion: @escaping (ErrorMessage?) -> Void) {
+        if let currentUser = Session.shared.currentUser {
+            currentUser.fetchInBackground(block: { (user, error) in
+
+                guard let user = user as? PFUser, error == nil else {
+                    if let error = error {
+                        completion(ErrorMessage.parseError(error.localizedDescription))
+                    } else {
+                        completion(ErrorMessage.unknown)
+                    }
+                    return
+                }
+
+                user.details.fetchInBackground(block: { (userDetails, error) in
+                    guard let userDetails = userDetails, error == nil else {
+                        if let error = error {
+                            completion(ErrorMessage.parseError(error.localizedDescription))
+                        } else {
+                            completion(ErrorMessage.unknown)
+                        }
+                        return
+                    }
+
+                    user.pinInBackground(block: { (succeeded, error) in
+                        if error != nil {
+                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                        } else {
+                            userDetails.pinInBackground(block: { (success, error) in
+                                if error != nil {
+                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                } else {
+                                    completion(nil)
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+        }
+    }
+
+    func usernameAvailable(email: String, completion: @escaping (Bool?, ErrorMessage?) -> Void) {
+        let query = PFUser.query()
+        query?.whereKey("username", equalTo: email)
+        query?.countObjectsInBackground(block: { (count, error) in
+            if error != nil {
+                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+            } else {
+                if count == 0 {
+                    completion(true, nil)
+                } else {
+                    completion(false, nil)
+                }
+            }
+        })
+    }
+
     func logOut(completion: @escaping (ErrorMessage?) -> Void) {
         PFUser.logOutInBackground { error in
             DispatchQueue.main.async {

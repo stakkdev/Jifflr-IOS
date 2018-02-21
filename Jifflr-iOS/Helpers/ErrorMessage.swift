@@ -26,9 +26,11 @@ public enum ErrorMessage {
     case cashoutFetchFailed
     case resetPasswordFailed
     case invalidField(String)
+    case invalidProfileField(String)
     case invalidPassword
     case invalidDob
     case invalidGender
+    case invalidProfileGender
     case invalidTermsAndConditions
     case faqsFailed
 
@@ -44,12 +46,16 @@ public enum ErrorMessage {
             return "An error occured: \(details)"
         case .invalidField(let details):
             return "\("error.register.invalidField".localized()) \(details)"
+        case .invalidProfileField(let details):
+            return "\("error.profile.invalidField".localized()) \(details)"
         case .invalidPassword:
             return "error.register.invalidPassword".localized()
         case .invalidDob:
             return "error.register.invalidDob".localized()
         case .invalidGender:
             return "error.register.invalidGender".localized()
+        case .invalidProfileGender:
+            return "error.profile.invalidGender".localized()
         case .invalidTermsAndConditions:
             return "error.register.termsAndConditions".localized()
         case .userAlreadyExists:

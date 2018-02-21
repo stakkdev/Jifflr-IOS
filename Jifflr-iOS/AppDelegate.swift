@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import Firebase
 import Parse
+import UserNotifications
 import GoogleMobileAds
 import Localize_Swift
 import IQKeyboardManagerSwift
@@ -29,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         //FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
+        //AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
+
+        if UserDefaultsManager.shared.crashTrackerOn() {
+            Fabric.with([Crashlytics.self])
+        }
+
         self.configParse(in: application, with: launchOptions)
         self.configAdmob()
         self.configKeyboard()
@@ -51,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-
+        PushHandler.syncNotificationSettings()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -101,5 +107,49 @@ extension AppDelegate {
     func configLanguage() {
         guard let languageCode = Locale.current.languageCode else { return }
         Localize.setCurrentLanguage(languageCode)
+    }
+}
+
+// Notifications
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func configNotification(in application: UIApplication) {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { granted, _ in
+                UserDefaultsManager.shared.setNotifications(on: granted)
+            })
+        } else {
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+    }
+
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        UserDefaultsManager.shared.setNotifications(on: !notificationSettings.types.isEmpty)
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Device token: \(token)")
+
+        let installation = PFInstallation.current()
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        PushHandler.handle(in: application, with: userInfo)
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        if (error as NSError).code == 3010 {
+            print("Push notifications are not supported in the iOS Simulator.")
+        } else {
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
     }
 }
