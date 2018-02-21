@@ -7,6 +7,7 @@
 */
 
 "error.title" = "Error";
+"error.dismiss" = "Dismiss";
 "error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
 "error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";
 "error.register.invalidField" = "Unable to register. Please enter a valid:";
@@ -18,6 +19,7 @@
 "error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
 "error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
 "error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
+"error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

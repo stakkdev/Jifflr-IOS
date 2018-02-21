@@ -36,6 +36,7 @@ class DashboardViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        self.updateData()
         self.navigationController?.isNavigationBarHidden = true
     }
 
@@ -47,7 +48,7 @@ class DashboardViewController: BaseViewController {
             self.internetAlertShown = true
         }
 
-        self.timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { (timer) in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { (timer) in
             self.playAdsButton.pulse()
         })
     }
@@ -71,16 +72,9 @@ class DashboardViewController: BaseViewController {
         self.adBuilderButton.setBackgroundColor(color: UIColor.mainLightBlue)
 
         self.myTeamButton.setImage(image: UIImage(named: "DashboardButtonMyTeam"))
-        self.myTeamButton.setValue(value: 310)
-
         self.myMoneyButton.setImage(image: UIImage(named: "DashboardButtonMyMoney"))
-        self.myMoneyButton.setValue(value: 1020)
-
         self.adsViewedButton.setImage(image: UIImage(named: "DashboardButtonAdsViewed"))
-        self.adsViewedButton.setValue(value: 9103)
-
         self.adBuilderButton.setImage(image: UIImage(named: "DashboardButtonAdBuilder"))
-        self.adBuilderButton.setValue(value: 3)
     }
 
     func setupLocalization() {
@@ -133,6 +127,38 @@ class DashboardViewController: BaseViewController {
         let attributedString = NSMutableAttributedString(string: title, attributes: attributes)
         attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: range)
         self.sloganLabel.attributedText = attributedString
+    }
+
+    func updateData() {
+
+        if Reachability.isConnectedToNetwork() {
+            DashboardManager.shared.fetchStats { (stats, error) in
+                guard let stats = stats, error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+
+                self.updateUI(stats: stats)
+            }
+        } else {
+            DashboardManager.shared.fetchLocalStats { (stats, error) in
+                guard let stats = stats, error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+
+                self.updateUI(stats: stats)
+            }
+        }
+    }
+
+    func updateUI(stats: DashboardStats) {
+        DispatchQueue.main.async {
+            self.myTeamButton.setValue(value: stats.teamSize)
+            self.myMoneyButton.setValue(value: stats.money)
+            self.adsViewedButton.setValue(value: stats.adsViewed)
+            self.adBuilderButton.setValue(value: stats.adsCreated)
+        }
     }
 
     @IBAction func profileButtonPressed(sender: UIButton) {

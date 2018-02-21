@@ -54,6 +54,8 @@
 		E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A0CF7203DAC660059DDAC /* PendingUserManager.swift */; };
 		E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A0CF8203DAC660059DDAC /* ContactsManager.swift */; };
 		E96A0CFC203DAC660059DDAC /* MyTeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A0CF9203DAC660059DDAC /* MyTeamManager.swift */; };
+		E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A0CFD203DACE30059DDAC /* DashboardManager.swift */; };
+		E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A0CFF203DAD4A0059DDAC /* DashboardStats.swift */; };
 		E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */; };
 		E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */; };
 		E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C0F201A416500E8A7D2 /* LoginViewController.swift */; };
@@ -191,6 +193,8 @@
 		E96A0CF7203DAC660059DDAC /* PendingUserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingUserManager.swift; path = Helpers/Team/PendingUserManager.swift; sourceTree = "<group>"; };
 		E96A0CF8203DAC660059DDAC /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsManager.swift; path = Helpers/Team/ContactsManager.swift; sourceTree = "<group>"; };
 		E96A0CF9203DAC660059DDAC /* MyTeamManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTeamManager.swift; path = Helpers/Team/MyTeamManager.swift; sourceTree = "<group>"; };
+		E96A0CFD203DACE30059DDAC /* DashboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardManager.swift; path = Helpers/Dashboard/DashboardManager.swift; sourceTree = "<group>"; };
+		E96A0CFF203DAD4A0059DDAC /* DashboardStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DashboardStats.swift; path = "Models/Local Models/DashboardStats.swift"; sourceTree = "<group>"; };
 		E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = Controllers/Onboarding/RegisterViewController.swift; sourceTree = "<group>"; };
 		E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationRequiredViewController.swift; path = Controllers/Onboarding/LocationRequiredViewController.swift; sourceTree = "<group>"; };
 		E9798C0F201A416500E8A7D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				E937F5B12036E6BD00171480 /* MyTeam.swift */,
+				E96A0CFF203DAD4A0059DDAC /* DashboardStats.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 		E96A0CE4203DAB430059DDAC /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E96A0CFD203DACE30059DDAC /* DashboardManager.swift */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -391,8 +397,8 @@
 		E96A0CE5203DAB520059DDAC /* Team */ = {
 			isa = PBXGroup;
 			children = (
-				E96A0CF8203DAC660059DDAC /* ContactsManager.swift */,
 				E96A0CF9203DAC660059DDAC /* MyTeamManager.swift */,
+				E96A0CF8203DAC660059DDAC /* ContactsManager.swift */,
 				E96A0CF7203DAC660059DDAC /* PendingUserManager.swift */,
 			);
 			name = Team;
@@ -1066,6 +1072,7 @@
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
 				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
+				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,
@@ -1118,6 +1125,7 @@
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
+				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
 				E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */,
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,
