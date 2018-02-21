@@ -34,20 +34,37 @@ class LandingViewController: UIViewController {
                 UserDefaultsManager.shared.setAnalytics(on: true)
                 UserDefaultsManager.shared.setCrashTracker(on: true)
 
-                let onboarding = TDOnboarding(titles: Onboarding.titles, subTitles: Onboarding.subTitles, images: Onboarding.images, backgroundImage: Onboarding.bgImage, options: OnboardingCustomizable())
-                onboarding.delegate = self
-                onboarding.presentOnboardingVC(from: self, animated: true)
+                self.presentOnboarding()
             }
         } else {
             UserManager.shared.syncUser(completion: { (error) in
-                guard error == nil else { return }
-
-                if LocationManager.shared.locationServicesEnabled() == true {
-                    self.rootDashboardViewController()
+                if error == nil {
+                    self.routeBasedOnLocationServices()
                 } else {
-                    self.rootLocationRequiredViewController()
+                    UserManager.shared.fetchLocalUser(completion: { (error) in
+                        guard error == nil else {
+                            self.rootLoginViewController()
+                            return
+                        }
+
+                        self.routeBasedOnLocationServices()
+                    })
                 }
             })
+        }
+    }
+
+    func presentOnboarding() {
+        let onboarding = TDOnboarding(titles: Onboarding.titles, subTitles: Onboarding.subTitles, images: Onboarding.images, backgroundImage: Onboarding.bgImage, options: OnboardingCustomizable())
+        onboarding.delegate = self
+        onboarding.presentOnboardingVC(from: self, animated: true)
+    }
+
+    func routeBasedOnLocationServices() {
+        if LocationManager.shared.locationServicesEnabled() == true {
+            self.rootDashboardViewController()
+        } else {
+            self.rootLocationRequiredViewController()
         }
     }
 }

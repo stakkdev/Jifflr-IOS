@@ -111,6 +111,11 @@ class UserManager: NSObject {
     }
 
     func syncUser(completion: @escaping (ErrorMessage?) -> Void) {
+        if !Reachability.isConnectedToNetwork() {
+            completion(ErrorMessage.noInternetConnection)
+            return
+        }
+
         if let currentUser = Session.shared.currentUser {
             currentUser.fetchInBackground(block: { (user, error) in
 
@@ -148,6 +153,24 @@ class UserManager: NSObject {
                     })
                 })
             })
+        }
+    }
+
+    func fetchLocalUser(completion: @escaping (ErrorMessage?) -> Void) {
+        if let _ = Session.shared.currentUser {
+            let query = PFUser.query()
+            query?.fromLocalDatastore()
+            query?.includeKey("details")
+            query?.getFirstObjectInBackground(block: { (user, error) in
+                guard let _ = user as? PFUser, error == nil else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+
+                completion(nil)
+            })
+        } else {
+            completion(ErrorMessage.unknown)
         }
     }
 
