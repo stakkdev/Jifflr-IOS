@@ -18,7 +18,7 @@ class AdsViewedViewController: BaseViewController {
     var adsViewed: AdsViewed? {
         didSet {
             self.tableView.reloadData()
-            self.chart.setData(data: self.adsViewed!.graph, color: UIColor.mainPinkBright, fill: true)
+            self.chart.setData(data: self.adsViewed!.graph, color: UIColor.mainPinkBright, fill: false, targetData: self.adsViewed!.targetGraph, targetColor: UIColor.mainWhiteTransparent50)
         }
     }
 
@@ -164,6 +164,13 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .none
             cell.selectionStyle = .none
             cell.percentageLabel.text = "\(userMonthStats.percentage)%"
+
+            let minPercentage = adsViewed.adBacklogThreshold / adsViewed.adsPerDay
+            if userMonthStats.percentage < minPercentage {
+                cell.percentageLabel.textColor = UIColor.mainRed
+            } else {
+                cell.percentageLabel.textColor = UIColor.mainBlue
+            }
 
             if let date = userMonthStats.createdAt {
                 let dateFormatter = DateFormatter()

@@ -56,6 +56,30 @@ class MockContent: NSObject {
 
     func createGraphData() -> [Graph] {
         return [self.createGraphPoint(x: 0.0, y: 0.0),
+                self.createGraphPoint(x: 10.0, y: 7.0),
+                self.createGraphPoint(x: 20.0, y: 26.0),
+                self.createGraphPoint(x: 30.0, y: 34.0),
+                self.createGraphPoint(x: 40.0, y: 50.0),
+                self.createGraphPoint(x: 50.0, y: 55.0),
+                self.createGraphPoint(x: 60.0, y: 55.0),
+                self.createGraphPoint(x: 70.0, y: 75.0),
+                self.createGraphPoint(x: 80.0, y: 81.0),
+                self.createGraphPoint(x: 90.0, y: 101.0),
+                self.createGraphPoint(x: 100.0, y: 110.0),
+                self.createGraphPoint(x: 110.0, y: 132.0),
+                self.createGraphPoint(x: 120.0, y: 141.0),
+                self.createGraphPoint(x: 130.0, y: 142.0),
+                self.createGraphPoint(x: 140.0, y: 156.0),
+                self.createGraphPoint(x: 150.0, y: 181.0),
+                self.createGraphPoint(x: 160.0, y: 182.0),
+                self.createGraphPoint(x: 170.0, y: 190.0),
+                self.createGraphPoint(x: 180.0, y: 201.0),
+                self.createGraphPoint(x: 190.0, y: 205.0),
+                self.createGraphPoint(x: 200.0, y: 220.0)]
+    }
+
+    func createTargetGraphData() -> [Graph] {
+        return [self.createGraphPoint(x: 0.0, y: 0.0),
                 self.createGraphPoint(x: 10.0, y: 10.0),
                 self.createGraphPoint(x: 20.0, y: 20.0),
                 self.createGraphPoint(x: 30.0, y: 30.0),

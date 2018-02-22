@@ -76,17 +76,15 @@ class JifflrTeamChart: UIView {
         self.addConstraints([chartLeading, chartTop, chartBottom, chartTrailing])
     }
 
-    func setData(data: [Graph], color: UIColor, fill: Bool) {
+    func setData(data: [Graph], color: UIColor, fill: Bool, targetData: [Graph]?, targetColor: UIColor?) {
+        let allData = data + (targetData ?? [])
 
         var maxX = 0.0
         var minX = Double(CGFloat.greatestFiniteMagnitude)
         var maxY = 0.0
         var minY = Double(CGFloat.greatestFiniteMagnitude)
 
-        var chartDataEntry:[ChartDataEntry] = []
-        for point in data {
-            chartDataEntry.append(ChartDataEntry(x: point.x, y: point.y))
-
+        for point in allData {
             if point.x > maxX { maxX = point.x }
             if point.y > maxY { maxY = point.y }
             if point.x < minX { minX = point.x }
@@ -98,6 +96,29 @@ class JifflrTeamChart: UIView {
         self.lineChartView.xAxis.axisMinimum = minX
         self.lineChartView.leftAxis.axisMinimum = minY
 
+        let lineDataSet = self.lineDataSet(data: data, color: color, fill: fill)
+        var dataSets:[LineChartDataSet] = []
+
+        if let targetData = targetData, let targetColor = targetColor {
+            let targetDataSet = self.targetDataSet(data: targetData, color: targetColor)
+            dataSets.append(targetDataSet)
+        }
+        
+        dataSets.append(lineDataSet)
+
+        let finalData = LineChartData(dataSets: dataSets)
+        finalData.setDrawValues(false)
+        self.lineChartView.data = finalData
+        self.lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
+    }
+
+    func lineDataSet(data: [Graph], color: UIColor, fill: Bool) -> LineChartDataSet {
+
+        var chartDataEntry:[ChartDataEntry] = []
+        for point in data {
+            chartDataEntry.append(ChartDataEntry(x: point.x, y: point.y))
+        }
+
         let dataSet = LineChartDataSet(values: chartDataEntry, label: "")
         dataSet.axisDependency = .left
         dataSet.setColor(color)
@@ -105,6 +126,7 @@ class JifflrTeamChart: UIView {
         dataSet.drawCircleHoleEnabled = false
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier
+        dataSet.lineCapType = .round
 
         if fill == true {
             dataSet.fill = Fill(CGColor: UIColor.mainWhiteTransparent20.cgColor)
@@ -114,10 +136,27 @@ class JifflrTeamChart: UIView {
             dataSet.drawFilledEnabled = false
         }
 
-        let dataSets = [dataSet]
-        let finalData = LineChartData(dataSets: dataSets)
-        finalData.setDrawValues(false)
-        self.lineChartView.data = finalData
-        self.lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
+        return dataSet
+    }
+
+    func targetDataSet(data: [Graph], color: UIColor) -> LineChartDataSet {
+        var chartDataEntry:[ChartDataEntry] = []
+        for point in data {
+            chartDataEntry.append(ChartDataEntry(x: point.x, y: point.y))
+        }
+
+        let dataSet = LineChartDataSet(values: chartDataEntry, label: "")
+        dataSet.axisDependency = .left
+        dataSet.setColor(color)
+        dataSet.lineWidth = 2.5
+        dataSet.lineDashPhase = 5.0
+        dataSet.lineDashLengths = [5, 2]
+        dataSet.drawCircleHoleEnabled = false
+        dataSet.drawCirclesEnabled = false
+        dataSet.mode = .cubicBezier
+        dataSet.drawFilledEnabled = false
+        dataSet.lineCapType = .round
+
+        return dataSet
     }
 }

@@ -40,7 +40,7 @@ class MyMoneyViewController: BaseViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
 
-        self.chart.setData(data: MockContent.init().createGraphData(), color: UIColor.mainGreen, fill: true)
+        self.chart.setData(data: MockContent.init().createGraphData(), color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
     }
 
     func setupLocalization() {

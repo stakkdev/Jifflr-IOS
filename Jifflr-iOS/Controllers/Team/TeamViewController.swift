@@ -21,7 +21,7 @@ class TeamViewController: BaseViewController {
     var myTeam: MyTeam? {
         didSet {
             self.tableView.reloadData()
-            self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true)
+            self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
         }
     }
 
