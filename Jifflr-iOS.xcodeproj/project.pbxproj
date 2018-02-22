@@ -112,6 +112,7 @@
 		E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */; };
 		E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */; };
 		E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */; };
+		E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC6ED1203F265B0073140A /* ChangePasswordViewController.swift */; };
 		E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */; };
 		E9D8E1C3203C318500F978D2 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D8E1C1203C318500F978D2 /* Profile.storyboard */; };
 		E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8E1C4203C8D1800F978D2 /* SettingsViewController.swift */; };
@@ -263,6 +264,7 @@
 		E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextField.swift; path = Views/TextFields/JifflrTextField.swift; sourceTree = "<group>"; };
 		E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldPassword.swift; path = Views/TextFields/JifflrTextFieldPassword.swift; sourceTree = "<group>"; };
 		E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldInvitation.swift; path = Views/TextFields/JifflrTextFieldInvitation.swift; sourceTree = "<group>"; };
+		E9CC6ED1203F265B0073140A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controllers/Profile/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		E9D8E1C2203C318500F978D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		E9D8E1C4203C8D1800F978D2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/Profile/SettingsViewController.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 				E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */,
 				E9D8E1C6203C8E0D00F978D2 /* ProfileViewController+Saving.swift */,
 				E9D8E1C4203C8D1800F978D2 /* SettingsViewController.swift */,
+				E9CC6ED1203F265B0073140A /* ChangePasswordViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1080,6 +1083,7 @@
 				E96A0CDE203DAAF80059DDAC /* PushHandler.swift in Sources */,
 				E96A0CFC203DAC660059DDAC /* MyTeamManager.swift in Sources */,
 				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
+				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,

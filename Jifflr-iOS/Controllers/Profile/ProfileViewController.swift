@@ -19,8 +19,6 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var lastNameTextField: JifflrTextField!
     @IBOutlet weak var emailHeadingLabel: UILabel!
     @IBOutlet weak var emailTextField: JifflrTextField!
-    @IBOutlet weak var passwordHeadingLabel: UILabel!
-    @IBOutlet weak var passwordTextField: JifflrTextFieldPassword!
     @IBOutlet weak var locationHeadingLabel: UILabel!
     @IBOutlet weak var locationTextField: JifflrTextFieldLocation!
     @IBOutlet weak var dobHeadingLabel: UILabel!
@@ -31,7 +29,8 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var invitationCodeTextField: JifflrTextFieldInvitation!
     @IBOutlet weak var logoutButton: JifflrButton!
     @IBOutlet weak var deleteAccountButton: JifflrButton!
-    @IBOutlet weak var logoutButtonTop: NSLayoutConstraint!
+    @IBOutlet weak var changePasswordButton: JifflrButton!
+    @IBOutlet weak var changePasswordButtonTop: NSLayoutConstraint!
 
     let genders = Constants.RegistrationGenders
     var genderPickerView: UIPickerView!
@@ -72,7 +71,6 @@ class ProfileViewController: BaseViewController {
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
         self.locationTextField.delegate = self
         self.locationTextField.locationDelegate = self
         self.dobTextField.delegate = self
@@ -80,8 +78,9 @@ class ProfileViewController: BaseViewController {
         self.invitationCodeTextField.delegate = self
 
         self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 900.0)
-        self.logoutButton.setBackgroundColor(color: UIColor.mainPink)
+        self.logoutButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         self.deleteAccountButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
+        self.changePasswordButton.setBackgroundColor(color: UIColor.mainPink)
 
         let settingsBarButton = UIBarButtonItem(image: UIImage(named: "SettingsButton"), style: .plain, target: self, action: #selector(self.settingsButtonPressed))
         self.navigationItem.rightBarButtonItem = settingsBarButton
@@ -95,8 +94,6 @@ class ProfileViewController: BaseViewController {
         self.lastNameTextField.placeholder = "register.lastName.placeholder".localized()
         self.emailHeadingLabel.text = "register.email.heading".localized()
         self.emailTextField.placeholder = "register.email.placeholder".localized()
-        self.passwordHeadingLabel.text = "register.password.heading".localized()
-        self.passwordTextField.placeholder = "register.password.placeholder".localized()
         self.locationHeadingLabel.text = "register.location.heading".localized()
         self.locationTextField.placeholder = "register.location.placeholder".localized()
         self.dobHeadingLabel.text = "register.dob.heading".localized()
@@ -107,6 +104,7 @@ class ProfileViewController: BaseViewController {
         self.invitationCodeTextField.placeholder = "register.invitationCode.placeholder".localized()
         self.deleteAccountButton.setTitle("profile.deleteAccountButton.title".localized(), for: .normal)
         self.logoutButton.setTitle("profile.logoutButton.title".localized(), for: .normal)
+        self.changePasswordButton.setTitle("profile.changePasswordButton.title".localized(), for: .normal)
     }
 
     func setupData() {
@@ -115,7 +113,6 @@ class ProfileViewController: BaseViewController {
         self.firstNameTextField.text = currentUser.details.firstName
         self.lastNameTextField.text = currentUser.details.lastName
         self.emailTextField.text = currentUser.email
-        self.passwordTextField.text = currentUser.password
         self.locationTextField.text = currentUser.details.displayLocation
 
         let dateFormatter = DateFormatter()
@@ -128,11 +125,13 @@ class ProfileViewController: BaseViewController {
         if let invitationCode = currentUser.details.invitationCode, !invitationCode.isEmpty {
             self.invitationCodeTextField.isHidden = false
             self.invitationCodeHeadingLabel.isHidden = false
-            self.logoutButtonTop.constant = 137.0
+            self.changePasswordButtonTop.constant = 117.0
         } else {
-            self.invitationCodeTextField.isHidden = true
-            self.invitationCodeHeadingLabel.isHidden = true
-            self.logoutButtonTop.constant = 47.0
+            if !currentUser.canEditInvitationCode() {
+                self.invitationCodeTextField.isHidden = true
+                self.invitationCodeHeadingLabel.isHidden = true
+                self.changePasswordButtonTop.constant = 27.0
+            }
         }
 
         if currentUser.canEditInvitationCode() {
@@ -208,6 +207,10 @@ class ProfileViewController: BaseViewController {
 
     @IBAction func deleteAccountButtonPressed(sender: UIButton) {
 
+    }
+
+    @IBAction func changePasswordButtonPressed(sender: UIButton) {
+        self.navigationController?.pushViewController(ChangePasswordViewController.instantiateFromStoryboard(), animated: true)
     }
 }
 

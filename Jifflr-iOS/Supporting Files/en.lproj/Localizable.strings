@@ -20,6 +20,8 @@
 "error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
 "error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
 "error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
+"error.invalidCurrentPassword" = "Please enter your current password.";
+"error.invalidNewPassword" = "Invalid new password. Please enter a valid password that is at least 8 characters.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -131,6 +133,14 @@
 "profile.navigation.title" = "Profile";
 "profile.logoutButton.title" = "LOGOUT";
 "profile.deleteAccountButton.title" = "DELETE ACCOUNT";
+"profile.changePasswordButton.title" = "CHANGE PASSWORD";
+
+"changePassword.navigation.title" = "Change Password";
+"changePassword.saveButton.title" = "SAVE";
+"changePassword.currentPassword.heading" = "Current Password";
+"changePassword.currentPassword.placeholder" = "Enter current password";
+"changePassword.newPassword.heading" = "New Password";
+"changePassword.newPassword.placeholder" = "Enter new password";
 
 "settings.navigation.title" = "Settings";
 "settings.notifications.heading" = "Notifications";
