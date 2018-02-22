@@ -7,6 +7,7 @@
 */
 
 "error.title" = "Error";
+"error.dismiss" = "Dismiss";
 "error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
 "error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";
 "error.register.invalidField" = "Unable to register. Please enter a valid:";
@@ -18,6 +19,7 @@
 "error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
 "error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
 "error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
+"error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -25,6 +27,8 @@
 "alert.notifications.message" = "Notifications have previously been switched off. In order to turn notifications on, please go to the Settings app.";
 "alert.notifications.cancelButton" = "Cancel";
 "alert.notifications.goToSettingsButton" = "Go To Settings";
+"alert.noInternetConnection.title" = "No Internet Connection";
+"alert.noInternetConnection.message" = "No internet connection detected. Previously saved values will be displayed in the app and any changes will be save when you next have an internet connection.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";

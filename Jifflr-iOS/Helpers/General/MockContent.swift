@@ -54,28 +54,35 @@ class MockContent: NSObject {
         return userDetails
     }
 
-    func createGraphData() -> [(x: Double, y: Double)] {
-        return [(x: 0.0, y: 0.0),
-                (x: 10.0, y: 10.0),
-                (x: 20.0, y: 20.0),
-                (x: 30.0, y: 30.0),
-                (x: 40.0, y: 40.0),
-                (x: 50.0, y: 50.0),
-                (x: 60.0, y: 60.0),
-                (x: 70.0, y: 70.0),
-                (x: 80.0, y: 80.0),
-                (x: 90.0, y: 90.0),
-                (x: 100.0, y: 100.0),
-                (x: 110.0, y: 110.0),
-                (x: 120.0, y: 120.0),
-                (x: 130.0, y: 130.0),
-                (x: 140.0, y: 140.0),
-                (x: 150.0, y: 150.0),
-                (x: 160.0, y: 160.0),
-                (x: 170.0, y: 170.0),
-                (x: 180.0, y: 180.0),
-                (x: 190.0, y: 190.0),
-                (x: 200.0, y: 200.0)]
+    func createGraphData() -> [Graph] {
+        return [self.createGraphPoint(x: 0.0, y: 0.0),
+                self.createGraphPoint(x: 10.0, y: 10.0),
+                self.createGraphPoint(x: 20.0, y: 20.0),
+                self.createGraphPoint(x: 30.0, y: 30.0),
+                self.createGraphPoint(x: 40.0, y: 40.0),
+                self.createGraphPoint(x: 50.0, y: 50.0),
+                self.createGraphPoint(x: 60.0, y: 60.0),
+                self.createGraphPoint(x: 70.0, y: 70.0),
+                self.createGraphPoint(x: 80.0, y: 80.0),
+                self.createGraphPoint(x: 90.0, y: 90.0),
+                self.createGraphPoint(x: 100.0, y: 100.0),
+                self.createGraphPoint(x: 110.0, y: 110.0),
+                self.createGraphPoint(x: 120.0, y: 120.0),
+                self.createGraphPoint(x: 130.0, y: 130.0),
+                self.createGraphPoint(x: 140.0, y: 140.0),
+                self.createGraphPoint(x: 150.0, y: 150.0),
+                self.createGraphPoint(x: 160.0, y: 160.0),
+                self.createGraphPoint(x: 170.0, y: 170.0),
+                self.createGraphPoint(x: 180.0, y: 180.0),
+                self.createGraphPoint(x: 190.0, y: 190.0),
+                self.createGraphPoint(x: 200.0, y: 200.0)]
+    }
+
+    func createGraphPoint(x: Double, y: Double) -> Graph {
+        let point = Graph()
+        point.x = x
+        point.y = y
+        return point
     }
 
     func createPendingUser() -> PendingUser {

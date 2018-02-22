@@ -112,7 +112,7 @@ class UserManager: NSObject {
 
     func syncUser(completion: @escaping (ErrorMessage?) -> Void) {
         if !Reachability.isConnectedToNetwork() {
-            completion(ErrorMessage.noInternetConnection)
+            completion(ErrorMessage.unknown)
             return
         }
 

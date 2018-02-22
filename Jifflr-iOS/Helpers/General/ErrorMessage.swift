@@ -11,7 +11,6 @@ import UIKit
 import Localize_Swift
 
 public enum ErrorMessage {
-    case noInternetConnection
     case parseError(String)
     case userAlreadyExists
     case loginFailed
@@ -33,6 +32,7 @@ public enum ErrorMessage {
     case invalidProfileGender
     case invalidTermsAndConditions
     case faqsFailed
+    case noInternetConnection
 
     public var failureTitle: String {
         return "error.title".localized()
@@ -40,8 +40,6 @@ public enum ErrorMessage {
 
     public var failureDescription: String {
         switch self {
-        case .noInternetConnection:
-            return "Please check your internet connection and try again."
         case .parseError(let details):
             return "An error occured: \(details)"
         case .invalidField(let details):
@@ -66,6 +64,8 @@ public enum ErrorMessage {
             return "error.resetPassword.message".localized()
         case .faqsFailed:
             return "error.faqs.message".localized()
+        case .noInternetConnection:
+            return "error.noInternetConnection".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
@@ -90,11 +90,14 @@ public enum ErrorMessage {
 
 public enum AlertMessage {
     case resetEmailSent
+    case noInternetConnection
 
     public var title: String {
         switch self {
         case .resetEmailSent:
             return "alert.resetEmailSent.title".localized()
+        case .noInternetConnection:
+            return "alert.noInternetConnection.title".localized()
         }
     }
 
@@ -102,20 +105,22 @@ public enum AlertMessage {
         switch self {
         case .resetEmailSent:
             return "alert.resetEmailSent.message".localized()
+        case .noInternetConnection:
+            return "alert.noInternetConnection.message".localized()
         }
     }
 }
 
 protocol DisplayMessage {
     func displayMessage(title: String, message: String, dismissText: String?, dismissAction: ((UIAlertAction) -> Void)?)
+    func displayError(error: ErrorMessage?)
 }
 
 
 extension DisplayMessage {
-
     func displayMessage(title: String, message: String, dismissText: String? = nil, dismissAction: ((UIAlertAction) -> Void)? = nil) {
 
-        let defaultDismissText = NSLocalizedString("Dismiss", comment: "")
+        let defaultDismissText = "error.dismiss".localized()
 
         if let viewController = self as? UIViewController {
 
@@ -125,6 +130,28 @@ extension DisplayMessage {
 
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let dismissAction = UIAlertAction(title: dismissText ?? defaultDismissText, style: .cancel, handler: dismissAction)
+            alert.addAction(dismissAction)
+            viewController.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func displayError(error: ErrorMessage?) {
+
+        var theError = error
+        if theError == nil {
+            theError = ErrorMessage.unknown
+        }
+
+        let defaultDismissText = "error.dismiss".localized()
+
+        if let viewController = self as? UIViewController {
+
+            if let _ = viewController.presentedViewController as? UIAlertController {
+                return
+            }
+
+            let alert = UIAlertController(title: theError!.failureTitle, message: theError!.failureDescription, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: defaultDismissText, style: .cancel, handler: nil)
             alert.addAction(dismissAction)
             viewController.present(alert, animated: true, completion: nil)
         }

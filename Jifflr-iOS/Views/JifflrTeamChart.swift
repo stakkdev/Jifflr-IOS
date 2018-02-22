@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Parse
 
 class JifflrTeamChart: UIView {
 
@@ -75,7 +76,7 @@ class JifflrTeamChart: UIView {
         self.addConstraints([chartLeading, chartTop, chartBottom, chartTrailing])
     }
 
-    func setData(data: [(x: Double, y: Double)], color: UIColor, fill: Bool) {
+    func setData(data: [Graph], color: UIColor, fill: Bool) {
 
         var maxX = 0.0
         var minX = Double(CGFloat.greatestFiniteMagnitude)

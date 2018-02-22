@@ -12,9 +12,9 @@ import Parse
 
 final class MyTeam: PFObject {
 
-    var graph: [(x: Double, y: Double)] {
+    var graph: [Graph] {
         get {
-            return self["graph"] as? [(x: Double, y: Double)] ?? []
+            return self["graph"] as? [Graph] ?? []
         }
         set {
             self["graph"] = newValue
@@ -30,18 +30,18 @@ final class MyTeam: PFObject {
         }
     }
 
-    var friends: [(user: PFUser, teamSize: Int)] {
+    var friends: [MyTeamFriends] {
         get {
-            return self["friends"] as? [(user: PFUser, teamSize: Int)] ?? []
+            return self["friends"] as? [MyTeamFriends] ?? []
         }
         set {
             self["friends"] = newValue
         }
     }
 
-    var pendingFriends: [(user: PFUser, isActive: Bool)] {
+    var pendingFriends: [MyTeamPendingFriends] {
         get {
-            return self["pendingFriends"] as? [(user: PFUser, isActive: Bool)] ?? []
+            return self["pendingFriends"] as? [MyTeamPendingFriends] ?? []
         }
         set {
             self["pendingFriends"] = newValue
