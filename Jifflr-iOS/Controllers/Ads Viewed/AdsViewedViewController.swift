@@ -18,7 +18,10 @@ class AdsViewedViewController: BaseViewController {
     var adsViewed: AdsViewed? {
         didSet {
             self.tableView.reloadData()
-            self.chart.setData(data: self.adsViewed!.graph, color: UIColor.mainPinkBright, fill: false, targetData: self.adsViewed!.targetGraph, targetColor: UIColor.mainWhiteTransparent50)
+
+            guard let graphData = self.adsViewed?.graph, graphData.count > 0 else { return }
+            guard let targetGraphData = self.adsViewed?.targetGraph, graphData.count > 0 else { return }
+            self.chart.setData(data: graphData, color: UIColor.mainPinkBright, fill: false, targetData: targetGraphData, targetColor: UIColor.mainWhiteTransparent50)
         }
     }
 

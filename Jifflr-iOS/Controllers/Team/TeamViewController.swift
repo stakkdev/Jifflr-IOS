@@ -21,6 +21,8 @@ class TeamViewController: BaseViewController {
     var myTeam: MyTeam? {
         didSet {
             self.tableView.reloadData()
+
+            guard let graphData = self.myTeam?.graph, graphData.count > 0 else { return }
             self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
         }
     }
