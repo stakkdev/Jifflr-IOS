@@ -63,15 +63,29 @@ class TeamViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        MyTeamManager.shared.fetchLocal { (myTeam, error) in
-            if let myTeam  = myTeam, error == nil {
+        self.updateData()
+    }
+
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            MyTeamManager.shared.fetch { (myTeam, error) in
+                guard let myTeam = myTeam, error == nil else {
+                    self.displayError(error: error)
+                    self.updateLocalData()
+                    return
+                }
+
                 self.myTeam = myTeam
             }
+        } else {
+            self.updateLocalData()
         }
+    }
 
-        MyTeamManager.shared.fetch { (myTeam, error) in
+    func updateLocalData() {
+        MyTeamManager.shared.fetchLocal { (myTeam, error) in
             guard let myTeam = myTeam, error == nil else {
-                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                self.displayError(error: error)
                 return
             }
 

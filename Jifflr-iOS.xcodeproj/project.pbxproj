@@ -16,6 +16,9 @@
 		E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */; };
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
+		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
+		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
+		E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */; };
 		E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A58202DBDAE00D79CF7 /* GothamBold.otf */; };
 		E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A59202DBDAE00D79CF7 /* GothamBook.otf */; };
 		E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5B12036E6BD00171480 /* MyTeam.swift */; };
@@ -154,6 +157,9 @@
 		E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTests.swift; sourceTree = "<group>"; };
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
+		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
+		E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamPendingFriends.swift; path = "Models/Local Models/MyTeamPendingFriends.swift"; sourceTree = "<group>"; };
 		E9328A58202DBDAE00D79CF7 /* GothamBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBold.otf; path = "Supporting Files/Fonts/GothamBold.otf"; sourceTree = "<group>"; };
 		E9328A59202DBDAE00D79CF7 /* GothamBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBook.otf; path = "Supporting Files/Fonts/GothamBook.otf"; sourceTree = "<group>"; };
 		E937F5B12036E6BD00171480 /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeam.swift; path = "Models/Local Models/MyTeam.swift"; sourceTree = "<group>"; };
@@ -355,8 +361,11 @@
 		E937F5B02036E69300171480 /* Local Models */ = {
 			isa = PBXGroup;
 			children = (
-				E937F5B12036E6BD00171480 /* MyTeam.swift */,
 				E96A0CFF203DAD4A0059DDAC /* DashboardStats.swift */,
+				E9237516203EC8AE00275199 /* Graph.swift */,
+				E937F5B12036E6BD00171480 /* MyTeam.swift */,
+				E9237514203EC83B00275199 /* MyTeamFriends.swift */,
+				E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -1069,6 +1078,7 @@
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				E97B9E20203B04940097BC65 /* FAQViewController.swift in Sources */,
 				E97B9E28203B091A0097BC65 /* FAQCell.swift in Sources */,
+				E9237517203EC8AE00275199 /* Graph.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
 				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
@@ -1090,9 +1100,11 @@
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
 				E96A0CE3203DAB100059DDAC /* UserDefaultsManager.swift in Sources */,
+				E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */,
 				E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */,
 				E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */,
 				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,
+				E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */,
 				E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */,
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,

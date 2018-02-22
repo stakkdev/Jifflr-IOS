@@ -135,20 +135,25 @@ class DashboardViewController: BaseViewController {
             DashboardManager.shared.fetchStats { (stats, error) in
                 guard let stats = stats, error == nil else {
                     self.displayError(error: error)
+                    self.updateLocalData()
                     return
                 }
 
                 self.updateUI(stats: stats)
             }
         } else {
-            DashboardManager.shared.fetchLocalStats { (stats, error) in
-                guard let stats = stats, error == nil else {
-                    self.displayError(error: error)
-                    return
-                }
+            self.updateLocalData()
+        }
+    }
 
-                self.updateUI(stats: stats)
+    func updateLocalData() {
+        DashboardManager.shared.fetchLocalStats { (stats, error) in
+            guard let stats = stats, error == nil else {
+                self.displayError(error: error)
+                return
             }
+
+            self.updateUI(stats: stats)
         }
     }
 
