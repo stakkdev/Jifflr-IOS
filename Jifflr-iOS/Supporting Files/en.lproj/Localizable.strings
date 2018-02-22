@@ -37,6 +37,7 @@
 "onboarding.title3" = "Run market research campaigns.";
 "onboarding.description3" = "Use Ad Builder to easily create your own ads together with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
 "onboarding.skipButton" = "Skip";
+"onboarding.closeButton" = "Complete";
 
 "login.navigation.title" = "Login";
 "login.email.heading" = "Email";

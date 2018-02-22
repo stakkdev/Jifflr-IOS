@@ -39,7 +39,11 @@ class LandingViewController: UIViewController {
         } else {
             UserManager.shared.syncUser(completion: { (error) in
                 if error == nil {
-                    self.routeBasedOnLocationServices()
+                    if UserDefaultsManager.shared.onboardingViewed() == true {
+                        self.routeBasedOnLocationServices()
+                    } else {
+                        self.presentOnboarding()
+                    }
                 } else {
                     UserManager.shared.fetchLocalUser(completion: { (error) in
                         guard error == nil else {
@@ -47,7 +51,11 @@ class LandingViewController: UIViewController {
                             return
                         }
 
-                        self.routeBasedOnLocationServices()
+                        if UserDefaultsManager.shared.onboardingViewed() == true {
+                            self.routeBasedOnLocationServices()
+                        } else {
+                            self.presentOnboarding()
+                        }
                     })
                 }
             })
@@ -70,8 +78,21 @@ class LandingViewController: UIViewController {
 }
 
 extension LandingViewController: TDOnboardingDelegate {
-    func onboardingShouldSkip() {
+    func onboardingShouldComplete() {
         UserDefaultsManager.shared.setOnboardingViewed()
-        self.rootLoginViewController()
+
+        if Session.shared.currentUser == nil {
+            self.rootLoginViewController()
+        } else {
+            self.routeBasedOnLocationServices()
+        }
+    }
+
+    func onboardingShouldSkip() {
+        if Session.shared.currentUser == nil {
+            self.rootLoginViewController()
+        } else {
+            self.routeBasedOnLocationServices()
+        }
     }
 }

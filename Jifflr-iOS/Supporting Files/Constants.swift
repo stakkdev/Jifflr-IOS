@@ -97,7 +97,7 @@ struct OnboardingCustomizable: TDOnboardingCustomizable {
     }
 
     var closeButtonTitle: String {
-        return "onboarding.skipButton".localized()
+        return "onboarding.closeButton".localized()
     }
 
     var skipButtonTitle: String {
