@@ -76,6 +76,13 @@
 "register.invitationCode.placeholder" = "Enter invitation code";
 "register.termsAndConditions.heading" = "I accept the Terms and Conditions";
 "register.registerButton.title" = "REGISTER";
+"register.gender.option1" = "Male";
+"register.gender.option2" = "Female";
+"register.gender.option3" = "Transgender Male";
+"register.gender.option4" = "Transgender Female";
+"register.gender.option5" = "Gender Variant/Non-conforming";
+"register.gender.option6" = "Not listed";
+"register.gender.option7" = "Prefer not to answer";
 
 "yourLocation.navigation.title" = "Your Location";
 
