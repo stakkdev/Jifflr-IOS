@@ -90,10 +90,12 @@ extension AppDelegate {
         UserSeenAdvert.registerSubclass()
         UserFeedback.registerSubclass()
         UserCashout.registerSubclass()
+        UserMonthStats.registerSubclass()
         DashboardStats.registerSubclass()
         MyTeamFriends.registerSubclass()
         MyTeamPendingFriends.registerSubclass()
         Graph.registerSubclass()
+        AdsViewed.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

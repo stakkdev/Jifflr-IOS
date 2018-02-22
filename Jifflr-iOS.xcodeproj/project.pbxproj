@@ -19,6 +19,9 @@
 		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
 		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
 		E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */; };
+		E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751A203ED94500275199 /* AdsViewedManager.swift */; };
+		E923751D203ED9CB00275199 /* AdsViewed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751C203ED9CB00275199 /* AdsViewed.swift */; };
+		E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751E203EDD5000275199 /* UserMonthStats.swift */; };
 		E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A58202DBDAE00D79CF7 /* GothamBold.otf */; };
 		E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A59202DBDAE00D79CF7 /* GothamBook.otf */; };
 		E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5B12036E6BD00171480 /* MyTeam.swift */; };
@@ -160,6 +163,9 @@
 		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
 		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
 		E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamPendingFriends.swift; path = "Models/Local Models/MyTeamPendingFriends.swift"; sourceTree = "<group>"; };
+		E923751A203ED94500275199 /* AdsViewedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedManager.swift; path = "Helpers/Ads Viewed/AdsViewedManager.swift"; sourceTree = "<group>"; };
+		E923751C203ED9CB00275199 /* AdsViewed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewed.swift; path = "Models/Local Models/AdsViewed.swift"; sourceTree = "<group>"; };
+		E923751E203EDD5000275199 /* UserMonthStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserMonthStats.swift; path = Models/UserMonthStats.swift; sourceTree = "<group>"; };
 		E9328A58202DBDAE00D79CF7 /* GothamBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBold.otf; path = "Supporting Files/Fonts/GothamBold.otf"; sourceTree = "<group>"; };
 		E9328A59202DBDAE00D79CF7 /* GothamBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBook.otf; path = "Supporting Files/Fonts/GothamBook.otf"; sourceTree = "<group>"; };
 		E937F5B12036E6BD00171480 /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeam.swift; path = "Models/Local Models/MyTeam.swift"; sourceTree = "<group>"; };
@@ -366,6 +372,7 @@
 				E937F5B12036E6BD00171480 /* MyTeam.swift */,
 				E9237514203EC83B00275199 /* MyTeamFriends.swift */,
 				E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */,
+				E923751C203ED9CB00275199 /* AdsViewed.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 		E96A0CE6203DAB580059DDAC /* Ads Viewed */ = {
 			isa = PBXGroup;
 			children = (
+				E923751A203ED94500275199 /* AdsViewedManager.swift */,
 			);
 			name = "Ads Viewed";
 			sourceTree = "<group>";
@@ -641,6 +649,7 @@
 				E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */,
 				E9A2CF561F8F7F4F008A7F40 /* UserFeedback.swift */,
 				E95179481F90D15E0000A08D /* UserCashout.swift */,
+				E923751E203EDD5000275199 /* UserMonthStats.swift */,
 				E97B9E2B203B0D7C0097BC65 /* FAQ.swift */,
 				E97B9E29203B0D680097BC65 /* FAQCategory.swift */,
 			);
@@ -1089,10 +1098,12 @@
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
+				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
+				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,
@@ -1132,6 +1143,7 @@
 				E96A0CF4203DAC500059DDAC /* AdvertManager.swift in Sources */,
 				E937F5C620373BBC00171480 /* AdsViewedViewController.swift in Sources */,
 				E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */,
+				E923751D203ED9CB00275199 /* AdsViewed.swift in Sources */,
 				E9A717851F8B89AC00B07414 /* ColorExtensions.swift in Sources */,
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,

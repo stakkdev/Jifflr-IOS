@@ -15,6 +15,13 @@ class AdsViewedViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
+    var adsViewed: AdsViewed? {
+        didSet {
+            self.tableView.reloadData()
+            self.chart.setData(data: self.adsViewed!.graph, color: UIColor.mainPinkBright, fill: true)
+        }
+    }
+
     class func instantiateFromStoryboard() -> AdsViewedViewController {
         let storyboard = UIStoryboard(name: "AdsViewed", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "AdsViewedViewController") as! AdsViewedViewController
@@ -24,6 +31,12 @@ class AdsViewedViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.updateData()
     }
 
     func setupUI() {
@@ -39,14 +52,39 @@ class AdsViewedViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
-
-        self.chart.setData(data: MockContent.init().createGraphData(), color: UIColor.mainPinkBright, fill: false)
     }
 
     func setupLocalization() {
         self.title = "adsViewed.navigation.title".localized()
         self.segmentedControl.setButton1Title(text: "adsViewed.segmentedControlButton1.title".localized())
         self.segmentedControl.setButton2Title(text: "adsViewed.segmentedControlButton2.title".localized())
+    }
+
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            AdsViewedManager.shared.fetch { (adsViewed, error) in
+                guard let adsViewed = adsViewed, error == nil else {
+                    self.displayError(error: error)
+                    self.updateLocalData()
+                    return
+                }
+
+                self.adsViewed = adsViewed
+            }
+        } else {
+            self.updateLocalData()
+        }
+    }
+
+    func updateLocalData() {
+        AdsViewedManager.shared.fetchLocal { (adsViewed, error) in
+            guard let adsViewed = adsViewed, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.adsViewed = adsViewed
+        }
     }
 }
 
@@ -74,17 +112,23 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
             return 4
         }
 
-        return 20
+        if let adsViewed = self.adsViewed {
+            return adsViewed.history.count
+        }
+
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let adsViewed = self.adsViewed else { return UITableViewCell() }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AdsViewedCell") as! AdsViewedCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.sizeLabel.text = "9103"
+                cell.sizeLabel.text = "\(adsViewed.viewed)"
                 cell.nameLabel.text = "adsViewed.adsViewedCell.title".localized()
                 return cell
 
@@ -95,19 +139,19 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
 
                 switch indexPath.row {
                 case 1:
-                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(14)
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(adsViewed.adsPerDay)
                     cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 case 2:
                     cell.mainLabel.text = "adsViewed.adBacklog.title".localized()
-                    cell.detailLabel.text = "adsViewed.adBacklogMinimum.title".localizedFormat(5)
-                    cell.rightLabel.text = "0"
+                    cell.detailLabel.text = "adsViewed.adBacklogMinimum.title".localizedFormat(adsViewed.adBacklogThreshold)
+                    cell.rightLabel.text = "\(adsViewed.adBacklog)"
                 case 3:
                     cell.mainLabel.text = "adsViewed.percentageDue.title".localized()
                     cell.detailLabel.text = "adsViewed.percentageDue.detail".localized()
-                    cell.rightLabel.text = "42%"
+                    cell.rightLabel.text = "\(adsViewed.teamIncomeDuePercentage)%"
                 default:
-                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(14)
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(adsViewed.adsPerDay)
                     cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 }
@@ -115,11 +159,17 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
+            let userMonthStats = adsViewed.history[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "AdHistoryCell") as! AdHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.monthLabel.text = "February 2018"
-            cell.percentageLabel.text = "95%"
+            cell.percentageLabel.text = "\(userMonthStats.percentage)%"
+
+            if let date = userMonthStats.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMMM yyyy"
+                cell.monthLabel.text = dateFormatter.string(from: date)
+            }
 
             return cell
         }
