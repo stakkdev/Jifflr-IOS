@@ -33,6 +33,8 @@ public enum ErrorMessage {
     case invalidTermsAndConditions
     case faqsFailed
     case noInternetConnection
+    case invalidCurrentPassword
+    case invalidNewPassword
 
     public var failureTitle: String {
         return "error.title".localized()
@@ -66,6 +68,10 @@ public enum ErrorMessage {
             return "error.faqs.message".localized()
         case .noInternetConnection:
             return "error.noInternetConnection".localized()
+        case .invalidCurrentPassword:
+            return "error.invalidCurrentPassword".localized()
+        case .invalidNewPassword:
+            return "error.invalidNewPassword".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:

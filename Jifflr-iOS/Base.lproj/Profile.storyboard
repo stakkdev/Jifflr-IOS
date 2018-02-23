@@ -87,26 +87,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g ***********" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rx3-5d-sgL" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="322" width="374" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="VhF-OV-LWh"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59m-Sn-V1J">
-                                        <rect key="frame" x="30" y="293" width="364" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="YqW-qA-tZG"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g York" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hYt-0f-TV3" customClass="JifflrTextFieldLocation" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="413" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="322" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ROl-pv-73y"/>
                                         </constraints>
@@ -115,7 +97,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="location"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1n0-Mc-RGj">
-                                        <rect key="frame" x="30" y="384" width="364" height="21"/>
+                                        <rect key="frame" x="30" y="293" width="364" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Yns-75-bg4"/>
                                         </constraints>
@@ -124,7 +106,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g 08/11/1987" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApE-8l-OO9" customClass="JifflrTextFieldSelection" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="504" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="413" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="OZQ-LW-AUH"/>
                                         </constraints>
@@ -133,7 +115,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbe-iW-J0b">
-                                        <rect key="frame" x="30" y="475" width="364" height="21"/>
+                                        <rect key="frame" x="30" y="384" width="364" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="zf5-wk-UWV"/>
                                         </constraints>
@@ -142,7 +124,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Male" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mne-yZ-Ea8" customClass="JifflrTextFieldSelection" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="595" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="504" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="xeE-5k-n5r"/>
                                         </constraints>
@@ -151,7 +133,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rta-iY-wi7">
-                                        <rect key="frame" x="30" y="566" width="364" height="21"/>
+                                        <rect key="frame" x="30" y="475" width="364" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="e1r-de-fxG"/>
                                         </constraints>
@@ -160,7 +142,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g 123456" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l1e-KL-KCf" customClass="JifflrTextFieldInvitation" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="686" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="595" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LH1-2b-Y1m"/>
                                         </constraints>
@@ -169,7 +151,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kj8-DO-L0H">
-                                        <rect key="frame" x="30" y="657" width="364" height="21"/>
+                                        <rect key="frame" x="30" y="566" width="364" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="qne-2n-ENx"/>
                                         </constraints>
@@ -178,7 +160,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRg-wE-yUI" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="852" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="856" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="F8j-6p-A1W"/>
                                         </constraints>
@@ -189,7 +171,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0D-rc-ofT" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="782" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="781" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bW0-Nd-4Px"/>
                                         </constraints>
@@ -199,10 +181,20 @@
                                             <action selector="logoutButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="n2A-w1-CI2"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-ah-Rqg" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="671" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WHx-DM-rOj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="CHANGE PASSWORD"/>
+                                        <connections>
+                                            <action selector="changePasswordButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="7Wq-Xr-nuG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4VU-RQ-gIf" firstAttribute="leading" secondItem="2jp-Uo-lkv" secondAttribute="leading" constant="30" id="18e-8c-aNn"/>
-                                    <constraint firstItem="Rx3-5d-sgL" firstAttribute="top" secondItem="59m-Sn-V1J" secondAttribute="bottom" constant="8" id="1dw-a4-QNr"/>
                                     <constraint firstItem="kj8-DO-L0H" firstAttribute="leading" secondItem="Rta-iY-wi7" secondAttribute="leading" id="3S1-s0-0Vj"/>
                                     <constraint firstItem="qWw-u0-0Lu" firstAttribute="leading" secondItem="4VU-RQ-gIf" secondAttribute="leading" id="4L3-Bc-S16"/>
                                     <constraint firstItem="SRg-wE-yUI" firstAttribute="leading" secondItem="l1e-KL-KCf" secondAttribute="leading" id="4hw-vg-1yh"/>
@@ -211,13 +203,10 @@
                                     <constraint firstItem="mne-yZ-Ea8" firstAttribute="leading" secondItem="ApE-8l-OO9" secondAttribute="leading" id="79X-Xx-Lqu"/>
                                     <constraint firstItem="omb-IX-tks" firstAttribute="leading" secondItem="Gm6-CN-XZm" secondAttribute="leading" id="7Hb-o5-syz"/>
                                     <constraint firstItem="omb-IX-tks" firstAttribute="top" secondItem="qWw-u0-0Lu" secondAttribute="bottom" constant="8" id="8a8-bP-dMN"/>
-                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="top" secondItem="Rx3-5d-sgL" secondAttribute="bottom" constant="12" id="9Ef-F3-wX8"/>
                                     <constraint firstItem="kj8-DO-L0H" firstAttribute="trailing" secondItem="mne-yZ-Ea8" secondAttribute="trailing" id="9ni-y3-gUu"/>
                                     <constraint firstItem="cbe-iW-J0b" firstAttribute="trailing" secondItem="hYt-0f-TV3" secondAttribute="trailing" id="A1a-Qc-age"/>
-                                    <constraint firstItem="59m-Sn-V1J" firstAttribute="trailing" secondItem="Y8O-S2-ffF" secondAttribute="trailing" id="CmH-ri-Pzu"/>
+                                    <constraint firstItem="8LK-ah-Rqg" firstAttribute="trailing" secondItem="mne-yZ-Ea8" secondAttribute="trailing" id="DGu-3z-Ww9"/>
                                     <constraint firstItem="Rta-iY-wi7" firstAttribute="top" secondItem="ApE-8l-OO9" secondAttribute="bottom" constant="12" id="DeL-d1-lbR"/>
-                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="mne-yZ-Ea8" secondAttribute="bottom" constant="137" id="Fkq-nK-q9k"/>
-                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="leading" secondItem="59m-Sn-V1J" secondAttribute="leading" id="G9u-36-Htc"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="leading" secondItem="l1e-KL-KCf" secondAttribute="leading" id="GDf-4w-6eq"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="trailing" secondItem="l1e-KL-KCf" secondAttribute="trailing" id="Hat-xP-cLx"/>
                                     <constraint firstItem="mne-yZ-Ea8" firstAttribute="top" secondItem="Rta-iY-wi7" secondAttribute="bottom" constant="8" id="JTD-Uy-yVh"/>
@@ -225,29 +214,31 @@
                                     <constraint firstItem="qeY-dw-5mq" firstAttribute="trailing" secondItem="omb-IX-tks" secondAttribute="trailing" id="JaL-16-S2m"/>
                                     <constraint firstItem="Gm6-CN-XZm" firstAttribute="leading" secondItem="2jp-Uo-lkv" secondAttribute="leading" constant="20" id="LkZ-ap-wxH"/>
                                     <constraint firstItem="Y8O-S2-ffF" firstAttribute="top" secondItem="qeY-dw-5mq" secondAttribute="bottom" constant="8" id="Lsy-gU-Zfx"/>
-                                    <constraint firstItem="59m-Sn-V1J" firstAttribute="top" secondItem="Y8O-S2-ffF" secondAttribute="bottom" constant="12" id="NvJ-jK-vsd"/>
                                     <constraint firstItem="qeY-dw-5mq" firstAttribute="top" secondItem="omb-IX-tks" secondAttribute="bottom" constant="12" id="OB1-BJ-XNk"/>
-                                    <constraint firstItem="Rx3-5d-sgL" firstAttribute="leading" secondItem="Y8O-S2-ffF" secondAttribute="leading" id="OQa-SV-nfx"/>
                                     <constraint firstAttribute="bottom" secondItem="SRg-wE-yUI" secondAttribute="bottom" constant="57" id="Oo7-Ac-gZw"/>
-                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="trailing" secondItem="Rx3-5d-sgL" secondAttribute="trailing" id="RjW-aq-qTV"/>
+                                    <constraint firstItem="hYt-0f-TV3" firstAttribute="trailing" secondItem="Y8O-S2-ffF" secondAttribute="trailing" id="PWf-t2-K98"/>
                                     <constraint firstItem="Gm6-CN-XZm" firstAttribute="top" secondItem="4VU-RQ-gIf" secondAttribute="bottom" constant="8" id="UYt-vT-puU"/>
                                     <constraint firstItem="l1e-KL-KCf" firstAttribute="leading" secondItem="mne-yZ-Ea8" secondAttribute="leading" id="Uhm-6d-nZh"/>
                                     <constraint firstItem="l1e-KL-KCf" firstAttribute="top" secondItem="kj8-DO-L0H" secondAttribute="bottom" constant="8" id="W7q-Ci-9x2"/>
                                     <constraint firstItem="Rta-iY-wi7" firstAttribute="leading" secondItem="cbe-iW-J0b" secondAttribute="leading" id="WCk-I3-Qmf"/>
+                                    <constraint firstItem="8LK-ah-Rqg" firstAttribute="top" secondItem="mne-yZ-Ea8" secondAttribute="bottom" constant="117" id="XI1-9M-eD5"/>
                                     <constraint firstItem="qWw-u0-0Lu" firstAttribute="top" secondItem="Gm6-CN-XZm" secondAttribute="bottom" constant="12" id="YCg-ri-CgT"/>
+                                    <constraint firstItem="hYt-0f-TV3" firstAttribute="leading" secondItem="Y8O-S2-ffF" secondAttribute="leading" id="ZT0-uv-jdm"/>
                                     <constraint firstItem="ApE-8l-OO9" firstAttribute="trailing" secondItem="hYt-0f-TV3" secondAttribute="trailing" id="aFu-ir-OFM"/>
                                     <constraint firstItem="SRg-wE-yUI" firstAttribute="trailing" secondItem="l1e-KL-KCf" secondAttribute="trailing" id="bwV-tH-X4o"/>
-                                    <constraint firstItem="hYt-0f-TV3" firstAttribute="leading" secondItem="Rx3-5d-sgL" secondAttribute="leading" id="d2i-fQ-A5e"/>
                                     <constraint firstItem="qWw-u0-0Lu" firstAttribute="trailing" secondItem="Gm6-CN-XZm" secondAttribute="trailing" id="emL-5A-XGP"/>
-                                    <constraint firstItem="59m-Sn-V1J" firstAttribute="leading" secondItem="qeY-dw-5mq" secondAttribute="leading" id="fYK-yi-cIE"/>
                                     <constraint firstItem="ApE-8l-OO9" firstAttribute="leading" secondItem="hYt-0f-TV3" secondAttribute="leading" id="fyO-8T-EfP"/>
-                                    <constraint firstItem="SRg-wE-yUI" firstAttribute="top" secondItem="B0D-rc-ofT" secondAttribute="bottom" constant="20" id="g2p-Fi-ERk"/>
+                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="8LK-ah-Rqg" secondAttribute="bottom" constant="60" id="g1V-aW-GY8"/>
+                                    <constraint firstItem="SRg-wE-yUI" firstAttribute="top" secondItem="B0D-rc-ofT" secondAttribute="bottom" constant="25" id="g2p-Fi-ERk"/>
                                     <constraint firstItem="mne-yZ-Ea8" firstAttribute="trailing" secondItem="Rta-iY-wi7" secondAttribute="trailing" id="gR3-cs-tsa"/>
                                     <constraint firstItem="Y8O-S2-ffF" firstAttribute="leading" secondItem="omb-IX-tks" secondAttribute="leading" id="h2R-Vr-PRM"/>
-                                    <constraint firstItem="Rx3-5d-sgL" firstAttribute="trailing" secondItem="Y8O-S2-ffF" secondAttribute="trailing" id="liP-D5-f8O"/>
+                                    <constraint firstItem="8LK-ah-Rqg" firstAttribute="leading" secondItem="mne-yZ-Ea8" secondAttribute="leading" id="h7s-bR-i02"/>
+                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="trailing" secondItem="Y8O-S2-ffF" secondAttribute="trailing" id="ihZ-wQ-gZ9"/>
                                     <constraint firstItem="kj8-DO-L0H" firstAttribute="top" secondItem="mne-yZ-Ea8" secondAttribute="bottom" constant="12" id="m07-dq-OcE"/>
                                     <constraint firstItem="cbe-iW-J0b" firstAttribute="leading" secondItem="1n0-Mc-RGj" secondAttribute="leading" id="mcM-h7-QwH"/>
                                     <constraint firstItem="ApE-8l-OO9" firstAttribute="top" secondItem="cbe-iW-J0b" secondAttribute="bottom" constant="8" id="mee-Df-Ges"/>
+                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="leading" secondItem="qeY-dw-5mq" secondAttribute="leading" id="o4O-nA-yQf"/>
+                                    <constraint firstItem="1n0-Mc-RGj" firstAttribute="top" secondItem="Y8O-S2-ffF" secondAttribute="bottom" constant="12" id="oGQ-Wn-vnY"/>
                                     <constraint firstItem="qeY-dw-5mq" firstAttribute="leading" secondItem="qWw-u0-0Lu" secondAttribute="leading" id="pz2-ZT-Reh"/>
                                     <constraint firstAttribute="trailing" secondItem="4VU-RQ-gIf" secondAttribute="trailing" constant="20" id="rM0-eN-x5O"/>
                                     <constraint firstItem="hYt-0f-TV3" firstAttribute="trailing" secondItem="1n0-Mc-RGj" secondAttribute="trailing" id="sYu-AD-sVV"/>
@@ -271,6 +262,8 @@
                     </view>
                     <size key="freeformSize" width="414" height="1021"/>
                     <connections>
+                        <outlet property="changePasswordButton" destination="8LK-ah-Rqg" id="u9o-uF-tRx"/>
+                        <outlet property="changePasswordButtonTop" destination="XI1-9M-eD5" id="FsB-g8-0nc"/>
                         <outlet property="deleteAccountButton" destination="SRg-wE-yUI" id="UJC-mx-V3I"/>
                         <outlet property="dobHeadingLabel" destination="cbe-iW-J0b" id="tqa-tI-c7p"/>
                         <outlet property="dobTextField" destination="ApE-8l-OO9" id="9dX-Lf-g2v"/>
@@ -287,9 +280,6 @@
                         <outlet property="locationHeadingLabel" destination="1n0-Mc-RGj" id="6vh-Qd-JcC"/>
                         <outlet property="locationTextField" destination="hYt-0f-TV3" id="ZNr-5o-G2j"/>
                         <outlet property="logoutButton" destination="B0D-rc-ofT" id="Bmp-Mc-fi4"/>
-                        <outlet property="logoutButtonTop" destination="Fkq-nK-q9k" id="qcn-L3-PE5"/>
-                        <outlet property="passwordHeadingLabel" destination="59m-Sn-V1J" id="I6t-TV-pUQ"/>
-                        <outlet property="passwordTextField" destination="Rx3-5d-sgL" id="WiJ-tD-qXE"/>
                         <outlet property="scrollView" destination="2jp-Uo-lkv" id="Ial-IG-yll"/>
                     </connections>
                 </viewController>
@@ -451,6 +441,95 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJz-VT-Rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2993" y="-21"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="uEL-Lk-3Zp">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="f0W-XK-SQl" customClass="ChangePasswordViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jye-jq-9V4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Bob" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xL-Gn-ZzK" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="113" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0IM-2b-ghZ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJS-Nc-pxZ">
+                                <rect key="frame" x="30" y="84" width="315" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Swn-k8-8J5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Smith" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nL1-HR-kVG" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eAL-z7-hQs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPr-8n-BnV">
+                                <rect key="frame" x="30" y="175" width="325" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nBD-wJ-FC5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHf-k0-LHX" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="577" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2H3-j1-SNn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="changePasswordButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="Ohe-9r-W0y"/>
+                                    <action selector="saveButtonPressedWithSender:" destination="f0W-XK-SQl" eventType="touchUpInside" id="GVm-tM-o08"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UJS-Nc-pxZ" firstAttribute="top" secondItem="jye-jq-9V4" secondAttribute="top" constant="84" id="Amf-WK-Wfi"/>
+                            <constraint firstItem="9xL-Gn-ZzK" firstAttribute="leading" secondItem="3Zr-Hg-4pg" secondAttribute="leading" constant="20" id="L1n-ce-80M"/>
+                            <constraint firstItem="UJS-Nc-pxZ" firstAttribute="leading" secondItem="jye-jq-9V4" secondAttribute="leading" constant="30" id="NGv-Xl-TcY"/>
+                            <constraint firstItem="3Zr-Hg-4pg" firstAttribute="bottom" secondItem="sHf-k0-LHX" secondAttribute="bottom" constant="40" id="XUd-A3-Hen"/>
+                            <constraint firstItem="9xL-Gn-ZzK" firstAttribute="top" secondItem="UJS-Nc-pxZ" secondAttribute="bottom" constant="8" id="aQl-UN-ppe"/>
+                            <constraint firstItem="nL1-HR-kVG" firstAttribute="top" secondItem="rPr-8n-BnV" secondAttribute="bottom" constant="8" id="chV-FP-Ufk"/>
+                            <constraint firstItem="nL1-HR-kVG" firstAttribute="trailing" secondItem="9xL-Gn-ZzK" secondAttribute="trailing" id="df2-b1-qlV"/>
+                            <constraint firstItem="3Zr-Hg-4pg" firstAttribute="trailing" secondItem="9xL-Gn-ZzK" secondAttribute="trailing" constant="20" id="dkJ-Z1-fZq"/>
+                            <constraint firstItem="3Zr-Hg-4pg" firstAttribute="trailing" secondItem="sHf-k0-LHX" secondAttribute="trailing" constant="18" id="h3W-6g-jO9"/>
+                            <constraint firstItem="sHf-k0-LHX" firstAttribute="leading" secondItem="3Zr-Hg-4pg" secondAttribute="leading" constant="18" id="hWN-A8-Jy4"/>
+                            <constraint firstAttribute="trailing" secondItem="UJS-Nc-pxZ" secondAttribute="trailing" constant="30" id="hxw-Ak-7RJ"/>
+                            <constraint firstItem="rPr-8n-BnV" firstAttribute="leading" secondItem="UJS-Nc-pxZ" secondAttribute="leading" id="mK8-4N-tXE"/>
+                            <constraint firstItem="rPr-8n-BnV" firstAttribute="top" secondItem="9xL-Gn-ZzK" secondAttribute="bottom" constant="12" id="obD-wa-b5E"/>
+                            <constraint firstItem="rPr-8n-BnV" firstAttribute="trailing" secondItem="9xL-Gn-ZzK" secondAttribute="trailing" id="peF-Fb-AUW"/>
+                            <constraint firstItem="nL1-HR-kVG" firstAttribute="leading" secondItem="9xL-Gn-ZzK" secondAttribute="leading" id="xW0-bb-xOi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Zr-Hg-4pg"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentPasswordHeadingLabel" destination="UJS-Nc-pxZ" id="zLU-EO-jdk"/>
+                        <outlet property="currentPasswordTextField" destination="9xL-Gn-ZzK" id="ZkP-yM-nMl"/>
+                        <outlet property="newPasswordHeadingLabel" destination="rPr-8n-BnV" id="YiV-9z-YEc"/>
+                        <outlet property="newPasswordTextField" destination="nL1-HR-kVG" id="4rJ-U7-4un"/>
+                        <outlet property="saveButton" destination="sHf-k0-LHX" id="9YL-Nm-To9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EqN-y6-aav" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3719" y="-21"/>
         </scene>
     </scenes>
 </document>
