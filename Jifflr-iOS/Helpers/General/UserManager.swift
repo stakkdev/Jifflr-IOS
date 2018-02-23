@@ -226,7 +226,7 @@ class UserManager: NSObject {
 
         PFCloud.callFunction(inBackground: "change-password", withParameters: parameters) { responseJSON, error in
             if let responseJSON = responseJSON as? [String: Any] {
-                guard let success = responseJSON["response"] as? Bool else {
+                guard let success = responseJSON["success"] as? Bool else {
                     completion(ErrorMessage.unknown)
                     return
                 }
