@@ -18,12 +18,29 @@ class TeamViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
+    var friendsPageIndex = 0
+    var friendsPaginating = false
+    var pendingFriendsPageIndex = 0
+    var pendingFriendsPaginating = false
+
     var myTeam: MyTeam? {
         didSet {
             self.tableView.reloadData()
 
             guard let graphData = self.myTeam?.graph, graphData.count > 0 else { return }
             self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
+        }
+    }
+
+    var friends:[MyTeamFriends] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+
+    var pendingFriends:[MyTeamPendingFriends] = [] {
+        didSet {
+            self.tableView.reloadData()
         }
     }
 
@@ -68,33 +85,6 @@ class TeamViewController: BaseViewController {
         self.updateData()
     }
 
-    func updateData() {
-        if Reachability.isConnectedToNetwork() {
-            MyTeamManager.shared.fetch { (myTeam, error) in
-                guard let myTeam = myTeam, error == nil else {
-                    self.displayError(error: error)
-                    self.updateLocalData()
-                    return
-                }
-
-                self.myTeam = myTeam
-            }
-        } else {
-            self.updateLocalData()
-        }
-    }
-
-    func updateLocalData() {
-        MyTeamManager.shared.fetchLocal { (myTeam, error) in
-            guard let myTeam = myTeam, error == nil else {
-                self.displayError(error: error)
-                return
-            }
-
-            self.myTeam = myTeam
-        }
-    }
-
     @objc func addButtonPressed(_ sender: UIBarButtonItem) {
         ContactsManager.shared.requestAccess { (access) in
             guard access == true else {
@@ -130,18 +120,20 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let myTeam = self.myTeam else { return 0 }
+        guard self.myTeam != nil else { return 0 }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            return myTeam.friends.count
+            return self.friends.count + 1
         }
 
-        return myTeam.pendingFriends.count
+        return self.pendingFriends.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let myTeam = self.myTeam else { return UITableViewCell() }
+
+        self.checkForPagination(indexPath: indexPath)
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
@@ -153,31 +145,186 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
 
             } else {
+                let friend = self.friends[indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamFriendCell") as! TeamFriendCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.nameLabel.text = "James Shaw"
-                cell.emailLabel.text = "james@thedistance.co.uk"
-                cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(100)
-                cell.dateLabel.text = "6 April 2016"
+                cell.nameLabel.text = "\(friend.user.details.firstName) \(friend.user.details.lastName)"
+                cell.emailLabel.text = "\(friend.user.email)"
+                cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(friend.teamSize)
+
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd MMM yyyy"
+                cell.dateLabel.text = dateFormatter.string(from: friend.date)
+
                 return cell
             }
         } else {
+            let pendingFriend = self.pendingFriends[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "TeamPendingFriendCell") as! TeamPendingFriendCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.nameLabel.text = "James Shaw"
-            cell.emailLabel.text = "james@thedistance.co.uk"
-            cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat("xBgFs12")
-            cell.dateLabel.text = "6 April 2016"
+            cell.nameLabel.text = pendingFriend.pendingUser.name
+            cell.emailLabel.text = pendingFriend.pendingUser.email
+            cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat(pendingFriend.pendingUser.invitationCode)
 
-            if indexPath.row == 0 {
-                cell.roundedView.alpha = 1.0
-            } else {
-                cell.roundedView.alpha = 0.6
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            if let createdAt = pendingFriend.pendingUser.createdAt {
+                cell.dateLabel.text = dateFormatter.string(from: createdAt)
             }
 
+            cell.setCellActive(isActive: pendingFriend.isActive)
+
             return cell
+        }
+    }
+
+    func checkForPagination(indexPath: IndexPath) {
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            if indexPath.row == self.friends.count {
+                self.friendsPageIndex += 1
+
+                if Reachability.isConnectedToNetwork() {
+                    self.updateCloudFriends()
+                } else {
+                    self.updateLocalFriends()
+                }
+            }
+        } else {
+            if indexPath.row == self.pendingFriends.count - 1 {
+                self.pendingFriendsPageIndex += 1
+
+                if Reachability.isConnectedToNetwork() {
+                    self.updateCloudPendingFriends()
+                } else {
+                    self.updateLocalPendingFriends()
+                }
+            }
+        }
+    }
+}
+
+// Data Calls
+extension TeamViewController {
+
+    func updateData() {
+        self.friendsPageIndex = 0
+        self.pendingFriendsPageIndex = 0
+
+        if Reachability.isConnectedToNetwork() {
+            self.updateCloudData()
+        } else {
+            self.updateLocalData()
+        }
+    }
+
+    func updateCloudData() {
+        self.updateCloudStats()
+        self.updateCloudFriends()
+        self.updateCloudPendingFriends()
+    }
+
+    func updateCloudStats() {
+        MyTeamManager.shared.fetchStats { (myTeam, error) in
+            guard let myTeam = myTeam, error == nil else {
+                self.displayError(error: error)
+                self.updateLocalStats()
+                return
+            }
+
+            self.myTeam = myTeam
+        }
+    }
+
+    func updateCloudFriends() {
+        guard self.friendsPaginating == false else { return }
+        self.friendsPaginating = true
+
+        self.friendsPageIndex += 1
+
+        MyTeamManager.shared.fetchFriends(page: self.friendsPageIndex) { (friends, error) in
+            self.friendsPaginating = false
+
+            guard let friends = friends, error == nil else {
+                self.displayError(error: error)
+                self.updateLocalFriends()
+                return
+            }
+
+            self.friends += friends
+        }
+    }
+
+    func updateCloudPendingFriends() {
+        guard self.pendingFriendsPaginating == false else { return }
+        self.pendingFriendsPaginating = true
+
+        self.pendingFriendsPageIndex += 1
+
+        MyTeamManager.shared.fetchPendingFriends { (pendingFriends, error) in
+            self.pendingFriendsPaginating = false
+
+            guard let pendingFriends = pendingFriends, error == nil else {
+                self.displayError(error: error)
+                self.updateLocalPendingFriends()
+                return
+            }
+
+            self.pendingFriends += pendingFriends
+        }
+    }
+
+    func updateLocalData() {
+        self.updateLocalStats()
+        self.updateLocalFriends()
+        self.updateLocalPendingFriends()
+    }
+
+    func updateLocalStats() {
+        MyTeamManager.shared.fetchLocalStats { (myTeam, error) in
+            guard let myTeam = myTeam, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.myTeam = myTeam
+        }
+    }
+
+    func updateLocalFriends() {
+        guard self.friendsPaginating == false else { return }
+        self.friendsPaginating = true
+
+        self.friendsPageIndex += 1
+
+        MyTeamManager.shared.fetchLocalFriends(page: self.friendsPageIndex) { (friends, error) in
+            self.friendsPaginating = false
+
+            guard let friends = friends, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.friends += friends
+        }
+    }
+
+    func updateLocalPendingFriends() {
+        guard self.pendingFriendsPaginating == false else { return }
+        self.pendingFriendsPaginating = true
+
+        self.pendingFriendsPageIndex += 1
+
+        MyTeamManager.shared.fetchLocalPendingFriends { (pendingFriends, error) in
+            self.pendingFriendsPaginating = false
+
+            guard let pendingFriends = pendingFriends, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.pendingFriends += pendingFriends
         }
     }
 }

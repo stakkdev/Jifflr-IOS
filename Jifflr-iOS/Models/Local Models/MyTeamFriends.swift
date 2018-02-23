@@ -29,6 +29,15 @@ final class MyTeamFriends: PFObject {
             self["teamSize"] = newValue
         }
     }
+
+    var date: Date {
+        get {
+            return self["date"] as! Date
+        }
+        set {
+            self["date"] = newValue
+        }
+    }
 }
 
 extension MyTeamFriends: PFSubclassing {

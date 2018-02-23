@@ -13,7 +13,7 @@ class MyTeamManager: NSObject {
     static let shared = MyTeamManager()
     let pinName = "MyTeam"
 
-    func fetch(completion: @escaping (MyTeam?, ErrorMessage?) -> Void) {
+    func fetchStats(completion: @escaping (MyTeam?, ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
 
         PFCloud.callFunction(inBackground: "my-team-overview", withParameters: ["user": user.objectId!]) { myTeamJSON, error in
@@ -36,33 +36,9 @@ class MyTeamManager: NSObject {
                     myTeam.teamSize = teamSize
                 }
 
-                if let friendsArray = myTeamJSON["friends"] as? [(user: PFUser, teamSize: Int)] {
-                    var friends:[MyTeamFriends] = []
-                    for friendsTuple in friendsArray {
-                        let friend = MyTeamFriends()
-                        friend.user = friendsTuple.user
-                        friend.teamSize = friendsTuple.teamSize
-                        friends.append(friend)
-                    }
-
-                    myTeam.friends = friends
-                }
-
-                if let pendingFriendsArray = myTeamJSON["pendingFriends"] as? [(user: PendingUser, isActive: Bool)] {
-                    var pendingFriends:[MyTeamPendingFriends] = []
-                    for pendingFriendsTuple in pendingFriendsArray {
-                        let pendingFriend = MyTeamPendingFriends()
-                        pendingFriend.pendingUser = pendingFriendsTuple.user
-                        pendingFriend.isActive = pendingFriendsTuple.isActive
-                        pendingFriends.append(pendingFriend)
-                    }
-
-                    myTeam.pendingFriends = pendingFriends
-                }
-
                 PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
                     myTeam.pinInBackground(withName: self.pinName, block: { (success, error) in
-                        print("MyTeam Pinned: \(success)")
+                        print("MyTeam Stats Pinned: \(success)")
 
                         if let error = error {
                             print("Error: \(error)")
@@ -81,11 +57,84 @@ class MyTeamManager: NSObject {
         }
     }
 
-    func fetchLocal(completion: @escaping (MyTeam?, ErrorMessage?) -> Void) {
+    func fetchFriends(page: Int, completion: @escaping ([MyTeamFriends]?, ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
+        PFCloud.callFunction(inBackground: "my-team-friends", withParameters: parameters) { myTeamJSON, error in
+            if let myTeamJSON = myTeamJSON as? [String: Any] {
+
+                if let friendsArray = myTeamJSON["friends"] as? [(user: PFUser, teamSize: Int, date: Date)] {
+                    var friends:[MyTeamFriends] = []
+                    for friendsTuple in friendsArray {
+                        let friend = MyTeamFriends()
+                        friend.user = friendsTuple.user
+                        friend.teamSize = friendsTuple.teamSize
+                        friend.date = friendsTuple.date
+                        friends.append(friend)
+                    }
+
+                    PFObject.pinAll(inBackground: friends, withName: self.pinName, block: { (success, error) in
+                        print("MyTeam Friends Pinned: \(success)")
+
+                        if let error = error {
+                            print("Error: \(error)")
+                        }
+                    })
+
+                    completion(friends, nil)
+                } else {
+                    completion(nil, ErrorMessage.unknown)
+                }
+            } else {
+                if let error = error {
+                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(nil, ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+
+    func fetchPendingFriends(completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+        PFCloud.callFunction(inBackground: "my-team-pending-friends", withParameters: ["user": user.objectId!]) { myTeamJSON, error in
+            if let myTeamJSON = myTeamJSON as? [String: Any] {
+                if let pendingFriendsArray = myTeamJSON["pendingFriends"] as? [(user: PendingUser, isActive: Bool)] {
+                    var pendingFriends:[MyTeamPendingFriends] = []
+                    for pendingFriendsTuple in pendingFriendsArray {
+                        let pendingFriend = MyTeamPendingFriends()
+                        pendingFriend.pendingUser = pendingFriendsTuple.user
+                        pendingFriend.isActive = pendingFriendsTuple.isActive
+                        pendingFriends.append(pendingFriend)
+                    }
+
+                    PFObject.pinAll(inBackground: pendingFriends, withName: self.pinName, block: { (success, error) in
+                        print("MyTeam Pending Friends Pinned: \(success)")
+
+                        if let error = error {
+                            print("Error: \(error)")
+                        }
+                    })
+
+                    completion(pendingFriends, nil)
+                } else {
+                    completion(nil, ErrorMessage.unknown)
+                }
+            } else {
+                if let error = error {
+                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(nil, ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+
+    func fetchLocalStats(completion: @escaping (MyTeam?, ErrorMessage?) -> Void) {
         let query = MyTeam.query()
         query?.includeKey("graph")
-        query?.includeKey("friends")
-        query?.includeKey("pendingFriends")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.getFirstObjectInBackground(block: { (myTeam, error) in
@@ -95,6 +144,39 @@ class MyTeamManager: NSObject {
             }
 
             completion(myTeam, nil)
+        })
+    }
+
+    func fetchLocalFriends(page: Int, completion: @escaping ([MyTeamFriends]?, ErrorMessage?) -> Void) {
+        let query = MyTeamFriends.query()
+        query?.includeKey("user")
+        query?.includeKey("user.details")
+        query?.order(byDescending: "createdAt")
+        query?.fromPin(withName: self.pinName)
+        query?.limit = 20
+        query?.skip = 20 * page
+        query?.findObjectsInBackground(block: { (friends, error) in
+            guard let friends = friends as? [MyTeamFriends], error == nil else {
+                completion(nil, ErrorMessage.unknown)
+                return
+            }
+
+            completion(friends, nil)
+        })
+    }
+
+    func fetchLocalPendingFriends(completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
+        let query = MyTeamPendingFriends.query()
+        query?.includeKey("pendingUser")
+        query?.order(byDescending: "createdAt")
+        query?.fromPin(withName: self.pinName)
+        query?.findObjectsInBackground(block: { (pendingFriends, error) in
+            guard let pendingFriends = pendingFriends as? [MyTeamPendingFriends], error == nil else {
+                completion(nil, ErrorMessage.unknown)
+                return
+            }
+
+            completion(pendingFriends, nil)
         })
     }
 }
