@@ -25,4 +25,12 @@ class TeamPendingFriendCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
+    func setCellActive(isActive: Bool) {
+        if isActive {
+            self.roundedView.alpha = 1.0
+        } else {
+            self.roundedView.alpha = 0.6
+        }
+    }
 }

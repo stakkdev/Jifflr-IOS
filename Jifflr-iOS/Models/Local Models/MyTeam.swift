@@ -29,24 +29,6 @@ final class MyTeam: PFObject {
             self["teamSize"] = newValue
         }
     }
-
-    var friends: [MyTeamFriends] {
-        get {
-            return self["friends"] as? [MyTeamFriends] ?? []
-        }
-        set {
-            self["friends"] = newValue
-        }
-    }
-
-    var pendingFriends: [MyTeamPendingFriends] {
-        get {
-            return self["pendingFriends"] as? [MyTeamPendingFriends] ?? []
-        }
-        set {
-            self["pendingFriends"] = newValue
-        }
-    }
 }
 
 extension MyTeam: PFSubclassing {
