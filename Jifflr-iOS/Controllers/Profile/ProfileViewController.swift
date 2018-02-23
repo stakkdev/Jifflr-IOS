@@ -195,9 +195,12 @@ class ProfileViewController: BaseViewController {
     }
 
     @IBAction func logoutButtonPressed(sender: UIButton) {
+        self.logoutButton.animate()
         UserManager.shared.logOut { (error) in
+            self.logoutButton.stopAnimating()
+
             guard error == nil else {
-                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                self.displayError(error: error)
                 return
             }
 
@@ -206,7 +209,43 @@ class ProfileViewController: BaseViewController {
     }
 
     @IBAction func deleteAccountButtonPressed(sender: UIButton) {
+        let title = "alert.deleteAccount.title".localized()
+        let message = "alert.deleteAccount.message".localized()
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 
+        let cancelTitle = "alert.notifications.cancelButton".localized()
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { (action) in }
+        alertController.addAction(cancelAction)
+
+        let deleteAction = UIAlertAction(title: title, style: .destructive) { (action) in
+            self.deleteAccount()
+        }
+        alertController.addAction(deleteAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    func deleteAccount() {
+        self.deleteAccountButton.animate()
+
+        UserManager.shared.deleteAccount { (error) in
+            guard error == nil else {
+                self.deleteAccountButton.stopAnimating()
+                self.displayError(error: error)
+                return
+            }
+
+            UserManager.shared.logOut { (error) in
+                self.deleteAccountButton.stopAnimating()
+
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+
+                self.rootLoginViewController()
+            }
+        }
     }
 
     @IBAction func changePasswordButtonPressed(sender: UIButton) {

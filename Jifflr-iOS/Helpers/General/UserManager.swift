@@ -196,7 +196,14 @@ class UserManager: NSObject {
                 if error != nil {
                     completion(ErrorMessage.parseError(error!.localizedDescription))
                 } else {
-                    completion(nil)
+                    PFObject.unpinAllObjectsInBackground(block: { (success, error) in
+                        guard success == true, error == nil else {
+                            completion(ErrorMessage.unknown)
+                            return
+                        }
+
+                        completion(nil)
+                    })
                 }
             }
         }
@@ -211,5 +218,70 @@ class UserManager: NSObject {
                 completion(ErrorMessage.resetPasswordFailed)
             }
         })
+    }
+
+    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        let parameters = ["user": user.objectId!, "oldPassword": oldPassword, "newPassword": newPassword]
+
+        PFCloud.callFunction(inBackground: "change-password", withParameters: parameters) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any] {
+                guard let success = responseJSON["response"] as? Bool else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+
+                if let error = responseJSON["error"] as? Error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                    return
+                }
+
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+            } else {
+                if let error = error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+
+    func deleteAccount(completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+        PFCloud.callFunction(inBackground: "delete-account", withParameters: ["user": user.objectId!]) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any] {
+                guard let success = responseJSON["response"] as? Bool else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+
+                if let error = responseJSON["error"] as? Error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                    return
+                }
+
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+            } else {
+                if let error = error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
     }
 }

@@ -48,7 +48,7 @@ class ChangePasswordViewController: BaseViewController {
 
     @IBAction func saveButtonPressed(sender: UIButton) {
 
-        guard let currentPassword = self.currentPasswordTextField.text, !currentPassword.isEmpty else {
+        guard let oldPassword = self.currentPasswordTextField.text, !oldPassword.isEmpty else {
             self.displayError(error: ErrorMessage.invalidCurrentPassword)
             return
         }
@@ -56,6 +56,24 @@ class ChangePasswordViewController: BaseViewController {
         guard let newPassword = self.newPasswordTextField.text, !newPassword.isEmpty, newPassword.count >= 8 else {
             self.displayError(error: ErrorMessage.invalidNewPassword)
             return
+        }
+
+        self.saveButton.animate()
+
+        UserManager.shared.changePassword(oldPassword: oldPassword, newPassword: newPassword) { (error) in
+            self.saveButton.stopAnimating()
+            
+            guard error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            let title = "alert.passwordChanged.title".localized()
+            let message = "alert.passwordChanged.message".localized()
+            let dismissText = "alert.passwordChanged.okayButton".localized()
+            self.displayMessage(title: title, message: message, dismissText: dismissText, dismissAction: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            })
         }
     }
 }
