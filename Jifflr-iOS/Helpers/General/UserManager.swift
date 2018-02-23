@@ -47,17 +47,25 @@ class UserManager: NSObject {
                 newUser.signUpInBackground { (succeeded, error) in
                     if succeeded {
                         newUser.pinInBackground(block: { (succeeded, error) in
-                            if error != nil {
+                            guard error == nil else {
                                 completion(ErrorMessage.parseError(error!.localizedDescription))
-                            } else {
-                                userDetails.pinInBackground(block: { (success, error) in
-                                    if error != nil {
-                                        completion(ErrorMessage.parseError(error!.localizedDescription))
-                                    } else {
-                                        completion(nil)
-                                    }
-                                })
+                                return
                             }
+
+                            userDetails.pinInBackground(block: { (success, error) in
+                                guard error == nil else {
+                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    return
+                                }
+
+                                if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
+                                    self.registrationInvitation(completion: { (error) in
+                                        completion(error)
+                                    })
+                                } else {
+                                    completion(nil)
+                                }
+                            })
                         })
                     } else {
                         if error != nil {
@@ -69,6 +77,38 @@ class UserManager: NSObject {
                 }
             }
         })
+    }
+
+    func registrationInvitation(completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+        PFCloud.callFunction(inBackground: "registration-invitation", withParameters: ["user": user.objectId!]) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any] {
+                guard let success = responseJSON["success"] as? Bool else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+
+                if let error = responseJSON["error"] as? Error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                    return
+                }
+
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+            } else {
+                if let error = error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
     }
 
     func login(withUsername username: String, password: String, completion: @escaping (PFUser?, ErrorMessage?) -> Void) {
@@ -258,7 +298,7 @@ class UserManager: NSObject {
 
         PFCloud.callFunction(inBackground: "delete-account", withParameters: ["user": user.objectId!]) { responseJSON, error in
             if let responseJSON = responseJSON as? [String: Any] {
-                guard let success = responseJSON["response"] as? Bool else {
+                guard let success = responseJSON["success"] as? Bool else {
                     completion(ErrorMessage.unknown)
                     return
                 }

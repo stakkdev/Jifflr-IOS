@@ -196,7 +196,7 @@ class RegisterViewController: BaseViewController {
             self.registerButton.stopAnimating()
             
             guard error == nil else {
-                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                self.displayError(error: error)
                 return
             }
 
