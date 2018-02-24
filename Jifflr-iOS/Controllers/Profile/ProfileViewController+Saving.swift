@@ -84,10 +84,6 @@ extension ProfileViewController {
             currentUser.details.gender = gender
             self.saveAndPinUser()
 
-        } else if textField == self.invitationCodeTextField {
-            if let invitationCode = textField.text, !invitationCode.isEmpty {
-                // TODO - Call endpoint
-            }
         }
     }
 
@@ -123,5 +119,20 @@ extension ProfileViewController {
                 return
             }
         })
+    }
+
+    func changeTeam(invitationCode: String) {
+        guard let currentUser = Session.shared.currentUser else { return }
+
+        UserManager.shared.changeTeam(invitationCode: invitationCode) { (error) in
+            self.invitationCodeTextField.text = currentUser.details.invitationCode
+
+            guard error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.displayMessage(title: AlertMessage.teamChanged.title, message: AlertMessage.teamChanged.message)
+        }
     }
 }

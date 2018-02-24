@@ -22,6 +22,7 @@
 "error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
 "error.invalidCurrentPassword" = "Please enter your current password.";
 "error.invalidNewPassword" = "Invalid new password. Please enter a valid password that is at least 8 characters.";
+"error.invalidInvitationCode" = "Invitation code not registered. Please enter a valid invitation code.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -36,6 +37,8 @@
 "alert.passwordChanged.okayButton" = "Okay";
 "alert.deleteAccount.title" = "Delete Account";
 "alert.deleteAccount.message" = "Are you sure you want to delete your account? This action cannot be undone.";
+"alert.teamChanged.title" = "Team Changed";
+"alert.teamChanged.title" = "Your team has been successfully changed!";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";

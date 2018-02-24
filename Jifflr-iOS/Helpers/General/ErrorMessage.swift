@@ -35,6 +35,7 @@ public enum ErrorMessage {
     case noInternetConnection
     case invalidCurrentPassword
     case invalidNewPassword
+    case invalidInvitationCode
 
     public var failureTitle: String {
         return "error.title".localized()
@@ -72,6 +73,8 @@ public enum ErrorMessage {
             return "error.invalidCurrentPassword".localized()
         case .invalidNewPassword:
             return "error.invalidNewPassword".localized()
+        case .invalidInvitationCode:
+            return "error.invalidInvitationCode".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
@@ -97,6 +100,7 @@ public enum ErrorMessage {
 public enum AlertMessage {
     case resetEmailSent
     case noInternetConnection
+    case teamChanged
 
     public var title: String {
         switch self {
@@ -104,6 +108,8 @@ public enum AlertMessage {
             return "alert.resetEmailSent.title".localized()
         case .noInternetConnection:
             return "alert.noInternetConnection.title".localized()
+        case .teamChanged:
+            return "alert.teamChanged.title".localized()
         }
     }
 
@@ -113,6 +119,8 @@ public enum AlertMessage {
             return "alert.resetEmailSent.message".localized()
         case .noInternetConnection:
             return "alert.noInternetConnection.message".localized()
+        case .teamChanged:
+            return "alert.teamChanged.message".localized()
         }
     }
 }

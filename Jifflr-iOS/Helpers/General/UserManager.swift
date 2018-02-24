@@ -324,4 +324,33 @@ class UserManager: NSObject {
             }
         }
     }
+
+    func changeTeam(invitationCode: String, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+        let parameters = ["user": user.objectId!, "invitationCode": invitationCode]
+
+        PFCloud.callFunction(inBackground: "change-team", withParameters: parameters) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any] {
+                guard let success = responseJSON["success"] as? Bool else {
+                    completion(ErrorMessage.unknown)
+                    return
+                }
+
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.invalidInvitationCode)
+                    return
+                }
+            } else {
+                if let error = error {
+                    completion(ErrorMessage.parseError(error.localizedDescription))
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
 }

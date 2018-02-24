@@ -263,6 +263,8 @@ extension ProfileViewController: UITextFieldDelegate {
             chooseLocation.searchString = text
             chooseLocation.delegate = self
             self.present(chooseLocation, animated: true, completion: nil)
+        } else if textField == self.invitationCodeTextField, let invitationCode = textField.text, !invitationCode.isEmpty {
+            self.changeTeam(invitationCode: invitationCode)
         } else {
             self.validateField(textField: textField)
         }
