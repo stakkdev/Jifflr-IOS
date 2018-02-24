@@ -18,11 +18,6 @@ class TeamViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
-    var friendsPageIndex = 0
-    var friendsPaginating = false
-    var pendingFriendsPageIndex = 0
-    var pendingFriendsPaginating = false
-
     var myTeam: MyTeam? {
         didSet {
             self.tableView.reloadData()
@@ -182,9 +177,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
     func checkForPagination(indexPath: IndexPath) {
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            if indexPath.row == self.friends.count {
-                self.friendsPageIndex += 1
-
+            if TeamPaginationManager.shared.shouldPaginateFriends(indexPath: indexPath, friends: self.friends) {
                 if Reachability.isConnectedToNetwork() {
                     self.updateCloudFriends()
                 } else {
@@ -192,9 +185,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         } else {
-            if indexPath.row == self.pendingFriends.count - 1 {
-                self.pendingFriendsPageIndex += 1
-
+            if TeamPaginationManager.shared.shouldPaginatePendingFriends(indexPath: indexPath, pendingFriends: self.pendingFriends) {
                 if Reachability.isConnectedToNetwork() {
                     self.updateCloudPendingFriends()
                 } else {
@@ -209,8 +200,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 extension TeamViewController {
 
     func updateData() {
-        self.friendsPageIndex = 0
-        self.pendingFriendsPageIndex = 0
+        TeamPaginationManager.shared.reset()
 
         if Reachability.isConnectedToNetwork() {
             self.updateCloudData()
@@ -238,13 +228,10 @@ extension TeamViewController {
     }
 
     func updateCloudFriends() {
-        guard self.friendsPaginating == false else { return }
-        self.friendsPaginating = true
+        guard TeamPaginationManager.shared.shouldPaginateFriends() else { return }
 
-        self.friendsPageIndex += 1
-
-        MyTeamManager.shared.fetchFriends(page: self.friendsPageIndex) { (friends, error) in
-            self.friendsPaginating = false
+        MyTeamManager.shared.fetchFriends(page: TeamPaginationManager.shared.friendsPageIndex) { (friends, error) in
+            TeamPaginationManager.shared.friendsPaginationComplete()
 
             guard let friends = friends, error == nil else {
                 self.displayError(error: error)
@@ -257,13 +244,10 @@ extension TeamViewController {
     }
 
     func updateCloudPendingFriends() {
-        guard self.pendingFriendsPaginating == false else { return }
-        self.pendingFriendsPaginating = true
+        guard TeamPaginationManager.shared.shouldPaginatePendingFriends() else { return }
 
-        self.pendingFriendsPageIndex += 1
-
-        MyTeamManager.shared.fetchPendingFriends { (pendingFriends, error) in
-            self.pendingFriendsPaginating = false
+        MyTeamManager.shared.fetchPendingFriends(page: TeamPaginationManager.shared.pendingFriendsPageIndex) { (pendingFriends, error) in
+            TeamPaginationManager.shared.pendingFriendsPaginationComplete()
 
             guard let pendingFriends = pendingFriends, error == nil else {
                 self.displayError(error: error)
@@ -293,13 +277,10 @@ extension TeamViewController {
     }
 
     func updateLocalFriends() {
-        guard self.friendsPaginating == false else { return }
-        self.friendsPaginating = true
+        guard TeamPaginationManager.shared.shouldPaginateFriends() else { return }
 
-        self.friendsPageIndex += 1
-
-        MyTeamManager.shared.fetchLocalFriends(page: self.friendsPageIndex) { (friends, error) in
-            self.friendsPaginating = false
+        MyTeamManager.shared.fetchLocalFriends(page: TeamPaginationManager.shared.friendsPageIndex) { (friends, error) in
+            TeamPaginationManager.shared.friendsPaginationComplete()
 
             guard let friends = friends, error == nil else {
                 self.displayError(error: error)
@@ -311,13 +292,10 @@ extension TeamViewController {
     }
 
     func updateLocalPendingFriends() {
-        guard self.pendingFriendsPaginating == false else { return }
-        self.pendingFriendsPaginating = true
+        guard TeamPaginationManager.shared.shouldPaginatePendingFriends() else { return }
 
-        self.pendingFriendsPageIndex += 1
-
-        MyTeamManager.shared.fetchLocalPendingFriends { (pendingFriends, error) in
-            self.pendingFriendsPaginating = false
+        MyTeamManager.shared.fetchLocalPendingFriends(page: TeamPaginationManager.shared.pendingFriendsPageIndex) { (pendingFriends, error) in
+            TeamPaginationManager.shared.pendingFriendsPaginationComplete()
 
             guard let pendingFriends = pendingFriends, error == nil else {
                 self.displayError(error: error)

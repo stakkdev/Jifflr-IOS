@@ -96,12 +96,13 @@ class MyTeamManager: NSObject {
         }
     }
 
-    func fetchPendingFriends(completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
+    func fetchPendingFriends(page: Int, completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
 
-        PFCloud.callFunction(inBackground: "my-team-pending-friends", withParameters: ["user": user.objectId!]) { myTeamJSON, error in
+        let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
+        PFCloud.callFunction(inBackground: "my-team-pending-friends", withParameters: parameters) { myTeamJSON, error in
             if let myTeamJSON = myTeamJSON as? [String: Any] {
-                if let pendingFriendsArray = myTeamJSON["pendingFriends"] as? [(user: PendingUser, isActive: Bool)] {
+                if let pendingFriendsArray = myTeamJSON["friends"] as? [(user: PendingUser, isActive: Bool)] {
                     var pendingFriends:[MyTeamPendingFriends] = []
                     for pendingFriendsTuple in pendingFriendsArray {
                         let pendingFriend = MyTeamPendingFriends()
@@ -165,11 +166,13 @@ class MyTeamManager: NSObject {
         })
     }
 
-    func fetchLocalPendingFriends(completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
+    func fetchLocalPendingFriends(page: Int, completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
         let query = MyTeamPendingFriends.query()
         query?.includeKey("pendingUser")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
+        query?.limit = 20
+        query?.skip = 20 * page
         query?.findObjectsInBackground(block: { (pendingFriends, error) in
             guard let pendingFriends = pendingFriends as? [MyTeamPendingFriends], error == nil else {
                 completion(nil, ErrorMessage.unknown)
