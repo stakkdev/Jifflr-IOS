@@ -17,17 +17,26 @@ class UserTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
+        let location = Location()
+        location.name = "United Kingdom"
+        location.isoCountryCode = "GB"
+
+        let userDetails = UserDetails()
+        userDetails.firstName = "James"
+        userDetails.lastName = "Shaw"
+        userDetails.dateOfBirth = Date.distantPast
+        userDetails.gender = "Male"
+        userDetails.emailVerified = false
+        userDetails.location = location
+        userDetails.geoPoint = PFGeoPoint(latitude: 53.14, longitude: -1.01)
+        userDetails.displayLocation = "York, United Kingdom"
+        userDetails.invitationCode = "vyi7hHjsd"
+
         self.user = PFUser()
-        self.user.firstName = "James"
-        self.user.lastName = "Shaw"
+        self.user.details = userDetails
         self.user.email = "james.shaw@thedistance.co.uk"
-        self.user.username = "james.shaw@thedistance.co.uk"
         self.user.password = "test"
-        self.user.location = "York, United Kingdom"
-        self.user.invitationCode = 2534534
-        self.user.gender = "Male"
-        self.user.dateOfBirth = Date.distantPast
-        self.user.cashAvailable = 0.0
+        self.user.username = "james.shaw@thedistance.co.uk"
     }
 
     override func tearDown() {
@@ -36,29 +45,15 @@ class UserTests: XCTestCase {
         super.tearDown()
     }
 
-    func testAddFriend() {
-        let friend = PFUser()
-        self.user.addFriend(friend: friend)
-
-        XCTAssertEqual(self.user.friends, [friend])
-    }
-
-    func testFetchFriends() {
-        self.user.fetchFriends { (friends) in
-            XCTAssertEqual(friends, [])
-        }
-    }
-
     func testUserGetters() {
-        XCTAssertEqual(self.user.firstName, "James")
-        XCTAssertEqual(self.user.lastName, "Shaw")
+        XCTAssertEqual(self.user.details.firstName, "James")
+        XCTAssertEqual(self.user.details.lastName, "Shaw")
         XCTAssertEqual(self.user.email, "james.shaw@thedistance.co.uk")
         XCTAssertEqual(self.user.username, "james.shaw@thedistance.co.uk")
         XCTAssertEqual(self.user.password, "test")
-        XCTAssertEqual(self.user.location, "York, United Kingdom")
-        XCTAssertEqual(self.user.invitationCode, 2534534)
-        XCTAssertEqual(self.user.gender, "Male")
-        XCTAssertEqual(self.user.dateOfBirth, Date.distantPast)
-        XCTAssertEqual(self.user.cashAvailable, 0.0)
+        XCTAssertEqual(self.user.details.displayLocation, "York, United Kingdom")
+        XCTAssertEqual(self.user.details.invitationCode, "vyi7hHjsd")
+        XCTAssertEqual(self.user.details.gender, "Male")
+        XCTAssertEqual(self.user.details.dateOfBirth, Date.distantPast)
     }
 }

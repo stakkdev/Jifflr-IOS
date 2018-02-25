@@ -24,7 +24,6 @@ class PendingUserTests: XCTestCase {
         self.pendingUser.name = "Bob Smith"
         self.pendingUser.sender = self.user
         self.pendingUser.email = "bob.smith@thedistance.co.uk"
-        self.pendingUser.invitationCode = 2534534
     }
 
     override func tearDown() {
@@ -38,6 +37,5 @@ class PendingUserTests: XCTestCase {
         XCTAssertEqual(self.pendingUser.name, "Bob Smith")
         XCTAssertEqual(self.pendingUser.sender, self.user)
         XCTAssertEqual(self.pendingUser.email, "bob.smith@thedistance.co.uk")
-        XCTAssertEqual(self.pendingUser.invitationCode, 2534534)
     }
 }

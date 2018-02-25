@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D70147B0701131D6414DE5F /* Pods_Jifflr_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */; };
+		100684EF2043089F0004C675 /* TeamPaginationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100684EE2043089F0004C675 /* TeamPaginationManagerTests.swift */; };
+		100684F120430C8A0004C675 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */; };
 		1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */; };
 		1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
@@ -146,6 +148,8 @@
 
 /* Begin PBXFileReference section */
 		0ED41ABA1C2F0B2DA5F0C041 /* Pods-Jifflr-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release.xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		100684EE2043089F0004C675 /* TeamPaginationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPaginationManagerTests.swift; sourceTree = "<group>"; };
+		100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
 		1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPaginationManager.swift; path = Controllers/Team/TeamPaginationManager.swift; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				E90C20091FA8DE0100A42461 /* UserManagerTests.swift */,
+				100684EE2043089F0004C675 /* TeamPaginationManagerTests.swift */,
+				100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1175,10 +1181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100684F120430C8A0004C675 /* UserDefaultsManagerTests.swift in Sources */,
 				E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */,
 				E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */,
 				E90C20011FA8D16E00A42461 /* AdvertTests.swift in Sources */,
 				E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */,
+				100684EF2043089F0004C675 /* TeamPaginationManagerTests.swift in Sources */,
 				E9A717AD1F8B89AC00B07414 /* Ad_M8_iOSTests.swift in Sources */,
 				E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */,
 				E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */,
