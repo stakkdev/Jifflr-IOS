@@ -36,9 +36,15 @@ public enum ErrorMessage {
     case invalidCurrentPassword
     case invalidNewPassword
     case invalidInvitationCode
+    case invalidInvitationCodeRegistration
 
     public var failureTitle: String {
-        return "error.title".localized()
+        switch self {
+        case .invalidInvitationCodeRegistration:
+            return "error.invalidInvitationCodeRegistration.title".localized()
+        default:
+            return "error.title".localized()
+        }
     }
 
     public var failureDescription: String {
@@ -75,6 +81,8 @@ public enum ErrorMessage {
             return "error.invalidNewPassword".localized()
         case .invalidInvitationCode:
             return "error.invalidInvitationCode".localized()
+        case .invalidInvitationCodeRegistration:
+            return "error.invalidInvitationCodeRegistration.message".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:

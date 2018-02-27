@@ -23,6 +23,9 @@
 "error.invalidCurrentPassword" = "Please enter your current password.";
 "error.invalidNewPassword" = "Invalid new password. Please enter a valid password that is at least 8 characters.";
 "error.invalidInvitationCode" = "Invitation code not registered. Please enter a valid invitation code.";
+"error.invalidInvitationCodeRegistration.title" = "Invalid invitation code";
+"error.invalidInvitationCodeRegistration.message" = "Your account has been created but the invitation code entered is invalid. You can change your invitation code to join a team from the Profile screen.";
+"error.invalidInvitationCodeRegistration.dismiss" = "Continue";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

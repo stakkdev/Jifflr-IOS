@@ -196,16 +196,28 @@ class RegisterViewController: BaseViewController {
             self.registerButton.stopAnimating()
             
             guard error == nil else {
-                self.displayError(error: error)
+                if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
+                    let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
+                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
+                        self.rootAfterRegistration()
+                        return
+                    })
+                } else {
+                    self.displayError(error: error)
+                }
                 return
             }
 
-            if LocationManager.shared.locationServicesEnabled() == true {
-                self.rootDashboardViewController()
-            } else {
-                let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
-                self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
-            }
+            self.rootAfterRegistration()
+        }
+    }
+
+    func rootAfterRegistration() {
+        if LocationManager.shared.locationServicesEnabled() == true {
+            self.rootDashboardViewController()
+        } else {
+            let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
+            self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
         }
     }
 

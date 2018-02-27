@@ -85,12 +85,7 @@ class UserManager: NSObject {
         PFCloud.callFunction(inBackground: "registration-invitation", withParameters: ["user": user.objectId!]) { responseJSON, error in
             if let responseJSON = responseJSON as? [String: Any] {
                 guard let success = responseJSON["success"] as? Bool else {
-                    completion(ErrorMessage.unknown)
-                    return
-                }
-
-                if let error = responseJSON["error"] as? Error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
+                    completion(ErrorMessage.invalidInvitationCodeRegistration)
                     return
                 }
 
@@ -98,12 +93,12 @@ class UserManager: NSObject {
                     completion(nil)
                     return
                 } else {
-                    completion(ErrorMessage.unknown)
+                    completion(ErrorMessage.invalidInvitationCodeRegistration)
                     return
                 }
             } else {
-                if let error = error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
+                if let _ = error {
+                    completion(ErrorMessage.invalidInvitationCodeRegistration)
                 } else {
                     completion(ErrorMessage.unknown)
                 }
