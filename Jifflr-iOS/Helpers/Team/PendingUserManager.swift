@@ -21,6 +21,7 @@ class PendingUserManager: NSObject {
         let query = PendingUser.query()
         query?.whereKey("email", equalTo: email)
         query?.whereKey("createdAt", greaterThanOrEqualTo: minimumDate)
+        query?.whereKey("active", equalTo: true)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let pendingUsers = objects as? [PendingUser], pendingUsers.count == 1 else {
                 completion(nil)

@@ -44,6 +44,15 @@ final class PendingUser: PFObject {
             self["email"] = newValue
         }
     }
+
+    var active: Bool {
+        get {
+            return self["active"] as? Bool ?? false
+        }
+        set {
+            self["active"] = newValue
+        }
+    }
 }
 
 extension PendingUser: PFSubclassing {
