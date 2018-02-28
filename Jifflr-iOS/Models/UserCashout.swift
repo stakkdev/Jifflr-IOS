@@ -21,12 +21,21 @@ final class UserCashout: PFObject {
         }
     }
 
-    var value: Float {
+    var value: Double {
         get {
-            return self["value"] as! Float
+            return self["value"] as! Double
         }
         set {
             self["value"] = newValue
+        }
+    }
+
+    var paypalEmail: String {
+        get {
+            return self["paypalEmail"] as! String
+        }
+        set {
+            self["paypalEmail"] = newValue
         }
     }
 }

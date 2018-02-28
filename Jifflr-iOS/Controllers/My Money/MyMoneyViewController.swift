@@ -15,6 +15,15 @@ class MyMoneyViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
+    var myMoney: MyMoney? {
+        didSet {
+            self.tableView.reloadData()
+
+            guard let graphData = self.myMoney?.graph, graphData.count > 0 else { return }
+            self.chart.setData(data: graphData, color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
+        }
+    }
+
     class func instantiateFromStoryboard() -> MyMoneyViewController {
         let storyboard = UIStoryboard(name: "MyMoney", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "MyMoneyViewController") as! MyMoneyViewController
@@ -24,6 +33,12 @@ class MyMoneyViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.updateData()
     }
 
     func setupUI() {
@@ -39,14 +54,39 @@ class MyMoneyViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
-
-        self.chart.setData(data: MockContent.init().createGraphData(), color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
     }
 
     func setupLocalization() {
         self.title = "myMoney.navigation.title".localized()
         self.segmentedControl.setButton1Title(text: "myMoney.segmentedControlButton1.title".localized())
         self.segmentedControl.setButton2Title(text: "myMoney.segmentedControlButton2.title".localized())
+    }
+
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            MyMoneyManager.shared.fetch { (myMoney, error) in
+                guard let myMoney = myMoney, error == nil else {
+                    self.displayError(error: error)
+                    self.updateLocalData()
+                    return
+                }
+
+                self.myMoney = myMoney
+            }
+        } else {
+            self.updateLocalData()
+        }
+    }
+
+    func updateLocalData() {
+        MyMoneyManager.shared.fetchLocal { (myMoney, error) in
+            guard let myMoney = myMoney, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.myMoney = myMoney
+        }
     }
 }
 
@@ -80,7 +120,11 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             return 4
         }
 
-        return 20
+        if let myMoney = self.myMoney {
+            return myMoney.history.count
+        }
+
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
