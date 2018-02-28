@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        PushHandler.syncNotificationSettings()
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -124,7 +124,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             UNUserNotificationCenter.current().delegate = self
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { granted, _ in
-                UserDefaultsManager.shared.setNotifications(on: granted)
+                print("Notification Permissions Granted: \(granted)")
             })
         } else {
             let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -135,7 +135,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        UserDefaultsManager.shared.setNotifications(on: !notificationSettings.types.isEmpty)
+        guard let currentUser = Session.shared.currentUser else { return }
+        currentUser.details.pushNotifications = !notificationSettings.types.isEmpty
+        currentUser.saveInBackground()
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

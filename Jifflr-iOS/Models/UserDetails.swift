@@ -119,6 +119,15 @@ final class UserDetails: PFObject {
             self["friends"] = newValue
         }
     }
+
+    var pushNotifications: Bool {
+        get {
+            return self["pushNotifications"] as? Bool ?? false
+        }
+        set {
+            self["pushNotifications"] = newValue
+        }
+    }
 }
 
 extension UserDetails: PFSubclassing {

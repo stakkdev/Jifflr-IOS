@@ -50,9 +50,11 @@ class SettingsViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
 
-        self.notificationsSwitch.isOn = UserDefaultsManager.shared.notificationsOn()
         self.crashTrackerSwitch.isOn = UserDefaultsManager.shared.crashTrackerOn()
         self.analyticsSwitch.isOn = UserDefaultsManager.shared.analyticsOn()
+
+        guard let currentUser = Session.shared.currentUser else { return }
+        self.notificationsSwitch.isOn = currentUser.details.pushNotifications
     }
 
     func setupLocalization() {

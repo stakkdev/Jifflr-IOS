@@ -26,6 +26,7 @@
 		E923751D203ED9CB00275199 /* AdsViewed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751C203ED9CB00275199 /* AdsViewed.swift */; };
 		E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751E203EDD5000275199 /* UserMonthStats.swift */; };
 		E9305CED2046B1BA00D4E4DD /* TeamViewController+Invitations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9305CEC2046B1BA00D4E4DD /* TeamViewController+Invitations.swift */; };
+		E9305CEF2046F68800D4E4DD /* PFInstallation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9305CEE2046F68800D4E4DD /* PFInstallation+Extensions.swift */; };
 		E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A58202DBDAE00D79CF7 /* GothamBold.otf */; };
 		E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = E9328A59202DBDAE00D79CF7 /* GothamBook.otf */; };
 		E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F5B12036E6BD00171480 /* MyTeam.swift */; };
@@ -175,6 +176,7 @@
 		E923751C203ED9CB00275199 /* AdsViewed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewed.swift; path = "Models/Local Models/AdsViewed.swift"; sourceTree = "<group>"; };
 		E923751E203EDD5000275199 /* UserMonthStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserMonthStats.swift; path = Models/UserMonthStats.swift; sourceTree = "<group>"; };
 		E9305CEC2046B1BA00D4E4DD /* TeamViewController+Invitations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TeamViewController+Invitations.swift"; path = "Controllers/Team/TeamViewController+Invitations.swift"; sourceTree = "<group>"; };
+		E9305CEE2046F68800D4E4DD /* PFInstallation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PFInstallation+Extensions.swift"; path = "Models/PFInstallation+Extensions.swift"; sourceTree = "<group>"; };
 		E9328A58202DBDAE00D79CF7 /* GothamBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBold.otf; path = "Supporting Files/Fonts/GothamBold.otf"; sourceTree = "<group>"; };
 		E9328A59202DBDAE00D79CF7 /* GothamBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamBook.otf; path = "Supporting Files/Fonts/GothamBook.otf"; sourceTree = "<group>"; };
 		E937F5B12036E6BD00171480 /* MyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeam.swift; path = "Models/Local Models/MyTeam.swift"; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 			children = (
 				E937F5B02036E69300171480 /* Local Models */,
 				E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */,
+				E9305CEE2046F68800D4E4DD /* PFInstallation+Extensions.swift */,
 				E937F5B52036F44300171480 /* UserDetails.swift */,
 				E937F5B72036F77C00171480 /* Friends.swift */,
 				E9488EC91F8CFC4300697862 /* PendingUser.swift */,
@@ -1176,6 +1179,7 @@
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
 				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
 				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,
+				E9305CEF2046F68800D4E4DD /* PFInstallation+Extensions.swift in Sources */,
 				E937F5B62036F44300171480 /* UserDetails.swift in Sources */,
 				E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */,
 			);

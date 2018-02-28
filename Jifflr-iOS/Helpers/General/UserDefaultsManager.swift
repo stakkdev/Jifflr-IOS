@@ -29,15 +29,6 @@ class UserDefaultsManager: NSObject {
         return viewed
     }
 
-    func notificationsOn() -> Bool {
-        let on = UserDefaults.standard.bool(forKey: "notificationsOn")
-        return on
-    }
-
-    func setNotifications(on: Bool) {
-        UserDefaults.standard.set(on, forKey: "notificationsOn")
-    }
-
     func crashTrackerOn() -> Bool {
         let on = UserDefaults.standard.bool(forKey: "crashTrackerOn")
         return on

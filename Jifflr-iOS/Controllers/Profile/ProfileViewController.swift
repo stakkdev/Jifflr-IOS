@@ -52,6 +52,8 @@ class ProfileViewController: BaseViewController {
         super.viewWillAppear(animated)
 
         NotificationCenter.default.addObserver(self, selector: #selector(locationFound(_:)), name: Constants.Notifications.locationFound, object: nil)
+
+        PushHandler.syncNotificationSettings()
     }
 
     override func viewDidDisappear(_ animated: Bool) {

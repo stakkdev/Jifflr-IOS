@@ -50,18 +50,22 @@ enum PushHandler {
     }
 
     static func syncNotificationSettings() {
+        guard let currentUser = Session.shared.currentUser else { return }
+
         let application = UIApplication.shared
         application.applicationIconBadgeNumber = 0
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.getNotificationSettings { settings in
-                if (UserDefaultsManager.shared.notificationsOn()) && settings.authorizationStatus == UNAuthorizationStatus.denied {
-                    UserDefaultsManager.shared.setNotifications(on: false)
+                if currentUser.details.pushNotifications && settings.authorizationStatus == UNAuthorizationStatus.denied {
+                    currentUser.details.pushNotifications = false
+                    currentUser.saveInBackground()
                 }
             }
         } else {
-            if (UserDefaultsManager.shared.notificationsOn()) && application.currentUserNotificationSettings?.types.isEmpty == true {
-                UserDefaultsManager.shared.setNotifications(on: false)
+            if currentUser.details.pushNotifications && application.currentUserNotificationSettings?.types.isEmpty == true {
+                currentUser.details.pushNotifications = false
+                currentUser.saveInBackground()
             }
         }
     }

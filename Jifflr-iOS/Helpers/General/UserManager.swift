@@ -27,6 +27,7 @@ class UserManager: NSObject {
         userDetails.location = userInfo["location"] as! Location
         userDetails.geoPoint = userInfo["geoPoint"] as! PFGeoPoint
         userDetails.displayLocation = userInfo["displayLocation"] as! String
+        userDetails.pushNotifications = true
 
         if let invitationCode = userInfo["invitationCode"] as? String {
             userDetails.invitationCode = invitationCode
@@ -63,6 +64,7 @@ class UserManager: NSObject {
                                         completion(error)
                                     })
                                 } else {
+                                    PFInstallation.registerUser(user: newUser)
                                     completion(nil)
                                 }
                             })
@@ -131,6 +133,7 @@ class UserManager: NSObject {
                             if error != nil {
                                 completion(nil, ErrorMessage.parseError(error!.localizedDescription))
                             } else {
+                                PFInstallation.registerUser(user: user)
                                 completion(user, nil)
                             }
                         })
@@ -232,6 +235,7 @@ class UserManager: NSObject {
                             return
                         }
 
+                        PFInstallation.registerUser(user: nil)
                         completion(nil)
                     })
                 }
@@ -255,17 +259,7 @@ class UserManager: NSObject {
         let parameters = ["user": user.objectId!, "oldPassword": oldPassword, "newPassword": newPassword]
 
         PFCloud.callFunction(inBackground: "change-password", withParameters: parameters) { responseJSON, error in
-            if let responseJSON = responseJSON as? [String: Any] {
-                guard let success = responseJSON["success"] as? Bool else {
-                    completion(ErrorMessage.unknown)
-                    return
-                }
-
-                if let error = responseJSON["error"] as? Error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
-                    return
-                }
-
+            if let success = responseJSON as? Bool {
                 if success == true {
                     completion(nil)
                     return
@@ -287,17 +281,7 @@ class UserManager: NSObject {
         guard let user = Session.shared.currentUser else { return }
 
         PFCloud.callFunction(inBackground: "delete-account", withParameters: ["user": user.objectId!]) { responseJSON, error in
-            if let responseJSON = responseJSON as? [String: Any] {
-                guard let success = responseJSON["success"] as? Bool else {
-                    completion(ErrorMessage.unknown)
-                    return
-                }
-
-                if let error = responseJSON["error"] as? Error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
-                    return
-                }
-
+            if let success = responseJSON as? Bool {
                 if success == true {
                     completion(nil)
                     return
@@ -321,12 +305,7 @@ class UserManager: NSObject {
         let parameters = ["user": user.objectId!, "invitationCode": invitationCode]
 
         PFCloud.callFunction(inBackground: "change-team", withParameters: parameters) { responseJSON, error in
-            if let responseJSON = responseJSON as? [String: Any] {
-                guard let success = responseJSON["success"] as? Bool else {
-                    completion(ErrorMessage.unknown)
-                    return
-                }
-
+            if let success = responseJSON as? Bool {
                 if success == true {
                     completion(nil)
                     return

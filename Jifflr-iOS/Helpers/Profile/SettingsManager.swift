@@ -15,16 +15,9 @@ class SettingsManager: NSObject {
     static let shared = SettingsManager()
 
     func toggleNotifications(on: Bool) {
-        if UserDefaultsManager.shared.notificationsOn() && !on {
-            UIApplication.shared.unregisterForRemoteNotifications()
-            UserDefaultsManager.shared.setNotifications(on: on)
-        } else if !UserDefaultsManager.shared.notificationsOn() && on {
-            PushHandler.requestNotificationEnabled(completionHandler: { (granted) in
-                UserDefaultsManager.shared.setNotifications(on: granted)
-            })
-        } else {
-            UserDefaultsManager.shared.setNotifications(on: on)
-        }
+        guard let currentUser = Session.shared.currentUser else { return }
+        currentUser.details.pushNotifications = on
+        currentUser.saveInBackground()
     }
 
     func toggleCrashTracker(on: Bool) {
