@@ -129,12 +129,14 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        guard let myMoney = self.myMoney else { return UITableViewCell() }
+
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWithdrawnCell") as! TotalWithdrawnCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.amountLabel.text = "£100.00"
+                cell.amountLabel.text = "£\(myMoney.totalWithdrawn)"
                 cell.nameLabel.text = "myMoney.totalWithdrawnCell.title".localized()
                 return cell
 
@@ -159,17 +161,23 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.cashoutCell.heading".localized()
-                cell.amountLabel.text = "£12.65"
+                cell.amountLabel.text = "£\(myMoney.moneyAvailable)"
                 cell.delegate = self
                 return cell
             }
         } else {
+            let userCashout = myMoney.history[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawnHistoryCell") as! WithdrawnHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.amountLabel.text = "£20.75"
-            cell.emailLabel.text = "alan@gmail.com"
-            cell.dateLabel.text = "5 May 2017"
+            cell.amountLabel.text = "£\(userCashout.value)"
+            cell.emailLabel.text = userCashout.paypalEmail
+
+            if let date = userCashout.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "d MMMM yyyy"
+                cell.dateLabel.text = dateFormatter.string(from: date)
+            }
 
             return cell
         }
