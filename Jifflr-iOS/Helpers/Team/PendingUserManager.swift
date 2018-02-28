@@ -40,6 +40,7 @@ class PendingUserManager: NSObject {
         pendingUser.sender = currentUser
         pendingUser.name = userInfo["name"] as! String
         pendingUser.email = userInfo["email"] as! String
+        pendingUser.active = true
 
         let query = PendingUser.query()
         query?.whereKey("email", equalTo: pendingUser.email)
