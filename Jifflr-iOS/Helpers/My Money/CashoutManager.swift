@@ -12,17 +12,25 @@ import Parse
 class CashoutManager: NSObject {
     static let shared = CashoutManager()
 
-    func fetchCashouts(user: PFUser, completion: @escaping ([UserCashout], ErrorMessage?) -> Void) {
-        let query = UserCashout.query()
-        query?.whereKey("user", equalTo: user)
-        query?.order(byDescending: "createdAt")
-        query?.findObjectsInBackground(block: { (userCashouts, error) in
-            guard let userCashouts = userCashouts as? [UserCashout], error == nil else {
-                completion([], ErrorMessage.cashoutFetchFailed)
-                return
-            }
+    func cashout(password: String, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
 
-            completion(userCashouts, nil)
-        })
+        PFCloud.callFunction(inBackground: "cash-out", withParameters: ["user": user.objectId!, "password": password]) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.cashoutFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.cashoutFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
     }
 }

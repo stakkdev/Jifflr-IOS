@@ -24,6 +24,8 @@ class MyMoneyViewController: BaseViewController {
         }
     }
 
+    var password: String?
+
     class func instantiateFromStoryboard() -> MyMoneyViewController {
         let storyboard = UIStoryboard(name: "MyMoney", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "MyMoneyViewController") as! MyMoneyViewController
@@ -106,7 +108,32 @@ extension MyMoneyViewController: JifflrSegmentedControlDelegate {
 
 extension MyMoneyViewController: CashoutCellDelegate {
     func cashoutCellPressed() {
-        
+        guard let currentUser = Session.shared.currentUser else { return }
+        guard let paypalEmail = currentUser.details.paypalEmail, !paypalEmail.isEmpty else {
+            self.displayError(error: ErrorMessage.invalidPayPalEmail)
+            return
+        }
+
+        guard let password = self.password else {
+            self.displayError(error: ErrorMessage.invalidCashoutPassword)
+            return
+        }
+
+        CashoutManager.shared.cashout(password: password) { (error) in
+            guard error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
+            self.updateData()
+        }
+    }
+}
+
+extension MyMoneyViewController: ConfirmPasswordCellDelegate {
+    func passwordTextFieldDidEnd(text: String) {
+        self.password = text
     }
 }
 
@@ -154,6 +181,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.confirmPasswordCell.heading".localized()
                 cell.passwordTextField.placeholder = "myMoney.confirmPasswordCell.placeholder".localized()
+                cell.delegate = self
                 return cell
 
             } else {

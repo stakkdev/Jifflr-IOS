@@ -30,6 +30,11 @@
 "error.contactsNoEmail" = "The contact selected has no email address. Please enter an email address in the Contacts app to use this contact.";
 "error.inviteAlreadySent" = "You have already sent an invite to this email address.";
 "error.inviteSendFailed" = "Unable to send invite. Please check your internet connection and try again.";
+"error.locationFailed" = "Unable to fetch location. Please check your internet connection and try again.";
+"error.unknown" = "An unknown error occured.";
+"error.cashoutFailed" = "Unable to cashout. Please check your internet connection and try again.";
+"error.invalidPayPalEmail" = "Invalid PayPal email address. Please ensure you have entered a valid PayPal email address.";
+"error.invalidCashoutPassword" = "Invalid Jifflr account password. Please confirm your Jifflr account password.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -48,6 +53,8 @@
 "alert.teamChanged.message" = "Your team has been successfully changed!";
 "alert.inviteSent.title" = "Invitation Sent!";
 "alert.inviteSent.message" = "Your invitation has been successfully sent to %@!";
+"alert.cashoutSuccess.title" = "Cash Out Successful!";
+"alert.cashoutSuccess.message" = "You have successfully cashed out your available balance to the PayPal email address entered.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
