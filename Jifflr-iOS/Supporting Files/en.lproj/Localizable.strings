@@ -26,6 +26,10 @@
 "error.invalidInvitationCodeRegistration.title" = "Invalid invitation code";
 "error.invalidInvitationCodeRegistration.message" = "Your account has been created but the invitation code entered is invalid. You can change your invitation code to join a team from the Profile screen.";
 "error.invalidInvitationCodeRegistration.dismiss" = "Continue";
+"error.contactsAccessFailed" = "Jifflr is unable to access your contacts. Please allow Jifflr access to your contacts through the Settings app.";
+"error.contactsNoEmail" = "The contact selected has no email address. Please enter an email address in the Contacts app to use this contact.";
+"error.inviteAlreadySent" = "You have already sent an invite to this email address.";
+"error.inviteSendFailed" = "Unable to send invite. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -41,7 +45,9 @@
 "alert.deleteAccount.title" = "Delete Account";
 "alert.deleteAccount.message" = "Are you sure you want to delete your account? This action cannot be undone.";
 "alert.teamChanged.title" = "Team Changed";
-"alert.teamChanged.title" = "Your team has been successfully changed!";
+"alert.teamChanged.message" = "Your team has been successfully changed!";
+"alert.inviteSent.title" = "Invitation Sent!";
+"alert.inviteSent.message" = "Your invitation has been successfully sent to %@!";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
@@ -116,6 +122,8 @@
 "myTeam.teamSize.title" = "Team Size";
 "myTeam.membersLabel.title" = "%i Members";
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
+"myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
+"myTeam.inviteEmail.body" = "Hello %@,\n\n%@ has sent you an invitation code for Jifflr! Here you go: %@"; // %@ is required to dynamically insert variables into text.
 
 "adsViewed.navigation.title" = "Ad Views";
 "adsViewed.segmentedControlButton1.title" = "AD PROGRESS";

@@ -37,6 +37,7 @@ public enum ErrorMessage {
     case invalidNewPassword
     case invalidInvitationCode
     case invalidInvitationCodeRegistration
+    case contactsNoEmail
 
     public var failureTitle: String {
         switch self {
@@ -83,18 +84,20 @@ public enum ErrorMessage {
             return "error.invalidInvitationCode".localized()
         case .invalidInvitationCodeRegistration:
             return "error.invalidInvitationCodeRegistration.message".localized()
+        case .contactsAccessFailed:
+            return "error.contactsAccessFailed".localized()
+        case .contactsNoEmail:
+            return "error.contactsNoEmail".localized()
         case .locationFailed:
             return "Unable to fetch location. Please check your internet connection and try again."
         case .unknown:
             return "An unknown error occured."
         case .pendingUsersFailed:
             return "Unable to fetch pending users. Please check your internet connection and try again."
-        case .contactsAccessFailed:
-            return "Unable to access contacts. Please allow Ad-M8 access to your contacts through the Settings app."
         case .inviteAlreadySent:
-            return "An invite has already been sent to this email address."
+            return "error.inviteAlreadySent".localized()
         case .inviteSendFailed:
-            return "Unable to send invite. Please check your internet connection and try again."
+            return "error.inviteSendFailed".localized()
         case .feedbackSaveFailed:
             return "Unable to save advert feedback. Please check your internet connection and try again."
         case .locationNotSupported:
@@ -109,6 +112,7 @@ public enum AlertMessage {
     case resetEmailSent
     case noInternetConnection
     case teamChanged
+    case inviteSent(String)
 
     public var title: String {
         switch self {
@@ -118,6 +122,8 @@ public enum AlertMessage {
             return "alert.noInternetConnection.title".localized()
         case .teamChanged:
             return "alert.teamChanged.title".localized()
+        case .inviteSent:
+            return "alert.inviteSent.title".localized()
         }
     }
 
@@ -129,6 +135,8 @@ public enum AlertMessage {
             return "alert.noInternetConnection.message".localized()
         case .teamChanged:
             return "alert.teamChanged.message".localized()
+        case .inviteSent(let name):
+            return "alert.inviteSent.message".localizedFormat(name)
         }
     }
 }

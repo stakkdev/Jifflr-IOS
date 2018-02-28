@@ -32,50 +32,57 @@ class PendingUserManager: NSObject {
         })
     }
 
-//    func createPendingUser(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (ErrorMessage?) -> Void) {
-//
-//        guard let currentUser = UserManager.shared.currentUser else {
-//            completion(ErrorMessage.unknown)
-//            return
-//        }
-//
-//        let newUser = PendingUser()
-//        newUser.sender = currentUser
-//        newUser.name = userInfo["name"] as! String
-//        newUser.email = userInfo["email"] as! String
-//        newUser.invitationCode = currentUser.invitationCode!
-//
-//        let query = PendingUser.query()
-//        query?.whereKey("email", equalTo: newUser.email)
-//        query?.whereKey("invitationCode", equalTo: newUser.invitationCode)
-//        query?.getFirstObjectInBackground(block: { (user, error) in
-//            if user != nil, error == nil {
-//                DispatchQueue.main.async {
-//                    completion(ErrorMessage.inviteAlreadySent)
-//                }
-//            } else {
-//                newUser.saveInBackground { (succeeded, error) in
-//                    if succeeded {
-//                        DispatchQueue.main.async {
-//                            if error != nil {
-//                                completion(ErrorMessage.parseError(error!.localizedDescription))
-//                            } else {
-//                                completion(nil)
-//                            }
-//                        }
-//                    } else {
-//                        DispatchQueue.main.async {
-//                            if error != nil {
-//                                completion(ErrorMessage.parseError(error!.localizedDescription))
-//                            } else {
-//                                completion(ErrorMessage.unknown)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        })
-//    }
+    func createPendingUser(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (PendingUser?, ErrorMessage?) -> Void) {
+
+        guard let currentUser = UserManager.shared.currentUser else { return }
+
+        let pendingUser = PendingUser()
+        pendingUser.sender = currentUser
+        pendingUser.name = userInfo["name"] as! String
+        pendingUser.email = userInfo["email"] as! String
+
+        let query = PendingUser.query()
+        query?.whereKey("email", equalTo: pendingUser.email)
+        query?.whereKey("sender", equalTo: currentUser)
+        query?.getFirstObjectInBackground(block: { (user, error) in
+            if user != nil, error == nil {
+                completion(nil, ErrorMessage.inviteAlreadySent)
+            } else {
+                pendingUser.saveInBackground { (succeeded, error) in
+                    if succeeded {
+                        completion(pendingUser, nil)
+                    } else {
+                        completion(nil, ErrorMessage.inviteSendFailed)
+                    }
+                }
+            }
+        })
+    }
+
+    func pinPendingUser(pendingUser: PendingUser, completion: @escaping (ErrorMessage?) -> Void) {
+        pendingUser.pinInBackground(withName: MyTeamManager.shared.pinName, block: { (success, error) in
+            print("PendingUser Pinned: \(success)")
+
+            if let error = error {
+                print("Error: \(error)")
+                completion(ErrorMessage.unknown)
+                return
+            }
+
+            completion(nil)
+        })
+    }
+
+    func deletePendingUser(pendingUser: PendingUser) {
+        pendingUser.deleteInBackground { (success, error) in
+            print("PendingUser Deleted: \(success)")
+
+            if let error = error {
+                print("Error: \(error)")
+            }
+        }
+    }
+
 //
 //    func fetchPendingUsers(completion: @escaping ([PendingUser], ErrorMessage?) -> Void) {
 //
