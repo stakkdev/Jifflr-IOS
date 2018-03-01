@@ -280,12 +280,21 @@
                                                             <color key="textColor" red="0.95686274509803915" green="0.49411764705882355" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Ooj-SP-zoI">
+                                                            <rect key="frame" x="159" y="15" width="20" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="ToI-Ja-TKR"/>
+                                                                <constraint firstAttribute="height" constant="20" id="szQ-W7-zx9"/>
+                                                            </constraints>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="uYF-eo-pNb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WVf-f2-2L0" secondAttribute="trailing" constant="8" id="4TN-AT-62q"/>
+                                                        <constraint firstItem="Ooj-SP-zoI" firstAttribute="centerY" secondItem="z4b-6Q-x3q" secondAttribute="centerY" id="4g5-Lb-uon"/>
                                                         <constraint firstItem="uYF-eo-pNb" firstAttribute="centerY" secondItem="z4b-6Q-x3q" secondAttribute="centerY" id="8ik-sq-Mgp"/>
                                                         <constraint firstAttribute="height" constant="50" id="Fxg-5l-KFk"/>
+                                                        <constraint firstItem="Ooj-SP-zoI" firstAttribute="centerX" secondItem="z4b-6Q-x3q" secondAttribute="centerX" id="HEg-r2-VBe"/>
                                                         <constraint firstItem="WVf-f2-2L0" firstAttribute="centerY" secondItem="z4b-6Q-x3q" secondAttribute="centerY" id="WpV-fR-RrF"/>
                                                         <constraint firstItem="WVf-f2-2L0" firstAttribute="leading" secondItem="z4b-6Q-x3q" secondAttribute="leading" constant="20" id="X9X-It-xDt"/>
                                                         <constraint firstAttribute="trailing" secondItem="uYF-eo-pNb" secondAttribute="trailing" constant="20" id="mhp-Gu-KLx"/>
@@ -307,6 +316,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="Ooj-SP-zoI" id="zIs-EN-YrS"/>
                                             <outlet property="amountLabel" destination="uYF-eo-pNb" id="Dwq-pB-j68"/>
                                             <outlet property="nameLabel" destination="WVf-f2-2L0" id="cbF-yk-Pfw"/>
                                             <outlet property="roundedView" destination="z4b-6Q-x3q" id="s8S-eQ-BFv"/>

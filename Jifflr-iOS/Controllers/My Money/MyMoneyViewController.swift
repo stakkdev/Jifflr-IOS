@@ -25,6 +25,7 @@ class MyMoneyViewController: BaseViewController {
     }
 
     var password: String?
+    var paypalEmail: String?
 
     class func instantiateFromStoryboard() -> MyMoneyViewController {
         let storyboard = UIStoryboard(name: "MyMoney", bundle: nil)
@@ -107,26 +108,38 @@ extension MyMoneyViewController: JifflrSegmentedControlDelegate {
 }
 
 extension MyMoneyViewController: CashoutCellDelegate {
-    func cashoutCellPressed() {
+    func cashoutCellPressed(cell: CashoutCell) {
         guard let currentUser = Session.shared.currentUser else { return }
-        guard let paypalEmail = currentUser.details.paypalEmail, !paypalEmail.isEmpty else {
+        guard let paypalEmail = self.paypalEmail, !paypalEmail.isEmpty else {
+            cell.stopAnimating()
             self.displayError(error: ErrorMessage.invalidPayPalEmail)
             return
         }
 
-        guard let password = self.password else {
-            self.displayError(error: ErrorMessage.invalidCashoutPassword)
-            return
-        }
-
-        CashoutManager.shared.cashout(password: password) { (error) in
-            guard error == nil else {
-                self.displayError(error: error)
+        currentUser.details.paypalEmail = paypalEmail
+        currentUser.details.saveInBackground { (success, error) in
+            guard success == true, error == nil else {
+                cell.stopAnimating()
+                self.displayError(error: ErrorMessage.paypalEmailSaveFailed)
                 return
             }
 
-            self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
-            self.updateData()
+            guard let password = self.password else {
+                cell.stopAnimating()
+                self.displayError(error: ErrorMessage.invalidCashoutPassword)
+                return
+            }
+
+            CashoutManager.shared.cashout(password: password) { (error) in
+                cell.stopAnimating()
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+
+                self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
+                self.updateData()
+            }
         }
     }
 }
@@ -134,6 +147,23 @@ extension MyMoneyViewController: CashoutCellDelegate {
 extension MyMoneyViewController: ConfirmPasswordCellDelegate {
     func passwordTextFieldDidEnd(text: String) {
         self.password = text
+    }
+}
+
+extension MyMoneyViewController: PaypalEmailCellDelegate {
+    func paypalEmailTextFieldDidEnd(text: String) {
+        self.paypalEmail = text
+
+        guard let currentUser = Session.shared.currentUser else { return }
+        currentUser.details.paypalEmail = paypalEmail
+        currentUser.details.saveInBackground { (success, error) in
+            guard success == true, error == nil else {
+                self.displayError(error: ErrorMessage.paypalEmailSaveFailed)
+                return
+            }
+
+            print("PayPal Email Address Saved")
+        }
     }
 }
 
@@ -156,7 +186,11 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let myMoney = self.myMoney else { return UITableViewCell() }
+        guard let myMoney = self.myMoney, let currentUser = Session.shared.currentUser else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = UIColor.clear
+            return cell
+        }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
@@ -173,6 +207,9 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.paypalEmailCell.heading".localized()
                 cell.emailTextField.placeholder = "myMoney.paypalEmailCell.placeholder".localized()
+                cell.emailTextField.text = currentUser.details.paypalEmail
+                self.paypalEmail = currentUser.details.paypalEmail
+                cell.delegate = self
                 return cell
 
             } else if indexPath.row == 2 {
