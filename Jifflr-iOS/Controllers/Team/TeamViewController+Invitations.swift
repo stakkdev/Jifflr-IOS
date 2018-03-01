@@ -56,11 +56,13 @@ extension TeamViewController: CNContactPickerDelegate {
 
     func presentMail(name: String, email: String, pendingUser: PendingUser) {
 
-        guard let currentUser = UserManager.shared.currentUser, let invitationCode = pendingUser.objectId, MFMailComposeViewController.canSendMail() == true else {
+        guard let currentUser = UserManager.shared.currentUser, MFMailComposeViewController.canSendMail() == true else {
             self.displayError(error: ErrorMessage.inviteSendFailed)
             PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
             return
         }
+
+        let invitationCode = pendingUser.invitationCode
 
         let composeViewController = MFMailComposeViewController()
         composeViewController.mailComposeDelegate = self
@@ -91,28 +93,43 @@ extension TeamViewController: MFMailComposeViewControllerDelegate {
         switch result {
         case .sent:
 
-            PendingUserManager.shared.pinPendingUser(pendingUser: pendingUser, completion: { (error) in
-                guard error == nil else {
-                    self.displayError(error: error)
-                    return
-                }
+            if self.isNewInvitation {
+                PendingUserManager.shared.pinPendingUser(pendingUser: pendingUser, completion: { (error) in
+                    guard error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
 
+                    controller.dismiss(animated: true, completion: {
+                        let alert = AlertMessage.inviteSent(pendingUser.name)
+                        self.displayMessage(title: alert.title, message: alert.message)
+                    })
+                })
+            } else {
                 controller.dismiss(animated: true, completion: {
                     let alert = AlertMessage.inviteSent(pendingUser.name)
                     self.displayMessage(title: alert.title, message: alert.message)
                 })
-            })
+            }
 
         case .failed:
             controller.dismiss(animated: true, completion: {
                 self.displayError(error: ErrorMessage.inviteSendFailed)
-                PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
+
+                if self.isNewInvitation {
+                    PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
+                }
             })
 
         default:
             controller.dismiss(animated: true, completion: nil)
-            PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
-            return
+
+            if self.isNewInvitation {
+                PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
+            }
         }
+
+        self.pendingUser = nil
+        self.isNewInvitation = true
     }
 }

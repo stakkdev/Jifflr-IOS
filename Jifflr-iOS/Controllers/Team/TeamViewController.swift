@@ -38,6 +38,7 @@ class TeamViewController: BaseViewController {
     }
 
     var pendingUser: PendingUser?
+    var isNewInvitation = true
 
     class func instantiateFromStoryboard() -> TeamViewController {
         let storyboard = UIStoryboard(name: "MyTeam", bundle: nil)
@@ -78,6 +79,18 @@ class TeamViewController: BaseViewController {
         super.viewWillAppear(animated)
 
         self.updateData()
+
+        let pendingUser = PendingUser()
+        pendingUser.name = "James Shaw"
+        pendingUser.active = true
+        pendingUser.email = "james.shaw@thedistance.co.uk"
+        pendingUser.sender = Session.shared.currentUser!
+        pendingUser.invitationCode = "iHOdjksef"
+
+        let pendingFriend = MyTeamPendingFriends()
+        pendingFriend.isActive = true
+        pendingFriend.pendingUser = pendingUser
+        self.pendingFriends = [pendingFriend]
     }
 }
 
@@ -159,6 +172,20 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
             return cell
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard self.segmentedControl.selectedSegmentIndex == 1 else { return }
+
+        let pendingFriend = self.pendingFriends[indexPath.row]
+        guard pendingFriend.isActive else { return }
+
+        self.isNewInvitation = false
+
+        let name = pendingFriend.pendingUser.name
+        let email = pendingFriend.pendingUser.email
+        let pendingUser = pendingFriend.pendingUser
+        self.presentMail(name: name, email: email, pendingUser: pendingUser)
     }
 
     func checkForPagination(indexPath: IndexPath) {
