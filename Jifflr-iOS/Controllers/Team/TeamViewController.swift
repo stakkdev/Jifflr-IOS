@@ -79,18 +79,6 @@ class TeamViewController: BaseViewController {
         super.viewWillAppear(animated)
 
         self.updateData()
-
-        let pendingUser = PendingUser()
-        pendingUser.name = "James Shaw"
-        pendingUser.active = true
-        pendingUser.email = "james.shaw@thedistance.co.uk"
-        pendingUser.sender = Session.shared.currentUser!
-        pendingUser.invitationCode = "iHOdjksef"
-
-        let pendingFriend = MyTeamPendingFriends()
-        pendingFriend.isActive = true
-        pendingFriend.pendingUser = pendingUser
-        self.pendingFriends = [pendingFriend]
     }
 }
 

@@ -48,6 +48,7 @@ class DashboardViewController: BaseViewController {
             self.internetAlertShown = true
         }
 
+        self.playAdsButton.pulse()
         self.timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { (timer) in
             self.playAdsButton.pulse()
         })
