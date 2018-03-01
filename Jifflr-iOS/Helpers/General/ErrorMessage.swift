@@ -16,13 +16,11 @@ public enum ErrorMessage {
     case loginFailed
     case locationFailed
     case unknown
-    case pendingUsersFailed
     case contactsAccessFailed
     case inviteAlreadySent
     case inviteSendFailed
     case feedbackSaveFailed
     case locationNotSupported
-    case cashoutFetchFailed
     case resetPasswordFailed
     case invalidField(String)
     case invalidProfileField(String)
@@ -38,6 +36,10 @@ public enum ErrorMessage {
     case invalidInvitationCode
     case invalidInvitationCodeRegistration
     case contactsNoEmail
+    case cashoutFailed
+    case invalidPayPalEmail
+    case invalidCashoutPassword
+    case paypalEmailSaveFailed
 
     public var failureTitle: String {
         switch self {
@@ -89,21 +91,25 @@ public enum ErrorMessage {
         case .contactsNoEmail:
             return "error.contactsNoEmail".localized()
         case .locationFailed:
-            return "Unable to fetch location. Please check your internet connection and try again."
+            return "error.locationFailed".localized()
         case .unknown:
-            return "An unknown error occured."
-        case .pendingUsersFailed:
-            return "Unable to fetch pending users. Please check your internet connection and try again."
+            return "error.unknown".localized()
         case .inviteAlreadySent:
             return "error.inviteAlreadySent".localized()
         case .inviteSendFailed:
             return "error.inviteSendFailed".localized()
+        case .cashoutFailed:
+            return "error.cashoutFailed".localized()
+        case .invalidPayPalEmail:
+            return "error.invalidPayPalEmail".localized()
+        case .invalidCashoutPassword:
+            return "error.invalidCashoutPassword".localized()
+        case .paypalEmailSaveFailed:
+            return "error.paypalEmailSaveFailed".localized()
         case .feedbackSaveFailed:
             return "Unable to save advert feedback. Please check your internet connection and try again."
         case .locationNotSupported:
             return "You're location is not supported."
-        case .cashoutFetchFailed:
-            return "Unable to fetch cashouts. Please check your internet connection and try again."
         }
     }
 }
@@ -113,6 +119,7 @@ public enum AlertMessage {
     case noInternetConnection
     case teamChanged
     case inviteSent(String)
+    case cashoutSuccess
 
     public var title: String {
         switch self {
@@ -124,6 +131,8 @@ public enum AlertMessage {
             return "alert.teamChanged.title".localized()
         case .inviteSent:
             return "alert.inviteSent.title".localized()
+        case .cashoutSuccess:
+            return "alert.cashoutSuccess.title".localized()
         }
     }
 
@@ -137,6 +146,8 @@ public enum AlertMessage {
             return "alert.teamChanged.message".localized()
         case .inviteSent(let name):
             return "alert.inviteSent.message".localizedFormat(name)
+        case .cashoutSuccess:
+            return "alert.cashoutSuccess.message".localized()
         }
     }
 }

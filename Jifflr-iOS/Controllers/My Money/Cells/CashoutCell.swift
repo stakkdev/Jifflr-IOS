@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CashoutCellDelegate: class {
-    func cashoutCellPressed()
+    func cashoutCellPressed(cell: CashoutCell)
 }
 
 class CashoutCell: UITableViewCell {
@@ -17,6 +17,7 @@ class CashoutCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var roundedView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     weak var delegate: CashoutCellDelegate?
 
@@ -24,6 +25,7 @@ class CashoutCell: UITableViewCell {
         super.awakeFromNib()
 
         self.backgroundColor = UIColor.clear
+        self.activityIndicator.isHidden = true
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.cashoutPressed(sender:)))
         self.roundedView.addGestureRecognizer(tapGesture)
@@ -34,6 +36,21 @@ class CashoutCell: UITableViewCell {
     }
 
     @objc func cashoutPressed(sender: UITapGestureRecognizer) {
-        self.delegate?.cashoutCellPressed()
+        self.animate()
+        self.delegate?.cashoutCellPressed(cell: self)
+    }
+
+    func animate() {
+        self.nameLabel.isHidden = true
+        self.amountLabel.isHidden = true
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+
+    func stopAnimating() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.nameLabel.isHidden = false
+        self.amountLabel.isHidden = false
     }
 }

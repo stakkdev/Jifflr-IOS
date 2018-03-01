@@ -13,14 +13,18 @@ class TeamPaginationManager: NSObject {
 
     var friendsPageIndex = 0
     var friendsPaginating = false
+    var friendsCountPrevious = 0
     var pendingFriendsPageIndex = 0
     var pendingFriendsPaginating = false
+    var pendingFriendsCountPrevious = 0
 
     func reset() {
         self.friendsPageIndex = 0
         self.friendsPaginating = false
+        self.friendsCountPrevious = 0
         self.pendingFriendsPageIndex = 0
         self.pendingFriendsPaginating = false
+        self.pendingFriendsCountPrevious = 0
     }
 
     func shouldPaginateFriends() -> Bool {
@@ -32,7 +36,8 @@ class TeamPaginationManager: NSObject {
     }
 
     func shouldPaginateFriends(indexPath: IndexPath, friends: [MyTeamFriends]) -> Bool {
-        if indexPath.row == friends.count && friends.count != 0 {
+        if indexPath.row == friends.count && friends.count != 0 && self.friendsCountPrevious != friends.count {
+            self.friendsCountPrevious = friends.count
             return true
         }
 
@@ -53,7 +58,8 @@ class TeamPaginationManager: NSObject {
     }
 
     func shouldPaginatePendingFriends(indexPath: IndexPath, pendingFriends: [MyTeamPendingFriends]) -> Bool {
-        if indexPath.row == pendingFriends.count - 1 {
+        if indexPath.row == pendingFriends.count - 1 && self.pendingFriendsCountPrevious != pendingFriends.count {
+            self.pendingFriendsCountPrevious = pendingFriends.count
             return true
         }
 

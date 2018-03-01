@@ -96,6 +96,7 @@ extension AppDelegate {
         MyTeamPendingFriends.registerSubclass()
         Graph.registerSubclass()
         AdsViewed.registerSubclass()
+        MyMoney.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

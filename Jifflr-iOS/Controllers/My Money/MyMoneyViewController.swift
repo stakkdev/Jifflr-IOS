@@ -15,6 +15,18 @@ class MyMoneyViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
 
+    var myMoney: MyMoney? {
+        didSet {
+            self.tableView.reloadData()
+
+            guard let graphData = self.myMoney?.graph, graphData.count > 0 else { return }
+            self.chart.setData(data: graphData, color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
+        }
+    }
+
+    var password: String?
+    var paypalEmail: String?
+
     class func instantiateFromStoryboard() -> MyMoneyViewController {
         let storyboard = UIStoryboard(name: "MyMoney", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "MyMoneyViewController") as! MyMoneyViewController
@@ -24,6 +36,12 @@ class MyMoneyViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.updateData()
     }
 
     func setupUI() {
@@ -39,14 +57,39 @@ class MyMoneyViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
-
-        self.chart.setData(data: MockContent.init().createGraphData(), color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
     }
 
     func setupLocalization() {
         self.title = "myMoney.navigation.title".localized()
         self.segmentedControl.setButton1Title(text: "myMoney.segmentedControlButton1.title".localized())
         self.segmentedControl.setButton2Title(text: "myMoney.segmentedControlButton2.title".localized())
+    }
+
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            MyMoneyManager.shared.fetch { (myMoney, error) in
+                guard let myMoney = myMoney, error == nil else {
+                    self.displayError(error: error)
+                    self.updateLocalData()
+                    return
+                }
+
+                self.myMoney = myMoney
+            }
+        } else {
+            self.updateLocalData()
+        }
+    }
+
+    func updateLocalData() {
+        MyMoneyManager.shared.fetchLocal { (myMoney, error) in
+            guard let myMoney = myMoney, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+
+            self.myMoney = myMoney
+        }
     }
 }
 
@@ -65,8 +108,62 @@ extension MyMoneyViewController: JifflrSegmentedControlDelegate {
 }
 
 extension MyMoneyViewController: CashoutCellDelegate {
-    func cashoutCellPressed() {
-        
+    func cashoutCellPressed(cell: CashoutCell) {
+        guard let currentUser = Session.shared.currentUser else { return }
+        guard let paypalEmail = self.paypalEmail, !paypalEmail.isEmpty else {
+            cell.stopAnimating()
+            self.displayError(error: ErrorMessage.invalidPayPalEmail)
+            return
+        }
+
+        currentUser.details.paypalEmail = paypalEmail
+        currentUser.details.saveInBackground { (success, error) in
+            guard success == true, error == nil else {
+                cell.stopAnimating()
+                self.displayError(error: ErrorMessage.paypalEmailSaveFailed)
+                return
+            }
+
+            guard let password = self.password else {
+                cell.stopAnimating()
+                self.displayError(error: ErrorMessage.invalidCashoutPassword)
+                return
+            }
+
+            CashoutManager.shared.cashout(password: password) { (error) in
+                cell.stopAnimating()
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+
+                self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
+                self.updateData()
+            }
+        }
+    }
+}
+
+extension MyMoneyViewController: ConfirmPasswordCellDelegate {
+    func passwordTextFieldDidEnd(text: String) {
+        self.password = text
+    }
+}
+
+extension MyMoneyViewController: PaypalEmailCellDelegate {
+    func paypalEmailTextFieldDidEnd(text: String) {
+        self.paypalEmail = text
+
+        guard let currentUser = Session.shared.currentUser else { return }
+        currentUser.details.paypalEmail = paypalEmail
+        currentUser.details.saveInBackground { (success, error) in
+            guard success == true, error == nil else {
+                self.displayError(error: ErrorMessage.paypalEmailSaveFailed)
+                return
+            }
+
+            print("PayPal Email Address Saved")
+        }
     }
 }
 
@@ -80,17 +177,27 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             return 4
         }
 
-        return 20
+        if let myMoney = self.myMoney {
+            return myMoney.history.count
+        }
+
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let myMoney = self.myMoney, let currentUser = Session.shared.currentUser else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = UIColor.clear
+            return cell
+        }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWithdrawnCell") as! TotalWithdrawnCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.amountLabel.text = "£100.00"
+                cell.amountLabel.text = "£\(myMoney.totalWithdrawn)"
                 cell.nameLabel.text = "myMoney.totalWithdrawnCell.title".localized()
                 return cell
 
@@ -100,6 +207,9 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.paypalEmailCell.heading".localized()
                 cell.emailTextField.placeholder = "myMoney.paypalEmailCell.placeholder".localized()
+                cell.emailTextField.text = currentUser.details.paypalEmail
+                self.paypalEmail = currentUser.details.paypalEmail
+                cell.delegate = self
                 return cell
 
             } else if indexPath.row == 2 {
@@ -108,6 +218,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.confirmPasswordCell.heading".localized()
                 cell.passwordTextField.placeholder = "myMoney.confirmPasswordCell.placeholder".localized()
+                cell.delegate = self
                 return cell
 
             } else {
@@ -115,17 +226,23 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.cashoutCell.heading".localized()
-                cell.amountLabel.text = "£12.65"
+                cell.amountLabel.text = "£\(myMoney.moneyAvailable)"
                 cell.delegate = self
                 return cell
             }
         } else {
+            let userCashout = myMoney.history[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawnHistoryCell") as! WithdrawnHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.amountLabel.text = "£20.75"
-            cell.emailLabel.text = "alan@gmail.com"
-            cell.dateLabel.text = "5 May 2017"
+            cell.amountLabel.text = "£\(userCashout.value)"
+            cell.emailLabel.text = userCashout.paypalEmail
+
+            if let date = userCashout.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "d MMMM yyyy"
+                cell.dateLabel.text = dateFormatter.string(from: date)
+            }
 
             return cell
         }
