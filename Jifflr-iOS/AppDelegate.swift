@@ -105,8 +105,8 @@ extension AppDelegate {
 
 extension AppDelegate {
     func configAdProviders() {
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
-        Appodeal.initialize(withApiKey: "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8", types: .nonSkippableVideo)
+        GADMobileAds.configure(withApplicationID: Constants.currentEnvironment.admobKey)
+        Appodeal.initialize(withApiKey: Constants.currentEnvironment.appodealKey, types: .nonSkippableVideo)
         Appodeal.setTestingEnabled(true)
     }
 

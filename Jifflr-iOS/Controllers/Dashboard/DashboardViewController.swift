@@ -172,9 +172,13 @@ class DashboardViewController: BaseViewController {
     }
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
-        let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
-        navController.isNavigationBarHidden = true
-        self.navigationController?.present(navController, animated: false, completion: nil)
+        if LocationManager.shared.locationServicesEnabled() == true {
+            let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
+            navController.isNavigationBarHidden = true
+            self.navigationController?.present(navController, animated: false, completion: nil)
+        } else {
+            self.rootLocationRequiredViewController()
+        }
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {
