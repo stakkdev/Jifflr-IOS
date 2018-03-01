@@ -26,7 +26,7 @@ target 'Jifflr-iOS' do
     #pod 'EZSwiftExtensions' Waiting for Swift 4 support
     pod 'Alamofire'
     pod 'Parse'
-    pod 'Google-Mobile-Ads-SDK'
+    pod 'Appodeal'
     pod 'Localize-Swift'
     pod 'IQKeyboardManagerSwift'
     pod 'TDOnboarding', :git => 'git@bitbucket.org:thedistance/tdonboarding-ios.git'

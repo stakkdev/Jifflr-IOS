@@ -1,77 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Advert View Controller-->
-        <scene sceneID="EHs-bP-0c3">
-            <objects>
-                <viewController storyboardIdentifier="AdvertViewController" id="PVv-QB-J0J" customClass="AdvertViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rgf-Ug-CVY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V14-XK-Vtl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OpR-d6-GfZ"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Advert" id="BLN-gX-u5j">
-                                        <barButtonItem key="leftBarButtonItem" title="Close" id="vqY-Qn-jzD">
-                                            <connections>
-                                                <action selector="close:" destination="PVv-QB-J0J" id="JUS-fl-cya"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-fB-3Dk">
-                                <rect key="frame" x="115" y="318" width="145" height="30"/>
-                                <state key="normal" title="Play Rewarded Video"/>
-                                <connections>
-                                    <action selector="playRewardedVideo:" destination="PVv-QB-J0J" eventType="touchUpInside" id="zHa-xp-Sp3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKB-rS-4Qd">
-                                <rect key="frame" x="137" y="373" width="101" height="30"/>
-                                <state key="normal" title="Play Interstitial"/>
-                                <connections>
-                                    <action selector="playInterstitial:" destination="PVv-QB-J0J" eventType="touchUpInside" id="TXf-lA-fbl"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="2qc-fB-3Dk" firstAttribute="centerX" secondItem="Rgf-Ug-CVY" secondAttribute="centerX" id="3dT-0i-5MV"/>
-                            <constraint firstItem="V14-XK-Vtl" firstAttribute="leading" secondItem="Rgf-Ug-CVY" secondAttribute="leading" id="6dg-9n-Aqz"/>
-                            <constraint firstItem="V14-XK-Vtl" firstAttribute="top" secondItem="1Fu-0s-S9J" secondAttribute="top" id="73f-GB-c28"/>
-                            <constraint firstAttribute="trailing" secondItem="V14-XK-Vtl" secondAttribute="trailing" id="Ctv-K9-iv7"/>
-                            <constraint firstItem="QKB-rS-4Qd" firstAttribute="centerX" secondItem="2qc-fB-3Dk" secondAttribute="centerX" id="D8B-bO-LwK"/>
-                            <constraint firstItem="QKB-rS-4Qd" firstAttribute="top" secondItem="2qc-fB-3Dk" secondAttribute="bottom" constant="25" id="Ent-Ug-cce"/>
-                            <constraint firstItem="2qc-fB-3Dk" firstAttribute="centerY" secondItem="Rgf-Ug-CVY" secondAttribute="centerY" id="PTq-k1-oUh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="1Fu-0s-S9J"/>
-                    </view>
-                    <connections>
-                        <outlet property="navigationBar" destination="V14-XK-Vtl" id="IWh-Iv-LEe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xJ5-ss-OMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-92" y="157"/>
-        </scene>
         <!--Binary Feedback View Controller-->
         <scene sceneID="IIe-j5-3Ab">
             <objects>
-                <viewController storyboardIdentifier="BinaryFeedbackViewController" id="ib7-Ue-VM1" customClass="BinaryFeedbackViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BinaryFeedbackViewController" id="ib7-Ue-VM1" customClass="BinaryFeedbackViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEX-jV-L7f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +106,7 @@
         <!--Rating Feedback View Controller-->
         <scene sceneID="NVk-yI-Jzu">
             <objects>
-                <viewController storyboardIdentifier="RatingFeedbackViewController" id="8uM-nX-l0A" customClass="RatingFeedbackViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingFeedbackViewController" id="8uM-nX-l0A" customClass="RatingFeedbackViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MMq-Qz-0hQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +175,7 @@
         <!--Feedback View Controller-->
         <scene sceneID="RDR-GA-6A1">
             <objects>
-                <viewController storyboardIdentifier="QAFeedbackViewController" id="SJV-RC-kAW" customClass="QAFeedbackViewController" customModule="Ad_M8_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QAFeedbackViewController" id="SJV-RC-kAW" customClass="QAFeedbackViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fpz-Po-Qb0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -298,6 +240,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlW-ma-xUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="646" y="828"/>
+        </scene>
+        <!--Advert View Controller-->
+        <scene sceneID="Y8D-X8-g2s">
+            <objects>
+                <viewController storyboardIdentifier="AdvertViewController" id="nf1-dw-A9a" customClass="AdvertViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eTy-NY-efL"/>
+                        <viewControllerLayoutGuide type="bottom" id="fMG-Fh-2cM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NS2-3Q-zPE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-8I-xrR">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="YC6-dK-Z11"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="Y4I-RJ-wtI"/>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NNa-M5-9jy">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="0vq-yp-2Ne"/>
+                                    <constraint firstAttribute="height" constant="37" id="uXL-kq-7Ky"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="x2K-8I-xrR" firstAttribute="top" secondItem="eTy-NY-efL" secondAttribute="bottom" id="Mvs-Fb-Qge"/>
+                            <constraint firstItem="NNa-M5-9jy" firstAttribute="centerY" secondItem="NS2-3Q-zPE" secondAttribute="centerY" id="UOt-XM-9Wi"/>
+                            <constraint firstAttribute="trailing" secondItem="x2K-8I-xrR" secondAttribute="trailing" id="V7A-yn-25c"/>
+                            <constraint firstItem="x2K-8I-xrR" firstAttribute="leading" secondItem="NS2-3Q-zPE" secondAttribute="leading" id="lXE-V4-88y"/>
+                            <constraint firstItem="NNa-M5-9jy" firstAttribute="centerX" secondItem="NS2-3Q-zPE" secondAttribute="centerX" id="qJi-7p-J1I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qJi-Zw-mOA"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="NNa-M5-9jy" id="ZWN-zd-kXt"/>
+                        <outlet property="navigationBar" destination="x2K-8I-xrR" id="aQe-N3-fWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0a-1W-mlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297" y="157"/>
         </scene>
     </scenes>
 </document>

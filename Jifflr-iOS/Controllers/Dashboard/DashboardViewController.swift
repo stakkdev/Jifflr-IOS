@@ -172,7 +172,9 @@ class DashboardViewController: BaseViewController {
     }
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
-        //self.navigationController?.present(AdvertViewController.instantiateFromStoryboard(), animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
+        navController.isNavigationBarHidden = true
+        self.navigationController?.present(navController, animated: false, completion: nil)
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {

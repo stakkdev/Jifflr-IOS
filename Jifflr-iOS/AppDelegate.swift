@@ -14,6 +14,7 @@ import Firebase
 import Parse
 import UserNotifications
 import GoogleMobileAds
+import Appodeal
 import Localize_Swift
 import IQKeyboardManagerSwift
 
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         self.configParse(in: application, with: launchOptions)
-        self.configAdmob()
+        self.configAdProviders()
         self.configKeyboard()
         self.configLanguage()
 
@@ -103,8 +104,10 @@ extension AppDelegate {
 }
 
 extension AppDelegate {
-    func configAdmob() {
+    func configAdProviders() {
         GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
+        Appodeal.initialize(withApiKey: "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8", types: .nonSkippableVideo)
+        Appodeal.setTestingEnabled(true)
     }
 
     func configKeyboard() {

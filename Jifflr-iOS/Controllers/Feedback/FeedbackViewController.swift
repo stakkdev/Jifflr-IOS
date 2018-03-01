@@ -24,7 +24,7 @@ class FeedbackViewController: UIViewController, DisplayMessage {
         super.viewDidLoad()
 
         self.navigationBar.delegate = self
-        self.questionLabel.text = advert.feedbackQuestion.question
+        self.questionLabel.text = "Hello"// advert.feedbackQuestion.question
     }
 
     override func viewWillAppear(_ animated: Bool) {
