@@ -56,22 +56,22 @@ class FeedbackViewController: UIViewController, DisplayMessage {
         self.dismiss(animated: true, completion: nil)
     }
 
-    func saveFeedback(userFeedback: UserFeedback) {
-        guard self.fetchedLocation == true else {
-            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
-            LocationManager.shared.getCurrentLocation()
-            return
-        }
-
-        FeedbackManager.shared.saveFeedback(userFeedback: userFeedback, isoCountryCode: self.isoCountryCode, advert: self.advert) { (error) in
-            guard error == nil else {
-                self.displayMessage(title: ErrorMessage.feedbackSaveFailed.failureTitle, message: ErrorMessage.feedbackSaveFailed.failureDescription)
-                return
-            }
-
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+//    func saveFeedback(userFeedback: UserFeedback) {
+//        guard self.fetchedLocation == true else {
+//            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+//            LocationManager.shared.getCurrentLocation()
+//            return
+//        }
+//
+//        FeedbackManager.shared.saveFeedback(userFeedback: userFeedback, isoCountryCode: self.isoCountryCode, advert: self.advert) { (error) in
+//            guard error == nil else {
+//                self.displayMessage(title: ErrorMessage.feedbackSaveFailed.failureTitle, message: ErrorMessage.feedbackSaveFailed.failureDescription)
+//                return
+//            }
+//
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//    }
 }
 
 extension FeedbackViewController: UINavigationBarDelegate {

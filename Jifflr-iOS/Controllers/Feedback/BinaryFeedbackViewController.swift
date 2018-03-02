@@ -47,13 +47,13 @@ class BinaryFeedbackViewController: FeedbackViewController {
     }
 
     @IBAction func nextAd(_ sender: UIButton) {
-        guard self.likeButton.tag == 1 || self.dislikeButton.tag == 1 else {
-            return
-        }
-
-        let likes = self.likeButton.tag == 1 ? true : false
-        let binaryFeedback = UserFeedback()
-        binaryFeedback.likes = likes
-        self.saveFeedback(userFeedback: binaryFeedback)
+//        guard self.likeButton.tag == 1 || self.dislikeButton.tag == 1 else {
+//            return
+//        }
+//
+//        let likes = self.likeButton.tag == 1 ? true : false
+//        let binaryFeedback = UserFeedback()
+//        binaryFeedback.likes = likes
+//        self.saveFeedback(userFeedback: binaryFeedback)
     }
 }

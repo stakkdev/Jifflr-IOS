@@ -11,7 +11,7 @@ import UIKit
 class DashboardViewController: BaseViewController {
 
     var timer: Timer?
-
+    var advert: Advert?
     var internetAlertShown = false
 
     @IBOutlet weak var playAdsButton: PulsePlayButton!
@@ -59,6 +59,7 @@ class DashboardViewController: BaseViewController {
 
         self.timer?.invalidate()
         self.timer = nil
+        self.advert = nil
     }
 
     func setupUI() {
@@ -142,8 +143,13 @@ class DashboardViewController: BaseViewController {
 
                 self.updateUI(stats: stats)
             }
+
+            AdvertManager.shared.fetch {
+                self.updateLocalAdvert()
+            }
         } else {
             self.updateLocalData()
+            self.updateLocalAdvert()
         }
     }
 
@@ -156,6 +162,12 @@ class DashboardViewController: BaseViewController {
 
             self.updateUI(stats: stats)
         }
+    }
+
+    func updateLocalAdvert() {
+        AdvertManager.shared.fetchNextLocal(completion: { (advert) in
+            self.advert = advert
+        })
     }
 
     func updateUI(stats: DashboardStats) {
@@ -173,12 +185,28 @@ class DashboardViewController: BaseViewController {
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
         if LocationManager.shared.locationServicesEnabled() == true {
-            let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
-            navController.isNavigationBarHidden = true
-            self.navigationController?.present(navController, animated: false, completion: nil)
+            guard let advert = self.advert else {
+                self.retryAdvertFetch()
+                return
+            }
+
+            if advert.isCMS {
+                // TODO - Present CMS Ad screen
+            } else {
+                let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
+                navController.isNavigationBarHidden = true
+                self.navigationController?.present(navController, animated: false, completion: nil)
+            }
         } else {
             self.rootLocationRequiredViewController()
         }
+    }
+
+    func retryAdvertFetch() {
+        let error = ErrorMessage.advertFetchFailed
+        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
+            self.updateData()
+        })
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {
