@@ -48,8 +48,10 @@ class AdvertManager: NSObject {
 //            }
 //        }
 
-        MockContent.init().createDefaultAdvert().pinInBackground(withName: self.pinName) { (success, error) in
-            completion()
+        PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
+            MockContent.init().createDefaultAdvert().pinInBackground(withName: self.pinName) { (success, error) in
+                completion()
+            }
         }
     }
 
