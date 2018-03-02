@@ -67,6 +67,15 @@ enum Environment: String {
         }
     }
 
+    var appodealTesting: Bool {
+        switch self {
+        case .staging:
+            return true
+        case .production:
+            return false
+        }
+    }
+
     var admobKey: String {
         switch self {
         case .staging:

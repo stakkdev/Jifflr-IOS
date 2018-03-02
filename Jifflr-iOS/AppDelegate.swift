@@ -106,8 +106,8 @@ extension AppDelegate {
 extension AppDelegate {
     func configAdProviders() {
         GADMobileAds.configure(withApplicationID: Constants.currentEnvironment.admobKey)
+        Appodeal.setTestingEnabled(Constants.currentEnvironment.appodealTesting)
         Appodeal.initialize(withApiKey: Constants.currentEnvironment.appodealKey, types: .nonSkippableVideo)
-        Appodeal.setTestingEnabled(true)
     }
 
     func configKeyboard() {
