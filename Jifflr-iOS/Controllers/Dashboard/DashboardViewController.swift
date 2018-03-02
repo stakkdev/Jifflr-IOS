@@ -193,7 +193,7 @@ class DashboardViewController: BaseViewController {
             if advert.isCMS {
                 // TODO - Present CMS Ad screen
             } else {
-                let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard())
+                let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
                 self.navigationController?.present(navController, animated: false, completion: nil)
             }

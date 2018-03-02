@@ -16,17 +16,21 @@ class AdvertViewController: BaseViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var shouldPushToFeedback = false
+    var advert: Advert!
+    var question: Question?
 
-    class func instantiateFromStoryboard() -> AdvertViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdvertViewController") as! AdvertViewController
+        let advertViewController = storyboard.instantiateViewController(withIdentifier: "AdvertViewController") as! AdvertViewController
+        advertViewController.advert = advert
+        return advertViewController
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupUI()
-        self.presentAppodeal()
+        self.fetchData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +63,18 @@ class AdvertViewController: BaseViewController {
 
     func setupLocalization() { }
 
+    func fetchData() {
+        AdvertManager.shared.fetchQuestion(questionType: self.advert.questionType) { (question) in
+            guard let question = question else {
+                self.displayError(error: ErrorMessage.admobFetchFailed)
+                return
+            }
+
+            self.question = question
+            self.presentAppodeal()
+        }
+    }
+
     func presentAppodeal() {
         Appodeal.setNonSkippableVideoDelegate(self)
         Appodeal.showAd(.nonSkippableVideo, rootViewController: self)
@@ -76,7 +92,8 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        self.navigationController?.pushViewController(BinaryFeedbackViewController.instantiateFromStoryboard(advert: Advert()), animated: true)
+        let controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
@@ -87,6 +104,10 @@ class AdvertViewController: BaseViewController {
 extension AdvertViewController: AppodealNonSkippableVideoDelegate {
     func nonSkippableVideoWillDismiss() {
         self.presentFeedback()
+    }
+
+    func nonSkippableVideoDidFinish() {
+        self.dismiss(animated: false)
     }
 
     func nonSkippableVideoDidFailToLoadAd() {

@@ -536,8 +536,8 @@
 		E9798C26201A4C8E00E8A7D2 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
+				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
 				E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */,
 			);

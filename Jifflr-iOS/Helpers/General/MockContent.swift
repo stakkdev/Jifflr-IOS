@@ -141,4 +141,12 @@ class MockContent: NSObject {
         questionType.name = "Swipe"
         return questionType
     }
+
+    func createQuestion() -> Question {
+        let question = Question()
+        question.active = true
+        question.type = self.createQuestionType()
+        question.text = "This is the question type"
+        return question
+    }
 }
