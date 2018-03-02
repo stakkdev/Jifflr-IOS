@@ -70,9 +70,9 @@ enum Environment: String {
     var admobKey: String {
         switch self {
         case .staging:
-            return "ca-app-pub-6220129917785469~8910512429"
+            return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
         case .production:
-            return "ca-app-pub-6220129917785469~8910512429"
+            return "ca-app-pub-3940256099942544/1712485313"
         }
     }
 }
