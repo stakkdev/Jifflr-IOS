@@ -10,23 +10,23 @@ import UIKit
 import Foundation
 import Parse
 
-final class FeedbackType: PFObject {
+final class QuestionType: PFObject {
 
-    var title: String {
+    var name: String {
         get {
-            return self["title"] as! String
+            return self["name"] as! String
         }
     }
 
-    var id: Int {
+    var type: Int {
         get {
-            return self["feedbackTypeId"] as! Int
+            return self["type"] as! Int
         }
     }
 }
 
-extension FeedbackType: PFSubclassing {
+extension QuestionType: PFSubclassing {
     static func parseClassName() -> String {
-        return "FeedbackType"
+        return "QuestionType"
     }
 }

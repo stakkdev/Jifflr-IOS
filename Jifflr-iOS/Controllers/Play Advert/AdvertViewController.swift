@@ -97,6 +97,7 @@ extension AdvertViewController: AppodealNonSkippableVideoDelegate {
         self.setupAdmob()
     }
 }
+
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         self.dismiss(animated: true)

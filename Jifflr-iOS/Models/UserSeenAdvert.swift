@@ -39,12 +39,21 @@ final class UserSeenAdvert: PFObject {
         }
     }
 
-    var userFeedback: UserFeedback {
+    var question: Question {
         get {
-            return self["userFeedback"] as! UserFeedback
+            return self["question"] as! Question
         }
         set {
-            self["userFeedback"] = newValue
+            self["question"] = newValue
+        }
+    }
+
+    var chosenAnswers: PFRelation<Answer> {
+        get {
+            return self["chosenAnswers"] as! PFRelation
+        }
+        set {
+            self["chosenAnswers"] = newValue
         }
     }
 }
