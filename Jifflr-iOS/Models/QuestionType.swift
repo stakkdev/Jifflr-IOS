@@ -16,11 +16,17 @@ final class QuestionType: PFObject {
         get {
             return self["name"] as! String
         }
+        set {
+            self["name"] = newValue
+        }
     }
 
     var type: Int {
         get {
             return self["type"] as! Int
+        }
+        set {
+            self["type"] = newValue
         }
     }
 }

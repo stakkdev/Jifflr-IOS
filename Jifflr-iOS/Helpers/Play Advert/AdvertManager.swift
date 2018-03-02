@@ -24,16 +24,17 @@ class AdvertManager: NSObject {
             }
 
             PFCloud.callFunction(inBackground: "fetch-ads", withParameters: ["user": user.objectId!]) { responseJSON, error in
-                if let responseJSON = responseJSON as? [String: Any], error == nil {
+//                if let responseJSON = responseJSON as? [String: Any], error == nil {
 
                     var adverts:[Advert] = []
-                    if let advert = responseJSON["defaultAd"] as? Advert {
-                        adverts.append(advert)
-                    }
-
-                    if let cmsAds = responseJSON["cmsAds"] as? [Advert] {
-                        adverts += cmsAds
-                    }
+//                    if let advert = responseJSON["defaultAd"] as? Advert {
+//                        adverts.append(advert)
+//                    }
+//
+//                    if let cmsAds = responseJSON["cmsAds"] as? [Advert] {
+//                        adverts += cmsAds
+//                    }
+                    adverts.append(MockContent.init().createDefaultAdvert())
 
                     PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
                         if success == true, error == nil {
@@ -42,9 +43,9 @@ class AdvertManager: NSObject {
 
                         completion()
                     })
-                } else {
-                    completion()
-                }
+//                } else {
+//                    completion()
+//                }
             }
         }
     }
