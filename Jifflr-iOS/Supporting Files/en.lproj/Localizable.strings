@@ -19,6 +19,7 @@
 "error.faqs.message" = "Unable to fetch FAQs, previously downloaded data will be used.";
 "error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
 "error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
+"error.profile.invalidDob" = "Oops! Users must be 18 years old or over, changes to your date of birth have not been saved.";
 "error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
 "error.invalidCurrentPassword" = "Please enter your current password.";
 "error.invalidNewPassword" = "Invalid new password. Please enter a valid password that is at least 8 characters.";
