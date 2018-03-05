@@ -12,21 +12,39 @@ import Parse
 
 final class Advert: PFObject {
 
-    var feedbackType: FeedbackType {
+    var questionType: QuestionType {
         get {
-            return self["feedbackType"] as! FeedbackType
+            return self["questionType"] as! QuestionType
         }
         set {
-            self["feedbackType"] = newValue
+            self["questionType"] = newValue
         }
     }
 
-    var feedbackQuestion: FeedbackQuestion {
+    var question: Question? {
         get {
-            return self["feedbackQuestion"] as! FeedbackQuestion
+            return self["question"] as? Question
         }
         set {
-            self["feedbackQuestion"] = newValue
+            self["question"] = newValue
+        }
+    }
+
+    var creator: PFUser? {
+        get {
+            return self["creator"] as? PFUser
+        }
+        set {
+            self["creator"] = newValue
+        }
+    }
+
+    var isCMS: Bool {
+        get {
+            return self["isCMS"] as? Bool ?? false
+        }
+        set {
+            self["isCMS"] = newValue
         }
     }
 }

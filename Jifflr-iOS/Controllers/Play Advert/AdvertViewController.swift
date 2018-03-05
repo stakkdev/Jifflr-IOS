@@ -7,102 +7,139 @@
 //
 
 import UIKit
+import Appodeal
 import GoogleMobileAds
 
-class AdvertViewController: UIViewController {
+class AdvertViewController: BaseViewController {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    var interstitial: GADInterstitial!
-    var advert: Advert?
+    var shouldPushToFeedback = false
+    var advert: Advert!
+    var question: Question?
 
-    class func instantiateFromStoryboard() -> AdvertViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdvertViewController") as! AdvertViewController
+        let advertViewController = storyboard.instantiateViewController(withIdentifier: "AdvertViewController") as! AdvertViewController
+        advertViewController.advert = advert
+        return advertViewController
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.delegate = self
-
-        self.createAndLoadRewardedVideo()
-
-        AdvertManager.shared.fetchFirstAdvert { (advert) in
-            guard let advert = advert else {
-                return
-            }
-
-            self.advert = advert
-        }
+        self.setupUI()
+        self.fetchData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        self.interstitial = self.createAndLoadInterstitial()
-        //self.createAndLoadRewardedVideo()
     }
 
-    func createAndLoadInterstitial() -> GADInterstitial {
-        let inter = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712")
-        inter.delegate = self
-        let request = GADRequest()
-        inter.load(request)
-        return inter
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.activityIndicator.stopAnimating()
     }
 
-    func createAndLoadRewardedVideo() {
+    func setupUI() {
+        self.setupLocalization()
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+
+        self.navigationBar.delegate = self
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.isTranslucent = true
+        let font = UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationBar.tintColor = UIColor.white
+
+        let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
+        self.navigationBar.topItem?.rightBarButtonItem = dismissBarButton
+
+        self.activityIndicator.startAnimating()
+    }
+
+    func setupLocalization() { }
+
+    func fetchData() {
+        AdvertManager.shared.fetchQuestion(questionType: self.advert.questionType) { (question) in
+            guard let question = question else {
+                self.displayError(error: ErrorMessage.admobFetchFailed)
+                return
+            }
+
+            self.question = question
+            self.presentAppodeal()
+        }
+    }
+
+    func presentAppodeal() {
+        Appodeal.setNonSkippableVideoDelegate(self)
+        Appodeal.showAd(.nonSkippableVideo, rootViewController: self)
+    }
+
+    func setupAdmob() {
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: Constants.currentEnvironment.admobKey)
     }
 
-    @IBAction func playRewardedVideo(_ sender: UIButton) {
+    func presentAdmob() {
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
     }
 
-    @IBAction func playInterstitial(_ sender: UIButton) {
-        self.interstitial.present(fromRootViewController: self)
-    }
-
-    @IBAction func close(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     func presentFeedback() {
-        guard let advert = self.advert else {
-            return
-        }
+        let controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 
-        if advert.feedbackType.id == 0 {
-            self.present(BinaryFeedbackViewController.instantiateFromStoryboard(advert: advert), animated: true, completion: nil)
-        } else if advert.feedbackType.id == 1 {
-            // Present Rating
-        } else {
-            // Present QAFeedback
-        }
+    @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        self.dismiss(animated: false, completion: nil)
     }
 }
 
-extension AdvertViewController: GADInterstitialDelegate {
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+extension AdvertViewController: AppodealNonSkippableVideoDelegate {
+    func nonSkippableVideoWillDismiss() {
         self.presentFeedback()
+    }
+
+    func nonSkippableVideoDidFinish() {
+        self.dismiss(animated: true)
+    }
+
+    func nonSkippableVideoDidFailToLoadAd() {
+        self.setupAdmob()
+    }
+
+    func nonSkippableVideoDidFailToPresent() {
+        self.setupAdmob()
     }
 }
 
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        self.dismiss(animated: true) {
-
-        }
+        self.dismiss(animated: true)
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         self.presentFeedback()
     }
+
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        self.presentAdmob()
+    }
+
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
+        let error = ErrorMessage.admobFetchFailed
+        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
+            self.navigationController?.dismiss(animated: false, completion: nil)
+        })
+    }
 }
+
 
 extension AdvertViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {

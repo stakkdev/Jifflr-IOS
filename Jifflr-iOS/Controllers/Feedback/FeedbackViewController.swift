@@ -9,73 +9,40 @@
 import UIKit
 import Parse
 
-class FeedbackViewController: UIViewController, DisplayMessage {
+class FeedbackViewController: BaseViewController {
 
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var nextAdButton: UIButton!
 
-    var isoCountryCode = ""
-    var fetchedLocation = false
-
     var advert: Advert!
+    var question: Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.delegate = self
-        self.questionLabel.text = advert.feedbackQuestion.question
+        self.setupUI()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setupUI() {
+        self.setupLocalization()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(locationFound(_:)), name: Constants.Notifications.locationFound, object: nil)
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
 
-        LocationManager.shared.getCurrentLocation()
+        let skipBarButton = UIBarButtonItem(title: "onboarding.skipButton".localized(), style: .plain, target: self, action: #selector(self.skipButtonPressed(sender:)))
+        self.navigationItem.rightBarButtonItem = skipBarButton
+
+        self.questionLabel.text = "This screen will be implemented in the next sprint."
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-        NotificationCenter.default.removeObserver(self, name: Constants.Notifications.locationFound, object: nil)
-    }
-
-    @objc func locationFound(_ notification: NSNotification) {
-        guard let userInfo = notification.userInfo as? [String: String],
-            let isoCountryCode = userInfo["isoCountryCode"] else {
-                self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
-                return
-        }
-
-        self.isoCountryCode = isoCountryCode
-        self.fetchedLocation = true
-    }
+    func setupLocalization() { }
 
     @IBAction func close(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.dismiss(animated: false, completion: nil)
     }
 
-    func saveFeedback(userFeedback: UserFeedback) {
-        guard self.fetchedLocation == true else {
-            self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
-            LocationManager.shared.getCurrentLocation()
-            return
-        }
+    @objc func skipButtonPressed(sender: UIBarButtonItem) {
 
-        FeedbackManager.shared.saveFeedback(userFeedback: userFeedback, isoCountryCode: self.isoCountryCode, advert: self.advert) { (error) in
-            guard error == nil else {
-                self.displayMessage(title: ErrorMessage.feedbackSaveFailed.failureTitle, message: ErrorMessage.feedbackSaveFailed.failureDescription)
-                return
-            }
-
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-}
-
-extension FeedbackViewController: UINavigationBarDelegate {
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
     }
 }

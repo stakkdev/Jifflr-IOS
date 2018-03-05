@@ -40,6 +40,9 @@ public enum ErrorMessage {
     case invalidPayPalEmail
     case invalidCashoutPassword
     case paypalEmailSaveFailed
+    case admobFetchFailed
+    case advertFetchFailed
+    case invalidDobProfile
 
     public var failureTitle: String {
         switch self {
@@ -106,6 +109,12 @@ public enum ErrorMessage {
             return "error.invalidCashoutPassword".localized()
         case .paypalEmailSaveFailed:
             return "error.paypalEmailSaveFailed".localized()
+        case .admobFetchFailed:
+            return "error.admobFetchFailed".localized()
+        case .advertFetchFailed:
+            return "error.advertFetchFailed".localized()
+        case .invalidDobProfile:
+            return "error.profile.invalidDob".localized()
         case .feedbackSaveFailed:
             return "Unable to save advert feedback. Please check your internet connection and try again."
         case .locationNotSupported:

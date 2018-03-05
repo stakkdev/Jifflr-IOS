@@ -66,7 +66,8 @@ extension ProfileViewController {
             }
 
             guard let minimumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date()), minimumDate > dateOfBirth else {
-                let error = ErrorMessage.invalidDob
+                self.dobTextField.text = dateFormatter.string(from: currentUser.details.dateOfBirth)
+                let error = ErrorMessage.invalidDobProfile
                 self.displayMessage(title: error.failureTitle, message: error.failureDescription)
                 return
             }

@@ -14,6 +14,7 @@ import Firebase
 import Parse
 import UserNotifications
 import GoogleMobileAds
+import Appodeal
 import Localize_Swift
 import IQKeyboardManagerSwift
 
@@ -37,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         self.configParse(in: application, with: launchOptions)
-        self.configAdmob()
+        self.configAdProviders()
         self.configKeyboard()
         self.configLanguage()
 
@@ -85,10 +86,10 @@ extension AppDelegate {
         LocationFinancial.registerSubclass()
         LocationStatus.registerSubclass()
         Advert.registerSubclass()
-        FeedbackQuestion.registerSubclass()
-        FeedbackType.registerSubclass()
+        Answer.registerSubclass()
+        Question.registerSubclass()
+        QuestionType.registerSubclass()
         UserSeenAdvert.registerSubclass()
-        UserFeedback.registerSubclass()
         UserCashout.registerSubclass()
         UserMonthStats.registerSubclass()
         DashboardStats.registerSubclass()
@@ -103,8 +104,10 @@ extension AppDelegate {
 }
 
 extension AppDelegate {
-    func configAdmob() {
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-6220129917785469~1943942885")
+    func configAdProviders() {
+        GADMobileAds.configure(withApplicationID: Constants.currentEnvironment.admobKey)
+        Appodeal.setTestingEnabled(false)
+        Appodeal.initialize(withApiKey: Constants.currentEnvironment.appodealKey, types: .nonSkippableVideo)
     }
 
     func configKeyboard() {

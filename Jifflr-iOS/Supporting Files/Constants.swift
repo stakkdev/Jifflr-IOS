@@ -57,6 +57,33 @@ enum Environment: String {
             return "https://jifflr.thedistance.co.uk/parse"
         }
     }
+
+    var appodealKey: String {
+        switch self {
+        case .staging:
+            return "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8"
+        case .production:
+            return "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8"
+        }
+    }
+
+    var appodealTesting: Bool {
+        switch self {
+        case .staging:
+            return true
+        case .production:
+            return false
+        }
+    }
+
+    var admobKey: String {
+        switch self {
+        case .staging:
+            return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
+        case .production:
+            return "ca-app-pub-3940256099942544/1712485313"
+        }
+    }
 }
 
 struct OnboardingCustomizable: TDOnboardingCustomizable {

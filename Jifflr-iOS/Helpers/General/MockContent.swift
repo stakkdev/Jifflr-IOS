@@ -127,4 +127,26 @@ class MockContent: NSObject {
 
         return myTeamJSON
     }
+
+    func createDefaultAdvert() -> Advert {
+        let advert = Advert()
+        advert.isCMS = false
+        advert.questionType = self.createQuestionType()
+        return advert
+    }
+
+    func createQuestionType() -> QuestionType {
+        let questionType = QuestionType()
+        questionType.type = 0
+        questionType.name = "Swipe"
+        return questionType
+    }
+
+    func createQuestion() -> Question {
+        let question = Question()
+        question.active = true
+        question.type = self.createQuestionType()
+        question.text = "This is the question type"
+        return question
+    }
 }

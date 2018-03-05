@@ -94,11 +94,10 @@
 		E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E2B203B0D7C0097BC65 /* FAQ.swift */; };
 		E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E2F203B32000097BC65 /* FAQDetailViewController.swift */; };
 		E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */; };
-		E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */; };
-		E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */; };
+		E9A2CF4F1F8F7CCA008A7F40 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */; };
+		E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */; };
 		E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF521F8F7D87008A7F40 /* Location.swift */; };
 		E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */; };
-		E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF561F8F7F4F008A7F40 /* UserFeedback.swift */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
 		E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */; };
@@ -118,6 +117,7 @@
 		E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */; };
 		E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */; };
 		E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */; };
+		E9B9721C20495406004F0876 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B9721B20495406004F0876 /* Answer.swift */; };
 		E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */; };
 		E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC6ED1203F265B0073140A /* ChangePasswordViewController.swift */; };
 		E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */; };
@@ -247,11 +247,10 @@
 		E97B9E2B203B0D7C0097BC65 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQ.swift; path = Models/FAQ.swift; sourceTree = "<group>"; };
 		E97B9E2F203B32000097BC65 /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQDetailViewController.swift; path = Controllers/FAQs/FAQDetailViewController.swift; sourceTree = "<group>"; };
 		E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Advert.swift; path = Models/Advert.swift; sourceTree = "<group>"; };
-		E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackQuestion.swift; path = Models/FeedbackQuestion.swift; sourceTree = "<group>"; };
-		E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackType.swift; path = Models/FeedbackType.swift; sourceTree = "<group>"; };
+		E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Models/Question.swift; sourceTree = "<group>"; };
+		E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionType.swift; path = Models/QuestionType.swift; sourceTree = "<group>"; };
 		E9A2CF521F8F7D87008A7F40 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSeenAdvert.swift; path = Models/UserSeenAdvert.swift; sourceTree = "<group>"; };
-		E9A2CF561F8F7F4F008A7F40 /* UserFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserFeedback.swift; path = Models/UserFeedback.swift; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Jifflr-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jifflr-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717791F8B89AC00B07414 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = Views/CustomView.swift; sourceTree = "<group>"; };
@@ -277,6 +276,7 @@
 		E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrButton.swift; path = Views/JifflrButton.swift; sourceTree = "<group>"; };
 		E9AC1FB4202DFB9B00FAA9A7 /* JifflrTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextField.swift; path = Views/TextFields/JifflrTextField.swift; sourceTree = "<group>"; };
 		E9AC1FB6202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldPassword.swift; path = Views/TextFields/JifflrTextFieldPassword.swift; sourceTree = "<group>"; };
+		E9B9721B20495406004F0876 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = Models/Answer.swift; sourceTree = "<group>"; };
 		E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldInvitation.swift; path = Views/TextFields/JifflrTextFieldInvitation.swift; sourceTree = "<group>"; };
 		E9CC6ED1203F265B0073140A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controllers/Profile/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E9D8E1BF203C315300F978D2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
@@ -536,8 +536,8 @@
 		E9798C26201A4C8E00E8A7D2 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
-				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
+				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
 				E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */,
 			);
@@ -667,10 +667,10 @@
 				E937F5B92036F87100171480 /* LocationFinancial.swift */,
 				E937F5BB2036F8DA00171480 /* LocationStatus.swift */,
 				E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */,
-				E9A2CF4E1F8F7CCA008A7F40 /* FeedbackQuestion.swift */,
-				E9A2CF501F8F7D1D008A7F40 /* FeedbackType.swift */,
+				E9B9721B20495406004F0876 /* Answer.swift */,
+				E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */,
+				E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */,
 				E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */,
-				E9A2CF561F8F7F4F008A7F40 /* UserFeedback.swift */,
 				E95179481F90D15E0000A08D /* UserCashout.swift */,
 				E923751E203EDD5000275199 /* UserMonthStats.swift */,
 				E97B9E2B203B0D7C0097BC65 /* FAQ.swift */,
@@ -1030,9 +1030,56 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Libraries/Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS-resources.sh",
+				"${PODS_ROOT}/Appodeal/Appodeal.bundle",
+				"${PODS_ROOT}/Appodeal/APDStartAppAdapter.embeddedframework/Resources/StartApp.bundle",
+				"${PODS_ROOT}/Appodeal/APDTapjoyAdapter.embeddedframework/Resources/TapjoyResources.bundle",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPAdBrowserController.xib",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPCloseButtonX@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPDAAIcon@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPMutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPPlayBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@2x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MPUnmutedBtn@3x.png",
+				"${PODS_ROOT}/Appodeal/APDTwitterMoPubAdapter.embeddedframework/Resources/MRAID.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Appodeal.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StartApp.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TapjoyResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdBrowserController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MRAID.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1106,7 +1153,7 @@
 				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
 				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
-				E9A2CF511F8F7D1D008A7F40 /* FeedbackType.swift in Sources */,
+				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
@@ -1119,7 +1166,6 @@
 				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
-				E9A2CF571F8F7F4F008A7F40 /* UserFeedback.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
@@ -1185,7 +1231,8 @@
 				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
-				E9A2CF4F1F8F7CCA008A7F40 /* FeedbackQuestion.swift in Sources */,
+				E9B9721C20495406004F0876 /* Answer.swift in Sources */,
+				E9A2CF4F1F8F7CCA008A7F40 /* Question.swift in Sources */,
 				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,
 				E9305CEF2046F68800D4E4DD /* PFInstallation+Extensions.swift in Sources */,
 				E937F5B62036F44300171480 /* UserDetails.swift in Sources */,
