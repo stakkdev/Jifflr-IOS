@@ -107,11 +107,7 @@ extension AdvertViewController: AppodealNonSkippableVideoDelegate {
     }
 
     func nonSkippableVideoDidFinish() {
-        self.dismiss(animated: true) {
-            if Constants.currentEnvironment.appodealTesting {
-                self.presentFeedback()
-            }
-        }
+        self.dismiss(animated: true)
     }
 
     func nonSkippableVideoDidFailToLoadAd() {
