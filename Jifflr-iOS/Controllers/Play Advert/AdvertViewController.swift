@@ -71,7 +71,8 @@ class AdvertViewController: BaseViewController {
             }
 
             self.question = question
-            self.presentAppodeal()
+            //self.presentAppodeal()
+            self.presentFeedback()
         }
     }
 
@@ -94,11 +95,18 @@ class AdvertViewController: BaseViewController {
     func presentFeedback() {
         var controller: UIViewController!
 
+        // TODO: REMOVE
+        controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        self.navigationController?.pushViewController(controller, animated: true)
+        return
+        // ---------------
+
         switch self.advert.questionType.type {
         case AdvertQuestionType.Binary:
             controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
             return
         case AdvertQuestionType.Scale:
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
             return
         case AdvertQuestionType.MultiSelect:
             return

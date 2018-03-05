@@ -138,7 +138,7 @@ class MockContent: NSObject {
     func createQuestionType() -> QuestionType {
         let questionType = QuestionType()
         questionType.type = 0
-        questionType.name = "Swipe"
+        questionType.name = "Binary"
         return questionType
     }
 
@@ -146,7 +146,7 @@ class MockContent: NSObject {
         let question = Question()
         question.active = true
         question.type = self.createQuestionType()
-        question.text = "This is the question type"
+        question.text = "Do you like Fish and Chips?"
         return question
     }
 }

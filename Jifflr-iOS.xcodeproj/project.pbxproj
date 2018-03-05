@@ -19,6 +19,7 @@
 		E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */; };
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
+		E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FD4DE204DA2000074082C /* ScaleButton.swift */; };
 		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
 		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
 		E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */; };
@@ -80,7 +81,7 @@
 		E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */; };
 		E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */; };
 		E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */; };
-		E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */; };
+		E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */; };
 		E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */; };
 		E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */; };
 		E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */; };
@@ -171,6 +172,7 @@
 		E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTests.swift; sourceTree = "<group>"; };
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		E91FD4DE204DA2000074082C /* ScaleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScaleButton.swift; path = Views/ScaleButton.swift; sourceTree = "<group>"; };
 		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
 		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
 		E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamPendingFriends.swift; path = "Models/Local Models/MyTeamPendingFriends.swift"; sourceTree = "<group>"; };
@@ -233,7 +235,7 @@
 		E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAFeedbackViewController.swift; sourceTree = "<group>"; };
-		E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleFeedbackViewController.swift; sourceTree = "<group>"; };
 		E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalWithdrawnCell.swift; path = "Controllers/My Money/Cells/TotalWithdrawnCell.swift"; sourceTree = "<group>"; };
 		E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayPalEmailCell.swift; path = "Controllers/My Money/Cells/PayPalEmailCell.swift"; sourceTree = "<group>"; };
 		E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmPasswordCell.swift; path = "Controllers/My Money/Cells/ConfirmPasswordCell.swift"; sourceTree = "<group>"; };
@@ -538,8 +540,8 @@
 			children = (
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
 				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
+				E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */,
 				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
-				E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */,
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
@@ -650,6 +652,7 @@
 				E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */,
 				E9DD58202035DDF3000735C3 /* JifflrTeamChart.swift */,
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
+				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
+				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
@@ -1228,7 +1232,7 @@
 				E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */,
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,
 				E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */,
-				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
+				E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
 				E9B9721C20495406004F0876 /* Answer.swift in Sources */,
