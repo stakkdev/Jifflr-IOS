@@ -96,7 +96,7 @@ class AdvertViewController: BaseViewController {
         var controller: UIViewController!
 
         // TODO: REMOVE
-        controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
         self.navigationController?.pushViewController(controller, animated: true)
         return
         // ---------------
@@ -109,6 +109,7 @@ class AdvertViewController: BaseViewController {
             controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
             return
         case AdvertQuestionType.MultiSelect:
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
             return
         case AdvertQuestionType.Swipe:
             return

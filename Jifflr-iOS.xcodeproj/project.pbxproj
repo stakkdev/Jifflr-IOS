@@ -80,7 +80,7 @@
 		E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */; };
 		E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */; };
 		E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */; };
-		E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */; };
+		E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */; };
 		E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */; };
 		E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */; };
 		E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */; };
@@ -234,7 +234,7 @@
 		E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = "Controllers/Play Advert/AdvertViewController.swift"; sourceTree = "<group>"; };
 		E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleFeedbackViewController.swift; sourceTree = "<group>"; };
 		E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalWithdrawnCell.swift; path = "Controllers/My Money/Cells/TotalWithdrawnCell.swift"; sourceTree = "<group>"; };
 		E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayPalEmailCell.swift; path = "Controllers/My Money/Cells/PayPalEmailCell.swift"; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
 				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */,
-				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
+				E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */,
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
@@ -1174,7 +1174,7 @@
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
-				E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */,
+				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
