@@ -6,9 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+        <array key="GothamBook.otf">
+            <string>GothamBook</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Binary Feedback View Controller-->
         <scene sceneID="IIe-j5-3Ab">
@@ -18,34 +27,128 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This screen will be implemented in next sprint" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF0-pm-Fgy">
-                                <rect key="frame" x="20" y="117" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a Yes or No type response" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF0-pm-Fgy">
+                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsC-il-83w">
-                                <rect key="frame" x="167.5" y="213" width="39" height="30"/>
-                                <state key="normal" title="Close">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96N-AP-ao8">
+                                <rect key="frame" x="105.5" y="623" width="164" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="B6F-1b-cWs"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create an Ad campaign">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="14" name="GothamBook"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="f38-XB-CWF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4T-cX-mZq" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="561" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="roj-si-2W7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                <state key="normal" title="NEXT">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="close:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="RvR-7A-cHk"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="d8m-R6-o5k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PL0-Vv-Lnu">
+                                <rect key="frame" x="56.5" y="275.5" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="WFe-bB-0j9"/>
+                                    <constraint firstAttribute="width" constant="96" id="xb8-fK-jJY"/>
+                                </constraints>
+                                <state key="normal" image="FeedbackNoButton"/>
+                                <connections>
+                                    <action selector="noPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="rVg-t1-G57"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjK-4c-kIu">
+                                <rect key="frame" x="222.5" y="275.5" width="96" height="96"/>
+                                <state key="normal" image="FeedbackYesButton"/>
+                                <connections>
+                                    <action selector="yesPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="eQc-af-g1G"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="pF0-pm-Fgy" firstAttribute="top" secondItem="avi-Va-5CO" secondAttribute="top" constant="97" id="Das-yA-Cr3"/>
+                            <constraint firstItem="pF0-pm-Fgy" firstAttribute="top" secondItem="avi-Va-5CO" secondAttribute="top" constant="8" id="Das-yA-Cr3"/>
+                            <constraint firstItem="MjK-4c-kIu" firstAttribute="centerY" secondItem="PL0-Vv-Lnu" secondAttribute="centerY" id="J2F-oU-U6f"/>
+                            <constraint firstItem="PL0-Vv-Lnu" firstAttribute="trailing" secondItem="avi-Va-5CO" secondAttribute="centerX" constant="-35" id="PHw-Yw-tY8"/>
+                            <constraint firstItem="H4T-cX-mZq" firstAttribute="leading" secondItem="avi-Va-5CO" secondAttribute="leading" constant="18" id="SJ7-Sq-Fio"/>
+                            <constraint firstItem="96N-AP-ao8" firstAttribute="centerX" secondItem="avi-Va-5CO" secondAttribute="centerX" id="WG4-bG-J2x"/>
                             <constraint firstItem="avi-Va-5CO" firstAttribute="trailing" secondItem="pF0-pm-Fgy" secondAttribute="trailing" constant="20" id="cNd-TL-WRj"/>
-                            <constraint firstItem="wsC-il-83w" firstAttribute="top" secondItem="pF0-pm-Fgy" secondAttribute="bottom" constant="75.5" id="qZN-SU-Ue4"/>
+                            <constraint firstItem="avi-Va-5CO" firstAttribute="bottom" secondItem="96N-AP-ao8" secondAttribute="bottom" constant="28" id="faU-GB-i2L"/>
+                            <constraint firstItem="MjK-4c-kIu" firstAttribute="leading" secondItem="avi-Va-5CO" secondAttribute="centerX" constant="35" id="hbX-MI-wTR"/>
+                            <constraint firstItem="avi-Va-5CO" firstAttribute="trailing" secondItem="H4T-cX-mZq" secondAttribute="trailing" constant="18" id="k8Q-0N-a59"/>
+                            <constraint firstItem="PL0-Vv-Lnu" firstAttribute="width" secondItem="MjK-4c-kIu" secondAttribute="width" id="mJd-in-ulB"/>
+                            <constraint firstItem="PL0-Vv-Lnu" firstAttribute="height" secondItem="MjK-4c-kIu" secondAttribute="height" id="oU7-8H-7zg"/>
                             <constraint firstItem="pF0-pm-Fgy" firstAttribute="leading" secondItem="avi-Va-5CO" secondAttribute="leading" constant="20" id="rhk-Aj-dcg"/>
-                            <constraint firstItem="wsC-il-83w" firstAttribute="centerX" secondItem="pF0-pm-Fgy" secondAttribute="centerX" id="scD-pB-uGl"/>
+                            <constraint firstItem="96N-AP-ao8" firstAttribute="top" secondItem="H4T-cX-mZq" secondAttribute="bottom" constant="12" id="sRb-Ja-XSZ"/>
+                            <constraint firstItem="PL0-Vv-Lnu" firstAttribute="centerY" secondItem="avi-Va-5CO" secondAttribute="centerY" constant="-20" id="zo4-ir-rbf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avi-Va-5CO"/>
                     </view>
                     <connections>
+                        <outlet property="createAdCampaignButton" destination="96N-AP-ao8" id="ZfA-ef-hIt"/>
+                        <outlet property="nextAdButton" destination="H4T-cX-mZq" id="Z9c-Yx-RuZ"/>
+                        <outlet property="noButton" destination="PL0-Vv-Lnu" id="3SA-V0-GPS"/>
                         <outlet property="questionLabel" destination="pF0-pm-Fgy" id="haf-gk-2Gz"/>
+                        <outlet property="yesButton" destination="MjK-4c-kIu" id="fUZ-tZ-PPR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zhu-ZQ-qlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vq3-i2-KKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="-543"/>
+            <point key="canvasLocation" x="2068" y="157"/>
         </scene>
         <!--Feedback View Controller-->
         <scene sceneID="RDR-GA-6A1">
@@ -188,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AlW-ma-xUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="828"/>
+            <point key="canvasLocation" x="1358" y="157"/>
         </scene>
         <!--Advert View Controller-->
         <scene sceneID="Y8D-X8-g2s">
@@ -239,4 +342,8 @@
             <point key="canvasLocation" x="-297" y="157"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FeedbackNoButton" width="96" height="96"/>
+        <image name="FeedbackYesButton" width="96" height="96"/>
+    </resources>
 </document>

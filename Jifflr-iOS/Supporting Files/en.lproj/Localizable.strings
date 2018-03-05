@@ -39,6 +39,7 @@
 "error.paypalEmailSaveFailed" = "Unable to save PayPal email address. Please check your internet connection and try again.";
 "error.admobFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
 "error.advertFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
+"error.invalidFeedback" = "Please choose at least 1 answer to give feedback.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -156,6 +157,9 @@
 "myMoney.confirmPasswordCell.heading" = "Confirm Jifflr Password";
 "myMoney.confirmPasswordCell.placeholder" = "Enter Jifflr password";
 "myMoney.cashoutCell.heading" = "CASH OUT";
+
+"feedback.createAdButton.title" = "Create an Ad campaign";
+"feedback.nextAdButton.title" = "NEXT";
 
 "faqs.navigation.title" = "FAQs";
 "faqsDetail.navigation.title" = "FAQ";

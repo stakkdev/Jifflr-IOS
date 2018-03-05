@@ -92,7 +92,29 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        let controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        var controller: UIViewController!
+
+        switch self.advert.questionType.type {
+        case AdvertQuestionType.Binary:
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+            return
+        case AdvertQuestionType.Scale:
+            return
+        case AdvertQuestionType.MultiSelect:
+            return
+        case AdvertQuestionType.Swipe:
+            return
+        case AdvertQuestionType.NumberPicker:
+            return
+        case AdvertQuestionType.TimePicker:
+            return
+        case AdvertQuestionType.DatePicker:
+            return
+        default:
+            print("Invalid Question Type")
+            return
+        }
+
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
