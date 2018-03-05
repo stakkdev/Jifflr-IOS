@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>27.02.2018</string>
+	<string>05.03.2018</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
@@ -38,6 +38,11 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSContactsUsageDescription</key>
 	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -71,10 +76,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 </dict>
 </plist>
