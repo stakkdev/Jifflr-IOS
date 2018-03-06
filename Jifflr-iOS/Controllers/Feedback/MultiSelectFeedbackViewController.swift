@@ -14,11 +14,10 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
 
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-    class func instantiateFromStoryboard(advert: Advert, question: Question?) -> MultiSelectFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> MultiSelectFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MultiSelectFeedbackViewController") as! MultiSelectFeedbackViewController
         controller.advert = advert
-        controller.question = question
         return controller
     }
 

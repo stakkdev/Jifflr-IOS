@@ -16,7 +16,6 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
     var advert: Advert!
-    var question: Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()

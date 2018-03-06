@@ -441,6 +441,120 @@
             </objects>
             <point key="canvasLocation" x="-297" y="157"/>
         </scene>
+        <!--Swipe Feedback View Controller-->
+        <scene sceneID="RyW-EH-zHW">
+            <objects>
+                <viewController storyboardIdentifier="SwipeFeedbackViewController" id="55H-01-OeM" customClass="SwipeFeedbackViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZUw-Ln-Hrg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
+                                <rect key="frame" x="105.5" y="623" width="164" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="pri-Sl-CQ0"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create an Ad campaign">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="14" name="GothamBook"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="55H-01-OeM" eventType="touchUpInside" id="fMR-XH-Zs3"/>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="hNt-9v-hq3"/>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="jbi-yY-tag"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Ux-ank" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="561" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Jp-fi-rby"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="7YG-Ut-Vk8"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="55H-01-OeM" eventType="touchUpInside" id="MA0-Dv-W0k"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="RZE-X8-Doq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left or right to choose  your preference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRl-T7-VxH">
+                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NRl-T7-VxH" firstAttribute="top" secondItem="oop-8S-p44" secondAttribute="top" constant="8" id="HA9-cu-7lu"/>
+                            <constraint firstItem="oop-8S-p44" firstAttribute="trailing" secondItem="rmr-Ux-ank" secondAttribute="trailing" constant="20" id="I1z-w6-nUX"/>
+                            <constraint firstItem="NRl-T7-VxH" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="20" id="Jld-uC-SFJ"/>
+                            <constraint firstItem="knZ-AT-yKt" firstAttribute="centerX" secondItem="oop-8S-p44" secondAttribute="centerX" id="Pgd-er-gBT"/>
+                            <constraint firstItem="knZ-AT-yKt" firstAttribute="top" secondItem="rmr-Ux-ank" secondAttribute="bottom" constant="12" id="X0c-YJ-f3w"/>
+                            <constraint firstItem="oop-8S-p44" firstAttribute="bottom" secondItem="knZ-AT-yKt" secondAttribute="bottom" constant="28" id="aTO-gA-Q1i"/>
+                            <constraint firstItem="oop-8S-p44" firstAttribute="trailing" secondItem="NRl-T7-VxH" secondAttribute="trailing" constant="20" id="bGX-e7-6Hm"/>
+                            <constraint firstItem="rmr-Ux-ank" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="20" id="fCp-to-ob5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oop-8S-p44"/>
+                    </view>
+                    <connections>
+                        <outlet property="createAdCampaignButton" destination="knZ-AT-yKt" id="kkm-ee-J72"/>
+                        <outlet property="nextAdButton" destination="rmr-Ux-ank" id="dJN-Bg-cmW"/>
+                        <outlet property="questionLabel" destination="NRl-T7-VxH" id="4TZ-qH-OPz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SGT-Vy-DZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="157"/>
+        </scene>
     </scenes>
     <resources>
         <image name="FeedbackNoButton" width="96" height="96"/>

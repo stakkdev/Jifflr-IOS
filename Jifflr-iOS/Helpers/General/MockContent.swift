@@ -131,14 +131,13 @@ class MockContent: NSObject {
     func createDefaultAdvert() -> Advert {
         let advert = Advert()
         advert.isCMS = false
-        advert.questionType = self.createQuestionType()
         return advert
     }
 
     func createQuestionType() -> QuestionType {
         let questionType = QuestionType()
-        questionType.type = 0
-        questionType.name = "Binary"
+        questionType.type = AdvertQuestionType.Swipe
+        questionType.name = "Swipe"
         return questionType
     }
 

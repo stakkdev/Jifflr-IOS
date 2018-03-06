@@ -17,7 +17,7 @@ class AdvertViewController: BaseViewController {
 
     var shouldPushToFeedback = false
     var advert: Advert!
-    var question: Question?
+    var questions: [Question] = []
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -64,13 +64,13 @@ class AdvertViewController: BaseViewController {
     func setupLocalization() { }
 
     func fetchData() {
-        AdvertManager.shared.fetchQuestion(questionType: self.advert.questionType) { (question) in
-            guard let question = question else {
+        AdvertManager.shared.fetchSwipeQuestions { (questions) in
+            guard questions.count > 0 else {
                 self.displayError(error: ErrorMessage.admobFetchFailed)
                 return
             }
 
-            self.question = question
+            self.questions = questions
             //self.presentAppodeal()
             self.presentFeedback()
         }
@@ -93,38 +93,36 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        var controller: UIViewController!
-
-        // TODO: REMOVE
-        controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        guard let firstQuestion = self.questions.first, firstQuestion.type.type == AdvertQuestionType.Swipe else { return }
+        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions)
         self.navigationController?.pushViewController(controller, animated: true)
-        return
-        // ---------------
 
-        switch self.advert.questionType.type {
-        case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
-            return
-        case AdvertQuestionType.Scale:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
-            return
-        case AdvertQuestionType.MultiSelect:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
-            return
-        case AdvertQuestionType.Swipe:
-            return
-        case AdvertQuestionType.NumberPicker:
-            return
-        case AdvertQuestionType.TimePicker:
-            return
-        case AdvertQuestionType.DatePicker:
-            return
-        default:
-            print("Invalid Question Type")
-            return
-        }
-
-        self.navigationController?.pushViewController(controller, animated: true)
+//        var controller: UIViewController!
+//
+//        switch self.advert.questionType.type {
+//        case AdvertQuestionType.Binary:
+//            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+//            return
+//        case AdvertQuestionType.Scale:
+//            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+//            return
+//        case AdvertQuestionType.MultiSelect:
+//            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+//            return
+//        case AdvertQuestionType.Swipe:
+//            return
+//        case AdvertQuestionType.NumberPicker:
+//            return
+//        case AdvertQuestionType.TimePicker:
+//            return
+//        case AdvertQuestionType.DatePicker:
+//            return
+//        default:
+//            print("Invalid Question Type")
+//            return
+//        }
+//
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
