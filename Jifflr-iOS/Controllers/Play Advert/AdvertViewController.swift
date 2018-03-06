@@ -93,7 +93,11 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        guard let firstQuestion = self.questions.first, firstQuestion.type.type == AdvertQuestionType.Swipe else { return }
+        guard let firstQuestion = self.questions.first, firstQuestion.type.type == AdvertQuestionType.Swipe else {
+            print("Invalid Question Type")
+            return
+        }
+
         let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions)
         self.navigationController?.pushViewController(controller, animated: true)
 
