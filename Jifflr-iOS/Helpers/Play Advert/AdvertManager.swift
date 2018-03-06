@@ -106,43 +106,41 @@ class AdvertManager: NSObject {
 
     func fetchSwipeQuestions(completion: @escaping ([Question]) -> Void) {
 
-//        self.fetchSwipeQuestionType { (questionType) in
-//            guard let questionType = questionType else {
-//                completion([])
-//                return
-//            }
-//
-//            let countQuery = Question.query()
-//            countQuery?.limit = 10000
-//            countQuery?.whereKey("questionType", equalTo: questionType)
-//            countQuery?.whereKey("active", equalTo: true)
-//            countQuery?.countObjectsInBackground(block: { (count, error) in
-//                guard error == nil, count > 0 else {
-//                    completion([])
-//                    return
-//                }
-//
-//                let randomIndex = Int(arc4random_uniform(UInt32(count - 3)))
-//                let query = Question.query()
-//                query?.limit = 3
-//                query?.skip = randomIndex
-//                query?.whereKey("questionType", equalTo: questionType)
-//                query?.whereKey("active", equalTo: true)
-//                query?.includeKey("type")
-//                query?.includeKey("answers")
-//                query?.findObjectsInBackground(block: { (objects, error) in
-//                    guard let questions = objects as? [Question], error == nil else {
-//                        completion([])
-//                        return
-//                    }
-//
-//                    completion(questions)
-//                })
-//            })
-//
-//        }
+        self.fetchSwipeQuestionType { (questionType) in
+            guard let questionType = questionType else {
+                completion([])
+                return
+            }
 
-        completion([MockContent.init().createQuestion(), MockContent.init().createQuestion(), MockContent.init().createQuestion()])
+            let countQuery = Question.query()
+            countQuery?.limit = 10000
+            countQuery?.whereKey("type", equalTo: questionType)
+            countQuery?.whereKey("active", equalTo: true)
+            countQuery?.countObjectsInBackground(block: { (count, error) in
+                guard error == nil, count > 0 else {
+                    completion([])
+                    return
+                }
+
+                let randomIndex = Int(arc4random_uniform(UInt32(count - 3)))
+                let query = Question.query()
+                query?.limit = 3
+                query?.skip = randomIndex
+                query?.whereKey("type", equalTo: questionType)
+                query?.whereKey("active", equalTo: true)
+                query?.includeKey("type")
+                query?.includeKey("answers")
+                query?.findObjectsInBackground(block: { (objects, error) in
+                    guard let questions = objects as? [Question], error == nil else {
+                        completion([])
+                        return
+                    }
+
+                    completion(questions)
+                })
+            })
+
+        }
     }
 
     func fetchSwipeQuestionType(completion: @escaping (QuestionType?) -> Void) {

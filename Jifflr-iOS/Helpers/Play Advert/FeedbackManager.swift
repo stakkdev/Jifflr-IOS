@@ -12,6 +12,18 @@ import Parse
 class FeedbackManager: NSObject {
     static let shared = FeedbackManager()
 
+    func createQuestionAnswers(question: Question, answers: [Answer]) -> QuestionAnswers {
+        let questionAnswer = QuestionAnswers()
+        questionAnswer.question = question
+        questionAnswer.answers = PFRelation()
+
+        for answer in answers {
+            questionAnswer.answers.add(answer)
+        }
+
+        return questionAnswer
+    }
+
 //    func saveFeedback(userFeedback: UserFeedback, isoCountryCode: String, advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {
 //
 //        guard let currentUser = UserManager.shared.currentUser else {

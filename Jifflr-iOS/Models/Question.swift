@@ -63,3 +63,17 @@ extension Question: PFSubclassing {
         return "Question"
     }
 }
+
+extension Question {
+    func fetchAnswers(completion: @escaping ([Answer]) -> Void) {
+        let query = self.answers.query()
+        query.findObjectsInBackground { (answers, error) in
+            guard let answers = answers, error == nil else {
+                completion([])
+                return
+            }
+
+            completion(answers)
+        }
+    }
+}
