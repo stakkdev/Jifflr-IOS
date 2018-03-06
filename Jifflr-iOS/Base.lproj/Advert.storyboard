@@ -45,46 +45,7 @@
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="14" name="GothamBook"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -181,46 +142,7 @@
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="14" name="GothamBook"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -351,46 +273,7 @@
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="14" name="GothamBook"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -417,27 +300,38 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-0s-Bee">
-                                <rect key="frame" x="0.0" y="79" width="375" height="474"/>
+                                <rect key="frame" x="0.0" y="91" width="375" height="462"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hou-OI-c2m">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Hou-OI-c2m">
                                     <size key="itemSize" width="375" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MultiSelectCell" id="hWL-Qf-qW3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MultiSelectCell" id="hWL-Qf-qW3" customClass="MultiSelectCell" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZW-fO-KDZ">
                                                     <rect key="frame" x="18" y="0.0" width="339" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y71-cy-C2F">
+                                                            <rect key="frame" x="12" y="12" width="315" height="26"/>
+                                                            <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
+                                                            <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="rh9-sB-HhN"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Y71-cy-C2F" secondAttribute="bottom" constant="12" id="2if-bR-xZu"/>
+                                                        <constraint firstItem="Y71-cy-C2F" firstAttribute="top" secondItem="nZW-fO-KDZ" secondAttribute="top" constant="12" id="WjU-8b-KMW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Y71-cy-C2F" secondAttribute="trailing" constant="12" id="mvG-C2-n8b"/>
+                                                        <constraint firstItem="Y71-cy-C2F" firstAttribute="leading" secondItem="nZW-fO-KDZ" secondAttribute="leading" constant="12" id="wuq-8D-zgJ"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -450,11 +344,17 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="nZW-fO-KDZ" firstAttribute="top" secondItem="hWL-Qf-qW3" secondAttribute="top" id="Jvy-33-MKa"/>
-                                            <constraint firstAttribute="bottom" secondItem="nZW-fO-KDZ" secondAttribute="bottom" constant="10" id="Lck-yU-ACg"/>
+                                            <constraint firstAttribute="bottom" secondItem="nZW-fO-KDZ" secondAttribute="bottom" id="Lck-yU-ACg"/>
                                             <constraint firstAttribute="trailing" secondItem="nZW-fO-KDZ" secondAttribute="trailing" constant="18" id="mef-1H-xsg"/>
                                             <constraint firstItem="nZW-fO-KDZ" firstAttribute="leading" secondItem="hWL-Qf-qW3" secondAttribute="leading" constant="18" id="r0X-Fq-Ri6"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="60"/>
+                                        <size key="customSize" width="375" height="50"/>
+                                        <connections>
+                                            <outlet property="roundedView" destination="nZW-fO-KDZ" id="gqf-3E-pKl"/>
+                                            <outlet property="roundedViewLeading" destination="r0X-Fq-Ri6" id="tPM-XF-qfM"/>
+                                            <outlet property="roundedViewTrailing" destination="mef-1H-xsg" id="pnG-Yf-g4H"/>
+                                            <outlet property="titleLabel" destination="Y71-cy-C2F" id="EBr-1A-2DQ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -470,7 +370,7 @@
                             <constraint firstItem="3NB-0s-Bee" firstAttribute="leading" secondItem="x83-D2-b2d" secondAttribute="leading" id="Eqj-Tf-ylB"/>
                             <constraint firstItem="x83-D2-b2d" firstAttribute="trailing" secondItem="m4q-ZF-7FO" secondAttribute="trailing" constant="20" id="JKR-uH-8sx"/>
                             <constraint firstItem="ly2-XF-3RP" firstAttribute="top" secondItem="cyo-8B-dp8" secondAttribute="bottom" constant="12" id="L6m-ad-gx5"/>
-                            <constraint firstItem="3NB-0s-Bee" firstAttribute="top" secondItem="m4q-ZF-7FO" secondAttribute="bottom" constant="8" id="UqX-ok-nN7"/>
+                            <constraint firstItem="3NB-0s-Bee" firstAttribute="top" secondItem="m4q-ZF-7FO" secondAttribute="bottom" constant="20" id="UqX-ok-nN7"/>
                             <constraint firstItem="x83-D2-b2d" firstAttribute="bottom" secondItem="ly2-XF-3RP" secondAttribute="bottom" constant="28" id="bb0-T3-eqb"/>
                             <constraint firstItem="m4q-ZF-7FO" firstAttribute="top" secondItem="x83-D2-b2d" secondAttribute="top" constant="8" id="e0A-7b-ypy"/>
                             <constraint firstItem="ly2-XF-3RP" firstAttribute="centerX" secondItem="x83-D2-b2d" secondAttribute="centerX" id="guf-r7-qrW"/>

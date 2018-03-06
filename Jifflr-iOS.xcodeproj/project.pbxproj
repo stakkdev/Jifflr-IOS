@@ -136,6 +136,7 @@
 		E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632B2031D54E00188AA1 /* JifflrTextFieldSelection.swift */; };
 		E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */; };
 		E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */; };
+		E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AB204EA3B700104565 /* MultiSelectCell.swift */; };
 		E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F89D80201B423E00860FE3 /* DashboardViewController.swift */; };
 		E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D82201B446700860FE3 /* MyTeam.storyboard */; };
 		E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */; };
@@ -297,6 +298,7 @@
 		E9EE632B2031D54E00188AA1 /* JifflrTextFieldSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldSelection.swift; path = Views/TextFields/JifflrTextFieldSelection.swift; sourceTree = "<group>"; };
 		E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldLocation.swift; path = Views/TextFields/JifflrTextFieldLocation.swift; sourceTree = "<group>"; };
 		E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TermsAndConditionsViewController.swift; path = Controllers/Onboarding/TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		E9F317AB204EA3B700104565 /* MultiSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectCell.swift; sourceTree = "<group>"; };
 		E9F89D80201B423E00860FE3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/Dashboard/DashboardViewController.swift; sourceTree = "<group>"; };
 		E9F89D83201B446700860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyTeam.storyboard; sourceTree = "<group>"; };
 		E9F89D86201B45CB00860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyMoney.storyboard; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 		E9798C26201A4C8E00E8A7D2 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				E9F317AA204EA34900104565 /* Cells */,
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
 				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */,
@@ -793,6 +796,14 @@
 				E9DD581E2035D1A4000735C3 /* TeamPendingFriendCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		E9F317AA204EA34900104565 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9F317AB204EA3B700104565 /* MultiSelectCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E9F89D7F201B422E00860FE3 /* Dashboard */ = {
@@ -1145,6 +1156,7 @@
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
 				E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */,
 				E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */,
+				E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */,
 				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
