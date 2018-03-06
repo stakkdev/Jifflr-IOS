@@ -139,6 +139,7 @@
 		E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AB204EA3B700104565 /* MultiSelectCell.swift */; };
 		E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AD204EBA5600104565 /* QuestionAnswers.swift */; };
 		E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */; };
+		E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317B1204ED65100104565 /* SwipeCell.swift */; };
 		E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F89D80201B423E00860FE3 /* DashboardViewController.swift */; };
 		E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D82201B446700860FE3 /* MyTeam.storyboard */; };
 		E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */; };
@@ -303,6 +304,7 @@
 		E9F317AB204EA3B700104565 /* MultiSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectCell.swift; sourceTree = "<group>"; };
 		E9F317AD204EBA5600104565 /* QuestionAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionAnswers.swift; path = Models/QuestionAnswers.swift; sourceTree = "<group>"; };
 		E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9F317B1204ED65100104565 /* SwipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E9F89D80201B423E00860FE3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/Dashboard/DashboardViewController.swift; sourceTree = "<group>"; };
 		E9F89D83201B446700860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyTeam.storyboard; sourceTree = "<group>"; };
 		E9F89D86201B45CB00860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyMoney.storyboard; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 			isa = PBXGroup;
 			children = (
 				E9F317AB204EA3B700104565 /* MultiSelectCell.swift */,
+				E9F317B1204ED65100104565 /* SwipeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1176,6 +1179,7 @@
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
 				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
+				E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,

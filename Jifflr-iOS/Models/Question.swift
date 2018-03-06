@@ -47,6 +47,15 @@ final class Question: PFObject {
             self["active"] = newValue
         }
     }
+
+    var image: PFFile? {
+        get {
+            return self["image"] as? PFFile
+        }
+        set {
+            self["image"] = newValue
+        }
+    }
 }
 
 extension Question: PFSubclassing {
