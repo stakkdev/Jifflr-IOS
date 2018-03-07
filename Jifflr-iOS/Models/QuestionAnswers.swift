@@ -21,9 +21,9 @@ final class QuestionAnswers: PFObject {
         }
     }
 
-    var answers: PFRelation<Answer> {
+    var answers: [String] {
         get {
-            return self["answers"] as! PFRelation
+            return self["answers"] as? [String] ?? []
         }
         set {
             self["answers"] = newValue

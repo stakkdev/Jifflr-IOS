@@ -80,6 +80,20 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
         CATransaction.commit()
     }
+
+    func createQuestionAnswers(yes: Bool, question: Question) {
+        let answer = yes == true ? Answers.Swipe.yes : Answers.Swipe.no
+        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
+        self.questionAnswers.append(questionAnswer)
+    }
+
+    func saveAndPushToNextAd() {
+        if self.questions.count == 0 {
+            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+                self.pushToNextAd()
+            })
+        }
+    }
 }
 
 extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSource {
@@ -96,6 +110,15 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
         cell.tag = indexPath.row
         cell.delegate = self
         cell.question = self.questions[indexPath.row]
+
+        if let imageFile = self.questions[indexPath.row].image {
+            imageFile.getDataInBackground(block: { (data, error) in
+                if let data = data, error == nil {
+                    cell.questionImageView.image = UIImage(data: data)
+                }
+            })
+        }
+
         return cell
     }
 }
@@ -107,9 +130,8 @@ extension SwipeFeedbackViewController: SwipeCellDelegate {
             self.questions.remove(at: index)
             self.tableView.deleteRows(at: [cellIndexPath as IndexPath], with: .fade)
 
-            if self.questions.count == 0 {
-                self.pushToNextAd()
-            }
+            self.createQuestionAnswers(yes: yes, question: question)
+            self.saveAndPushToNextAd()
         }
     }
 }

@@ -12,47 +12,41 @@ import Parse
 class FeedbackManager: NSObject {
     static let shared = FeedbackManager()
 
-    func createQuestionAnswers(question: Question, answers: [Answer]) -> QuestionAnswers {
+    func createQuestionAnswers(question: Question, answers: [String]) -> QuestionAnswers {
         let questionAnswer = QuestionAnswers()
         questionAnswer.question = question
-        questionAnswer.answers = PFRelation()
-
-        for answer in answers {
-            questionAnswer.answers.add(answer)
-        }
-
+        questionAnswer.answers = answers
         return questionAnswer
     }
 
-//    func saveFeedback(userFeedback: UserFeedback, isoCountryCode: String, advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {
-//
-//        guard let currentUser = UserManager.shared.currentUser else {
-//            completion(ErrorMessage.unknown)
-//            return
-//        }
-//
-//        self.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
-//            guard let location = location, error == nil else {
-//                completion(error!)
-//                return
-//            }
-//
-//            let userSeenAdvert = UserSeenAdvert()
-//            userSeenAdvert.advert = advert
-//            userSeenAdvert.location = location
-//            userSeenAdvert.user = currentUser
-//            userSeenAdvert.userFeedback = userFeedback
-//            userSeenAdvert.saveInBackground(block: { (success, error) in
-//                guard success == true, error == nil else {
-//                    completion(ErrorMessage.feedbackSaveFailed)
-//                    return
-//                }
-//
-//                completion(nil)
-//            })
-//        }
-//    }
-//
+    func saveFeedback(advert: Advert, questionAnswers: [QuestionAnswers], completion: @escaping () -> Void) {
+        guard let currentUser = UserManager.shared.currentUser else { return }
+
+        if let location = Session.shared.currentLocation {
+            let userSeenAdvert = UserSeenAdvert()
+            userSeenAdvert.advert = advert
+            userSeenAdvert.location = location
+            userSeenAdvert.user = currentUser
+            userSeenAdvert.questionAnswers = PFRelation()
+
+            for questionAnswer in questionAnswers {
+                userSeenAdvert.questionAnswers.add(questionAnswer)
+            }
+
+            userSeenAdvert.saveEventually({ (success, error) in
+                if success == true {
+                    print("UserSeenAdvert Saved")
+                }
+
+                if let error = error {
+                    print(error)
+                }
+            })
+
+            completion()
+        }
+    }
+
 //    func fetchLocation(isoCountryCode: String, completion: @escaping (Location?, ErrorMessage?) -> Void) {
 //        let query = Location.query()
 //        query?.whereKey("isoCountryCode", equalTo: isoCountryCode)

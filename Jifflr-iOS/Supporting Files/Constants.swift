@@ -191,3 +191,10 @@ struct AdvertQuestionType {
     static let TimePicker = 5
     static let DatePicker = 6
 }
+
+struct Answers {
+    struct Swipe {
+        static let yes = "yes"
+        static let no = "no"
+    }
+}
