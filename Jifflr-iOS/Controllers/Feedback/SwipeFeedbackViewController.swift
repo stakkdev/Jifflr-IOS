@@ -13,13 +13,15 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
 
-    var questions:[Question] = []
+    var questions: [Question] = []
+    var answers: [Answer] = []
 
-    class func instantiateFromStoryboard(advert: Advert, questions: [Question]) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.advert = advert
         controller.questions = questions
+        controller.answers = answers
         return controller
     }
 
@@ -82,7 +84,8 @@ class SwipeFeedbackViewController: FeedbackViewController {
     }
 
     func createQuestionAnswers(yes: Bool, question: Question) {
-        let answer = yes == true ? Answers.Swipe.yes : Answers.Swipe.no
+        guard self.answers.count == 2 else { return }
+        let answer = yes == true ? self.answers.last! : self.answers.first!
         let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
         self.questionAnswers.append(questionAnswer)
     }

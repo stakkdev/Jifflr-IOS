@@ -6,7 +6,7 @@
   Copyright © 2018 The Distance. All rights reserved.
 */
 
-"error.title" = "Error";
+"error.title" = "Oops!";
 "error.dismiss" = "Dismiss";
 "error.resetPassword.message" = "Unable to send password reset email. Please ensure you have entered a valid email address and have an internet connection.";
 "error.login.message" = "Unable to login. Please ensure you have entered a valid email and password, and have an internet connection.";

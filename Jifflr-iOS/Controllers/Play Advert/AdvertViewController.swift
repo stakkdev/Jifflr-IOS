@@ -18,6 +18,7 @@ class AdvertViewController: BaseViewController {
     var shouldPushToFeedback = false
     var advert: Advert!
     var questions: [Question] = []
+    var answers: [Answer] = []
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -58,6 +59,8 @@ class AdvertViewController: BaseViewController {
         let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
         self.navigationBar.topItem?.rightBarButtonItem = dismissBarButton
 
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
         self.activityIndicator.startAnimating()
     }
 
@@ -71,8 +74,10 @@ class AdvertViewController: BaseViewController {
             }
 
             self.questions = questions
-            //self.presentAppodeal()
-            self.presentFeedback()
+            questions.first!.fetchAnswers(completion: { (answers) in
+                self.answers = answers
+                self.presentAppodeal()
+            })
         }
     }
 
@@ -98,35 +103,8 @@ class AdvertViewController: BaseViewController {
             return
         }
 
-        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions)
+        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions, answers: self.answers)
         self.navigationController?.pushViewController(controller, animated: true)
-
-//        var controller: UIViewController!
-//
-//        switch self.advert.questionType.type {
-//        case AdvertQuestionType.Binary:
-//            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
-//            return
-//        case AdvertQuestionType.Scale:
-//            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
-//            return
-//        case AdvertQuestionType.MultiSelect:
-//            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
-//            return
-//        case AdvertQuestionType.Swipe:
-//            return
-//        case AdvertQuestionType.NumberPicker:
-//            return
-//        case AdvertQuestionType.TimePicker:
-//            return
-//        case AdvertQuestionType.DatePicker:
-//            return
-//        default:
-//            print("Invalid Question Type")
-//            return
-//        }
-//
-//        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {

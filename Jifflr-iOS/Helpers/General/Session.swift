@@ -21,9 +21,7 @@ final class Session {
         return Locale.current.languageCode ?? "en"
     }
 
-    var currentLocation: Location? {
-        return self.currentLocation
-    }
+    var currentLocation: Location?
 
     var englishLanguageCode: String {
         return "en"

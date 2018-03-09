@@ -29,6 +29,15 @@ final class Answer: PFObject {
             self["image"] = newValue
         }
     }
+
+    var index: Int {
+        get {
+            return self["index"] as! Int
+        }
+        set {
+            self["index"] = newValue
+        }
+    }
 }
 
 extension Answer: PFSubclassing {

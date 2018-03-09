@@ -67,6 +67,7 @@ extension Question: PFSubclassing {
 extension Question {
     func fetchAnswers(completion: @escaping ([Answer]) -> Void) {
         let query = self.answers.query()
+        query.order(byAscending: "index")
         query.findObjectsInBackground { (answers, error) in
             guard let answers = answers, error == nil else {
                 completion([])
