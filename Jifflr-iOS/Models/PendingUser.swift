@@ -53,6 +53,15 @@ final class PendingUser: PFObject {
             self["active"] = newValue
         }
     }
+
+    var isSignedUp: Bool {
+        get {
+            return self["isSignedUp"] as? Bool ?? false
+        }
+        set {
+            self["isSignedUp"] = newValue
+        }
+    }
 }
 
 extension PendingUser: PFSubclassing {

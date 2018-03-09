@@ -57,7 +57,7 @@ class TeamPaginationManager: NSObject {
         return true
     }
 
-    func shouldPaginatePendingFriends(indexPath: IndexPath, pendingFriends: [MyTeamPendingFriends]) -> Bool {
+    func shouldPaginatePendingFriends(indexPath: IndexPath, pendingFriends: [PendingUser]) -> Bool {
         if indexPath.row == pendingFriends.count - 1 && self.pendingFriendsCountPrevious != pendingFriends.count {
             self.pendingFriendsCountPrevious = pendingFriends.count
             return true

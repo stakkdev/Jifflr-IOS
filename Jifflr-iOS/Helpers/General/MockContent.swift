@@ -130,7 +130,7 @@ class MockContent: NSObject {
 
     func createDefaultAdvert() -> Advert {
         let advert = Advert()
-        advert.isCMS = false
+        advert.isCMS = true
         return advert
     }
 

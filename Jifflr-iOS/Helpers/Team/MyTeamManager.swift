@@ -96,21 +96,13 @@ class MyTeamManager: NSObject {
         }
     }
 
-    func fetchPendingFriends(page: Int, completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
+    func fetchPendingFriends(page: Int, completion: @escaping ([PendingUser]?, ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
 
         let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
         PFCloud.callFunction(inBackground: "my-team-pending-friends", withParameters: parameters) { myTeamJSON, error in
             if let myTeamJSON = myTeamJSON as? [String: Any] {
-                if let pendingFriendsArray = myTeamJSON["friends"] as? [(user: PendingUser, isActive: Bool)] {
-                    var pendingFriends:[MyTeamPendingFriends] = []
-                    for pendingFriendsTuple in pendingFriendsArray {
-                        let pendingFriend = MyTeamPendingFriends()
-                        pendingFriend.pendingUser = pendingFriendsTuple.user
-                        pendingFriend.isActive = pendingFriendsTuple.isActive
-                        pendingFriends.append(pendingFriend)
-                    }
-
+                if let pendingFriends = myTeamJSON["friends"] as? [PendingUser] {
                     PFObject.pinAll(inBackground: pendingFriends, withName: self.pinName, block: { (success, error) in
                         print("MyTeam Pending Friends Pinned: \(success)")
 
@@ -166,15 +158,15 @@ class MyTeamManager: NSObject {
         })
     }
 
-    func fetchLocalPendingFriends(page: Int, completion: @escaping ([MyTeamPendingFriends]?, ErrorMessage?) -> Void) {
-        let query = MyTeamPendingFriends.query()
-        query?.includeKey("pendingUser")
+    func fetchLocalPendingFriends(page: Int, completion: @escaping ([PendingUser]?, ErrorMessage?) -> Void) {
+        let query = PendingUser.query()
+        query?.includeKey("sender")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.limit = 20
         query?.skip = 20 * page
         query?.findObjectsInBackground(block: { (pendingFriends, error) in
-            guard let pendingFriends = pendingFriends as? [MyTeamPendingFriends], error == nil else {
+            guard let pendingFriends = pendingFriends as? [PendingUser], error == nil else {
                 completion(nil, ErrorMessage.unknown)
                 return
             }

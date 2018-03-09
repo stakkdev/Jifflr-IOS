@@ -22,7 +22,6 @@
 		E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FD4DE204DA2000074082C /* ScaleButton.swift */; };
 		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
 		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
-		E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */; };
 		E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751A203ED94500275199 /* AdsViewedManager.swift */; };
 		E923751D203ED9CB00275199 /* AdsViewed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751C203ED9CB00275199 /* AdsViewed.swift */; };
 		E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751E203EDD5000275199 /* UserMonthStats.swift */; };
@@ -179,7 +178,6 @@
 		E91FD4DE204DA2000074082C /* ScaleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScaleButton.swift; path = Views/ScaleButton.swift; sourceTree = "<group>"; };
 		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
 		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
-		E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamPendingFriends.swift; path = "Models/Local Models/MyTeamPendingFriends.swift"; sourceTree = "<group>"; };
 		E923751A203ED94500275199 /* AdsViewedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedManager.swift; path = "Helpers/Ads Viewed/AdsViewedManager.swift"; sourceTree = "<group>"; };
 		E923751C203ED9CB00275199 /* AdsViewed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewed.swift; path = "Models/Local Models/AdsViewed.swift"; sourceTree = "<group>"; };
 		E923751E203EDD5000275199 /* UserMonthStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserMonthStats.swift; path = Models/UserMonthStats.swift; sourceTree = "<group>"; };
@@ -399,7 +397,6 @@
 				E9237516203EC8AE00275199 /* Graph.swift */,
 				E937F5B12036E6BD00171480 /* MyTeam.swift */,
 				E9237514203EC83B00275199 /* MyTeamFriends.swift */,
-				E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */,
 				E923751C203ED9CB00275199 /* AdsViewed.swift */,
 				E9305CF22047005300D4E4DD /* MyMoney.swift */,
 			);
@@ -1208,7 +1205,6 @@
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
 				E96A0CE3203DAB100059DDAC /* UserDefaultsManager.swift in Sources */,
-				E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */,
 				E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */,
 				E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */,
 				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,
