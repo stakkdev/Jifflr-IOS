@@ -47,10 +47,34 @@ final class Question: PFObject {
             self["active"] = newValue
         }
     }
+
+    var image: PFFile? {
+        get {
+            return self["image"] as? PFFile
+        }
+        set {
+            self["image"] = newValue
+        }
+    }
 }
 
 extension Question: PFSubclassing {
     static func parseClassName() -> String {
         return "Question"
+    }
+}
+
+extension Question {
+    func fetchAnswers(completion: @escaping ([Answer]) -> Void) {
+        let query = self.answers.query()
+        query.order(byAscending: "index")
+        query.findObjectsInBackground { (answers, error) in
+            guard let answers = answers, error == nil else {
+                completion([])
+                return
+            }
+
+            completion(answers)
+        }
     }
 }

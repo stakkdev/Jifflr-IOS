@@ -12,35 +12,56 @@ import Parse
 class FeedbackManager: NSObject {
     static let shared = FeedbackManager()
 
-//    func saveFeedback(userFeedback: UserFeedback, isoCountryCode: String, advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {
-//
-//        guard let currentUser = UserManager.shared.currentUser else {
-//            completion(ErrorMessage.unknown)
-//            return
-//        }
-//
-//        self.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
-//            guard let location = location, error == nil else {
-//                completion(error!)
-//                return
-//            }
-//
-//            let userSeenAdvert = UserSeenAdvert()
-//            userSeenAdvert.advert = advert
-//            userSeenAdvert.location = location
-//            userSeenAdvert.user = currentUser
-//            userSeenAdvert.userFeedback = userFeedback
-//            userSeenAdvert.saveInBackground(block: { (success, error) in
-//                guard success == true, error == nil else {
-//                    completion(ErrorMessage.feedbackSaveFailed)
-//                    return
-//                }
-//
-//                completion(nil)
-//            })
-//        }
-//    }
-//
+    func createQuestionAnswers(question: Question, answers: [Answer]) -> QuestionAnswers {
+        let questionAnswer = QuestionAnswers()
+        questionAnswer.question = question
+
+        let relation = questionAnswer.relation(forKey: "answers")
+        for answer in answers {
+            relation.add(answer)
+        }
+
+        return questionAnswer
+    }
+
+    func saveFeedback(advert: Advert, questionAnswers: [QuestionAnswers], completion: @escaping () -> Void) {
+        guard let currentUser = UserManager.shared.currentUser else { return }
+        guard let location = Session.shared.currentLocation else { return }
+
+        let group = DispatchGroup()
+        for questionAnswer in questionAnswers {
+            group.enter()
+            questionAnswer.saveEventually({ (success, error) in
+                group.leave()
+            })
+        }
+
+        group.notify(queue: .main) {
+
+            let userSeenAdvert = UserSeenAdvert()
+            userSeenAdvert.advert = advert
+            userSeenAdvert.location = location
+            userSeenAdvert.user = currentUser
+
+            let relation = userSeenAdvert.relation(forKey: "questionAnswers")
+            for questionAnswer in questionAnswers {
+                relation.add(questionAnswer)
+            }
+
+            userSeenAdvert.saveEventually({ (success, error) in
+                if success == true {
+                    print("UserSeenAdvert Saved")
+                }
+
+                if let error = error {
+                    print(error)
+                }
+            })
+        }
+
+        completion()
+    }
+
 //    func fetchLocation(isoCountryCode: String, completion: @escaping (Location?, ErrorMessage?) -> Void) {
 //        let query = Location.query()
 //        query?.whereKey("isoCountryCode", equalTo: isoCountryCode)

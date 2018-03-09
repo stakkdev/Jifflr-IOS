@@ -130,14 +130,13 @@ class MockContent: NSObject {
 
     func createDefaultAdvert() -> Advert {
         let advert = Advert()
-        advert.isCMS = false
-        advert.questionType = self.createQuestionType()
+        advert.isCMS = true
         return advert
     }
 
     func createQuestionType() -> QuestionType {
         let questionType = QuestionType()
-        questionType.type = 0
+        questionType.type = AdvertQuestionType.Swipe
         questionType.name = "Swipe"
         return questionType
     }
@@ -146,7 +145,7 @@ class MockContent: NSObject {
         let question = Question()
         question.active = true
         question.type = self.createQuestionType()
-        question.text = "This is the question type"
+        question.text = "Do you like Fish and Chips?"
         return question
     }
 }

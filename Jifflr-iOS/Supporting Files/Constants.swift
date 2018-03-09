@@ -181,3 +181,13 @@ struct Onboarding {
         return #imageLiteral(resourceName: "OnboardingBackground")
     }
 }
+
+struct AdvertQuestionType {
+    static let Binary = 0
+    static let Scale = 1
+    static let MultiSelect = 2
+    static let Swipe = 3
+    static let NumberPicker = 4
+    static let TimePicker = 5
+    static let DatePicker = 6
+}

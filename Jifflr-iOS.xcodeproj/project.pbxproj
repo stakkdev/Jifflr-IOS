@@ -19,9 +19,10 @@
 		E90C20031FA8D5EB00A42461 /* RegistrationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */; };
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
+		E91E6A602052DA76009E9577 /* CMSAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */; };
+		E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FD4DE204DA2000074082C /* ScaleButton.swift */; };
 		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
 		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
-		E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */; };
 		E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751A203ED94500275199 /* AdsViewedManager.swift */; };
 		E923751D203ED9CB00275199 /* AdsViewed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751C203ED9CB00275199 /* AdsViewed.swift */; };
 		E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923751E203EDD5000275199 /* UserMonthStats.swift */; };
@@ -79,8 +80,8 @@
 		E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */; };
 		E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */; };
 		E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */; };
-		E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */; };
-		E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */; };
+		E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */; };
+		E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */; };
 		E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */; };
 		E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */; };
 		E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */; };
@@ -135,6 +136,10 @@
 		E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632B2031D54E00188AA1 /* JifflrTextFieldSelection.swift */; };
 		E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */; };
 		E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */; };
+		E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AB204EA3B700104565 /* MultiSelectCell.swift */; };
+		E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AD204EBA5600104565 /* QuestionAnswers.swift */; };
+		E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */; };
+		E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F317B1204ED65100104565 /* SwipeCell.swift */; };
 		E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F89D80201B423E00860FE3 /* DashboardViewController.swift */; };
 		E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D82201B446700860FE3 /* MyTeam.storyboard */; };
 		E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F89D85201B45CB00860FE3 /* MyMoney.storyboard */; };
@@ -171,9 +176,10 @@
 		E90C20021FA8D5EB00A42461 /* RegistrationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTests.swift; sourceTree = "<group>"; };
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CMSAdvertViewController.swift; path = "Controllers/Play Advert/CMSAdvertViewController.swift"; sourceTree = "<group>"; };
+		E91FD4DE204DA2000074082C /* ScaleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScaleButton.swift; path = Views/ScaleButton.swift; sourceTree = "<group>"; };
 		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
 		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
-		E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamPendingFriends.swift; path = "Models/Local Models/MyTeamPendingFriends.swift"; sourceTree = "<group>"; };
 		E923751A203ED94500275199 /* AdsViewedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewedManager.swift; path = "Helpers/Ads Viewed/AdsViewedManager.swift"; sourceTree = "<group>"; };
 		E923751C203ED9CB00275199 /* AdsViewed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdsViewed.swift; path = "Models/Local Models/AdsViewed.swift"; sourceTree = "<group>"; };
 		E923751E203EDD5000275199 /* UserMonthStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserMonthStats.swift; path = Models/UserMonthStats.swift; sourceTree = "<group>"; };
@@ -232,8 +238,8 @@
 		E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvertViewController.swift; path = "Controllers/Play Advert/AdvertViewController.swift"; sourceTree = "<group>"; };
 		E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFeedbackViewController.swift; sourceTree = "<group>"; };
 		E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAFeedbackViewController.swift; sourceTree = "<group>"; };
-		E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSelectFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleFeedbackViewController.swift; sourceTree = "<group>"; };
 		E97B9E14203ADDBE0097BC65 /* TotalWithdrawnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TotalWithdrawnCell.swift; path = "Controllers/My Money/Cells/TotalWithdrawnCell.swift"; sourceTree = "<group>"; };
 		E97B9E16203ADF6B0097BC65 /* PayPalEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PayPalEmailCell.swift; path = "Controllers/My Money/Cells/PayPalEmailCell.swift"; sourceTree = "<group>"; };
 		E97B9E18203AE2ED0097BC65 /* ConfirmPasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmPasswordCell.swift; path = "Controllers/My Money/Cells/ConfirmPasswordCell.swift"; sourceTree = "<group>"; };
@@ -295,6 +301,10 @@
 		E9EE632B2031D54E00188AA1 /* JifflrTextFieldSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldSelection.swift; path = Views/TextFields/JifflrTextFieldSelection.swift; sourceTree = "<group>"; };
 		E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldLocation.swift; path = Views/TextFields/JifflrTextFieldLocation.swift; sourceTree = "<group>"; };
 		E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TermsAndConditionsViewController.swift; path = Controllers/Onboarding/TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		E9F317AB204EA3B700104565 /* MultiSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectCell.swift; sourceTree = "<group>"; };
+		E9F317AD204EBA5600104565 /* QuestionAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionAnswers.swift; path = Models/QuestionAnswers.swift; sourceTree = "<group>"; };
+		E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeFeedbackViewController.swift; sourceTree = "<group>"; };
+		E9F317B1204ED65100104565 /* SwipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCell.swift; sourceTree = "<group>"; };
 		E9F89D80201B423E00860FE3 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/Dashboard/DashboardViewController.swift; sourceTree = "<group>"; };
 		E9F89D83201B446700860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyTeam.storyboard; sourceTree = "<group>"; };
 		E9F89D86201B45CB00860FE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyMoney.storyboard; sourceTree = "<group>"; };
@@ -389,7 +399,6 @@
 				E9237516203EC8AE00275199 /* Graph.swift */,
 				E937F5B12036E6BD00171480 /* MyTeam.swift */,
 				E9237514203EC83B00275199 /* MyTeamFriends.swift */,
-				E9237518203ECAD000275199 /* MyTeamPendingFriends.swift */,
 				E923751C203ED9CB00275199 /* AdsViewed.swift */,
 				E9305CF22047005300D4E4DD /* MyMoney.swift */,
 			);
@@ -527,6 +536,7 @@
 		E9798C23201A4C2B00E8A7D2 /* Play Advert */ = {
 			isa = PBXGroup;
 			children = (
+				E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */,
 				E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */,
 				E9798C26201A4C8E00E8A7D2 /* Feedback */,
 			);
@@ -536,10 +546,12 @@
 		E9798C26201A4C8E00E8A7D2 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				E9F317AA204EA34900104565 /* Cells */,
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
 				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
-				E9798C29201A4C8E00E8A7D2 /* QAFeedbackViewController.swift */,
-				E9798C2A201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift */,
+				E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */,
+				E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */,
+				E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */,
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
@@ -650,6 +662,7 @@
 				E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */,
 				E9DD58202035DDF3000735C3 /* JifflrTeamChart.swift */,
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
+				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -671,6 +684,7 @@
 				E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */,
 				E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */,
 				E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */,
+				E9F317AD204EBA5600104565 /* QuestionAnswers.swift */,
 				E95179481F90D15E0000A08D /* UserCashout.swift */,
 				E923751E203EDD5000275199 /* UserMonthStats.swift */,
 				E97B9E2B203B0D7C0097BC65 /* FAQ.swift */,
@@ -790,6 +804,15 @@
 				E9DD581E2035D1A4000735C3 /* TeamPendingFriendCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		E9F317AA204EA34900104565 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9F317AB204EA3B700104565 /* MultiSelectCell.swift */,
+				E9F317B1204ED65100104565 /* SwipeCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E9F89D7F201B422E00860FE3 /* Dashboard */ = {
@@ -1142,6 +1165,7 @@
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
 				E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */,
 				E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */,
+				E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */,
 				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
@@ -1154,6 +1178,8 @@
 				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
+				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
+				E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
@@ -1170,7 +1196,7 @@
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
-				E9798C2D201A4C8E00E8A7D2 /* QAFeedbackViewController.swift in Sources */,
+				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
@@ -1182,15 +1208,16 @@
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
 				E96A0CE3203DAB100059DDAC /* UserDefaultsManager.swift in Sources */,
-				E9237519203ECAD000275199 /* MyTeamPendingFriends.swift in Sources */,
 				E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */,
 				E97B9E1D203AE9DF0097BC65 /* WithdrawnHistoryCell.swift in Sources */,
+				E91E6A602052DA76009E9577 /* CMSAdvertViewController.swift in Sources */,
 				E937F5D0203745E200171480 /* AdHistoryCell.swift in Sources */,
 				E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */,
 				E9EE63302031E92D00188AA1 /* TermsAndConditionsViewController.swift in Sources */,
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
+				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,
 				E96A0CF6203DAC5B0059DDAC /* SettingsManager.swift in Sources */,
 				E9305CF32047005300D4E4DD /* MyMoney.swift in Sources */,
 				1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */,
@@ -1228,7 +1255,8 @@
 				E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */,
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,
 				E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */,
-				E9798C2E201A4C8E00E8A7D2 /* RatingFeedbackViewController.swift in Sources */,
+				E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */,
+				E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
 				E9B9721C20495406004F0876 /* Answer.swift in Sources */,

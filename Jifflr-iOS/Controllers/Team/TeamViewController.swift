@@ -31,7 +31,7 @@ class TeamViewController: BaseViewController {
         }
     }
 
-    var pendingFriends:[MyTeamPendingFriends] = [] {
+    var pendingFriends:[PendingUser] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -146,17 +146,17 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TeamPendingFriendCell") as! TeamPendingFriendCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.nameLabel.text = pendingFriend.pendingUser.name
-            cell.emailLabel.text = pendingFriend.pendingUser.email
-            cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat(pendingFriend.pendingUser.invitationCode)
+            cell.nameLabel.text = pendingFriend.name
+            cell.emailLabel.text = pendingFriend.email
+            cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat(pendingFriend.invitationCode)
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"
-            if let createdAt = pendingFriend.pendingUser.createdAt {
+            if let createdAt = pendingFriend.createdAt {
                 cell.dateLabel.text = dateFormatter.string(from: createdAt)
             }
 
-            cell.setCellActive(isActive: pendingFriend.isActive)
+            cell.setCellActive(isActive: !pendingFriend.isSignedUp)
 
             return cell
         }
@@ -166,14 +166,13 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
         guard self.segmentedControl.selectedSegmentIndex == 1 else { return }
 
         let pendingFriend = self.pendingFriends[indexPath.row]
-        guard pendingFriend.isActive else { return }
+        guard !pendingFriend.isSignedUp else { return }
 
         self.isNewInvitation = false
 
-        let name = pendingFriend.pendingUser.name
-        let email = pendingFriend.pendingUser.email
-        let pendingUser = pendingFriend.pendingUser
-        self.presentMail(name: name, email: email, pendingUser: pendingUser)
+        let name = pendingFriend.name
+        let email = pendingFriend.email
+        self.presentMail(name: name, email: email, pendingUser: pendingFriend)
     }
 
     func checkForPagination(indexPath: IndexPath) {

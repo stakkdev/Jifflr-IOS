@@ -17,7 +17,8 @@ class AdvertViewController: BaseViewController {
 
     var shouldPushToFeedback = false
     var advert: Advert!
-    var question: Question?
+    var questions: [Question] = []
+    var answers: [Answer] = []
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -58,20 +59,25 @@ class AdvertViewController: BaseViewController {
         let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
         self.navigationBar.topItem?.rightBarButtonItem = dismissBarButton
 
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
         self.activityIndicator.startAnimating()
     }
 
     func setupLocalization() { }
 
     func fetchData() {
-        AdvertManager.shared.fetchQuestion(questionType: self.advert.questionType) { (question) in
-            guard let question = question else {
+        AdvertManager.shared.fetchSwipeQuestions { (questions) in
+            guard questions.count > 0 else {
                 self.displayError(error: ErrorMessage.admobFetchFailed)
                 return
             }
 
-            self.question = question
-            self.presentAppodeal()
+            self.questions = questions
+            questions.first!.fetchAnswers(completion: { (answers) in
+                self.answers = answers
+                self.presentAppodeal()
+            })
         }
     }
 
@@ -92,7 +98,12 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        let controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, question: self.question)
+        guard let firstQuestion = self.questions.first, firstQuestion.type.type == AdvertQuestionType.Swipe else {
+            print("Invalid Question Type")
+            return
+        }
+
+        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions, answers: self.answers)
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
