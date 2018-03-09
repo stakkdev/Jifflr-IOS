@@ -35,6 +35,6 @@ class CMSAdvertViewController: BaseViewController {
 
     @IBAction func showFeedback(sender: UIButton) {
         // TODO: Switch on QuestionType
-        self.navigationController?.pushViewController(MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert), animated: true)
+        self.navigationController?.pushViewController(NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert), animated: true)
     }
 }

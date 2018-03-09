@@ -60,6 +60,9 @@ class FeedbackViewController: BaseViewController {
         let skipFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
         skipBarButton.setTitleTextAttributes([NSAttributedStringKey.font: skipFont], for: .normal)
         self.navigationItem.rightBarButtonItem = skipBarButton
+
+        let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
+        self.navigationItem.leftBarButtonItem = dismissBarButton
     }
 
     func setupLocalization() {
@@ -69,10 +72,6 @@ class FeedbackViewController: BaseViewController {
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: createAdButtonFont, NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue] as [NSAttributedStringKey : Any]
         let attributedString = NSAttributedString(string: "feedback.createAdButton.title".localized(), attributes: attributes)
         self.createAdCampaignButton.setAttributedTitle(attributedString, for: .normal)
-    }
-
-    @objc func skipButtonPressed(sender: UIBarButtonItem) {
-        self.pushToNextAd()
     }
 
     @IBAction func nextButtonPressed(sender: JifflrButton) {
@@ -96,7 +95,15 @@ class FeedbackViewController: BaseViewController {
 
     func pushToNextAd() {
         self.navigationController?.viewControllers.removeFirst()
-        let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: self.advert)
+        let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert)
         self.navigationController?.pushViewController(advertViewController, animated: true)
+    }
+
+    @objc func skipButtonPressed(sender: UIBarButtonItem) {
+        self.pushToNextAd()
+    }
+
+    @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        self.dismiss(animated: false, completion: nil)
     }
 }
