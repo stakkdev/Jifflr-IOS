@@ -11,6 +11,8 @@ import Parse
 
 class FeedbackViewController: BaseViewController {
 
+    var timer: Timer?
+
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var nextAdButton: JifflrButton!
     @IBOutlet weak var createAdCampaignButton: UIButton!
@@ -24,6 +26,25 @@ class FeedbackViewController: BaseViewController {
         self.setupUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            self.nextAdButton.isEnabled = true
+
+            UIView.animate(withDuration: 0.2, animations: {
+                self.nextAdButton.alpha = 1.0
+            })
+        })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+
     func setupUI() {
         self.setupLocalization()
 
@@ -32,6 +53,8 @@ class FeedbackViewController: BaseViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
 
         self.nextAdButton.setBackgroundColor(color: UIColor.mainPink)
+        self.nextAdButton.isEnabled = false
+        self.nextAdButton.alpha = 0.5
 
         let skipBarButton = UIBarButtonItem(title: "onboarding.skipButton".localized(), style: .plain, target: self, action: #selector(self.skipButtonPressed(sender:)))
         let skipFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!

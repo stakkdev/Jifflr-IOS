@@ -460,46 +460,7 @@
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <font key="NSFont" size="14" name="GothamBook"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -630,6 +591,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGT-Vy-DZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2488.8000000000002" y="156.97151424287858"/>
+        </scene>
+        <!--Advert View Controller-->
+        <scene sceneID="c85-BY-9Qz">
+            <objects>
+                <viewController storyboardIdentifier="CMSAdvertViewController" id="Wj9-I9-bgI" customClass="CMSAdvertViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="56i-2c-xS1"/>
+                        <viewControllerLayoutGuide type="bottom" id="FNB-Z7-kmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PbP-m2-CPr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the CMS ad screen - will be implemented in next sprint" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahe-BA-eJ7">
+                                <rect key="frame" x="20" y="182" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNz-Ae-1kW">
+                                <rect key="frame" x="131" y="246" width="112" height="30"/>
+                                <state key="normal" title="Go To Feedback">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showFeedbackWithSender:" destination="Wj9-I9-bgI" eventType="touchUpInside" id="Sjm-gB-qoK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LSo-z0-IMg" firstAttribute="trailing" secondItem="ahe-BA-eJ7" secondAttribute="trailing" constant="20" id="Erl-xW-nco"/>
+                            <constraint firstItem="ahe-BA-eJ7" firstAttribute="leading" secondItem="LSo-z0-IMg" secondAttribute="leading" constant="20" id="WSq-ii-CF8"/>
+                            <constraint firstItem="eNz-Ae-1kW" firstAttribute="centerX" secondItem="ahe-BA-eJ7" secondAttribute="centerX" id="dIX-0X-YDp"/>
+                            <constraint firstItem="eNz-Ae-1kW" firstAttribute="top" secondItem="ahe-BA-eJ7" secondAttribute="bottom" constant="43" id="mw0-xu-wEE"/>
+                            <constraint firstItem="ahe-BA-eJ7" firstAttribute="top" secondItem="56i-2c-xS1" secondAttribute="bottom" constant="162" id="y7c-CL-QFU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZN-jt-fp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1044" y="157"/>
         </scene>
     </scenes>
     <resources>
