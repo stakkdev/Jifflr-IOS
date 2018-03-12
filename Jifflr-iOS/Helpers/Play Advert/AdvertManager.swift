@@ -49,9 +49,18 @@ class AdvertManager: NSObject {
 //        }
 
         PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
-            MockContent.init().createDefaultAdvert().pinInBackground(withName: self.pinName) { (success, error) in
-                completion()
-            }
+            let query = Advert.query()
+            query?.whereKey("isCMS", equalTo: true)
+            query?.getFirstObjectInBackground(block: { (advert, error) in
+                guard let advert = advert as? Advert, error == nil else {
+                    completion()
+                    return
+                }
+
+                advert.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    completion()
+                })
+            })
         }
     }
 

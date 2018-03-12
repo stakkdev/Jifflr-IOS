@@ -11,6 +11,8 @@ import UIKit
 class CMSAdvertViewController: BaseViewController {
 
     var advert: Advert!
+    var questions: [Question] = []
+    var answers: [Answer] = []
 
     class func instantiateFromStoryboard(advert: Advert) -> CMSAdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -32,6 +34,16 @@ class CMSAdvertViewController: BaseViewController {
     }
 
     func setupLocalization() { }
+
+    func fetchData() {
+        AdvertManager.shared.fetchNextLocal { (advert) in
+            guard let advert = advert else {
+                return
+            }
+
+
+        }
+    }
 
     @IBAction func showFeedback(sender: UIButton) {
         // TODO: Switch on QuestionType

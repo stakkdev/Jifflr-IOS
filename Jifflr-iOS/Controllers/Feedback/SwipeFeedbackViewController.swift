@@ -13,9 +13,6 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
 
-    var questions: [Question] = []
-    var answers: [Answer] = []
-
     class func instantiateFromStoryboard(advert: Advert, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController

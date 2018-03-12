@@ -18,6 +18,8 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
     var advert: Advert!
+    var questions: [Question] = []
+    var answers: [Answer] = []
     var questionAnswers:[QuestionAnswers] = []
 
     override func viewDidLoad() {
@@ -95,8 +97,14 @@ class FeedbackViewController: BaseViewController {
 
     func pushToNextAd() {
         self.navigationController?.viewControllers.removeFirst()
-        let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert)
-        self.navigationController?.pushViewController(advertViewController, animated: true)
+
+        if self.advert.isCMS {
+            let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert)
+            self.navigationController?.pushViewController(advertViewController, animated: true)
+        } else {
+            let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: self.advert)
+            self.navigationController?.pushViewController(advertViewController, animated: true)
+        }
     }
 
     @objc func skipButtonPressed(sender: UIBarButtonItem) {
