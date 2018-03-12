@@ -11,18 +11,18 @@ import UIKit
 class TeamPaginationManager: NSObject {
     static let shared = TeamPaginationManager()
 
-    var friendsPageIndex = 0
+    var friendsPageIndex = -1
     var friendsPaginating = false
     var friendsCountPrevious = 0
-    var pendingFriendsPageIndex = 0
+    var pendingFriendsPageIndex = -1
     var pendingFriendsPaginating = false
     var pendingFriendsCountPrevious = 0
 
     func reset() {
-        self.friendsPageIndex = 0
+        self.friendsPageIndex = -1
         self.friendsPaginating = false
         self.friendsCountPrevious = 0
-        self.pendingFriendsPageIndex = 0
+        self.pendingFriendsPageIndex = -1
         self.pendingFriendsPaginating = false
         self.pendingFriendsCountPrevious = 0
     }

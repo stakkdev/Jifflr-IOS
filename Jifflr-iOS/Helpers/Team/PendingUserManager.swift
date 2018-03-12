@@ -41,6 +41,7 @@ class PendingUserManager: NSObject {
         pendingUser.name = userInfo["name"] as! String
         pendingUser.email = userInfo["email"] as! String
         pendingUser.active = true
+        pendingUser.isSignedUp = false
 
         let query = PendingUser.query()
         query?.whereKey("email", equalTo: pendingUser.email)

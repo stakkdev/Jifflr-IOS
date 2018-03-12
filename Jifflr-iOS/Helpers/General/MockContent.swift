@@ -114,6 +114,7 @@ class MockContent: NSObject {
         pendingUser.email = "bob@smith.com"
         pendingUser.sender = self.createUser()
         pendingUser.name = "Bob Smith"
+        pendingUser.isSignedUp = false
 
         return pendingUser
     }
@@ -130,7 +131,7 @@ class MockContent: NSObject {
 
     func createDefaultAdvert() -> Advert {
         let advert = Advert()
-        advert.isCMS = true
+        advert.isCMS = false
         return advert
     }
 

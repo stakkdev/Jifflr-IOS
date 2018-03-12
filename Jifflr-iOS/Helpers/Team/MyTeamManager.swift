@@ -101,20 +101,16 @@ class MyTeamManager: NSObject {
 
         let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
         PFCloud.callFunction(inBackground: "my-team-pending-friends", withParameters: parameters) { myTeamJSON, error in
-            if let myTeamJSON = myTeamJSON as? [String: Any] {
-                if let pendingFriends = myTeamJSON["friends"] as? [PendingUser] {
-                    PFObject.pinAll(inBackground: pendingFriends, withName: self.pinName, block: { (success, error) in
-                        print("MyTeam Pending Friends Pinned: \(success)")
+            if let pendingFriends = myTeamJSON as? [PendingUser] {
+                PFObject.pinAll(inBackground: pendingFriends, withName: self.pinName, block: { (success, error) in
+                    print("MyTeam Pending Friends Pinned: \(success)")
 
-                        if let error = error {
-                            print("Error: \(error)")
-                        }
-                    })
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                })
 
-                    completion(pendingFriends, nil)
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(pendingFriends, nil)
             } else {
                 if let error = error {
                     completion(nil, ErrorMessage.parseError(error.localizedDescription))

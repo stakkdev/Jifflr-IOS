@@ -42,6 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configKeyboard()
         self.configLanguage()
 
+        let query = Location.query()
+        query?.getFirstObjectInBackground(block: { (location, error) in
+            if let location = location as? Location, error == nil {
+                Session.shared.currentLocation = location
+            }
+        })
+
+
         return true
     }
     
