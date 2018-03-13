@@ -18,8 +18,6 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
     var advert: Advert!
-    var questions: [Question] = []
-    var answers: [Answer] = []
     var questionAnswers:[QuestionAnswers] = []
 
     override func viewDidLoad() {
