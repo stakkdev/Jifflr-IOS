@@ -49,12 +49,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
         self.nextAdButton.isEnabled = false
         self.nextAdButton.isHidden = true
 
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
+    override func setupQuestionText() {
         if let firstQuestion = self.questions.first {
             self.questionLabel.text = firstQuestion.text
         }
-
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
     }
 
     func animateSwipeImageView() {

@@ -129,6 +129,7 @@ class AdvertManager: NSObject {
         
         query.fromPin(withName: self.pinName)
         query.includeKey("type")
+        query.order(byAscending: "index")
         query.findObjectsInBackground { (questions, error) in
             guard let questions = questions, error == nil else {
                 completion([])

@@ -48,6 +48,7 @@ class FeedbackViewController: BaseViewController {
 
     func setupUI() {
         self.setupLocalization()
+        self.setupQuestionText()
 
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
@@ -64,6 +65,11 @@ class FeedbackViewController: BaseViewController {
 
         let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
         self.navigationItem.leftBarButtonItem = dismissBarButton
+    }
+    
+    func setupQuestionText() {
+        guard let question = self.content.first?.question else { return }
+        self.questionLabel.text = question.text
     }
 
     func setupLocalization() {
@@ -85,7 +91,6 @@ class FeedbackViewController: BaseViewController {
             self.pushToNextQuestion()
         } else {
             FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
-                // TODO: Fetch next advert
                 self.pushToNextAd()
             })
         }
@@ -100,6 +105,8 @@ class FeedbackViewController: BaseViewController {
     }
 
     func pushToNextAd() {
+        // TODO: Fetch next advert
+        
         self.navigationController?.viewControllers.removeFirst()
 
         if self.advert.isCMS {
