@@ -49,7 +49,7 @@ class CMSAdvertViewController: BaseViewController {
         
         switch question.type.type {
         case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [])
         case AdvertQuestionType.DatePicker:
             controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         case AdvertQuestionType.MultiSelect:
@@ -61,7 +61,7 @@ class CMSAdvertViewController: BaseViewController {
         case AdvertQuestionType.TimePicker:
             controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         default:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [])
         }
         
         self.navigationController?.pushViewController(controller, animated: true)

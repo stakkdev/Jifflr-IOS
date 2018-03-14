@@ -18,6 +18,7 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
     var advert: Advert!
+    var content:[(question: Question, answers: [Answer])] = []
     var questionAnswers:[QuestionAnswers] = []
 
     override func viewDidLoad() {
@@ -79,10 +80,15 @@ class FeedbackViewController: BaseViewController {
             self.displayError(error: ErrorMessage.invalidFeedback)
             return
         }
-
-        // TODO: Save Feedback
-
-        self.pushToNextAd()
+        
+        if self.content.count > 1 {
+            self.pushToNextQuestion()
+        } else {
+            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+                // TODO: Fetch next advert
+                self.pushToNextAd()
+            })
+        }
     }
 
     func validateAnswers() -> Bool {
@@ -103,6 +109,32 @@ class FeedbackViewController: BaseViewController {
             let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: self.advert)
             self.navigationController?.pushViewController(advertViewController, animated: true)
         }
+    }
+    
+    func pushToNextQuestion() {
+        self.content.removeFirst()
+        guard let question = self.content.first?.question else { return }
+        
+        var controller: UIViewController!
+        
+        switch question.type.type {
+        case AdvertQuestionType.Binary:
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        case AdvertQuestionType.DatePicker:
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+        case AdvertQuestionType.MultiSelect:
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+        case AdvertQuestionType.NumberPicker:
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+        case AdvertQuestionType.Scale:
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+        case AdvertQuestionType.TimePicker:
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+        default:
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        }
+        
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc func skipButtonPressed(sender: UIBarButtonItem) {

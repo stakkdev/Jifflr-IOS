@@ -99,7 +99,9 @@ class AdvertManager: NSObject {
                             allAnswers += answers
                         }
                         
-                        group.leave()
+                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
                     })
                 }
                 
@@ -127,7 +129,6 @@ class AdvertManager: NSObject {
         
         query.fromPin(withName: self.pinName)
         query.includeKey("type")
-        query.order(byAscending: "index")
         query.findObjectsInBackground { (questions, error) in
             guard let questions = questions, error == nil else {
                 completion([])
@@ -141,6 +142,7 @@ class AdvertManager: NSObject {
                 
                 let answersQuery = question.answers.query()
                 answersQuery.fromPin(withName: self.pinName)
+                answersQuery.order(byAscending: "index")
                 answersQuery.findObjectsInBackground(block: { (answers, error) in
                     guard let answers = answers, error == nil else {
                         completion([])
