@@ -57,7 +57,7 @@ class CMSAdvertViewController: BaseViewController {
         case AdvertQuestionType.NumberPicker:
             controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         case AdvertQuestionType.Scale:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [])
         case AdvertQuestionType.TimePicker:
             controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         default:
