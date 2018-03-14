@@ -116,6 +116,16 @@ class RegisterViewController: BaseViewController {
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {
+        guard let currentLocation = Session.shared.currentLocation else {
+            self.displayError(error: ErrorMessage.blockedCountry)
+            return
+        }
+        
+        guard currentLocation.locationStatus.type != LocationStatusType.Disabled else {
+            self.displayError(error: ErrorMessage.blockedCountry)
+            return
+        }
+        
         guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else {
             let error = ErrorMessage.invalidField("register.firstName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)

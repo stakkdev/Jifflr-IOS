@@ -64,13 +64,23 @@ class LoginViewController: BaseViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
+        guard let location = Session.shared.currentLocation else {
+            self.displayError(error: ErrorMessage.blockedCountry)
+            return
+        }
+        
+        guard location.locationStatus.type != LocationStatusType.Disabled else {
+            self.displayError(error: ErrorMessage.blockedCountry)
+            return
+        }
+        
         guard let email = self.emailTextField.text, !email.isEmpty else {
-            self.displayMessage(title: ErrorMessage.loginFailed.failureTitle, message: ErrorMessage.loginFailed.failureDescription)
+            self.displayError(error: ErrorMessage.loginFailed)
             return
         }
 
         guard let password = self.passwordTextField.text, !password.isEmpty else {
-            self.displayMessage(title: ErrorMessage.loginFailed.failureTitle, message: ErrorMessage.loginFailed.failureDescription)
+            self.displayError(error: ErrorMessage.loginFailed)
             return
         }
 

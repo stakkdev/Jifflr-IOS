@@ -185,6 +185,11 @@ class DashboardViewController: BaseViewController {
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
         if LocationManager.shared.locationServicesEnabled() == true {
+            guard LocationManager.shared.canViewAdverts() else {
+                self.displayError(error: ErrorMessage.blockedCountry)
+                return
+            }
+            
             guard let advert = self.advert else {
                 self.retryAdvertFetch()
                 return
