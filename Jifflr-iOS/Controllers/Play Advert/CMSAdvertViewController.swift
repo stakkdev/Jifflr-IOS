@@ -53,7 +53,7 @@ class CMSAdvertViewController: BaseViewController {
         case AdvertQuestionType.DatePicker:
             controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         case AdvertQuestionType.MultiSelect:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [])
         case AdvertQuestionType.NumberPicker:
             controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
         case AdvertQuestionType.Scale:
