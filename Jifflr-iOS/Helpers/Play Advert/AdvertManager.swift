@@ -52,14 +52,23 @@ class AdvertManager: NSObject {
             let query = Advert.query()
             query?.whereKey("isCMS", equalTo: true)
             query?.includeKey("questions")
-            query?.getFirstObjectInBackground(block: { (advert, error) in
-                guard let advert = advert as? Advert, error == nil else {
+            query?.findObjectsInBackground(block: { (adverts, error) in
+                guard let adverts = adverts as? [Advert], error == nil else {
                     completion()
                     return
                 }
-
-                advert.pinInBackground(withName: self.pinName, block: { (success, error) in
-                    self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                
+                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
+                    let group = DispatchGroup()
+                    
+                    for advert in adverts {
+                        group.enter()
+                        self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                            group.leave()
+                        })
+                    }
+                    
+                    group.notify(queue: .main, execute: {
                         completion()
                     })
                 })

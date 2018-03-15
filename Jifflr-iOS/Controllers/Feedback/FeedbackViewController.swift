@@ -105,16 +105,21 @@ class FeedbackViewController: BaseViewController {
     }
 
     func pushToNextAd() {
-        // TODO: Fetch next advert
-        
-        self.navigationController?.viewControllers.removeFirst()
-
-        if self.advert.isCMS {
-            let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert)
-            self.navigationController?.pushViewController(advertViewController, animated: true)
-        } else {
-            let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: self.advert)
-            self.navigationController?.pushViewController(advertViewController, animated: true)
+        self.advert.unpinInBackground(withName: AdvertManager.shared.pinName) { (success, error) in
+            AdvertManager.shared.fetchNextLocal(completion: { (advert) in
+                guard let advert = advert else {
+                    self.dismiss(animated: false, completion: nil)
+                    return
+                }
+                
+                if advert.isCMS {
+                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: advert)
+                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                } else {
+                    let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)
+                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                }
+            })
         }
     }
     
