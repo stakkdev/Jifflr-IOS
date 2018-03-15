@@ -304,7 +304,7 @@ class UserManager: NSObject {
 
         let parameters = ["user": user.objectId!, "invitationCode": invitationCode]
 
-        PFCloud.callFunction(inBackground: "change-team", withParameters: parameters) { responseJSON, error in
+        PFCloud.callFunction(inBackground: "update-invitation-code", withParameters: parameters) { responseJSON, error in
             if let success = responseJSON as? Bool {
                 if success == true {
                     completion(nil)
