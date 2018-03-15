@@ -9,7 +9,7 @@
 import UIKit
 import TDOnboarding
 
-class LandingViewController: UIViewController {
+class LandingViewController: UIViewController, DisplayMessage {
 
     class func instantiateFromStoryboard() -> LandingViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -18,6 +18,12 @@ class LandingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Reachability.isConnectedToNetwork() {
+            LocationManager.shared.getCurrentLocation()
+        } else {
+            LocationManager.shared.fetchLocalLocation()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

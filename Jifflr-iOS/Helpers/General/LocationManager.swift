@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 class LocationManager: NSObject {
     static let shared = LocationManager()
+    
+    let pinName = "Location"
 
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
@@ -51,17 +54,107 @@ class LocationManager: NSObject {
             completion(placemarks)
         })
     }
+    
+    func fetchLocalLocation() {
+        let query = Location.query()
+        query?.fromPin(withName: self.pinName)
+        query?.includeKey("locationStatus")
+        query?.getFirstObjectInBackground(block: { (location, error) in
+            guard let location = location as? Location, error == nil else {
+                self.rootBasedOnLocation(location: nil)
+                return
+            }
+            
+            self.rootBasedOnLocation(location: location)
+        })
+    }
 
     func fetchLocation(isoCountryCode: String, completion: @escaping (Location?, ErrorMessage?) -> Void) {
         let query = Location.query()
         query?.whereKey("isoCountryCode", equalTo: isoCountryCode)
+        query?.includeKey("locationStatus")
         query?.getFirstObjectInBackground(block: { (country, error) in
             guard let country = country as? Location, error == nil else {
+                completion(nil, ErrorMessage.blockedCountry)
                 return
             }
-
-            completion(country, nil)
+            
+            PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
+                country.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    country.locationStatus.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        completion(country, nil)
+                    })
+                })
+            })
         })
+    }
+    
+    func handleLocation(isoCountryCode: String?) {
+        guard let isoCountryCode = isoCountryCode else {
+            self.rootBasedOnLocation(location: nil)
+            return
+        }
+        
+        self.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
+            guard let location = location, error == nil else {
+                self.rootBasedOnLocation(location: nil)
+                return
+            }
+            
+            self.rootBasedOnLocation(location: location)
+        }
+    }
+    
+    func rootBasedOnLocation(location: Location?) {
+        guard let location = location else {
+            self.rootBasedOnBlockedlocation()
+            return
+        }
+        
+        Session.shared.currentLocation = location
+        
+        switch location.locationStatus.type {
+        case LocationStatusType.Active:
+            print("Location (\(location.name)) is active.")
+            return
+        case LocationStatusType.Disabled:
+            self.rootBasedOnBlockedlocation()
+        case LocationStatusType.AllowCashOut:
+            print("Location (\(location.name)) allows cash out.")
+            return
+        default:
+            return
+        }
+    }
+    
+    func rootBasedOnBlockedlocation() {
+        UserManager.shared.logOut(completion: { (error) in
+            guard let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
+            
+            if let _ = navController.visibleViewController as? LoginViewController {
+                // Already on Login Screen
+            } else {
+                navController.rootLoginViewController()
+            }
+            
+            if let newRootViewController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                if let visibleViewController = newRootViewController.visibleViewController as? BaseViewController {
+                    visibleViewController.displayError(error: ErrorMessage.blockedCountry)
+                }
+            }
+        })
+    }
+    
+    func canViewAdverts() -> Bool {
+        guard let location = Session.shared.currentLocation else {
+            return false
+        }
+        
+        guard location.locationStatus.type == LocationStatusType.Active else {
+            return false
+        }
+        
+        return true
     }
 }
 
@@ -70,6 +163,7 @@ extension LocationManager: CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
 
         guard locations.count > 0 else {
+            self.handleLocation(isoCountryCode: nil)
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: nil)
             }
@@ -79,6 +173,7 @@ extension LocationManager: CLLocationManagerDelegate {
         let location = locations.first!
         self.geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             guard let placemark = placemarks?.first, error == nil else {
+                self.handleLocation(isoCountryCode: nil)
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Constants.Notifications.locationFound, object: self, userInfo: nil)
                 }
@@ -86,6 +181,8 @@ extension LocationManager: CLLocationManagerDelegate {
             }
 
             let addressString = placemark.formattedString()
+            
+            self.handleLocation(isoCountryCode: placemark.isoCountryCode)
 
             DispatchQueue.main.async {
                 var notificationDict:[String: Any] = [:]

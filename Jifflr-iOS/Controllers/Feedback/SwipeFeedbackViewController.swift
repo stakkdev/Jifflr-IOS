@@ -12,7 +12,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-
+    
     var questions: [Question] = []
     var answers: [Answer] = []
 
@@ -49,12 +49,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
         self.nextAdButton.isEnabled = false
         self.nextAdButton.isHidden = true
 
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
+    override func setupQuestionText() {
         if let firstQuestion = self.questions.first {
             self.questionLabel.text = firstQuestion.text
         }
-
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
     }
 
     func animateSwipeImageView() {

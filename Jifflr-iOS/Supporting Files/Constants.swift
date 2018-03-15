@@ -191,3 +191,9 @@ struct AdvertQuestionType {
     static let TimePicker = 5
     static let DatePicker = 6
 }
+
+struct LocationStatusType {
+    static let Active = 0
+    static let Disabled = 1
+    static let AllowCashOut = 2
+}

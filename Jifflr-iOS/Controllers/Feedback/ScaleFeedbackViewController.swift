@@ -17,10 +17,12 @@ class ScaleFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var scale4Button: ScaleButton!
     @IBOutlet weak var scale5Button: ScaleButton!
 
-    class func instantiateFromStoryboard(advert: Advert) -> ScaleFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers]) -> ScaleFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ScaleFeedbackViewController") as! ScaleFeedbackViewController
         controller.advert = advert
+        controller.content = content
+        controller.questionAnswers = questionAnswers
         return controller
     }
 
@@ -37,8 +39,45 @@ class ScaleFeedbackViewController: FeedbackViewController {
             self.scale5Button.tag == 1 else {
                 return false
         }
+        
+        if self.scale1Button.tag == 1 {
+            self.createQuestionAnswers(index: 0)
+            return true
+        }
+        
+        if self.scale2Button.tag == 1 {
+            self.createQuestionAnswers(index: 1)
+            return true
+        }
+        
+        if self.scale3Button.tag == 1 {
+            self.createQuestionAnswers(index: 2)
+            return true
+        }
+        
+        if self.scale4Button.tag == 1 {
+            self.createQuestionAnswers(index: 3)
+            return true
+        }
+        
+        if self.scale5Button.tag == 1 {
+            self.createQuestionAnswers(index: 4)
+            return true
+        }
 
         return true
+    }
+    
+    func createQuestionAnswers(index: Int) {
+        guard let question = self.content.first?.question else { return }
+        guard let answers = self.content.first?.answers else { return }
+        guard answers.count == 5 else { return }
+        
+        let filteredAnswers = answers.filter { ($0.index == index) }
+        guard let answer = filteredAnswers.first else { return }
+        
+        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
+        self.questionAnswers.append(questionAnswer)
     }
 
     @IBAction func feedback1Selected(sender: UIButton) {

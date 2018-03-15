@@ -40,6 +40,7 @@
 "error.admobFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
 "error.advertFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
 "error.invalidFeedback" = "Please choose at least 1 answer to give feedback.";
+"error.blockedCountry" = "Unfortunately we are not operating in your country at the moment, please check back soon.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

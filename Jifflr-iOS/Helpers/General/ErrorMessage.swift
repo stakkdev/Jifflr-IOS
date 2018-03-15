@@ -19,8 +19,6 @@ public enum ErrorMessage {
     case contactsAccessFailed
     case inviteAlreadySent
     case inviteSendFailed
-    case feedbackSaveFailed
-    case locationNotSupported
     case resetPasswordFailed
     case invalidField(String)
     case invalidProfileField(String)
@@ -44,6 +42,7 @@ public enum ErrorMessage {
     case advertFetchFailed
     case invalidDobProfile
     case invalidFeedback
+    case blockedCountry
 
     public var failureTitle: String {
         switch self {
@@ -118,10 +117,8 @@ public enum ErrorMessage {
             return "error.profile.invalidDob".localized()
         case .invalidFeedback:
             return "error.invalidFeedback".localized()
-        case .feedbackSaveFailed:
-            return "Unable to save advert feedback. Please check your internet connection and try again."
-        case .locationNotSupported:
-            return "You're location is not supported."
+        case .blockedCountry:
+            return "error.blockedCountry".localized()
         }
     }
 }

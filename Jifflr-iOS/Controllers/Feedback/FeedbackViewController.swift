@@ -18,6 +18,7 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
     var advert: Advert!
+    var content:[(question: Question, answers: [Answer])] = []
     var questionAnswers:[QuestionAnswers] = []
 
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ class FeedbackViewController: BaseViewController {
 
     func setupUI() {
         self.setupLocalization()
+        self.setupQuestionText()
 
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
@@ -60,6 +62,14 @@ class FeedbackViewController: BaseViewController {
         let skipFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
         skipBarButton.setTitleTextAttributes([NSAttributedStringKey.font: skipFont], for: .normal)
         self.navigationItem.rightBarButtonItem = skipBarButton
+
+        let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
+        self.navigationItem.leftBarButtonItem = dismissBarButton
+    }
+    
+    func setupQuestionText() {
+        guard let question = self.content.first?.question else { return }
+        self.questionLabel.text = question.text
     }
 
     func setupLocalization() {
@@ -71,19 +81,19 @@ class FeedbackViewController: BaseViewController {
         self.createAdCampaignButton.setAttributedTitle(attributedString, for: .normal)
     }
 
-    @objc func skipButtonPressed(sender: UIBarButtonItem) {
-        self.pushToNextAd()
-    }
-
     @IBAction func nextButtonPressed(sender: JifflrButton) {
         guard self.validateAnswers() else {
             self.displayError(error: ErrorMessage.invalidFeedback)
             return
         }
-
-        // TODO: Save Feedback
-
-        self.pushToNextAd()
+        
+        if self.content.count > 1 {
+            self.pushToNextQuestion()
+        } else {
+            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+                self.pushToNextAd()
+            })
+        }
     }
 
     func validateAnswers() -> Bool {
@@ -95,8 +105,55 @@ class FeedbackViewController: BaseViewController {
     }
 
     func pushToNextAd() {
-        self.navigationController?.viewControllers.removeFirst()
-        let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: self.advert)
-        self.navigationController?.pushViewController(advertViewController, animated: true)
+        self.advert.unpinInBackground(withName: AdvertManager.shared.pinName) { (success, error) in
+            AdvertManager.shared.fetchNextLocal(completion: { (advert) in
+                guard let advert = advert else {
+                    self.dismiss(animated: false, completion: nil)
+                    return
+                }
+                
+                if advert.isCMS {
+                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: advert)
+                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                } else {
+                    let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)
+                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                }
+            })
+        }
+    }
+    
+    func pushToNextQuestion() {
+        self.content.removeFirst()
+        guard let question = self.content.first?.question else { return }
+        
+        var controller: UIViewController!
+        
+        switch question.type.type {
+        case AdvertQuestionType.Binary:
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        case AdvertQuestionType.DatePicker:
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: false)
+        case AdvertQuestionType.MultiSelect:
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        case AdvertQuestionType.NumberPicker:
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        case AdvertQuestionType.Scale:
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        case AdvertQuestionType.TimePicker:
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: true)
+        default:
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+        }
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+    @objc func skipButtonPressed(sender: UIBarButtonItem) {
+        self.pushToNextAd()
+    }
+
+    @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        self.dismiss(animated: false, completion: nil)
     }
 }

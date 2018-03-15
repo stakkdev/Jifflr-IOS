@@ -49,9 +49,125 @@ class AdvertManager: NSObject {
 //        }
 
         PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
-            MockContent.init().createDefaultAdvert().pinInBackground(withName: self.pinName) { (success, error) in
-                completion()
+            let query = Advert.query()
+            query?.whereKey("isCMS", equalTo: true)
+            query?.includeKey("questions")
+            query?.findObjectsInBackground(block: { (adverts, error) in
+                guard let adverts = adverts as? [Advert], error == nil else {
+                    completion()
+                    return
+                }
+                
+                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
+                    let group = DispatchGroup()
+                    
+                    for advert in adverts {
+                        group.enter()
+                        self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                            group.leave()
+                        })
+                    }
+                    
+                    group.notify(queue: .main, execute: {
+                        completion()
+                    })
+                })
+            })
+        }
+    }
+    
+    func fetchQuestionsAndAnswers(advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let query = advert.questions?.query() else {
+            completion(nil)
+            return
+        }
+        
+        query.includeKey("type")
+        query.includeKey("answers")
+        query.findObjectsInBackground { (questions, error) in
+            guard let questions = questions, error == nil else {
+                completion(ErrorMessage.advertFetchFailed)
+                return
             }
+            
+            PFObject.pinAll(inBackground: questions, withName: self.pinName, block: { (success, error) in
+                guard success == true, error == nil else {
+                    completion(ErrorMessage.advertFetchFailed)
+                    return
+                }
+                
+                let group = DispatchGroup()
+                
+                var allAnswers:[Answer] = []
+                for question in questions {
+                    group.enter()
+                    
+                    let answersQuery = question.answers.query()
+                    answersQuery.findObjectsInBackground(block: { (answers, error) in
+                        if let answers = answers, error == nil {
+                            allAnswers += answers
+                        }
+                        
+                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                    })
+                }
+                
+                group.notify(queue: .main, execute: {
+                    PFObject.pinAll(inBackground: allAnswers, withName: self.pinName, block: { (success, error) in
+                        guard success == true, error == nil else {
+                            completion(ErrorMessage.advertFetchFailed)
+                            return
+                        }
+                        
+                        completion(nil)
+                    })
+                })
+            })
+        }
+    }
+    
+    func fetchLocalQuestionsAndAnswers(advert: Advert, completion: @escaping ([(question: Question, answers: [Answer])]) -> Void) {
+        guard let query = advert.questions?.query() else {
+            completion([])
+            return
+        }
+        
+        var content: [(question: Question, answers: [Answer])] = []
+        
+        query.fromPin(withName: self.pinName)
+        query.includeKey("type")
+        query.order(byAscending: "index")
+        query.findObjectsInBackground { (questions, error) in
+            guard let questions = questions, error == nil else {
+                completion([])
+                return
+            }
+            
+            let group = DispatchGroup()
+            
+            for question in questions {
+                group.enter()
+                
+                let answersQuery = question.answers.query()
+                answersQuery.fromPin(withName: self.pinName)
+                answersQuery.order(byAscending: "index")
+                answersQuery.findObjectsInBackground(block: { (answers, error) in
+                    guard let answers = answers, error == nil else {
+                        completion([])
+                        return
+                    }
+                    
+                    content.append((question: question, answers: answers))
+                    group.leave()
+                })
+            }
+            
+            group.notify(queue: .main, execute: {
+                completion(content)
+                return
+            })
         }
     }
 

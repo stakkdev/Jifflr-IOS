@@ -20,6 +20,8 @@
 		E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */; };
 		E90C200A1FA8DE0100A42461 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20091FA8DE0100A42461 /* UserManagerTests.swift */; };
 		E91E6A602052DA76009E9577 /* CMSAdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */; };
+		E91E6A622052E708009E9577 /* NumberPickerFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E6A612052E708009E9577 /* NumberPickerFeedbackViewController.swift */; };
+		E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E6A632052F383009E9577 /* DateTimeFeedbackViewController.swift */; };
 		E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91FD4DE204DA2000074082C /* ScaleButton.swift */; };
 		E9237515203EC83B00275199 /* MyTeamFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237514203EC83B00275199 /* MyTeamFriends.swift */; };
 		E9237517203EC8AE00275199 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9237516203EC8AE00275199 /* Graph.swift */; };
@@ -177,6 +179,8 @@
 		E90C20041FA8DAE500A42461 /* UserSeenAdvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenAdvertTests.swift; sourceTree = "<group>"; };
 		E90C20091FA8DE0100A42461 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
 		E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CMSAdvertViewController.swift; path = "Controllers/Play Advert/CMSAdvertViewController.swift"; sourceTree = "<group>"; };
+		E91E6A612052E708009E9577 /* NumberPickerFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerFeedbackViewController.swift; sourceTree = "<group>"; };
+		E91E6A632052F383009E9577 /* DateTimeFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFeedbackViewController.swift; sourceTree = "<group>"; };
 		E91FD4DE204DA2000074082C /* ScaleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScaleButton.swift; path = Views/ScaleButton.swift; sourceTree = "<group>"; };
 		E9237514203EC83B00275199 /* MyTeamFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTeamFriends.swift; path = "Models/Local Models/MyTeamFriends.swift"; sourceTree = "<group>"; };
 		E9237516203EC8AE00275199 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Graph.swift; path = "Models/Local Models/Graph.swift"; sourceTree = "<group>"; };
@@ -548,10 +552,12 @@
 			children = (
 				E9F317AA204EA34900104565 /* Cells */,
 				E9798C28201A4C8E00E8A7D2 /* FeedbackViewController.swift */,
+				E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */,
 				E9798C27201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift */,
 				E9798C2A201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift */,
 				E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */,
-				E9F317AF204ECA5E00104565 /* SwipeFeedbackViewController.swift */,
+				E91E6A612052E708009E9577 /* NumberPickerFeedbackViewController.swift */,
+				E91E6A632052F383009E9577 /* DateTimeFeedbackViewController.swift */,
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
@@ -1176,6 +1182,7 @@
 				E96A0CFC203DAC660059DDAC /* MyTeamManager.swift in Sources */,
 				E9EE632A203198A700188AA1 /* ForgotPasswordViewController.swift in Sources */,
 				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
+				E91E6A622052E708009E9577 /* NumberPickerFeedbackViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
 				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
@@ -1197,6 +1204,7 @@
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
+				E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,

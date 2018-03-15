@@ -14,7 +14,7 @@ final class Answer: PFObject {
 
     var text: String {
         get {
-            return self["text"] as! String
+            return self["text"] as? String ?? ""
         }
         set {
             self["text"] = newValue
@@ -36,6 +36,15 @@ final class Answer: PFObject {
         }
         set {
             self["index"] = newValue
+        }
+    }
+    
+    var date: Date? {
+        get {
+            return self["date"] as? Date
+        }
+        set {
+            self["date"] = newValue
         }
     }
 }
