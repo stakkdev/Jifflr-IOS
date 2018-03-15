@@ -62,21 +62,20 @@ class FeedbackManager: NSObject {
         completion()
     }
 
-//    func fetchLocation(isoCountryCode: String, completion: @escaping (Location?, ErrorMessage?) -> Void) {
-//        let query = Location.query()
-//        query?.whereKey("isoCountryCode", equalTo: isoCountryCode)
-//        query?.getFirstObjectInBackground(block: { (location, error) in
-//            guard error == nil else {
-//                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-//                return
-//            }
-//
-//            guard let location = location as? Location else {
-//                completion(nil, ErrorMessage.locationNotSupported)
-//                return
-//            }
-//
-//            completion(location, nil)
-//        })
-//    }
+    func createAndSaveAnswer(number: Int?, date: Date?) -> Answer {
+        let answer = Answer()
+        if let number = number {
+            answer.text = "\(number)"
+        }
+        
+        answer.saveEventually { (success, error) in
+            print("Answer Saved: \(success)")
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return answer
+    }
 }

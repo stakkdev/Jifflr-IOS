@@ -132,7 +132,7 @@ class FeedbackViewController: BaseViewController {
         case AdvertQuestionType.MultiSelect:
             controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
         case AdvertQuestionType.NumberPicker:
-            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
         case AdvertQuestionType.Scale:
             controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
         case AdvertQuestionType.TimePicker:
