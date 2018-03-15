@@ -131,7 +131,7 @@ extension MultiSelectFeedbackViewController: UICollectionViewDelegate, UICollect
             return false
         }
         
-        if answers.count > 6 {
+        if answers.count > 7 {
             return true
         }
 
