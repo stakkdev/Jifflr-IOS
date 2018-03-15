@@ -64,8 +64,13 @@ class FeedbackManager: NSObject {
 
     func createAndSaveAnswer(number: Int?, date: Date?) -> Answer {
         let answer = Answer()
+        
         if let number = number {
             answer.text = "\(number)"
+        }
+        
+        if let date = date {
+            answer.date = date
         }
         
         answer.saveEventually { (success, error) in
