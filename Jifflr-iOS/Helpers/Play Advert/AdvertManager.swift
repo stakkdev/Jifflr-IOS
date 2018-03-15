@@ -50,7 +50,6 @@ class AdvertManager: NSObject {
 
         PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
             let query = Advert.query()
-            query?.whereKey("isCMS", equalTo: true)
             query?.includeKey("questions")
             query?.findObjectsInBackground(block: { (adverts, error) in
                 guard let adverts = adverts as? [Advert], error == nil else {
