@@ -69,7 +69,7 @@ class AdvertViewController: BaseViewController {
     func fetchData() {
         AdvertManager.shared.fetchSwipeQuestions { (questions) in
             guard questions.count > 0 else {
-                self.displayError(error: ErrorMessage.admobFetchFailed)
+                self.handleError()
                 return
             }
 
@@ -110,6 +110,13 @@ class AdvertViewController: BaseViewController {
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
     }
+    
+    func handleError() {
+        let error = ErrorMessage.admobFetchFailed
+        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
 }
 
 extension AdvertViewController: AppodealNonSkippableVideoDelegate {
@@ -144,10 +151,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     }
 
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
-        let error = ErrorMessage.admobFetchFailed
-        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
-            self.navigationController?.dismiss(animated: false, completion: nil)
-        })
+        self.handleError()
     }
 }
 

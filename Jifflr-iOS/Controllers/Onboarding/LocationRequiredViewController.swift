@@ -76,6 +76,12 @@ class LocationRequiredViewController: BaseViewController {
 
     @objc func checkPermissions() {
         if LocationManager.shared.locationServicesEnabled() == true {
+            if Reachability.isConnectedToNetwork() {
+                LocationManager.shared.getCurrentLocation()
+            } else {
+                LocationManager.shared.fetchLocalLocation()
+            }
+            
             self.rootDashboardViewController()
         }
     }
@@ -86,6 +92,12 @@ class LocationRequiredViewController: BaseViewController {
         }
 
         if status == .authorizedWhenInUse || status == .authorizedAlways {
+            if Reachability.isConnectedToNetwork() {
+                LocationManager.shared.getCurrentLocation()
+            } else {
+                LocationManager.shared.fetchLocalLocation()
+            }
+            
             self.rootDashboardViewController()
         } else {
             self.setupPermissionDeniedUI()

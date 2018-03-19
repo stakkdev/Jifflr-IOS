@@ -32,6 +32,7 @@ class LoginViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
+        self.setupLocation()
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.configNotification(in: UIApplication.shared)
@@ -62,18 +63,18 @@ class LoginViewController: BaseViewController {
         self.emailTextField.placeholder = "login.email.placeholder".localized()
         self.passwordTextField.placeholder = "login.password.placeholder".localized()
     }
+    
+    func setupLocation() {
+        if LocationManager.shared.locationServicesEnabled() && Session.shared.currentLocation == nil {
+            if Reachability.isConnectedToNetwork() {
+                LocationManager.shared.getCurrentLocation()
+            } else {
+                LocationManager.shared.fetchLocalLocation()
+            }
+        }
+    }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
-        guard let location = Session.shared.currentLocation else {
-            self.displayError(error: ErrorMessage.blockedCountry)
-            return
-        }
-        
-        guard location.locationStatus.type != LocationStatusType.Disabled else {
-            self.displayError(error: ErrorMessage.blockedCountry)
-            return
-        }
-        
         guard let email = self.emailTextField.text, !email.isEmpty else {
             self.displayError(error: ErrorMessage.loginFailed)
             return
@@ -82,6 +83,13 @@ class LoginViewController: BaseViewController {
         guard let password = self.passwordTextField.text, !password.isEmpty else {
             self.displayError(error: ErrorMessage.loginFailed)
             return
+        }
+        
+        if Session.shared.currentLocation != nil {
+            guard Session.shared.currentLocation?.locationStatus.type != LocationStatusType.Disabled else {
+                self.displayError(error: ErrorMessage.blockedCountry)
+                return
+            }
         }
 
         self.loginButton.animate()

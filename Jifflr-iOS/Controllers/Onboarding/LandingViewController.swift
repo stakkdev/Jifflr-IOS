@@ -18,12 +18,6 @@ class LandingViewController: UIViewController, DisplayMessage {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if Reachability.isConnectedToNetwork() {
-            LocationManager.shared.getCurrentLocation()
-        } else {
-            LocationManager.shared.fetchLocalLocation()
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -76,6 +70,13 @@ class LandingViewController: UIViewController, DisplayMessage {
 
     func routeBasedOnLocationServices() {
         if LocationManager.shared.locationServicesEnabled() == true {
+            
+            if Reachability.isConnectedToNetwork() {
+                LocationManager.shared.getCurrentLocation()
+            } else {
+                LocationManager.shared.fetchLocalLocation()
+            }
+            
             self.rootDashboardViewController()
         } else {
             self.rootLocationRequiredViewController()
