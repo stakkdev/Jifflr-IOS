@@ -201,6 +201,8 @@ extension TeamViewController {
 
     func updateData() {
         TeamPaginationManager.shared.reset()
+        self.pendingFriends = []
+        self.friends = []
 
         if Reachability.isConnectedToNetwork() {
             self.updateCloudData()
