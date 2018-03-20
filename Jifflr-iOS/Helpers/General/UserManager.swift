@@ -307,11 +307,11 @@ class UserManager: NSObject {
         PFCloud.callFunction(inBackground: "update-invitation-code", withParameters: parameters) { responseJSON, error in
             if let success = responseJSON as? Bool {
                 if success == true {
-                    completion(nil)
-                    return
+                    user.details.fetchInBackground(block: { (success, error) in
+                        completion(nil)
+                    })
                 } else {
                     completion(ErrorMessage.invalidInvitationCode)
-                    return
                 }
             } else {
                 if let error = error {

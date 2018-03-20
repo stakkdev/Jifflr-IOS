@@ -11,6 +11,10 @@ import Appodeal
 import GoogleMobileAds
 
 class AdvertViewController: BaseViewController {
+    
+    var timer: Timer?
+    var appodealLoaded = false
+    var appodealShown = false
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -76,14 +80,21 @@ class AdvertViewController: BaseViewController {
             self.questions = questions
             questions.first!.fetchAnswers(completion: { (answers) in
                 self.answers = answers
-                self.presentAppodeal()
+                self.setupAdmob()
             })
         }
     }
 
     func presentAppodeal() {
         Appodeal.setNonSkippableVideoDelegate(self)
-        Appodeal.showAd(.nonSkippableVideo, rootViewController: self)
+        Appodeal.showAd(.nonSkippableVideo, rootViewController: self.navigationController)
+        
+        self.appodealLoaded = false
+        self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            if !self.appodealLoaded {
+                self.presentAppodeal()
+            }
+        })
     }
 
     func setupAdmob() {
@@ -104,16 +115,18 @@ class AdvertViewController: BaseViewController {
         }
 
         let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions, answers: self.answers)
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: false)
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
+        self.timer?.invalidate()
     }
     
     func handleError() {
         let error = ErrorMessage.admobFetchFailed
         self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
+            self.timer?.invalidate()
             self.dismiss(animated: false, completion: nil)
         })
     }
@@ -121,25 +134,48 @@ class AdvertViewController: BaseViewController {
 
 extension AdvertViewController: AppodealNonSkippableVideoDelegate {
     func nonSkippableVideoWillDismiss() {
-        self.presentFeedback()
+        self.timer?.invalidate()
+        
+        if self.appodealShown {
+            self.presentFeedback()
+        } else {
+            self.activityIndicator.startAnimating()
+            self.presentAppodeal()
+        }
     }
 
     func nonSkippableVideoDidFinish() {
-        self.dismiss(animated: true)
+        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
+            
+        } else {
+            self.dismiss(animated: false)
+        }
     }
 
     func nonSkippableVideoDidFailToLoadAd() {
-        self.setupAdmob()
+        self.timer?.invalidate()
+        self.handleError()
     }
 
     func nonSkippableVideoDidFailToPresent() {
-        self.setupAdmob()
+        self.timer?.invalidate()
+        self.handleError()
+    }
+    
+    func nonSkippableVideoDidPresent() {
+        self.appodealLoaded = true
+        self.appodealShown = false
+        self.timer?.invalidate()
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+            self.appodealShown = true
+        })
     }
 }
 
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -151,7 +187,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     }
 
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didFailToLoadWithError error: Error) {
-        self.handleError()
+        self.presentAppodeal()
     }
 }
 
