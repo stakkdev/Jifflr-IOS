@@ -131,7 +131,7 @@ class LocationManager: NSObject {
         UserManager.shared.logOut(completion: { (error) in
             guard let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
             
-            if let _ = navController.visibleViewController as? LoginViewController {
+            if let _ = navController.viewControllers.first as? LoginViewController {
                 // Already on Login Screen
             } else {
                 navController.rootLoginViewController()
