@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class ChangeInvitationViewController: BaseViewController {
     
@@ -73,7 +74,71 @@ class ChangeInvitationViewController: BaseViewController {
             return
         }
         
-        //self.pendingUser.name = name
-        //self.pendingUser.email = email
+        self.pendingUser.name = name
+        self.pendingUser.email = email
+        
+        self.presentMail()
+    }
+    
+    func presentMail() {
+        
+        guard let currentUser = UserManager.shared.currentUser, MFMailComposeViewController.canSendMail() == true else {
+            self.displayError(error: ErrorMessage.inviteSendFailed)
+            return
+        }
+        
+        let name = self.pendingUser.name
+        let email = self.pendingUser.email
+        let invitationCode = self.pendingUser.invitationCode
+        
+        let composeViewController = MFMailComposeViewController()
+        composeViewController.mailComposeDelegate = self
+        composeViewController.setToRecipients([email])
+        composeViewController.setSubject("myTeam.inviteEmail.subject".localized())
+        
+        let sender = "\(currentUser.details.firstName) \(currentUser.details.lastName)"
+        let body = "myTeam.inviteEmail.body".localizedFormat(name, sender, invitationCode)
+        composeViewController.setMessageBody(body, isHTML: false)
+
+        self.navigationController?.present(composeViewController, animated: true, completion: nil)
+    }
+}
+
+extension ChangeInvitationViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        guard let pendingUser = self.pendingUser else { return }
+        guard error == nil else {
+            controller.dismiss(animated: true, completion: {
+                self.displayError(error: ErrorMessage.inviteSendFailed)
+            })
+            return
+        }
+        
+        switch result {
+        case .sent:
+            self.pendingUser.saveInBackground(block: { (success, error) in
+                guard error == nil else {
+                    self.displayError(error: ErrorMessage.inviteSendFailed)
+                    return
+                }
+                
+                controller.dismiss(animated: true, completion: {
+                    let alert = AlertMessage.inviteSent(pendingUser.name)
+                    self.displayMessage(title: alert.title, message: alert.message)
+                })
+            })
+            
+        case .failed:
+            controller.dismiss(animated: true, completion: {
+                self.displayError(error: ErrorMessage.inviteSendFailed)
+            })
+            
+        default:
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        self.pendingUser = nil
     }
 }

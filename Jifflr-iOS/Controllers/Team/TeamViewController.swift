@@ -38,6 +38,7 @@ class TeamViewController: BaseViewController {
     }
 
     var pendingUser: PendingUser?
+    var isDismissingContacts = false
 
     class func instantiateFromStoryboard() -> TeamViewController {
         let storyboard = UIStoryboard(name: "MyTeam", bundle: nil)
@@ -76,8 +77,11 @@ class TeamViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        self.updateData()
+        
+        if !self.isDismissingContacts {
+            self.updateData()
+        }
+        self.isDismissingContacts = false
     }
 }
 

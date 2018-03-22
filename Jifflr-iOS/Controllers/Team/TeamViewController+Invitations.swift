@@ -29,29 +29,30 @@ extension TeamViewController {
 
 extension TeamViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-            picker.dismiss(animated: true, completion: {
+        self.isDismissingContacts = true
+        picker.dismiss(animated: true, completion: {
 
-                guard contact.emailAddresses.count > 0 else {
-                    self.displayError(error: ErrorMessage.contactsNoEmail)
+            guard contact.emailAddresses.count > 0 else {
+                self.displayError(error: ErrorMessage.contactsNoEmail)
+                return
+            }
+
+            let name = "\(contact.givenName) \(contact.familyName)"
+            let email = contact.emailAddresses.first!.value as String
+
+            var userInfo = [AnyHashable: Any]()
+            userInfo["name"] = name
+            userInfo["email"] = email
+
+            PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (pendingUser, error) in
+                guard let pendingUser = pendingUser, error == nil else {
+                    self.displayError(error: error)
                     return
                 }
 
-                let name = "\(contact.givenName) \(contact.familyName)"
-                let email = contact.emailAddresses.first!.value as String
-
-                var userInfo = [AnyHashable: Any]()
-                userInfo["name"] = name
-                userInfo["email"] = email
-    
-                PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (pendingUser, error) in
-                    guard let pendingUser = pendingUser, error == nil else {
-                        self.displayError(error: error)
-                        return
-                    }
-
-                    self.presentMail(name: name, email: email, pendingUser: pendingUser)
-                })
+                self.presentMail(name: name, email: email, pendingUser: pendingUser)
             })
+        })
     }
 
     func presentMail(name: String, email: String, pendingUser: PendingUser) {
