@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIApplication.shared.statusBarStyle = .lightContent
 
-        //FirebaseApp.configure()
-        //AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
+        FirebaseApp.configure()
+        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
 
         if UserDefaultsManager.shared.crashTrackerOn() {
             Fabric.with([Crashlytics.self])
@@ -107,7 +107,7 @@ extension AppDelegate {
     func configAdProviders() {
         GADMobileAds.configure(withApplicationID: Constants.currentEnvironment.admobKey)
         Appodeal.setTestingEnabled(false)
-        Appodeal.initialize(withApiKey: Constants.currentEnvironment.appodealKey, types: .nonSkippableVideo)
+        Appodeal.initialize(withApiKey: Constants.currentEnvironment.appodealKey, types: .rewardedVideo)
     }
 
     func configKeyboard() {

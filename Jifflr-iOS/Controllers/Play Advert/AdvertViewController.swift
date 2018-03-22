@@ -86,8 +86,8 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentAppodeal() {
-        Appodeal.setNonSkippableVideoDelegate(self)
-        Appodeal.showAd(.nonSkippableVideo, rootViewController: self.navigationController)
+        Appodeal.setRewardedVideoDelegate(self)
+        Appodeal.showAd(.rewardedVideo, rootViewController: self.navigationController)
         
         self.appodealLoaded = false
         self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
@@ -132,8 +132,8 @@ class AdvertViewController: BaseViewController {
     }
 }
 
-extension AdvertViewController: AppodealNonSkippableVideoDelegate {
-    func nonSkippableVideoWillDismiss() {
+extension AdvertViewController: AppodealRewardedVideoDelegate {
+    func rewardedVideoWillDismiss() {
         self.timer?.invalidate()
         
         if self.appodealShown {
@@ -143,26 +143,28 @@ extension AdvertViewController: AppodealNonSkippableVideoDelegate {
             self.presentAppodeal()
         }
     }
-
-    func nonSkippableVideoDidFinish() {
+    
+    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!) {
         if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
             
         } else {
-            self.dismiss(animated: false)
+            self.dismiss(animated: false, completion: {
+                self.rewardedVideoWillDismiss()
+            })
         }
     }
-
-    func nonSkippableVideoDidFailToLoadAd() {
-        self.timer?.invalidate()
-        self.handleError()
-    }
-
-    func nonSkippableVideoDidFailToPresent() {
+    
+    func rewardedVideoDidFailToLoadAd() {
         self.timer?.invalidate()
         self.handleError()
     }
     
-    func nonSkippableVideoDidPresent() {
+    func rewardedVideoDidFailToPresent() {
+        self.timer?.invalidate()
+        self.handleError()
+    }
+    
+    func rewardedVideoDidPresent() {
         self.appodealLoaded = true
         self.appodealShown = false
         self.timer?.invalidate()

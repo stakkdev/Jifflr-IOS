@@ -61,9 +61,9 @@ enum Environment: String {
     var appodealKey: String {
         switch self {
         case .staging:
-            return "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8"
+            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
         case .production:
-            return "4399b0ace54a7c03aced40c8fc28629823de55d7c468a5f8"
+            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
         }
     }
 
@@ -81,7 +81,7 @@ enum Environment: String {
         case .staging:
             return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
         case .production:
-            return "ca-app-pub-3940256099942544/1712485313"
+            return "ca-app-pub-3023125219328196/3793918089"
         }
     }
 }
