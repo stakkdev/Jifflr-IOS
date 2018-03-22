@@ -265,8 +265,8 @@ extension ProfileViewController: UITextFieldDelegate {
             chooseLocation.searchString = text
             chooseLocation.delegate = self
             self.present(chooseLocation, animated: true, completion: nil)
-        } else if textField == self.invitationCodeTextField, let invitationCode = textField.text, !invitationCode.isEmpty {
-            self.changeTeam(invitationCode: invitationCode)
+        } else if textField == self.invitationCodeTextField, let invitationCode = textField.text {
+            self.presentInvitationCodeAlert(invitationCode: invitationCode)
         } else {
             self.validateField(textField: textField)
         }
@@ -275,6 +275,28 @@ extension ProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func presentInvitationCodeAlert(invitationCode: String) {
+        guard let currentUser = Session.shared.currentUser else { return }
+        guard invitationCode != currentUser.details.invitationCode else { return }
+        
+        let alert = invitationCode.isEmpty ? AlertMessage.leaveTeam : AlertMessage.changeTeam
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        
+        let cancelTitle = invitationCode.isEmpty ? "alert.leaveTeam.cancelButton".localized() : "alert.changeTeam.cancelButton".localized()
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { (action) in
+            self.invitationCodeTextField.text = currentUser.details.invitationCode
+        }
+        alertController.addAction(cancelAction)
+        
+        let yesTitle = invitationCode.isEmpty ? "alert.leaveTeam.yesButton".localized() : "alert.changeTeam.yesButton".localized()
+        let yesAction = UIAlertAction(title: yesTitle, style: .default) { (action) in
+            self.changeTeam(invitationCode: invitationCode)
+        }
+        alertController.addAction(yesAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

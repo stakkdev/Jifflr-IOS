@@ -135,6 +135,8 @@ public enum AlertMessage {
     case teamChanged
     case inviteSent(String)
     case cashoutSuccess
+    case changeTeam
+    case leaveTeam
 
     public var title: String {
         switch self {
@@ -148,6 +150,10 @@ public enum AlertMessage {
             return "alert.inviteSent.title".localized()
         case .cashoutSuccess:
             return "alert.cashoutSuccess.title".localized()
+        case .changeTeam:
+            return "alert.changeTeam.title".localized()
+        case .leaveTeam:
+            return "alert.leaveTeam.title".localized()
         }
     }
 
@@ -163,6 +169,10 @@ public enum AlertMessage {
             return "alert.inviteSent.message".localizedFormat(name)
         case .cashoutSuccess:
             return "alert.cashoutSuccess.message".localized()
+        case .changeTeam:
+            return "alert.changeTeam.message".localized()
+        case .leaveTeam:
+            return "alert.leaveTeam.message".localized()
         }
     }
 }
