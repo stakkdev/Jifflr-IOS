@@ -38,7 +38,6 @@ class TeamViewController: BaseViewController {
     }
 
     var pendingUser: PendingUser?
-    var isNewInvitation = true
 
     class func instantiateFromStoryboard() -> TeamViewController {
         let storyboard = UIStoryboard(name: "MyTeam", bundle: nil)
@@ -102,9 +101,8 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard self.myTeam != nil else { return 0 }
-
         if self.segmentedControl.selectedSegmentIndex == 0 {
+            guard self.myTeam != nil else { return 0 }
             return self.friends.count + 1
         }
 
@@ -113,11 +111,11 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let myTeam = self.myTeam else { return UITableViewCell() }
-
         self.checkForPagination(indexPath: indexPath)
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
+            guard let myTeam = self.myTeam else { return UITableViewCell() }
+            
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamSizeCell") as! TeamSizeCell
                 cell.accessoryType = .none
@@ -167,12 +165,9 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
 
         let pendingFriend = self.pendingFriends[indexPath.row]
         guard !pendingFriend.isSignedUp else { return }
-
-        self.isNewInvitation = false
-
-        let name = pendingFriend.name
-        let email = pendingFriend.email
-        self.presentMail(name: name, email: email, pendingUser: pendingFriend)
+        
+        let viewController = ChangeInvitationViewController.instantiateFromStoryboard(pendingUser: pendingFriend)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     func checkForPagination(indexPath: IndexPath) {

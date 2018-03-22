@@ -42,7 +42,7 @@ class ForgotPasswordViewController: BaseViewController {
 
     @IBAction func resetPassword(sender: UIButton) {
 
-        guard let email = self.emailTextField.text, !email.isEmpty else {
+        guard let email = self.emailTextField.text, !email.isEmpty, email.isEmail() else {
             self.displayMessage(title: ErrorMessage.resetPasswordFailed.failureTitle, message: ErrorMessage.resetPasswordFailed.failureDescription)
             return
         }

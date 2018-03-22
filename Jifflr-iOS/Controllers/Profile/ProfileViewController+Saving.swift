@@ -33,7 +33,7 @@ extension ProfileViewController {
             self.saveAndPinUser()
 
         } else if textField == self.emailTextField {
-            guard let email = self.emailTextField.text, !email.isEmpty else {
+            guard let email = self.emailTextField.text, !email.isEmpty, email.isEmail() else {
                 let error = ErrorMessage.invalidProfileField("register.email.heading".localized())
                 self.displayMessage(title: error.failureTitle, message: error.failureDescription)
                 return

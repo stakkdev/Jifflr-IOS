@@ -92,44 +92,29 @@ extension TeamViewController: MFMailComposeViewControllerDelegate {
 
         switch result {
         case .sent:
-
-            if self.isNewInvitation {
-                PendingUserManager.shared.pinPendingUser(pendingUser: pendingUser, completion: { (error) in
-                    guard error == nil else {
-                        self.displayError(error: error)
-                        return
-                    }
-
-                    controller.dismiss(animated: true, completion: {
-                        let alert = AlertMessage.inviteSent(pendingUser.name)
-                        self.displayMessage(title: alert.title, message: alert.message)
-                    })
-                })
-            } else {
+            PendingUserManager.shared.pinPendingUser(pendingUser: pendingUser, completion: { (error) in
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+                
                 controller.dismiss(animated: true, completion: {
                     let alert = AlertMessage.inviteSent(pendingUser.name)
                     self.displayMessage(title: alert.title, message: alert.message)
                 })
-            }
+            })
 
         case .failed:
             controller.dismiss(animated: true, completion: {
                 self.displayError(error: ErrorMessage.inviteSendFailed)
-
-                if self.isNewInvitation {
-                    PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
-                }
+                PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
             })
 
         default:
             controller.dismiss(animated: true, completion: nil)
-
-            if self.isNewInvitation {
-                PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
-            }
+            PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
         }
 
         self.pendingUser = nil
-        self.isNewInvitation = true
     }
 }

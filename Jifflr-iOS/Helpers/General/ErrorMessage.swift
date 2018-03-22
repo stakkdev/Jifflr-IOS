@@ -43,6 +43,8 @@ public enum ErrorMessage {
     case invalidDobProfile
     case invalidFeedback
     case blockedCountry
+    case changeInvitationName
+    case changeInvitationEmail
 
     public var failureTitle: String {
         switch self {
@@ -119,6 +121,10 @@ public enum ErrorMessage {
             return "error.invalidFeedback".localized()
         case .blockedCountry:
             return "error.blockedCountry".localized()
+        case .changeInvitationName:
+            return "error.changeInvitation.invalidName".localized()
+        case .changeInvitationEmail:
+            return "error.changeInvitation.invalidEmail".localized()
         }
     }
 }

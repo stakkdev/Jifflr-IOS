@@ -41,6 +41,8 @@
 "error.advertFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
 "error.invalidFeedback" = "Please choose at least 1 answer to give feedback.";
 "error.blockedCountry" = "Unfortunately we are not operating in your country at the moment, please check back soon.";
+"error.changeInvitation.invalidName" = "Please enter the name of the person you are inviting.";
+"error.changeInvitation.invalidEmail" = "Please enter the email of the person you are inviting.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -137,6 +139,13 @@
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
 "myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
 "myTeam.inviteEmail.body" = "Hello %@,\n\n%@ has sent you an invitation code for Jifflr! Here you go: %@"; // %@ is required to dynamically insert variables into text.
+"changeInvitation.navigation.title" = "Resend Invitation";
+"changeInvitation.name.heading" = "Name";
+"changeInvitation.name.placeholder" = "Enter name";
+"changeInvitation.email.heading" = "Email";
+"changeInvitation.email.placeholder" = "Enter email";
+"changeInvitation.invitationCode.heading" = "Invitation Code";
+"changeInvitation.resendButton.title" = "RESEND INVITATION";
 
 "adsViewed.navigation.title" = "Ad Views";
 "adsViewed.segmentedControlButton1.title" = "AD PROGRESS";

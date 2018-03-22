@@ -75,7 +75,7 @@ class LoginViewController: BaseViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
-        guard let email = self.emailTextField.text, !email.isEmpty else {
+        guard let email = self.emailTextField.text, !email.isEmpty, email.isEmail() else {
             self.displayError(error: ErrorMessage.loginFailed)
             return
         }

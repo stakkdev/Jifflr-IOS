@@ -290,5 +290,118 @@
             </objects>
             <point key="canvasLocation" x="2885.5999999999999" y="-486.20689655172418"/>
         </scene>
+        <!--Change Invitation View Controller-->
+        <scene sceneID="fIT-Lf-rGK">
+            <objects>
+                <viewController storyboardIdentifier="ChangeInvitationViewController" id="Khb-d7-RzX" customClass="ChangeInvitationViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JLL-L8-mM6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Bob" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-bI-zXV" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="59" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eZY-0h-zGK"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-Ed-ERm">
+                                <rect key="frame" x="28" y="30" width="41.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8DC-Jl-7dO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Smith" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-Gh-iQn" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="150" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NfA-ww-8BK"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ny-dM-mIu">
+                                <rect key="frame" x="28" y="121" width="329" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hVP-rB-raQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g bob@smith.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xv-IJ-Xxa" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="241" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ff2-mp-Pqx"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qz-D2-VTr">
+                                <rect key="frame" x="28" y="212" width="329" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4Qn-D5-xaA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2h-mq-pax" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="557" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I50-3v-AzI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="RE-SEND INVITATION"/>
+                                <connections>
+                                    <action selector="resendButtonPressedWithSender:" destination="Khb-d7-RzX" eventType="touchUpInside" id="mjQ-Kb-21n"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0ew-Gh-iQn" firstAttribute="leading" secondItem="Mrt-bI-zXV" secondAttribute="leading" id="0ve-sq-wux"/>
+                            <constraint firstItem="Mrt-bI-zXV" firstAttribute="leading" secondItem="JLL-L8-mM6" secondAttribute="leading" constant="18" id="1R6-lD-gHa"/>
+                            <constraint firstItem="K2h-mq-pax" firstAttribute="trailing" secondItem="NaJ-Dk-ro4" secondAttribute="trailing" constant="-18" id="1kW-nV-Xq5"/>
+                            <constraint firstItem="K2h-mq-pax" firstAttribute="leading" secondItem="NaJ-Dk-ro4" secondAttribute="leading" constant="18" id="4fd-rM-0vG"/>
+                            <constraint firstItem="cHy-Ed-ERm" firstAttribute="top" secondItem="NaJ-Dk-ro4" secondAttribute="top" constant="10" id="6uT-dA-ZzB"/>
+                            <constraint firstItem="4xv-IJ-Xxa" firstAttribute="top" secondItem="9qz-D2-VTr" secondAttribute="bottom" constant="8" id="DQJ-d8-uuf"/>
+                            <constraint firstItem="9Ny-dM-mIu" firstAttribute="leading" secondItem="cHy-Ed-ERm" secondAttribute="leading" id="EIw-Iv-1XP"/>
+                            <constraint firstItem="9Ny-dM-mIu" firstAttribute="trailing" secondItem="Mrt-bI-zXV" secondAttribute="trailing" id="FI4-4A-3qd"/>
+                            <constraint firstItem="9qz-D2-VTr" firstAttribute="top" secondItem="0ew-Gh-iQn" secondAttribute="bottom" constant="12" id="Hh0-rY-MkT"/>
+                            <constraint firstItem="4xv-IJ-Xxa" firstAttribute="leading" secondItem="0ew-Gh-iQn" secondAttribute="leading" id="JbO-Ye-oHY"/>
+                            <constraint firstItem="9qz-D2-VTr" firstAttribute="trailing" secondItem="0ew-Gh-iQn" secondAttribute="trailing" id="JrZ-Tp-uFw"/>
+                            <constraint firstItem="0ew-Gh-iQn" firstAttribute="top" secondItem="9Ny-dM-mIu" secondAttribute="bottom" constant="8" id="KRz-uu-gX7"/>
+                            <constraint firstItem="9qz-D2-VTr" firstAttribute="leading" secondItem="9Ny-dM-mIu" secondAttribute="leading" id="PSn-eb-WYz"/>
+                            <constraint firstItem="0ew-Gh-iQn" firstAttribute="trailing" secondItem="Mrt-bI-zXV" secondAttribute="trailing" id="dxJ-i1-z5S"/>
+                            <constraint firstItem="NaJ-Dk-ro4" firstAttribute="bottom" secondItem="K2h-mq-pax" secondAttribute="bottom" constant="60" id="fBF-h2-gc4"/>
+                            <constraint firstItem="Mrt-bI-zXV" firstAttribute="top" secondItem="cHy-Ed-ERm" secondAttribute="bottom" constant="8" id="fa3-gl-fEH"/>
+                            <constraint firstItem="4xv-IJ-Xxa" firstAttribute="trailing" secondItem="9qz-D2-VTr" secondAttribute="trailing" id="mjj-1S-R7D"/>
+                            <constraint firstItem="NaJ-Dk-ro4" firstAttribute="trailing" secondItem="Mrt-bI-zXV" secondAttribute="trailing" constant="18" id="oS4-3h-9uH"/>
+                            <constraint firstItem="9Ny-dM-mIu" firstAttribute="top" secondItem="Mrt-bI-zXV" secondAttribute="bottom" constant="12" id="raI-Yp-e7z"/>
+                            <constraint firstItem="cHy-Ed-ERm" firstAttribute="leading" secondItem="NaJ-Dk-ro4" secondAttribute="leading" constant="28" id="zk6-ma-xWE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NaJ-Dk-ro4"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailHeadingLabel" destination="9Ny-dM-mIu" id="fXv-XO-Gog"/>
+                        <outlet property="emailTextField" destination="0ew-Gh-iQn" id="hm7-GV-hsS"/>
+                        <outlet property="invitationCodeHeadingLabel" destination="9qz-D2-VTr" id="XZi-wI-Smn"/>
+                        <outlet property="invitationCodeTextField" destination="4xv-IJ-Xxa" id="ZvY-hq-UAk"/>
+                        <outlet property="nameHeadingLabel" destination="cHy-Ed-ERm" id="rLp-id-IQb"/>
+                        <outlet property="nameTextField" destination="Mrt-bI-zXV" id="Ivr-9n-JVs"/>
+                        <outlet property="resendButton" destination="K2h-mq-pax" id="egc-bb-o3o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4pq-Uz-Wkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3604" y="-486"/>
+        </scene>
     </scenes>
 </document>
