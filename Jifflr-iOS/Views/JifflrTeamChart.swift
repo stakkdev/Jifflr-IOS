@@ -13,6 +13,7 @@ import Parse
 class JifflrTeamChart: UIView {
 
     var lineChartView: LineChartView!
+    var spinner: UIActivityIndicatorView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,8 +36,8 @@ class JifflrTeamChart: UIView {
         self.backgroundColor = UIColor.clear
 
         self.lineChartView = LineChartView()
-        self.lineChartView.noDataText = "No chart data"
-        self.lineChartView.noDataTextColor = UIColor.white
+        self.lineChartView.noDataText = "alert.noChartData".localized()
+        self.lineChartView.noDataTextColor = UIColor.clear
         self.lineChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
 
         self.lineChartView.gridBackgroundColor = UIColor.clear
@@ -66,6 +67,12 @@ class JifflrTeamChart: UIView {
 
         self.lineChartView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.lineChartView)
+        
+        self.spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        self.spinner.hidesWhenStopped = true
+        self.spinner.isHidden = true
+        self.spinner.translatesAutoresizingMaskIntoConstraints = false
+        self.lineChartView.addSubview(self.spinner)
     }
 
     func setupConstraints() {
@@ -74,6 +81,10 @@ class JifflrTeamChart: UIView {
         let chartBottom = NSLayoutConstraint(item: self.lineChartView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -18)
         let chartTrailing = NSLayoutConstraint(item: self.lineChartView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: -18)
         self.addConstraints([chartLeading, chartTop, chartBottom, chartTrailing])
+        
+        let x = NSLayoutConstraint(item: self.spinner, attribute: .centerX, relatedBy: .equal, toItem: self.lineChartView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let y = NSLayoutConstraint(item: self.spinner, attribute: .centerY, relatedBy: .equal, toItem: self.lineChartView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        self.addConstraints([x, y])
     }
 
     func setData(data: [Graph], color: UIColor, fill: Bool, targetData: [Graph]?, targetColor: UIColor?) {
@@ -90,9 +101,11 @@ class JifflrTeamChart: UIView {
             if point.x < minX { minX = point.x }
             if point.y < minY { minY = point.y }
         }
+        
+        let topPadding = (maxY - minY) / Double(allData.count)
 
         self.lineChartView.xAxis.axisMaximum = maxX
-        self.lineChartView.leftAxis.axisMaximum = maxY
+        self.lineChartView.leftAxis.axisMaximum = maxY + topPadding
         self.lineChartView.xAxis.axisMinimum = minX
         self.lineChartView.leftAxis.axisMinimum = minY
 
@@ -109,6 +122,7 @@ class JifflrTeamChart: UIView {
         let finalData = LineChartData(dataSets: dataSets)
         finalData.setDrawValues(false)
         self.lineChartView.data = finalData
+        self.stopSpinner()
         self.lineChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
     }
 
@@ -125,7 +139,7 @@ class JifflrTeamChart: UIView {
         dataSet.lineWidth = 3.0
         dataSet.drawCircleHoleEnabled = false
         dataSet.drawCirclesEnabled = false
-        dataSet.mode = .cubicBezier
+        dataSet.mode = .horizontalBezier
         dataSet.lineCapType = .round
 
         if fill == true {
@@ -158,5 +172,24 @@ class JifflrTeamChart: UIView {
         dataSet.lineCapType = .round
 
         return dataSet
+    }
+    
+    func startSpinner() {
+        self.spinner.startAnimating()
+    }
+    
+    func stopSpinner() {
+        self.spinner.stopAnimating()
+    }
+    
+    func showNoDataLabel() {
+        self.stopSpinner()
+        self.lineChartView.noDataText = "alert.noChartData".localized()
+        self.lineChartView.noDataTextColor = UIColor.white
+    }
+    
+    func hideNoDataLabel() {
+        self.lineChartView.noDataText = "alert.noChartData".localized()
+        self.lineChartView.noDataTextColor = UIColor.clear
     }
 }

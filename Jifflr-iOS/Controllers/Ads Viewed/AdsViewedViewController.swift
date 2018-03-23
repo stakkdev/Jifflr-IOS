@@ -19,7 +19,10 @@ class AdsViewedViewController: BaseViewController {
         didSet {
             self.tableView.reloadData()
 
-            guard let graphData = self.adsViewed?.graph, graphData.count > 0 else { return }
+            guard let graphData = self.adsViewed?.graph, graphData.count > 0 else {
+                self.chart.showNoDataLabel()
+                return
+            }
             guard let targetGraphData = self.adsViewed?.targetGraph, graphData.count > 0 else { return }
             self.chart.setData(data: graphData, color: UIColor.mainPinkBright, fill: false, targetData: targetGraphData, targetColor: UIColor.mainWhiteTransparent50)
         }
@@ -55,6 +58,8 @@ class AdsViewedViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.chart.startSpinner()
     }
 
     func setupLocalization() {
@@ -82,6 +87,7 @@ class AdsViewedViewController: BaseViewController {
     func updateLocalData() {
         AdsViewedManager.shared.fetchLocal { (adsViewed, error) in
             guard let adsViewed = adsViewed, error == nil else {
+                self.chart.showNoDataLabel()
                 self.displayError(error: error)
                 return
             }

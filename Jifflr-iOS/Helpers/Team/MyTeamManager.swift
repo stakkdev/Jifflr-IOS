@@ -20,12 +20,14 @@ class MyTeamManager: NSObject {
             if let myTeamJSON = myTeamJSON as? [String: Any] {
                 let myTeam = MyTeam()
 
-                if let points = myTeamJSON["graph"] as? [(x: Double, y: Double)] {
+                if let points = myTeamJSON["graph"] as? [[Double]] {
                     var graph:[Graph] = []
                     for point in points {
+                        guard point.count == 2 else { continue }
+                        
                         let graphPoint = Graph()
-                        graphPoint.x = point.x
-                        graphPoint.y = point.y
+                        graphPoint.x = point.first!
+                        graphPoint.y = point.last!
                         graph.append(graphPoint)
                     }
 
@@ -62,30 +64,16 @@ class MyTeamManager: NSObject {
         
         let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
         PFCloud.callFunction(inBackground: "my-team-friends", withParameters: parameters) { myTeamJSON, error in
-            if let myTeamJSON = myTeamJSON as? [String: Any] {
-
-                if let friendsArray = myTeamJSON["friends"] as? [(user: PFUser, teamSize: Int, date: Date)] {
-                    var friends:[MyTeamFriends] = []
-                    for friendsTuple in friendsArray {
-                        let friend = MyTeamFriends()
-                        friend.user = friendsTuple.user
-                        friend.teamSize = friendsTuple.teamSize
-                        friend.date = friendsTuple.date
-                        friends.append(friend)
+            if let friends = myTeamJSON as? [MyTeamFriends] {
+                PFObject.pinAll(inBackground: friends, withName: self.pinName, block: { (success, error) in
+                    print("MyTeam Friends Pinned: \(success)")
+                    
+                    if let error = error {
+                        print("Error: \(error)")
                     }
-
-                    PFObject.pinAll(inBackground: friends, withName: self.pinName, block: { (success, error) in
-                        print("MyTeam Friends Pinned: \(success)")
-
-                        if let error = error {
-                            print("Error: \(error)")
-                        }
-                    })
-
-                    completion(friends, nil)
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                })
+                
+                completion(friends, nil)
             } else {
                 if let error = error {
                     completion(nil, ErrorMessage.parseError(error.localizedDescription))
