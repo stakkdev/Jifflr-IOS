@@ -64,15 +64,29 @@ class MyTeamManager: NSObject {
         
         let parameters = ["user": user.objectId!, "limit": 20, "page": page] as [String : Any]
         PFCloud.callFunction(inBackground: "my-team-friends", withParameters: parameters) { myTeamJSON, error in
-            if let friends = myTeamJSON as? [MyTeamFriends] {
+            if let myTeamJSON = myTeamJSON as? [String: Any], let friendsDicts = myTeamJSON["myTeamFriends"] as? [[String: Any]] {
+
+                var friends: [MyTeamFriends] = []
+                for friendsDict in friendsDicts {
+                    guard let user = friendsDict["user"] as? PFUser,
+                        let teamSize = friendsDict["teamSize"] as? Int,
+                        let date = friendsDict["date"] as? Date else { continue }
+
+                    let myTeamFriend = MyTeamFriends()
+                    myTeamFriend.user = user
+                    myTeamFriend.teamSize = teamSize
+                    myTeamFriend.date = date
+                    friends.append(myTeamFriend)
+                }
+                
                 PFObject.pinAll(inBackground: friends, withName: self.pinName, block: { (success, error) in
                     print("MyTeam Friends Pinned: \(success)")
-                    
+
                     if let error = error {
                         print("Error: \(error)")
                     }
                 })
-                
+
                 completion(friends, nil)
             } else {
                 if let error = error {
