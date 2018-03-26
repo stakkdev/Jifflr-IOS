@@ -204,3 +204,9 @@
 "settings.analytics.heading" = "Analytics";
 "settings.analytics.message" = "Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments.";
 
+"adBuilderOverview.navigation.title" = "My Ads";
+"adBuilderNoAds.titleLabel.title" = "Lorem";
+"adBuilderNoAds.descriptionLabel.title" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
+"adBuilderNoAds.becomeModeratorButton.title" = "BECOME A MODERATOR";
+"adBuilderNoAds.createAdButton.title" = "CREATE AN AD";
+

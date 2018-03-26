@@ -14,6 +14,10 @@
 		1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
+		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
+		1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */; };
+		1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195432069031D00FE3896 /* NoAdsViewController.swift */; };
+		1AF1954620690A9C00FE3896 /* GothamLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1954520690A7900FE3896 /* GothamLight.otf */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
@@ -167,6 +171,10 @@
 		1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPaginationManager.swift; path = Controllers/Team/TeamPaginationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
+		1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdBuilderLandingViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderLandingViewController.swift"; sourceTree = "<group>"; };
+		1AF195432069031D00FE3896 /* NoAdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoAdsViewController.swift; path = "Controllers/Ad Builder/Overview/NoAdsViewController.swift"; sourceTree = "<group>"; };
+		1AF1954520690A7900FE3896 /* GothamLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamLight.otf; path = "Supporting Files/Fonts/GothamLight.otf"; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF98737963D7F5B4AB1E447 /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		5ECFD93B67F4BD2D51848E3E /* Pods-Jifflr-iOSTests.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (production).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (production).xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +350,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AF195392068FEF900FE3896 /* Ad Builder */ = {
+			isa = PBXGroup;
+			children = (
+				1AF195402069020200FE3896 /* Overview */,
+			);
+			name = "Ad Builder";
+			sourceTree = "<group>";
+		};
+		1AF1953A2068FF4900FE3896 /* Ad Builder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Ad Builder";
+			sourceTree = "<group>";
+		};
+		1AF195402069020200FE3896 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */,
+				1AF195432069031D00FE3896 /* NoAdsViewController.swift */,
+			);
+			name = Overview;
+			sourceTree = "<group>";
+		};
 		33DC5748B12C12E7B5F90575 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +425,7 @@
 		E9328A57202DBD8400D79CF7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1AF1954520690A7900FE3896 /* GothamLight.otf */,
 				E9328A58202DBDAE00D79CF7 /* GothamBold.otf */,
 				E9328A59202DBDAE00D79CF7 /* GothamBook.otf */,
 				E9608F18203478AC0055EFE7 /* GothamMedium.otf */,
@@ -657,6 +690,7 @@
 				E9798C23201A4C2B00E8A7D2 /* Play Advert */,
 				E97B9E1E203B03CF0097BC65 /* FAQs */,
 				E9D8E1BE203C312F00F978D2 /* Profile */,
+				1AF195392068FEF900FE3896 /* Ad Builder */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -715,6 +749,7 @@
 				E96A0CE8203DAB650059DDAC /* Play Advert */,
 				E96A0CE9203DAB6F0059DDAC /* FAQs */,
 				E96A0CEA203DAB780059DDAC /* Profile */,
+				1AF1953A2068FF4900FE3896 /* Ad Builder */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -769,6 +804,7 @@
 				E937F5C720373BEA00171480 /* AdsViewed.storyboard */,
 				E97B9E21203B04D90097BC65 /* FAQs.storyboard */,
 				E9D8E1C1203C318500F978D2 /* Profile.storyboard */,
+				1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -940,10 +976,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF1954620690A9C00FE3896 /* GothamLight.otf in Resources */,
 				E9608F19203478E20055EFE7 /* GothamMedium.otf in Resources */,
 				E9328A5A202DBDF600D79CF7 /* GothamBold.otf in Resources */,
 				E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */,
 				E9A7179D1F8B89AC00B07414 /* LaunchScreen.storyboard in Resources */,
+				1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */,
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
 				E9DBBC3920163485000B8835 /* Localizable.strings in Resources */,
@@ -1241,10 +1279,12 @@
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
 				E9798C22201A4C0F00E8A7D2 /* MyMoneyViewController.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
+				1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */,
 				E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */,
 				E9DD581F2035D1A4000735C3 /* TeamPendingFriendCell.swift in Sources */,
 				E9305CED2046B1BA00D4E4DD /* TeamViewController+Invitations.swift in Sources */,
 				E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */,
+				1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */,
 				E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */,
 				E96A0CF0203DAC450059DDAC /* CashoutManager.swift in Sources */,
 				E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */,
@@ -1311,6 +1351,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1AF1953C2068FF7800FE3896 /* Base */,
+			);
+			name = AdBuilderOverview.storyboard;
+			sourceTree = "<group>";
+		};
 		E937F5C720373BEA00171480 /* AdsViewed.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

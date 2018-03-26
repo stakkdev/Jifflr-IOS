@@ -52,6 +52,7 @@
 		<string>GothamBold.otf</string>
 		<string>GothamBook.otf</string>
 		<string>GothamMedium.otf</string>
+		<string>GothamLight.otf</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamLight.otf">
+            <string>GothamLight</string>
+        </array>
+        <array key="GothamMedium.otf">
+            <string>GothamMedium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Ad Builder Landing View Controller-->
+        <scene sceneID="qbn-Wy-of7">
+            <objects>
+                <viewController storyboardIdentifier="AdBuilderLandingViewController" id="7ZY-gQ-C0i" customClass="AdBuilderLandingViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cwh-q4-cUh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pYQ-8J-JJ8">
+                                <rect key="frame" x="169" y="325" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="3Lc-Qv-dWt"/>
+                                    <constraint firstAttribute="width" constant="37" id="qYs-mZ-cmA"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pYQ-8J-JJ8" firstAttribute="centerY" secondItem="syx-ID-LDn" secondAttribute="centerY" id="Ps0-T0-dd3"/>
+                            <constraint firstItem="pYQ-8J-JJ8" firstAttribute="centerX" secondItem="syx-ID-LDn" secondAttribute="centerX" id="PvC-wm-tN1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="syx-ID-LDn"/>
+                    </view>
+                    <connections>
+                        <outlet property="spinner" destination="pYQ-8J-JJ8" id="EdX-0p-dIk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UA3-tA-yBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="156"/>
+        </scene>
+        <!--No Ads View Controller-->
+        <scene sceneID="Wvq-Ye-Qf5">
+            <objects>
+                <viewController storyboardIdentifier="NoAdsViewController" id="Cwp-40-Z4c" customClass="NoAdsViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PH8-4A-QNc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-gC-ZDi" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="569" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yfi-gm-4sz"/>
+                                </constraints>
+                                <state key="normal" title="CREATE AN AD"/>
+                                <connections>
+                                    <action selector="createAdPressedWithSender:" destination="Cwp-40-Z4c" eventType="touchUpInside" id="dKy-6u-tO1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGF-kB-fJA" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="494" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QLz-TC-bih"/>
+                                </constraints>
+                                <state key="normal" title="BECOME A MODERATOR"/>
+                                <connections>
+                                    <action selector="becomeModeratorPressedWithSender:" destination="Cwp-40-Z4c" eventType="touchUpInside" id="jQI-6D-YD4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKQ-Ih-8lQ">
+                                <rect key="frame" x="130.5" y="228" width="114" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="9EA-xm-Fkl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamLight" family="GothamLight" pointSize="36"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-Gq-vg8">
+                                <rect key="frame" x="18" y="292" width="339" height="43.5"/>
+                                <fontDescription key="fontDescription" name="GothamMedium" family="GothamMedium" pointSize="20"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fpD-Cc-Cwq" firstAttribute="trailing" secondItem="9Em-Gq-vg8" secondAttribute="trailing" constant="18" id="4Uu-f9-KWF"/>
+                            <constraint firstItem="fpD-Cc-Cwq" firstAttribute="trailing" secondItem="XGF-kB-fJA" secondAttribute="trailing" constant="18" id="9Lw-4v-spd"/>
+                            <constraint firstItem="Xf0-gC-ZDi" firstAttribute="leading" secondItem="fpD-Cc-Cwq" secondAttribute="leading" constant="18" id="Fzi-Oc-O8x"/>
+                            <constraint firstItem="9Em-Gq-vg8" firstAttribute="top" secondItem="wKQ-Ih-8lQ" secondAttribute="bottom" constant="25" id="NxS-Js-EPG"/>
+                            <constraint firstItem="fpD-Cc-Cwq" firstAttribute="trailing" secondItem="Xf0-gC-ZDi" secondAttribute="trailing" constant="18" id="cjT-l8-1DB"/>
+                            <constraint firstItem="9Em-Gq-vg8" firstAttribute="leading" secondItem="fpD-Cc-Cwq" secondAttribute="leading" constant="18" id="hsP-nx-XU8"/>
+                            <constraint firstItem="wKQ-Ih-8lQ" firstAttribute="centerX" secondItem="9Em-Gq-vg8" secondAttribute="centerX" id="kXu-pP-Dmd"/>
+                            <constraint firstItem="Xf0-gC-ZDi" firstAttribute="top" secondItem="XGF-kB-fJA" secondAttribute="bottom" constant="25" id="pWN-wZ-gCD"/>
+                            <constraint firstItem="XGF-kB-fJA" firstAttribute="leading" secondItem="fpD-Cc-Cwq" secondAttribute="leading" constant="18" id="q5d-EW-gAF"/>
+                            <constraint firstItem="fpD-Cc-Cwq" firstAttribute="bottom" secondItem="Xf0-gC-ZDi" secondAttribute="bottom" constant="48" id="qgo-Bq-WcX"/>
+                            <constraint firstItem="9Em-Gq-vg8" firstAttribute="centerY" secondItem="fpD-Cc-Cwq" secondAttribute="centerY" constant="-30" id="zUp-c0-heo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fpD-Cc-Cwq"/>
+                    </view>
+                    <connections>
+                        <outlet property="becomeModeratorButton" destination="XGF-kB-fJA" id="keD-Jg-cri"/>
+                        <outlet property="createAdButton" destination="Xf0-gC-ZDi" id="zYa-cD-clP"/>
+                        <outlet property="descriptionLabel" destination="9Em-Gq-vg8" id="tJq-yI-pbc"/>
+                        <outlet property="titleLabel" destination="wKQ-Ih-8lQ" id="TOd-Za-xV5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfy-zv-11A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="621.60000000000002" y="154.27286356821591"/>
+        </scene>
+    </scenes>
+</document>

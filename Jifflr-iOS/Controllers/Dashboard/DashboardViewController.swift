@@ -227,6 +227,10 @@ class DashboardViewController: BaseViewController {
     @IBAction func adsViewedPressed(_ sender: UIButton) {
         self.navigationController?.pushViewController(AdsViewedViewController.instantiateFromStoryboard(), animated: true)
     }
+    
+    @IBAction func adBuilderPressed(_ sender: UIButton) {
+        self.navigationController?.pushViewController(AdBuilderLandingViewController.instantiateFromStoryboard(), animated: true)
+    }
 
     @IBAction func helpButtonPressed(_ sender: UIButton) {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
