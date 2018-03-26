@@ -39,8 +39,9 @@ class ChooseTemplateViewController: BaseViewController {
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 93.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 48.0, right: 0.0)
         self.tableView.separatorStyle = .none
+        self.tableView.tableFooterView = self.footerView()
     }
     
     func setupLocalization() {
@@ -76,26 +77,6 @@ extension ChooseTemplateViewController: UITableViewDelegate, UITableViewDataSour
         return self.templates.count
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 63.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let width = UIScreen.main.bounds.width
-        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 63.0))
-        view.backgroundColor = UIColor.clear
-        
-        let margin: CGFloat = 18.0
-        let buttonWidth = width - (margin * 2)
-        let button = JifflrButton(frame: CGRect(x: margin, y: 13.0, width: buttonWidth, height: 50.0))
-        button.setBackgroundColor(color: UIColor.mainPink)
-        button.setTitle("createAd.nextButton.title".localized(), for: .normal)
-        button.addTarget(self, action: #selector(self.nextButtonPressed(sender:)), for: .touchUpInside)
-        view.addSubview(button)
-        
-        return view
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseTemplateCell", for: indexPath) as! ChooseTemplateCell
@@ -116,5 +97,21 @@ extension ChooseTemplateViewController: UITableViewDelegate, UITableViewDataSour
         }
         
         return cell
+    }
+    
+    func footerView() -> UIView {
+        let width = UIScreen.main.bounds.width
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 63.0))
+        view.backgroundColor = UIColor.clear
+        
+        let margin: CGFloat = 18.0
+        let buttonWidth = width - (margin * 2)
+        let button = JifflrButton(frame: CGRect(x: margin, y: 13.0, width: buttonWidth, height: 50.0))
+        button.setBackgroundColor(color: UIColor.mainPink)
+        button.setTitle("createAd.nextButton.title".localized(), for: .normal)
+        button.addTarget(self, action: #selector(self.nextButtonPressed(sender:)), for: .touchUpInside)
+        view.addSubview(button)
+        
+        return view
     }
 }
