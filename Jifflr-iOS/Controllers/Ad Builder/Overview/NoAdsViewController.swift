@@ -24,6 +24,7 @@ class NoAdsViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        self.updateNavigationStack()
         
         self.becomeModeratorButton.setBackgroundColor(color: UIColor.mainGreen)
         self.createAdButton.setBackgroundColor(color: UIColor.mainPink)
@@ -43,6 +44,16 @@ class NoAdsViewController: BaseViewController {
         self.descriptionLabel.text = "adBuilderNoAds.descriptionLabel.title".localized()
         self.becomeModeratorButton.setTitle("adBuilderNoAds.becomeModeratorButton.title".localized(), for: .normal)
         self.createAdButton.setTitle("adBuilderNoAds.createAdButton.title".localized(), for: .normal)
+    }
+    
+    func updateNavigationStack() {
+        guard let navController = self.navigationController else { return }
+        for (index, viewController) in navController.viewControllers.enumerated() {
+            if let _ = viewController as? AdBuilderLandingViewController {
+                navController.viewControllers.remove(at: index)
+                return
+            }
+        }
     }
     
     @IBAction func becomeModeratorPressed(sender: UIButton) {

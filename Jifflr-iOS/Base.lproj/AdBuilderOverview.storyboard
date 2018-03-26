@@ -120,5 +120,20 @@
             </objects>
             <point key="canvasLocation" x="621.60000000000002" y="154.27286356821591"/>
         </scene>
+        <!--Ad Builder Overview View Controller-->
+        <scene sceneID="s2M-Vl-bbD">
+            <objects>
+                <viewController storyboardIdentifier="AdBuilderOverviewViewController" id="0SR-I0-1W6" customClass="AdBuilderOverviewViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="30V-BN-rKc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="jiW-jV-oPa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxA-hH-Em7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="155"/>
+        </scene>
     </scenes>
 </document>

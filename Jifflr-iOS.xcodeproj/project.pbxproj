@@ -18,6 +18,8 @@
 		1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */; };
 		1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195432069031D00FE3896 /* NoAdsViewController.swift */; };
 		1AF1954620690A9C00FE3896 /* GothamLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1954520690A7900FE3896 /* GothamLight.otf */; };
+		1AF1954820691FE300FE3896 /* AdBuilderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1954720691FE300FE3896 /* AdBuilderManager.swift */; };
+		1AF1954A206921E500FE3896 /* AdBuilderOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
@@ -175,6 +177,8 @@
 		1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdBuilderLandingViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderLandingViewController.swift"; sourceTree = "<group>"; };
 		1AF195432069031D00FE3896 /* NoAdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoAdsViewController.swift; path = "Controllers/Ad Builder/Overview/NoAdsViewController.swift"; sourceTree = "<group>"; };
 		1AF1954520690A7900FE3896 /* GothamLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamLight.otf; path = "Supporting Files/Fonts/GothamLight.otf"; sourceTree = "<group>"; };
+		1AF1954720691FE300FE3896 /* AdBuilderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdBuilderManager.swift; path = "Helpers/Ad Builder/AdBuilderManager.swift"; sourceTree = "<group>"; };
+		1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdBuilderOverviewViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderOverviewViewController.swift"; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF98737963D7F5B4AB1E447 /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		5ECFD93B67F4BD2D51848E3E /* Pods-Jifflr-iOSTests.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (production).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (production).xcconfig"; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 		1AF1953A2068FF4900FE3896 /* Ad Builder */ = {
 			isa = PBXGroup;
 			children = (
+				1AF1954720691FE300FE3896 /* AdBuilderManager.swift */,
 			);
 			name = "Ad Builder";
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 			children = (
 				1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */,
 				1AF195432069031D00FE3896 /* NoAdsViewController.swift */,
+				1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */,
 			);
 			name = Overview;
 			sourceTree = "<group>";
@@ -1246,6 +1252,7 @@
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
+				1AF1954820691FE300FE3896 /* AdBuilderManager.swift in Sources */,
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */,
@@ -1277,6 +1284,7 @@
 				E96A0CDC203DAAF80059DDAC /* MockContent.swift in Sources */,
 				E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
+				1AF1954A206921E500FE3896 /* AdBuilderOverviewViewController.swift in Sources */,
 				E9798C22201A4C0F00E8A7D2 /* MyMoneyViewController.swift in Sources */,
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */,

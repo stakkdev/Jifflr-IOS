@@ -21,10 +21,7 @@ class AdBuilderLandingViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
-        
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
-            self.pushToNoAds()
-        }
+        self.setupData()
     }
     
     func setupUI() {
@@ -41,11 +38,39 @@ class AdBuilderLandingViewController: BaseViewController {
         self.title = "adBuilderOverview.navigation.title".localized()
     }
     
+    func setupData() {
+        if Reachability.isConnectedToNetwork() {
+            AdBuilderManager.shared.countUserAds(completion: { (count) in
+                self.routeBasedOnUserAdCount(count: count)
+            })
+        } else {
+            AdBuilderManager.shared.countLocalUserAds(completion: { (count) in
+                self.routeBasedOnUserAdCount(count: count)
+            })
+        }
+    }
+    
+    func routeBasedOnUserAdCount(count: Int?) {
+        guard let count = count else {
+            return
+        }
+        
+        self.spinner.stopAnimating()
+        
+        if count == 0 {
+            self.pushToNoAds()
+        } else {
+            self.pushToAdOverview()
+        }
+    }
+    
     func pushToNoAds() {
         let noAdsViewController = NoAdsViewController.instantiateFromStoryboard()
         self.navigationController?.pushViewController(noAdsViewController, animated: false)
-        
-        guard self.navigationController?.viewControllers.count == 3 else { return }
-        self.navigationController?.viewControllers.remove(at: 1)
+    }
+    
+    func pushToAdOverview() {
+        let overviewViewController = AdBuilderOverviewViewController.instantiateFromStoryboard()
+        self.navigationController?.pushViewController(overviewViewController, animated: false)
     }
 }
