@@ -134,12 +134,12 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
 
             } else {
-                let friend = self.friends[indexPath.row]
+                let friend = self.friends[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamFriendCell") as! TeamFriendCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "\(friend.user.details.firstName) \(friend.user.details.lastName)"
-                cell.emailLabel.text = "\(friend.user.email)"
+                cell.emailLabel.text = "\(friend.user.username ?? "")"
                 cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(friend.teamSize)
 
                 let dateFormatter = DateFormatter()
