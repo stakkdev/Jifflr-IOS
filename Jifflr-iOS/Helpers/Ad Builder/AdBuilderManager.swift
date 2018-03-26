@@ -44,4 +44,17 @@ class AdBuilderManager: NSObject {
             completion(Int(count))
         })
     }
+    
+    func fetchTemplates(completion: @escaping ([AdvertTemplate]) -> Void) {
+        let query = AdvertTemplate.query()
+        query?.order(byAscending: "index")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let templates = objects as? [AdvertTemplate], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(templates)
+        })
+    }
 }
