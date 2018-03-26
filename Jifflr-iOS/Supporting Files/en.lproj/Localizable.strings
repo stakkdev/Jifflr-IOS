@@ -43,6 +43,7 @@
 "error.blockedCountry" = "Unfortunately we are not operating in your country at the moment, please check back soon.";
 "error.changeInvitation.invalidName" = "Please enter the name of the person you are inviting.";
 "error.changeInvitation.invalidEmail" = "Please enter the email of the person you are inviting.";
+"error.createAd.adName" = "Please enter a valid Ad Name.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -209,4 +210,10 @@
 "adBuilderNoAds.descriptionLabel.title" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
 "adBuilderNoAds.becomeModeratorButton.title" = "BECOME A MODERATOR";
 "adBuilderNoAds.createAdButton.title" = "CREATE AN AD";
+"createAd.navigation.title" = "New Ad";
+"createAd.titleLabel.title" = "Start Building your Ad";
+"createAd.descriptionLabel.title" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+"createAd.textField.placeholder" = "Enter Ad Name";
+"createAd.nextButton.title" = "NEXT";
+"chooseTemplate.navigation.title" = "Choose Template";
 

@@ -45,6 +45,7 @@ public enum ErrorMessage {
     case blockedCountry
     case changeInvitationName
     case changeInvitationEmail
+    case createAdName
 
     public var failureTitle: String {
         switch self {
@@ -125,6 +126,8 @@ public enum ErrorMessage {
             return "error.changeInvitation.invalidName".localized()
         case .changeInvitationEmail:
             return "error.changeInvitation.invalidEmail".localized()
+        case .createAdName:
+            return "error.createAd.adName".localized()
         }
     }
 }

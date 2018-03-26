@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+        <array key="GothamMedium.otf">
+            <string>GothamMedium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Create Ad View Controller-->
+        <scene sceneID="3vW-pB-S8D">
+            <objects>
+                <viewController storyboardIdentifier="CreateAdViewController" id="7V5-wd-vY6" customClass="CreateAdViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fyv-ba-pTX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dR2-T7-Dm6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="569" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AlC-ug-vGx"/>
+                                </constraints>
+                                <state key="normal" title="NEXT"/>
+                                <connections>
+                                    <action selector="nextButtonPressedWithSender:" destination="7V5-wd-vY6" eventType="touchUpInside" id="LCk-9P-HpB"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JCr-9K-QBG" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="333.5" width="339" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="Ekp-hr-n7A"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-5S-igr">
+                                <rect key="frame" x="18" y="203.5" width="339" height="70"/>
+                                <fontDescription key="fontDescription" name="GothamMedium" family="GothamMedium" pointSize="16"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Building your Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udE-T2-3gS">
+                                <rect key="frame" x="18" y="169" width="339" height="22.5"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wbd-7c-NBf" firstAttribute="trailing" secondItem="r15-5S-igr" secondAttribute="trailing" constant="18" id="2C7-wr-rKv"/>
+                            <constraint firstItem="dR2-T7-Dm6" firstAttribute="leading" secondItem="wbd-7c-NBf" secondAttribute="leading" constant="18" id="8b9-95-arK"/>
+                            <constraint firstItem="udE-T2-3gS" firstAttribute="leading" secondItem="wbd-7c-NBf" secondAttribute="leading" constant="18" id="9tl-1M-6tf"/>
+                            <constraint firstItem="wbd-7c-NBf" firstAttribute="bottom" secondItem="dR2-T7-Dm6" secondAttribute="bottom" constant="48" id="EWE-DN-AeR"/>
+                            <constraint firstItem="JCr-9K-QBG" firstAttribute="leading" secondItem="wbd-7c-NBf" secondAttribute="leading" constant="18" id="Joz-Hx-MFq"/>
+                            <constraint firstItem="wbd-7c-NBf" firstAttribute="trailing" secondItem="JCr-9K-QBG" secondAttribute="trailing" constant="18" id="Rw8-0v-h37"/>
+                            <constraint firstItem="wbd-7c-NBf" firstAttribute="trailing" secondItem="dR2-T7-Dm6" secondAttribute="trailing" constant="18" id="VwM-q5-dFM"/>
+                            <constraint firstItem="JCr-9K-QBG" firstAttribute="top" secondItem="r15-5S-igr" secondAttribute="bottom" constant="60" id="WxA-dc-dex"/>
+                            <constraint firstItem="r15-5S-igr" firstAttribute="top" secondItem="udE-T2-3gS" secondAttribute="bottom" constant="12" id="bqD-ju-AQX"/>
+                            <constraint firstItem="JCr-9K-QBG" firstAttribute="top" secondItem="Fyv-ba-pTX" secondAttribute="centerY" id="jq2-6d-V3X"/>
+                            <constraint firstItem="r15-5S-igr" firstAttribute="leading" secondItem="wbd-7c-NBf" secondAttribute="leading" constant="18" id="t5b-mq-kAz"/>
+                            <constraint firstItem="wbd-7c-NBf" firstAttribute="trailing" secondItem="udE-T2-3gS" secondAttribute="trailing" constant="18" id="xDX-1u-gTA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wbd-7c-NBf"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="r15-5S-igr" id="7YJ-OT-oh6"/>
+                        <outlet property="nextButton" destination="dR2-T7-Dm6" id="mcU-lZ-3bg"/>
+                        <outlet property="textField" destination="JCr-9K-QBG" id="HiZ-8v-LxZ"/>
+                        <outlet property="titleLabel" destination="udE-T2-3gS" id="sNF-fB-poB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dOT-dV-URt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="193"/>
+        </scene>
+        <!--Choose Template View Controller-->
+        <scene sceneID="78K-TB-7n3">
+            <objects>
+                <viewController storyboardIdentifier="ChooseTemplateViewController" id="1hK-ha-6uH" customClass="ChooseTemplateViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gFD-ur-4bc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="gM0-Js-F5K"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0a-OO-n4V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="193"/>
+        </scene>
+    </scenes>
+</document>
