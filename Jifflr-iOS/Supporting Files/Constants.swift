@@ -199,7 +199,7 @@ struct LocationStatusType {
 }
 
 struct AdvertTemplateKey {
-    static let imageVideoPortait = "imageVideoPortait"
+    static let imageVideoPortait = "imageVideoPortrait"
     static let imageVideoLandscape = "imageVideoLandscape"
     static let titleImageMessage = "titleImageMessage"
     static let titleMessageImage = "titleMessageImage"

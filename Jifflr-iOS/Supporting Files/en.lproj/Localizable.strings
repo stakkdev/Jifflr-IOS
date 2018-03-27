@@ -218,7 +218,7 @@
 "chooseTemplate.navigation.title" = "Choose Template";
 "addContent.navigation.title" = "Add Content";
 "addContent.titleTextField.placeholder" = "Enter Ad Title";
-"addContent.titleTextView.placeholder" = "Enter Ad Message";
+"addContent.messageTextView.placeholder" = "Enter Ad Message";
 "addContent.imageButton.title" = "Image";
 "addContent.previewButton.title" = "PREVIEW";
 
