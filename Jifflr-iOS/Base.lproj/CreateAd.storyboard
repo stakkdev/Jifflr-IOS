@@ -232,21 +232,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17X-Yl-SxC">
-                                <rect key="frame" x="35" y="294" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ImageOverlayBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fYb-Pc-UQK">
+                                <rect key="frame" x="46" y="322" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
-                                        <rect key="frame" x="79" y="49" width="83" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
-                                        <state key="normal" title="Image">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
+                                <rect key="frame" x="125" y="371" width="83" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="+ Image">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -261,7 +265,7 @@
                     </view>
                     <connections>
                         <outlet property="imageButton" destination="7fa-BN-Nwr" id="mHX-lk-iUY"/>
-                        <outlet property="imageOverlayView" destination="17X-Yl-SxC" id="YK7-5i-qiJ"/>
+                        <outlet property="imageOverlayView" destination="fYb-Pc-UQK" id="g7o-Pb-jl2"/>
                         <outlet property="messageTextView" destination="Htr-0z-8f0" id="qDl-DN-Wml"/>
                         <outlet property="nextButton" destination="Wd7-4g-KnY" id="zft-eq-3Oe"/>
                         <outlet property="previewButton" destination="ahu-zW-8sI" id="zs0-MH-flo"/>
@@ -273,4 +277,7 @@
             <point key="canvasLocation" x="1477.5999999999999" y="192.95352323838082"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ImageOverlayBackground" width="375" height="232"/>
+    </resources>
 </document>
