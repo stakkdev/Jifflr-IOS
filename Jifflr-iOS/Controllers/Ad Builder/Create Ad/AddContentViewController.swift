@@ -54,6 +54,13 @@ class AddContentViewController: BaseViewController {
     }
     
     @IBAction func previewButtonPressed(sender: UIButton) {
+        guard let template = self.advert.details?.template else { return }
+        
+        guard self.validateInput(key: template.key) else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
+        
         let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, isPreview: true)
         let navController = UINavigationController(rootViewController: vc)
         navController.isNavigationBarHidden = true
