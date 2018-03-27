@@ -197,3 +197,11 @@ struct LocationStatusType {
     static let Disabled = 1
     static let AllowCashOut = 2
 }
+
+struct AdvertTemplateKey {
+    static let imageVideoPortait = "imageVideoPortait"
+    static let imageVideoLandscape = "imageVideoLandscape"
+    static let titleImageMessage = "titleImageMessage"
+    static let titleMessageImage = "titleMessageImage"
+    static let imageTitleMessage = "imageTitleMessage"
+}

@@ -190,5 +190,87 @@
             </objects>
             <point key="canvasLocation" x="754" y="193"/>
         </scene>
+        <!--Add Content View Controller-->
+        <scene sceneID="Hik-cc-KDg">
+            <objects>
+                <viewController storyboardIdentifier="AddContentViewController" id="xuf-zG-emo" customClass="AddContentViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AHr-CO-KbN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahu-zW-8sI" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="589" width="159.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pbo-I5-0Gt"/>
+                                </constraints>
+                                <state key="normal" title="PREVIEW"/>
+                                <connections>
+                                    <action selector="previewButtonPressedWithSender:" destination="xuf-zG-emo" eventType="touchUpInside" id="oAX-5f-1Lw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd7-4g-KnY" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="197.5" y="589" width="159.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HsV-5X-9Lm"/>
+                                </constraints>
+                                <state key="normal" title="NEXT"/>
+                                <connections>
+                                    <action selector="nextButtonPressedWithSender:" destination="xuf-zG-emo" eventType="touchUpInside" id="LP8-n7-pJj"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agT-zu-ABc" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="25" y="81" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Htr-0z-8f0" customClass="JifflrTextView" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="25" y="137" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17X-Yl-SxC">
+                                <rect key="frame" x="35" y="294" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
+                                        <rect key="frame" x="79" y="49" width="83" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
+                                        <state key="normal" title="Image">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ahu-zW-8sI" firstAttribute="leading" secondItem="Aip-dr-ON1" secondAttribute="leading" constant="18" id="2hG-ua-lCL"/>
+                            <constraint firstItem="Aip-dr-ON1" firstAttribute="trailing" secondItem="Wd7-4g-KnY" secondAttribute="trailing" constant="18" id="LNE-2c-pet"/>
+                            <constraint firstItem="Aip-dr-ON1" firstAttribute="centerX" secondItem="ahu-zW-8sI" secondAttribute="trailing" constant="10" id="TOv-Nt-21u"/>
+                            <constraint firstItem="Aip-dr-ON1" firstAttribute="bottom" secondItem="Wd7-4g-KnY" secondAttribute="bottom" constant="28" id="TQT-qz-hSO"/>
+                            <constraint firstItem="Aip-dr-ON1" firstAttribute="bottom" secondItem="ahu-zW-8sI" secondAttribute="bottom" constant="28" id="pJk-xc-p6K"/>
+                            <constraint firstItem="Wd7-4g-KnY" firstAttribute="leading" secondItem="ahu-zW-8sI" secondAttribute="trailing" constant="20" id="z0T-lh-PHw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Aip-dr-ON1"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageButton" destination="7fa-BN-Nwr" id="mHX-lk-iUY"/>
+                        <outlet property="imageOverlayView" destination="17X-Yl-SxC" id="YK7-5i-qiJ"/>
+                        <outlet property="messageTextView" destination="Htr-0z-8f0" id="qDl-DN-Wml"/>
+                        <outlet property="nextButton" destination="Wd7-4g-KnY" id="zft-eq-3Oe"/>
+                        <outlet property="previewButton" destination="ahu-zW-8sI" id="zs0-MH-flo"/>
+                        <outlet property="titleTextField" destination="agT-zu-ABc" id="NA0-DS-HGY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIw-xy-yjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477.5999999999999" y="192.95352323838082"/>
+        </scene>
     </scenes>
 </document>

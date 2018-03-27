@@ -47,7 +47,12 @@ class CreateAdViewController: BaseViewController {
             return
         }
         
-        // TODO: Do something with adName
-        self.navigationController?.pushViewController(ChooseTemplateViewController.instantiateFromStoryboard(), animated: true)
+        let advert = Advert()
+        let details = AdvertDetails()
+        details.name = adName
+        advert.details = details
+        
+        let vc = ChooseTemplateViewController.instantiateFromStoryboard(advert: advert)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

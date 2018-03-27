@@ -12,15 +12,19 @@ class ChooseTemplateViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var advert: Advert!
+    
     var templates: [AdvertTemplate] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
 
-    class func instantiateFromStoryboard() -> ChooseTemplateViewController {
+    class func instantiateFromStoryboard(advert: Advert) -> ChooseTemplateViewController {
         let storyboard = UIStoryboard(name: "CreateAd", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "ChooseTemplateViewController") as! ChooseTemplateViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChooseTemplateViewController") as! ChooseTemplateViewController
+        vc.advert = advert
+        return vc
     }
     
     override func viewDidLoad() {
@@ -64,7 +68,10 @@ class ChooseTemplateViewController: BaseViewController {
         }
         
         let template = self.templates[indexPath.row]
-        // TODO - Do something with template
+        self.advert.details?.template = template
+        
+        let vc = AddContentViewController.instantiateFromStoryboard(advert: self.advert)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -13,6 +13,9 @@
 		1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */; };
 		1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */; };
 		1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173244206A4545005837A7 /* AdvertDetails.swift */; };
+		1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173246206A4F0F005837A7 /* AddContentViewController.swift */; };
+		1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173248206A54FA005837A7 /* JifflrTextView.swift */; };
+		1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
@@ -178,6 +181,9 @@
 		1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPaginationManager.swift; path = Controllers/Team/TeamPaginationManager.swift; sourceTree = "<group>"; };
 		1A173244206A4545005837A7 /* AdvertDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertDetails.swift; path = Models/AdvertDetails.swift; sourceTree = "<group>"; };
+		1A173246206A4F0F005837A7 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddContentViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddContentViewController.swift"; sourceTree = "<group>"; };
+		1A173248206A54FA005837A7 /* JifflrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextView.swift; path = Views/JifflrTextView.swift; sourceTree = "<group>"; };
+		1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddContentViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/AddContentViewController+Constraints.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
@@ -399,6 +405,8 @@
 				1AF195532069388E00FE3896 /* Cells */,
 				1AF1954C20692C8900FE3896 /* CreateAdViewController.swift */,
 				1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */,
+				1A173246206A4F0F005837A7 /* AddContentViewController.swift */,
+				1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */,
 			);
 			name = "Create Ad";
 			sourceTree = "<group>";
@@ -745,6 +753,7 @@
 				E9DD58202035DDF3000735C3 /* JifflrTeamChart.swift */,
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
 				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
+				1A173248206A54FA005837A7 /* JifflrTextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1316,10 +1325,12 @@
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */,
 				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,
+				1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */,
 				E96A0CF6203DAC5B0059DDAC /* SettingsManager.swift in Sources */,
 				E9305CF32047005300D4E4DD /* MyMoney.swift in Sources */,
 				1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
+				1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */,
 				E96A0CDC203DAAF80059DDAC /* MockContent.swift in Sources */,
 				E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
@@ -1352,6 +1363,7 @@
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
+				1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
