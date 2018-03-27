@@ -9,6 +9,11 @@
 import UIKit
 
 class CMSAdvertViewController: BaseViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleBackgroundView: UIView!
+    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
 
     var advert: Advert!
     var isPreview = false
@@ -26,16 +31,47 @@ class CMSAdvertViewController: BaseViewController {
         super.viewDidLoad()
 
         self.setupUI()
-        self.fetchData()
+        self.setupData()
+        
+        if !self.isPreview {
+            self.fetchData()
+        }
+        
+        self.messageTextView.text = "Quiz night\nEvery Tuesday Evening\nStarts: 8pm"
+        self.titleLabel.text = "THE RED LION"
     }
 
     func setupUI() {
         self.setupLocalization()
+        self.setupConstraints()
+        
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.isNavigationBarHidden = false
+        
+        if self.isPreview {
+            let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
+            self.navigationItem.leftBarButtonItem = dismissBarButton
+        } else {
+            let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
+            self.navigationItem.rightBarButtonItem = flagBarButton
+        }
+    }
+    
+    func setupData() {
+        self.titleLabel.text = self.advert.details?.title
+        self.messageTextView.text = self.advert.details?.message
+        
+        self.advert.details?.image?.getDataInBackground(block: { (data, error) in
+            guard let data = data, error == nil else { return }
+            self.imageView.image = UIImage(data: data)
+        })
     }
 
-    func setupLocalization() { }
+    func setupLocalization() {
+        if self.isPreview {
+            self.title = "adPreview.navigation.title".localized()
+        }
+    }
     
     func fetchData() {
         AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
@@ -44,7 +80,7 @@ class CMSAdvertViewController: BaseViewController {
         }
     }
 
-    @IBAction func showFeedback(sender: UIButton) {
+    func showFeedback() {
         guard let question = self.content.first?.question else { return }
         
         var controller: UIViewController!
@@ -67,5 +103,13 @@ class CMSAdvertViewController: BaseViewController {
         }
         
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func flagButtonPressed(sender: UIBarButtonItem) {
+        self.showFeedback()
     }
 }

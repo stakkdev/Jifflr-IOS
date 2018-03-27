@@ -223,4 +223,5 @@
 "addContent.messageTextView.placeholder" = "Enter Ad Message";
 "addContent.imageButton.title" = "Image";
 "addContent.previewButton.title" = "PREVIEW";
+"adPreview.navigation.title" = "Preview";
 

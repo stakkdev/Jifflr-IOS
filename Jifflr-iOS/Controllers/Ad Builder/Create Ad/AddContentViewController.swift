@@ -52,7 +52,9 @@ class AddContentViewController: BaseViewController {
     
     @IBAction func previewButtonPressed(sender: UIButton) {
         let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, isPreview: true)
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: vc)
+        navController.isNavigationBarHidden = true
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
