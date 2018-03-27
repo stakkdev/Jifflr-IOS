@@ -18,15 +18,16 @@ class ChooseTemplateCell: UITableViewCell {
         super.awakeFromNib()
         
         self.backgroundColor = UIColor.clear
+        self.selectedImageView.backgroundColor = UIColor.clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            self.selectedImageView.backgroundColor = UIColor.blue
+            self.selectedImageView.image = UIImage(named: "TemplateSelected")
         } else {
-            self.selectedImageView.backgroundColor = UIColor(red: 39/255, green: 35/255, blue: 97/255, alpha: 0.1)
+            self.selectedImageView.image = UIImage(named: "TemplateUnselected")
         }
     }
 }
