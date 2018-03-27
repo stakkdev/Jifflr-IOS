@@ -38,6 +38,15 @@ final class Advert: PFObject {
             self["isCMS"] = newValue
         }
     }
+    
+    var details: AdvertDetails? {
+        get {
+            return self["details"] as? AdvertDetails
+        }
+        set {
+            self["details"] = newValue
+        }
+    }
 }
 
 extension Advert: PFSubclassing {
