@@ -122,7 +122,7 @@ class FeedbackViewController: BaseViewController {
                 }
                 
                 if advert.isCMS {
-                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: advert)
+                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, isPreview: false)
                     self.navigationController?.pushViewController(advertViewController, animated: true)
                 } else {
                     let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)

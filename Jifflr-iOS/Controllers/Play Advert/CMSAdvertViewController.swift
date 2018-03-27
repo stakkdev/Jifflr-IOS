@@ -11,12 +11,14 @@ import UIKit
 class CMSAdvertViewController: BaseViewController {
 
     var advert: Advert!
+    var isPreview = false
     var content:[(question: Question, answers: [Answer])] = []
 
-    class func instantiateFromStoryboard(advert: Advert) -> CMSAdvertViewController {
+    class func instantiateFromStoryboard(advert: Advert, isPreview: Bool) -> CMSAdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let advertViewController = storyboard.instantiateViewController(withIdentifier: "CMSAdvertViewController") as! CMSAdvertViewController
         advertViewController.advert = advert
+        advertViewController.isPreview = isPreview
         return advertViewController
     }
 

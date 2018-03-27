@@ -44,6 +44,8 @@
 "error.changeInvitation.invalidName" = "Please enter the name of the person you are inviting.";
 "error.changeInvitation.invalidEmail" = "Please enter the email of the person you are inviting.";
 "error.createAd.adName" = "Please enter a valid Ad Name.";
+"error.chooseTemplate" = "Please select an ad template to proceed.";
+"error.addContent" = "Please add the required content to proceed.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

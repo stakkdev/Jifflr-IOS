@@ -51,10 +51,52 @@ class AddContentViewController: BaseViewController {
     }
     
     @IBAction func previewButtonPressed(sender: UIButton) {
-    
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, isPreview: true)
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
+        guard let template = self.advert.details?.template else { return }
         
+        guard self.validateInput(key: template.key) else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
+        
+        // TODO: Push to next screen
+    }
+    
+    func validateInput(key: String) -> Bool {
+        
+        switch key {
+        case AdvertTemplateKey.imageVideoPortait:
+            return self.validateImage()
+        case AdvertTemplateKey.imageVideoLandscape:
+            return self.validateImage()
+        case AdvertTemplateKey.titleMessageImage:
+            return self.validateTextAndImage()
+        case AdvertTemplateKey.titleImageMessage:
+            return self.validateTextAndImage()
+        case AdvertTemplateKey.imageTitleMessage:
+            return self.validateTextAndImage()
+        default:
+            return false
+        }
+    }
+    
+    func validateTextAndImage() -> Bool {
+        guard let title = self.titleTextField.text, !title.isEmpty else { return false }
+        guard let message = self.messageTextView.text, !message.isEmpty else { return false }
+        guard self.advert.details?.image != nil else { return false }
+        
+        self.advert.details?.title = title
+        self.advert.details?.message = message
+        
+        return true
+    }
+    
+    func validateImage() -> Bool {
+        guard self.advert.details?.image != nil else { return false }
+        return true
     }
 }

@@ -64,6 +64,7 @@ class ChooseTemplateViewController: BaseViewController {
     
     @objc func nextButtonPressed(sender: UIButton) {
         guard let indexPath = self.tableView.indexPathForSelectedRow else {
+            self.displayError(error: ErrorMessage.chooseTemplate)
             return
         }
         
