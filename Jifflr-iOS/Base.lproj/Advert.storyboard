@@ -626,9 +626,10 @@
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DashboardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gGj-xH-POp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGj-xH-POp">
                                 <rect key="frame" x="76" y="364" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CMSAdvertTriangles" translatesAutoresizingMaskIntoConstraints="NO" id="im6-hd-7wl">
                                 <rect key="frame" x="284" y="204" width="32" height="84"/>
@@ -891,7 +892,6 @@
     </scenes>
     <resources>
         <image name="CMSAdvertTriangles" width="40" height="110"/>
-        <image name="DashboardBackground" width="376" height="667"/>
         <image name="FeedbackNoButton" width="96" height="96"/>
         <image name="FeedbackScale1" width="57" height="56"/>
         <image name="FeedbackScale2" width="56" height="56"/>
