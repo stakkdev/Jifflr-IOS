@@ -630,6 +630,10 @@
                                 <rect key="frame" x="76" y="364" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CMSAdvertTriangles" translatesAutoresizingMaskIntoConstraints="NO" id="im6-hd-7wl">
+                                <rect key="frame" x="284" y="204" width="32" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
@@ -639,6 +643,7 @@
                         <outlet property="messageTextView" destination="g3h-IX-qcm" id="yuK-GI-Ere"/>
                         <outlet property="titleBackgroundView" destination="Hd0-Om-ix5" id="s6H-pO-rxh"/>
                         <outlet property="titleLabel" destination="Odn-38-NvH" id="SRc-kr-Udg"/>
+                        <outlet property="trianglesImageView" destination="im6-hd-7wl" id="Afh-Tg-ctM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZN-jt-fp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -885,6 +890,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CMSAdvertTriangles" width="40" height="110"/>
         <image name="DashboardBackground" width="376" height="667"/>
         <image name="FeedbackNoButton" width="96" height="96"/>
         <image name="FeedbackScale1" width="57" height="56"/>

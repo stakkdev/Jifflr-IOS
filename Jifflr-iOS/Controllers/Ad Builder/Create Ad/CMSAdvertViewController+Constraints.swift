@@ -19,7 +19,7 @@ extension CMSAdvertViewController {
         
         self.messageTextView.layer.masksToBounds = true
         self.messageTextView.layer.cornerRadius = 20.0
-        self.messageTextView.textContainerInset = UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
+        self.messageTextView.textContainerInset = UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 52.0)
     }
     
     func setupConstraints() {
@@ -29,6 +29,7 @@ extension CMSAdvertViewController {
         self.titleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         self.messageTextView.translatesAutoresizingMaskIntoConstraints = false
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.trianglesImageView.translatesAutoresizingMaskIntoConstraints = false
         
         switch template.key {
         case AdvertTemplateKey.imageVideoPortait:
@@ -72,6 +73,12 @@ extension CMSAdvertViewController {
         let imageViewHeight = NSLayoutConstraint(item: self.imageView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.34, constant: 0.0)
         let imageViewBottom = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
         self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewHeight, imageViewBottom])
+        
+        let trianglesTrailing = NSLayoutConstraint(item: self.trianglesImageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        let trianglesHeight = NSLayoutConstraint(item: self.trianglesImageView, attribute: .height, relatedBy: .equal, toItem: self.messageTextView, attribute: .height, multiplier: 0.54, constant: 0.0)
+        let trianglesCenterY = NSLayoutConstraint(item: self.trianglesImageView, attribute: .centerY, relatedBy: .equal, toItem: self.messageTextView, attribute: .centerY, multiplier: 1.0, constant: 30.0)
+        let trianglesWidth = NSLayoutConstraint(item: self.trianglesImageView, attribute: .width, relatedBy: .equal, toItem: self.trianglesImageView, attribute: .height, multiplier: 0.36, constant: 0.0)
+        self.view.addConstraints([trianglesTrailing, trianglesHeight, trianglesCenterY, trianglesWidth])
         
         let textViewLeading = NSLayoutConstraint(item: self.messageTextView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 18.0)
         let textViewTrailing = NSLayoutConstraint(item: self.messageTextView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 20.0)

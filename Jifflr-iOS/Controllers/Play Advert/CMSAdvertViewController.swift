@@ -13,6 +13,7 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleBackgroundView: UIView!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var trianglesImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
 
     var advert: Advert!
