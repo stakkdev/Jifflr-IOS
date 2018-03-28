@@ -48,11 +48,20 @@ extension CMSAdvertViewController {
     }
     
     func setupImageVideoPortait() {
-
+        self.titleBackgroundView.isHidden = true
+        self.titleLabel.isHidden = true
+        self.messageTextView.isHidden = true
+        self.trianglesImageView.isHidden = true
+        
+        let imageViewLeading = NSLayoutConstraint(item: self.imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
+        let imageViewTrailing = NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let imageViewBottom = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewTop, imageViewBottom])
     }
     
     func setupImageVideoLandscape() {
-
+        self.setupImageVideoPortait()
     }
     
     func setupTitleMessageImage() {
@@ -63,10 +72,7 @@ extension CMSAdvertViewController {
         let titleBackgroundTop = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 10.0)
         self.view.addConstraints([titleBackgroundLeading, titleBackgroundTrailing, titleBackgroundHeight, titleBackgroundTop])
         
-        let titleLabelLeading = NSLayoutConstraint(item: self.titleLabel, attribute: .leading, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .leading, multiplier: 1.0, constant: 59.0)
-        let titleLabelTrailing = NSLayoutConstraint(item: self.titleLabel, attribute: .trailing, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .trailing, multiplier: 1.0, constant: -8.0)
-        let titleLabelCenterY = NSLayoutConstraint(item: self.titleLabel, attribute: .centerY, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.titleBackgroundView.addConstraints([titleLabelLeading, titleLabelTrailing, titleLabelCenterY])
+        self.addTitleLabelConstraints()
         
         let imageViewLeading = NSLayoutConstraint(item: self.imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let imageViewTrailing = NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
@@ -74,11 +80,7 @@ extension CMSAdvertViewController {
         let imageViewBottom = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
         self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewHeight, imageViewBottom])
         
-        let trianglesTrailing = NSLayoutConstraint(item: self.trianglesImageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
-        let trianglesHeight = NSLayoutConstraint(item: self.trianglesImageView, attribute: .height, relatedBy: .equal, toItem: self.messageTextView, attribute: .height, multiplier: 0.54, constant: 0.0)
-        let trianglesCenterY = NSLayoutConstraint(item: self.trianglesImageView, attribute: .centerY, relatedBy: .equal, toItem: self.messageTextView, attribute: .centerY, multiplier: 1.0, constant: 30.0)
-        let trianglesWidth = NSLayoutConstraint(item: self.trianglesImageView, attribute: .width, relatedBy: .equal, toItem: self.trianglesImageView, attribute: .height, multiplier: 0.36, constant: 0.0)
-        self.view.addConstraints([trianglesTrailing, trianglesHeight, trianglesCenterY, trianglesWidth])
+        self.addTrianglesImageViewConstraints()
         
         let textViewLeading = NSLayoutConstraint(item: self.messageTextView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 18.0)
         let textViewTrailing = NSLayoutConstraint(item: self.messageTextView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 20.0)
@@ -88,10 +90,66 @@ extension CMSAdvertViewController {
     }
     
     func setupTitleImageMessage() {
-
+        let titleBackgroundLeading = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: -20.0)
+        let titleBackgroundTrailing = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: -18.0)
+        let titleBackgroundHeight = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.11, constant: 0.0)
+        let titleBackgroundTop = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 10.0)
+        self.view.addConstraints([titleBackgroundLeading, titleBackgroundTrailing, titleBackgroundHeight, titleBackgroundTop])
+        
+        self.addTitleLabelConstraints()
+        
+        let imageViewLeading = NSLayoutConstraint(item: self.imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
+        let imageViewTrailing = NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        let imageViewHeight = NSLayoutConstraint(item: self.imageView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.34, constant: 0.0)
+        let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
+        self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewHeight, imageViewTop])
+        
+        self.addTrianglesImageViewConstraints()
+        
+        let textViewLeading = NSLayoutConstraint(item: self.messageTextView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 18.0)
+        let textViewTrailing = NSLayoutConstraint(item: self.messageTextView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 20.0)
+        let textViewTop = NSLayoutConstraint(item: self.messageTextView, attribute: .top, relatedBy: .equal, toItem: self.imageView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
+        let textViewBottom = NSLayoutConstraint(item: self.messageTextView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
+        self.view.addConstraints([textViewLeading, textViewTrailing, textViewTop, textViewBottom])
     }
     
     func setupImageTitleMessage() {
-
+        
+        let imageViewLeading = NSLayoutConstraint(item: self.imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
+        let imageViewTrailing = NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        let imageViewHeight = NSLayoutConstraint(item: self.imageView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.34, constant: 0.0)
+        let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 10.0)
+        self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewHeight, imageViewTop])
+        
+        let titleBackgroundLeading = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: -20.0)
+        let titleBackgroundTrailing = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: -18.0)
+        let titleBackgroundHeight = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.11, constant: 0.0)
+        let titleBackgroundTop = NSLayoutConstraint(item: self.titleBackgroundView, attribute: .top, relatedBy: .equal, toItem: self.imageView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
+        self.view.addConstraints([titleBackgroundLeading, titleBackgroundTrailing, titleBackgroundHeight, titleBackgroundTop])
+        
+        self.addTitleLabelConstraints()
+        
+        self.addTrianglesImageViewConstraints()
+        
+        let textViewLeading = NSLayoutConstraint(item: self.messageTextView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 18.0)
+        let textViewTrailing = NSLayoutConstraint(item: self.messageTextView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 20.0)
+        let textViewTop = NSLayoutConstraint(item: self.messageTextView, attribute: .top, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
+        let textViewBottom = NSLayoutConstraint(item: self.messageTextView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
+        self.view.addConstraints([textViewLeading, textViewTrailing, textViewTop, textViewBottom])
+    }
+    
+    func addTitleLabelConstraints() {
+        let titleLabelLeading = NSLayoutConstraint(item: self.titleLabel, attribute: .leading, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .leading, multiplier: 1.0, constant: 59.0)
+        let titleLabelTrailing = NSLayoutConstraint(item: self.titleLabel, attribute: .trailing, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .trailing, multiplier: 1.0, constant: -8.0)
+        let titleLabelCenterY = NSLayoutConstraint(item: self.titleLabel, attribute: .centerY, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        self.titleBackgroundView.addConstraints([titleLabelLeading, titleLabelTrailing, titleLabelCenterY])
+    }
+    
+    func addTrianglesImageViewConstraints() {
+        let trianglesTrailing = NSLayoutConstraint(item: self.trianglesImageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
+        let trianglesHeight = NSLayoutConstraint(item: self.trianglesImageView, attribute: .height, relatedBy: .equal, toItem: self.messageTextView, attribute: .height, multiplier: 0.54, constant: 0.0)
+        let trianglesCenterY = NSLayoutConstraint(item: self.trianglesImageView, attribute: .centerY, relatedBy: .equal, toItem: self.messageTextView, attribute: .centerY, multiplier: 1.0, constant: 30.0)
+        let trianglesWidth = NSLayoutConstraint(item: self.trianglesImageView, attribute: .width, relatedBy: .equal, toItem: self.trianglesImageView, attribute: .height, multiplier: 0.36, constant: 0.0)
+        self.view.addConstraints([trianglesTrailing, trianglesHeight, trianglesCenterY, trianglesWidth])
     }
 }

@@ -37,9 +37,6 @@ class CMSAdvertViewController: BaseViewController {
         if !self.isPreview {
             self.fetchData()
         }
-        
-        self.messageTextView.text = "Quiz night\nEvery Tuesday Evening\nStarts: 8pm"
-        self.titleLabel.text = "THE RED LION"
     }
 
     func setupUI() {
