@@ -223,5 +223,8 @@
 "addContent.messageTextView.placeholder" = "Enter Ad Message";
 "addContent.imageButton.title" = "Image";
 "addContent.previewButton.title" = "PREVIEW";
+"addContent.actionSheet.title" = "Add Photo";
+"addContent.takePhoto.title" = "Take a Photo";
+"addContent.library.title" = "Choose from Photo Library";
 "adPreview.navigation.title" = "Preview";
 

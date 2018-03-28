@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CMSAdvertViewController: BaseViewController {
     
@@ -15,6 +16,9 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var trianglesImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var player = AVPlayer()
+    var playerLayer: AVPlayerLayer!
 
     var advert: Advert!
     var isPreview = false
@@ -61,7 +65,10 @@ class CMSAdvertViewController: BaseViewController {
         
         self.advert.details?.image?.getDataInBackground(block: { (data, error) in
             guard let data = data, error == nil else { return }
-            self.imageView.image = UIImage(data: data)
+            
+            if let image = UIImage(data: data) {
+                self.imageView.image = image
+            }
         })
     }
 

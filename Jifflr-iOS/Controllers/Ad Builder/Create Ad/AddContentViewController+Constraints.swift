@@ -43,7 +43,9 @@ extension AddContentViewController {
         
         let buttonCenterX = NSLayoutConstraint(item: self.imageButton, attribute: .centerX, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         let buttonCenterY = NSLayoutConstraint(item: self.imageButton, attribute: .centerY, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([buttonCenterX, buttonCenterY])
+        let buttonHeight = NSLayoutConstraint(item: self.imageButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let buttonWidth = NSLayoutConstraint(item: self.imageButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        self.view.addConstraints([buttonCenterX, buttonCenterY, buttonHeight, buttonWidth])
         
         self.titleTextField.isHidden = true
         self.messageTextView.isHidden = true
@@ -76,7 +78,9 @@ extension AddContentViewController {
         
         let buttonCenterX = NSLayoutConstraint(item: self.imageButton, attribute: .centerX, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         let buttonCenterY = NSLayoutConstraint(item: self.imageButton, attribute: .centerY, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([buttonCenterX, buttonCenterY])
+        let buttonHeight = NSLayoutConstraint(item: self.imageButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let buttonWidth = NSLayoutConstraint(item: self.imageButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        self.view.addConstraints([buttonCenterX, buttonCenterY, buttonHeight, buttonWidth])
         
         self.titleTextField.isHidden = false
         self.messageTextView.isHidden = false
@@ -105,7 +109,9 @@ extension AddContentViewController {
         
         let buttonCenterX = NSLayoutConstraint(item: self.imageButton, attribute: .centerX, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         let buttonCenterY = NSLayoutConstraint(item: self.imageButton, attribute: .centerY, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([buttonCenterX, buttonCenterY])
+        let buttonHeight = NSLayoutConstraint(item: self.imageButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let buttonWidth = NSLayoutConstraint(item: self.imageButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        self.view.addConstraints([buttonCenterX, buttonCenterY, buttonHeight, buttonWidth])
         
         self.titleTextField.isHidden = false
         self.messageTextView.isHidden = false
@@ -134,7 +140,9 @@ extension AddContentViewController {
         
         let buttonCenterX = NSLayoutConstraint(item: self.imageButton, attribute: .centerX, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
         let buttonCenterY = NSLayoutConstraint(item: self.imageButton, attribute: .centerY, relatedBy: .equal, toItem: self.imageOverlayView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([buttonCenterX, buttonCenterY])
+        let buttonHeight = NSLayoutConstraint(item: self.imageButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        let buttonWidth = NSLayoutConstraint(item: self.imageButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200.0)
+        self.view.addConstraints([buttonCenterX, buttonCenterY, buttonHeight, buttonWidth])
         
         self.titleTextField.isHidden = false
         self.messageTextView.isHidden = false

@@ -47,7 +47,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r15-5S-igr">
                                 <rect key="frame" x="18" y="203.5" width="339" height="70"/>
@@ -223,7 +223,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Htr-0z-8f0" customClass="JifflrTextView" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="25" y="137" width="240" height="128"/>
@@ -237,14 +237,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
-                                <rect key="frame" x="135" y="384" width="64" height="22"/>
+                                <rect key="frame" x="135" y="384" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <inset key="titleEdgeInsets" minX="-22" minY="30" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="28" minY="-30" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="60" minY="-30" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Image" image="AddImageButton">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addImageButtonPressedWithSender:" destination="xuf-zG-emo" eventType="touchUpInside" id="sTd-sf-Q5w"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
