@@ -236,19 +236,14 @@
                                 <rect key="frame" x="46" y="322" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
-                                <rect key="frame" x="125" y="371" width="83" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-BN-Nwr">
+                                <rect key="frame" x="135" y="384" width="64" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="+ Image">
-                                            <attributes>
-                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" metaFont="system" size="15"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="-22" minY="30" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="28" minY="-30" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Image" image="AddImageButton">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -278,6 +273,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddImageButton" width="22" height="22"/>
         <image name="ImageOverlayBackground" width="375" height="232"/>
     </resources>
 </document>

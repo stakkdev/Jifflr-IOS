@@ -47,10 +47,8 @@ class AddContentViewController: BaseViewController {
         self.previewButton.setTitle("addContent.previewButton.title".localized(), for: .normal)
         self.titleTextField.placeholder = "addContent.titleTextField.placeholder".localized()
         self.messageTextView.placeholder = "addContent.messageTextView.placeholder".localized()
-        
-        self.imageButton.titleLabel?.numberOfLines = 0
-        self.imageButton.titleLabel?.lineBreakMode = .byWordWrapping
-        self.imageButton.setAttributedTitle(self.constructImageButtonTitle(), for: .normal)
+        self.imageButton.setTitle("addContent.imageButton.title".localized(), for: .normal)
+        self.imageButton.setImage(UIImage(named: "AddImageButton"), for: .normal)
     }
     
     @IBAction func previewButtonPressed(sender: UIButton) {
@@ -110,30 +108,5 @@ class AddContentViewController: BaseViewController {
     func validateImage() -> Bool {
         guard self.advert.details?.image != nil else { return false }
         return true
-    }
-    
-    func constructImageButtonTitle() -> NSAttributedString {
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        paragraphStyle.lineBreakMode = .byWordWrapping
-        paragraphStyle.lineHeightMultiple = 1.1
-        
-        let attributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: Constants.FontNames.GothamBook, size: 20.0)!,
-            NSAttributedStringKey.paragraphStyle: paragraphStyle
-        ]
-        
-        let text = "+\n\("addContent.imageButton.title".localized())"
-        let attributedString = NSMutableAttributedString(string: text, attributes: attributes)
-        
-        let range = (text as NSString).range(of: "+")
-        if range.location != NSNotFound {
-            let font = UIFont(name: Constants.FontNames.GothamMedium, size: 36.0)!
-            attributedString.addAttribute(NSAttributedStringKey.font, value: font, range: range)
-        }
-        
-        return attributedString
     }
 }
