@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'git@bitbucket.org:thedistance/thedistancekit-cocoapods.git'
 
 # pod configuration
-platform :ios, '8.0'
+platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
@@ -31,6 +31,7 @@ target 'Jifflr-iOS' do
     pod 'IQKeyboardManagerSwift'
     pod 'TDOnboarding', :git => 'git@bitbucket.org:thedistance/tdonboarding-ios.git'
     pod 'Charts'
+    pod 'Player'
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header

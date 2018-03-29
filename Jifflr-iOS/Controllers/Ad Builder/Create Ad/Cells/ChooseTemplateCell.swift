@@ -19,6 +19,7 @@ class ChooseTemplateCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         self.selectedImageView.backgroundColor = UIColor.clear
+        self.templateImageView.backgroundColor = UIColor.clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

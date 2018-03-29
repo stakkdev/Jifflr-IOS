@@ -112,15 +112,15 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekM-RW-1mU">
                                                     <rect key="frame" x="18" y="0.0" width="339" height="82.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-wC-usv">
-                                                            <rect key="frame" x="15" y="20" width="32" height="42.5"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-wC-usv">
+                                                            <rect key="frame" x="10" y="20" width="44" height="42.5"/>
                                                             <color key="backgroundColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="32" id="df9-wg-aIq"/>
+                                                                <constraint firstAttribute="width" constant="44" id="df9-wg-aIq"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image or video only" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shy-fP-160">
-                                                            <rect key="frame" x="62" y="31" width="207" height="21"/>
+                                                            <rect key="frame" x="64" y="31" width="205" height="21"/>
                                                             <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                                             <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -138,14 +138,14 @@
                                                     <constraints>
                                                         <constraint firstItem="NYO-32-Nzj" firstAttribute="leading" secondItem="Shy-fP-160" secondAttribute="trailing" constant="15" id="810-Ct-9Hb"/>
                                                         <constraint firstItem="wxW-wC-usv" firstAttribute="top" secondItem="ekM-RW-1mU" secondAttribute="top" constant="20" id="DUc-io-mZf"/>
-                                                        <constraint firstItem="wxW-wC-usv" firstAttribute="leading" secondItem="ekM-RW-1mU" secondAttribute="leading" constant="15" id="DaB-e8-TnS"/>
+                                                        <constraint firstItem="wxW-wC-usv" firstAttribute="leading" secondItem="ekM-RW-1mU" secondAttribute="leading" constant="10" id="DaB-e8-TnS"/>
                                                         <constraint firstItem="NYO-32-Nzj" firstAttribute="centerY" secondItem="ekM-RW-1mU" secondAttribute="centerY" id="ECu-qJ-AVx"/>
                                                         <constraint firstAttribute="trailing" secondItem="NYO-32-Nzj" secondAttribute="trailing" constant="15" id="Mhb-Bb-0LQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="wxW-wC-usv" secondAttribute="bottom" constant="20" id="Wyc-vD-e5O"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Shy-fP-160" secondAttribute="bottom" constant="8" id="YGz-Ys-E7p"/>
                                                         <constraint firstItem="Shy-fP-160" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ekM-RW-1mU" secondAttribute="top" constant="8" id="nuh-hb-x7j"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="82.5" id="sht-JN-itB"/>
-                                                        <constraint firstItem="Shy-fP-160" firstAttribute="leading" secondItem="wxW-wC-usv" secondAttribute="trailing" constant="15" id="x32-gW-96R"/>
+                                                        <constraint firstItem="Shy-fP-160" firstAttribute="leading" secondItem="wxW-wC-usv" secondAttribute="trailing" constant="10" id="x32-gW-96R"/>
                                                         <constraint firstItem="Shy-fP-160" firstAttribute="centerY" secondItem="ekM-RW-1mU" secondAttribute="centerY" id="y2Y-d4-kEv"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
