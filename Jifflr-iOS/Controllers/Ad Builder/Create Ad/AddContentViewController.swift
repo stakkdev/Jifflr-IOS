@@ -150,6 +150,7 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             self.imageOverlayView.image = image
             
             self.advert.details?.image = PFFile(data: data)
+            guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else { return }
             
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             do {
