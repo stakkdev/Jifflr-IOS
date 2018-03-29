@@ -225,6 +225,8 @@ class UserManager: NSObject {
 
     func logOut(completion: @escaping (ErrorMessage?) -> Void) {
         PFUser.logOutInBackground { error in
+            MediaManager.shared.clear()
+            
             DispatchQueue.main.async {
                 if error != nil {
                     completion(ErrorMessage.parseError(error!.localizedDescription))

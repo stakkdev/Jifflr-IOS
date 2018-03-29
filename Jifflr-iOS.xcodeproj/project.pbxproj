@@ -12,6 +12,12 @@
 		100684F120430C8A0004C675 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */; };
 		1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */; };
 		1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */; };
+		1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173244206A4545005837A7 /* AdvertDetails.swift */; };
+		1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173246206A4F0F005837A7 /* AddContentViewController.swift */; };
+		1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173248206A54FA005837A7 /* JifflrTextView.swift */; };
+		1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */; };
+		1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */; };
+		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
@@ -20,6 +26,11 @@
 		1AF1954620690A9C00FE3896 /* GothamLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1954520690A7900FE3896 /* GothamLight.otf */; };
 		1AF1954820691FE300FE3896 /* AdBuilderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1954720691FE300FE3896 /* AdBuilderManager.swift */; };
 		1AF1954A206921E500FE3896 /* AdBuilderOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */; };
+		1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1954C20692C8900FE3896 /* CreateAdViewController.swift */; };
+		1AF1955020692D5F00FE3896 /* CreateAd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1954E20692D5F00FE3896 /* CreateAd.storyboard */; };
+		1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */; };
+		1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19554206938AC00FE3896 /* ChooseTemplateCell.swift */; };
+		1AF1955720693E7800FE3896 /* AdvertTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1955620693E7800FE3896 /* AdvertTemplate.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
@@ -171,6 +182,12 @@
 		100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
 		1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPaginationManager.swift; path = Controllers/Team/TeamPaginationManager.swift; sourceTree = "<group>"; };
+		1A173244206A4545005837A7 /* AdvertDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertDetails.swift; path = Models/AdvertDetails.swift; sourceTree = "<group>"; };
+		1A173246206A4F0F005837A7 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddContentViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddContentViewController.swift"; sourceTree = "<group>"; };
+		1A173248206A54FA005837A7 /* JifflrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextView.swift; path = Views/JifflrTextView.swift; sourceTree = "<group>"; };
+		1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddContentViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/AddContentViewController+Constraints.swift"; sourceTree = "<group>"; };
+		1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CMSAdvertViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/CMSAdvertViewController+Constraints.swift"; sourceTree = "<group>"; };
+		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
@@ -179,6 +196,11 @@
 		1AF1954520690A7900FE3896 /* GothamLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GothamLight.otf; path = "Supporting Files/Fonts/GothamLight.otf"; sourceTree = "<group>"; };
 		1AF1954720691FE300FE3896 /* AdBuilderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdBuilderManager.swift; path = "Helpers/Ad Builder/AdBuilderManager.swift"; sourceTree = "<group>"; };
 		1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdBuilderOverviewViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderOverviewViewController.swift"; sourceTree = "<group>"; };
+		1AF1954C20692C8900FE3896 /* CreateAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateAdViewController.swift; path = "Controllers/Ad Builder/Create Ad/CreateAdViewController.swift"; sourceTree = "<group>"; };
+		1AF1954F20692D5F00FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateAd.storyboard; sourceTree = "<group>"; };
+		1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseTemplateViewController.swift; path = "Controllers/Ad Builder/Create Ad/ChooseTemplateViewController.swift"; sourceTree = "<group>"; };
+		1AF19554206938AC00FE3896 /* ChooseTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseTemplateCell.swift; path = "Controllers/Ad Builder/Create Ad/Cells/ChooseTemplateCell.swift"; sourceTree = "<group>"; };
+		1AF1955620693E7800FE3896 /* AdvertTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertTemplate.swift; path = Models/AdvertTemplate.swift; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF98737963D7F5B4AB1E447 /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		5ECFD93B67F4BD2D51848E3E /* Pods-Jifflr-iOSTests.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (production).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (production).xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				1AF195402069020200FE3896 /* Overview */,
+				1AF1954B20692C5300FE3896 /* Create Ad */,
 			);
 			name = "Ad Builder";
 			sourceTree = "<group>";
@@ -378,6 +401,26 @@
 				1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */,
 			);
 			name = Overview;
+			sourceTree = "<group>";
+		};
+		1AF1954B20692C5300FE3896 /* Create Ad */ = {
+			isa = PBXGroup;
+			children = (
+				1AF195532069388E00FE3896 /* Cells */,
+				1AF1954C20692C8900FE3896 /* CreateAdViewController.swift */,
+				1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */,
+				1A173246206A4F0F005837A7 /* AddContentViewController.swift */,
+				1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */,
+			);
+			name = "Create Ad";
+			sourceTree = "<group>";
+		};
+		1AF195532069388E00FE3896 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1AF19554206938AC00FE3896 /* ChooseTemplateCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		33DC5748B12C12E7B5F90575 /* Pods */ = {
@@ -473,6 +516,7 @@
 				E96A0CEB203DABED0059DDAC /* UserManager.swift */,
 				E96A0CD9203DAAF80059DDAC /* LocationManager.swift */,
 				E96A0CE2203DAB100059DDAC /* UserDefaultsManager.swift */,
+				1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -585,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */,
+				1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */,
 				E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */,
 				E9798C26201A4C8E00E8A7D2 /* Feedback */,
 			);
@@ -714,6 +759,7 @@
 				E9DD58202035DDF3000735C3 /* JifflrTeamChart.swift */,
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
 				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
+				1A173248206A54FA005837A7 /* JifflrTextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -731,6 +777,8 @@
 				E937F5B92036F87100171480 /* LocationFinancial.swift */,
 				E937F5BB2036F8DA00171480 /* LocationStatus.swift */,
 				E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */,
+				1A173244206A4545005837A7 /* AdvertDetails.swift */,
+				1AF1955620693E7800FE3896 /* AdvertTemplate.swift */,
 				E9B9721B20495406004F0876 /* Answer.swift */,
 				E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */,
 				E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */,
@@ -811,6 +859,7 @@
 				E97B9E21203B04D90097BC65 /* FAQs.storyboard */,
 				E9D8E1C1203C318500F978D2 /* Profile.storyboard */,
 				1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */,
+				1AF1954E20692D5F00FE3896 /* CreateAd.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -988,6 +1037,7 @@
 				E9328A5B202DBDF600D79CF7 /* GothamBook.otf in Resources */,
 				E9A7179D1F8B89AC00B07414 /* LaunchScreen.storyboard in Resources */,
 				1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */,
+				1AF1955020692D5F00FE3896 /* CreateAd.storyboard in Resources */,
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
 				E9DBBC3920163485000B8835 /* Localizable.strings in Resources */,
@@ -1057,6 +1107,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/TDOnboarding/TDOnboarding.framework",
@@ -1073,6 +1124,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TDOnboarding.framework",
@@ -1249,10 +1301,12 @@
 				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
+				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
 				1AF1954820691FE300FE3896 /* AdBuilderManager.swift in Sources */,
+				1AF1955720693E7800FE3896 /* AdvertTemplate.swift in Sources */,
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */,
@@ -1263,6 +1317,7 @@
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,
+				1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */,
 				E96A0CEE203DAC3A0059DDAC /* FAQManager.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
@@ -1276,11 +1331,15 @@
 				E9F89D81201B423E00860FE3 /* DashboardViewController.swift in Sources */,
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
+				1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */,
+				1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */,
 				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,
+				1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */,
 				E96A0CF6203DAC5B0059DDAC /* SettingsManager.swift in Sources */,
 				E9305CF32047005300D4E4DD /* MyMoney.swift in Sources */,
 				1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */,
 				E9798C12201A416600E8A7D2 /* LoginViewController.swift in Sources */,
+				1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */,
 				E96A0CDC203DAAF80059DDAC /* MockContent.swift in Sources */,
 				E97B9E19203AE2ED0097BC65 /* ConfirmPasswordCell.swift in Sources */,
 				E9798C10201A416600E8A7D2 /* RegisterViewController.swift in Sources */,
@@ -1304,6 +1363,7 @@
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E96A0CDF203DAAF80059DDAC /* LocationManager.swift in Sources */,
 				1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */,
+				1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */,
 				E96A0CF4203DAC500059DDAC /* AdvertManager.swift in Sources */,
 				E937F5C620373BBC00171480 /* AdsViewedViewController.swift in Sources */,
 				E937F5BE2037125600171480 /* ChooseLocationViewController.swift in Sources */,
@@ -1312,6 +1372,7 @@
 				E9CAB3C92033060900900FCB /* JifflrTextFieldInvitation.swift in Sources */,
 				E937F5BC2036F8DA00171480 /* LocationStatus.swift in Sources */,
 				E9798C14201A41AB00E8A7D2 /* LandingViewController.swift in Sources */,
+				1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
@@ -1321,6 +1382,7 @@
 				E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */,
 				E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
+				1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */,
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
 				E9B9721C20495406004F0876 /* Answer.swift in Sources */,
 				1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */,
@@ -1365,6 +1427,14 @@
 				1AF1953C2068FF7800FE3896 /* Base */,
 			);
 			name = AdBuilderOverview.storyboard;
+			sourceTree = "<group>";
+		};
+		1AF1954E20692D5F00FE3896 /* CreateAd.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1AF1954F20692D5F00FE3896 /* Base */,
+			);
+			name = CreateAd.storyboard;
 			sourceTree = "<group>";
 		};
 		E937F5C720373BEA00171480 /* AdsViewed.storyboard */ = {

@@ -43,6 +43,10 @@ struct Constants {
         "register.gender.option6".localized(),
         "register.gender.option7".localized()
     ]
+    
+    struct UrlPaths {
+        static let media = URL(fileURLWithPath: "/assets/")
+    }
 }
 
 enum Environment: String {
@@ -196,4 +200,12 @@ struct LocationStatusType {
     static let Active = 0
     static let Disabled = 1
     static let AllowCashOut = 2
+}
+
+struct AdvertTemplateKey {
+    static let imageVideoPortait = "imageVideoPortrait"
+    static let imageVideoLandscape = "imageVideoLandscape"
+    static let titleImageMessage = "titleImageMessage"
+    static let titleMessageImage = "titleMessageImage"
+    static let imageTitleMessage = "imageTitleMessage"
 }

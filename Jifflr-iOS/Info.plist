@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>05.03.2018</string>
+	<string>27.03.2018</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
@@ -47,6 +47,12 @@
 	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Jifflr uses your camera to add images when creating ads.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Jifflr uses your photo library to add images when creating ads.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Jifflr uses your photo library to add images when creating ads.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GothamBold.otf</string>

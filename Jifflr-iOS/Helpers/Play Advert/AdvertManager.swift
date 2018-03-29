@@ -51,6 +51,8 @@ class AdvertManager: NSObject {
         PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
             let query = Advert.query()
             query?.includeKey("questions")
+            query?.includeKey("details")
+            query?.includeKey("details.template")
             query?.findObjectsInBackground(block: { (adverts, error) in
                 guard let adverts = adverts as? [Advert], error == nil else {
                     completion()
@@ -65,6 +67,29 @@ class AdvertManager: NSObject {
                         self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
                             group.leave()
                         })
+                        
+                        if let details = advert.details {
+                            group.enter()
+                            details.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                            
+                            group.enter()
+                            details.template.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                            
+                            group.enter()
+                            details.image?.getDataInBackground(block: { (data, error) in
+                                if let data = data, error == nil {
+                                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                                    let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
+                                    print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                }
+                                
+                                group.leave()
+                            })
+                        }
                     }
                     
                     group.notify(queue: .main, execute: {
@@ -190,6 +215,8 @@ class AdvertManager: NSObject {
         query?.includeKey("questionType")
         query?.includeKey("question")
         query?.includeKey("question.answers")
+        query?.includeKey("details")
+        query?.includeKey("details.template")
         query?.whereKey("isCMS", equalTo: true)
         query?.getFirstObjectInBackground(block: { (object, error) in
             if let advert = object as? Advert, error == nil {
