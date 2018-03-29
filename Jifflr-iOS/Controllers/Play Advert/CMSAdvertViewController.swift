@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Player
 
 class CMSAdvertViewController: BaseViewController {
     
@@ -19,6 +20,7 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var timer: Timer?
+    var player: Player?
 
     var advert: Advert!
     var isPreview = false
@@ -73,6 +75,22 @@ class CMSAdvertViewController: BaseViewController {
                 if !self.isPreview {
                     self.startTimer()
                 }
+            } else {
+                self.player = Player()
+                self.player?.playerDelegate = self
+                self.player?.playbackDelegate = self
+                self.player?.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
+                self.player?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                
+                self.addChildViewController(self.player!)
+                self.view.addSubview(self.player!.view)
+                self.player!.didMove(toParentViewController: self)
+                
+                guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
+                guard let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
+                
+                self.player?.url = url
+                self.player?.playFromBeginning()
             }
         })
     }
@@ -129,5 +147,43 @@ class CMSAdvertViewController: BaseViewController {
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {
         
+    }
+}
+
+extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
+    func playerReady(_ player: Player) {
+        
+    }
+    
+    func playerPlaybackStateDidChange(_ player: Player) {
+        
+    }
+    
+    func playerBufferingStateDidChange(_ player: Player) {
+        
+    }
+    
+    func playerBufferTimeDidChange(_ bufferTime: Double) {
+        
+    }
+    
+    func playerCurrentTimeDidChange(_ player: Player) {
+        
+    }
+    
+    func playerPlaybackWillLoop(_ player: Player) {
+        
+    }
+    
+    func playerPlaybackWillStartFromBeginning(_ player: Player) {
+        
+    }
+    
+    func playerPlaybackDidEnd(_ player: Player) {
+        if self.isPreview {
+            self.player?.playFromBeginning()
+        } else {
+            self.showFeedback()
+        }
     }
 }

@@ -20,6 +20,10 @@ extension CMSAdvertViewController {
         self.messageTextView.layer.masksToBounds = true
         self.messageTextView.layer.cornerRadius = 20.0
         self.messageTextView.textContainerInset = UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 52.0)
+        
+        if let player = self.player {
+            player.view.frame = self.imageView.frame
+        }
     }
     
     func setupConstraints() {
@@ -56,7 +60,7 @@ extension CMSAdvertViewController {
         
         let imageViewLeading = NSLayoutConstraint(item: self.imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0.0)
         let imageViewTrailing = NSLayoutConstraint(item: self.imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0.0)
-        let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0.0)
         let imageViewBottom = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewTop, imageViewBottom])
         

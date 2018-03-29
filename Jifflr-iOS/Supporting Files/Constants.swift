@@ -43,6 +43,10 @@ struct Constants {
         "register.gender.option6".localized(),
         "register.gender.option7".localized()
     ]
+    
+    struct UrlPaths {
+        static let media = URL(fileURLWithPath: "/assets/")
+    }
 }
 
 enum Environment: String {

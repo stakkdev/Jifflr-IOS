@@ -17,6 +17,7 @@
 		1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173248206A54FA005837A7 /* JifflrTextView.swift */; };
 		1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */; };
 		1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */; };
+		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
@@ -186,6 +187,7 @@
 		1A173248206A54FA005837A7 /* JifflrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextView.swift; path = Views/JifflrTextView.swift; sourceTree = "<group>"; };
 		1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddContentViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/AddContentViewController+Constraints.swift"; sourceTree = "<group>"; };
 		1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CMSAdvertViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/CMSAdvertViewController+Constraints.swift"; sourceTree = "<group>"; };
+		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				E96A0CEB203DABED0059DDAC /* UserManager.swift */,
 				E96A0CD9203DAAF80059DDAC /* LocationManager.swift */,
 				E96A0CE2203DAB100059DDAC /* UserDefaultsManager.swift */,
+				1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1329,6 +1332,7 @@
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */,
+				1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */,
 				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,
 				1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */,
 				E96A0CF6203DAC5B0059DDAC /* SettingsManager.swift in Sources */,
