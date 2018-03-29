@@ -156,6 +156,7 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
                 let videoData = try Data(contentsOf: videoUrl)
                 self.advert.details?.image = PFFile(data: videoData, contentType: "video/mp4")
                 
+                guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
                 guard let thumbnail = self.getThumbnailFrom(path: videoUrl) else { return }
                 self.imageOverlayView.contentMode = .scaleAspectFill
                 self.imageOverlayView.image = thumbnail

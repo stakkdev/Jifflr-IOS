@@ -51,6 +51,7 @@ class CMSAdvertViewController: BaseViewController {
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
+        self.spinner.startAnimating()
         
         if self.isPreview {
             let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
@@ -65,34 +66,39 @@ class CMSAdvertViewController: BaseViewController {
         self.titleLabel.text = self.advert.details?.title
         self.messageTextView.text = self.advert.details?.message
         
-        self.advert.details?.image?.getDataInBackground(block: { (data, error) in
-            self.spinner.stopAnimating()
-            guard let data = data, error == nil else { return }
-            
-            if let image = UIImage(data: data) {
-                self.imageView.image = image
-                
-                if !self.isPreview {
-                    self.startTimer()
+        self.spinner.stopAnimating()
+        
+        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "jpg") {
+            do {
+                let data = try Data(contentsOf: url)
+                if let image = UIImage(data: data) {
+                    self.imageView.image = image
+                    
+                    if !self.isPreview {
+                        self.startTimer()
+                    }
                 }
-            } else {
-                self.player = Player()
-                self.player?.playerDelegate = self
-                self.player?.playbackDelegate = self
-                self.player?.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
-                self.player?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            } catch {
                 
-                self.addChildViewController(self.player!)
-                self.view.addSubview(self.player!.view)
-                self.player!.didMove(toParentViewController: self)
-                
-                guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
-                guard let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
-                
-                self.player?.url = url
-                self.player?.playFromBeginning()
             }
-        })
+            
+            return
+        }
+        
+        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "mp4") {
+            self.player = Player()
+            self.player?.playerDelegate = self
+            self.player?.playbackDelegate = self
+            self.player?.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
+            self.player?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            self.addChildViewController(self.player!)
+            self.view.addSubview(self.player!.view)
+            self.player!.didMove(toParentViewController: self)
+            
+            self.player?.url = url
+            self.player?.playFromBeginning()
+        }
     }
 
     func setupLocalization() {
@@ -102,9 +108,8 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func fetchData() {
-        self.spinner.startAnimating()
-        
         AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
+            self.spinner.stopAnimating()
             guard content.count > 0 else { return }
             self.content = content
         }

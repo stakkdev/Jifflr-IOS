@@ -78,6 +78,17 @@ class AdvertManager: NSObject {
                             details.template.pinInBackground(withName: self.pinName, block: { (success, error) in
                                 group.leave()
                             })
+                            
+                            group.enter()
+                            details.image?.getDataInBackground(block: { (data, error) in
+                                if let data = data, error == nil {
+                                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                                    let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
+                                    print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                }
+                                
+                                group.leave()
+                            })
                         }
                     }
                     
