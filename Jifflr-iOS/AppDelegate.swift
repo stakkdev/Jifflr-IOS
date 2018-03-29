@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-
+        self.handleDidEnterBackground()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -162,6 +162,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             print("Push notifications are not supported in the iOS Simulator.")
         } else {
             print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+        }
+    }
+}
+
+extension AppDelegate {
+    func handleDidEnterBackground() {
+        guard let window = UIApplication.shared.keyWindow, let rootViewController = window.rootViewController else { return }
+        guard let navController = rootViewController as? UINavigationController else { return }
+        guard let visibleViewController = navController.visibleViewController else { return }
+            
+        if visibleViewController is AdvertViewController || visibleViewController is CMSAdvertViewController {
+            rootViewController.rootDashboardViewController()
         }
     }
 }

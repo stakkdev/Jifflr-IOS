@@ -635,6 +635,10 @@
                                 <rect key="frame" x="284" y="204" width="32" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="esb-C4-1Zw">
+                                <rect key="frame" x="178" y="410" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
@@ -642,6 +646,7 @@
                     <connections>
                         <outlet property="imageView" destination="gGj-xH-POp" id="WmB-LE-Wbx"/>
                         <outlet property="messageTextView" destination="g3h-IX-qcm" id="yuK-GI-Ere"/>
+                        <outlet property="spinner" destination="esb-C4-1Zw" id="VIo-tf-kK6"/>
                         <outlet property="titleBackgroundView" destination="Hd0-Om-ix5" id="s6H-pO-rxh"/>
                         <outlet property="titleLabel" destination="Odn-38-NvH" id="SRc-kr-Udg"/>
                         <outlet property="trianglesImageView" destination="im6-hd-7wl" id="Afh-Tg-ctM"/>

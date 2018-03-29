@@ -16,9 +16,9 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var trianglesImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    var player = AVPlayer()
-    var playerLayer: AVPlayerLayer!
+    var timer: Timer?
 
     var advert: Advert!
     var isPreview = false
@@ -64,10 +64,15 @@ class CMSAdvertViewController: BaseViewController {
         self.messageTextView.text = self.advert.details?.message
         
         self.advert.details?.image?.getDataInBackground(block: { (data, error) in
+            self.spinner.stopAnimating()
             guard let data = data, error == nil else { return }
             
             if let image = UIImage(data: data) {
                 self.imageView.image = image
+                
+                if !self.isPreview {
+                    self.startTimer()
+                }
             }
         })
     }
@@ -79,10 +84,18 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func fetchData() {
+        self.spinner.startAnimating()
+        
         AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
             guard content.count > 0 else { return }
             self.content = content
         }
+    }
+    
+    func startTimer() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false, block: { (timer) in
+            self.showFeedback()
+        })
     }
 
     func showFeedback() {
@@ -115,6 +128,6 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {
-        self.showFeedback()
+        
     }
 }

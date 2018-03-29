@@ -30,6 +30,7 @@ extension CMSAdvertViewController {
         self.messageTextView.translatesAutoresizingMaskIntoConstraints = false
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
         self.trianglesImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.spinner.translatesAutoresizingMaskIntoConstraints = false
         
         switch template.key {
         case AdvertTemplateKey.imageVideoPortait:
@@ -58,6 +59,8 @@ extension CMSAdvertViewController {
         let imageViewTop = NSLayoutConstraint(item: self.imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         let imageViewBottom = NSLayoutConstraint(item: self.imageView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         self.view.addConstraints([imageViewLeading, imageViewTrailing, imageViewTop, imageViewBottom])
+        
+        self.addSpinnerConstraints()
     }
     
     func setupImageVideoLandscape() {
@@ -87,6 +90,8 @@ extension CMSAdvertViewController {
         let textViewTop = NSLayoutConstraint(item: self.messageTextView, attribute: .top, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
         let textViewBottom = NSLayoutConstraint(item: self.messageTextView, attribute: .bottom, relatedBy: .equal, toItem: self.imageView, attribute: .top, multiplier: 1.0, constant: -15.0)
         self.view.addConstraints([textViewLeading, textViewTrailing, textViewTop, textViewBottom])
+        
+        self.addSpinnerConstraints()
     }
     
     func setupTitleImageMessage() {
@@ -111,6 +116,8 @@ extension CMSAdvertViewController {
         let textViewTop = NSLayoutConstraint(item: self.messageTextView, attribute: .top, relatedBy: .equal, toItem: self.imageView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
         let textViewBottom = NSLayoutConstraint(item: self.messageTextView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
         self.view.addConstraints([textViewLeading, textViewTrailing, textViewTop, textViewBottom])
+        
+        self.addSpinnerConstraints()
     }
     
     func setupImageTitleMessage() {
@@ -136,6 +143,8 @@ extension CMSAdvertViewController {
         let textViewTop = NSLayoutConstraint(item: self.messageTextView, attribute: .top, relatedBy: .equal, toItem: self.titleBackgroundView, attribute: .bottom, multiplier: 1.0, constant: 15.0)
         let textViewBottom = NSLayoutConstraint(item: self.messageTextView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -48.0)
         self.view.addConstraints([textViewLeading, textViewTrailing, textViewTop, textViewBottom])
+        
+        self.addSpinnerConstraints()
     }
     
     func addTitleLabelConstraints() {
@@ -151,5 +160,11 @@ extension CMSAdvertViewController {
         let trianglesCenterY = NSLayoutConstraint(item: self.trianglesImageView, attribute: .centerY, relatedBy: .equal, toItem: self.messageTextView, attribute: .centerY, multiplier: 1.0, constant: 30.0)
         let trianglesWidth = NSLayoutConstraint(item: self.trianglesImageView, attribute: .width, relatedBy: .equal, toItem: self.trianglesImageView, attribute: .height, multiplier: 0.36, constant: 0.0)
         self.view.addConstraints([trianglesTrailing, trianglesHeight, trianglesCenterY, trianglesWidth])
+    }
+    
+    func addSpinnerConstraints() {
+        let spinnerCenterX = NSLayoutConstraint(item: self.spinner, attribute: .centerX, relatedBy: .equal, toItem: self.imageView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+        let spinnerCenterY = NSLayoutConstraint(item: self.spinner, attribute: .centerY, relatedBy: .equal, toItem: self.imageView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+        self.view.addConstraints([spinnerCenterX, spinnerCenterY])
     }
 }
