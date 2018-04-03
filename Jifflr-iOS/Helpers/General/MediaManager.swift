@@ -48,6 +48,18 @@ class MediaManager: NSObject {
                 try FileManager.default.removeItem(atPath: assetPath)
             }
             
+            if mediaId.contains("createAd") {
+                var deletePath = assetsPath.appending("/createAd.jpg")
+                if FileManager.default.fileExists(atPath: deletePath) {
+                    try FileManager.default.removeItem(atPath: deletePath)
+                }
+                
+                deletePath = assetsPath.appending("/createAd.mp4")
+                if FileManager.default.fileExists(atPath: deletePath) {
+                    try FileManager.default.removeItem(atPath: deletePath)
+                }
+            }
+            
             let success = FileManager.default.createFile(atPath: assetPath, contents: data, attributes: nil)
             return success
         } catch {
