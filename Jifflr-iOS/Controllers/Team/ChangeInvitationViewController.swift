@@ -118,9 +118,11 @@ extension ChangeInvitationViewController: MFMailComposeViewControllerDelegate {
         
         switch result {
         case .sent:
-            self.pendingUser.saveInBackground(block: { (success, error) in
+            pendingUser.saveInBackground(block: { (success, error) in
                 guard error == nil else {
-                    self.displayError(error: ErrorMessage.inviteSendFailed)
+                    controller.dismiss(animated: true, completion: {
+                        self.displayError(error: ErrorMessage.inviteSendFailed)
+                    })
                     return
                 }
                 
@@ -138,7 +140,5 @@ extension ChangeInvitationViewController: MFMailComposeViewControllerDelegate {
         default:
             controller.dismiss(animated: true, completion: nil)
         }
-        
-        self.pendingUser = nil
     }
 }
