@@ -112,6 +112,7 @@ extension AppDelegate {
 
     func configKeyboard() {
         IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().canAdjustAdditionalSafeAreaInsets = true
     }
 
     func configLanguage() {

@@ -48,56 +48,54 @@ class AdvertManager: NSObject {
 //            }
 //        }
 
-        PFObject.unpinAllObjectsInBackground(withName: self.pinName) { (success, error) in
-            let query = Advert.query()
-            query?.includeKey("questions")
-            query?.includeKey("details")
-            query?.includeKey("details.template")
-            query?.findObjectsInBackground(block: { (adverts, error) in
-                guard let adverts = adverts as? [Advert], error == nil else {
-                    completion()
-                    return
-                }
+        let query = Advert.query()
+        query?.includeKey("questions")
+        query?.includeKey("details")
+        query?.includeKey("details.template")
+        query?.findObjectsInBackground(block: { (adverts, error) in
+            guard let adverts = adverts as? [Advert], error == nil else {
+                completion()
+                return
+            }
+            
+            PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
+                let group = DispatchGroup()
                 
-                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
-                    let group = DispatchGroup()
+                for advert in adverts {
+                    group.enter()
+                    self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                        group.leave()
+                    })
                     
-                    for advert in adverts {
+                    if let details = advert.details {
                         group.enter()
-                        self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                        details.pinInBackground(withName: self.pinName, block: { (success, error) in
                             group.leave()
                         })
                         
-                        if let details = advert.details {
-                            group.enter()
-                            details.pinInBackground(withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
+                        group.enter()
+                        details.template.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                        
+                        group.enter()
+                        details.image?.getDataInBackground(block: { (data, error) in
+                            if let data = data, error == nil {
+                                let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                                let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
+                                print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                            }
                             
-                            group.enter()
-                            details.template.pinInBackground(withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
-                            
-                            group.enter()
-                            details.image?.getDataInBackground(block: { (data, error) in
-                                if let data = data, error == nil {
-                                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-                                    let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
-                                    print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
-                                }
-                                
-                                group.leave()
-                            })
-                        }
+                            group.leave()
+                        })
                     }
-                    
-                    group.notify(queue: .main, execute: {
-                        completion()
-                    })
+                }
+                
+                group.notify(queue: .main, execute: {
+                    completion()
                 })
             })
-        }
+        })
     }
     
     func fetchQuestionsAndAnswers(advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {

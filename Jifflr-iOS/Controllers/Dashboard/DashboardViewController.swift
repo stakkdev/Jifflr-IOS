@@ -143,7 +143,8 @@ class DashboardViewController: BaseViewController {
 
                 self.updateUI(stats: stats)
             }
-
+            
+            self.updateLocalAdvert()
             AdvertManager.shared.fetch {
                 self.updateLocalAdvert()
             }
