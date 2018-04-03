@@ -129,9 +129,11 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func startTimer() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false, block: { (timer) in
-            self.showFeedback()
-        })
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false, block: { (timer) in
+                self.showFeedback()
+            })
+        }
     }
 
     func showFeedback() {
