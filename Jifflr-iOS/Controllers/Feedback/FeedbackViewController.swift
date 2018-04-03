@@ -101,7 +101,13 @@ class FeedbackViewController: BaseViewController {
     }
 
     @IBAction func createAdCampaignButtonPressed(sender: UIButton) {
-
+        self.dismiss(animated: true) {
+            guard let window = UIApplication.shared.keyWindow, let rootViewController = window.rootViewController else { return }
+            guard let navController = rootViewController as? UINavigationController else { return }
+            guard let dashboardViewController = navController.visibleViewController as? DashboardViewController else { return }
+            
+            dashboardViewController.adBuilderPressed(dashboardViewController.adBuilderButton)
+        }
     }
 
     func pushToNextAd() {
