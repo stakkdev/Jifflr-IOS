@@ -47,6 +47,7 @@
 "error.chooseTemplate" = "Please select an ad template to proceed.";
 "error.addContent" = "Please add the required content to proceed.";
 "error.mediaSaveFailed" = "Unable to save image/video, please try again.";
+"error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

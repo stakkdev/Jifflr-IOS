@@ -305,4 +305,18 @@ class AdvertManager: NSObject {
 
         return true
     }
+    
+    func flag(advert: String, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "advert": advert]
+        PFCloud.callFunction(inBackground: "flag-ad", withParameters: parameters) { responseJSON, error in
+            guard error == nil else {
+                completion(ErrorMessage.flagAdFailed)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
 }

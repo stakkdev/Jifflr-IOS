@@ -166,7 +166,11 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {
-        
+        AdvertManager.shared.flag(advert: self.advert.objectId!) { (error) in
+            if let error = error {
+                self.displayError(error: error)
+            }
+        }
     }
     
     func handleLoadError() {
