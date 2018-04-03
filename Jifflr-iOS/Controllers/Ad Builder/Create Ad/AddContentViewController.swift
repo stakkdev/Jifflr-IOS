@@ -146,19 +146,31 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let data = UIImagePNGRepresentation(image) {
+            guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else {
+                self.displayError(error: ErrorMessage.mediaSaveFailed)
+                return
+            }
+            
             self.imageOverlayView.contentMode = .scaleAspectFill
             self.imageOverlayView.image = image
             
             self.advert.details?.image = PFFile(data: data)
-            guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else { return }
             
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             do {
                 let videoData = try Data(contentsOf: videoUrl)
                 self.advert.details?.image = PFFile(data: videoData, contentType: "video/mp4")
                 
-                guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else { return }
-                guard let thumbnail = self.getThumbnailFrom(path: videoUrl) else { return }
+                guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else {
+                    self.displayError(error: ErrorMessage.mediaSaveFailed)
+                    return
+                }
+                
+                guard let thumbnail = self.getThumbnailFrom(path: videoUrl) else {
+                    self.displayError(error: ErrorMessage.mediaSaveFailed)
+                    return
+                }
+                
                 self.imageOverlayView.contentMode = .scaleAspectFill
                 self.imageOverlayView.image = thumbnail
             } catch let error {

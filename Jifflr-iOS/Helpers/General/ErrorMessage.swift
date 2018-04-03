@@ -48,6 +48,7 @@ public enum ErrorMessage {
     case createAdName
     case chooseTemplate
     case addContent
+    case mediaSaveFailed
 
     public var failureTitle: String {
         switch self {
@@ -134,6 +135,8 @@ public enum ErrorMessage {
             return "error.chooseTemplate".localized()
         case .addContent:
             return "error.addContent".localized()
+        case .mediaSaveFailed:
+            return "error.mediaSaveFailed".localized()
         }
     }
 }

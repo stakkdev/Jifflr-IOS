@@ -58,6 +58,7 @@ class CMSAdvertViewController: BaseViewController {
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
         self.spinner.startAnimating()
         
         if self.isPreview {
@@ -86,7 +87,7 @@ class CMSAdvertViewController: BaseViewController {
                     }
                 }
             } catch {
-                
+                self.handleLoadError()
             }
             
             return
@@ -105,6 +106,8 @@ class CMSAdvertViewController: BaseViewController {
             
             self.player?.url = url
             self.player?.playFromBeginning()
+        } else {
+            self.handleLoadError()
         }
     }
 
@@ -117,7 +120,10 @@ class CMSAdvertViewController: BaseViewController {
     func fetchData() {
         AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
             self.spinner.stopAnimating()
-            guard content.count > 0 else { return }
+            guard content.count > 0 else {
+                if !self.isPreview { self.handleLoadError() }
+                return
+            }
             self.content = content
         }
     }
@@ -161,6 +167,13 @@ class CMSAdvertViewController: BaseViewController {
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {
         
+    }
+    
+    func handleLoadError() {
+        let error = ErrorMessage.advertFetchFailed
+        self.displayMessage(title: error.failureTitle, message: error.failureTitle, dismissText: nil, dismissAction: { (action) in
+            self.dismissButtonPressed(sender: self.navigationItem.leftBarButtonItem!)
+        })
     }
 }
 

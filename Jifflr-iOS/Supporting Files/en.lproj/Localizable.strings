@@ -46,6 +46,7 @@
 "error.createAd.adName" = "Please enter a valid Ad Name.";
 "error.chooseTemplate" = "Please select an ad template to proceed.";
 "error.addContent" = "Please add the required content to proceed.";
+"error.mediaSaveFailed" = "Unable to save image/video, please try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
