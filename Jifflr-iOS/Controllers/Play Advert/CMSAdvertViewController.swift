@@ -31,6 +31,13 @@ class CMSAdvertViewController: BaseViewController {
         let advertViewController = storyboard.instantiateViewController(withIdentifier: "CMSAdvertViewController") as! CMSAdvertViewController
         advertViewController.advert = advert
         advertViewController.isPreview = isPreview
+        
+        if advert.details?.template.key == AdvertTemplateKey.imageVideoLandscape {
+            OrientationManager.shared.set(orientation: .landscape)
+        } else {
+            OrientationManager.shared.set(orientation: .portrait)
+        }
+        
         return advertViewController
     }
 
@@ -147,6 +154,8 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+        OrientationManager.shared.set(orientation: .portrait)
+        
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
