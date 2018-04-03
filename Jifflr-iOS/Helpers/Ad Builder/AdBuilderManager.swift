@@ -57,4 +57,17 @@ class AdBuilderManager: NSObject {
             completion(templates)
         })
     }
+    
+    func fetchQuestionTypes(completion: @escaping ([QuestionType]) -> Void) {
+        let query = QuestionType.query()
+        query?.order(byAscending: "type")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let questionTypes = objects as? [QuestionType], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(questionTypes)
+        })
+    }
 }

@@ -21,6 +21,8 @@
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
+		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
+		1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
 		1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */; };
 		1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195432069031D00FE3896 /* NoAdsViewController.swift */; };
@@ -192,6 +194,8 @@
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
+		1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDropdown.swift; path = Views/TextFields/JifflrTextFieldDropdown.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
 		1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdBuilderLandingViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderLandingViewController.swift"; sourceTree = "<group>"; };
 		1AF195432069031D00FE3896 /* NoAdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoAdsViewController.swift; path = "Controllers/Ad Builder/Overview/NoAdsViewController.swift"; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 				1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */,
 				1A173246206A4F0F005837A7 /* AddContentViewController.swift */,
 				1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */,
+				1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */,
 			);
 			name = "Create Ad";
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 				E9EE632B2031D54E00188AA1 /* JifflrTextFieldSelection.swift */,
 				E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */,
 				E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */,
+				1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */,
 			);
 			name = TextFields;
 			sourceTree = "<group>";
@@ -1317,6 +1323,7 @@
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
+				1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */,
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
@@ -1379,6 +1386,7 @@
 				1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
+				1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
 				E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */,
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,

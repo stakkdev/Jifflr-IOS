@@ -229,4 +229,8 @@
 "addContent.takePhoto.title" = "Take a Photo";
 "addContent.library.title" = "Choose from Photo Library";
 "adPreview.navigation.title" = "Preview";
+"addQuestions.navigation.title" = "Question %i";
+"addQuestions.questionTextField.placeholder" = "Enter Question";
+"addQuestions.answerType.text" = "Answer Type";
+"addQuestions.answers.text" = "Answers";
 

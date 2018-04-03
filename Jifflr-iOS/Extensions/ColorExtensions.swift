@@ -68,4 +68,8 @@ extension UIColor {
     static var greyPlaceholderColor: UIColor {
         return UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)
     }
+    
+    static var offSwitchGrey: UIColor {
+        return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
+    }
 }
