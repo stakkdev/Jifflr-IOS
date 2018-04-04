@@ -93,8 +93,13 @@ class AddQuestionsViewController: BaseViewController {
         AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
             guard questionTypes.count > 0 else { return }
             self.questionTypes = questionTypes
-            self.answerTypeTextField.questionType = self.questionTypes.first
-            self.drawInputUI(questionType: self.questionTypes.first!)
+            
+            if self.questionNumber == 1 {
+                self.answerTypeTextField.questionType = self.questionTypes.first
+                self.drawInputUI(questionType: self.questionTypes.first!)
+            } else {
+                self.answerTypeTextField.questionType = nil
+            }
         }
     }
     
@@ -104,6 +109,7 @@ class AddQuestionsViewController: BaseViewController {
             self.questionTextView.isUserInteractionEnabled = true
             self.answersContainerView.isHidden = false
             self.answersContainerView.isUserInteractionEnabled = true
+            self.answerTypeTextField.isEnabled = true
             
             guard self.questionTypes.count > 0 else { return }
             self.answerTypeTextField.questionType = self.questionTypes.first
@@ -113,6 +119,7 @@ class AddQuestionsViewController: BaseViewController {
             self.questionTextView.isUserInteractionEnabled = false
             self.answersContainerView.isHidden = true
             self.answersContainerView.isUserInteractionEnabled = false
+            self.answerTypeTextField.isEnabled = false
             
             self.answerTypeTextField.questionType = nil
         }
@@ -127,6 +134,14 @@ class AddQuestionsViewController: BaseViewController {
             self.displayError(error: ErrorMessage.addContent)
             return
         }
+        
+        if let _ = self.answerTypeTextField.questionType {
+            let newQuestionNumber = self.questionNumber + 1
+            let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            return
+        }
     }
     
     func validateInput() -> Bool {
@@ -135,7 +150,8 @@ class AddQuestionsViewController: BaseViewController {
         }
         
         guard let questionType = self.answerTypeTextField.questionType else { return false }
-        guard let questionText = self.questionTextView.text, !questionText.isEmpty else { return false }
+        guard let questionText = self.questionTextView.text, !questionText.isEmpty,
+            self.questionTextView.textColor == UIColor.mainBlue else { return false }
         
         switch questionType.type {
         case AdvertQuestionType.MultipleChoice:
