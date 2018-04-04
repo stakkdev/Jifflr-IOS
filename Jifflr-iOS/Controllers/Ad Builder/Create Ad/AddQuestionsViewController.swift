@@ -135,7 +135,7 @@ class AddQuestionsViewController: BaseViewController {
             return
         }
         
-        if let _ = self.answerTypeTextField.questionType {
+        if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
             let newQuestionNumber = self.questionNumber + 1
             let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
             self.navigationController?.pushViewController(vc, animated: true)
