@@ -12,6 +12,7 @@ extension AddQuestionsViewController {
     func drawInputUI(questionType: QuestionType) {
         switch questionType.type {
         case AdvertQuestionType.Binary, AdvertQuestionType.Rating, AdvertQuestionType.DayOfWeek, AdvertQuestionType.Month:
+            self.updateScrollViewHeight()
             self.hideInputUI()
         case AdvertQuestionType.NumberPicker, AdvertQuestionType.TimePicker, AdvertQuestionType.DatePicker:
             self.drawMinMaxUI(questionType: questionType)
@@ -24,11 +25,15 @@ extension AddQuestionsViewController {
     
     func drawMinMaxUI(questionType: QuestionType) {
         self.showInputUI()
+        self.updateScrollViewHeight()
         
-        self.minTextField.isHidden = false
-        self.maxTextField.isHidden = false
         self.minTextField.text = ""
         self.maxTextField.text = ""
+        self.answer3TextField.isHidden = true
+        self.answer4TextField.isHidden = true
+        self.answer5TextField.isHidden = true
+        self.answersRequiredLabel.isHidden = true
+        self.answersRequiredTextField.isHidden = true
         
         switch questionType.type {
         case AdvertQuestionType.NumberPicker:
@@ -56,10 +61,34 @@ extension AddQuestionsViewController {
     func drawMultipleChoiceUI() {
         self.showInputUI()
         
-        self.minTextField.isHidden = true
-        self.maxTextField.isHidden = true
         self.minTextField.text = ""
         self.maxTextField.text = ""
+        self.answer3TextField.text = ""
+        self.answer4TextField.text = ""
+        self.answer5TextField.text = ""
+        self.answer3TextField.isHidden = false
+        self.answer4TextField.isHidden = false
+        self.answer5TextField.isHidden = false
+        self.answersRequiredLabel.isHidden = false
+        self.answersRequiredTextField.isHidden = false
+        
+        self.minTextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(1)
+        self.maxTextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(2)
+        self.answer3TextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(3)
+        self.answer4TextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(4)
+        self.answer5TextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(5)
+        
+        self.minTextField.keyboardType = .default
+        self.minTextField.inputView = nil
+        self.minTextField.inputAccessoryView = nil
+        self.maxTextField.keyboardType = .default
+        self.maxTextField.inputView = nil
+        self.maxTextField.inputAccessoryView = nil
+        
+        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 710.0)
+        self.answersContainerViewHeight.constant = 440.0
+        self.nextButtonBottom.isActive = false
+        self.scrollView.isScrollEnabled = true
     }
     
     func hideInputUI() {
@@ -117,5 +146,13 @@ extension AddQuestionsViewController {
         }
         
         return nil
+    }
+    
+    func updateScrollViewHeight() {
+        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - self.scrollView.frame.origin.y)
+        self.scrollView.isScrollEnabled = false
+        self.answersContainerViewHeight.constant = 200.0
+        self.nextButtonBottom.isActive = true
+        self.view.layoutIfNeeded()
     }
 }

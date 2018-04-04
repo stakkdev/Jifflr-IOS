@@ -239,4 +239,6 @@
 "addQuestions.maxDate.placeholder" = "Enter maximum date";
 "addQuestions.minTime.placeholder" = "Enter minimum time";
 "addQuestions.maxTime.placeholder" = "Enter maximum time";
-
+"addQuestions.multipleChoice.placeholder" = "Enter answer %i";
+"addQuestions.answersRequired.text" = "Answers Required";
+"addQuestions.answersRequired.placeholder" = "Enter answers required";

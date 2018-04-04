@@ -10,15 +10,23 @@ import UIKit
 
 class AddQuestionsViewController: BaseViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var previewButton: JifflrButton!
     @IBOutlet weak var nextButton: JifflrButton!
+    @IBOutlet var nextButtonBottom: NSLayoutConstraint!
     @IBOutlet weak var questionTextView: JifflrTextView!
     @IBOutlet weak var answerTypeLabel: UILabel!
     @IBOutlet weak var answerTypeTextField: JifflrTextFieldDropdown!
     @IBOutlet weak var answersLabel: UILabel!
     @IBOutlet weak var answersContainerView: UIView!
+    @IBOutlet weak var answersContainerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var minTextField: JifflrTextField!
     @IBOutlet weak var maxTextField: JifflrTextField!
+    @IBOutlet weak var answer3TextField: JifflrTextField!
+    @IBOutlet weak var answer4TextField: JifflrTextField!
+    @IBOutlet weak var answer5TextField: JifflrTextField!
+    @IBOutlet weak var answersRequiredLabel: UILabel!
+    @IBOutlet weak var answersRequiredTextField: JifflrTextFieldDropdown!
     
     var pickerView: UIPickerView!
     var datePicker: UIDatePicker!
@@ -77,6 +85,8 @@ class AddQuestionsViewController: BaseViewController {
         self.questionTextView.text = "addQuestions.questionTextField.placeholder".localized()
         self.answerTypeLabel.text = "addQuestions.answerType.text".localized()
         self.answersLabel.text = "addQuestions.answers.text".localized()
+        self.answersRequiredLabel.text = "addQuestions.answersRequired.text".localized()
+        self.answersRequiredTextField.placeholder = "addQuestions.answersRequired.placeholder".localized()
     }
     
     func setupData() {
