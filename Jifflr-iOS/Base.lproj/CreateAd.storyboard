@@ -337,11 +337,35 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vso-ZT-BNE" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="35.5" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nJD-EA-7EM"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DFQ-Ga-2Kh" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="90.5" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="are-MD-EFT"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="DFQ-Ga-2Kh" firstAttribute="leading" secondItem="29l-vL-uua" secondAttribute="leading" constant="18" id="HHL-Un-Mub"/>
                                     <constraint firstItem="NyZ-rQ-vn0" firstAttribute="top" secondItem="29l-vL-uua" secondAttribute="top" constant="10" id="HgT-yE-gdQ"/>
+                                    <constraint firstItem="DFQ-Ga-2Kh" firstAttribute="top" secondItem="vso-ZT-BNE" secondAttribute="bottom" constant="5" id="NCL-ya-YSU"/>
+                                    <constraint firstItem="vso-ZT-BNE" firstAttribute="top" secondItem="NyZ-rQ-vn0" secondAttribute="bottom" constant="10" id="Y5a-TX-UNK"/>
+                                    <constraint firstAttribute="trailing" secondItem="DFQ-Ga-2Kh" secondAttribute="trailing" constant="18" id="bby-fU-pkt"/>
+                                    <constraint firstItem="vso-ZT-BNE" firstAttribute="leading" secondItem="29l-vL-uua" secondAttribute="leading" constant="18" id="cC5-J6-8CH"/>
                                     <constraint firstItem="NyZ-rQ-vn0" firstAttribute="leading" secondItem="29l-vL-uua" secondAttribute="leading" constant="25" id="eG1-nh-YXH"/>
+                                    <constraint firstAttribute="trailing" secondItem="vso-ZT-BNE" secondAttribute="trailing" constant="18" id="jOU-y9-GIM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -373,6 +397,8 @@
                         <outlet property="answerTypeTextField" destination="i1t-3s-3Xx" id="0hk-h0-P8f"/>
                         <outlet property="answersContainerView" destination="29l-vL-uua" id="Apz-gZ-a2F"/>
                         <outlet property="answersLabel" destination="NyZ-rQ-vn0" id="r62-AY-89p"/>
+                        <outlet property="maxTextField" destination="DFQ-Ga-2Kh" id="eYI-iD-2FG"/>
+                        <outlet property="minTextField" destination="vso-ZT-BNE" id="hK0-jD-FQ0"/>
                         <outlet property="nextButton" destination="VpA-zL-RJH" id="9ux-tJ-Uj8"/>
                         <outlet property="previewButton" destination="GVk-if-fCw" id="2Ig-yx-ice"/>
                         <outlet property="questionTextView" destination="bdp-HI-J47" id="E9A-pe-CGT"/>

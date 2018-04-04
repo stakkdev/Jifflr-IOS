@@ -61,6 +61,7 @@ class AdBuilderManager: NSObject {
     func fetchQuestionTypes(completion: @escaping ([QuestionType]) -> Void) {
         let query = QuestionType.query()
         query?.order(byAscending: "type")
+        query?.whereKey("type", notEqualTo: AdvertQuestionType.Swipe)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let questionTypes = objects as? [QuestionType], error == nil else {
                 completion([])

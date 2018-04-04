@@ -17,8 +17,11 @@ class AddQuestionsViewController: BaseViewController {
     @IBOutlet weak var answerTypeTextField: JifflrTextFieldDropdown!
     @IBOutlet weak var answersLabel: UILabel!
     @IBOutlet weak var answersContainerView: UIView!
+    @IBOutlet weak var minTextField: JifflrTextField!
+    @IBOutlet weak var maxTextField: JifflrTextField!
     
     var pickerView: UIPickerView!
+    var datePicker: UIDatePicker!
     
     var advert: Advert!
     var questionTypes: [QuestionType] = []
@@ -80,6 +83,8 @@ class AddQuestionsViewController: BaseViewController {
         AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
             guard questionTypes.count > 0 else { return }
             self.questionTypes = questionTypes
+            self.answerTypeTextField.questionType = self.questionTypes.first
+            self.drawInputUI(questionType: self.questionTypes.first!)
         }
     }
     
@@ -89,11 +94,17 @@ class AddQuestionsViewController: BaseViewController {
             self.questionTextView.isUserInteractionEnabled = true
             self.answersContainerView.isHidden = false
             self.answersContainerView.isUserInteractionEnabled = true
+            
+            guard self.questionTypes.count > 0 else { return }
+            self.answerTypeTextField.questionType = self.questionTypes.first
+            self.drawInputUI(questionType: self.questionTypes.first!)
         } else {
             self.questionTextView.text = ""
             self.questionTextView.isUserInteractionEnabled = false
             self.answersContainerView.isHidden = true
             self.answersContainerView.isUserInteractionEnabled = false
+            
+            self.answerTypeTextField.questionType = nil
         }
     }
     
@@ -122,7 +133,7 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     @objc func pickerCloseButtonPressed() {
         let selectedIndex = self.pickerView.selectedRow(inComponent: 0)
-        self.answerTypeTextField.text = self.questionTypes[selectedIndex].name
+        self.answerTypeTextField.questionType = self.questionTypes[selectedIndex]
         self.answerTypeTextField.resignFirstResponder()
     }
     
@@ -139,6 +150,7 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.answerTypeTextField.text = self.questionTypes[row].name
+        self.answerTypeTextField.questionType = self.questionTypes[row]
+        self.drawInputUI(questionType: self.questionTypes[row])
     }
 }
