@@ -123,7 +123,106 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
-
+        guard self.validateInput() else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
+    }
+    
+    func validateInput() -> Bool {
+        if self.questionNumber != 1 && self.answerTypeTextField.questionType == nil {
+            return true
+        }
+        
+        guard let questionType = self.answerTypeTextField.questionType else { return false }
+        guard let questionText = self.questionTextView.text, !questionText.isEmpty else { return false }
+        
+        switch questionType.type {
+        case AdvertQuestionType.MultipleChoice:
+            return self.validateMultipleChoice(questionText: questionText)
+        case AdvertQuestionType.NumberPicker:
+            return self.validateNumber(questionText: questionText)
+        case AdvertQuestionType.TimePicker:
+            return self.validateDate(type: questionType.type, questionText: questionText)
+        case AdvertQuestionType.DatePicker:
+            return self.validateDate(type: questionType.type, questionText: questionText)
+        default:
+            return true
+        }
+    }
+    
+    func validateDate(type: Int, questionText: String) -> Bool {
+        guard let startDateText = self.minTextField.text, !startDateText.isEmpty else { return false }
+        guard let endDateText = self.maxTextField.text, !endDateText.isEmpty else { return false }
+        
+        let dateFormatter = DateFormatter()
+        let format = type == AdvertQuestionType.DatePicker ? "dd/MM/yyyy" : "HH:mm"
+        dateFormatter.dateFormat = format
+        
+        guard let startDate = dateFormatter.date(from: startDateText) else { return false }
+        guard let endDate = dateFormatter.date(from: endDateText) else { return false }
+        guard endDate > startDate else { return false }
+        
+        // TODO - Create Questions and Answers
+        
+        return true
+    }
+    
+    func validateNumber(questionText: String) -> Bool {
+        guard let firstNumberText = self.minTextField.text, !firstNumberText.isEmpty else { return false }
+        guard let lastNumberText = self.maxTextField.text, !lastNumberText.isEmpty else { return false }
+        guard let firstNumber = Int(firstNumberText) else { return false }
+        guard let lastNumber = Int(lastNumberText) else { return false }
+        guard lastNumber > firstNumber else { return false }
+        
+        // TODO - Create Questions and Answers
+        
+        return true
+    }
+    
+    func validateMultipleChoice(questionText: String) -> Bool {
+        let firstAnswerText = self.minTextField.text
+        let secondAnswerText = self.maxTextField.text
+        let thirdAnswerText = self.answer3TextField.text
+        let fourthAnswerText = self.answer4TextField.text
+        let fifthAnswerText = self.answer5TextField.text
+        
+        guard let answer = firstAnswerText, !answer.isEmpty else {
+            return false
+        }
+        
+        var answerCount = 0
+        
+        if let answer = firstAnswerText, !answer.isEmpty {
+            answerCount += 1
+            // TODO - Create Questions and Answers
+        }
+        
+        if let answer = secondAnswerText, !answer.isEmpty {
+            answerCount += 1
+            // TODO - Create Questions and Answers
+        }
+        
+        if let answer = thirdAnswerText, !answer.isEmpty {
+            answerCount += 1
+            // TODO - Create Questions and Answers
+        }
+        
+        if let answer = fourthAnswerText, !answer.isEmpty {
+            answerCount += 1
+            // TODO - Create Questions and Answers
+        }
+        
+        if let answer = fifthAnswerText, !answer.isEmpty {
+            answerCount += 1
+            // TODO - Create Questions and Answers
+        }
+        
+        guard let requiredAnswersText = self.answersRequiredTextField.text, !requiredAnswersText.isEmpty else { return false }
+        guard let requiredAnswers = Int(requiredAnswersText) else { return false }
+        guard requiredAnswers > 0 && requiredAnswers <= answerCount else { return false }
+        
+        return true
     }
 }
 
