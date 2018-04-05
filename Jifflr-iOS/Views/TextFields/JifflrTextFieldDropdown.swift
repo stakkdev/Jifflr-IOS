@@ -9,6 +9,18 @@
 import UIKit
 
 class JifflrTextFieldDropdown: JifflrTextField {
+    
+    var questionType: QuestionType? {
+        didSet {
+            if let questionType = self.questionType {
+                self.text = questionType.name
+                self.setRightViewColor(color: UIColor.mainOrange)
+            } else {
+                self.text = ""
+                self.setRightViewColor(color: UIColor.mainBlueTransparent10)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,5 +49,10 @@ class JifflrTextFieldDropdown: JifflrTextField {
         rightWrapperView.addSubview(rightImageView)
         self.rightView = rightWrapperView
         self.rightViewMode = .always
+    }
+    
+    func setRightViewColor(color: UIColor) {
+        guard let rightView = self.rightView else { return }
+        rightView.backgroundColor = color
     }
 }

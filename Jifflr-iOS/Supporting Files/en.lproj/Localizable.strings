@@ -48,6 +48,7 @@
 "error.addContent" = "Please add the required content to proceed.";
 "error.mediaSaveFailed" = "Unable to save image/video, please try again.";
 "error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
+"error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -233,4 +234,12 @@
 "addQuestions.questionTextField.placeholder" = "Enter Question";
 "addQuestions.answerType.text" = "Answer Type";
 "addQuestions.answers.text" = "Answers";
-
+"addQuestions.minNumber.placeholder" = "Enter minimum number";
+"addQuestions.maxNumber.placeholder" = "Enter maximum number";
+"addQuestions.minDate.placeholder" = "Enter minimum date";
+"addQuestions.maxDate.placeholder" = "Enter maximum date";
+"addQuestions.minTime.placeholder" = "Enter minimum time";
+"addQuestions.maxTime.placeholder" = "Enter maximum time";
+"addQuestions.multipleChoice.placeholder" = "Enter answer %i";
+"addQuestions.answersRequired.text" = "Answers Required";
+"addQuestions.answersRequired.placeholder" = "Enter answers required";

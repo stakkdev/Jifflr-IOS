@@ -188,12 +188,14 @@ struct Onboarding {
 
 struct AdvertQuestionType {
     static let Binary = 0
-    static let Scale = 1
-    static let MultiSelect = 2
-    static let Swipe = 3
-    static let NumberPicker = 4
-    static let TimePicker = 5
-    static let DatePicker = 6
+    static let Rating = 1
+    static let MultipleChoice = 2
+    static let DayOfWeek = 3
+    static let Month = 4
+    static let Swipe = 5
+    static let NumberPicker = 6
+    static let TimePicker = 7
+    static let DatePicker = 8
 }
 
 struct LocationStatusType {

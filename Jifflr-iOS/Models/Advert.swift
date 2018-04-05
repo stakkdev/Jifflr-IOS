@@ -54,3 +54,10 @@ extension Advert: PFSubclassing {
         return "Advert"
     }
 }
+
+extension Advert {
+    func addQuestion(question: Question) {
+        guard let relation = self.relation(forKey: "questions") as? PFRelation<Question> else { return }
+        relation.add(question)
+    }
+}

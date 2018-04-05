@@ -10,19 +10,31 @@ import UIKit
 
 class AddQuestionsViewController: BaseViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var previewButton: JifflrButton!
     @IBOutlet weak var nextButton: JifflrButton!
+    @IBOutlet var nextButtonBottom: NSLayoutConstraint!
     @IBOutlet weak var questionTextView: JifflrTextView!
     @IBOutlet weak var answerTypeLabel: UILabel!
     @IBOutlet weak var answerTypeTextField: JifflrTextFieldDropdown!
     @IBOutlet weak var answersLabel: UILabel!
     @IBOutlet weak var answersContainerView: UIView!
+    @IBOutlet weak var answersContainerViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var minTextField: JifflrTextField!
+    @IBOutlet weak var maxTextField: JifflrTextField!
+    @IBOutlet weak var answer3TextField: JifflrTextField!
+    @IBOutlet weak var answer4TextField: JifflrTextField!
+    @IBOutlet weak var answer5TextField: JifflrTextField!
+    @IBOutlet weak var answersRequiredLabel: UILabel!
+    @IBOutlet weak var answersRequiredTextField: JifflrTextFieldDropdown!
     
     var pickerView: UIPickerView!
+    var datePicker: UIDatePicker!
     
     var advert: Advert!
     var questionTypes: [QuestionType] = []
     var questionNumber = 0
+    var previewContent:[(question: Question, answers: [Answer])] = []
 
     class func instantiateFromStoryboard(advert: Advert, questionNumber: Int) -> AddQuestionsViewController {
         let storyboard = UIStoryboard(name: "CreateAd", bundle: nil)
@@ -37,6 +49,12 @@ class AddQuestionsViewController: BaseViewController {
         
         self.setupUI()
         self.setupData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.previewContent = []
     }
     
     func setupUI() {
@@ -74,12 +92,21 @@ class AddQuestionsViewController: BaseViewController {
         self.questionTextView.text = "addQuestions.questionTextField.placeholder".localized()
         self.answerTypeLabel.text = "addQuestions.answerType.text".localized()
         self.answersLabel.text = "addQuestions.answers.text".localized()
+        self.answersRequiredLabel.text = "addQuestions.answersRequired.text".localized()
+        self.answersRequiredTextField.placeholder = "addQuestions.answersRequired.placeholder".localized()
     }
     
     func setupData() {
         AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
             guard questionTypes.count > 0 else { return }
             self.questionTypes = questionTypes
+            
+            if self.questionNumber == 1 {
+                self.answerTypeTextField.questionType = self.questionTypes.first
+                self.drawInputUI(questionType: self.questionTypes.first!)
+            } else {
+                self.answerTypeTextField.questionType = nil
+            }
         }
     }
     
@@ -89,20 +116,210 @@ class AddQuestionsViewController: BaseViewController {
             self.questionTextView.isUserInteractionEnabled = true
             self.answersContainerView.isHidden = false
             self.answersContainerView.isUserInteractionEnabled = true
+            self.answerTypeTextField.isEnabled = true
+            
+            guard self.questionTypes.count > 0 else { return }
+            self.answerTypeTextField.questionType = self.questionTypes.first
+            self.drawInputUI(questionType: self.questionTypes.first!)
         } else {
             self.questionTextView.text = ""
             self.questionTextView.isUserInteractionEnabled = false
             self.answersContainerView.isHidden = true
             self.answersContainerView.isUserInteractionEnabled = false
+            self.answerTypeTextField.isEnabled = false
+            
+            self.answerTypeTextField.questionType = nil
         }
     }
     
-    @IBAction func previewButtonPressed(sender: UIButton) {
-
+    @IBAction func previewButtonPressed(sender: JifflrButton) {
+        guard let questionType = self.answerTypeTextField.questionType else { return }
+        
+        self.validateInput(sender: sender) { (success) in
+            guard success == true, self.previewContent.count > 0 else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            var controller: UIViewController!
+            
+            switch questionType.type {
+            case AdvertQuestionType.Binary:
+                controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.DatePicker:
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: false, isPreview: true)
+            case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
+                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.NumberPicker:
+                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.Rating:
+                controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.TimePicker:
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, isPreview: true)
+            default:
+                return
+            }
+            
+            let navController = UINavigationController(rootViewController: controller)
+            navController.isNavigationBarHidden = true
+            self.navigationController?.present(navController, animated: true, completion: nil)
+        }
     }
     
-    @IBAction func nextButtonPressed(sender: UIButton) {
-
+    @IBAction func nextButtonPressed(sender: JifflrButton) {
+        
+        if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
+            self.validateInput(sender: sender) { (success) in
+                guard success == true else {
+                    self.displayError(error: ErrorMessage.addContent)
+                    return
+                }
+                
+                let newQuestionNumber = self.questionNumber + 1
+                let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            return
+        }
+    }
+    
+    func validateInput(sender: JifflrButton, completion: @escaping (Bool) -> Void) {
+        if self.questionNumber != 1 && self.answerTypeTextField.questionType == nil {
+            completion(false)
+            return
+        }
+        
+        guard let questionType = self.answerTypeTextField.questionType,
+            let questionText = self.questionTextView.text, !questionText.isEmpty,
+            self.questionTextView.textColor == UIColor.mainBlue else {
+            completion(false)
+            return
+        }
+        
+        self.previewContent = []
+        
+        switch questionType.type {
+        case AdvertQuestionType.MultipleChoice:
+            let valid = self.validateMultipleChoice(questionType: questionType, questionText: questionText)
+            completion(valid)
+        case AdvertQuestionType.NumberPicker:
+            let valid = self.validateNumber(questionType: questionType, questionText: questionText)
+            completion(valid)
+        case AdvertQuestionType.TimePicker:
+            let valid = self.validateDate(questionType: questionType, questionText: questionText)
+            completion(valid)
+        case AdvertQuestionType.DatePicker:
+            let valid = self.validateDate(questionType: questionType, questionText: questionText)
+            completion(valid)
+        default:
+            sender.animate()
+            self.setupDefaultQuestionType(questionType: questionType, questionText: questionText) { (success) in
+                sender.stopAnimating()
+                completion(success)
+            }
+        }
+    }
+    
+    func validateDate(questionType: QuestionType, questionText: String) -> Bool {
+        guard let startDateText = self.minTextField.text, !startDateText.isEmpty else { return false }
+        guard let endDateText = self.maxTextField.text, !endDateText.isEmpty else { return false }
+        
+        let dateFormatter = DateFormatter()
+        let format = questionType.type == AdvertQuestionType.DatePicker ? "dd/MM/yyyy" : "HH:mm"
+        dateFormatter.dateFormat = format
+        
+        guard let startDate = dateFormatter.date(from: startDateText) else { return false }
+        guard let endDate = dateFormatter.date(from: endDateText) else { return false }
+        guard endDate > startDate else { return false }
+        
+        let startAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: startDate)
+        let endAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: endDate)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
+        question.setAnswers(answers: [startAnswer, endAnswer])
+        self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: [startAnswer, endAnswer]))
+        
+        return true
+    }
+    
+    func validateNumber(questionType: QuestionType, questionText: String) -> Bool {
+        guard let firstNumberText = self.minTextField.text, !firstNumberText.isEmpty else { return false }
+        guard let lastNumberText = self.maxTextField.text, !lastNumberText.isEmpty else { return false }
+        guard let firstNumber = Int(firstNumberText) else { return false }
+        guard let lastNumber = Int(lastNumberText) else { return false }
+        guard lastNumber > firstNumber else { return false }
+        
+        let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumberText)
+        let lastAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: lastNumberText)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
+        question.setAnswers(answers: [firstAnswer, lastAnswer])
+        self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: [firstAnswer, lastAnswer]))
+        
+        return true
+    }
+    
+    func validateMultipleChoice(questionType: QuestionType, questionText: String) -> Bool {
+        let firstAnswerText = self.minTextField.text
+        let secondAnswerText = self.maxTextField.text
+        let thirdAnswerText = self.answer3TextField.text
+        let fourthAnswerText = self.answer4TextField.text
+        let fifthAnswerText = self.answer5TextField.text
+        
+        guard let answer = firstAnswerText, !answer.isEmpty else {
+            return false
+        }
+        
+        var answerCount = 0
+        let answers = [firstAnswerText, secondAnswerText, thirdAnswerText, fourthAnswerText, fifthAnswerText]
+        for answer in answers {
+            if let answer = answer, !answer.isEmpty {
+                answerCount += 1
+            }
+        }
+        
+        guard let requiredAnswersText = self.answersRequiredTextField.text, !requiredAnswersText.isEmpty else { return false }
+        guard let requiredAnswers = Int(requiredAnswersText) else { return false }
+        guard requiredAnswers > 0 && requiredAnswers <= answerCount else { return false }
+        
+        var index = 0
+        var answerObjects:[Answer] = []
+        for answer in answers {
+            if let answer = answer, !answer.isEmpty {
+                index += 1
+                let answerObject = AdBuilderManager.shared.createAnswer(index: index, content: answer)
+                answerObjects.append(answerObject)
+            }
+        }
+        
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: requiredAnswers)
+        question.setAnswers(answers: answerObjects)
+        self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: answerObjects))
+        
+        return true
+    }
+    
+    func setupDefaultQuestionType(questionType: QuestionType, questionText: String, completion: @escaping (Bool) -> Void) {
+        AdBuilderManager.shared.fetchDefaultAnswers(questionType: questionType) { (answers) in
+            guard answers.count > 0 else {
+                self.displayError(error: ErrorMessage.fetchAnswersFailed)
+                completion(false)
+                return
+            }
+            
+            let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
+            question.setAnswers(answers: answers)
+            self.advert.addQuestion(question: question)
+            
+            self.previewContent.append((question: question, answers: answers))
+            
+            completion(true)
+        }
     }
 }
 
@@ -122,7 +339,7 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     @objc func pickerCloseButtonPressed() {
         let selectedIndex = self.pickerView.selectedRow(inComponent: 0)
-        self.answerTypeTextField.text = self.questionTypes[selectedIndex].name
+        self.answerTypeTextField.questionType = self.questionTypes[selectedIndex]
         self.answerTypeTextField.resignFirstResponder()
     }
     
@@ -139,6 +356,7 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.answerTypeTextField.text = self.questionTypes[row].name
+        self.answerTypeTextField.questionType = self.questionTypes[row]
+        self.drawInputUI(questionType: self.questionTypes[row])
     }
 }

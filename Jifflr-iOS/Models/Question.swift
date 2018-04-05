@@ -56,6 +56,24 @@ final class Question: PFObject {
             self["image"] = newValue
         }
     }
+    
+    var index: Int? {
+        get {
+            return self["index"] as? Int
+        }
+        set {
+            self["index"] = newValue
+        }
+    }
+    
+    var noOfRequiredAnswers: Int? {
+        get {
+            return self["noOfRequiredAnswers"] as? Int
+        }
+        set {
+            self["noOfRequiredAnswers"] = newValue
+        }
+    }
 }
 
 extension Question: PFSubclassing {
@@ -75,6 +93,14 @@ extension Question {
             }
 
             completion(answers)
+        }
+    }
+    
+    func setAnswers(answers: [Answer]) {
+        guard let relation = self.relation(forKey: "answers") as? PFRelation<Answer> else { return }
+        
+        for answer in answers {
+            relation.add(answer)
         }
     }
 }

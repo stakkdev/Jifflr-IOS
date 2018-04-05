@@ -20,6 +20,8 @@ class FeedbackViewController: BaseViewController {
     var advert: Advert!
     var content:[(question: Question, answers: [Answer])] = []
     var questionAnswers:[QuestionAnswers] = []
+    
+    var isPreview = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +31,16 @@ class FeedbackViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if !self.isPreview {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+                self.nextAdButton.isEnabled = true
 
-        self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
-            self.nextAdButton.isEnabled = true
-
-            UIView.animate(withDuration: 0.2, animations: {
-                self.nextAdButton.alpha = 1.0
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.nextAdButton.alpha = 1.0
+                })
             })
-        })
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -57,10 +61,13 @@ class FeedbackViewController: BaseViewController {
         self.nextAdButton.setBackgroundColor(color: UIColor.mainPink)
         self.nextAdButton.isEnabled = false
         self.nextAdButton.alpha = 0.5
+        
+        self.createAdCampaignButton.isEnabled = !self.isPreview
 
         let skipBarButton = UIBarButtonItem(title: "onboarding.skipButton".localized(), style: .plain, target: self, action: #selector(self.skipButtonPressed(sender:)))
         let skipFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
         skipBarButton.setTitleTextAttributes([NSAttributedStringKey.font: skipFont], for: .normal)
+        skipBarButton.isEnabled = !self.isPreview
         self.navigationItem.rightBarButtonItem = skipBarButton
 
         let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
@@ -146,19 +153,19 @@ class FeedbackViewController: BaseViewController {
         
         switch question.type.type {
         case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isPreview: false)
         case AdvertQuestionType.DatePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: false)
-        case AdvertQuestionType.MultiSelect:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: false, isPreview: false)
+        case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isPreview: false)
         case AdvertQuestionType.NumberPicker:
-            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
-        case AdvertQuestionType.Scale:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isPreview: false)
+        case AdvertQuestionType.Rating:
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isPreview: false)
         case AdvertQuestionType.TimePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: true)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: true, isPreview: false)
         default:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isPreview: false)
         }
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -169,6 +176,6 @@ class FeedbackViewController: BaseViewController {
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: self.isPreview, completion: nil)
     }
 }

@@ -14,12 +14,13 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
     
     var selectedIndexPaths: [IndexPath] = []
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers]) -> MultiSelectFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], isPreview: Bool) -> MultiSelectFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MultiSelectFeedbackViewController") as! MultiSelectFeedbackViewController
         controller.advert = advert
         controller.content = content
         controller.questionAnswers = questionAnswers
+        controller.isPreview = isPreview
         return controller
     }
 
@@ -39,7 +40,13 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
     }
 
     override func validateAnswers() -> Bool {
-        guard self.selectedIndexPaths.count > 0 else { return false}
+        guard self.selectedIndexPaths.count > 0 else { return false }
+        
+        if let noOfRequiredAnswers = self.content.first?.question.noOfRequiredAnswers {
+            if self.selectedIndexPaths.count != noOfRequiredAnswers {
+                return false
+            }
+        }
         
         self.createQuestionAnswers(indexPaths: self.selectedIndexPaths)
         return true
@@ -105,24 +112,52 @@ extension MultiSelectFeedbackViewController: UICollectionViewDelegate, UICollect
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MultiSelectCell {
-            if cell.roundedView.tag == 0 {
-                cell.roundedView.tag = 1
-                cell.roundedView.backgroundColor = UIColor.mainOrange
-                cell.titleLabel.textColor = UIColor.white
-                cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBold, size: 20.0)
-                
-                self.selectedIndexPaths.append(indexPath)
-            } else {
-                cell.roundedView.tag = 0
-                cell.roundedView.backgroundColor = UIColor.white
-                cell.titleLabel.textColor = UIColor.mainBlue
-                cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
-                
-                if let index = self.selectedIndexPaths.index(of: indexPath) {
-                    self.selectedIndexPaths.remove(at: index)
+        let noOfRequiredAnswers = self.content.first?.question.noOfRequiredAnswers
+        
+        if let noOfRequiredAnswers = noOfRequiredAnswers, noOfRequiredAnswers == 1 {
+            for selectedIndexPath in self.selectedIndexPaths {
+                if let cell = collectionView.cellForItem(at: selectedIndexPath) as? MultiSelectCell {
+                    self.setCellUnselected(cell: cell, indexPath: selectedIndexPath)
                 }
             }
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? MultiSelectCell {
+                self.setCellSelected(cell: cell, indexPath: indexPath)
+            }
+        } else {
+            if let noOfRequiredAnswers = noOfRequiredAnswers, self.selectedIndexPaths.count == noOfRequiredAnswers {
+                if let cell = collectionView.cellForItem(at: indexPath) as? MultiSelectCell, cell.roundedView.tag == 0 {
+                    return
+                }
+            }
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? MultiSelectCell {
+                if cell.roundedView.tag == 0 {
+                    self.setCellSelected(cell: cell, indexPath: indexPath)
+                } else {
+                    self.setCellUnselected(cell: cell, indexPath: indexPath)
+                }
+            }
+        }
+    }
+    
+    func setCellSelected(cell: MultiSelectCell, indexPath: IndexPath) {
+        cell.roundedView.tag = 1
+        cell.roundedView.backgroundColor = UIColor.mainOrange
+        cell.titleLabel.textColor = UIColor.white
+        cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBold, size: 20.0)
+        
+        self.selectedIndexPaths.append(indexPath)
+    }
+    
+    func setCellUnselected(cell: MultiSelectCell, indexPath: IndexPath) {
+        cell.roundedView.tag = 0
+        cell.roundedView.backgroundColor = UIColor.white
+        cell.titleLabel.textColor = UIColor.mainBlue
+        cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
+        
+        if let index = self.selectedIndexPaths.index(of: indexPath) {
+            self.selectedIndexPaths.remove(at: index)
         }
     }
 
