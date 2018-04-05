@@ -133,8 +133,10 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     @IBAction func previewButtonPressed(sender: JifflrButton) {
+        guard let questionType = self.answerTypeTextField.questionType else { return }
+        
         self.validateInput(sender: sender) { (success) in
-            guard let questionType = self.answerTypeTextField.questionType, success == true, self.previewContent.count > 0 else {
+            guard success == true, self.previewContent.count > 0 else {
                 self.displayError(error: ErrorMessage.addContent)
                 return
             }
@@ -166,19 +168,19 @@ class AddQuestionsViewController: BaseViewController {
     
     @IBAction func nextButtonPressed(sender: JifflrButton) {
         
-        self.validateInput(sender: sender) { (success) in
-            guard success == true else {
-                self.displayError(error: ErrorMessage.addContent)
-                return
-            }
-            
-            if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
+        if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
+            self.validateInput(sender: sender) { (success) in
+                guard success == true else {
+                    self.displayError(error: ErrorMessage.addContent)
+                    return
+                }
+                
                 let newQuestionNumber = self.questionNumber + 1
                 let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
                 self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                return
             }
+        } else {
+            return
         }
     }
     
