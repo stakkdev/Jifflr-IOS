@@ -65,6 +65,15 @@ final class Question: PFObject {
             self["index"] = newValue
         }
     }
+    
+    var noOfRequiredAnswers: Int? {
+        get {
+            return self["noOfRequiredAnswers"] as? Int
+        }
+        set {
+            self["noOfRequiredAnswers"] = newValue
+        }
+    }
 }
 
 extension Question: PFSubclassing {

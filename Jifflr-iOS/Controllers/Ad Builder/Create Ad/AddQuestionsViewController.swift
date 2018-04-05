@@ -34,6 +34,7 @@ class AddQuestionsViewController: BaseViewController {
     var advert: Advert!
     var questionTypes: [QuestionType] = []
     var questionNumber = 0
+    var previewContent:[(question: Question, answers: [Answer])] = []
 
     class func instantiateFromStoryboard(advert: Advert, questionNumber: Int) -> AddQuestionsViewController {
         let storyboard = UIStoryboard(name: "CreateAd", bundle: nil)
@@ -48,6 +49,12 @@ class AddQuestionsViewController: BaseViewController {
         
         self.setupUI()
         self.setupData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.previewContent = []
     }
     
     func setupUI() {
@@ -126,7 +133,35 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     @IBAction func previewButtonPressed(sender: JifflrButton) {
-
+        self.validateInput(sender: sender) { (success) in
+            guard let questionType = self.answerTypeTextField.questionType, success == true, self.previewContent.count > 0 else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            var controller: UIViewController!
+            
+            switch questionType.type {
+            case AdvertQuestionType.Binary:
+                controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.DatePicker:
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: false, isPreview: true)
+            case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
+                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.NumberPicker:
+                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.Rating:
+                controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+            case AdvertQuestionType.TimePicker:
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, isPreview: true)
+            default:
+                return
+            }
+            
+            let navController = UINavigationController(rootViewController: controller)
+            navController.isNavigationBarHidden = true
+            self.navigationController?.present(navController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func nextButtonPressed(sender: JifflrButton) {
@@ -159,6 +194,8 @@ class AddQuestionsViewController: BaseViewController {
             completion(false)
             return
         }
+        
+        self.previewContent = []
         
         switch questionType.type {
         case AdvertQuestionType.MultipleChoice:
@@ -196,9 +233,11 @@ class AddQuestionsViewController: BaseViewController {
         
         let startAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: startDate)
         let endAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: endDate)
-        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         question.setAnswers(answers: [startAnswer, endAnswer])
         self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: [startAnswer, endAnswer]))
         
         return true
     }
@@ -210,11 +249,13 @@ class AddQuestionsViewController: BaseViewController {
         guard let lastNumber = Int(lastNumberText) else { return false }
         guard lastNumber > firstNumber else { return false }
         
-        let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumber)
-        let lastAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: lastNumber)
-        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumberText)
+        let lastAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: lastNumberText)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         question.setAnswers(answers: [firstAnswer, lastAnswer])
         self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: [firstAnswer, lastAnswer]))
         
         return true
     }
@@ -252,9 +293,11 @@ class AddQuestionsViewController: BaseViewController {
             }
         }
         
-        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: requiredAnswers)
         question.setAnswers(answers: answerObjects)
         self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: answerObjects))
         
         return true
     }
@@ -267,9 +310,11 @@ class AddQuestionsViewController: BaseViewController {
                 return
             }
             
-            let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+            let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
             question.setAnswers(answers: answers)
             self.advert.addQuestion(question: question)
+            
+            self.previewContent.append((question: question, answers: answers))
             
             completion(true)
         }

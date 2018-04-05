@@ -14,13 +14,14 @@ class DateTimeFeedbackViewController: FeedbackViewController {
     
     var isTime = false
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], isTime: Bool) -> DateTimeFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], isTime: Bool, isPreview: Bool) -> DateTimeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "DateTimeFeedbackViewController") as! DateTimeFeedbackViewController
         controller.advert = advert
         controller.content = content
         controller.questionAnswers = questionAnswers
         controller.isTime = isTime
+        controller.isPreview = isPreview
         return controller
     }
 
