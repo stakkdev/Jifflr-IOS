@@ -125,78 +125,101 @@ class AddQuestionsViewController: BaseViewController {
         }
     }
     
-    @IBAction func previewButtonPressed(sender: UIButton) {
+    @IBAction func previewButtonPressed(sender: JifflrButton) {
 
     }
     
-    @IBAction func nextButtonPressed(sender: UIButton) {
-        guard self.validateInput() else {
-            self.displayError(error: ErrorMessage.addContent)
-            return
-        }
+    @IBAction func nextButtonPressed(sender: JifflrButton) {
         
-        if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
-            let newQuestionNumber = self.questionNumber + 1
-            let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            return
+        self.validateInput(sender: sender) { (success) in
+            guard success == true else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
+                let newQuestionNumber = self.questionNumber + 1
+                let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                return
+            }
         }
     }
     
-    func validateInput() -> Bool {
+    func validateInput(sender: JifflrButton, completion: @escaping (Bool) -> Void) {
         if self.questionNumber != 1 && self.answerTypeTextField.questionType == nil {
-            return true
+            completion(false)
+            return
         }
         
-        guard let questionType = self.answerTypeTextField.questionType else { return false }
-        guard let questionText = self.questionTextView.text, !questionText.isEmpty,
-            self.questionTextView.textColor == UIColor.mainBlue else { return false }
+        guard let questionType = self.answerTypeTextField.questionType,
+            let questionText = self.questionTextView.text, !questionText.isEmpty,
+            self.questionTextView.textColor == UIColor.mainBlue else {
+            completion(false)
+            return
+        }
         
         switch questionType.type {
         case AdvertQuestionType.MultipleChoice:
-            return self.validateMultipleChoice(questionText: questionText)
+            let valid = self.validateMultipleChoice(questionType: questionType, questionText: questionText)
+            completion(valid)
         case AdvertQuestionType.NumberPicker:
-            return self.validateNumber(questionText: questionText)
+            let valid = self.validateNumber(questionType: questionType, questionText: questionText)
+            completion(valid)
         case AdvertQuestionType.TimePicker:
-            return self.validateDate(type: questionType.type, questionText: questionText)
+            let valid = self.validateDate(questionType: questionType, questionText: questionText)
+            completion(valid)
         case AdvertQuestionType.DatePicker:
-            return self.validateDate(type: questionType.type, questionText: questionText)
+            let valid = self.validateDate(questionType: questionType, questionText: questionText)
+            completion(valid)
         default:
-            return true
+            sender.animate()
+            self.setupDefaultQuestionType(questionType: questionType, questionText: questionText) { (success) in
+                sender.stopAnimating()
+                completion(success)
+            }
         }
     }
     
-    func validateDate(type: Int, questionText: String) -> Bool {
+    func validateDate(questionType: QuestionType, questionText: String) -> Bool {
         guard let startDateText = self.minTextField.text, !startDateText.isEmpty else { return false }
         guard let endDateText = self.maxTextField.text, !endDateText.isEmpty else { return false }
         
         let dateFormatter = DateFormatter()
-        let format = type == AdvertQuestionType.DatePicker ? "dd/MM/yyyy" : "HH:mm"
+        let format = questionType.type == AdvertQuestionType.DatePicker ? "dd/MM/yyyy" : "HH:mm"
         dateFormatter.dateFormat = format
         
         guard let startDate = dateFormatter.date(from: startDateText) else { return false }
         guard let endDate = dateFormatter.date(from: endDateText) else { return false }
         guard endDate > startDate else { return false }
         
-        // TODO - Create Questions and Answers
+        let startAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: startDate)
+        let endAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: endDate)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        question.setAnswers(answers: [startAnswer, endAnswer])
+        self.advert.addQuestion(question: question)
         
         return true
     }
     
-    func validateNumber(questionText: String) -> Bool {
+    func validateNumber(questionType: QuestionType, questionText: String) -> Bool {
         guard let firstNumberText = self.minTextField.text, !firstNumberText.isEmpty else { return false }
         guard let lastNumberText = self.maxTextField.text, !lastNumberText.isEmpty else { return false }
         guard let firstNumber = Int(firstNumberText) else { return false }
         guard let lastNumber = Int(lastNumberText) else { return false }
         guard lastNumber > firstNumber else { return false }
         
-        // TODO - Create Questions and Answers
+        let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumber)
+        let lastAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: lastNumber)
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        question.setAnswers(answers: [firstAnswer, lastAnswer])
+        self.advert.addQuestion(question: question)
         
         return true
     }
     
-    func validateMultipleChoice(questionText: String) -> Bool {
+    func validateMultipleChoice(questionType: QuestionType, questionText: String) -> Bool {
         let firstAnswerText = self.minTextField.text
         let secondAnswerText = self.maxTextField.text
         let thirdAnswerText = self.answer3TextField.text
@@ -208,37 +231,48 @@ class AddQuestionsViewController: BaseViewController {
         }
         
         var answerCount = 0
-        
-        if let answer = firstAnswerText, !answer.isEmpty {
-            answerCount += 1
-            // TODO - Create Questions and Answers
-        }
-        
-        if let answer = secondAnswerText, !answer.isEmpty {
-            answerCount += 1
-            // TODO - Create Questions and Answers
-        }
-        
-        if let answer = thirdAnswerText, !answer.isEmpty {
-            answerCount += 1
-            // TODO - Create Questions and Answers
-        }
-        
-        if let answer = fourthAnswerText, !answer.isEmpty {
-            answerCount += 1
-            // TODO - Create Questions and Answers
-        }
-        
-        if let answer = fifthAnswerText, !answer.isEmpty {
-            answerCount += 1
-            // TODO - Create Questions and Answers
+        let answers = [firstAnswerText, secondAnswerText, thirdAnswerText, fourthAnswerText, fifthAnswerText]
+        for answer in answers {
+            if let answer = answer, !answer.isEmpty {
+                answerCount += 1
+            }
         }
         
         guard let requiredAnswersText = self.answersRequiredTextField.text, !requiredAnswersText.isEmpty else { return false }
         guard let requiredAnswers = Int(requiredAnswersText) else { return false }
         guard requiredAnswers > 0 && requiredAnswers <= answerCount else { return false }
         
+        var index = 0
+        var answerObjects:[Answer] = []
+        for answer in answers {
+            if let answer = answer, !answer.isEmpty {
+                index += 1
+                let answerObject = AdBuilderManager.shared.createAnswer(index: index, content: answer)
+                answerObjects.append(answerObject)
+            }
+        }
+        
+        let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+        question.setAnswers(answers: answerObjects)
+        self.advert.addQuestion(question: question)
+        
         return true
+    }
+    
+    func setupDefaultQuestionType(questionType: QuestionType, questionText: String, completion: @escaping (Bool) -> Void) {
+        AdBuilderManager.shared.fetchDefaultAnswers(questionType: questionType) { (answers) in
+            guard answers.count > 0 else {
+                self.displayError(error: ErrorMessage.fetchAnswersFailed)
+                completion(false)
+                return
+            }
+            
+            let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType)
+            question.setAnswers(answers: answers)
+            self.advert.addQuestion(question: question)
+            
+            completion(true)
+        }
     }
 }
 

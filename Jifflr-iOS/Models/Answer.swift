@@ -47,6 +47,15 @@ final class Answer: PFObject {
             self["date"] = newValue
         }
     }
+    
+    var questionType: QuestionType? {
+        get {
+            return self["questionType"] as? QuestionType
+        }
+        set {
+            self["questionType"] = newValue
+        }
+    }
 }
 
 extension Answer: PFSubclassing {

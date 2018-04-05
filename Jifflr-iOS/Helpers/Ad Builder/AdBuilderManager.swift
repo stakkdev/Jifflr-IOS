@@ -71,4 +71,42 @@ class AdBuilderManager: NSObject {
             completion(questionTypes)
         })
     }
+    
+    func createQuestion(index: Int, text: String, type: QuestionType) -> Question {
+        let question = Question()
+        question.active = false
+        question.index = index
+        question.type = type
+        question.text = text
+        return question
+    }
+    
+    func createAnswer(index: Int, content: Any) -> Answer {
+        let answer = Answer()
+        answer.index = index
+        
+        if let date = content as? Date {
+            answer.date = date
+        }
+        
+        if let text = content as? String {
+            answer.text = text
+        }
+        
+        return answer
+    }
+    
+    func fetchDefaultAnswers(questionType: QuestionType, completion: @escaping ([Answer]) -> Void) {
+        let query = Answer.query()
+        query?.order(byAscending: "index")
+        query?.whereKey("questionType", equalTo: questionType)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let answers = objects as? [Answer], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(answers)
+        })
+    }
 }
