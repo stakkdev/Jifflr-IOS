@@ -248,3 +248,9 @@
 "addQuestions.multipleChoice.placeholder" = "Enter answer %i";
 "addQuestions.answersRequired.text" = "Answers Required";
 "addQuestions.answersRequired.placeholder" = "Enter answers required";
+"addQuestions.website.heading" = "Website";
+"addQuestions.facebook.heading" = "Facebook";
+"addQuestions.twitter.heading" = "Twitter";
+"addQuestions.onlineStore.heading" = "Online Store";
+"addQuestions.appStore.heading" = "App Store";
+"addQuestions.playStore.heading" = "Play Store";

@@ -14,6 +14,8 @@ class AddQuestionsViewController: BaseViewController {
     @IBOutlet weak var previewButton: JifflrButton!
     @IBOutlet weak var nextButton: JifflrButton!
     @IBOutlet var nextButtonBottom: NSLayoutConstraint!
+    @IBOutlet var nextButtonTopUrls: NSLayoutConstraint!
+    @IBOutlet var nextButtonTopAnswers: NSLayoutConstraint!
     @IBOutlet weak var questionTextView: JifflrTextView!
     @IBOutlet weak var answerTypeLabel: UILabel!
     @IBOutlet weak var answerTypeTextField: JifflrTextFieldDropdown!
@@ -27,6 +29,20 @@ class AddQuestionsViewController: BaseViewController {
     @IBOutlet weak var answer5TextField: JifflrTextField!
     @IBOutlet weak var answersRequiredLabel: UILabel!
     @IBOutlet weak var answersRequiredTextField: JifflrTextFieldDropdown!
+    
+    @IBOutlet weak var urlsContainerView: UIView!
+    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var websiteTextField: JifflrTextField!
+    @IBOutlet weak var facebookLabel: UILabel!
+    @IBOutlet weak var facebookTextField: JifflrTextField!
+    @IBOutlet weak var twitterLabel: UILabel!
+    @IBOutlet weak var twitterTextField: JifflrTextField!
+    @IBOutlet weak var onlineStoreLabel: UILabel!
+    @IBOutlet weak var onlineStoreTextField: JifflrTextField!
+    @IBOutlet weak var appStoreLabel: UILabel!
+    @IBOutlet weak var appStoreTextField: JifflrTextField!
+    @IBOutlet weak var playStoreLabel: UILabel!
+    @IBOutlet weak var playStoreTextField: JifflrTextField!
     
     var pickerView: UIPickerView!
     var datePicker: UIDatePicker!
@@ -61,6 +77,9 @@ class AddQuestionsViewController: BaseViewController {
         self.setupLocalization()
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         
+        self.urlsContainerView.backgroundColor = UIColor.clear
+        self.websiteTextField.addLeftView(image: UIImage(named: "URLAdBuilderWebsite"))
+        
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
         self.previewButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         
@@ -94,6 +113,12 @@ class AddQuestionsViewController: BaseViewController {
         self.answersLabel.text = "addQuestions.answers.text".localized()
         self.answersRequiredLabel.text = "addQuestions.answersRequired.text".localized()
         self.answersRequiredTextField.placeholder = "addQuestions.answersRequired.placeholder".localized()
+        self.websiteLabel.text = "addQuestions.website.heading".localized()
+        self.facebookLabel.text = "addQuestions.facebook.heading".localized()
+        self.twitterLabel.text = "addQuestions.twitter.heading".localized()
+        self.onlineStoreLabel.text = "addQuestions.onlineStore.heading".localized()
+        self.appStoreLabel.text = "addQuestions.appStore.heading".localized()
+        self.playStoreLabel.text = "addQuestions.playStore.heading".localized()
     }
     
     func setupData() {
