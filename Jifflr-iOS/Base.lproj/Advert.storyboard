@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -450,7 +450,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
-                                <rect key="frame" x="112" y="623" width="151" height="16"/>
+                                <rect key="frame" x="112.5" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="pri-Sl-CQ0"/>
                                 </constraints>
@@ -472,7 +472,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Ux-ank" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="561" width="335" height="50"/>
+                                <rect key="frame" x="20" y="561" width="336" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Jp-fi-rby"/>
                                 </constraints>
@@ -487,40 +487,40 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left or right to choose  your preference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRl-T7-VxH">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="28" width="336" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeFaces" translatesAutoresizingMaskIntoConstraints="NO" id="KHf-bb-vXF">
-                                <rect key="frame" x="24" y="505" width="327" height="56"/>
+                                <rect key="frame" x="24" y="505" width="328" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="tfb-HG-rsi"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeAnimation" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-tm-7fa">
-                                <rect key="frame" x="112" y="498" width="151" height="70"/>
+                                <rect key="frame" x="112.5" y="498" width="151" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="HT5-gc-vya"/>
                                     <constraint firstAttribute="width" constant="151" id="kYx-mg-5aW"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6hl-eW-i0O">
-                                <rect key="frame" x="0.0" y="91" width="375" height="387"/>
+                                <rect key="frame" x="0.0" y="91" width="376" height="387"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwipeCell" rowHeight="82" id="XCm-bP-AKg" customClass="SwipeCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="82"/>
+                                        <rect key="frame" x="0.0" y="28" width="376" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XCm-bP-AKg" id="wYe-fR-a09">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04K-FM-niY">
-                                                    <rect key="frame" x="18" y="0.0" width="339" height="72"/>
+                                                    <rect key="frame" x="18" y="0.0" width="340" height="72"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-Lk-78S">
-                                                            <rect key="frame" x="109.5" y="4" width="120" height="64"/>
+                                                            <rect key="frame" x="110" y="4" width="120" height="64"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dyQ-Lk-78S" secondAttribute="height" multiplier="15:8" id="YTh-HU-9zh"/>
                                                             </constraints>
@@ -893,6 +893,143 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIt-L9-384" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3852" y="157"/>
+        </scene>
+        <!--URL Feedback View Controller-->
+        <scene sceneID="vtC-CJ-8GL">
+            <objects>
+                <viewController storyboardIdentifier="URLFeedbackViewController" id="F19-Nj-ZQP" customClass="URLFeedbackViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DIF-Cv-wz7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4km-dL-dgl">
+                                <rect key="frame" x="112" y="623" width="151" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="h1k-TA-lz1"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Create an Ad campaign">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="2Kc-KN-Gho"/>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="CvN-W3-DqC"/>
+                                    <action selector="createAdCampaignButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="fcE-SZ-e73"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-m2-90U" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="561" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9xZ-7I-MbI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="Ppv-r8-Dxl"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="WTB-eS-4YN"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="eOY-d6-BEk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a number answers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-Jr-9qf">
+                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="NBP-IB-Tqf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-9x-JOA">
+                                <rect key="frame" x="18" y="106" width="339" height="350"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bv4-4N-gks" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ogd-ma-nvL"/>
+                                        </constraints>
+                                        <state key="normal" title="Website"/>
+                                        <connections>
+                                            <action selector="websiteButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="AQ6-CB-TEQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3I-Ri-3E5" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="75" width="339" height="50"/>
+                                        <state key="normal" title="Facebook"/>
+                                        <connections>
+                                            <action selector="facebookButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="iE5-d8-baH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Os-xpS" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150" width="339" height="50"/>
+                                        <state key="normal" title="Twitter"/>
+                                        <connections>
+                                            <action selector="twitterButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="tDH-S2-eUi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-i0-zrF" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="225" width="339" height="50"/>
+                                        <state key="normal" title="Online Store"/>
+                                        <connections>
+                                            <action selector="onlineStoreButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="4Hr-qc-lFP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19D-T8-MPk" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="300" width="339" height="50"/>
+                                        <state key="normal" title="App Store"/>
+                                        <connections>
+                                            <action selector="appStoreButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="cwE-nS-OWk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bv4-4N-gks" firstAttribute="height" secondItem="vBF-i0-zrF" secondAttribute="height" id="AKf-Z2-RDW"/>
+                                    <constraint firstItem="bv4-4N-gks" firstAttribute="height" secondItem="wF6-Os-xpS" secondAttribute="height" id="EuB-kb-1o2"/>
+                                    <constraint firstItem="bv4-4N-gks" firstAttribute="height" secondItem="19D-T8-MPk" secondAttribute="height" id="SkL-v8-QlE"/>
+                                    <constraint firstItem="bv4-4N-gks" firstAttribute="height" secondItem="Y3I-Ri-3E5" secondAttribute="height" id="URE-Ms-UUK"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="5Wm-m2-90U" secondAttribute="trailing" constant="20" id="9N1-NO-eEP"/>
+                            <constraint firstItem="5Wm-m2-90U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xiG-9x-JOA" secondAttribute="bottom" constant="20" id="Ahx-0E-Rb0"/>
+                            <constraint firstItem="4km-dL-dgl" firstAttribute="centerX" secondItem="Ha7-Ow-zTX" secondAttribute="centerX" id="KtO-zN-St3"/>
+                            <constraint firstItem="5Wm-m2-90U" firstAttribute="leading" secondItem="Ha7-Ow-zTX" secondAttribute="leading" constant="20" id="Mj5-sM-eNU"/>
+                            <constraint firstItem="ImU-Jr-9qf" firstAttribute="leading" secondItem="Ha7-Ow-zTX" secondAttribute="leading" constant="20" id="NAI-XL-dTe"/>
+                            <constraint firstItem="4km-dL-dgl" firstAttribute="top" secondItem="5Wm-m2-90U" secondAttribute="bottom" constant="12" id="VJj-0p-Wn8"/>
+                            <constraint firstItem="xiG-9x-JOA" firstAttribute="leading" secondItem="Ha7-Ow-zTX" secondAttribute="leading" constant="18" id="Vwg-FU-X0s"/>
+                            <constraint firstItem="xiG-9x-JOA" firstAttribute="top" secondItem="ImU-Jr-9qf" secondAttribute="bottom" constant="35" id="alc-Pv-fHT"/>
+                            <constraint firstItem="ImU-Jr-9qf" firstAttribute="top" secondItem="Ha7-Ow-zTX" secondAttribute="top" constant="8" id="erz-hl-M7S"/>
+                            <constraint firstItem="Ha7-Ow-zTX" firstAttribute="bottom" secondItem="4km-dL-dgl" secondAttribute="bottom" constant="28" id="gB4-HV-MTY"/>
+                            <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="ImU-Jr-9qf" secondAttribute="trailing" constant="20" id="hgJ-qK-Yfh"/>
+                            <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="xiG-9x-JOA" secondAttribute="trailing" constant="18" id="l4B-dF-PSu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ha7-Ow-zTX"/>
+                    </view>
+                    <connections>
+                        <outlet property="appStoreButton" destination="19D-T8-MPk" id="AUD-59-rkf"/>
+                        <outlet property="createAdCampaignButton" destination="4km-dL-dgl" id="uN1-JZ-vXe"/>
+                        <outlet property="facebookButton" destination="Y3I-Ri-3E5" id="QlH-9d-9zs"/>
+                        <outlet property="nextAdButton" destination="5Wm-m2-90U" id="Y5o-ZI-dj1"/>
+                        <outlet property="onlineStoreButton" destination="vBF-i0-zrF" id="blz-yy-opr"/>
+                        <outlet property="questionLabel" destination="ImU-Jr-9qf" id="MZx-RZ-t38"/>
+                        <outlet property="stackView" destination="xiG-9x-JOA" id="R56-eM-oIO"/>
+                        <outlet property="twitterButton" destination="wF6-Os-xpS" id="bYz-3d-2W5"/>
+                        <outlet property="websiteButton" destination="bv4-4N-gks" id="iJl-Sk-9Oj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mZ0-rr-TY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4564" y="157"/>
         </scene>
     </scenes>
     <resources>

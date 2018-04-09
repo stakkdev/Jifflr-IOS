@@ -185,6 +185,11 @@
 
 "feedback.createAdButton.title" = "Create an Ad campaign";
 "feedback.nextAdButton.title" = "NEXT";
+"urlLinks.website.title" = "WEBSITE";
+"urlLinks.facebook.title" = "FACEBOOK";
+"urlLinks.twitter.title" = "TWITTER";
+"urlLinks.onlineStore.title" = "ONLINE STORE";
+"urlLinks.appStore.title" = "APP STORE";
 
 "faqs.navigation.title" = "FAQs";
 "faqsDetail.navigation.title" = "FAQ";
