@@ -51,6 +51,7 @@ public enum ErrorMessage {
     case mediaSaveFailed
     case flagAdFailed
     case fetchAnswersFailed
+    case saveAdFailed
 
     public var failureTitle: String {
         switch self {
@@ -143,6 +144,8 @@ public enum ErrorMessage {
             return "error.flagAdFailed".localized()
         case .fetchAnswersFailed:
             return "error.addQuestionsFetchAnswers".localized()
+        case .saveAdFailed:
+            return "error.saveAd".localized()
         }
     }
 }

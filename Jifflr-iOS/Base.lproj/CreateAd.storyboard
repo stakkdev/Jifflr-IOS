@@ -17,6 +17,9 @@
         <array key="GothamBook.otf">
             <string>GothamBook</string>
         </array>
+        <array key="GothamLight.otf">
+            <string>GothamLight</string>
+        </array>
         <array key="GothamMedium.otf">
             <string>GothamMedium</string>
         </array>
@@ -663,6 +666,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbr-ye-Zaq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2165.5999999999999" y="192.95352323838082"/>
+        </scene>
+        <!--Ad Created View Controller-->
+        <scene sceneID="GFd-Gf-1KM">
+            <objects>
+                <viewController storyboardIdentifier="AdCreatedViewController" id="bsV-dY-WC8" customClass="AdCreatedViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FVA-TZ-Ded">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bk8-Mh-mne" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="569" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dch-Uf-4yJ"/>
+                                </constraints>
+                                <state key="normal" title="CREATE CAMPAIGN"/>
+                                <connections>
+                                    <action selector="createCampaignButtonPressedWithSender:" destination="bsV-dY-WC8" eventType="touchUpInside" id="12Y-2N-4Zx"/>
+                                    <action selector="nextButtonPressedWithSender:" destination="7V5-wd-vY6" eventType="touchUpInside" id="eDp-p3-xeF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xp-fu-oRj">
+                                <rect key="frame" x="32" y="259.5" width="311" height="109"/>
+                                <fontDescription key="fontDescription" name="GothamMedium" family="GothamMedium" pointSize="20"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg6-XJ-cbz">
+                                <rect key="frame" x="18" y="191" width="339" height="38.5"/>
+                                <fontDescription key="fontDescription" name="GothamLight" family="GothamLight" pointSize="36"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qc6-B6-gpv" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="485" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Wa-Eg-J3o"/>
+                                </constraints>
+                                <state key="normal" title="SAVE AD"/>
+                                <connections>
+                                    <action selector="nextButtonPressedWithSender:" destination="7V5-wd-vY6" eventType="touchUpInside" id="A1E-t9-pCx"/>
+                                    <action selector="saveAdButtonPressedWithSender:" destination="bsV-dY-WC8" eventType="touchUpInside" id="MhU-je-dfa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FP6-Jn-ewD" firstAttribute="trailing" secondItem="3xp-fu-oRj" secondAttribute="trailing" constant="32" id="1ud-n5-lri"/>
+                            <constraint firstItem="3xp-fu-oRj" firstAttribute="centerY" secondItem="FP6-Jn-ewD" secondAttribute="centerY" constant="-30" id="J0P-Oi-ddg"/>
+                            <constraint firstItem="FP6-Jn-ewD" firstAttribute="trailing" secondItem="Bk8-Mh-mne" secondAttribute="trailing" constant="18" id="Nvy-Ur-fdm"/>
+                            <constraint firstItem="FP6-Jn-ewD" firstAttribute="trailing" secondItem="gg6-XJ-cbz" secondAttribute="trailing" constant="18" id="SK0-2Z-KlY"/>
+                            <constraint firstItem="FP6-Jn-ewD" firstAttribute="trailing" secondItem="qc6-B6-gpv" secondAttribute="trailing" constant="18" id="SP3-gi-Jgx"/>
+                            <constraint firstItem="FP6-Jn-ewD" firstAttribute="bottom" secondItem="Bk8-Mh-mne" secondAttribute="bottom" constant="48" id="XBT-la-HO2"/>
+                            <constraint firstItem="qc6-B6-gpv" firstAttribute="leading" secondItem="FP6-Jn-ewD" secondAttribute="leading" constant="18" id="byR-Wy-8VU"/>
+                            <constraint firstItem="Bk8-Mh-mne" firstAttribute="top" secondItem="qc6-B6-gpv" secondAttribute="bottom" constant="34" id="dhN-Jo-kbd"/>
+                            <constraint firstItem="3xp-fu-oRj" firstAttribute="top" secondItem="gg6-XJ-cbz" secondAttribute="bottom" constant="30" id="thy-Fz-jpr"/>
+                            <constraint firstItem="3xp-fu-oRj" firstAttribute="leading" secondItem="FP6-Jn-ewD" secondAttribute="leading" constant="32" id="uhT-1N-osb"/>
+                            <constraint firstItem="gg6-XJ-cbz" firstAttribute="leading" secondItem="FP6-Jn-ewD" secondAttribute="leading" constant="18" id="vPI-2T-oxp"/>
+                            <constraint firstItem="Bk8-Mh-mne" firstAttribute="leading" secondItem="FP6-Jn-ewD" secondAttribute="leading" constant="18" id="ylx-yj-QRf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FP6-Jn-ewD"/>
+                    </view>
+                    <connections>
+                        <outlet property="createCampaignButton" destination="Bk8-Mh-mne" id="FtG-ou-TmJ"/>
+                        <outlet property="descriptionLabel" destination="3xp-fu-oRj" id="VD7-lc-iB7"/>
+                        <outlet property="saveAdButton" destination="qc6-B6-gpv" id="JEV-qU-goW"/>
+                        <outlet property="titleLabel" destination="gg6-XJ-cbz" id="4Rb-b2-inB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJK-XH-6Xw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2874" y="193"/>
         </scene>
     </scenes>
     <resources>

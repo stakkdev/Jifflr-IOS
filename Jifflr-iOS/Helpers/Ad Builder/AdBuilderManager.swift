@@ -114,4 +114,74 @@ class AdBuilderManager: NSObject {
             completion(answers)
         })
     }
+    
+    func saveAndPin(advert: Advert, content: [(question: Question, answers: [Answer])], completion: @escaping (ErrorMessage?) -> Void) {
+        
+        self.saveAndPinContent(contentArray: content, completion: { (questions, error)  in
+            guard questions.count > 0, error == nil else {
+                completion(ErrorMessage.saveAdFailed)
+                return
+            }
+            
+            advert.addQuestions(questions: questions)
+            advert.saveInBackground { (success, error) in
+                guard success == true, error == nil else {
+                    completion(ErrorMessage.saveAdFailed)
+                    return
+                }
+                
+                advert.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    guard success == true, error == nil else {
+                        completion(ErrorMessage.saveAdFailed)
+                        return
+                    }
+                    
+                    print("Advert Saved and Pinned")
+                    completion(nil)
+                })
+            }
+        })
+    }
+    
+    func saveAndPinContent(contentArray: [(question: Question, answers: [Answer])], completion: @escaping ([Question], ErrorMessage?) -> Void) {
+        let group = DispatchGroup()
+        var questions:[Question] = []
+        
+        for content in contentArray {
+            group.enter()
+            
+            let question = content.question
+            let answers = content.answers
+            questions.append(question)
+            
+            PFObject.saveAll(inBackground: answers) { (success, error) in
+                guard success == true, error == nil else {
+                    completion([], ErrorMessage.saveAdFailed)
+                    return
+                }
+                
+                PFObject.pinAll(inBackground: answers, withName: self.pinName, block: { (success, error) in
+                    print("Answers Saved: \(success)")
+                })
+                
+                question.setAnswers(answers: answers)
+                question.saveInBackground(block: { (success, error) in
+                    guard success == true, error == nil else {
+                        completion([], ErrorMessage.saveAdFailed)
+                        return
+                    }
+                    
+                    question.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        print("Question Saved: \(success)")
+                    })
+                    
+                    group.leave()
+                })
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(questions, nil)
+        }
+    }
 }

@@ -97,14 +97,14 @@ class AddContentViewController: BaseViewController {
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
-//        guard let template = self.advert.details?.template else { return }
-//
-//        guard self.validateInput(key: template.key) else {
-//            self.displayError(error: ErrorMessage.addContent)
-//            return
-//        }
+        guard let template = self.advert.details?.template else { return }
+
+        guard self.validateInput(key: template.key) else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
         
-        let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: 1)
+        let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: 1, content: [])
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -154,8 +154,8 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             
             self.imageOverlayView.contentMode = .scaleAspectFill
             self.imageOverlayView.image = image
-            
-            self.advert.details?.image = PFFile(data: data)
+
+            self.advert.details?.image = PFFile(data: data, contentType: "image/jpg")
             
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             do {

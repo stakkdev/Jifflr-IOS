@@ -50,6 +50,7 @@ class CreateAdViewController: BaseViewController {
         let advert = Advert()
         let details = AdvertDetails()
         details.name = adName
+        advert.isCMS = true
         advert.details = details
         
         let vc = ChooseTemplateViewController.instantiateFromStoryboard(advert: advert)

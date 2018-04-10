@@ -49,6 +49,7 @@
 "error.mediaSaveFailed" = "Unable to save image/video, please try again.";
 "error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
 "error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
+"error.saveAd" = "Unable to save ad. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -254,3 +255,7 @@
 "addQuestions.onlineStore.heading" = "Online Store";
 "addQuestions.appStore.heading" = "App Store";
 "addQuestions.playStore.heading" = "Play Store";
+"adCreated.saveAdButton.title" = "SAVE AD";
+"adCreated.createCampaignButton.title" = "CREATE CAMPAIGN";
+"adCreated.titleLabel.text" = "Ad Created";
+"adCreated.descriptionLabel.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";

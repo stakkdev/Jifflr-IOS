@@ -51,12 +51,14 @@ class AddQuestionsViewController: BaseViewController {
     var questionTypes: [QuestionType] = []
     var questionNumber = 0
     var previewContent:[(question: Question, answers: [Answer])] = []
+    var content:[(question: Question, answers: [Answer])] = []
 
-    class func instantiateFromStoryboard(advert: Advert, questionNumber: Int) -> AddQuestionsViewController {
+    class func instantiateFromStoryboard(advert: Advert, questionNumber: Int, content: [(question: Question, answers: [Answer])]) -> AddQuestionsViewController {
         let storyboard = UIStoryboard(name: "CreateAd", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddQuestionsViewController") as! AddQuestionsViewController
         vc.advert = advert
         vc.questionNumber = questionNumber
+        vc.content = content
         return vc
     }
     
@@ -71,6 +73,16 @@ class AddQuestionsViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         self.previewContent = []
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            if self.content.count > 0 {
+                self.content.removeLast()
+            }
+        }
     }
     
     func setupUI() {
@@ -156,6 +168,7 @@ class AddQuestionsViewController: BaseViewController {
             self.questionTextView.isUserInteractionEnabled = false
             self.answersContainerView.isHidden = true
             self.answersContainerView.isUserInteractionEnabled = false
+            self.urlsContainerView.isHidden = true
             self.answerTypeTextField.isEnabled = false
             
             self.answerTypeTextField.questionType = nil
@@ -207,12 +220,13 @@ class AddQuestionsViewController: BaseViewController {
                     return
                 }
                 
-                let newQuestionNumber = self.questionNumber + 1
-                let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: newQuestionNumber)
+                let number = self.questionNumber + 1
+                let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: number, content: self.content)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            return
+            let vc = AdCreatedViewController.instantiateFromStoryboard(advert: self.advert, content: self.content)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -274,9 +288,8 @@ class AddQuestionsViewController: BaseViewController {
         let number = self.questionNumber
         let question = AdBuilderManager.shared.createQuestion(index: number, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         let answers = [websiteAnswer, facebookAnswer, twitterAnswer, onlineStoreAnswer, appStoreAnswer, playStoreAnswer]
-        question.setAnswers(answers: answers)
-        self.advert.addQuestion(question: question)
         
+        self.content.append((question: question, answers: answers))
         self.previewContent.append((question: question, answers: answers))
         
         return true
@@ -297,9 +310,9 @@ class AddQuestionsViewController: BaseViewController {
         let startAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: startDate)
         let endAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: endDate)
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
-        question.setAnswers(answers: [startAnswer, endAnswer])
-        self.advert.addQuestion(question: question)
+        let answers = [startAnswer, endAnswer]
         
+        self.content.append((question: question, answers: answers))
         self.previewContent.append((question: question, answers: [startAnswer, endAnswer]))
         
         return true
@@ -315,9 +328,9 @@ class AddQuestionsViewController: BaseViewController {
         let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumberText)
         let lastAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: lastNumberText)
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
-        question.setAnswers(answers: [firstAnswer, lastAnswer])
-        self.advert.addQuestion(question: question)
+        let answers = [firstAnswer, lastAnswer]
         
+        self.content.append((question: question, answers: answers))
         self.previewContent.append((question: question, answers: [firstAnswer, lastAnswer]))
         
         return true
@@ -357,9 +370,8 @@ class AddQuestionsViewController: BaseViewController {
         }
         
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: requiredAnswers)
-        question.setAnswers(answers: answerObjects)
-        self.advert.addQuestion(question: question)
         
+        self.content.append((question: question, answers: answerObjects))
         self.previewContent.append((question: question, answers: answerObjects))
         
         return true
@@ -374,9 +386,8 @@ class AddQuestionsViewController: BaseViewController {
             }
             
             let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
-            question.setAnswers(answers: answers)
-            self.advert.addQuestion(question: question)
             
+            self.content.append((question: question, answers: answers))
             self.previewContent.append((question: question, answers: answers))
             
             completion(true)

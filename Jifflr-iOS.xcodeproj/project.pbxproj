@@ -19,6 +19,7 @@
 		1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173248206A54FA005837A7 /* JifflrTextView.swift */; };
 		1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */; };
 		1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */; };
+		1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */; };
 		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
@@ -195,6 +196,7 @@
 		1A173248206A54FA005837A7 /* JifflrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextView.swift; path = Views/JifflrTextView.swift; sourceTree = "<group>"; };
 		1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddContentViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/AddContentViewController+Constraints.swift"; sourceTree = "<group>"; };
 		1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CMSAdvertViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/CMSAdvertViewController+Constraints.swift"; sourceTree = "<group>"; };
+		1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdCreatedViewController.swift; path = "Controllers/Ad Builder/Create Ad/AdCreatedViewController.swift"; sourceTree = "<group>"; };
 		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				1A17324A206A5E02005837A7 /* AddContentViewController+Constraints.swift */,
 				1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */,
 				1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */,
+				1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */,
 			);
 			name = "Create Ad";
 			sourceTree = "<group>";
@@ -1308,6 +1311,7 @@
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
 				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
 				E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */,
+				1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
