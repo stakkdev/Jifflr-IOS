@@ -10,7 +10,7 @@ import UIKit
 
 class JifflrTextField: UITextField {
 
-    let insets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+    var insets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,5 +62,15 @@ class JifflrTextField: UITextField {
         rightWrapperView.addSubview(rightButton)
         self.rightView = rightWrapperView
         self.rightViewMode = .always
+    }
+    
+    func addLeftView(image: UIImage?) {
+        let rightImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        rightImageView.image = image
+        rightImageView.contentMode = .center
+        self.leftView = rightImageView
+        self.leftViewMode = .always
+        
+        self.insets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 12)
     }
 }

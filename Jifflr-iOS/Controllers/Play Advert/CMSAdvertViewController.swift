@@ -154,6 +154,8 @@ class CMSAdvertViewController: BaseViewController {
             controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
         case AdvertQuestionType.TimePicker:
             controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: true, isPreview: false)
+        case AdvertQuestionType.URLLinks:
+            controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
         default:
             controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
         }

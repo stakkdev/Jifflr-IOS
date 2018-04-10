@@ -12,6 +12,8 @@
 		100684F120430C8A0004C675 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */; };
 		1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */; };
 		1071E83B2041FF6E00C32570 /* TeamPaginationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */; };
+		1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A155413207B81B500BEAF7A /* URLFeedbackViewController.swift */; };
+		1A155416207B95FB00BEAF7A /* JifflrURLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A155415207B95FB00BEAF7A /* JifflrURLButton.swift */; };
 		1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173244206A4545005837A7 /* AdvertDetails.swift */; };
 		1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173246206A4F0F005837A7 /* AddContentViewController.swift */; };
 		1A173249206A54FA005837A7 /* JifflrTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A173248206A54FA005837A7 /* JifflrTextView.swift */; };
@@ -186,6 +188,8 @@
 		100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
 		1007B1CD20260FAB00C32CE1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPaginationManager.swift; path = Controllers/Team/TeamPaginationManager.swift; sourceTree = "<group>"; };
+		1A155413207B81B500BEAF7A /* URLFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFeedbackViewController.swift; sourceTree = "<group>"; };
+		1A155415207B95FB00BEAF7A /* JifflrURLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrURLButton.swift; path = Views/JifflrURLButton.swift; sourceTree = "<group>"; };
 		1A173244206A4545005837A7 /* AdvertDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertDetails.swift; path = Models/AdvertDetails.swift; sourceTree = "<group>"; };
 		1A173246206A4F0F005837A7 /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddContentViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddContentViewController.swift"; sourceTree = "<group>"; };
 		1A173248206A54FA005837A7 /* JifflrTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextView.swift; path = Views/JifflrTextView.swift; sourceTree = "<group>"; };
@@ -658,6 +662,7 @@
 				E9798C29201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift */,
 				E91E6A612052E708009E9577 /* NumberPickerFeedbackViewController.swift */,
 				E91E6A632052F383009E9577 /* DateTimeFeedbackViewController.swift */,
+				1A155413207B81B500BEAF7A /* URLFeedbackViewController.swift */,
 			);
 			name = Feedback;
 			path = Controllers/Feedback;
@@ -763,6 +768,7 @@
 				E9AC1FB3202DFB6500FAA9A7 /* TextFields */,
 				E9A717791F8B89AC00B07414 /* CustomView.swift */,
 				E9AC1FB0202DF5BB00FAA9A7 /* JifflrButton.swift */,
+				1A155415207B95FB00BEAF7A /* JifflrURLButton.swift */,
 				E9608F142034509F0055EFE7 /* DashboardButtonLeft.swift */,
 				E9608F16203459290055EFE7 /* DashboardButtonRight.swift */,
 				E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */,
@@ -1329,6 +1335,7 @@
 				1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */,
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
+				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,
 				1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */,
@@ -1363,6 +1370,7 @@
 				1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */,
 				E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */,
 				E9DD581F2035D1A4000735C3 /* TeamPendingFriendCell.swift in Sources */,
+				1A155416207B95FB00BEAF7A /* JifflrURLButton.swift in Sources */,
 				E9305CED2046B1BA00D4E4DD /* TeamViewController+Invitations.swift in Sources */,
 				E9488ECA1F8CFC4300697862 /* PendingUser.swift in Sources */,
 				1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */,

@@ -185,6 +185,11 @@
 
 "feedback.createAdButton.title" = "Create an Ad campaign";
 "feedback.nextAdButton.title" = "NEXT";
+"urlLinks.website.title" = "WEBSITE";
+"urlLinks.facebook.title" = "FACEBOOK";
+"urlLinks.twitter.title" = "TWITTER";
+"urlLinks.onlineStore.title" = "ONLINE STORE";
+"urlLinks.appStore.title" = "APP STORE";
 
 "faqs.navigation.title" = "FAQs";
 "faqsDetail.navigation.title" = "FAQ";
@@ -243,3 +248,9 @@
 "addQuestions.multipleChoice.placeholder" = "Enter answer %i";
 "addQuestions.answersRequired.text" = "Answers Required";
 "addQuestions.answersRequired.placeholder" = "Enter answers required";
+"addQuestions.website.heading" = "Website";
+"addQuestions.facebook.heading" = "Facebook";
+"addQuestions.twitter.heading" = "Twitter";
+"addQuestions.onlineStore.heading" = "Online Store";
+"addQuestions.appStore.heading" = "App Store";
+"addQuestions.playStore.heading" = "Play Store";

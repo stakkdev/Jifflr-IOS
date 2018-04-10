@@ -18,9 +18,24 @@ extension AddQuestionsViewController {
             self.drawMinMaxUI(questionType: questionType)
         case AdvertQuestionType.MultipleChoice:
             self.drawMultipleChoiceUI()
+        case AdvertQuestionType.URLLinks:
+            self.drawUrlsUI()
         default:
             return
         }
+    }
+    
+    func drawUrlsUI() {
+        self.answersContainerView.isHidden = true
+        self.urlsContainerView.isHidden = false
+        
+        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 850.0)
+        self.nextButtonBottom.isActive = false
+        self.scrollView.isScrollEnabled = true
+        
+        self.nextButtonTopAnswers.isActive = false
+        self.nextButtonTopUrls.isActive = true
+        self.view.layoutIfNeeded()
     }
     
     func drawMinMaxUI(questionType: QuestionType) {
@@ -34,6 +49,8 @@ extension AddQuestionsViewController {
         self.answer5TextField.isHidden = true
         self.answersRequiredLabel.isHidden = true
         self.answersRequiredTextField.isHidden = true
+        self.urlsContainerView.isHidden = true
+        self.answersContainerView.isHidden = false
         
         switch questionType.type {
         case AdvertQuestionType.NumberPicker:
@@ -71,6 +88,8 @@ extension AddQuestionsViewController {
         self.answer5TextField.isHidden = false
         self.answersRequiredLabel.isHidden = false
         self.answersRequiredTextField.isHidden = false
+        self.urlsContainerView.isHidden = true
+        self.answersContainerView.isHidden = false
         
         self.minTextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(1)
         self.maxTextField.placeholder = "addQuestions.multipleChoice.placeholder".localizedFormat(2)
@@ -89,11 +108,16 @@ extension AddQuestionsViewController {
         self.answersContainerViewHeight.constant = 440.0
         self.nextButtonBottom.isActive = false
         self.scrollView.isScrollEnabled = true
+        
+        self.nextButtonTopAnswers.isActive = true
+        self.nextButtonTopUrls.isActive = false
+        self.view.layoutIfNeeded()
     }
     
     func hideInputUI() {
         self.answersContainerView.isUserInteractionEnabled = false
         self.answersContainerView.isHidden = true
+        self.urlsContainerView.isHidden = true
     }
     
     func showInputUI() {

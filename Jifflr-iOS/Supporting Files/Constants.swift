@@ -196,6 +196,7 @@ struct AdvertQuestionType {
     static let NumberPicker = 6
     static let TimePicker = 7
     static let DatePicker = 8
+    static let URLLinks = 9
 }
 
 struct LocationStatusType {

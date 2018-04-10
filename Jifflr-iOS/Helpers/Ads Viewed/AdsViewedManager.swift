@@ -20,27 +20,31 @@ class AdsViewedManager: NSObject {
             if let adsViewedJSON = adsViewedJSON as? [String: Any] {
                 let adsViewed = AdsViewed()
 
-                if let points = adsViewedJSON["graph"] as? [(x: Double, y: Double)] {
+                if let points = adsViewedJSON["graph"] as? [[Double]] {
                     var graph:[Graph] = []
                     for point in points {
+                        guard point.count == 2 else { continue }
+                        
                         let graphPoint = Graph()
-                        graphPoint.x = point.x
-                        graphPoint.y = point.y
+                        graphPoint.x = point.first!
+                        graphPoint.y = point.last!
                         graph.append(graphPoint)
                     }
-
+                    
                     adsViewed.graph = graph
                 }
 
-                if let points = adsViewedJSON["graphTarget"] as? [(x: Double, y: Double)] {
+                if let points = adsViewedJSON["graphTarget"] as? [[Double]] {
                     var graph:[Graph] = []
                     for point in points {
+                        guard point.count == 2 else { continue }
+                        
                         let graphPoint = Graph()
-                        graphPoint.x = point.x
-                        graphPoint.y = point.y
+                        graphPoint.x = point.first!
+                        graphPoint.y = point.last!
                         graph.append(graphPoint)
                     }
-
+                    
                     adsViewed.targetGraph = graph
                 }
 
