@@ -79,6 +79,11 @@ class AddQuestionsViewController: BaseViewController {
         
         self.urlsContainerView.backgroundColor = UIColor.clear
         self.websiteTextField.addLeftView(image: UIImage(named: "URLAdBuilderWebsite"))
+        self.facebookTextField.addLeftView(image: UIImage(named: "URLAdBuilderFacebook"))
+        self.twitterTextField.addLeftView(image: UIImage(named: "URLAdBuilderTwitter"))
+        self.onlineStoreTextField.addLeftView(image: UIImage(named: "URLAdBuilderOnlineStore"))
+        self.appStoreTextField.addLeftView(image: UIImage(named: "URLAdBuilderAppStore"))
+        self.playStoreTextField.addLeftView(image: UIImage(named: "URLAdBuilderPlayStore"))
         
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
         self.previewButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
@@ -181,6 +186,8 @@ class AddQuestionsViewController: BaseViewController {
                 controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
             case AdvertQuestionType.TimePicker:
                 controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, isPreview: true)
+            case AdvertQuestionType.URLLinks:
+                controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
             default:
                 return
             }
@@ -237,6 +244,9 @@ class AddQuestionsViewController: BaseViewController {
         case AdvertQuestionType.DatePicker:
             let valid = self.validateDate(questionType: questionType, questionText: questionText)
             completion(valid)
+        case AdvertQuestionType.URLLinks:
+            let valid = self.validateUrls(questionType: questionType, questionText: questionText)
+            completion(valid)
         default:
             sender.animate()
             self.setupDefaultQuestionType(questionType: questionType, questionText: questionText) { (success) in
@@ -244,6 +254,32 @@ class AddQuestionsViewController: BaseViewController {
                 completion(success)
             }
         }
+    }
+    
+    func validateUrls(questionType: QuestionType, questionText: String) -> Bool {
+        guard let website = self.websiteTextField.text, website.isUrl() else { return false }
+        guard let facebook = self.facebookTextField.text, facebook.isUrl() else { return false }
+        guard let twitter = self.twitterTextField.text, twitter.isUrl() else { return false }
+        guard let onlineStore = self.onlineStoreTextField.text, onlineStore.isUrl() else { return false }
+        guard let appStore = self.appStoreTextField.text, appStore.isUrl() else { return false }
+        guard let playStore = self.playStoreTextField.text, playStore.isUrl() else { return false }
+        
+        let websiteAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: website)
+        let facebookAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: facebook)
+        let twitterAnswer = AdBuilderManager.shared.createAnswer(index: 2, content: twitter)
+        let onlineStoreAnswer = AdBuilderManager.shared.createAnswer(index: 3, content: onlineStore)
+        let appStoreAnswer = AdBuilderManager.shared.createAnswer(index: 4, content: appStore)
+        let playStoreAnswer = AdBuilderManager.shared.createAnswer(index: 5, content: playStore)
+        
+        let number = self.questionNumber
+        let question = AdBuilderManager.shared.createQuestion(index: number, text: questionText, type: questionType, noOfRequiredAnswers: nil)
+        let answers = [websiteAnswer, facebookAnswer, twitterAnswer, onlineStoreAnswer, appStoreAnswer, playStoreAnswer]
+        question.setAnswers(answers: answers)
+        self.advert.addQuestion(question: question)
+        
+        self.previewContent.append((question: question, answers: answers))
+        
+        return true
     }
     
     func validateDate(questionType: QuestionType, questionText: String) -> Bool {
