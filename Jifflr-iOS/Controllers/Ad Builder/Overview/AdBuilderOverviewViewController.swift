@@ -15,6 +15,12 @@ class AdBuilderOverviewViewController: BaseViewController {
     @IBOutlet weak var tableViewHeaderView: UIView!
     @IBOutlet weak var barChart: JifflrBarChart!
     
+    var myAds: MyAds? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     class func instantiateFromStoryboard() -> AdBuilderOverviewViewController {
         let storyboard = UIStoryboard(name: "AdBuilderOverview", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "AdBuilderOverviewViewController") as! AdBuilderOverviewViewController
@@ -25,6 +31,12 @@ class AdBuilderOverviewViewController: BaseViewController {
         
         self.setupUI()
         self.updateNavigationStack()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateData()
     }
     
     func setupUI() {
@@ -57,6 +69,36 @@ class AdBuilderOverviewViewController: BaseViewController {
             }
         }
     }
+    
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            self.updateCloudData()
+        } else {
+            self.updateLocalData()
+        }
+    }
+    
+    func updateCloudData() {
+        MyAdsManager.shared.fetchData { (myAds) in
+            guard let myAds = myAds else {
+                self.updateLocalData()
+                return
+            }
+            
+            self.myAds = myAds
+        }
+    }
+    
+    func updateLocalData() {
+        MyAdsManager.shared.fetchLocalData { (myAds) in
+            guard let myAds = myAds else {
+                self.displayError(error: ErrorMessage.adBuilderOverviewFetchFailed)
+                return
+            }
+            
+            self.myAds = myAds
+        }
+    }
 }
 
 extension AdBuilderOverviewViewController: JifflrSegmentedControlDelegate {
@@ -79,14 +121,18 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let myAds = self.myAds else { return 0 }
+        
         if self.segmentedControl.selectedSegmentIndex == 0 {
             return 5
         }
         
-        return 20
+        return myAds.adverts.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let myAds = self.myAds else { return UITableViewCell() }
         
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
@@ -105,9 +151,7 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
                 cell.dateLabel.text = "22 June 2017"
                 cell.idLabel.text = "C# 3"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
-                cell.statusImageView.backgroundColor = UIColor.mainGreen
-                cell.statusImageView.layer.cornerRadius = 7.0
-                cell.statusImageView.layer.masksToBounds = true
+                cell.handleStatus(status: nil)
                 
                 return cell
             }
@@ -115,22 +159,21 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveAdsCell") as! ActiveAdsCell
                 cell.nameLabel.text = "adBuilderOverview.myActiveAds.text".localized()
-                cell.sizeLabel.text = "\(10)"
+                cell.sizeLabel.text = "\(myAds.activeAds)"
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 return cell
                 
             } else {
+                let advert = myAds.adverts[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AdvertCell") as! AdvertCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.nameLabel.text = "Early bird"
-                cell.dateLabel.text = "4 August 2017"
-                cell.idLabel.text = "NBIDFNID"
+                cell.nameLabel.text = advert.details?.name
+                cell.idLabel.text = "Ad: \(advert.details?.number ?? 0)"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
-                cell.statusImageView.backgroundColor = UIColor.mainGreen
-                cell.statusImageView.layer.cornerRadius = 7.0
-                cell.statusImageView.layer.masksToBounds = true
+                cell.handleStatus(status: advert.status)
+                cell.handleDate(createdAt: advert.createdAt)
                 
                 return cell
             }

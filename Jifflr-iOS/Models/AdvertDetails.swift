@@ -56,6 +56,15 @@ final class AdvertDetails: PFObject {
             self["template"] = newValue
         }
     }
+    
+    var number: Int {
+        get {
+            return self["number"] as? Int ?? 0
+        }
+        set {
+            self["number"] = newValue
+        }
+    }
 }
 
 extension AdvertDetails: PFSubclassing {

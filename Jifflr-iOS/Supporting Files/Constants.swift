@@ -212,3 +212,11 @@ struct AdvertTemplateKey {
     static let titleMessageImage = "titleMessageImage"
     static let imageTitleMessage = "imageTitleMessage"
 }
+
+struct AdvertStatusKey {
+    static let availableActive = "availableActive"
+    static let availableScheduled = "availableScheduled"
+    static let inactive = "inactive"
+    static let nonCompliant = "nonCompliant"
+    static let nonCompliantScheduled = "nonCompliantScheduled"
+}

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -249,17 +250,17 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="L4W-Sb-NeB">
-                                                            <rect key="frame" x="246.5" y="36" width="50.5" height="17.5"/>
+                                                            <rect key="frame" x="244.5" y="36" width="50.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                                             <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-28-b97">
-                                                            <rect key="frame" x="305" y="38" width="14" height="14"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-28-b97">
+                                                            <rect key="frame" x="303" y="37" width="16" height="16"/>
                                                             <color key="backgroundColor" red="0.58039215686274503" green="0.75294117647058822" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="14" id="FEc-f0-zEB"/>
-                                                                <constraint firstAttribute="height" constant="14" id="zKW-Of-Iuj"/>
+                                                                <constraint firstAttribute="width" secondItem="8SM-28-b97" secondAttribute="height" multiplier="1:1" id="0OA-tg-sqc"/>
+                                                                <constraint firstAttribute="width" constant="16" id="FEc-f0-zEB"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -300,6 +301,7 @@
                                             <outlet property="idLabel" destination="w7C-6l-pqi" id="LT9-71-Hp2"/>
                                             <outlet property="nameLabel" destination="0PI-Hg-hJJ" id="jMa-30-d4O"/>
                                             <outlet property="statusImageView" destination="8SM-28-b97" id="vMH-rI-KpP"/>
+                                            <outlet property="statusImageViewWidth" destination="FEc-f0-zEB" id="fsU-wD-oll"/>
                                             <outlet property="statusLabel" destination="L4W-Sb-NeB" id="diL-N2-m0U"/>
                                         </connections>
                                     </tableViewCell>
