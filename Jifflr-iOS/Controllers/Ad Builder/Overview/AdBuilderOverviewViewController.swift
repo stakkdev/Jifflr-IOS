@@ -13,6 +13,7 @@ class AdBuilderOverviewViewController: BaseViewController {
     @IBOutlet weak var segmentedControl: JifflrSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeaderView: UIView!
+    @IBOutlet weak var barChart: JifflrBarChart!
     
     class func instantiateFromStoryboard() -> AdBuilderOverviewViewController {
         let storyboard = UIStoryboard(name: "AdBuilderOverview", bundle: nil)
@@ -62,10 +63,10 @@ extension AdBuilderOverviewViewController: JifflrSegmentedControlDelegate {
     func valueChanged() {
         if self.segmentedControl.selectedSegmentIndex == 0 {
             self.tableView.contentOffset.y = 0.0
-            self.tableViewHeaderView.frame.size.height = 240.0
-        } else {
-            self.tableView.contentOffset.y = 180.0
             self.tableViewHeaderView.frame.size.height = 260.0
+        } else {
+            self.tableView.contentOffset.y = 200.0
+            self.tableViewHeaderView.frame.size.height = 280.0
         }
         
         self.tableView.reloadData()

@@ -138,21 +138,21 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="eAN-5Z-CJ9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-Rc-Ycc" customClass="JifflrSegmentedControl" customModule="Jifflr_iOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="200" width="375" height="60"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="nL5-IU-4bh"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDu-kg-Zd8" customClass="JifflrTeamChart" customModule="Jifflr_iOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDu-kg-Zd8" customClass="JifflrBarChart" customModule="Jifflr_iOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <color key="backgroundColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="180" id="lCP-dL-Xzy"/>
+                                                <constraint firstAttribute="height" constant="200" id="lCP-dL-Xzy"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -168,7 +168,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActiveAdsCell" rowHeight="98" id="UTb-Vc-ENY" customClass="ActiveAdsCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="268" width="375" height="98"/>
+                                        <rect key="frame" x="0.0" y="288" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTb-Vc-ENY" id="fOl-mg-at4">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
@@ -221,7 +221,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdvertCell" rowHeight="74" id="7oa-9d-Qcf" customClass="AdvertCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="366" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="386" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7oa-9d-Qcf" id="eni-g4-ikd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -316,6 +316,7 @@
                         <viewLayoutGuide key="safeArea" id="jiW-jV-oPa"/>
                     </view>
                     <connections>
+                        <outlet property="barChart" destination="bDu-kg-Zd8" id="7Gr-IH-DWp"/>
                         <outlet property="segmentedControl" destination="lQZ-Rc-Ycc" id="PoD-ue-Hyy"/>
                         <outlet property="tableView" destination="CX4-jk-gbF" id="LBH-9n-Cgk"/>
                         <outlet property="tableViewHeaderView" destination="eAN-5Z-CJ9" id="cVD-bb-BGj"/>

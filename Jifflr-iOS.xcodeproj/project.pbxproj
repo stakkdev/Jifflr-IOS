@@ -23,6 +23,7 @@
 		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
 		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
 		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
+		1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A79207E183700474598 /* JifflrBarChart.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
@@ -202,6 +203,7 @@
 		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
 		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
 		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
+		1A642A79207E183700474598 /* JifflrBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrBarChart.swift; path = Views/JifflrBarChart.swift; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 				E9608F1A203482AD0055EFE7 /* PulsePlayButton.swift */,
 				E9DD58172035A73D000735C3 /* JifflrSegmentedControl.swift */,
 				E9DD58202035DDF3000735C3 /* JifflrTeamChart.swift */,
+				1A642A79207E183700474598 /* JifflrBarChart.swift */,
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
 				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
 				1A173248206A54FA005837A7 /* JifflrTextView.swift */,
@@ -1355,6 +1358,7 @@
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,
+				1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,
 				1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */,
