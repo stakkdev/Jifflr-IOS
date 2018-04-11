@@ -29,7 +29,6 @@ class JifflrBarChart: UIView {
     func commonInit() {
         self.setupUI()
         self.setupConstraints()
-        self.setupData()
     }
     
     func setupUI() {
@@ -92,11 +91,16 @@ class JifflrBarChart: UIView {
         self.addConstraints([x, y])
     }
     
-    func setupData() {
-        let months = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
-        let unitsSold = [20.0, 4.0, 3.0, 6.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+    func setupData(points: [BarChartPoint]) {
+        var months:[String] = []
+        var data:[Double] = []
         
-        self.barChartView.setBarChartData(xValues: months, yValues: unitsSold, label: "Data")
+        for point in points {
+            months.append(point.x)
+            data.append(point.y)
+        }
+        
+        self.barChartView.setBarChartData(xValues: months, yValues: data, label: "Data")
         self.barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
     }
 }

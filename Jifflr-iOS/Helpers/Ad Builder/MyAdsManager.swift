@@ -35,10 +35,21 @@ class MyAdsManager: NSObject {
             group.leave()
         }
         
+        group.enter()
+        self.fetchChartData { (points) in
+            guard let graph = points else {
+                completion(nil)
+                return
+            }
+            
+            myAds.graph = graph
+            group.leave()
+        }
+        
         group.notify(queue: .main) {
             PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
-                myAds.pinInBackground(block: { (success, error) in
-                    print("MyAds Pinned: \(success)")
+                myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    print("My Ads Pinned: \(success)")
                 })
             })
             
@@ -84,6 +95,35 @@ class MyAdsManager: NSObject {
             
             completion(count)
         })
+    }
+    
+    func fetchChartData(completion: @escaping ([BarChartPoint]?) -> Void) {
+//        guard let user = Session.shared.currentUser else { return }
+//
+//        PFCloud.callFunction(inBackground: "campaign-chart", withParameters: ["user": user.objectId!]) { myAdsJSON, error in
+//            if let myAdsJSON = myAdsJSON as? [String: Any] {
+//                if let points = myAdsJSON["graph"] as? [[Any]] {
+                    var graph:[BarChartPoint] = []
+                    
+                    let points = [["J", 20.0], ["F", 4.0], ["M", 16.0], ["A", 1.0], ["M", 3.0], ["J", 7.0], ["J", 9.0], ["A", 10.0], ["S", 21.0], ["O", 2.0], ["N", 4.0], ["D", 8.0]]
+                    
+                    for point in points {
+                        guard let month = point.first as? String, let value = point.last as? Double else { continue }
+                        
+                        let graphPoint = BarChartPoint()
+                        graphPoint.x = month
+                        graphPoint.y = value
+                        graph.append(graphPoint)
+                    }
+                    
+                    completion(graph)
+//                }
+//
+//                completion(nil)
+//            } else {
+//                completion(nil)
+//            }
+//        }
     }
     
     func fetchLocalData(completion: @escaping (MyAds?) -> Void) {

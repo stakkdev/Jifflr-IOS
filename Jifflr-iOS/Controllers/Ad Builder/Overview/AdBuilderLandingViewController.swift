@@ -52,6 +52,7 @@ class AdBuilderLandingViewController: BaseViewController {
     
     func routeBasedOnUserAdCount(count: Int?) {
         guard let count = count else {
+            self.pushToNoAds()
             return
         }
         

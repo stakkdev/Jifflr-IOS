@@ -27,6 +27,7 @@
 		1A642A7C207E3BAF00474598 /* AdvertStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7B207E3BAF00474598 /* AdvertStatus.swift */; };
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
+		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
@@ -210,6 +211,7 @@
 		1A642A7B207E3BAF00474598 /* AdvertStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertStatus.swift; path = Models/AdvertStatus.swift; sourceTree = "<group>"; };
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
+		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				E923751C203ED9CB00275199 /* AdsViewed.swift */,
 				E9305CF22047005300D4E4DD /* MyMoney.swift */,
 				1A642A7F207E445300474598 /* MyAds.swift */,
+				1A642A81207E6CD500474598 /* BarChartPoint.swift */,
 			);
 			name = "Local Models";
 			sourceTree = "<group>";
@@ -1324,6 +1327,7 @@
 				E9AC1FB1202DF5BB00FAA9A7 /* JifflrButton.swift in Sources */,
 				E9E0B55E1F8BD7AE00CBBA72 /* Constants.swift in Sources */,
 				E95179491F90D15E0000A08D /* UserCashout.swift in Sources */,
+				1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */,
 				E937F5B82036F77C00171480 /* Friends.swift in Sources */,
 				E97B9E25203B07AC0097BC65 /* FAQSegmentedControl.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,

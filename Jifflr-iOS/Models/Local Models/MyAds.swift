@@ -29,6 +29,15 @@ final class MyAds: PFObject {
             self["adverts"] = newValue
         }
     }
+    
+    var graph: [BarChartPoint] {
+        get {
+            return self["graph"] as? [BarChartPoint] ?? []
+        }
+        set {
+            self["graph"] = newValue
+        }
+    }
 }
 
 extension MyAds: PFSubclassing {
