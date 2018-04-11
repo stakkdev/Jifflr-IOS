@@ -42,7 +42,7 @@ class CreateAdViewController: BaseViewController {
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
-        guard let adName = self.textField.text, !adName.isEmpty else {
+        guard let adName = self.textField.text, !adName.isEmpty, let user = Session.shared.currentUser else {
             self.displayError(error: ErrorMessage.createAdName)
             return
         }
@@ -52,6 +52,7 @@ class CreateAdViewController: BaseViewController {
         details.name = adName
         advert.isCMS = true
         advert.details = details
+        advert.creator = user
         
         let vc = ChooseTemplateViewController.instantiateFromStoryboard(advert: advert)
         self.navigationController?.pushViewController(vc, animated: true)

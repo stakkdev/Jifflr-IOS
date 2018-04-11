@@ -79,8 +79,9 @@ class AddQuestionsViewController: BaseViewController {
         super.viewWillDisappear(animated)
         
         if self.isMovingFromParentViewController {
-            if self.content.count > 0 {
-                self.content.removeLast()
+            guard let vc = self.navigationController?.viewControllers.last as? AddQuestionsViewController else { return }
+            if vc.content.count > 0 {
+                vc.content.removeLast()
             }
         }
     }
