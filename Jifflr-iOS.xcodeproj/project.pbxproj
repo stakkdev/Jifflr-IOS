@@ -21,6 +21,8 @@
 		1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */; };
 		1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */; };
 		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
+		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
+		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
@@ -198,6 +200,8 @@
 		1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CMSAdvertViewController+Constraints.swift"; path = "Controllers/Ad Builder/Create Ad/CMSAdvertViewController+Constraints.swift"; sourceTree = "<group>"; };
 		1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdCreatedViewController.swift; path = "Controllers/Ad Builder/Create Ad/AdCreatedViewController.swift"; sourceTree = "<group>"; };
 		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
+		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
+		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
@@ -390,6 +394,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A642A74207E0A5C00474598 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */,
+				1A642A77207E0B8200474598 /* AdvertCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		1AF195392068FEF900FE3896 /* Ad Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +423,7 @@
 		1AF195402069020200FE3896 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				1A642A74207E0A5C00474598 /* Cells */,
 				1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */,
 				1AF195432069031D00FE3896 /* NoAdsViewController.swift */,
 				1AF19549206921E500FE3896 /* AdBuilderOverviewViewController.swift */,
@@ -1322,6 +1336,7 @@
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
 				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
 				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
+				1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
@@ -1403,6 +1418,7 @@
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
 				1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */,
+				1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
 				E96A0CFB203DAC660059DDAC /* ContactsManager.swift in Sources */,
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,
