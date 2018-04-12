@@ -17,10 +17,12 @@ class AdBuilderOverviewViewController: BaseViewController {
     
     var myAds: MyAds? {
         didSet {
-            self.tableView.reloadData()
-            
-            guard let points = self.myAds?.graph, points.count > 0 else { return }
-            self.barChart.setupData(points: points)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+                guard let points = self.myAds?.graph, points.count > 0 else { return }
+                self.barChart.setupData(points: points)
+            }
         }
     }
     
@@ -34,11 +36,12 @@ class AdBuilderOverviewViewController: BaseViewController {
         
         self.setupUI()
         self.updateNavigationStack()
-        self.updateData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.updateData()
     }
     
     func setupUI() {
@@ -82,10 +85,12 @@ class AdBuilderOverviewViewController: BaseViewController {
     }
     
     func updateData() {
-        if Reachability.isConnectedToNetwork() {
-            self.updateCloudData()
-        } else {
-            self.updateLocalData()
+        DispatchQueue.global(qos: .background).async {
+            if Reachability.isConnectedToNetwork() {
+                self.updateCloudData()
+            } else {
+                self.updateLocalData()
+            }
         }
     }
     

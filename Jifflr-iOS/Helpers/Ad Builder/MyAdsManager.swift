@@ -71,9 +71,11 @@ class MyAdsManager: NSObject {
                 completion([])
                 return
             }
-            
+
             completion(ads)
         })
+        
+        completion([])
     }
     
     func countActiveUserAds(completion: @escaping (Int?) -> Void) {
