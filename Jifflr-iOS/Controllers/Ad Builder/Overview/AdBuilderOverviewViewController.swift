@@ -34,12 +34,11 @@ class AdBuilderOverviewViewController: BaseViewController {
         
         self.setupUI()
         self.updateNavigationStack()
+        self.updateData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.updateData()
     }
     
     func setupUI() {
@@ -79,7 +78,7 @@ class AdBuilderOverviewViewController: BaseViewController {
     }
     
     @objc func addButtonPressed() {
-        self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(), animated: true)
+        self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(advert: nil), animated: true)
     }
     
     func updateData() {
@@ -190,7 +189,7 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = advert.details?.name
-                cell.idLabel.text = "Ad: \(advert.details?.number ?? 0)"
+                cell.idLabel.text = "A# \(advert.details?.number ?? 0)"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
                 cell.handleStatus(status: advert.status)
                 cell.handleDate(createdAt: advert.createdAt)
@@ -201,6 +200,11 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        if self.segmentedControl.selectedSegmentIndex == 1 {
+            guard indexPath.row > 0 else { return }
+            guard let advert = self.myAds?.adverts[indexPath.row - 1] else { return }
+            let vc = CreateAdViewController.instantiateFromStoryboard(advert: advert)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

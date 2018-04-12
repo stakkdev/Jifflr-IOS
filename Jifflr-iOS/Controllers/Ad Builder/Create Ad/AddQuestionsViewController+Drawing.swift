@@ -179,4 +179,17 @@ extension AddQuestionsViewController {
         self.nextButtonBottom.isActive = true
         self.view.layoutIfNeeded()
     }
+    
+    func drawQuestionData(questionType: QuestionType) {
+        switch questionType.type {
+        case AdvertQuestionType.NumberPicker, AdvertQuestionType.TimePicker, AdvertQuestionType.DatePicker:
+            return
+        case AdvertQuestionType.MultipleChoice:
+            return
+        case AdvertQuestionType.URLLinks:
+            return
+        default:
+            return
+        }
+    }
 }

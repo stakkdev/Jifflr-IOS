@@ -12,7 +12,7 @@ import Parse
 class AdBuilderManager: NSObject {
     static let shared = AdBuilderManager()
     
-    let pinName = "AdBuilder"
+    let pinName = AdvertManager.shared.pinName
     
     func countUserAds(completion: @escaping (Int?) -> Void) {
         guard let currentUser = Session.shared.currentUser else { return }

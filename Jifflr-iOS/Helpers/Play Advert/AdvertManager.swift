@@ -52,6 +52,7 @@ class AdvertManager: NSObject {
         query?.includeKey("questions")
         query?.includeKey("details")
         query?.includeKey("details.template")
+        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (adverts, error) in
             guard let adverts = adverts as? [Advert], error == nil else {
                 completion()
@@ -67,6 +68,11 @@ class AdvertManager: NSObject {
                         group.leave()
                     })
                     
+                    group.enter()
+                    advert.status?.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
                     if let details = advert.details {
                         group.enter()
                         details.pinInBackground(withName: self.pinName, block: { (success, error) in
@@ -74,7 +80,7 @@ class AdvertManager: NSObject {
                         })
                         
                         group.enter()
-                        details.template.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        details.template?.pinInBackground(withName: self.pinName, block: { (success, error) in
                             group.leave()
                         })
                         

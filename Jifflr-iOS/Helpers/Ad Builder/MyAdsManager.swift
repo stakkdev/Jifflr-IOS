@@ -12,48 +12,44 @@ import Parse
 class MyAdsManager: NSObject {
     static let shared = MyAdsManager()
     
-    let pinName = AdBuilderManager.shared.pinName
+    let pinName = AdvertManager.shared.pinName
     
     func fetchData(completion: @escaping (MyAds?) -> Void) {
         let group = DispatchGroup()
         let myAds = MyAds()
-        
-        group.enter()
+
         self.fetchUserAds { (adverts) in
             myAds.adverts = adverts
-            group.leave()
-        }
-        
-        group.enter()
-        self.countActiveUserAds { (count) in
-            guard let count = count else {
-                completion(nil)
-                return
+            
+            group.enter()
+            self.countActiveUserAds { (count) in
+                guard let count = count else {
+                    completion(nil)
+                    return
+                }
+
+                myAds.activeAds = count
+                group.leave()
+            }
+
+            group.enter()
+            self.fetchChartData { (points) in
+                guard let graph = points else {
+                    completion(nil)
+                    return
+                }
+
+                myAds.graph = graph
+                group.leave()
             }
             
-            myAds.activeAds = count
-            group.leave()
-        }
-        
-        group.enter()
-        self.fetchChartData { (points) in
-            guard let graph = points else {
-                completion(nil)
-                return
-            }
-            
-            myAds.graph = graph
-            group.leave()
-        }
-        
-        group.notify(queue: .main) {
-            PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
+            group.notify(queue: .main) {
                 myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
                     print("My Ads Pinned: \(success)")
                 })
-            })
-            
-            completion(myAds)
+                
+                completion(myAds)
+            }
         }
     }
     
@@ -61,9 +57,15 @@ class MyAdsManager: NSObject {
         guard let currentUser = Session.shared.currentUser else { return }
         
         let query = Advert.query()
+        query?.fromPin(withName: self.pinName)
         query?.whereKey("creator", equalTo: currentUser)
+        query?.includeKey("questionType")
+        query?.includeKey("question")
+        query?.includeKey("question.answers")
         query?.includeKey("details")
+        query?.includeKey("details.template")
         query?.includeKey("status")
+        query?.order(byAscending: "createdAt")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let ads = objects as? [Advert], error == nil else {
                 completion([])
@@ -80,6 +82,7 @@ class MyAdsManager: NSObject {
         let query = Advert.query()
         query?.whereKey("creator", equalTo: currentUser)
         query?.includeKey("status")
+        query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let ads = objects as? [Advert], error == nil else {
                 completion(nil)
@@ -129,6 +132,12 @@ class MyAdsManager: NSObject {
     func fetchLocalData(completion: @escaping (MyAds?) -> Void) {
         let query = MyAds.query()
         query?.includeKey("adverts")
+        query?.includeKey("adverts.details")
+        query?.includeKey("adverts.details.template")
+        query?.includeKey("adverts.status")
+        query?.includeKey("adverts.questions")
+        query?.includeKey("adverts.questions.answers")
+        query?.includeKey("adverts.questions.type")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.getFirstObjectInBackground(block: { (object, error) in

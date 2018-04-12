@@ -107,6 +107,16 @@ extension ChooseTemplateViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let template = self.templates[indexPath.row]
+        if let chosenTemplate = self.advert.details?.template {
+            if template.key == chosenTemplate.key {
+                cell.setSelected(true, animated: false)
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }
+        }
+    }
+    
     func footerView() -> UIView {
         let width = UIScreen.main.bounds.width
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 63.0))

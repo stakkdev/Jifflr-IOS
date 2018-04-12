@@ -32,7 +32,7 @@ class CMSAdvertViewController: BaseViewController {
         advertViewController.advert = advert
         advertViewController.isPreview = isPreview
         
-        if advert.details?.template.key == AdvertTemplateKey.imageVideoLandscape {
+        if advert.details?.template?.key == AdvertTemplateKey.imageVideoLandscape {
             OrientationManager.shared.set(orientation: .landscape)
         } else {
             OrientationManager.shared.set(orientation: .portrait)

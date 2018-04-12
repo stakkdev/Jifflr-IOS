@@ -14,10 +14,14 @@ class CreateAdViewController: BaseViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var textField: JifflrTextField!
     @IBOutlet weak var nextButton: JifflrButton!
+    
+    var advert: Advert?
 
-    class func instantiateFromStoryboard() -> CreateAdViewController {
+    class func instantiateFromStoryboard(advert: Advert?) -> CreateAdViewController {
         let storyboard = UIStoryboard(name: "CreateAd", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "CreateAdViewController") as! CreateAdViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "CreateAdViewController") as! CreateAdViewController
+        vc.advert = advert
+        return vc
     }
     
     override func viewDidLoad() {
@@ -31,6 +35,10 @@ class CreateAdViewController: BaseViewController {
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
+        
+        if let advert = self.advert {
+            self.textField.text = advert.details?.name
+        }
     }
     
     func setupLocalization() {
@@ -47,13 +55,18 @@ class CreateAdViewController: BaseViewController {
             return
         }
         
-        let advert = Advert()
-        let details = AdvertDetails()
-        details.name = adName
-        advert.isCMS = true
-        advert.details = details
-        advert.creator = user
+        if let advert = self.advert {
+            advert.details?.name = adName
+        } else {
+            self.advert = Advert()
+            let details = AdvertDetails()
+            details.name = adName
+            self.advert?.isCMS = true
+            self.advert?.details = details
+            self.advert?.creator = user
+        }
         
+        guard let advert = self.advert else { return }
         let vc = ChooseTemplateViewController.instantiateFromStoryboard(advert: advert)
         self.navigationController?.pushViewController(vc, animated: true)
     }

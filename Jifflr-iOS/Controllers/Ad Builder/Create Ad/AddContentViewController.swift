@@ -21,6 +21,7 @@ class AddContentViewController: BaseViewController {
     @IBOutlet weak var nextButton: JifflrButton!
     
     var advert: Advert!
+    var content:[(question: Question, answers: [Answer])] = []
     
     let imagePicker = UIImagePickerController()
 
@@ -35,6 +36,7 @@ class AddContentViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        self.setupData()
         
         self.imagePicker.delegate = self
         self.imagePicker.allowsEditing = false
@@ -59,6 +61,46 @@ class AddContentViewController: BaseViewController {
         self.messageTextView.placeholder = "addContent.messageTextView.placeholder".localized()
         self.imageButton.setTitle("addContent.imageButton.title".localized(), for: .normal)
         self.imageButton.setImage(UIImage(named: "AddImageButton"), for: .normal)
+    }
+    
+    func setupData() {
+        self.fetchQuestionsAndAnswers()
+        
+        if let title = self.advert.details?.title {
+            self.titleTextField.text = title
+        }
+        
+        if let message = self.advert.details?.message {
+            self.messageTextView.text = message
+            self.messageTextView.textColor = UIColor.mainBlue
+        }
+        
+        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "jpg") {
+            do {
+                let data = try Data(contentsOf: url)
+                if let image = UIImage(data: data) {
+                    self.imageOverlayView.image = image
+                }
+            } catch {
+                
+            }
+            return
+        }
+        
+        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "mp4") {
+            guard let thumbnail = self.getThumbnailFrom(path: url) else {
+                return
+            }
+            
+            self.imageOverlayView.contentMode = .scaleAspectFill
+            self.imageOverlayView.image = thumbnail
+        }
+    }
+    
+    func fetchQuestionsAndAnswers() {
+        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
+            self.content = content
+        }
     }
     
     @IBAction func addImageButtonPressed(sender: UIButton) {
@@ -104,7 +146,7 @@ class AddContentViewController: BaseViewController {
             return
         }
         
-        let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: 1, content: [])
+        let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: 1, content: self.content)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -200,22 +242,6 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
         } catch let error {
             print(error)
             return nil
-        }
-    }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if let _ = viewController as? ChooseTemplateViewController {
-            let newDetails = AdvertDetails()
-            
-            if let name = self.advert.details?.name {
-                newDetails.name = name
-            }
-            
-            if let template = self.advert.details?.template {
-                newDetails.template = template
-            }
-            
-            self.advert.details = newDetails
         }
     }
 }
