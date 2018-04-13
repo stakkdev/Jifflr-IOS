@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+        <array key="GothamBook.otf">
+            <string>GothamBook</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Create Schedule View Controller-->
+        <scene sceneID="AbU-IF-hf2">
+            <objects>
+                <viewController storyboardIdentifier="CreateScheduleViewController" id="ETZ-YF-rMQ" customClass="CreateScheduleViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dlY-9j-Qky">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXn-bH-khl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6P-I4-fDF" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="507" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="zBd-Qm-82H"/>
+                                        </constraints>
+                                        <state key="normal" title="NEXT"/>
+                                        <connections>
+                                            <action selector="nextButtonPressedWithSender:" destination="ETZ-YF-rMQ" eventType="touchUpInside" id="by0-pB-Gb8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGj-IS-TdM" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="577" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="HYo-PP-HnQ"/>
+                                        </constraints>
+                                        <state key="normal" title="NEED SOME HELP"/>
+                                        <connections>
+                                            <action selector="helpButtonPressedWithSender:" destination="ETZ-YF-rMQ" eventType="touchUpInside" id="p3U-ia-ZFP"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFn-Hh-lpm">
+                                        <rect key="frame" x="25" y="10" width="118" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5w-Uh-184" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="34" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fW0-op-dXZ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZg-WL-Lx8">
+                                        <rect key="frame" x="25" y="94" width="48.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZS-yd-7WH" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="118" width="339" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="28M-md-Icc"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-ro-pu2">
+                                        <rect key="frame" x="181" y="219" width="14.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8il-n3-AZb">
+                                        <rect key="frame" x="25" y="178" width="33.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-CD-cng" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="202" width="153" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="KjA-r9-KJJ"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bw8-wK-nB9" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="205.5" y="202" width="151.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="XEW-NQ-n0t"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39G-7X-qzX">
+                                        <rect key="frame" x="180.5" y="301" width="14.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQt-8F-Rtf">
+                                        <rect key="frame" x="25" y="260" width="35.5" height="16"/>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DnX-zH-AEE" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="284" width="152.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ePX-zf-FFq"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-zK-LuN" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="204.5" y="284" width="152.5" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="0YO-5y-sz0"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DnX-zH-AEE" firstAttribute="leading" secondItem="LG3-CD-cng" secondAttribute="leading" id="3QT-NO-B6O"/>
+                                    <constraint firstItem="DnX-zH-AEE" firstAttribute="top" secondItem="JQt-8F-Rtf" secondAttribute="bottom" constant="8" id="6Iz-Km-0Fa"/>
+                                    <constraint firstItem="gOC-ro-pu2" firstAttribute="leading" secondItem="LG3-CD-cng" secondAttribute="trailing" constant="10" id="7wW-Hh-zjV"/>
+                                    <constraint firstItem="y5w-Uh-184" firstAttribute="leading" secondItem="NXn-bH-khl" secondAttribute="leading" constant="18" id="7wh-gf-PF4"/>
+                                    <constraint firstItem="QFn-Hh-lpm" firstAttribute="top" secondItem="NXn-bH-khl" secondAttribute="top" constant="10" id="8j7-Ku-XdA"/>
+                                    <constraint firstItem="kZS-yd-7WH" firstAttribute="top" secondItem="KZg-WL-Lx8" secondAttribute="bottom" constant="8" id="Au9-dR-hMZ"/>
+                                    <constraint firstItem="fW6-zK-LuN" firstAttribute="leading" secondItem="39G-7X-qzX" secondAttribute="trailing" constant="10" id="BUA-FD-dRh"/>
+                                    <constraint firstItem="JQt-8F-Rtf" firstAttribute="leading" secondItem="8il-n3-AZb" secondAttribute="leading" id="CXF-eh-qbU"/>
+                                    <constraint firstItem="fW6-zK-LuN" firstAttribute="centerY" secondItem="DnX-zH-AEE" secondAttribute="centerY" id="CmH-vx-ln1"/>
+                                    <constraint firstItem="8il-n3-AZb" firstAttribute="leading" secondItem="KZg-WL-Lx8" secondAttribute="leading" id="D78-u9-Did"/>
+                                    <constraint firstAttribute="trailing" secondItem="B6P-I4-fDF" secondAttribute="trailing" constant="18" id="Fa9-8w-dBd"/>
+                                    <constraint firstItem="8il-n3-AZb" firstAttribute="top" secondItem="kZS-yd-7WH" secondAttribute="bottom" constant="10" id="GnX-zI-F6H"/>
+                                    <constraint firstItem="y5w-Uh-184" firstAttribute="top" secondItem="QFn-Hh-lpm" secondAttribute="bottom" constant="8" id="K7A-WN-aLs"/>
+                                    <constraint firstItem="kZS-yd-7WH" firstAttribute="leading" secondItem="NXn-bH-khl" secondAttribute="leading" constant="18" id="LuM-qa-bOK"/>
+                                    <constraint firstItem="JQt-8F-Rtf" firstAttribute="top" secondItem="LG3-CD-cng" secondAttribute="bottom" constant="8" id="O6y-Gp-cE8"/>
+                                    <constraint firstItem="B6P-I4-fDF" firstAttribute="top" secondItem="DnX-zH-AEE" secondAttribute="bottom" constant="173" id="OWn-fC-Eea"/>
+                                    <constraint firstItem="KZg-WL-Lx8" firstAttribute="top" secondItem="y5w-Uh-184" secondAttribute="bottom" constant="10" id="PDf-XC-NKP"/>
+                                    <constraint firstAttribute="trailing" secondItem="kZS-yd-7WH" secondAttribute="trailing" constant="18" id="VCz-mB-1hU"/>
+                                    <constraint firstAttribute="trailing" secondItem="mGj-IS-TdM" secondAttribute="trailing" constant="18" id="YBM-Di-Z09"/>
+                                    <constraint firstItem="gOC-ro-pu2" firstAttribute="centerX" secondItem="NXn-bH-khl" secondAttribute="centerX" id="ZIn-AE-DHU"/>
+                                    <constraint firstItem="mGj-IS-TdM" firstAttribute="top" secondItem="B6P-I4-fDF" secondAttribute="bottom" constant="20" id="boz-HQ-W4U"/>
+                                    <constraint firstAttribute="bottom" secondItem="mGj-IS-TdM" secondAttribute="bottom" constant="20" id="ecX-kI-19g"/>
+                                    <constraint firstItem="Bw8-wK-nB9" firstAttribute="centerY" secondItem="LG3-CD-cng" secondAttribute="centerY" id="gxH-OO-hZB"/>
+                                    <constraint firstItem="39G-7X-qzX" firstAttribute="centerY" secondItem="DnX-zH-AEE" secondAttribute="centerY" id="i4U-83-hGb"/>
+                                    <constraint firstItem="LG3-CD-cng" firstAttribute="top" secondItem="8il-n3-AZb" secondAttribute="bottom" constant="8" id="jcV-d3-0yU"/>
+                                    <constraint firstItem="B6P-I4-fDF" firstAttribute="leading" secondItem="NXn-bH-khl" secondAttribute="leading" constant="18" id="kEZ-nx-QuH"/>
+                                    <constraint firstItem="Bw8-wK-nB9" firstAttribute="leading" secondItem="gOC-ro-pu2" secondAttribute="trailing" constant="10" id="kM0-iy-zGj"/>
+                                    <constraint firstItem="Bw8-wK-nB9" firstAttribute="trailing" secondItem="kZS-yd-7WH" secondAttribute="trailing" id="r3U-59-WcU"/>
+                                    <constraint firstItem="KZg-WL-Lx8" firstAttribute="leading" secondItem="kZS-yd-7WH" secondAttribute="leading" constant="7" id="s8P-jM-Hnt"/>
+                                    <constraint firstAttribute="trailing" secondItem="y5w-Uh-184" secondAttribute="trailing" constant="18" id="sdu-8z-tjt"/>
+                                    <constraint firstItem="39G-7X-qzX" firstAttribute="leading" secondItem="DnX-zH-AEE" secondAttribute="trailing" constant="10" id="sxl-aI-Yhi"/>
+                                    <constraint firstItem="mGj-IS-TdM" firstAttribute="leading" secondItem="NXn-bH-khl" secondAttribute="leading" constant="18" id="uhe-04-5tC"/>
+                                    <constraint firstItem="fW6-zK-LuN" firstAttribute="trailing" secondItem="Bw8-wK-nB9" secondAttribute="trailing" id="wpi-c4-G6L"/>
+                                    <constraint firstItem="QFn-Hh-lpm" firstAttribute="leading" secondItem="y5w-Uh-184" secondAttribute="leading" constant="7" id="x3R-FL-t0f"/>
+                                    <constraint firstItem="LG3-CD-cng" firstAttribute="leading" secondItem="kZS-yd-7WH" secondAttribute="leading" id="xWR-Jb-5JZ"/>
+                                    <constraint firstItem="39G-7X-qzX" firstAttribute="centerX" secondItem="NXn-bH-khl" secondAttribute="centerX" id="xtv-Pw-0g3"/>
+                                    <constraint firstItem="gOC-ro-pu2" firstAttribute="centerY" secondItem="LG3-CD-cng" secondAttribute="centerY" id="ySd-NC-cFE"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="StV-TV-znQ" firstAttribute="trailing" secondItem="mGj-IS-TdM" secondAttribute="trailing" constant="18" id="6K2-rp-soT"/>
+                            <constraint firstItem="NXn-bH-khl" firstAttribute="top" secondItem="StV-TV-znQ" secondAttribute="top" id="8Sc-7a-QDc"/>
+                            <constraint firstItem="NXn-bH-khl" firstAttribute="leading" secondItem="StV-TV-znQ" secondAttribute="leading" id="TM6-sl-yOK"/>
+                            <constraint firstItem="mGj-IS-TdM" firstAttribute="leading" secondItem="StV-TV-znQ" secondAttribute="leading" constant="18" id="YyQ-rJ-3C7"/>
+                            <constraint firstItem="NXn-bH-khl" firstAttribute="trailing" secondItem="StV-TV-znQ" secondAttribute="trailing" id="i4E-UW-cdz"/>
+                            <constraint firstItem="NXn-bH-khl" firstAttribute="bottom" secondItem="StV-TV-znQ" secondAttribute="bottom" id="ml0-6i-Ure"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="StV-TV-znQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="advertLabel" destination="KZg-WL-Lx8" id="xc6-rH-lQb"/>
+                        <outlet property="advertTextField" destination="kZS-yd-7WH" id="boi-Fy-hc7"/>
+                        <outlet property="campaignNameLabel" destination="QFn-Hh-lpm" id="MUJ-5o-UJq"/>
+                        <outlet property="campaignNameTextField" destination="y5w-Uh-184" id="qgL-V6-DlP"/>
+                        <outlet property="dateFromTextField" destination="LG3-CD-cng" id="CHP-tG-zt5"/>
+                        <outlet property="dateLabel" destination="8il-n3-AZb" id="FbD-lT-yFh"/>
+                        <outlet property="dateToLabel" destination="gOC-ro-pu2" id="Lno-3u-brc"/>
+                        <outlet property="dateToTextField" destination="Bw8-wK-nB9" id="jwT-yV-VUY"/>
+                        <outlet property="helpButton" destination="mGj-IS-TdM" id="Nvu-xw-llQ"/>
+                        <outlet property="nextButton" destination="B6P-I4-fDF" id="T7j-Bh-y6V"/>
+                        <outlet property="scrollView" destination="NXn-bH-khl" id="1Ka-Hv-oSr"/>
+                        <outlet property="timeFromTextField" destination="DnX-zH-AEE" id="TJZ-Kh-V21"/>
+                        <outlet property="timeLabel" destination="JQt-8F-Rtf" id="FzS-gq-bXj"/>
+                        <outlet property="timeToLabel" destination="39G-7X-qzX" id="wwL-hT-cVB"/>
+                        <outlet property="timeToTextField" destination="fW6-zK-LuN" id="shP-gr-td5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Txx-Lm-Wuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.5999999999999996" y="192.95352323838082"/>
+        </scene>
+    </scenes>
+</document>
