@@ -73,7 +73,7 @@ class AdCreatedViewController: BaseViewController {
             }
         }
         
-        let adBuilderLandingViewController = AdBuilderLandingViewController.instantiateFromStoryboard()
+        let adBuilderLandingViewController = AdBuilderLandingViewController.instantiateFromStoryboard(myAds: nil)
         newViewControllers.insert(adBuilderLandingViewController, at: 1)
         self.navigationController?.setViewControllers(newViewControllers, animated: false)
         self.navigationController?.popToViewController(adBuilderLandingViewController, animated: true)

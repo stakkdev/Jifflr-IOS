@@ -98,7 +98,7 @@ class AddContentViewController: BaseViewController {
     }
     
     func fetchQuestionsAndAnswers() {
-        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
+        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert, pinName: MyAdsManager.shared.pinName) { (content) in
             self.content = content
         }
     }
@@ -139,12 +139,12 @@ class AddContentViewController: BaseViewController {
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
-//        guard let template = self.advert.details?.template else { return }
-//
-//        guard self.validateInput(key: template.key) else {
-//            self.displayError(error: ErrorMessage.addContent)
-//            return
-//        }
+        guard let template = self.advert.details?.template else { return }
+
+        guard self.validateInput(key: template.key) else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
         
         let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: 1, content: self.content)
         self.navigationController?.pushViewController(vc, animated: true)

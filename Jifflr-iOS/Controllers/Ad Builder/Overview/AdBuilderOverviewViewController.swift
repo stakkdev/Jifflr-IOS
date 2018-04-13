@@ -15,20 +15,13 @@ class AdBuilderOverviewViewController: BaseViewController {
     @IBOutlet weak var tableViewHeaderView: UIView!
     @IBOutlet weak var barChart: JifflrBarChart!
     
-    var myAds: MyAds? {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                
-                guard let points = self.myAds?.graph, points.count > 0 else { return }
-                self.barChart.setupData(points: points)
-            }
-        }
-    }
+    var myAds: MyAds?
     
-    class func instantiateFromStoryboard() -> AdBuilderOverviewViewController {
+    class func instantiateFromStoryboard(myAds: MyAds?) -> AdBuilderOverviewViewController {
         let storyboard = UIStoryboard(name: "AdBuilderOverview", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdBuilderOverviewViewController") as! AdBuilderOverviewViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AdBuilderOverviewViewController") as! AdBuilderOverviewViewController
+        vc.myAds = myAds
+        return vc
     }
 
     override func viewDidLoad() {
@@ -42,6 +35,7 @@ class AdBuilderOverviewViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.updateData()
+        self.updateUI()
     }
     
     func setupUI() {
@@ -80,17 +74,24 @@ class AdBuilderOverviewViewController: BaseViewController {
         }
     }
     
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            
+            guard let points = self.myAds?.graph, points.count > 0 else { return }
+            self.barChart.setupData(points: points)
+        }
+    }
+    
     @objc func addButtonPressed() {
         self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(advert: nil), animated: true)
     }
     
     func updateData() {
-        DispatchQueue.global(qos: .background).async {
-            if Reachability.isConnectedToNetwork() {
-                self.updateCloudData()
-            } else {
-                self.updateLocalData()
-            }
+        if Reachability.isConnectedToNetwork() {
+            self.updateCloudData()
+        } else {
+            self.updateLocalData()
         }
     }
     
@@ -102,6 +103,7 @@ class AdBuilderOverviewViewController: BaseViewController {
             }
             
             self.myAds = myAds
+            self.updateUI()
         }
     }
     
@@ -113,6 +115,7 @@ class AdBuilderOverviewViewController: BaseViewController {
             }
             
             self.myAds = myAds
+            self.updateUI()
         }
     }
 }

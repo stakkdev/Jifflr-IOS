@@ -64,7 +64,7 @@ class AdvertManager: NSObject {
                 
                 for advert in adverts {
                     group.enter()
-                    self.fetchQuestionsAndAnswers(advert: advert, completion: { (error) in
+                    self.fetchQuestionsAndAnswers(advert: advert, pinName: self.pinName, completion: { (error) in
                         group.leave()
                     })
                     
@@ -104,7 +104,7 @@ class AdvertManager: NSObject {
         })
     }
     
-    func fetchQuestionsAndAnswers(advert: Advert, completion: @escaping (ErrorMessage?) -> Void) {
+    func fetchQuestionsAndAnswers(advert: Advert, pinName: String, completion: @escaping (ErrorMessage?) -> Void) {
         guard let query = advert.questions?.query() else {
             completion(nil)
             return
@@ -118,7 +118,7 @@ class AdvertManager: NSObject {
                 return
             }
             
-            PFObject.pinAll(inBackground: questions, withName: self.pinName, block: { (success, error) in
+            PFObject.pinAll(inBackground: questions, withName: pinName, block: { (success, error) in
                 guard success == true, error == nil else {
                     completion(ErrorMessage.advertFetchFailed)
                     return
@@ -136,14 +136,14 @@ class AdvertManager: NSObject {
                             allAnswers += answers
                         }
                         
-                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        question.type.pinInBackground(withName: pinName, block: { (success, error) in
                             group.leave()
                         })
                     })
                 }
                 
                 group.notify(queue: .main, execute: {
-                    PFObject.pinAll(inBackground: allAnswers, withName: self.pinName, block: { (success, error) in
+                    PFObject.pinAll(inBackground: allAnswers, withName: pinName, block: { (success, error) in
                         guard success == true, error == nil else {
                             completion(ErrorMessage.advertFetchFailed)
                             return
@@ -156,7 +156,7 @@ class AdvertManager: NSObject {
         }
     }
     
-    func fetchLocalQuestionsAndAnswers(advert: Advert, completion: @escaping ([(question: Question, answers: [Answer])]) -> Void) {
+    func fetchLocalQuestionsAndAnswers(advert: Advert, pinName: String, completion: @escaping ([(question: Question, answers: [Answer])]) -> Void) {
         guard let query = advert.questions?.query() else {
             completion([])
             return
@@ -164,7 +164,7 @@ class AdvertManager: NSObject {
         
         var content: [(question: Question, answers: [Answer])] = []
         
-        query.fromPin(withName: self.pinName)
+        query.fromPin(withName: pinName)
         query.includeKey("type")
         query.order(byAscending: "index")
         query.findObjectsInBackground { (questions, error) in
@@ -179,7 +179,7 @@ class AdvertManager: NSObject {
                 group.enter()
                 
                 let answersQuery = question.answers.query()
-                answersQuery.fromPin(withName: self.pinName)
+                answersQuery.fromPin(withName: pinName)
                 answersQuery.order(byAscending: "index")
                 answersQuery.findObjectsInBackground(block: { (answers, error) in
                     guard let answers = answers, error == nil else {

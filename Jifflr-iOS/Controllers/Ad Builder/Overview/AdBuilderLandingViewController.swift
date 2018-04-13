@@ -12,9 +12,13 @@ class AdBuilderLandingViewController: BaseViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    class func instantiateFromStoryboard() -> AdBuilderLandingViewController {
+    var myAds: MyAds?
+    
+    class func instantiateFromStoryboard(myAds: MyAds?) -> AdBuilderLandingViewController {
         let storyboard = UIStoryboard(name: "AdBuilderOverview", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdBuilderLandingViewController") as! AdBuilderLandingViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AdBuilderLandingViewController") as! AdBuilderLandingViewController
+        vc.myAds = myAds
+        return vc
     }
 
     override func viewDidLoad() {
@@ -71,7 +75,7 @@ class AdBuilderLandingViewController: BaseViewController {
     }
     
     func pushToAdOverview() {
-        let overviewViewController = AdBuilderOverviewViewController.instantiateFromStoryboard()
+        let overviewViewController = AdBuilderOverviewViewController.instantiateFromStoryboard(myAds: self.myAds)
         self.navigationController?.pushViewController(overviewViewController, animated: false)
     }
 }

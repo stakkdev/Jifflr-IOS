@@ -118,7 +118,7 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func fetchData() {
-        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert) { (content) in
+        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert, pinName: AdvertManager.shared.pinName) { (content) in
             self.spinner.stopAnimating()
             guard content.count > 0 else {
                 if !self.isPreview { self.handleLoadError() }
