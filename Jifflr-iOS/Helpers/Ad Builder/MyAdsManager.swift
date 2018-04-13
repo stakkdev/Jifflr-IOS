@@ -12,7 +12,7 @@ import Parse
 class MyAdsManager: NSObject {
     static let shared = MyAdsManager()
     
-    let pinName = "MyAds"
+    let pinName = AdvertManager.shared.pinName
     
     func fetchMyAds() {
         guard let currentUser = Session.shared.currentUser else { return }
@@ -113,8 +113,11 @@ class MyAdsManager: NSObject {
     }
     
     func fetchUserAds(completion: @escaping ([Advert]) -> Void) {
+        guard let currentUser = Session.shared.currentUser else { return }
+        
         let query = Advert.query()
         query?.fromPin(withName: self.pinName)
+        query?.whereKey("creator", equalTo: currentUser)
         query?.order(byAscending: "createdAt")
         query?.includeKey("questionType")
         query?.includeKey("details")

@@ -15,7 +15,7 @@ class AdvertManager: NSObject {
     let pinName = "Ads"
 
     func fetch(completion: @escaping () -> Void) {
-//        guard let user = Session.shared.currentUser else { return }
+        guard let user = Session.shared.currentUser else { return }
 //
 //        self.countLocal { (count) in
 //            guard self.shouldFetch(count: count) else {
@@ -49,6 +49,7 @@ class AdvertManager: NSObject {
 //        }
 
         let query = Advert.query()
+        query?.whereKey("creator", notEqualTo: user)
         query?.includeKey("questions")
         query?.includeKey("details")
         query?.includeKey("details.template")

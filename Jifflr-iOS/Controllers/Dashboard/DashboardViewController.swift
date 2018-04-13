@@ -151,7 +151,6 @@ class DashboardViewController: BaseViewController {
             }
             
             MyAdsManager.shared.fetchMyAds()
-            
             MyAdsManager.shared.fetchData { (myAds) in
                 self.myAds = myAds
             }

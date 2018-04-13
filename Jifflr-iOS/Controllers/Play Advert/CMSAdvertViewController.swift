@@ -46,10 +46,6 @@ class CMSAdvertViewController: BaseViewController {
 
         self.setupUI()
         self.setupData()
-        
-        if !self.isPreview {
-            self.fetchData()
-        }
     }
 
     func setupUI() {
@@ -73,6 +69,10 @@ class CMSAdvertViewController: BaseViewController {
     func setupData() {
         self.titleLabel.text = self.advert.details?.title
         self.messageTextView.text = self.advert.details?.message
+        
+        if !self.isPreview {
+            self.fetchData()
+        }
         
         self.spinner.stopAnimating()
         
