@@ -34,7 +34,7 @@ class JifflrBarChart: UIView {
     func setupUI() {
         self.barChartView = BarChartView()
         self.barChartView.noDataText = "alert.noChartData".localized()
-        self.barChartView.noDataTextColor = UIColor.white
+        self.barChartView.noDataTextColor = UIColor.clear
         self.barChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
         self.barChartView.drawBarShadowEnabled = false
         self.barChartView.setScaleEnabled(false)
@@ -102,6 +102,25 @@ class JifflrBarChart: UIView {
         
         self.barChartView.setBarChartData(xValues: months, yValues: data, label: "Data")
         self.barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInBounce)
+    }
+    
+    func startSpinner() {
+        self.spinner.startAnimating()
+    }
+    
+    func stopSpinner() {
+        self.spinner.stopAnimating()
+    }
+    
+    func showNoDataLabel() {
+        self.stopSpinner()
+        self.barChartView.noDataText = "alert.noChartData".localized()
+        self.barChartView.noDataTextColor = UIColor.white
+    }
+    
+    func hideNoDataLabel() {
+        self.barChartView.noDataText = "alert.noChartData".localized()
+        self.barChartView.noDataTextColor = UIColor.clear
     }
 }
 

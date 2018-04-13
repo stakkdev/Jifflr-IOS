@@ -35,7 +35,10 @@ class AdBuilderOverviewViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         self.updateData()
-        self.updateUI()
+        
+        if self.myAds != nil {
+            self.updateUI()
+        }
     }
     
     func setupUI() {
@@ -56,6 +59,8 @@ class AdBuilderOverviewViewController: BaseViewController {
         addBarButton.tintColor = UIColor.clear
         addBarButton.isEnabled = false
         self.navigationItem.rightBarButtonItem = addBarButton
+        
+        self.barChart.startSpinner()
     }
     
     func setupLocalization() {
@@ -78,7 +83,12 @@ class AdBuilderOverviewViewController: BaseViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             
-            guard let points = self.myAds?.graph, points.count > 0 else { return }
+            guard let points = self.myAds?.graph, points.count > 0 else {
+                self.barChart.showNoDataLabel()
+                return
+            }
+            
+            self.barChart.stopSpinner()
             self.barChart.setupData(points: points)
         }
     }
