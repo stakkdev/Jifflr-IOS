@@ -68,8 +68,21 @@ extension Advert {
     func addQuestions(questions: [Question]) {
         guard let relation = self.relation(forKey: "questions") as? PFRelation<Question> else { return }
         
-        for question in questions {
-            relation.add(question)
+        do {
+            let query = relation.query()
+            query.fromPin(withName: MyAdsManager.shared.pinName)
+            let oldQuestions = try query.findObjects()
+            
+            for question in oldQuestions {
+                relation.remove(question)
+                question.deleteEventually()
+            }
+            
+            for question in questions {
+                relation.add(question)
+            }
+        } catch {
+            return
         }
     }
 }

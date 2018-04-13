@@ -78,12 +78,12 @@ class AddQuestionsViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParentViewController {
-            guard let vc = self.navigationController?.viewControllers.last as? AddQuestionsViewController else { return }
-            if vc.content.count > 0 {
-                vc.content.removeLast()
-            }
-        }
+//        if self.isMovingFromParentViewController {
+//            guard let vc = self.navigationController?.viewControllers.last as? AddQuestionsViewController else { return }
+//            if vc.content.count > 0 {
+//                vc.content.removeLast()
+//            }
+//        }
     }
     
     func setupUI() {
@@ -112,11 +112,7 @@ class AddQuestionsViewController: BaseViewController {
         let switchBarButton = UIBarButtonItem(customView: questionSwitch)
         self.navigationItem.rightBarButtonItem = switchBarButton
         
-        if self.questionNumber == 1 {
-            questionSwitch.isOn = true
-        } else {
-            questionSwitch.isOn = false
-        }
+        questionSwitch.isOn = self.content.indices.contains(self.questionNumber - 1) || self.questionNumber == 1
         self.questionSwitchToggled(sender: questionSwitch)
         
         self.createInputViews()
@@ -224,20 +220,26 @@ class AddQuestionsViewController: BaseViewController {
     
     @IBAction func nextButtonPressed(sender: JifflrButton) {
         
-        if self.answerTypeTextField.questionType != nil && self.questionNumber < 3 {
-            self.validateInput(sender: sender) { (success) in
-                guard success == true else {
-                    self.displayError(error: ErrorMessage.addContent)
-                    return
-                }
-                
+        if self.answerTypeTextField.questionType == nil {
+            let vc = AdCreatedViewController.instantiateFromStoryboard(advert: self.advert, content: self.content)
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        
+        self.validateInput(sender: sender) { (success) in
+            guard success == true else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            if self.questionNumber < 3 {
                 let number = self.questionNumber + 1
                 let vc = AddQuestionsViewController.instantiateFromStoryboard(advert: self.advert, questionNumber: number, content: self.content)
                 self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = AdCreatedViewController.instantiateFromStoryboard(advert: self.advert, content: self.content)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-        } else {
-            let vc = AdCreatedViewController.instantiateFromStoryboard(advert: self.advert, content: self.content)
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -300,7 +302,7 @@ class AddQuestionsViewController: BaseViewController {
         let question = AdBuilderManager.shared.createQuestion(index: number, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         let answers = [websiteAnswer, facebookAnswer, twitterAnswer, onlineStoreAnswer, appStoreAnswer, playStoreAnswer]
         
-        self.content.append((question: question, answers: answers))
+        self.insertContent(question: question, answers: answers)
         self.previewContent.append((question: question, answers: answers))
         
         return true
@@ -323,7 +325,7 @@ class AddQuestionsViewController: BaseViewController {
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         let answers = [startAnswer, endAnswer]
         
-        self.content.append((question: question, answers: answers))
+        self.insertContent(question: question, answers: answers)
         self.previewContent.append((question: question, answers: [startAnswer, endAnswer]))
         
         return true
@@ -341,7 +343,7 @@ class AddQuestionsViewController: BaseViewController {
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
         let answers = [firstAnswer, lastAnswer]
         
-        self.content.append((question: question, answers: answers))
+        self.insertContent(question: question, answers: answers)
         self.previewContent.append((question: question, answers: [firstAnswer, lastAnswer]))
         
         return true
@@ -382,7 +384,7 @@ class AddQuestionsViewController: BaseViewController {
         
         let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: requiredAnswers)
         
-        self.content.append((question: question, answers: answerObjects))
+        self.insertContent(question: question, answers: answerObjects)
         self.previewContent.append((question: question, answers: answerObjects))
         
         return true
@@ -398,11 +400,20 @@ class AddQuestionsViewController: BaseViewController {
             
             let question = AdBuilderManager.shared.createQuestion(index: self.questionNumber, text: questionText, type: questionType, noOfRequiredAnswers: nil)
             
-            self.content.append((question: question, answers: answers))
+            self.insertContent(question: question, answers: answers)
             self.previewContent.append((question: question, answers: answers))
             
             completion(true)
         }
+    }
+    
+    func insertContent(question: Question, answers: [Answer]) {
+        let index = self.questionNumber - 1
+        if self.content.indices.contains(index) {
+            self.content.remove(at: index)
+        }
+        
+        self.content.insert((question: question, answers: answers), at: index)
     }
 }
 

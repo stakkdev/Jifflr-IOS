@@ -232,13 +232,16 @@
                                                     <rect key="frame" x="18" y="0.0" width="339" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pub Quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="0PI-Hg-hJJ">
-                                                            <rect key="frame" x="20" y="10" width="92.5" height="22.5"/>
+                                                            <rect key="frame" x="20" y="10" width="245" height="22.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A#1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7C-6l-pqi">
-                                                            <rect key="frame" x="289" y="15" width="30" height="17.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A# 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7C-6l-pqi">
+                                                            <rect key="frame" x="269" y="15" width="50" height="17.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="daz-oM-7dH"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                                             <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -273,7 +276,7 @@
                                                         <constraint firstItem="8SM-28-b97" firstAttribute="leading" secondItem="L4W-Sb-NeB" secondAttribute="trailing" constant="8" id="J7x-KB-7TE"/>
                                                         <constraint firstItem="WfV-hT-vjd" firstAttribute="leading" secondItem="0PI-Hg-hJJ" secondAttribute="leading" id="JIQ-6Y-0GU"/>
                                                         <constraint firstAttribute="trailing" secondItem="w7C-6l-pqi" secondAttribute="trailing" constant="20" id="ToJ-La-UxP"/>
-                                                        <constraint firstItem="w7C-6l-pqi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0PI-Hg-hJJ" secondAttribute="trailing" constant="8" id="Upi-O5-dly"/>
+                                                        <constraint firstItem="w7C-6l-pqi" firstAttribute="leading" secondItem="0PI-Hg-hJJ" secondAttribute="trailing" constant="4" id="Upi-O5-dly"/>
                                                         <constraint firstAttribute="bottom" secondItem="L4W-Sb-NeB" secondAttribute="bottom" constant="10" id="XGO-AL-zqv"/>
                                                         <constraint firstItem="w7C-6l-pqi" firstAttribute="bottom" secondItem="0PI-Hg-hJJ" secondAttribute="bottom" id="cvU-bm-mmn"/>
                                                         <constraint firstAttribute="height" constant="64" id="lP4-pI-JvA"/>

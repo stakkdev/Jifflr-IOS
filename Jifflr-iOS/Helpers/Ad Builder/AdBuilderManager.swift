@@ -79,6 +79,8 @@ class AdBuilderManager: NSObject {
         question.type = type
         question.text = text
         
+        print("Index: \(index)")
+        
         if let noOfRequiredAnswers = noOfRequiredAnswers {
             question.noOfRequiredAnswers = noOfRequiredAnswers
         }
