@@ -45,27 +45,41 @@ class AdBuilderManager: NSObject {
         })
     }
     
-    func fetchTemplates(completion: @escaping ([AdvertTemplate]) -> Void) {
+    func fetchTemplates(local: Bool, completion: @escaping ([AdvertTemplate]) -> Void) {
         let query = AdvertTemplate.query()
         query?.order(byAscending: "index")
+        if local { query?.fromPin(withName: self.pinName) }
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let templates = objects as? [AdvertTemplate], error == nil else {
                 completion([])
                 return
             }
             
+            if !local {
+                PFObject.pinAll(inBackground: templates, withName: self.pinName, block: { (success, error) in
+                    print("Templates Pinned: \(success)")
+                })
+            }
+            
             completion(templates)
         })
     }
     
-    func fetchQuestionTypes(completion: @escaping ([QuestionType]) -> Void) {
+    func fetchQuestionTypes(local: Bool, completion: @escaping ([QuestionType]) -> Void) {
         let query = QuestionType.query()
         query?.order(byAscending: "type")
+        if local { query?.fromPin(withName: self.pinName) }
         query?.whereKey("type", notEqualTo: AdvertQuestionType.Swipe)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let questionTypes = objects as? [QuestionType], error == nil else {
                 completion([])
                 return
+            }
+            
+            if !local {
+                PFObject.pinAll(inBackground: questionTypes, withName: self.pinName, block: { (success, error) in
+                    print("Question Types Pinned: \(success)")
+                })
             }
             
             completion(questionTypes)

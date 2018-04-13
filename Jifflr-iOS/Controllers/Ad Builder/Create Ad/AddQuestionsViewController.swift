@@ -48,7 +48,12 @@ class AddQuestionsViewController: BaseViewController {
     var datePicker: UIDatePicker!
     
     var advert: Advert!
-    var questionTypes: [QuestionType] = []
+    var questionTypes: [QuestionType] = [] {
+        didSet {
+            self.handleQuestionTypesFetch()
+        }
+    }
+    
     var questionNumber = 0
     var previewContent:[(question: Question, answers: [Answer])] = []
     var content:[(question: Question, answers: [Answer])] = []
@@ -125,25 +130,50 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     func setupData() {
-        AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
-            guard questionTypes.count > 0 else { return }
-            self.questionTypes = questionTypes
+        if Reachability.isConnectedToNetwork() {
+            self.updateServerData()
+        } else {
+            self.updateLocalData()
+        }
+    }
+    
+    func updateServerData() {
+        AdBuilderManager.shared.fetchQuestionTypes(local: false) { (questionTypes) in
+            guard questionTypes.count > 0 else {
+                self.updateLocalData()
+                return
+            }
             
-            if self.content.indices.contains(self.questionNumber - 1) {
-                let question = self.content[self.questionNumber - 1].question
-                self.questionTextView.text = question.text
-                self.questionTextView.textColor = UIColor.mainBlue
-                let questionType = self.content[self.questionNumber - 1].question.type
-                self.answerTypeTextField.questionType = questionType
-                self.drawInputUI(questionType: questionType)
-                self.drawQuestionData(questionType: questionType)
+            self.questionTypes = questionTypes
+        }
+    }
+    
+    func updateLocalData() {
+        AdBuilderManager.shared.fetchQuestionTypes(local: true) { (questionTypes) in
+            guard questionTypes.count > 0 else {
+                self.displayError(error: ErrorMessage.questionTypeFetchFailed)
+                return
+            }
+            
+            self.questionTypes = questionTypes
+        }
+    }
+    
+    func handleQuestionTypesFetch() {
+        if self.content.indices.contains(self.questionNumber - 1) {
+            let question = self.content[self.questionNumber - 1].question
+            self.questionTextView.text = question.text
+            self.questionTextView.textColor = UIColor.mainBlue
+            let questionType = self.content[self.questionNumber - 1].question.type
+            self.answerTypeTextField.questionType = questionType
+            self.drawInputUI(questionType: questionType)
+            self.drawQuestionData(questionType: questionType)
+        } else {
+            if self.questionNumber == 1 {
+                self.answerTypeTextField.questionType = self.questionTypes.first
+                self.drawInputUI(questionType: self.questionTypes.first!)
             } else {
-                if self.questionNumber == 1 {
-                    self.answerTypeTextField.questionType = self.questionTypes.first
-                    self.drawInputUI(questionType: self.questionTypes.first!)
-                } else {
-                    self.answerTypeTextField.questionType = nil
-                }
+                self.answerTypeTextField.questionType = nil
             }
         }
     }

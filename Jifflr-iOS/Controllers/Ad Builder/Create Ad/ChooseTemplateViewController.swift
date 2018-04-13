@@ -53,8 +53,28 @@ class ChooseTemplateViewController: BaseViewController {
     }
     
     func setupData() {
-        AdBuilderManager.shared.fetchTemplates { (templates) in
+        if Reachability.isConnectedToNetwork() {
+            self.updateServerData()
+        } else {
+            self.updateLocalData()
+        }
+    }
+    
+    func updateServerData() {
+        AdBuilderManager.shared.fetchTemplates(local: false) { (templates) in
             guard templates.count > 0 else {
+                self.updateLocalData()
+                return
+            }
+            
+            self.templates = templates
+        }
+    }
+    
+    func updateLocalData() {
+        AdBuilderManager.shared.fetchTemplates(local: true) { (templates) in
+            guard templates.count > 0 else {
+                self.displayError(error: ErrorMessage.templateFetchFailed)
                 return
             }
             

@@ -47,12 +47,14 @@ public enum ErrorMessage {
     case changeInvitationEmail
     case createAdName
     case chooseTemplate
+    case templateFetchFailed
     case addContent
     case mediaSaveFailed
     case flagAdFailed
     case fetchAnswersFailed
     case saveAdFailed
     case adBuilderOverviewFetchFailed
+    case questionTypeFetchFailed
 
     public var failureTitle: String {
         switch self {
@@ -137,6 +139,8 @@ public enum ErrorMessage {
             return "error.createAd.adName".localized()
         case .chooseTemplate:
             return "error.chooseTemplate".localized()
+        case .templateFetchFailed:
+            return "error.templateFetchFailed".localized()
         case .addContent:
             return "error.addContent".localized()
         case .mediaSaveFailed:
@@ -149,6 +153,8 @@ public enum ErrorMessage {
             return "error.saveAd".localized()
         case .adBuilderOverviewFetchFailed:
             return "error.adBuilderOverviewFetchFailed".localized()
+        case .questionTypeFetchFailed:
+            return "error.questionTypeFetchFailed".localized()
         }
     }
 }

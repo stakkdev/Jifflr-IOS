@@ -51,6 +51,8 @@
 "error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
 "error.saveAd" = "Unable to save ad. Please check your internet connection and try again.";
 "error.adBuilderOverviewFetchFailed" = "Unable to fetch data. Please check your internet connection and try again.";
+"error.templateFetchFailed" = "Unable to fetch templates. Please check your internet connection and try again.";
+"error.questionTypeFetchFailed" = "Unable to fetch question types. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
