@@ -66,6 +66,7 @@ class AdCreatedViewController: BaseViewController {
     
     func updateNavigationStackAfterSave() {
         guard let viewControllers = self.navigationController?.viewControllers else { return }
+        guard let dashboardViewController = viewControllers.first as? DashboardViewController else { return }
         var newViewControllers = viewControllers
         for (index, viewController) in newViewControllers.enumerated() {
             if let _ = viewController as? NoAdsViewController ?? viewController as? AdBuilderOverviewViewController  {
@@ -73,7 +74,14 @@ class AdCreatedViewController: BaseViewController {
             }
         }
         
-        let adBuilderLandingViewController = AdBuilderLandingViewController.instantiateFromStoryboard()
+        let myAds = dashboardViewController.myAds
+        if let myAds = myAds {
+            if !myAds.adverts.contains(self.advert) {
+                myAds.adverts.append(self.advert)
+            }
+        }
+        
+        let adBuilderLandingViewController = AdBuilderLandingViewController.instantiateFromStoryboard(myAds: myAds)
         newViewControllers.insert(adBuilderLandingViewController, at: 1)
         self.navigationController?.setViewControllers(newViewControllers, animated: false)
         self.navigationController?.popToViewController(adBuilderLandingViewController, animated: true)

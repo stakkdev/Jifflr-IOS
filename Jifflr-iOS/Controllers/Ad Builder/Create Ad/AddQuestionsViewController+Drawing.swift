@@ -179,4 +179,80 @@ extension AddQuestionsViewController {
         self.nextButtonBottom.isActive = true
         self.view.layoutIfNeeded()
     }
+    
+    func drawQuestionData(questionType: QuestionType) {
+        switch questionType.type {
+        case AdvertQuestionType.NumberPicker, AdvertQuestionType.TimePicker, AdvertQuestionType.DatePicker:
+            self.drawFirstLastQuestionUI()
+        case AdvertQuestionType.MultipleChoice:
+            self.drawMultipleChoiceQuestionUI()
+        case AdvertQuestionType.URLLinks:
+            self.drawUrlsQuestionUI()
+        default:
+            return
+        }
+    }
+    
+    func drawFirstLastQuestionUI() {
+        let answers = self.content[self.questionNumber - 1].answers
+        guard answers.count == 2 else { return }
+        
+        let firstAnswer = answers.first!
+        if let date = firstAnswer.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let text = dateFormatter.string(from: date)
+            self.minTextField.text = text
+        } else {
+            self.minTextField.text = firstAnswer.text
+        }
+        
+        let lastAnswer = answers.last!
+        if let date = lastAnswer.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let text = dateFormatter.string(from: date)
+            self.maxTextField.text = text
+        } else {
+            self.maxTextField.text = lastAnswer.text
+        }
+    }
+    
+    func drawUrlsQuestionUI() {
+        let answers = self.content[self.questionNumber - 1].answers
+        guard answers.count == 6 else { return }
+        
+        self.websiteTextField.text = answers.first!.text
+        self.facebookTextField.text = answers[1].text
+        self.twitterTextField.text = answers[2].text
+        self.onlineStoreTextField.text = answers[3].text
+        self.appStoreTextField.text = answers[4].text
+        self.playStoreTextField.text = answers[5].text
+    }
+    
+    func drawMultipleChoiceQuestionUI() {
+        let question = self.content[self.questionNumber - 1].question
+        if let noOfRequiredAnswers = question.noOfRequiredAnswers {
+            self.answersRequiredTextField.text = "\(noOfRequiredAnswers)"
+        }
+        
+        let answers = self.content[self.questionNumber - 1].answers
+        
+        for (index, answer) in answers.enumerated() {
+            switch index {
+            case 0:
+                self.minTextField.text = answer.text
+            case 1:
+                self.maxTextField.text = answer.text
+            case 2:
+                self.answer3TextField.text = answer.text
+            case 3:
+                self.answer4TextField.text = answer.text
+            case 4:
+                self.answer5TextField.text = answer.text
+            default:
+                return
+            }
+        }
+    }
 }

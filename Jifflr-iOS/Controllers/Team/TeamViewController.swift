@@ -24,7 +24,7 @@ class TeamViewController: BaseViewController {
                 self.chart.showNoDataLabel()
                 return
             }
-            self.chart.setData(data: self.myTeam!.graph, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
+            self.chart.setData(data: graphData, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
         }
     }
 

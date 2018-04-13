@@ -48,12 +48,21 @@ final class AdvertDetails: PFObject {
         }
     }
     
-    var template: AdvertTemplate {
+    var template: AdvertTemplate? {
         get {
-            return self["template"] as! AdvertTemplate
+            return self["template"] as? AdvertTemplate
         }
         set {
             self["template"] = newValue
+        }
+    }
+    
+    var number: Int {
+        get {
+            return self["number"] as? Int ?? 0
+        }
+        set {
+            self["number"] = newValue
         }
     }
 }

@@ -50,6 +50,7 @@
 "error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
 "error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
 "error.saveAd" = "Unable to save ad. Please check your internet connection and try again.";
+"error.adBuilderOverviewFetchFailed" = "Unable to fetch data. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -259,3 +260,9 @@
 "adCreated.createCampaignButton.title" = "CREATE CAMPAIGN";
 "adCreated.titleLabel.text" = "Ad Created";
 "adCreated.descriptionLabel.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
+
+"adBuilderOverview.segmentedControlButton1.title" = "CAMPAIGNS";
+"adBuilderOverview.segmentedControlButton2.title" = "ADVERTS";
+"adBuilderOverview.myActiveAds.text" = "My Active Ads";
+"adBuilderOverview.status.text" = "Status";
+"adBuilderOverview.totalCampaigns.text" = "Total Campaigns";

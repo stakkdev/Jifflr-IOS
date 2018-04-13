@@ -61,6 +61,6 @@ class NoAdsViewController: BaseViewController {
     }
     
     @IBAction func createAdPressed(sender: UIButton) {
-        self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(), animated: true)
+        self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(advert: nil), animated: true)
     }
 }

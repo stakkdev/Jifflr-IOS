@@ -76,4 +76,8 @@ extension UIColor {
     static var offSwitchGrey: UIColor {
         return UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
     }
+    
+    static var inactiveAdvertGrey: UIColor {
+        return UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0)
+    }
 }

@@ -12,6 +12,7 @@ class DashboardViewController: BaseViewController {
 
     var timer: Timer?
     var advert: Advert?
+    var myAds: MyAds?
     var internetAlertShown = false
 
     @IBOutlet weak var playAdsButton: PulsePlayButton!
@@ -148,6 +149,13 @@ class DashboardViewController: BaseViewController {
             AdvertManager.shared.fetch {
                 self.updateLocalAdvert()
             }
+            
+            MyAdsManager.shared.fetchMyAds()
+            
+            MyAdsManager.shared.fetchData { (myAds) in
+                self.myAds = myAds
+            }
+            
         } else {
             self.updateLocalData()
             self.updateLocalAdvert()
@@ -230,7 +238,7 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func adBuilderPressed(_ sender: UIButton) {
-        self.navigationController?.pushViewController(AdBuilderLandingViewController.instantiateFromStoryboard(), animated: true)
+        self.navigationController?.pushViewController(AdBuilderLandingViewController.instantiateFromStoryboard(myAds: self.myAds), animated: true)
     }
 
     @IBAction func helpButtonPressed(_ sender: UIButton) {

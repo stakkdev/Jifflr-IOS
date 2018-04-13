@@ -12,7 +12,7 @@ import Parse
 class AdBuilderManager: NSObject {
     static let shared = AdBuilderManager()
     
-    let pinName = "AdBuilder"
+    let pinName = AdvertManager.shared.pinName
     
     func countUserAds(completion: @escaping (Int?) -> Void) {
         guard let currentUser = Session.shared.currentUser else { return }
@@ -78,6 +78,8 @@ class AdBuilderManager: NSObject {
         question.index = index
         question.type = type
         question.text = text
+        
+        print("Index: \(index)")
         
         if let noOfRequiredAnswers = noOfRequiredAnswers {
             question.noOfRequiredAnswers = noOfRequiredAnswers
