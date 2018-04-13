@@ -75,17 +75,6 @@ class AddQuestionsViewController: BaseViewController {
         self.previewContent = []
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-//        if self.isMovingFromParentViewController {
-//            guard let vc = self.navigationController?.viewControllers.last as? AddQuestionsViewController else { return }
-//            if vc.content.count > 0 {
-//                vc.content.removeLast()
-//            }
-//        }
-    }
-    
     func setupUI() {
         self.setupLocalization()
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
@@ -136,19 +125,19 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     func setupData() {
-        if self.content.indices.contains(self.questionNumber - 1) {
-            let question = self.content[self.questionNumber - 1].question
-            self.questionTextView.text = question.text
-            self.questionTextView.textColor = UIColor.mainBlue
-            let questionType = self.content[self.questionNumber - 1].question.type
-            self.answerTypeTextField.questionType = questionType
-            self.drawInputUI(questionType: questionType)
-            self.drawQuestionData(questionType: questionType)
-        } else {
-            AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
-                guard questionTypes.count > 0 else { return }
-                self.questionTypes = questionTypes
-                
+        AdBuilderManager.shared.fetchQuestionTypes { (questionTypes) in
+            guard questionTypes.count > 0 else { return }
+            self.questionTypes = questionTypes
+            
+            if self.content.indices.contains(self.questionNumber - 1) {
+                let question = self.content[self.questionNumber - 1].question
+                self.questionTextView.text = question.text
+                self.questionTextView.textColor = UIColor.mainBlue
+                let questionType = self.content[self.questionNumber - 1].question.type
+                self.answerTypeTextField.questionType = questionType
+                self.drawInputUI(questionType: questionType)
+                self.drawQuestionData(questionType: questionType)
+            } else {
                 if self.questionNumber == 1 {
                     self.answerTypeTextField.questionType = self.questionTypes.first
                     self.drawInputUI(questionType: self.questionTypes.first!)
