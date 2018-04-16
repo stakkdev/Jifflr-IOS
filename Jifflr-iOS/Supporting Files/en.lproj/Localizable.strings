@@ -277,3 +277,8 @@
 "createSchedule.time.heading" = "Time";
 "createSchedule.days.heading" = "Days of the week";
 "createSchedule.toLabel.text" = "to";
+
+"createTarget.navigation.title" = "Targeting";
+"createTarget.gender.male" = "Male";
+"createTarget.gender.female" = "Female";
+"createTarget.gender.all" = "All";
