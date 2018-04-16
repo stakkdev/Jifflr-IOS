@@ -29,6 +29,8 @@
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
+		1AA0448620849C65008385A6 /* JifflrTextFieldDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */; };
+		1AA044892084A4D4008385A6 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA044882084A4D4008385A6 /* DayCell.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
@@ -215,6 +217,8 @@
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
+		1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDate.swift; path = Views/TextFields/JifflrTextFieldDate.swift; sourceTree = "<group>"; };
+		1AA044882084A4D4008385A6 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayCell.swift; path = "Controllers/Ad Builder/Create Campaign/Cells/DayCell.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
@@ -417,6 +421,14 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		1AA044872084A482008385A6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1AA044882084A4D4008385A6 /* DayCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		1AF195392068FEF900FE3896 /* Ad Builder */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +485,7 @@
 		1AF9854120810464006525DB /* Create Campaign */ = {
 			isa = PBXGroup;
 			children = (
+				1AA044872084A482008385A6 /* Cells */,
 				1AF985422081066D006525DB /* CreateScheduleViewController.swift */,
 			);
 			name = "Create Campaign";
@@ -948,6 +961,7 @@
 				E9EE632D2031D77F00188AA1 /* JifflrTextFieldLocation.swift */,
 				E9CAB3C82033060900900FCB /* JifflrTextFieldInvitation.swift */,
 				1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */,
+				1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */,
 			);
 			name = TextFields;
 			sourceTree = "<group>";
@@ -1369,6 +1383,7 @@
 				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
 				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
 				1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */,
+				1AA044892084A4D4008385A6 /* DayCell.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
@@ -1432,6 +1447,7 @@
 				E9AC1FB5202DFB9B00FAA9A7 /* JifflrTextField.swift in Sources */,
 				E96A0CF0203DAC450059DDAC /* CashoutManager.swift in Sources */,
 				E9798C11201A416600E8A7D2 /* LocationRequiredViewController.swift in Sources */,
+				1AA0448620849C65008385A6 /* JifflrTextFieldDate.swift in Sources */,
 				1AC480622074D3B80092906C /* AddQuestionsViewController+Drawing.swift in Sources */,
 				E96A0CDD203DAAF80059DDAC /* Session.swift in Sources */,
 				E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */,
