@@ -36,6 +36,12 @@
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
 		1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */; };
 		1AC480622074D3B80092906C /* AddQuestionsViewController+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */; };
+		1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */; };
+		1AE5A7E92084DEF000B7CDAE /* CreateTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */; };
+		1AE5A7EB2084E4A200B7CDAE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */; };
+		1AE5A7ED2084E4C500B7CDAE /* Demographic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EC2084E4C500B7CDAE /* Demographic.swift */; };
+		1AE5A7EF2084E4EA00B7CDAE /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EE2084E4EA00B7CDAE /* Campaign.swift */; };
+		1AE5A7F12084E58000B7CDAE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7F02084E58000B7CDAE /* Language.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
 		1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */; };
 		1AF195442069031D00FE3896 /* NoAdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195432069031D00FE3896 /* NoAdsViewController.swift */; };
@@ -224,6 +230,12 @@
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
 		1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDropdown.swift; path = Views/TextFields/JifflrTextFieldDropdown.swift; sourceTree = "<group>"; };
 		1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddQuestionsViewController+Drawing.swift"; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController+Drawing.swift"; sourceTree = "<group>"; };
+		1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignManager.swift; path = "Helpers/Ad Builder/CampaignManager.swift"; sourceTree = "<group>"; };
+		1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTargetViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateTargetViewController.swift"; sourceTree = "<group>"; };
+		1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Schedule.swift; path = Models/Schedule.swift; sourceTree = "<group>"; };
+		1AE5A7EC2084E4C500B7CDAE /* Demographic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Demographic.swift; path = Models/Demographic.swift; sourceTree = "<group>"; };
+		1AE5A7EE2084E4EA00B7CDAE /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Campaign.swift; path = Models/Campaign.swift; sourceTree = "<group>"; };
+		1AE5A7F02084E58000B7CDAE /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Language.swift; path = Models/Language.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
 		1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdBuilderLandingViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderLandingViewController.swift"; sourceTree = "<group>"; };
 		1AF195432069031D00FE3896 /* NoAdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoAdsViewController.swift; path = "Controllers/Ad Builder/Overview/NoAdsViewController.swift"; sourceTree = "<group>"; };
@@ -444,6 +456,7 @@
 			children = (
 				1AF1954720691FE300FE3896 /* AdBuilderManager.swift */,
 				1A642A7D207E3ED400474598 /* MyAdsManager.swift */,
+				1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */,
 			);
 			name = "Ad Builder";
 			sourceTree = "<group>";
@@ -487,6 +500,7 @@
 			children = (
 				1AA044872084A482008385A6 /* Cells */,
 				1AF985422081066D006525DB /* CreateScheduleViewController.swift */,
+				1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */,
 			);
 			name = "Create Campaign";
 			sourceTree = "<group>";
@@ -863,6 +877,10 @@
 				E923751E203EDD5000275199 /* UserMonthStats.swift */,
 				E97B9E2B203B0D7C0097BC65 /* FAQ.swift */,
 				E97B9E29203B0D680097BC65 /* FAQCategory.swift */,
+				1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */,
+				1AE5A7EC2084E4C500B7CDAE /* Demographic.swift */,
+				1AE5A7EE2084E4EA00B7CDAE /* Campaign.swift */,
+				1AE5A7F02084E58000B7CDAE /* Language.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1367,12 +1385,14 @@
 				E9CC6ED2203F265B0073140A /* ChangePasswordViewController.swift in Sources */,
 				E91E6A622052E708009E9577 /* NumberPickerFeedbackViewController.swift in Sources */,
 				E9DD581D2035C6BE000735C3 /* TeamFriendCell.swift in Sources */,
+				1AE5A7E92084DEF000B7CDAE /* CreateTargetViewController.swift in Sources */,
 				E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */,
 				E91FD4DF204DA2000074082C /* ScaleButton.swift in Sources */,
 				E9F317B2204ED65100104565 /* SwipeCell.swift in Sources */,
 				1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
+				1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				1AF985432081066D006525DB /* CreateScheduleViewController.swift in Sources */,
 				E97B9E20203B04940097BC65 /* FAQViewController.swift in Sources */,
@@ -1382,6 +1402,7 @@
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
 				E9D8E1C0203C315300F978D2 /* ProfileViewController.swift in Sources */,
 				E96A0D00203DAD4A0059DDAC /* DashboardStats.swift in Sources */,
+				1AE5A7ED2084E4C500B7CDAE /* Demographic.swift in Sources */,
 				1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */,
 				1AA044892084A4D4008385A6 /* DayCell.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
@@ -1422,6 +1443,7 @@
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */,
+				1AE5A7EB2084E4A200B7CDAE /* Schedule.swift in Sources */,
 				1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */,
 				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,
 				1A173247206A4F0F005837A7 /* AddContentViewController.swift in Sources */,
@@ -1438,6 +1460,7 @@
 				E9798C1F201A4BD200E8A7D2 /* TeamViewController.swift in Sources */,
 				1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */,
 				E9EE632C2031D54E00188AA1 /* JifflrTextFieldSelection.swift in Sources */,
+				1AE5A7F12084E58000B7CDAE /* Language.swift in Sources */,
 				1A642A80207E445300474598 /* MyAds.swift in Sources */,
 				E9DD581F2035D1A4000735C3 /* TeamPendingFriendCell.swift in Sources */,
 				1A155416207B95FB00BEAF7A /* JifflrURLButton.swift in Sources */,
@@ -1485,6 +1508,7 @@
 				E9A2CF4F1F8F7CCA008A7F40 /* Question.swift in Sources */,
 				E9DD58182035A73D000735C3 /* JifflrSegmentedControl.swift in Sources */,
 				E9305CEF2046F68800D4E4DD /* PFInstallation+Extensions.swift in Sources */,
+				1AE5A7EF2084E4EA00B7CDAE /* Campaign.swift in Sources */,
 				E937F5B62036F44300171480 /* UserDetails.swift in Sources */,
 				E97B9E15203ADDBE0097BC65 /* TotalWithdrawnCell.swift in Sources */,
 			);

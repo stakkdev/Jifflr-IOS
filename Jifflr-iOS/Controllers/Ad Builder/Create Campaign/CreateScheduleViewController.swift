@@ -28,6 +28,15 @@ class CreateScheduleViewController: BaseViewController {
     @IBOutlet weak var nextButton: JifflrButton!
     @IBOutlet weak var helpButton: JifflrButton!
     @IBOutlet weak var helpButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var daysLabel: UILabel!
+    
+    var pickerView: UIPickerView!
+    var adverts:[Advert] = [] {
+        didSet {
+            self.pickerView.reloadAllComponents()
+        }
+    }
+    var selectedAdvert: Advert!
     
     var advert: Advert!
     var days = ["M", "T", "W", "T", "F", "S", "S"]
@@ -37,6 +46,7 @@ class CreateScheduleViewController: BaseViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CreateScheduleViewController") as! CreateScheduleViewController
         vc.advert = advert
+        vc.selectedAdvert = advert
         return vc
     }
     
@@ -44,6 +54,7 @@ class CreateScheduleViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        self.setupData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,14 +68,21 @@ class CreateScheduleViewController: BaseViewController {
     
     func setupUI() {
         self.setupLocalization()
+        self.createInputViews()
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
         self.helpButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
+        self.advertTextField.text = self.advert.details?.name
+        
         self.dateFromTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.dateFromTextField.dateFormat = "dd/MM/yy"
         self.dateToTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.dateToTextField.dateFormat = "dd/MM/yy"
         self.timeFromTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.timeFromTextField.dateFormat = "HH:mm"
         self.timeToTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.timeToTextField.dateFormat = "HH:mm"
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
@@ -82,7 +100,15 @@ class CreateScheduleViewController: BaseViewController {
     }
     
     func setupLocalization() {
-        self.title = "createAd.navigation.title".localized()
+        self.title = "createSchedule.navigation.title".localized()
+        self.campaignNameLabel.text = "createSchedule.campaignName.heading".localized()
+        self.campaignNameTextField.placeholder = "createSchedule.campaignName.placeholder".localized()
+        self.advertLabel.text = "createSchedule.advert.heading".localized()
+        self.dateLabel.text = "createSchedule.date.heading".localized()
+        self.timeLabel.text = "createSchedule.time.heading".localized()
+        self.daysLabel.text = "createSchedule.days.heading".localized()
+        self.dateToLabel.text = "createSchedule.toLabel.text".localized()
+        self.timeToLabel.text = "createSchedule.toLabel.text".localized()
         self.nextButton.setTitle("createAd.nextButton.title".localized(), for: .normal)
         self.setupHelpButtonAttributedTitle()
     }
@@ -108,12 +134,77 @@ class CreateScheduleViewController: BaseViewController {
         self.helpButton.setAttributedTitle(attributedString, for: .normal)
     }
     
-    @IBAction func nextButtonPressed(sender: UIButton) {
+    func setupData() {
+        MyAdsManager.shared.fetchUserAds { (adverts) in
+            self.adverts = adverts
+        }
+    }
+    
+    func createInputViews() {
+        self.pickerView = UIPickerView()
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        self.advertTextField.inputView = self.pickerView
         
+        let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
+        toolbar.barStyle = UIBarStyle.default
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.pickerCloseButtonPressed))
+        toolbar.items = [closeButton]
+        self.advertTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func pickerCloseButtonPressed() {
+        guard self.adverts.count > 0 else { return }
+        let selectedIndex = self.pickerView.selectedRow(inComponent: 0)
+        self.advertTextField.text = self.adverts[selectedIndex].details?.name
+        self.selectedAdvert = self.adverts[selectedIndex]
+        self.advertTextField.resignFirstResponder()
+    }
+    
+    @IBAction func nextButtonPressed(sender: UIButton) {
+        let campaign = Campaign()
+        guard self.validateInput(campaign: campaign) else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
+        
+        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: campaign)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func validateInput(campaign: Campaign) -> Bool {
+        guard let campaignName = self.campaignNameTextField.text, !campaignName.isEmpty else { return false }
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = self.dateFromTextField.dateFormat
+        guard let dateFrom = dateFormatter.date(from: self.dateFromTextField.text!) else { return false }
+        dateFormatter.dateFormat = self.timeFromTextField.dateFormat
+        guard let timeFrom = dateFormatter.date(from: self.timeFromTextField.text!) else { return false }
+        guard let startDate = CampaignManager.shared.mergeDates(date: dateFrom, time: timeFrom) else { return false }
+        
+        dateFormatter.dateFormat = self.dateToTextField.dateFormat
+        guard let dateTo = dateFormatter.date(from: self.dateToTextField.text!) else { return false }
+        dateFormatter.dateFormat = self.timeToTextField.dateFormat
+        guard let timeTo = dateFormatter.date(from: self.timeToTextField.text!) else { return false }
+        guard let endDate = CampaignManager.shared.mergeDates(date: dateTo, time: timeTo) else { return false }
+        guard endDate > startDate else { return false }
+        
+        guard self.selectedDays.count > 0 else { return false }
+        
+        let schedule = Schedule()
+        schedule.startDate = startDate
+        schedule.endDate = endDate
+        schedule.daysOfWeek = self.selectedDays
+        campaign.schedule = schedule
+        campaign.advert = self.selectedAdvert
+        campaign.name = campaignName
+        
+        return true
     }
     
     @IBAction func helpButtonPressed(sender: UIButton) {
-        
+        self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
     }
 }
 
@@ -171,5 +262,24 @@ extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionVi
         if let index = self.selectedDays.index(of: indexPath.row) {
             self.selectedDays.remove(at: index)
         }
+    }
+}
+
+extension CreateScheduleViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.adverts.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.adverts[row].details?.name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.advertTextField.text = self.adverts[row].details?.name
+        self.selectedAdvert = self.adverts[row]
     }
 }

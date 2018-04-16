@@ -268,3 +268,12 @@
 "adBuilderOverview.myActiveAds.text" = "My Active Ads";
 "adBuilderOverview.status.text" = "Status";
 "adBuilderOverview.totalCampaigns.text" = "Total Campaigns";
+
+"createSchedule.navigation.title" = "Schedule";
+"createSchedule.campaignName.heading" = "Campaign Name";
+"createSchedule.campaignName.placeholder" = "Enter campaign name";
+"createSchedule.advert.heading" = "Advert";
+"createSchedule.date.heading" = "Date";
+"createSchedule.time.heading" = "Time";
+"createSchedule.days.heading" = "Days of the week";
+"createSchedule.toLabel.text" = "to";
