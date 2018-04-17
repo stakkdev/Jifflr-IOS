@@ -50,11 +50,7 @@ class MyTeamManager: NSObject {
 
                 completion(myTeam, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }
@@ -89,11 +85,7 @@ class MyTeamManager: NSObject {
 
                 completion(friends, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }
@@ -114,11 +106,7 @@ class MyTeamManager: NSObject {
 
                 completion(pendingFriends, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }

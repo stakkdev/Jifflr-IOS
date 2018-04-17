@@ -20,15 +20,17 @@ class MyMoneyManager: NSObject {
             if let myMoneyJSON = myMoneyJSON as? [String: Any] {
                 let myMoney = MyMoney()
 
-                if let points = myMoneyJSON["graph"] as? [(x: Double, y: Double)] {
+                if let points = myMoneyJSON["graph"] as? [[Double]] {
                     var graph:[Graph] = []
                     for point in points {
+                        guard point.count == 2 else { continue }
+                        
                         let graphPoint = Graph()
-                        graphPoint.x = point.x
-                        graphPoint.y = point.y
+                        graphPoint.x = point.first!
+                        graphPoint.y = point.last!
                         graph.append(graphPoint)
                     }
-
+                    
                     myMoney.graph = graph
                 }
 
@@ -56,11 +58,7 @@ class MyMoneyManager: NSObject {
 
                 completion(myMoney, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }

@@ -21,6 +21,8 @@ class JifflrTextFieldDropdown: JifflrTextField {
             }
         }
     }
+    
+    var activity: UIActivityIndicatorView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +40,17 @@ class JifflrTextFieldDropdown: JifflrTextField {
         super.commonInit()
         
         self.addRightImage(image: UIImage(named: "AnswerDropdown")!)
+        
+        self.activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.activity.translatesAutoresizingMaskIntoConstraints = false
+        self.activity.hidesWhenStopped = true
+        self.activity.isHidden = true
+        self.activity.tintColor = UIColor.mainBlue
+        self.addSubview(self.activity)
+        
+        let trailingConstraint = NSLayoutConstraint(item: self.activity, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 15)
+        let verticalConstraint = NSLayoutConstraint(item: self.activity, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
+        self.addConstraints([trailingConstraint, verticalConstraint])
     }
     
     func addRightImage(image: UIImage) {
@@ -54,5 +67,19 @@ class JifflrTextFieldDropdown: JifflrTextField {
     func setRightViewColor(color: UIColor) {
         guard let rightView = self.rightView else { return }
         rightView.backgroundColor = color
+    }
+    
+    func animate() {
+        guard let rightView = self.rightView else { return }
+        rightView.isHidden = true
+        
+        self.activity.startAnimating()
+    }
+    
+    func stopAnimating() {
+        guard let rightView = self.rightView else { return }
+        rightView.isHidden = false
+        
+        self.activity.stopAnimating()
     }
 }

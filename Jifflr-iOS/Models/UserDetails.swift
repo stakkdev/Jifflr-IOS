@@ -66,9 +66,9 @@ final class UserDetails: PFObject {
         }
     }
 
-    var gender: String {
+    var gender: Gender {
         get {
-            return self["gender"] as! String
+            return self["gender"] as! Gender
         }
         set {
             self["gender"] = newValue

@@ -76,7 +76,8 @@ extension ProfileViewController {
             self.saveAndPinUser()
 
         } else if textField == self.genderTextField {
-            guard let gender = self.genderTextField.text, !gender.isEmpty else {
+            guard let genderName = self.genderTextField.text, !genderName.isEmpty,
+                let gender = self.genders.first(where: { $0.name == genderName }) else {
                 let error = ErrorMessage.invalidProfileGender
                 self.displayMessage(title: error.failureTitle, message: error.failureDescription)
                 return
@@ -84,7 +85,6 @@ extension ProfileViewController {
 
             currentUser.details.gender = gender
             self.saveAndPinUser()
-
         }
     }
 

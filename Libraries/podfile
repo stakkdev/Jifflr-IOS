@@ -32,6 +32,7 @@ target 'Jifflr-iOS' do
     pod 'TDOnboarding', :git => 'git@bitbucket.org:thedistance/tdonboarding-ios.git'
     pod 'Charts'
     pod 'Player'
+    pod 'TTRangeSlider'
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header

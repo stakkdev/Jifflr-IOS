@@ -84,11 +84,7 @@ class AdsViewedManager: NSObject {
 
                 completion(adsViewed, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }

@@ -98,6 +98,10 @@ extension AppDelegate {
         Graph.registerSubclass()
         AdsViewed.registerSubclass()
         MyMoney.registerSubclass()
+        Language.registerSubclass()
+        Demographic.registerSubclass()
+        Campaign.registerSubclass()
+        Schedule.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

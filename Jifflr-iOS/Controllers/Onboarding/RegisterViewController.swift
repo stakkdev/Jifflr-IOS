@@ -34,7 +34,7 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var termsAndConditionsSwitch: UISwitch!
     @IBOutlet weak var registerButton: JifflrButton!
 
-    let genders = Constants.RegistrationGenders
+    var genders:[Gender] = []
     var genderPickerView: UIPickerView!
     var datePicker: UIDatePicker!
 
@@ -48,6 +48,7 @@ class RegisterViewController: BaseViewController {
 
         self.setupUI()
         self.createInputViews()
+        self.setupData()
     }
 
     func setupUI() {
@@ -96,6 +97,16 @@ class RegisterViewController: BaseViewController {
         ] as [NSAttributedStringKey: Any]
         let attributedText = NSAttributedString(string: "register.termsAndConditions.heading".localized(), attributes: attributes)
         self.termsAndConditionsHeadingButton.setAttributedTitle(attributedText, for: .normal)
+    }
+    
+    func setupData() {
+        UserManager.shared.fetchGenders { (genders) in
+            guard genders.count > 0 else {
+                return
+            }
+            
+            self.genders = genders
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -163,7 +174,8 @@ class RegisterViewController: BaseViewController {
             return
         }
 
-        guard let gender = self.genderTextField.text, !gender.isEmpty else {
+        guard let genderName = self.genderTextField.text, !genderName.isEmpty,
+            let gender = self.genders.first(where: { $0.name == genderName }) else {
             let error = ErrorMessage.invalidGender
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return
@@ -248,8 +260,9 @@ class RegisterViewController: BaseViewController {
     }
 
     @objc func pickerCloseButtonPressed() {
+        guard self.genders.count > 0 else { return }
         let selectedIndex = self.genderPickerView.selectedRow(inComponent: 0)
-        self.genderTextField.text = self.genders[selectedIndex]
+        self.genderTextField.text = self.genders[selectedIndex].name
         self.genderTextField.resignFirstResponder()
     }
 
@@ -286,6 +299,12 @@ extension RegisterViewController: UITextFieldDelegate {
             chooseLocation.searchString = text
             chooseLocation.delegate = self
             self.present(chooseLocation, animated: true, completion: nil)
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.genderTextField, genders.count == 0 {
+            self.displayError(error: ErrorMessage.genderFetchFailed)
         }
     }
 
@@ -349,10 +368,10 @@ extension RegisterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.genders[row]
+        return self.genders[row].name
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.genderTextField.text = self.genders[row]
+        self.genderTextField.text = self.genders[row].name
     }
 }

@@ -29,7 +29,7 @@ class DashboardManager: NSObject {
                     dashboardStats.adsViewed = adsViewed
                 }
 
-                if let money = dashboardJSON["money"] as? Int {
+                if let money = dashboardJSON["money"] as? Double {
                     dashboardStats.money = money
                 }
 
@@ -49,11 +49,7 @@ class DashboardManager: NSObject {
 
                 completion(dashboardStats, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }

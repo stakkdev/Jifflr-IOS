@@ -22,7 +22,7 @@ class UserManager: NSObject {
         userDetails.firstName = userInfo["firstName"] as! String
         userDetails.lastName = userInfo["lastName"] as! String
         userDetails.dateOfBirth = userInfo["dateOfBirth"] as! Date
-        userDetails.gender = userInfo["gender"] as! String
+        userDetails.gender = userInfo["gender"] as! Gender
         userDetails.emailVerified = false
         userDetails.location = userInfo["location"] as! Location
         userDetails.geoPoint = userInfo["geoPoint"] as! PFGeoPoint
@@ -58,15 +58,22 @@ class UserManager: NSObject {
                                     completion(ErrorMessage.parseError(error!.localizedDescription))
                                     return
                                 }
-
-                                if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
-                                    self.registrationInvitation(completion: { (error) in
-                                        completion(error)
-                                    })
-                                } else {
-                                    PFInstallation.registerUser(user: newUser)
-                                    completion(nil)
-                                }
+                                
+                                userDetails.gender.pinInBackground(block: { (success, error) in
+                                    guard error == nil else {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                        return
+                                    }
+                                    
+                                    if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
+                                        self.registrationInvitation(completion: { (error) in
+                                            completion(error)
+                                        })
+                                    } else {
+                                        PFInstallation.registerUser(user: newUser)
+                                        completion(nil)
+                                    }
+                                })
                             })
                         })
                     } else {
@@ -116,7 +123,7 @@ class UserManager: NSObject {
             }
 
             user.details.fetchInBackground(block: { (userDetails, error) in
-                guard let userDetails = userDetails, error == nil else {
+                guard let userDetails = userDetails as? UserDetails, error == nil else {
                     if let error = error {
                         completion(nil, ErrorMessage.parseError(error.localizedDescription))
                     } else {
@@ -124,20 +131,33 @@ class UserManager: NSObject {
                     }
                     return
                 }
-
-                user.pinInBackground(block: { (succeeded, error) in
-                    if error != nil {
-                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                    } else {
-                        userDetails.pinInBackground(block: { (success, error) in
-                            if error != nil {
-                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                            } else {
-                                PFInstallation.registerUser(user: user)
-                                completion(user, nil)
-                            }
-                        })
+                
+                userDetails.gender.fetchInBackground(block: { (object, error) in
+                    guard let gender = object as? Gender, error == nil else {
+                        completion(nil, ErrorMessage.unknown)
+                        return
                     }
+                    
+                    user.pinInBackground(block: { (succeeded, error) in
+                        if error != nil {
+                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                        } else {
+                            userDetails.pinInBackground(block: { (success, error) in
+                                if error != nil {
+                                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                } else {
+                                    gender.pinInBackground(block: { (success, error) in
+                                        if error != nil {
+                                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                        } else {
+                                            PFInstallation.registerUser(user: user)
+                                            completion(user, nil)
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
                 })
             })
         }
@@ -162,7 +182,7 @@ class UserManager: NSObject {
                 }
 
                 user.details.fetchInBackground(block: { (userDetails, error) in
-                    guard let userDetails = userDetails, error == nil else {
+                    guard let userDetails = userDetails as? UserDetails, error == nil else {
                         if let error = error {
                             completion(ErrorMessage.parseError(error.localizedDescription))
                         } else {
@@ -170,19 +190,32 @@ class UserManager: NSObject {
                         }
                         return
                     }
-
-                    user.pinInBackground(block: { (succeeded, error) in
-                        if error != nil {
-                            completion(ErrorMessage.parseError(error!.localizedDescription))
-                        } else {
-                            userDetails.pinInBackground(block: { (success, error) in
-                                if error != nil {
-                                    completion(ErrorMessage.parseError(error!.localizedDescription))
-                                } else {
-                                    completion(nil)
-                                }
-                            })
+                    
+                    userDetails.gender.fetchInBackground(block: { (object, error) in
+                        guard let gender = object as? Gender, error == nil else {
+                            completion(ErrorMessage.unknown)
+                            return
                         }
+                        
+                        user.pinInBackground(block: { (succeeded, error) in
+                            if error != nil {
+                                completion(ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        gender.pinInBackground(block: { (success, error) in
+                                            if error != nil {
+                                                completion(ErrorMessage.parseError(error!.localizedDescription))
+                                            } else {
+                                                completion(nil)
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     })
                 })
             })
@@ -194,6 +227,7 @@ class UserManager: NSObject {
             let query = PFUser.query()
             query?.fromLocalDatastore()
             query?.includeKey("details")
+            query?.includeKey("details.gender")
             query?.getFirstObjectInBackground(block: { (user, error) in
                 guard let _ = user as? PFUser, error == nil else {
                     completion(ErrorMessage.unknown)
@@ -232,9 +266,19 @@ class UserManager: NSObject {
                     completion(ErrorMessage.parseError(error!.localizedDescription))
                 } else {
                     PFObject.unpinAllObjectsInBackground(block: { (success, error) in
-                        guard success == true, error == nil else {
-                            completion(ErrorMessage.unknown)
-                            return
+                        let names = [
+                            LocationManager.shared.pinName,
+                            DashboardManager.shared.pinName,
+                            MyTeamManager.shared.pinName,
+                            AdsViewedManager.shared.pinName,
+                            MyMoneyManager.shared.pinName,
+                            AdvertManager.shared.pinName,
+                        ]
+                        
+                        for name in names {
+                            PFObject.unpinAllObjectsInBackground(withName: name, block: { (success, error) in
+                                print("Unpinned \(name): \(success)")
+                            })
                         }
 
                         PFInstallation.registerUser(user: nil)
@@ -323,5 +367,18 @@ class UserManager: NSObject {
                 }
             }
         }
+    }
+    
+    func fetchGenders(completion: @escaping ([Gender]) -> Void) {
+        let query = Gender.query()
+        query?.order(byAscending: "index")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let genders = objects as? [Gender], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(genders)
+        })
     }
 }
