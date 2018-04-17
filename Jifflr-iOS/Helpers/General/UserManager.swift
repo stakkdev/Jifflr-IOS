@@ -324,4 +324,17 @@ class UserManager: NSObject {
             }
         }
     }
+    
+    func fetchGenders(completion: @escaping ([Gender]) -> Void) {
+        let query = Gender.query()
+        query?.order(byAscending: "index")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let genders = objects as? [Gender], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(genders)
+        })
+    }
 }

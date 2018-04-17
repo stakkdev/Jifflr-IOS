@@ -43,6 +43,8 @@ class CreateTargetViewController: BaseViewController {
     }
     var selectedLanguage: Language?
     var languagePickerView: UIPickerView!
+    
+    var genders:[Gender] = []
 
     class func instantiateFromStoryboard(campaign: Campaign) -> CreateTargetViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -149,11 +151,42 @@ class CreateTargetViewController: BaseViewController {
             
             self.languages = languages
             self.languageTextField.text = languages.first?.name
+            self.selectedLanguage = languages.first
+        }
+        
+        UserManager.shared.fetchGenders { (genders) in
+            self.genders = genders
         }
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
+        guard self.validateInput() else {
+            self.displayError(error: ErrorMessage.addContent)
+            return
+        }
+    }
+    
+    func validateInput() -> Bool {
+        let minAge = self.agesSlider.selectedMinimum
+        let maxAge = self.agesSlider.selectedMaximum
+        guard let location = self.selectedLocation else { return false }
+        guard let language = self.selectedLanguage else { return false }
         
+        let demographic = Demographic()
+        demographic.minAge = Int(minAge)
+        demographic.maxAge = Int(maxAge)
+        demographic.location = location
+        demographic.language = language
+        
+        let genderIndex = self.genderSegmentedControl.selectedSegmentIndex
+        if genderIndex < 2 {
+            guard let gender = self.genders.first(where: { $0.index == genderIndex }) else { return false }
+            demographic.gender = gender
+        }
+        
+        self.campaign.demographic = demographic
+        
+        return true
     }
     
     @IBAction func helpButtonPressed(sender: UIButton) {

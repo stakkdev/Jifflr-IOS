@@ -30,12 +30,12 @@ final class Demographic: PFObject {
         }
     }
     
-    var genders: [Int] {
+    var gender: Gender? {
         get {
-            return self["genders"] as? [Int] ?? []
+            return self["gender"] as? Gender
         }
         set {
-            self["genders"] = newValue
+            self["gender"] = newValue
         }
     }
     
