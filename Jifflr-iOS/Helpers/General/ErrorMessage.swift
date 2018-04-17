@@ -57,6 +57,7 @@ public enum ErrorMessage {
     case questionTypeFetchFailed
     case locationFetchFailed
     case languageFetchFailed
+    case genderFetchFailed
 
     public var failureTitle: String {
         switch self {
@@ -161,6 +162,8 @@ public enum ErrorMessage {
             return "error.locationFetchFailed".localized()
         case .languageFetchFailed:
             return "error.languageFetchFailed".localized()
+        case .genderFetchFailed:
+            return "error.genderFetchFailed".localized()
         }
     }
 }

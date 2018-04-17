@@ -58,15 +58,22 @@ class UserManager: NSObject {
                                     completion(ErrorMessage.parseError(error!.localizedDescription))
                                     return
                                 }
-
-                                if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
-                                    self.registrationInvitation(completion: { (error) in
-                                        completion(error)
-                                    })
-                                } else {
-                                    PFInstallation.registerUser(user: newUser)
-                                    completion(nil)
-                                }
+                                
+                                userDetails.gender.pinInBackground(block: { (success, error) in
+                                    guard error == nil else {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                        return
+                                    }
+                                    
+                                    if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
+                                        self.registrationInvitation(completion: { (error) in
+                                            completion(error)
+                                        })
+                                    } else {
+                                        PFInstallation.registerUser(user: newUser)
+                                        completion(nil)
+                                    }
+                                })
                             })
                         })
                     } else {
@@ -175,7 +182,7 @@ class UserManager: NSObject {
                 }
 
                 user.details.fetchInBackground(block: { (userDetails, error) in
-                    guard let userDetails = userDetails, error == nil else {
+                    guard let userDetails = userDetails as? UserDetails, error == nil else {
                         if let error = error {
                             completion(ErrorMessage.parseError(error.localizedDescription))
                         } else {
@@ -183,19 +190,32 @@ class UserManager: NSObject {
                         }
                         return
                     }
-
-                    user.pinInBackground(block: { (succeeded, error) in
-                        if error != nil {
-                            completion(ErrorMessage.parseError(error!.localizedDescription))
-                        } else {
-                            userDetails.pinInBackground(block: { (success, error) in
-                                if error != nil {
-                                    completion(ErrorMessage.parseError(error!.localizedDescription))
-                                } else {
-                                    completion(nil)
-                                }
-                            })
+                    
+                    userDetails.gender.fetchInBackground(block: { (object, error) in
+                        guard let gender = object as? Gender, error == nil else {
+                            completion(ErrorMessage.unknown)
+                            return
                         }
+                        
+                        user.pinInBackground(block: { (succeeded, error) in
+                            if error != nil {
+                                completion(ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        gender.pinInBackground(block: { (success, error) in
+                                            if error != nil {
+                                                completion(ErrorMessage.parseError(error!.localizedDescription))
+                                            } else {
+                                                completion(nil)
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     })
                 })
             })
@@ -246,9 +266,19 @@ class UserManager: NSObject {
                     completion(ErrorMessage.parseError(error!.localizedDescription))
                 } else {
                     PFObject.unpinAllObjectsInBackground(block: { (success, error) in
-                        guard success == true, error == nil else {
-                            completion(ErrorMessage.unknown)
-                            return
+                        let names = [
+                            LocationManager.shared.pinName,
+                            DashboardManager.shared.pinName,
+                            MyTeamManager.shared.pinName,
+                            AdsViewedManager.shared.pinName,
+                            MyMoneyManager.shared.pinName,
+                            AdvertManager.shared.pinName,
+                        ]
+                        
+                        for name in names {
+                            PFObject.unpinAllObjectsInBackground(withName: name, block: { (success, error) in
+                                print("Unpinned \(name): \(success)")
+                            })
                         }
 
                         PFInstallation.registerUser(user: nil)

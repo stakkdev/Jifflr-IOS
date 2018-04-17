@@ -55,6 +55,7 @@
 "error.questionTypeFetchFailed" = "Unable to fetch question types. Please check your internet connection and try again.";
 "error.locationFetchFailed" = "Unable to fetch locations. Please check your internet connection and try again.";
 "error.languageFetchFailed" = "Unable to fetch languages. Please check your internet connection and try again.";
+"error.genderFetchFailed" = "Unable to fetch genders. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -132,13 +133,6 @@
 "register.invitationCode.placeholder" = "Enter invitation code";
 "register.termsAndConditions.heading" = "I accept the Terms and Conditions";
 "register.registerButton.title" = "REGISTER";
-"register.gender.option1" = "Male";
-"register.gender.option2" = "Female";
-"register.gender.option3" = "Transgender Male";
-"register.gender.option4" = "Transgender Female";
-"register.gender.option5" = "Gender Variant/Non-conforming";
-"register.gender.option6" = "Not listed";
-"register.gender.option7" = "Prefer not to answer";
 
 "yourLocation.navigation.title" = "Your Location";
 

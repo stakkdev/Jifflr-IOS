@@ -33,16 +33,6 @@ struct Constants {
     static var isSmallScreen: Bool {
         return UIScreen.main.nativeBounds.height <= 1136
     }
-
-    static let RegistrationGenders = [
-        "register.gender.option1".localized(),
-        "register.gender.option2".localized(),
-        "register.gender.option3".localized(),
-        "register.gender.option4".localized(),
-        "register.gender.option5".localized(),
-        "register.gender.option6".localized(),
-        "register.gender.option7".localized()
-    ]
     
     struct UrlPaths {
         static let media = URL(fileURLWithPath: "/assets/")
