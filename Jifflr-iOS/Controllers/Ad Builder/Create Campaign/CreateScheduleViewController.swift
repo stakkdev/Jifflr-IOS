@@ -75,13 +75,13 @@ class CreateScheduleViewController: BaseViewController {
         self.helpButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         self.advertTextField.text = self.advert.details?.name
         
-        self.dateFromTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.dateFromTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateFromTextField.dateFormat = "dd/MM/yy"
-        self.dateToTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.dateToTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateToTextField.dateFormat = "dd/MM/yy"
-        self.timeFromTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.timeFromTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
         self.timeFromTextField.dateFormat = "HH:mm"
-        self.timeToTextField.addLeftImage(image: UIImage(named: "AnswerDropdown")!)
+        self.timeToTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
         self.timeToTextField.dateFormat = "HH:mm"
         
         self.navigationController?.isNavigationBarHidden = false

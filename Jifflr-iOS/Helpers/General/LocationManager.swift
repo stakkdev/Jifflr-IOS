@@ -55,6 +55,19 @@ class LocationManager: NSObject {
         })
     }
     
+    func fetchLocations(completion: @escaping ([Location]) -> Void) {
+        let query = Location.query()
+        query?.order(byAscending: "name")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let locations = objects as? [Location], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(locations)
+        })
+    }
+    
     func fetchLocalLocation() {
         let query = Location.query()
         query?.fromPin(withName: self.pinName)

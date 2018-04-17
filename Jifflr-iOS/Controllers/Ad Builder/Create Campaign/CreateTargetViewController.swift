@@ -27,6 +27,22 @@ class CreateTargetViewController: BaseViewController {
     @IBOutlet weak var audienceLabel: UILabel!
     
     var campaign: Campaign!
+    
+    var locations: [Location] = [] {
+        didSet {
+            self.locationPickerView.reloadAllComponents()
+        }
+    }
+    var selectedLocation: Location?
+    var locationPickerView: UIPickerView!
+    
+    var languages: [Language] = [] {
+        didSet {
+            self.languagePickerView.reloadAllComponents()
+        }
+    }
+    var selectedLanguage: Language?
+    var languagePickerView: UIPickerView!
 
     class func instantiateFromStoryboard(campaign: Campaign) -> CreateTargetViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -39,6 +55,7 @@ class CreateTargetViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        self.setupData()
     }
     
     func setupUI() {
@@ -65,6 +82,9 @@ class CreateTargetViewController: BaseViewController {
         self.agesSlider.tintColor = UIColor.white
         self.agesSlider.handleDiameter = 28.0
         self.agesSlider.delegate = self
+        
+        self.createLocationInputViews()
+        self.createLanguageInputViews()
     }
     
     func setupLocalization() {
@@ -98,12 +118,120 @@ class CreateTargetViewController: BaseViewController {
         self.helpButton.setAttributedTitle(attributedString, for: .normal)
     }
     
+    func setupData() {
+        self.locationTextField.animate()
+        LocationManager.shared.fetchLocations { (locations) in
+            self.locationTextField.stopAnimating()
+            
+            guard locations.count > 0 else {
+                self.displayError(error: ErrorMessage.locationFetchFailed)
+                return
+            }
+            
+            self.locations = locations
+            
+            if let location = Session.shared.currentLocation {
+                self.locationTextField.text = location.name
+                self.selectedLocation = location
+            } else {
+                self.locationTextField.text = locations.first?.name
+                self.selectedLocation = locations.first
+            }
+        }
+        
+        self.languageTextField.animate()
+        LanguageManager.shared.fetchLanguages { (languages) in
+            self.languageTextField.stopAnimating()
+            guard languages.count > 0 else {
+                self.displayError(error: ErrorMessage.languageFetchFailed)
+                return
+            }
+            
+            self.languages = languages
+            self.languageTextField.text = languages.first?.name
+        }
+    }
+    
     @IBAction func nextButtonPressed(sender: UIButton) {
         
     }
     
     @IBAction func helpButtonPressed(sender: UIButton) {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
+    }
+    
+    func createLocationInputViews() {
+        self.locationPickerView = UIPickerView()
+        self.locationPickerView.delegate = self
+        self.locationPickerView.dataSource = self
+        self.locationTextField.inputView = self.locationPickerView
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
+        toolbar.barStyle = UIBarStyle.default
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.locationPickerCloseButtonPressed))
+        toolbar.items = [closeButton]
+        self.locationTextField.inputAccessoryView = toolbar
+    }
+    
+    func createLanguageInputViews() {
+        self.languagePickerView = UIPickerView()
+        self.languagePickerView.delegate = self
+        self.languagePickerView.dataSource = self
+        self.languageTextField.inputView = self.languagePickerView
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
+        toolbar.barStyle = UIBarStyle.default
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.languagePickerCloseButtonPressed))
+        toolbar.items = [closeButton]
+        self.languageTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func locationPickerCloseButtonPressed() {
+        guard self.locations.count > 0 else { return }
+        let selectedIndex = self.locationPickerView.selectedRow(inComponent: 0)
+        self.locationTextField.text = self.locations[selectedIndex].name
+        self.selectedLocation = self.locations[selectedIndex]
+        self.locationTextField.resignFirstResponder()
+    }
+    
+    @objc func languagePickerCloseButtonPressed() {
+        guard self.languages.count > 0 else { return }
+        let selectedIndex = self.languagePickerView.selectedRow(inComponent: 0)
+        self.languageTextField.text = self.languages[selectedIndex].name
+        self.selectedLanguage = self.languages[selectedIndex]
+        self.languageTextField.resignFirstResponder()
+    }
+}
+
+extension CreateTargetViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == self.locationPickerView {
+            return self.locations.count
+        }
+        
+        return self.languages.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == self.locationPickerView {
+            return self.locations[row].name
+        }
+        
+        return self.languages[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == self.locationPickerView {
+            self.locationTextField.text = self.locations[row].name
+            self.selectedLocation = self.locations[row]
+        } else {
+            self.languageTextField.text = self.languages[row].name
+            self.selectedLanguage = self.languages[row]
+        }
     }
 }
 
