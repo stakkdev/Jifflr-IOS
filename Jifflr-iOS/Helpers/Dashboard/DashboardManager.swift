@@ -49,11 +49,7 @@ class DashboardManager: NSObject {
 
                 completion(dashboardStats, nil)
             } else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+                completion(nil, ErrorMessage.unknown)
             }
         }
     }
