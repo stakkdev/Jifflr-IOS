@@ -39,6 +39,8 @@ class JifflrTextFieldDropdown: JifflrTextField {
     override func commonInit() {
         super.commonInit()
         
+        self.insets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 56)
+        
         self.addRightImage(image: UIImage(named: "AnswerDropdown")!)
         
         self.activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
