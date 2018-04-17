@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TTRangeSlider
 
 class CreateTargetViewController: BaseViewController {
     
@@ -17,7 +18,7 @@ class CreateTargetViewController: BaseViewController {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var genderSegmentedControl: GenderSegmentedControl!
     @IBOutlet weak var agesLabel: UILabel!
-    @IBOutlet weak var agesSlider: UISlider!
+    @IBOutlet weak var agesSlider: TTRangeSlider!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationTextField: JifflrTextFieldDropdown!
     @IBOutlet weak var languageLabel: UILabel!
@@ -57,10 +58,22 @@ class CreateTargetViewController: BaseViewController {
             self.helpButtonBottom.isActive = true
             self.scrollView.isScrollEnabled = false
         }
+        
+        self.agesSlider.handleColor = UIColor.mainOrange
+        self.agesSlider.lineHeight = 4.0
+        self.agesSlider.tintColorBetweenHandles = UIColor.mainOrange
+        self.agesSlider.tintColor = UIColor.white
+        self.agesSlider.handleDiameter = 28.0
+        self.agesSlider.delegate = self
     }
     
     func setupLocalization() {
         self.title = "createTarget.navigation.title".localized()
+        self.genderLabel.text = "createTarget.gender.heading".localized()
+        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(18, 35)
+        self.locationLabel.text = "createTarget.location.heading".localized()
+        self.languageLabel.text = "createTarget.language.heading".localized()
+        self.audienceHeadingLabel.text = "createTarget.audienceSize.heading".localized()
         self.setupHelpButtonAttributedTitle()
     }
     
@@ -91,5 +104,13 @@ class CreateTargetViewController: BaseViewController {
     
     @IBAction func helpButtonPressed(sender: UIButton) {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
+    }
+}
+
+extension CreateTargetViewController: TTRangeSliderDelegate {
+    func rangeSlider(_ sender: TTRangeSlider!, didChangeSelectedMinimumValue selectedMinimum: Float, andMaximumValue selectedMaximum: Float) {
+        let min = Int(selectedMinimum)
+        let max = Int(selectedMaximum)
+        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(min, max)
     }
 }

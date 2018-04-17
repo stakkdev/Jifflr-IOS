@@ -282,3 +282,8 @@
 "createTarget.gender.male" = "Male";
 "createTarget.gender.female" = "Female";
 "createTarget.gender.all" = "All";
+"createTarget.gender.heading" = "Gender";
+"createTarget.ages.heading" = "For Ages (%i-%i)";
+"createTarget.location.heading" = "Location";
+"createTarget.language.heading" = "Language";
+"createTarget.audienceSize.heading" = "Est. Audience Size";
