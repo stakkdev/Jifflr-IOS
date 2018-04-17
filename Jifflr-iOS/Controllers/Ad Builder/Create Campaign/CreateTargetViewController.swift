@@ -193,6 +193,14 @@ class CreateTargetViewController: BaseViewController {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
     }
     
+    @IBAction func genderChanged(sender: UISegmentedControl) {
+        self.updateAudienceSize()
+    }
+    
+    @IBAction func ageChanged(sender: TTRangeSlider) {
+        self.updateAudienceSize()
+    }
+    
     func createLocationInputViews() {
         self.locationPickerView = UIPickerView()
         self.locationPickerView.delegate = self
@@ -225,6 +233,7 @@ class CreateTargetViewController: BaseViewController {
         self.locationTextField.text = self.locations[selectedIndex].name
         self.selectedLocation = self.locations[selectedIndex]
         self.locationTextField.resignFirstResponder()
+        self.updateAudienceSize()
     }
     
     @objc func languagePickerCloseButtonPressed() {
@@ -233,6 +242,17 @@ class CreateTargetViewController: BaseViewController {
         self.languageTextField.text = self.languages[selectedIndex].name
         self.selectedLanguage = self.languages[selectedIndex]
         self.languageTextField.resignFirstResponder()
+        self.updateAudienceSize()
+    }
+    
+    func updateAudienceSize() {
+        guard self.validateInput() else { return }
+        let demographic = self.campaign.demographic
+        
+        CampaignManager.shared.estimatedAudienceSize(demographic: demographic) { (size) in
+            guard let size = size else { return }
+            self.audienceLabel.text = "\(size)"
+        }
     }
 }
 

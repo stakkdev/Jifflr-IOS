@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class CampaignManager: NSObject {
     static let shared = CampaignManager()
@@ -26,5 +27,18 @@ class CampaignManager: NSObject {
         mergedComponments.second = timeComponents.second!
         
         return calendar.date(from: mergedComponments)
+    }
+    
+    func estimatedAudienceSize(demographic: Demographic, completion: @escaping (Int?) -> Void) {
+//        PFCloud.callFunction(inBackground: "estimated-audience-size", withParameters: ["demographic": demographic]) { responseJSON, error in
+//            if let responseJSON = responseJSON as? [String: Any] {
+//                if let size = responseJSON["size"] as? Int {
+//                    completion(size)
+//                }
+//            } else {
+//                completion(nil)
+//            }
+//        }
+        completion(Int(arc4random_uniform(2000) + 1000))
     }
 }

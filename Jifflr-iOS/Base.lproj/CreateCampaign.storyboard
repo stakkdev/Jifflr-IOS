@@ -384,6 +384,9 @@
                                             <segment title="Second"/>
                                             <segment title=""/>
                                         </segments>
+                                        <connections>
+                                            <action selector="genderChangedWithSender:" destination="sVv-O4-5xg" eventType="valueChanged" id="SVZ-YI-Wsg"/>
+                                        </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="983-6S-Sof">
                                         <rect key="frame" x="25" y="245" width="70.5" height="16"/>
@@ -459,6 +462,10 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="hideLabels" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ageChangedWithSender:" destination="sVv-O4-5xg" eventType="touchUpOutside" id="Ynr-Lk-FZ3"/>
+                                            <action selector="ageChangedWithSender:" destination="sVv-O4-5xg" eventType="touchUpInside" id="zAe-0I-Zsg"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
