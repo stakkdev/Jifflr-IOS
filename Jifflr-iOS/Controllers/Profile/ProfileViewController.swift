@@ -31,8 +31,8 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var deleteAccountButton: JifflrButton!
     @IBOutlet weak var changePasswordButton: JifflrButton!
     @IBOutlet weak var changePasswordButtonTop: NSLayoutConstraint!
-
-    let genders = Constants.RegistrationGenders
+    
+    var genders:[Gender] = []
     var genderPickerView: UIPickerView!
     var datePicker: UIDatePicker!
 
@@ -69,6 +69,8 @@ class ProfileViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
+        
+        self.genderTextField.isEnabled = false
 
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
@@ -121,7 +123,7 @@ class ProfileViewController: BaseViewController {
         dateFormatter.dateFormat = "dd/MM/yyyy"
         self.dobTextField.text = dateFormatter.string(from: currentUser.details.dateOfBirth)
 
-        self.genderTextField.text = currentUser.details.gender
+        self.genderTextField.text = currentUser.details.gender.name
         self.invitationCodeTextField.text = currentUser.details.invitationCode
 
         if let invitationCode = currentUser.details.invitationCode, !invitationCode.isEmpty {
@@ -142,6 +144,13 @@ class ProfileViewController: BaseViewController {
         } else {
             self.invitationCodeTextField.isUserInteractionEnabled = false
             self.invitationCodeTextField.textColor = UIColor.lightGray
+        }
+        
+        UserManager.shared.fetchGenders { (genders) in
+            guard genders.count > 0 else { return }
+            
+            self.genderTextField.isEnabled = true
+            self.genders = genders
         }
     }
 
@@ -176,8 +185,9 @@ class ProfileViewController: BaseViewController {
     }
 
     @objc func pickerCloseButtonPressed() {
+        guard self.genders.count > 0 else { return }
         let selectedIndex = self.genderPickerView.selectedRow(inComponent: 0)
-        self.genderTextField.text = self.genders[selectedIndex]
+        self.genderTextField.text = self.genders[selectedIndex].name
         self.genderTextField.resignFirstResponder()
     }
 
@@ -356,10 +366,10 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.genders[row]
+        return self.genders[row].name
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.genderTextField.text = self.genders[row]
+        self.genderTextField.text = self.genders[row].name
     }
 }

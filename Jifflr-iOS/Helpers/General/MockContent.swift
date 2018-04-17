@@ -44,7 +44,7 @@ class MockContent: NSObject {
         userDetails.firstName = "James"
         userDetails.lastName = "Shaw"
         userDetails.dateOfBirth = Date()
-        userDetails.gender = "Male"
+        userDetails.gender = Gender()
         userDetails.emailVerified = false
         userDetails.location = self.createLocation()
         userDetails.geoPoint = PFGeoPoint(latitude: 51.1, longitude: -0.87)

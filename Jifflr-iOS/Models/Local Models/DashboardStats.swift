@@ -30,9 +30,9 @@ final class DashboardStats: PFObject {
         }
     }
 
-    var money: Int {
+    var money: Double {
         get {
-            return self["money"] as? Int ?? 0
+            return self["money"] as? Double ?? 0.0
         }
         set {
             self["money"] = newValue

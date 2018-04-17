@@ -29,7 +29,7 @@ class DashboardManager: NSObject {
                     dashboardStats.adsViewed = adsViewed
                 }
 
-                if let money = dashboardJSON["money"] as? Int {
+                if let money = dashboardJSON["money"] as? Double {
                     dashboardStats.money = money
                 }
 
