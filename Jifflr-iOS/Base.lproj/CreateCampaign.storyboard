@@ -947,14 +947,24 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmf-kV-UsW" customClass="BudgetView" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="468" width="339" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nnb-oU-afH"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="US1-t8-GzV" firstAttribute="trailing" secondItem="Ezb-5C-Fcl" secondAttribute="trailing" id="0zg-Za-W8R"/>
+                                    <constraint firstItem="wmf-kV-UsW" firstAttribute="trailing" secondItem="US1-t8-GzV" secondAttribute="trailing" id="1Wu-Vj-gia"/>
                                     <constraint firstAttribute="trailing" secondItem="Sw2-Yy-4na" secondAttribute="trailing" constant="18" id="3d8-0x-qKM"/>
                                     <constraint firstItem="Dws-Ta-uRX" firstAttribute="trailing" secondItem="Sw2-Yy-4na" secondAttribute="trailing" id="68i-gn-CXk"/>
                                     <constraint firstItem="bLU-LU-uCr" firstAttribute="top" secondItem="Dws-Ta-uRX" secondAttribute="bottom" constant="5" id="8Ya-vx-lV4"/>
                                     <constraint firstItem="Dws-Ta-uRX" firstAttribute="top" secondItem="Sw2-Yy-4na" secondAttribute="bottom" constant="5" id="BJk-qH-Svs"/>
+                                    <constraint firstItem="wmf-kV-UsW" firstAttribute="leading" secondItem="US1-t8-GzV" secondAttribute="leading" id="BZE-b9-tDP"/>
                                     <constraint firstItem="bLU-LU-uCr" firstAttribute="trailing" secondItem="Dws-Ta-uRX" secondAttribute="trailing" id="DOb-CR-9Q6"/>
+                                    <constraint firstItem="wmf-kV-UsW" firstAttribute="top" secondItem="US1-t8-GzV" secondAttribute="bottom" constant="18" id="HEd-4b-qb0"/>
                                     <constraint firstItem="Sw2-Yy-4na" firstAttribute="leading" secondItem="E4G-ep-tIm" secondAttribute="leading" constant="18" id="PUd-bJ-8Dc"/>
                                     <constraint firstItem="Ezb-5C-Fcl" firstAttribute="top" secondItem="bLU-LU-uCr" secondAttribute="bottom" constant="5" id="VSU-bf-OD0"/>
                                     <constraint firstItem="US1-t8-GzV" firstAttribute="top" secondItem="Ezb-5C-Fcl" secondAttribute="bottom" constant="5" id="cA4-Bf-EuM"/>

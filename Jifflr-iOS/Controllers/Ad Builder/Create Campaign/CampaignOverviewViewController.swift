@@ -61,9 +61,28 @@ class CampaignOverviewViewController: BaseViewController {
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
+        self.createBalanceButton()
+    }
+    
+    func createBalanceButton() {
+        let button = UIButton(type: .custom)
+        button.titleLabel?.numberOfLines = 0
+        let title = "campaignOverview.balanceButton.title".localizedFormat("£0.00")
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.textAlignment = .left
+        button.titleLabel?.font = UIFont(name: Constants.FontNames.GothamBold, size: 14.0)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(self.balanceButtonPressed(sender:)), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButtonItem
     }
     
     func setupLocalization() {
         self.title = "campaignOverview.navigation.title".localized()
+    }
+    
+    @objc func balanceButtonPressed(sender: UIButton) {
+        
     }
 }

@@ -59,6 +59,7 @@
 		1AF1955720693E7800FE3896 /* AdvertTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1955620693E7800FE3896 /* AdvertTemplate.swift */; };
 		1AF985432081066D006525DB /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF985422081066D006525DB /* CreateScheduleViewController.swift */; };
 		1AF985462081088B006525DB /* CreateCampaign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF985442081088B006525DB /* CreateCampaign.storyboard */; };
+		1AFD1F6B20875A9F00293B31 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD1F6A20875A9F00293B31 /* BudgetView.swift */; };
 		550BAAE3001C3569D8793343 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FF4091BF05651B49E64C35 /* Pods_Jifflr_iOSTests.framework */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
@@ -257,6 +258,7 @@
 		1AF1955620693E7800FE3896 /* AdvertTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertTemplate.swift; path = Models/AdvertTemplate.swift; sourceTree = "<group>"; };
 		1AF985422081066D006525DB /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateScheduleViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateScheduleViewController.swift"; sourceTree = "<group>"; };
 		1AF985452081088B006525DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateCampaign.storyboard; sourceTree = "<group>"; };
+		1AFD1F6A20875A9F00293B31 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BudgetView.swift; path = Views/BudgetView.swift; sourceTree = "<group>"; };
 		3AA78A5D430103A44650FA49 /* Pods_Jifflr_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jifflr_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF98737963D7F5B4AB1E447 /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		5ECFD93B67F4BD2D51848E3E /* Pods-Jifflr-iOSTests.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (production).xcconfig"; path = "Libraries/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (production).xcconfig"; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 				E97B9E24203B07AC0097BC65 /* FAQSegmentedControl.swift */,
 				E91FD4DE204DA2000074082C /* ScaleButton.swift */,
 				1A173248206A54FA005837A7 /* JifflrTextView.swift */,
+				1AFD1F6A20875A9F00293B31 /* BudgetView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1459,6 +1462,7 @@
 				E9798C2C201A4C8E00E8A7D2 /* FeedbackViewController.swift in Sources */,
 				E937F5CC203740DA00171480 /* AdsViewedCell.swift in Sources */,
 				1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */,
+				1AFD1F6B20875A9F00293B31 /* BudgetView.swift in Sources */,
 				1AE5A7EB2084E4A200B7CDAE /* Schedule.swift in Sources */,
 				1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */,
 				E9F317B0204ECA5E00104565 /* SwipeFeedbackViewController.swift in Sources */,

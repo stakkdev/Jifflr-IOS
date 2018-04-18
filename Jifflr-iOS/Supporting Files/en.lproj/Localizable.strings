@@ -285,3 +285,4 @@
 "createTarget.audienceSize.heading" = "Est. Audience Size";
 
 "campaignOverview.navigation.title" = "Overview";
+"campaignOverview.balanceButton.title" = "Balance\n%@";
