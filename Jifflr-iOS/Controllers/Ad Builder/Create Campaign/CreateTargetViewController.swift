@@ -164,6 +164,19 @@ class CreateTargetViewController: BaseViewController {
             self.displayError(error: ErrorMessage.addContent)
             return
         }
+        
+        self.nextButton.animate()
+        CampaignManager.shared.fetchCostPerReview(location: self.campaign.demographic.location) { (costPerReview) in
+            self.nextButton.stopAnimating()
+            guard let costPerReview = costPerReview else {
+                self.displayError(error: ErrorMessage.unknown)
+                return
+            }
+            
+            self.campaign.costPerReview = costPerReview
+            let vc = CampaignOverviewViewController.instantiateFromStoryboard(campaign: self.campaign)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func validateInput() -> Bool {
@@ -182,6 +195,10 @@ class CreateTargetViewController: BaseViewController {
         if genderIndex < 2 {
             guard let gender = self.genders.first(where: { $0.index == genderIndex }) else { return false }
             demographic.gender = gender
+        }
+        
+        if let text = self.audienceLabel.text, let audienceSize = Int(text) {
+            demographic.estimatedAudience = audienceSize
         }
         
         self.campaign.demographic = demographic

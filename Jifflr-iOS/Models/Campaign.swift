@@ -65,6 +65,15 @@ final class Campaign: PFObject {
             self["locationFinancial"] = newValue
         }
     }
+    
+    var costPerReview: Double {
+        get {
+            return self["costPerReview"] as! Double
+        }
+        set {
+            self["costPerReview"] = newValue
+        }
+    }
 }
 
 extension Campaign: PFSubclassing {

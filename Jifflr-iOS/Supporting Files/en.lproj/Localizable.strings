@@ -286,3 +286,25 @@
 
 "campaignOverview.navigation.title" = "Overview";
 "campaignOverview.balanceButton.title" = "Balance\n%@";
+"campaignOverview.campaignName.heading" = "Campaign Name";
+"campaignOverview.advert.heading" = "Advert";
+"campaignOverview.status.heading" = "Status";
+"campaignOverview.date.heading" = "Date";
+"campaignOverview.time.heading" = "Time";
+"campaignOverview.daysOfWeek.heading" = "Days of the week";
+"campaignOverview.gender.heading" = "Gender";
+"campaignOverview.ages.heading" = "For Ages";
+"campaignOverview.location.heading" = "Location";
+"campaignOverview.language.heading" = "Language";
+"campaignOverview.estimatedAudience.heading" = "Estimated Audience";
+"campaignOverview.costPerReview.heading" = "Cost / Review";
+"campaignOverview.estimatedCampaignCost.heading" = "Estimated Campaign Cost";
+"campaignOverview.budgetCoverage.heading" = "Budget Coverage";
+"campaignOverview.activateButton.title" = "ACTIVATE";
+"campaignOverview.days.monday" = "Mon";
+"campaignOverview.days.tuesday" = "Tue";
+"campaignOverview.days.wednesday" = "Wed";
+"campaignOverview.days.thursday" = "Thu";
+"campaignOverview.days.friday" = "Fri";
+"campaignOverview.days.saturday" = "Sat";
+"campaignOverview.days.sunday" = "Sun";

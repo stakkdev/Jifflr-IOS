@@ -56,6 +56,15 @@ final class Demographic: PFObject {
             self["language"] = newValue
         }
     }
+    
+    var estimatedAudience: Int {
+        get {
+            return self["estimatedAudience"] as! Int
+        }
+        set {
+            self["estimatedAudience"] = newValue
+        }
+    }
 }
 
 extension Demographic: PFSubclassing {
