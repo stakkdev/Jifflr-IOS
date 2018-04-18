@@ -33,6 +33,7 @@
 		1AA044892084A4D4008385A6 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA044882084A4D4008385A6 /* DayCell.swift */; };
 		1AA11E532085FF8D00BAE044 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E522085FF8D00BAE044 /* LanguageManager.swift */; };
 		1AA11E55208622FF00BAE044 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E54208622FF00BAE044 /* Gender.swift */; };
+		1AA11E5720864F9E00BAE044 /* CampaignOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
@@ -230,6 +231,7 @@
 		1AA044882084A4D4008385A6 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayCell.swift; path = "Controllers/Ad Builder/Create Campaign/Cells/DayCell.swift"; sourceTree = "<group>"; };
 		1AA11E522085FF8D00BAE044 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = Helpers/General/LanguageManager.swift; sourceTree = "<group>"; };
 		1AA11E54208622FF00BAE044 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Gender.swift; path = Models/Gender.swift; sourceTree = "<group>"; };
+		1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignOverviewViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CampaignOverviewViewController.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				1AA044872084A482008385A6 /* Cells */,
 				1AF985422081066D006525DB /* CreateScheduleViewController.swift */,
 				1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */,
+				1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */,
 			);
 			name = "Create Campaign";
 			sourceTree = "<group>";
@@ -1379,6 +1382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9798C2B201A4C8E00E8A7D2 /* BinaryFeedbackViewController.swift in Sources */,
+				1AA11E5720864F9E00BAE044 /* CampaignOverviewViewController.swift in Sources */,
 				E97B9E17203ADF6B0097BC65 /* PayPalEmailCell.swift in Sources */,
 				E9DD581B2035C3CC000735C3 /* TeamSizeCell.swift in Sources */,
 				E9F317AC204EA3B700104565 /* MultiSelectCell.swift in Sources */,

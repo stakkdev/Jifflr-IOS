@@ -283,3 +283,5 @@
 "createTarget.location.heading" = "Location";
 "createTarget.language.heading" = "Language";
 "createTarget.audienceSize.heading" = "Est. Audience Size";
+
+"campaignOverview.navigation.title" = "Overview";
