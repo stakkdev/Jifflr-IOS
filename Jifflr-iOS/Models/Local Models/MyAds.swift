@@ -38,6 +38,24 @@ final class MyAds: PFObject {
             self["graph"] = newValue
         }
     }
+    
+    var campaigns: [Campaign] {
+        get {
+            return self["campaign"] as? [Campaign] ?? []
+        }
+        set {
+            self["campaign"] = newValue
+        }
+    }
+    
+    var campaignCount: Int {
+        get {
+            return self["campaignCount"] as? Int ?? 0
+        }
+        set {
+            self["campaignCount"] = newValue
+        }
+    }
 }
 
 extension MyAds: PFSubclassing {

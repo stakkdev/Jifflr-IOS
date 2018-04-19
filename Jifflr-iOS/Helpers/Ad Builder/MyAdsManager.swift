@@ -101,6 +101,25 @@ class MyAdsManager: NSObject {
                 myAds.graph = graph
                 group.leave()
             }
+            
+            group.enter()
+            CampaignManager.shared.fetchCampaigns(completion: { (campaigns) in
+                guard let campaigns = campaigns else {
+                    completion(nil)
+                    return
+                }
+                
+                myAds.campaigns = campaigns
+                group.leave()
+            })
+            
+            group.enter()
+            CampaignManager.shared.countCampaigns(completion: { (count) in
+                if let count = count {
+                    myAds.campaignCount = count
+                }
+                group.leave()
+            })
 
             group.notify(queue: .main) {
                 myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
@@ -196,6 +215,7 @@ class MyAdsManager: NSObject {
         query?.includeKey("adverts.details.template")
         query?.includeKey("adverts.status")
         query?.includeKey("graph")
+        query?.includeKey("campaign")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.getFirstObjectInBackground(block: { (object, error) in

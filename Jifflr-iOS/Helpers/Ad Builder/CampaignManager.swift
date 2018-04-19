@@ -12,6 +12,8 @@ import Parse
 class CampaignManager: NSObject {
     static let shared = CampaignManager()
     
+    let pinName = "Campaigns"
+    
     func startEndDateString(schedule: Schedule) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -108,6 +110,45 @@ class CampaignManager: NSObject {
             let costPerReview = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
             
             completion(costPerReview)
+        })
+    }
+    
+    func fetchCampaigns(completion: @escaping ([Campaign]?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let query = Campaign.query()
+        query?.whereKey("creator", equalTo: user)
+        query?.includeKey("demographic")
+        query?.includeKey("demographic.location")
+        query?.includeKey("demographic.language")
+        query?.includeKey("demographic.gender")
+        query?.includeKey("schedule")
+        query?.includeKey("advert")
+        query?.includeKey("locationFinancial")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let campaigns = objects as? [Campaign], error == nil else {
+                completion(nil)
+                return
+            }
+            
+            PFObject.pinAll(inBackground: campaigns, withName: self.pinName) { (success, error) in
+                completion(campaigns)
+            }
+        })
+    }
+    
+    func countCampaigns(completion: @escaping (Int?) -> Void) {
+        guard let currentUser = Session.shared.currentUser else { return }
+        
+        let query = Campaign.query()
+        query?.whereKey("creator", equalTo: currentUser)
+        query?.countObjectsInBackground(block: { (count, error) in
+            guard error == nil else {
+                completion(nil)
+                return
+            }
+            
+            completion(Int(count))
         })
     }
 }

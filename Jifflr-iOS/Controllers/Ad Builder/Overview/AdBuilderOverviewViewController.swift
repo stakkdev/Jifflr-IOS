@@ -161,7 +161,7 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
         guard let myAds = self.myAds else { return 0 }
         
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            return 5
+            return myAds.campaigns.count + 1
         }
         
         return myAds.adverts.count + 1
@@ -175,20 +175,21 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveAdsCell") as! ActiveAdsCell
                 cell.nameLabel.text = "adBuilderOverview.totalCampaigns.text".localized()
-                cell.sizeLabel.text = "\(3)"
+                cell.sizeLabel.text = "\(myAds.campaignCount)"
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 return cell
                 
             } else {
+                let campaign = myAds.campaigns[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AdvertCell") as! AdvertCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.nameLabel.text = "Red Lion Pub Quiz"
-                cell.dateLabel.text = "22 June 2017"
-                cell.idLabel.text = "C# 3"
+                cell.nameLabel.text = campaign.name
+                cell.idLabel.text = "C# \(campaign.number)"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
-                cell.handleStatus(status: nil)
+                cell.handleStatus(status: campaign.advert.status)
+                cell.handleDate(createdAt: campaign.createdAt)
                 
                 return cell
             }

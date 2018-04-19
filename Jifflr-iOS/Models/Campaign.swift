@@ -74,6 +74,15 @@ final class Campaign: PFObject {
             self["costPerReview"] = newValue
         }
     }
+    
+    var number: Int {
+        get {
+            return self["number"] as? Int ?? 0
+        }
+        set {
+            self["number"] = newValue
+        }
+    }
 }
 
 extension Campaign: PFSubclassing {
