@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BudgetViewDelegate {
+    func valueChanged(value: Double)
+}
+
 class BudgetView: UIView {
     
     var value = 0.00 {
@@ -20,6 +24,7 @@ class BudgetView: UIView {
     var subtractButton: UIButton!
     var addButton: UIButton!
     var label: UILabel!
+    var delegate: BudgetViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,9 +96,11 @@ class BudgetView: UIView {
     @objc func subtractButtonPressed(sender: UIButton) {
         guard self.value > 1.0 else { return }
         self.value -= 1.0
+        self.delegate?.valueChanged(value: self.value)
     }
     
     @objc func addButtonPressed(sender: UIButton) {
         self.value += 1.0
+        self.delegate?.valueChanged(value: self.value)
     }
 }

@@ -34,30 +34,45 @@ class CampaignManager: NSObject {
         return "\(startDateString)    to    \(endDateString)"
     }
     
+    func dateString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
+    func timeString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
+    }
+    
     func daysOfWeekString(schedule: Schedule) -> String {
         var daysOfWeekString = ""
         
-        for dayInt in schedule.daysOfWeek {
-            switch dayInt {
-            case 0:
+        let value = schedule.daysOfWeek
+        let resultArray = Days.all.map { $0 & value }
+        
+        for day in resultArray {
+            switch day {
+            case Day.Mon:
                 let day = "campaignOverview.days.monday".localized()
                 daysOfWeekString += "\(day)  "
-            case 1:
+            case Day.Tue:
                 let day = "campaignOverview.days.tuesday".localized()
                 daysOfWeekString += "\(day)  "
-            case 2:
+            case Day.Wed:
                 let day = "campaignOverview.days.wednesday".localized()
                 daysOfWeekString += "\(day)  "
-            case 3:
+            case Day.Thu:
                 let day = "campaignOverview.days.thursday".localized()
                 daysOfWeekString += "\(day)  "
-            case 4:
+            case Day.Fri:
                 let day = "campaignOverview.days.friday".localized()
                 daysOfWeekString += "\(day)  "
-            case 5:
+            case Day.Sat:
                 let day = "campaignOverview.days.saturday".localized()
                 daysOfWeekString += "\(day)  "
-            case 6:
+            case Day.Sun:
                 let day = "campaignOverview.days.sunday".localized()
                 daysOfWeekString += "\(day)  "
             default:
@@ -150,5 +165,13 @@ class CampaignManager: NSObject {
             
             completion(Int(count))
         })
+    }
+    
+    func getDayOfWeekBitwiseInt(dayInts: [Int]) -> Int {
+        var result = 0
+        for index in dayInts {
+            result += Days.all[index]
+        }
+        return result
     }
 }

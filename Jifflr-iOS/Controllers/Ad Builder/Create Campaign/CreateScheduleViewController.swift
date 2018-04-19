@@ -42,11 +42,16 @@ class CreateScheduleViewController: BaseViewController {
     var days = ["M", "T", "W", "T", "F", "S", "S"]
     var selectedDays:[Int] = []
     
-    class func instantiateFromStoryboard(advert: Advert) -> CreateScheduleViewController {
+    var isEdit = false
+    var campaign: Campaign?
+    
+    class func instantiateFromStoryboard(advert: Advert, campaign: Campaign?, isEdit: Bool) -> CreateScheduleViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CreateScheduleViewController") as! CreateScheduleViewController
         vc.advert = advert
         vc.selectedAdvert = advert
+        vc.campaign = campaign
+        vc.isEdit = isEdit
         return vc
     }
     
@@ -109,7 +114,13 @@ class CreateScheduleViewController: BaseViewController {
         self.daysLabel.text = "createSchedule.days.heading".localized()
         self.dateToLabel.text = "createSchedule.toLabel.text".localized()
         self.timeToLabel.text = "createSchedule.toLabel.text".localized()
-        self.nextButton.setTitle("createAd.nextButton.title".localized(), for: .normal)
+        
+        if self.isEdit {
+            self.nextButton.setTitle("createSchedule.saveButton.title".localized(), for: .normal)
+        } else {
+            self.nextButton.setTitle("createAd.nextButton.title".localized(), for: .normal)
+        }
+        
         self.setupHelpButtonAttributedTitle()
     }
     
@@ -138,6 +149,15 @@ class CreateScheduleViewController: BaseViewController {
         MyAdsManager.shared.fetchUserAds { (adverts) in
             self.adverts = adverts
         }
+        
+        guard let campaign = self.campaign else { return }
+        self.campaignNameTextField.text = campaign.name
+        
+        guard let schedule = campaign.schedule else { return }
+        self.dateFromTextField.text = CampaignManager.shared.dateString(date: schedule.startDate)
+        self.dateToTextField.text = CampaignManager.shared.dateString(date: schedule.endDate)
+        self.timeFromTextField.text = CampaignManager.shared.timeString(date: schedule.startDate)
+        self.timeToTextField.text = CampaignManager.shared.timeString(date: schedule.endDate)
     }
     
     func createInputViews() {
@@ -162,14 +182,28 @@ class CreateScheduleViewController: BaseViewController {
     }
     
     @IBAction func nextButtonPressed(sender: UIButton) {
-        let campaign = Campaign()
-        guard self.validateInput(campaign: campaign) else {
-            self.displayError(error: ErrorMessage.addContent)
-            return
+        if self.isEdit {
+            guard let campaign = self.campaign else { return }
+            guard self.validateInput(campaign: campaign) else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            self.nextButton.animate()
+            campaign.saveAndPin {
+                self.nextButton.stopAnimating()
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            let campaign = Campaign()
+            guard self.validateInput(campaign: campaign) else {
+                self.displayError(error: ErrorMessage.addContent)
+                return
+            }
+            
+            let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: campaign, isEdit: false)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: campaign)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func validateInput(campaign: Campaign) -> Bool {
@@ -192,13 +226,21 @@ class CreateScheduleViewController: BaseViewController {
         
         guard self.selectedDays.count > 0 else { return false }
         
-        let schedule = Schedule()
-        schedule.startDate = startDate
-        schedule.endDate = endDate
-        schedule.daysOfWeek = self.selectedDays
-        campaign.schedule = schedule
-        campaign.advert = self.selectedAdvert
-        campaign.name = campaignName
+        if let schedule = self.campaign?.schedule {
+            campaign.advert = self.selectedAdvert
+            campaign.name = campaignName
+            schedule.startDate = startDate
+            schedule.endDate = endDate
+            schedule.daysOfWeek = CampaignManager.shared.getDayOfWeekBitwiseInt(dayInts: self.selectedDays)
+        } else {
+            let schedule = Schedule()
+            schedule.startDate = startDate
+            schedule.endDate = endDate
+            schedule.daysOfWeek = CampaignManager.shared.getDayOfWeekBitwiseInt(dayInts: self.selectedDays)
+            campaign.schedule = schedule
+            campaign.advert = self.selectedAdvert
+            campaign.name = campaignName
+        }
         
         return true
     }
@@ -220,6 +262,17 @@ extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as! DayCell
         cell.titleLabel.text = self.days[indexPath.row]
+        
+        if let schedule = self.campaign?.schedule {
+            let value = schedule.daysOfWeek
+            let resultArray = Days.all.map { $0 & value }
+            if resultArray[indexPath.row] != 0 {
+                self.setCellSelected(cell: cell, indexPath: indexPath)
+            } else {
+                self.setCellUnselected(cell: cell, indexPath: indexPath)
+            }
+        }
+        
         return cell
     }
     

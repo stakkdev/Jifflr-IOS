@@ -210,3 +210,27 @@ struct AdvertStatusKey {
     static let nonCompliant = "nonCompliant"
     static let nonCompliantScheduled = "nonCompliantScheduled"
 }
+
+struct Day {
+    static let Mon = 1
+    static let Tue = 2
+    static let Wed = 4
+    static let Thu = 8
+    static let Fri = 16
+    static let Sat = 32
+    static let Sun = 64
+}
+
+struct Days {
+    static var all: [Int] {
+        return [
+            Day.Mon,
+            Day.Tue,
+            Day.Wed,
+            Day.Thu,
+            Day.Fri,
+            Day.Sat,
+            Day.Sun
+        ]
+    }
+}

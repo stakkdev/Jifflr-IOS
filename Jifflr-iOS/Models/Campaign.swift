@@ -21,18 +21,18 @@ final class Campaign: PFObject {
         }
     }
     
-    var demographic: Demographic {
+    var demographic: Demographic? {
         get {
-            return self["demographic"] as! Demographic
+            return self["demographic"] as? Demographic
         }
         set {
             self["demographic"] = newValue
         }
     }
     
-    var schedule: Schedule {
+    var schedule: Schedule? {
         get {
-            return self["schedule"] as! Schedule
+            return self["schedule"] as? Schedule
         }
         set {
             self["schedule"] = newValue
@@ -88,5 +88,49 @@ final class Campaign: PFObject {
 extension Campaign: PFSubclassing {
     static func parseClassName() -> String {
         return "Campaign"
+    }
+}
+
+extension Campaign {
+    func saveAndPin(completion: @escaping () -> Void ) {
+        self.demographic?.saveEventually()
+        self.schedule?.saveEventually()
+        self.saveEventually()
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.location.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.language.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.schedule?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.notify(queue: .main) {
+            completion()
+        }
     }
 }

@@ -41,6 +41,11 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var budgetCoverageHeadingLabel: UILabel!
     @IBOutlet weak var budgetCoverageLabel: UILabel!
     @IBOutlet weak var budgetView: BudgetView!
+    @IBOutlet weak var campaignNameView: UIView!
+    @IBOutlet weak var advertView: UIView!
+    @IBOutlet weak var scheduleView: UIView!
+    @IBOutlet weak var demographicView: UIView!
+    @IBOutlet weak var statsView: UIView!
     
     @IBOutlet weak var activateButton: JifflrButton!
     
@@ -59,9 +64,16 @@ class CampaignOverviewViewController: BaseViewController {
         self.setupUI()
     }
     
-    func setupUI() {
-        self.setupLocalization()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.setupData()
+    }
+    
+    func setupUI() {
+        self.budgetView.delegate = self
+        self.setupLocalization()
+        self.setupGestures()
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.activateButton.setBackgroundColor(color: UIColor.mainGreen)
@@ -69,6 +81,23 @@ class CampaignOverviewViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
         self.createBalanceButton()
+    }
+    
+    func setupGestures() {
+        let campaignNameTap = UITapGestureRecognizer(target: self, action: #selector(self.campaignNamedTapped(gesture:)))
+        self.campaignNameView.addGestureRecognizer(campaignNameTap)
+        
+        let advertTap = UITapGestureRecognizer(target: self, action: #selector(self.advertTapped(gesture:)))
+        self.advertView.addGestureRecognizer(advertTap)
+        
+        let scheduleTap = UITapGestureRecognizer(target: self, action: #selector(self.scheduleTapped(gesture:)))
+        self.scheduleView.addGestureRecognizer(scheduleTap)
+        
+        let demographicTap = UITapGestureRecognizer(target: self, action: #selector(self.demographicTapped(gesture:)))
+        self.demographicView.addGestureRecognizer(demographicTap)
+        
+        let statsTap = UITapGestureRecognizer(target: self, action: #selector(self.statsTapped(gesture:)))
+        self.statsView.addGestureRecognizer(statsTap)
     }
     
     func createBalanceButton() {
@@ -104,34 +133,61 @@ class CampaignOverviewViewController: BaseViewController {
     }
     
     func setupData() {
+        guard let demographic = self.campaign.demographic else { return }
         self.campaignNameLabel.text = self.campaign.name
         self.advertLabel.text = self.campaign.advert.details?.name
         self.handleStatus(status: self.campaign.advert.status)
-        self.genderLabel.text = self.campaign.demographic.gender?.name ?? "createTarget.gender.all".localized()
-        self.locationLabel.text = self.campaign.demographic.location.name
-        self.dateLabel.text = CampaignManager.shared.startEndDateString(schedule: self.campaign.schedule)
-        self.timeLabel.text = CampaignManager.shared.startEndTimeString(schedule: self.campaign.schedule)
-        self.daysOfWeekLabel.text = CampaignManager.shared.daysOfWeekString(schedule: self.campaign.schedule)
+        self.genderLabel.text = demographic.gender?.name ?? "createTarget.gender.all".localized()
+        self.locationLabel.text = demographic.location.name
         
-        let minAge = self.campaign.demographic.minAge
-        let maxAge = self.campaign.demographic.maxAge
+        if let schedule = self.campaign.schedule {
+            self.dateLabel.text = CampaignManager.shared.startEndDateString(schedule: schedule)
+            self.timeLabel.text = CampaignManager.shared.startEndTimeString(schedule: schedule)
+            self.daysOfWeekLabel.text = CampaignManager.shared.daysOfWeekString(schedule: schedule)
+        }
+        
+        let minAge = demographic.minAge
+        let maxAge = demographic.maxAge
         self.agesLabel.text = "\(minAge)-\(maxAge)"
         
-        self.estimatedAudienceLabel.text = "\(self.campaign.demographic.estimatedAudience)"
+        self.estimatedAudienceLabel.text = "\(demographic.estimatedAudience)"
         self.costPerReviewLabel.text = "£\(self.campaign.costPerReview)"
         
-        let campaignCost = Double(self.campaign.demographic.estimatedAudience) * self.campaign.costPerReview
+        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
         self.estimatedCampaignCostLabel.text = "£\(String(format: "%.2f", campaignCost))"
         
-        var budgetCoverage = Int(campaignCost / self.budgetView.value)
-        if campaignCost < self.budgetView.value {
-            budgetCoverage *= 100
-        }
-        self.budgetCoverageLabel.text = "\(budgetCoverage)%"
+        var budgetCoverage = Double(campaignCost / self.budgetView.value)
+        budgetCoverage *= 100
+        self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
     }
     
     @objc func balanceButtonPressed(sender: UIButton) {
         
+    }
+    
+    @objc func campaignNamedTapped(gesture: UITapGestureRecognizer) {
+        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func advertTapped(gesture: UITapGestureRecognizer) {
+        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func scheduleTapped(gesture: UITapGestureRecognizer) {
+        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func demographicTapped(gesture: UITapGestureRecognizer) {
+        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: self.campaign, isEdit: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func statsTapped(gesture: UITapGestureRecognizer) {
+        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: self.campaign, isEdit: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func activateButtonPressed(sender: JifflrButton) {
@@ -176,5 +232,16 @@ class CampaignOverviewViewController: BaseViewController {
         let image = UIImage(named: "AdvertScheduledTimer")!.withRenderingMode(.alwaysTemplate)
         self.statusImageView.image = image
         self.statusImageView.tintColor = color
+    }
+}
+
+extension CampaignOverviewViewController: BudgetViewDelegate {
+    func valueChanged(value: Double) {
+        guard let demographic = self.campaign.demographic else { return }
+        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
+        
+        var budgetCoverage = Double(campaignCost / value)
+        budgetCoverage *= 100
+        self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
     }
 }

@@ -88,6 +88,9 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-ro-pu2">
                                         <rect key="frame" x="181" y="219" width="14.5" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="14.5" id="Ir9-xY-tFg"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -121,6 +124,9 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39G-7X-qzX">
                                         <rect key="frame" x="180.5" y="301" width="14.5" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="14.5" id="Rx9-Bd-jIo"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1003,6 +1009,7 @@
                         <outlet property="activateButton" destination="rPo-8b-0i2" id="jaR-FP-J02"/>
                         <outlet property="advertHeadingLabel" destination="hCw-JQ-75x" id="KRC-6X-cTo"/>
                         <outlet property="advertLabel" destination="uWq-X7-hqu" id="BJS-BG-iM5"/>
+                        <outlet property="advertView" destination="Dws-Ta-uRX" id="7Dt-yH-NHk"/>
                         <outlet property="agesHeadingLabel" destination="TzD-LT-0nz" id="5gf-AA-yWq"/>
                         <outlet property="agesLabel" destination="ZO2-xi-0kS" id="OsJ-ZO-cih"/>
                         <outlet property="budgetCoverageHeadingLabel" destination="9s3-Pq-PQ5" id="YUI-9h-c3C"/>
@@ -1010,12 +1017,14 @@
                         <outlet property="budgetView" destination="wmf-kV-UsW" id="YTi-D6-JWS"/>
                         <outlet property="campaignNameHeadingLabel" destination="J2A-Ts-HAr" id="P2T-Lh-W9p"/>
                         <outlet property="campaignNameLabel" destination="i4I-wu-32W" id="MpZ-zn-Ggy"/>
+                        <outlet property="campaignNameView" destination="Sw2-Yy-4na" id="7Bd-XM-jZ2"/>
                         <outlet property="costPerReviewHeadingLabel" destination="PIj-M0-MDO" id="Sha-0I-8zB"/>
                         <outlet property="costPerReviewLabel" destination="y1i-DY-tyA" id="q3B-CX-G3f"/>
                         <outlet property="dateHeadingLabel" destination="jpx-Mr-CFp" id="X8Y-av-14w"/>
                         <outlet property="dateLabel" destination="4h0-cy-JqE" id="oLI-Ye-APv"/>
                         <outlet property="daysOfWeekHeadingLabel" destination="vpV-4E-Hxp" id="XK3-mR-lbL"/>
                         <outlet property="daysOfWeekLabel" destination="cuf-OI-XzG" id="HGN-6z-ocZ"/>
+                        <outlet property="demographicView" destination="Ezb-5C-Fcl" id="T8y-sB-jYU"/>
                         <outlet property="estimatedAudienceHeadingLabel" destination="hln-FI-fRT" id="boE-dh-fhJ"/>
                         <outlet property="estimatedAudienceLabel" destination="pTf-dN-lQa" id="FXW-YL-s1P"/>
                         <outlet property="estimatedCampaignCostHeadingLabel" destination="i05-5q-4nK" id="UAf-dr-ESj"/>
@@ -1026,7 +1035,9 @@
                         <outlet property="languageLabel" destination="Jwc-2O-Cm7" id="dZY-03-yLX"/>
                         <outlet property="locationHeadingLabel" destination="WTw-DB-SnA" id="X1p-7C-2KU"/>
                         <outlet property="locationLabel" destination="pyG-yz-Mb9" id="tgo-CI-O08"/>
+                        <outlet property="scheduleView" destination="bLU-LU-uCr" id="RrT-YR-gaC"/>
                         <outlet property="scrollView" destination="E4G-ep-tIm" id="Ojx-3J-Seu"/>
+                        <outlet property="statsView" destination="US1-t8-GzV" id="GxT-5I-UG9"/>
                         <outlet property="statusHeadingLabel" destination="tTL-Z4-VBI" id="dPg-CR-kfv"/>
                         <outlet property="statusImageView" destination="aHy-99-bhN" id="DkK-ip-3Im"/>
                         <outlet property="statusImageViewWidth" destination="kQd-mk-pHP" id="Hgq-fW-blz"/>
