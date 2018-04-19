@@ -1030,7 +1030,7 @@
                         <outlet property="estimatedCampaignCostHeadingLabel" destination="i05-5q-4nK" id="UAf-dr-ESj"/>
                         <outlet property="estimatedCampaignCostLabel" destination="oVM-3y-b2M" id="ib8-TN-nWC"/>
                         <outlet property="genderHeadingLabel" destination="uX6-eD-r0y" id="Qit-PK-FIF"/>
-                        <outlet property="genderLabel" destination="uX6-eD-r0y" id="pnF-GT-ymR"/>
+                        <outlet property="genderLabel" destination="Kvv-Cn-Mfs" id="TMK-ys-YMs"/>
                         <outlet property="languageHeadingLabel" destination="CLl-U4-TKp" id="Md0-sP-oOu"/>
                         <outlet property="languageLabel" destination="Jwc-2O-Cm7" id="dZY-03-yLX"/>
                         <outlet property="locationHeadingLabel" destination="WTw-DB-SnA" id="X1p-7C-2KU"/>

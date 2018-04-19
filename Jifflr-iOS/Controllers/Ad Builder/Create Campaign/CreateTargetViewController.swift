@@ -96,7 +96,6 @@ class CreateTargetViewController: BaseViewController {
     func setupLocalization() {
         self.title = "createTarget.navigation.title".localized()
         self.genderLabel.text = "createTarget.gender.heading".localized()
-        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(18, 35)
         self.locationLabel.text = "createTarget.location.heading".localized()
         self.languageLabel.text = "createTarget.language.heading".localized()
         self.audienceHeadingLabel.text = "createTarget.audienceSize.heading".localized()
@@ -106,6 +105,7 @@ class CreateTargetViewController: BaseViewController {
             self.nextButton.setTitle("createSchedule.saveButton.title".localized(), for: .normal)
         } else {
             self.nextButton.setTitle("createAd.nextButton.title".localized(), for: .normal)
+            self.agesLabel.text = "createTarget.ages.heading".localizedFormat(18, 35)
         }
     }
     
@@ -186,6 +186,7 @@ class CreateTargetViewController: BaseViewController {
         
         self.agesSlider.selectedMinimum = Float(demographic.minAge)
         self.agesSlider.selectedMaximum = Float(demographic.maxAge)
+        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(Int(demographic.minAge), Int(demographic.maxAge))
         self.locationTextField.text = demographic.location.name
         self.selectedLocation = demographic.location
         self.languageTextField.text = demographic.language.name
