@@ -216,6 +216,12 @@ class MyAdsManager: NSObject {
         query?.includeKey("adverts.status")
         query?.includeKey("graph")
         query?.includeKey("campaign")
+        query?.includeKey("campaign.demographic")
+        query?.includeKey("campaign.demographic.location")
+        query?.includeKey("campaign.demographic.language")
+        query?.includeKey("campaign.demographic.gender")
+        query?.includeKey("campaign.schedule")
+        query?.includeKey("campaign.locationFinancial")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.getFirstObjectInBackground(block: { (object, error) in

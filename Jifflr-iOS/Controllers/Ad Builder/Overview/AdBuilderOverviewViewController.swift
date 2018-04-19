@@ -224,6 +224,11 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
             guard let advert = self.myAds?.adverts[indexPath.row - 1] else { return }
             let vc = CreateAdViewController.instantiateFromStoryboard(advert: advert)
             self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard indexPath.row > 0 else { return }
+            guard let campaign = self.myAds?.campaigns[indexPath.row - 1] else { return }
+            let vc = CampaignOverviewViewController.instantiateFromStoryboard(campaign: campaign)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
