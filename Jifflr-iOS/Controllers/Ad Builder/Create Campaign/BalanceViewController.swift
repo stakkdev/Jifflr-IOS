@@ -42,12 +42,12 @@ class BalanceViewController: BaseViewController {
         self.currentBalanceTextField.textColor = UIColor.white
         self.currentBalanceTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
         self.currentBalanceTextField.isUserInteractionEnabled = false
-        self.amountTextField.text = "£10.00"
         self.amountTextField.delegate = self
         self.paypalEmailTextField.delegate = self
         
         guard let user = Session.shared.currentUser else { return }
         self.paypalEmailTextField.text = user.details.campaignPayPalEmail
+        self.amountTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
         self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
     }
     
@@ -103,7 +103,7 @@ class BalanceViewController: BaseViewController {
     
     func validateWithdrawal() -> Bool {
         guard let user = Session.shared.currentUser else { return false }
-        guard user.details.campaignBalance > self.getAmount() else { return false }
+        guard user.details.campaignBalance >= self.getAmount() else { return false }
         
         return true
     }
