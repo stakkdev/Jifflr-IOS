@@ -128,6 +128,24 @@ final class UserDetails: PFObject {
             self["pushNotifications"] = newValue
         }
     }
+    
+    var campaignBalance: Double {
+        get {
+            return self["campaignBalance"] as? Double ?? 0.0
+        }
+        set {
+            self["campaignBalance"] = newValue
+        }
+    }
+    
+    var campaignPayPalEmail: String? {
+        get {
+            return self["campaignPayPalEmail"] as? String
+        }
+        set {
+            self["campaignPayPalEmail"] = newValue
+        }
+    }
 }
 
 extension UserDetails: PFSubclassing {

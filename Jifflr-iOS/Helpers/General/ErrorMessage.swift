@@ -58,6 +58,9 @@ public enum ErrorMessage {
     case locationFetchFailed
     case languageFetchFailed
     case genderFetchFailed
+    case withdrawalValidationFailed
+    case withdrawalFailed
+    case withdrawalEmail
 
     public var failureTitle: String {
         switch self {
@@ -164,6 +167,12 @@ public enum ErrorMessage {
             return "error.languageFetchFailed".localized()
         case .genderFetchFailed:
             return "error.genderFetchFailed".localized()
+        case .withdrawalValidationFailed:
+            return "error.withdrawalValidationFailed".localized()
+        case .withdrawalFailed:
+            return "error.withdrawalFailed".localized()
+        case .withdrawalEmail:
+            return "error.withdrawalEmail".localized()
         }
     }
 }
@@ -176,6 +185,7 @@ public enum AlertMessage {
     case cashoutSuccess
     case changeTeam
     case leaveTeam
+    case withdrawalSuccess
 
     public var title: String {
         switch self {
@@ -193,6 +203,8 @@ public enum AlertMessage {
             return "alert.changeTeam.title".localized()
         case .leaveTeam:
             return "alert.leaveTeam.title".localized()
+        case .withdrawalSuccess:
+            return "alert.withdrawalSuccess.title".localized()
         }
     }
 
@@ -212,6 +224,8 @@ public enum AlertMessage {
             return "alert.changeTeam.message".localized()
         case .leaveTeam:
             return "alert.leaveTeam.message".localized()
+        case .withdrawalSuccess:
+            return "alert.withdrawalSuccess.message".localized()
         }
     }
 }

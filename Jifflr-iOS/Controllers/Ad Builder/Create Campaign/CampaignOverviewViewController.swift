@@ -47,7 +47,17 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var demographicView: UIView!
     @IBOutlet weak var statsView: UIView!
     
+    @IBOutlet weak var activatedView: UIView!
     @IBOutlet weak var activateButton: JifflrButton!
+    @IBOutlet weak var budgetViewTop: NSLayoutConstraint!
+    @IBOutlet weak var activeLabel: UILabel!
+    @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var campaignResultsButton: JifflrButton!
+    @IBOutlet weak var updateButton: JifflrButton!
+    @IBOutlet weak var copyCampaignButton: JifflrButton!
+    @IBOutlet weak var deleteCampaign: JifflrButton!
+    @IBOutlet weak var activateButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var activatedViewBottom: NSLayoutConstraint!
     
     var campaign: Campaign!
 
@@ -74,9 +84,14 @@ class CampaignOverviewViewController: BaseViewController {
         self.budgetView.delegate = self
         self.setupLocalization()
         self.setupGestures()
+        self.setupUIBasedOnStatus()
         
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.activateButton.setBackgroundColor(color: UIColor.mainGreen)
+        self.campaignResultsButton.setBackgroundColor(color: UIColor.mainPink)
+        self.updateButton.setBackgroundColor(color: UIColor.mainGreen)
+        self.copyCampaignButton.setBackgroundColor(color: UIColor.mainOrange)
+        self.deleteCampaign.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
@@ -101,9 +116,11 @@ class CampaignOverviewViewController: BaseViewController {
     }
     
     func createBalanceButton() {
+        guard let userDetails = Session.shared.currentUser?.details else { return }
+        
         let button = UIButton(type: .custom)
         button.titleLabel?.numberOfLines = 0
-        let title = "campaignOverview.balanceButton.title".localizedFormat("£0.00")
+        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = UIFont(name: Constants.FontNames.GothamBold, size: 14.0)
@@ -130,6 +147,12 @@ class CampaignOverviewViewController: BaseViewController {
         self.costPerReviewHeadingLabel.text = "campaignOverview.costPerReview.heading".localized()
         self.estimatedCampaignCostHeadingLabel.text = "campaignOverview.estimatedCampaignCost.heading".localized()
         self.budgetCoverageHeadingLabel.text = "campaignOverview.budgetCoverage.heading".localized()
+        self.activateButton.setTitle("campaignOverview.activateButton.title".localized(), for: .normal)
+        self.campaignResultsButton.setTitle("campaignOverview.getCampaignResultsButton.title".localized(), for: .normal)
+        self.updateButton.setTitle("campaignOverview.updateButton.title".localized(), for: .normal)
+        self.copyCampaignButton.setTitle("campaignOverview.copyCampaignButton.title".localized(), for: .normal)
+        self.deleteCampaign.setTitle("campaignOverview.deleteCampaignButton.title".localized(), for: .normal)
+        self.activeLabel.text = "campaignOverview.activeLabel.text".localized()
     }
     
     func setupData() {
@@ -161,37 +184,32 @@ class CampaignOverviewViewController: BaseViewController {
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
     }
     
-    @objc func balanceButtonPressed(sender: UIButton) {
-        
+    func setupUIBasedOnStatus() {
+        self.setUIActivated()
     }
     
-    @objc func campaignNamedTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
-        self.navigationController?.pushViewController(vc, animated: true)
+    func setUIActivated() {
+        self.budgetViewTop.constant = 80.0
+        self.activateButton.isHidden = true
+        self.activateButton.isEnabled = false
+        self.activeLabel.isHidden = false
+        self.activeSwitch.isHidden = false
+        self.activatedView.isHidden = false
+        self.activatedView.isUserInteractionEnabled = true
+        self.activateButtonBottom.isActive = false
+        self.activatedViewBottom.isActive = true
     }
     
-    @objc func advertTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func scheduleTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func demographicTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: self.campaign, isEdit: true)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func statsTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateTargetViewController.instantiateFromStoryboard(campaign: self.campaign, isEdit: true)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func activateButtonPressed(sender: JifflrButton) {
-        
+    func setUIUnactivated() {
+        self.budgetViewTop.constant = 18.0
+        self.activateButton.isHidden = false
+        self.activateButton.isEnabled = true
+        self.activeLabel.isHidden = true
+        self.activeSwitch.isHidden = true
+        self.activatedView.isHidden = true
+        self.activatedView.isUserInteractionEnabled = false
+        self.activateButtonBottom.isActive = true
+        self.activatedViewBottom.isActive = false
     }
     
     func handleStatus(status: AdvertStatus?) {

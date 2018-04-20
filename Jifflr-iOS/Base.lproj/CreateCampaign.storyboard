@@ -547,11 +547,11 @@
             <objects>
                 <viewController storyboardIdentifier="CampaignOverviewViewController" id="Se9-0I-2sO" customClass="CampaignOverviewViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7qa-dV-eAA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1013"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4G-ep-tIm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="993"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sw2-Yy-4na">
                                         <rect key="frame" x="18" y="10" width="339" height="50"/>
@@ -949,14 +949,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmf-kV-UsW" customClass="BudgetView" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="468" width="339" height="50"/>
+                                        <rect key="frame" x="18" y="530" width="339" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nnb-oU-afH"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPo-8b-0i2" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="590" width="339" height="50"/>
+                                        <rect key="frame" x="18" y="652" width="339" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kU3-xN-jNj"/>
                                         </constraints>
@@ -965,6 +965,87 @@
                                             <action selector="activateButtonPressedWithSender:" destination="Se9-0I-2sO" eventType="touchUpInside" id="QvJ-1O-Pdh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="h6g-wS-HCT">
+                                        <rect key="frame" x="25" y="481" width="52" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="5fv-0r-Icn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="crm-UR-bEi">
+                                        <rect key="frame" x="308" y="474" width="51" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="0Bh-zE-I61"/>
+                                            <constraint firstAttribute="width" constant="49" id="QXc-YC-7Pq"/>
+                                        </constraints>
+                                        <color key="onTintColor" red="0.95686274510000002" green="0.4941176471" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="activateSwitchChangedWithSender:" destination="Se9-0I-2sO" eventType="valueChanged" id="hWE-se-oVv"/>
+                                        </connections>
+                                    </switch>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCX-42-lK8">
+                                        <rect key="frame" x="18" y="617" width="339" height="319"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSE-0t-bIT" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="D8j-Io-61b"/>
+                                                </constraints>
+                                                <state key="normal" title="GET CAMPAIGN RESULTS"/>
+                                                <connections>
+                                                    <action selector="getCampaignResultsButtonPressedWithSender:" destination="Se9-0I-2sO" eventType="touchUpInside" id="tSv-GN-Jcf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uda-k3-srL" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="89" width="339" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="lXZ-7U-U9r"/>
+                                                </constraints>
+                                                <state key="normal" title="UPDATE"/>
+                                                <connections>
+                                                    <action selector="updateButtonPressedWithSender:" destination="Se9-0I-2sO" eventType="touchUpInside" id="72c-xE-dP1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6O-tC-PGK" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="178" width="339" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ezg-1W-Sp8"/>
+                                                </constraints>
+                                                <state key="normal" title="COPY CAMPAIGN"/>
+                                                <connections>
+                                                    <action selector="copyCampaignPressedWithSender:" destination="Se9-0I-2sO" eventType="touchUpInside" id="AtH-Wz-Jhv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RI2-QY-K0n" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="269" width="339" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="V3f-n0-RcD"/>
+                                                </constraints>
+                                                <state key="normal" title="DELETE CAMPAIGN"/>
+                                                <connections>
+                                                    <action selector="deleteCampaignWithSender:" destination="Se9-0I-2sO" eventType="touchUpInside" id="UCW-ad-HX1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="uSE-0t-bIT" firstAttribute="top" secondItem="RCX-42-lK8" secondAttribute="top" id="2EW-1N-lue"/>
+                                            <constraint firstAttribute="trailing" secondItem="uda-k3-srL" secondAttribute="trailing" id="6un-nT-buf"/>
+                                            <constraint firstItem="uSE-0t-bIT" firstAttribute="leading" secondItem="RCX-42-lK8" secondAttribute="leading" id="CuC-Rx-FFs"/>
+                                            <constraint firstItem="uda-k3-srL" firstAttribute="top" secondItem="uSE-0t-bIT" secondAttribute="bottom" constant="39" id="FzV-jm-KDz"/>
+                                            <constraint firstItem="RI2-QY-K0n" firstAttribute="leading" secondItem="RCX-42-lK8" secondAttribute="leading" id="Vb6-3z-Itg"/>
+                                            <constraint firstItem="uda-k3-srL" firstAttribute="leading" secondItem="RCX-42-lK8" secondAttribute="leading" id="ZvR-Oz-101"/>
+                                            <constraint firstItem="p6O-tC-PGK" firstAttribute="leading" secondItem="RCX-42-lK8" secondAttribute="leading" id="eiz-qf-iit"/>
+                                            <constraint firstAttribute="trailing" secondItem="p6O-tC-PGK" secondAttribute="trailing" id="fIa-4R-xPV"/>
+                                            <constraint firstAttribute="trailing" secondItem="RI2-QY-K0n" secondAttribute="trailing" id="g9q-k4-3xe"/>
+                                            <constraint firstAttribute="height" constant="319" id="guy-Gj-0bT"/>
+                                            <constraint firstAttribute="trailing" secondItem="uSE-0t-bIT" secondAttribute="trailing" id="jE6-x4-TmI"/>
+                                            <constraint firstItem="p6O-tC-PGK" firstAttribute="top" secondItem="uda-k3-srL" secondAttribute="bottom" constant="39" id="neK-wI-myN"/>
+                                            <constraint firstAttribute="bottom" secondItem="RI2-QY-K0n" secondAttribute="bottom" id="rAV-IF-wzc"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="US1-t8-GzV" firstAttribute="trailing" secondItem="Ezb-5C-Fcl" secondAttribute="trailing" id="0zg-Za-W8R"/>
@@ -975,19 +1056,27 @@
                                     <constraint firstItem="Dws-Ta-uRX" firstAttribute="top" secondItem="Sw2-Yy-4na" secondAttribute="bottom" constant="5" id="BJk-qH-Svs"/>
                                     <constraint firstItem="wmf-kV-UsW" firstAttribute="leading" secondItem="US1-t8-GzV" secondAttribute="leading" id="BZE-b9-tDP"/>
                                     <constraint firstItem="bLU-LU-uCr" firstAttribute="trailing" secondItem="Dws-Ta-uRX" secondAttribute="trailing" id="DOb-CR-9Q6"/>
-                                    <constraint firstItem="wmf-kV-UsW" firstAttribute="top" secondItem="US1-t8-GzV" secondAttribute="bottom" constant="18" id="HEd-4b-qb0"/>
+                                    <constraint firstItem="wmf-kV-UsW" firstAttribute="top" secondItem="US1-t8-GzV" secondAttribute="bottom" constant="80" id="HEd-4b-qb0"/>
                                     <constraint firstItem="rPo-8b-0i2" firstAttribute="top" secondItem="wmf-kV-UsW" secondAttribute="bottom" constant="72" id="Mcw-kD-oOi"/>
                                     <constraint firstItem="Sw2-Yy-4na" firstAttribute="leading" secondItem="E4G-ep-tIm" secondAttribute="leading" constant="18" id="PUd-bJ-8Dc"/>
                                     <constraint firstItem="rPo-8b-0i2" firstAttribute="leading" secondItem="wmf-kV-UsW" secondAttribute="leading" id="QBb-ME-PlO"/>
+                                    <constraint firstItem="crm-UR-bEi" firstAttribute="centerY" secondItem="h6g-wS-HCT" secondAttribute="centerY" id="U4P-Ro-A2O"/>
+                                    <constraint firstItem="RCX-42-lK8" firstAttribute="top" secondItem="wmf-kV-UsW" secondAttribute="bottom" constant="37" id="VJN-k6-Eo1"/>
+                                    <constraint firstAttribute="bottom" secondItem="RCX-42-lK8" secondAttribute="bottom" priority="750" constant="57" id="VPl-qx-T7K"/>
                                     <constraint firstItem="Ezb-5C-Fcl" firstAttribute="top" secondItem="bLU-LU-uCr" secondAttribute="bottom" constant="5" id="VSU-bf-OD0"/>
                                     <constraint firstItem="rPo-8b-0i2" firstAttribute="trailing" secondItem="wmf-kV-UsW" secondAttribute="trailing" id="WxK-oO-MIY"/>
+                                    <constraint firstItem="RCX-42-lK8" firstAttribute="leading" secondItem="wmf-kV-UsW" secondAttribute="leading" id="Z75-Ah-CDG"/>
+                                    <constraint firstItem="h6g-wS-HCT" firstAttribute="top" secondItem="US1-t8-GzV" secondAttribute="bottom" constant="31" id="a5l-kZ-fDt"/>
                                     <constraint firstItem="US1-t8-GzV" firstAttribute="top" secondItem="Ezb-5C-Fcl" secondAttribute="bottom" constant="5" id="cA4-Bf-EuM"/>
+                                    <constraint firstItem="h6g-wS-HCT" firstAttribute="leading" secondItem="US1-t8-GzV" secondAttribute="leading" constant="7" id="gIv-Xq-DPR"/>
                                     <constraint firstItem="TzD-LT-0nz" firstAttribute="leading" secondItem="PIj-M0-MDO" secondAttribute="leading" id="gR2-nR-t49"/>
                                     <constraint firstItem="Sw2-Yy-4na" firstAttribute="top" secondItem="E4G-ep-tIm" secondAttribute="top" constant="10" id="hrU-pd-2xx"/>
+                                    <constraint firstItem="crm-UR-bEi" firstAttribute="trailing" secondItem="US1-t8-GzV" secondAttribute="trailing" id="iAQ-fk-Ai0"/>
                                     <constraint firstAttribute="bottom" secondItem="rPo-8b-0i2" secondAttribute="bottom" constant="50" id="p4L-Zf-xhp"/>
                                     <constraint firstItem="bLU-LU-uCr" firstAttribute="leading" secondItem="Dws-Ta-uRX" secondAttribute="leading" id="qDh-O2-MHG"/>
                                     <constraint firstItem="Dws-Ta-uRX" firstAttribute="leading" secondItem="Sw2-Yy-4na" secondAttribute="leading" id="sha-6E-meD"/>
                                     <constraint firstItem="Ezb-5C-Fcl" firstAttribute="trailing" secondItem="bLU-LU-uCr" secondAttribute="trailing" id="uoy-NW-y2t"/>
+                                    <constraint firstItem="RCX-42-lK8" firstAttribute="trailing" secondItem="wmf-kV-UsW" secondAttribute="trailing" id="uqX-8g-5Nh"/>
                                     <constraint firstItem="US1-t8-GzV" firstAttribute="leading" secondItem="Ezb-5C-Fcl" secondAttribute="leading" id="xjH-Nd-qGr"/>
                                     <constraint firstItem="Ezb-5C-Fcl" firstAttribute="leading" secondItem="bLU-LU-uCr" secondAttribute="leading" id="zrU-Dc-hOn"/>
                                 </constraints>
@@ -1004,9 +1093,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cpX-Ga-nDH"/>
                     </view>
-                    <size key="freeformSize" width="375" height="667"/>
+                    <size key="freeformSize" width="375" height="1013"/>
                     <connections>
                         <outlet property="activateButton" destination="rPo-8b-0i2" id="jaR-FP-J02"/>
+                        <outlet property="activateButtonBottom" destination="p4L-Zf-xhp" id="JtX-HO-7nB"/>
+                        <outlet property="activatedView" destination="RCX-42-lK8" id="Ugv-3y-4QL"/>
+                        <outlet property="activatedViewBottom" destination="VPl-qx-T7K" id="6Av-XZ-E9c"/>
+                        <outlet property="activeLabel" destination="h6g-wS-HCT" id="xTD-AG-LPV"/>
+                        <outlet property="activeSwitch" destination="crm-UR-bEi" id="pWW-nE-G18"/>
                         <outlet property="advertHeadingLabel" destination="hCw-JQ-75x" id="KRC-6X-cTo"/>
                         <outlet property="advertLabel" destination="uWq-X7-hqu" id="BJS-BG-iM5"/>
                         <outlet property="advertView" destination="Dws-Ta-uRX" id="7Dt-yH-NHk"/>
@@ -1015,15 +1109,19 @@
                         <outlet property="budgetCoverageHeadingLabel" destination="9s3-Pq-PQ5" id="YUI-9h-c3C"/>
                         <outlet property="budgetCoverageLabel" destination="Ug7-tE-TbR" id="1Lb-9F-oOw"/>
                         <outlet property="budgetView" destination="wmf-kV-UsW" id="YTi-D6-JWS"/>
+                        <outlet property="budgetViewTop" destination="HEd-4b-qb0" id="Lba-ul-nBy"/>
                         <outlet property="campaignNameHeadingLabel" destination="J2A-Ts-HAr" id="P2T-Lh-W9p"/>
                         <outlet property="campaignNameLabel" destination="i4I-wu-32W" id="MpZ-zn-Ggy"/>
                         <outlet property="campaignNameView" destination="Sw2-Yy-4na" id="7Bd-XM-jZ2"/>
+                        <outlet property="campaignResultsButton" destination="uSE-0t-bIT" id="NpD-Zm-C13"/>
+                        <outlet property="copyCampaignButton" destination="p6O-tC-PGK" id="C8T-xa-mhy"/>
                         <outlet property="costPerReviewHeadingLabel" destination="PIj-M0-MDO" id="Sha-0I-8zB"/>
                         <outlet property="costPerReviewLabel" destination="y1i-DY-tyA" id="q3B-CX-G3f"/>
                         <outlet property="dateHeadingLabel" destination="jpx-Mr-CFp" id="X8Y-av-14w"/>
                         <outlet property="dateLabel" destination="4h0-cy-JqE" id="oLI-Ye-APv"/>
                         <outlet property="daysOfWeekHeadingLabel" destination="vpV-4E-Hxp" id="XK3-mR-lbL"/>
                         <outlet property="daysOfWeekLabel" destination="cuf-OI-XzG" id="HGN-6z-ocZ"/>
+                        <outlet property="deleteCampaign" destination="RI2-QY-K0n" id="vyp-cd-OhF"/>
                         <outlet property="demographicView" destination="Ezb-5C-Fcl" id="T8y-sB-jYU"/>
                         <outlet property="estimatedAudienceHeadingLabel" destination="hln-FI-fRT" id="boE-dh-fhJ"/>
                         <outlet property="estimatedAudienceLabel" destination="pTf-dN-lQa" id="FXW-YL-s1P"/>
@@ -1043,11 +1141,113 @@
                         <outlet property="statusImageViewWidth" destination="kQd-mk-pHP" id="Hgq-fW-blz"/>
                         <outlet property="timeHeadingLabel" destination="x8J-Xt-fj1" id="ucv-Qz-Jan"/>
                         <outlet property="timeLabel" destination="yyu-7H-MWW" id="agH-zR-Kl5"/>
+                        <outlet property="updateButton" destination="uda-k3-srL" id="Q5p-Ai-giV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH4-sV-IZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1376.8" y="192.50374812593705"/>
+            <point key="canvasLocation" x="1383" y="326"/>
+        </scene>
+        <!--Balance View Controller-->
+        <scene sceneID="n5I-P0-VYV">
+            <objects>
+                <viewController storyboardIdentifier="BalanceViewController" id="vUH-DV-Av0" customClass="BalanceViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sdx-w7-ncU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ic4-zY-ZM5">
+                                <rect key="frame" x="25" y="30" width="91" height="16"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9db-qh-sDB" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="54" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zHb-kc-xEQ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGN-qT-AHq" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="563" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="u3G-uF-l6P"/>
+                                </constraints>
+                                <state key="normal" title="CONFIRM"/>
+                                <connections>
+                                    <action selector="confirmButtonPressedWithSender:" destination="vUH-DV-Av0" eventType="touchUpInside" id="AuP-0b-EJm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqD-a9-i4g">
+                                <rect key="frame" x="25" y="155" width="114" height="16"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJc-Vb-MJG" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="179" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7fq-Jz-8rX"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top-up Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZN-T9-2In">
+                                <rect key="frame" x="25" y="241" width="111.5" height="16"/>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p2c-ZF-heH" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="265" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KGJ-wz-lUx"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cJc-Vb-MJG" firstAttribute="trailing" secondItem="9db-qh-sDB" secondAttribute="trailing" id="60L-LH-DaC"/>
+                            <constraint firstItem="aZN-T9-2In" firstAttribute="top" secondItem="cJc-Vb-MJG" secondAttribute="bottom" constant="12" id="K6W-nm-C7c"/>
+                            <constraint firstItem="aZN-T9-2In" firstAttribute="leading" secondItem="p2c-ZF-heH" secondAttribute="leading" constant="7" id="MNt-ld-zQZ"/>
+                            <constraint firstItem="9db-qh-sDB" firstAttribute="leading" secondItem="h0k-Ly-gZr" secondAttribute="leading" constant="18" id="NLt-60-3cX"/>
+                            <constraint firstItem="p2c-ZF-heH" firstAttribute="trailing" secondItem="cJc-Vb-MJG" secondAttribute="trailing" id="NSX-UH-uFz"/>
+                            <constraint firstItem="lGN-qT-AHq" firstAttribute="leading" secondItem="h0k-Ly-gZr" secondAttribute="leading" constant="18" id="Pts-ri-Yya"/>
+                            <constraint firstItem="Ic4-zY-ZM5" firstAttribute="leading" secondItem="9db-qh-sDB" secondAttribute="leading" constant="7" id="R6c-c5-In3"/>
+                            <constraint firstItem="h0k-Ly-gZr" firstAttribute="bottom" secondItem="lGN-qT-AHq" secondAttribute="bottom" constant="54" id="WKd-DJ-3EV"/>
+                            <constraint firstItem="p2c-ZF-heH" firstAttribute="leading" secondItem="cJc-Vb-MJG" secondAttribute="leading" id="WZ2-4E-wXw"/>
+                            <constraint firstItem="9db-qh-sDB" firstAttribute="top" secondItem="Ic4-zY-ZM5" secondAttribute="bottom" constant="8" id="XHs-d1-abY"/>
+                            <constraint firstItem="MqD-a9-i4g" firstAttribute="leading" secondItem="cJc-Vb-MJG" secondAttribute="leading" constant="7" id="bxD-Ce-AGt"/>
+                            <constraint firstItem="p2c-ZF-heH" firstAttribute="top" secondItem="aZN-T9-2In" secondAttribute="bottom" constant="8" id="c8S-4z-36T"/>
+                            <constraint firstItem="h0k-Ly-gZr" firstAttribute="trailing" secondItem="9db-qh-sDB" secondAttribute="trailing" constant="18" id="fki-Ka-qiW"/>
+                            <constraint firstItem="Ic4-zY-ZM5" firstAttribute="top" secondItem="h0k-Ly-gZr" secondAttribute="top" constant="10" id="gju-Bn-EPk"/>
+                            <constraint firstItem="cJc-Vb-MJG" firstAttribute="leading" secondItem="9db-qh-sDB" secondAttribute="leading" id="hpT-gG-eQl"/>
+                            <constraint firstItem="h0k-Ly-gZr" firstAttribute="trailing" secondItem="lGN-qT-AHq" secondAttribute="trailing" constant="18" id="mhx-Xn-GAT"/>
+                            <constraint firstItem="MqD-a9-i4g" firstAttribute="top" secondItem="9db-qh-sDB" secondAttribute="bottom" constant="51" id="yc9-vL-hTr"/>
+                            <constraint firstItem="cJc-Vb-MJG" firstAttribute="top" secondItem="MqD-a9-i4g" secondAttribute="bottom" constant="8" id="zJ5-N8-qM8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h0k-Ly-gZr"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountHeadingLabel" destination="aZN-T9-2In" id="7MA-A4-oze"/>
+                        <outlet property="amountTextField" destination="p2c-ZF-heH" id="q5x-OU-iCf"/>
+                        <outlet property="confirmButton" destination="lGN-qT-AHq" id="8Jo-el-Fx5"/>
+                        <outlet property="currentBalanceHeadingLabel" destination="MqD-a9-i4g" id="kgE-we-pl3"/>
+                        <outlet property="currentBalanceTextField" destination="cJc-Vb-MJG" id="wBN-0a-jpQ"/>
+                        <outlet property="paypalEmailHeadingLabel" destination="Ic4-zY-ZM5" id="YAJ-q2-7GH"/>
+                        <outlet property="paypalEmailTextField" destination="9db-qh-sDB" id="vcc-31-baQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Us9-1p-ARe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2122" y="170"/>
         </scene>
     </scenes>
 </document>

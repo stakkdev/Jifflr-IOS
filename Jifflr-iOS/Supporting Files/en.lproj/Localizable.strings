@@ -56,6 +56,9 @@
 "error.locationFetchFailed" = "Unable to fetch locations. Please check your internet connection and try again.";
 "error.languageFetchFailed" = "Unable to fetch languages. Please check your internet connection and try again.";
 "error.genderFetchFailed" = "Unable to fetch genders. Please check your internet connection and try again.";
+"error.withdrawalValidationFailed" = "Unable to withdraw money. Please ensure your account balance has sufficient funds.";
+"error.withdrawalFailed" = "Unable to withdraw money. Please check your internet connection and try again.";
+"error.withdrawalEmail" = "Withdrawing funds to a different PayPal Account is not permitted.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -85,6 +88,8 @@
 "alert.leaveTeam.cancelButton" = "Cancel";
 "alert.leaveTeam.yesButton" = "Leave Team";
 "alert.noChartData" = "No chart data";
+"alert.withdrawalSuccess.title" = "Withdrawal Successful!";
+"alert.withdrawalSuccess.message" = "Your withdrawal was successful and the funds have been sent to your PayPal account.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
@@ -309,3 +314,23 @@
 "campaignOverview.days.friday" = "Fri";
 "campaignOverview.days.saturday" = "Sat";
 "campaignOverview.days.sunday" = "Sun";
+"campaignOverview.activeLabel.text" = "Active";
+"campaignOverview.getCampaignResultsButton.title" = "GET CAMPAIGN RESULTS";
+"campaignOverview.updateButton.title" = "UPDATE";
+"campaignOverview.copyCampaignButton.title" = "COPY CAMPAIGN";
+"campaignOverview.deleteCampaignButton.title" = "DELETE CAMPAIGN";
+"campaignOverview.balanceActionSheet.title" = "Choose an Option";
+"campaignOverview.cancelButton.title" = "Cancel";
+"campaignOverview.balanceTopUpButton.title" = "Balance Top-up";
+"campaignOverview.withdrawalButton.title" = "Withdrawal";
+
+"balanceWithdrawal.navigation.title" = "Balance Withdrawal";
+"balanceTopUp.navigation.title" = "Balance Top-up";
+"balanceWithdrawal.paypalEmail.heading" = "PayPal Email";
+"balanceWithdrawal.paypalEmail.placeholder" = "Enter PayPal email";
+"balanceWithdrawal.currentBalance.heading" = "Current Balance";
+"balanceWithdrawal.withdrawalAmount.heading" = "Withdrawal Amount";
+"balanceWithdrawal.withdrawalAmount.placeholder" = "Enter withdrawal amount";
+"balanceTopUp.topUpAmount.heading" = "Top-up Amount";
+"balanceTopUp.topUpAmount.placeholder" = "Enter top-up amount";
+"balanceWithdrawal.confirmButton.title" = "CONFIRM";

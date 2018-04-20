@@ -174,4 +174,28 @@ class CampaignManager: NSObject {
         }
         return result
     }
+    
+    func withdraw(amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "amount": amount] as [String : Any]
+        
+        PFCloud.callFunction(inBackground: "campaign-cash-out", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.withdrawalFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.withdrawalFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
 }
