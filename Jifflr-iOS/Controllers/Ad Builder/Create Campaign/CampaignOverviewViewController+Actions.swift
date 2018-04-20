@@ -10,11 +10,58 @@ import Foundation
 
 extension CampaignOverviewViewController {
     @IBAction func getCampaignResultsButtonPressed(sender: JifflrButton) {
-        
+        self.campaignResultsButton.animate()
+        CampaignManager.shared.getCampaignResults(campaign: self.campaign) { (error) in
+            self.campaignResultsButton.stopAnimating()
+            
+            guard error == nil else {
+                self.displayError(error: error)
+                return
+            }
+            
+            let alert = AlertMessage.campaignResultsSuccess
+            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+        }
     }
     
     @IBAction func updateButtonPressed(sender: JifflrButton) {
+        guard let user = Session.shared.currentUser else { return }
+        guard self.budgetView.value > self.campaign.budget else { return }
         
+        let difference = self.budgetView.value - self.campaign.budget
+        guard user.details.campaignBalance > difference else {
+            self.handleInsufficientBalance()
+            return
+        }
+        
+        self.updateButton.animate()
+        CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, amount: difference) { (error) in
+            self.updateButton.stopAnimating()
+            
+            guard error == nil else {
+                self.displayError(error: error)
+                return
+            }
+            
+            let alert = AlertMessage.increaseBudgetSuccess
+            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+        }
+    }
+    
+    func handleInsufficientBalance() {
+        let error = ErrorMessage.increaseBudgetFailed
+        let alertController = UIAlertController(title: error.failureTitle, message: error.failureDescription, preferredStyle: .alert)
+        
+        let noAction = UIAlertAction(title: "error.increaseBudgetFailed.noButton".localized(), style: .cancel) { (action) in }
+        alertController.addAction(noAction)
+        
+        let yesAction = UIAlertAction(title: "error.increaseBudgetFailed.yesButton".localized(), style: .default) { (action) in
+            let vc = BalanceViewController.instantiateFromStoryboard(isWithdrawal: false)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        alertController.addAction(yesAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func copyCampaignPressed(sender: JifflrButton) {

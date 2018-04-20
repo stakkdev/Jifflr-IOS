@@ -61,6 +61,9 @@ public enum ErrorMessage {
     case withdrawalValidationFailed
     case withdrawalFailed
     case withdrawalEmail
+    case increaseBudgetFailed
+    case increaseBudgetFailedFromServer
+    case getCampaignResultsFailed
 
     public var failureTitle: String {
         switch self {
@@ -173,6 +176,12 @@ public enum ErrorMessage {
             return "error.withdrawalFailed".localized()
         case .withdrawalEmail:
             return "error.withdrawalEmail".localized()
+        case .increaseBudgetFailed:
+            return "error.increaseBudgetFailed".localized()
+        case .increaseBudgetFailedFromServer:
+            return "error.increaseBudgetFailedFromServer".localized()
+        case .getCampaignResultsFailed:
+            return "error.getCampaignResultsFailed".localized()
         }
     }
 }
@@ -186,6 +195,8 @@ public enum AlertMessage {
     case changeTeam
     case leaveTeam
     case withdrawalSuccess
+    case increaseBudgetSuccess
+    case campaignResultsSuccess
 
     public var title: String {
         switch self {
@@ -205,6 +216,10 @@ public enum AlertMessage {
             return "alert.leaveTeam.title".localized()
         case .withdrawalSuccess:
             return "alert.withdrawalSuccess.title".localized()
+        case .increaseBudgetSuccess:
+            return "alert.increaseBudgetSuccess.title".localized()
+        case .campaignResultsSuccess:
+            return "alert.campaignResultsSuccess.title".localized()
         }
     }
 
@@ -226,6 +241,10 @@ public enum AlertMessage {
             return "alert.leaveTeam.message".localized()
         case .withdrawalSuccess:
             return "alert.withdrawalSuccess.message".localized()
+        case .increaseBudgetSuccess:
+            return "alert.increaseBudgetSuccess.message".localized()
+        case .campaignResultsSuccess:
+            return "alert.campaignResultsSuccess.message".localized()
         }
     }
 }

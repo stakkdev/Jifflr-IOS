@@ -39,9 +39,9 @@ final class Campaign: PFObject {
         }
     }
     
-    var budget: Float {
+    var budget: Double {
         get {
-            return self["budget"] as? Float ?? 0.0
+            return self["budget"] as? Double ?? 0.0
         }
         set {
             self["budget"] = newValue

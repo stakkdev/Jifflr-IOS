@@ -59,6 +59,11 @@
 "error.withdrawalValidationFailed" = "Unable to withdraw money. Please ensure your account balance has sufficient funds.";
 "error.withdrawalFailed" = "Unable to withdraw money. Please check your internet connection and try again.";
 "error.withdrawalEmail" = "Withdrawing funds to a different PayPal Account is not permitted.";
+"error.increaseBudgetFailed" = "Unable to increase budget - insufficient balance. Do you want to add money to your balance?";
+"error.increaseBudgetFailed.noButton" = "No";
+"error.increaseBudgetFailed.yesButton" = "Yes";
+"error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
+"error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -90,6 +95,10 @@
 "alert.noChartData" = "No chart data";
 "alert.withdrawalSuccess.title" = "Withdrawal Successful!";
 "alert.withdrawalSuccess.message" = "Your withdrawal was successful and the funds have been sent to your PayPal account.";
+"alert.increaseBudgetSuccess.title" = "Budget Increased!";
+"alert.increaseBudgetSuccess.message" = "The campaign's budget has been increased and your balance has been updated.";
+"alert.campaignResultsSuccess.title" = "Email Sent!";
+"alert.campaignResultsSuccess.message" = "The campaign's results have been sent to your email address.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";

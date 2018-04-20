@@ -179,7 +179,7 @@ class CMSAdvertViewController: BaseViewController {
     
     func handleLoadError() {
         let error = ErrorMessage.advertFetchFailed
-        self.displayMessage(title: error.failureTitle, message: error.failureTitle, dismissText: nil, dismissAction: { (action) in
+        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
             self.dismissButtonPressed()
         })
     }

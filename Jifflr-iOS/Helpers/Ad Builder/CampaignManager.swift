@@ -180,7 +180,7 @@ class CampaignManager: NSObject {
         
         let parameters = ["user": user.objectId!, "amount": amount] as [String : Any]
         
-        PFCloud.callFunction(inBackground: "campaign-cash-out", withParameters: parameters) { responseJSON, error in
+        PFCloud.callFunction(inBackground: "withdraw", withParameters: parameters) { responseJSON, error in
             if let success = responseJSON as? Bool, error == nil {
                 if success == true {
                     completion(nil)
@@ -192,6 +192,54 @@ class CampaignManager: NSObject {
             } else {
                 if let _ = error {
                     completion(ErrorMessage.withdrawalFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+    
+    func updateCampaignBudget(campaign: Campaign, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!, "amount": amount] as [String : Any]
+        
+        PFCloud.callFunction(inBackground: "update-campaign-budget", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.increaseBudgetFailedFromServer)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.increaseBudgetFailedFromServer)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+    
+    func getCampaignResults(campaign: Campaign, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!]
+        
+        PFCloud.callFunction(inBackground: "get-campaign-results", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.getCampaignResultsFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.getCampaignResultsFailed)
                 } else {
                     completion(ErrorMessage.unknown)
                 }

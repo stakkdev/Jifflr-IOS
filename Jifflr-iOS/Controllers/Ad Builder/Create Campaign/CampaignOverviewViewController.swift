@@ -182,6 +182,16 @@ class CampaignOverviewViewController: BaseViewController {
         var budgetCoverage = Double(campaignCost / self.budgetView.value)
         budgetCoverage *= 100
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        
+        self.updateBalanceButton()
+    }
+    
+    func updateBalanceButton() {
+        guard let userDetails = Session.shared.currentUser?.details else { return }
+        guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
+        guard let button = barButtonItem.customView as? UIButton else { return }
+        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
+        button.setTitle(title, for: .normal)
     }
     
     func setupUIBasedOnStatus() {
