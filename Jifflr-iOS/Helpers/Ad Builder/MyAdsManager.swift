@@ -135,7 +135,6 @@ class MyAdsManager: NSObject {
         guard let currentUser = Session.shared.currentUser else { return }
         
         let query = Advert.query()
-        query?.fromPin(withName: self.pinName)
         query?.whereKey("creator", equalTo: currentUser)
         query?.order(byAscending: "createdAt")
         query?.includeKey("questionType")
