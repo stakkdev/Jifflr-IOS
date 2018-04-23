@@ -159,7 +159,7 @@ class CampaignOverviewViewController: BaseViewController {
         guard let demographic = self.campaign.demographic else { return }
         self.campaignNameLabel.text = self.campaign.name
         self.advertLabel.text = self.campaign.advert.details?.name
-        self.handleStatus(status: self.campaign.advert.status)
+        self.handleStatus(status: self.campaign.status)
         self.genderLabel.text = demographic.gender?.name ?? "createTarget.gender.all".localized()
         self.locationLabel.text = demographic.location.name
         
@@ -222,22 +222,22 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedViewBottom.isActive = false
     }
     
-    func handleStatus(status: AdvertStatus?) {
+    func handleStatus(status: CampaignStatus?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
         
         switch status.key {
-        case AdvertStatusKey.availableActive:
+        case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
-        case AdvertStatusKey.availableScheduled:
+        case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)
-        case AdvertStatusKey.inactive:
+        case CampaignStatusKey.inactive:
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
-        case AdvertStatusKey.nonCompliant:
+        case CampaignStatusKey.nonCompliant:
             self.drawCircle(color: UIColor.mainRed)
-        case AdvertStatusKey.nonCompliantScheduled:
+        case CampaignStatusKey.nonCompliantScheduled:
             self.setTimerImage(color: UIColor.mainRed)
         default:
             return

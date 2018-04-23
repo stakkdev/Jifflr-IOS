@@ -47,15 +47,6 @@ final class Advert: PFObject {
             self["details"] = newValue
         }
     }
-    
-    var status: AdvertStatus? {
-        get {
-            return self["status"] as? AdvertStatus
-        }
-        set {
-            self["status"] = newValue
-        }
-    }
 }
 
 extension Advert: PFSubclassing {

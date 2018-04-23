@@ -113,6 +113,8 @@ extension AppDelegate {
         Demographic.registerSubclass()
         Campaign.registerSubclass()
         Schedule.registerSubclass()
+        CampaignStatus.registerSubclass()
+        Gender.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

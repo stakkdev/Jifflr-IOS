@@ -22,7 +22,6 @@ class MyAdsManager: NSObject {
         query?.includeKey("questions")
         query?.includeKey("details")
         query?.includeKey("details.template")
-        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (adverts, error) in
             guard let adverts = adverts as? [Advert], error == nil else {
                 return
@@ -34,11 +33,6 @@ class MyAdsManager: NSObject {
                 for advert in adverts {
                     group.enter()
                     AdvertManager.shared.fetchQuestionsAndAnswers(advert: advert, pinName: self.pinName, completion: { (error) in
-                        group.leave()
-                    })
-                    
-                    group.enter()
-                    advert.status?.pinInBackground(withName: self.pinName, block: { (success, error) in
                         group.leave()
                     })
                     
@@ -140,7 +134,6 @@ class MyAdsManager: NSObject {
         query?.includeKey("questionType")
         query?.includeKey("details")
         query?.includeKey("details.template")
-        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let ads = objects as? [Advert], error == nil else {
                 completion([])
@@ -153,25 +146,26 @@ class MyAdsManager: NSObject {
     
     func countActiveUserAds(completion: @escaping (Int?) -> Void) {
         guard let currentUser = Session.shared.currentUser else { return }
-        
-        let query = Advert.query()
+
+        let query = Campaign.query()
         query?.whereKey("creator", equalTo: currentUser)
+        query?.includeKey("advert")
         query?.includeKey("status")
         query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
-            guard let ads = objects as? [Advert], error == nil else {
+            guard let campaigns = objects as? [Campaign], error == nil else {
                 completion(nil)
                 return
             }
             
-            var count = 0
-            for ad in ads {
-                if ad.status?.key == AdvertStatusKey.availableActive {
-                    count += 1
-                }
+            var ads:[String] = []
+            for campaign in campaigns {
+                guard campaign.status?.key == CampaignStatusKey.availableActive else { continue }
+                guard !ads.contains(campaign.advert.objectId!) else { continue }
+                ads.append(campaign.advert.objectId!)
             }
-            
-            completion(count)
+
+            completion(ads.count)
         })
     }
     
@@ -215,6 +209,7 @@ class MyAdsManager: NSObject {
         query?.includeKey("adverts.status")
         query?.includeKey("graph")
         query?.includeKey("campaign")
+        query?.includeKey("campaign.status")
         query?.includeKey("campaign.demographic")
         query?.includeKey("campaign.demographic.location")
         query?.includeKey("campaign.demographic.language")

@@ -221,7 +221,7 @@ struct AdvertTemplateKey {
     static let imageTitleMessage = "imageTitleMessage"
 }
 
-struct AdvertStatusKey {
+struct CampaignStatusKey {
     static let availableActive = "availableActive"
     static let availableScheduled = "availableScheduled"
     static let inactive = "inactive"

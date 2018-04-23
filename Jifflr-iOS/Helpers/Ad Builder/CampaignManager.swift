@@ -140,6 +140,7 @@ class CampaignManager: NSObject {
         query?.includeKey("schedule")
         query?.includeKey("advert")
         query?.includeKey("locationFinancial")
+        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let campaigns = objects as? [Campaign], error == nil else {
                 completion(nil)

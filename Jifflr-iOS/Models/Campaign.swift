@@ -92,6 +92,15 @@ final class Campaign: PFObject {
             self["creator"] = newValue
         }
     }
+    
+    var status: CampaignStatus? {
+        get {
+            return self["status"] as? CampaignStatus
+        }
+        set {
+            self["status"] = newValue
+        }
+    }
 }
 
 extension Campaign: PFSubclassing {

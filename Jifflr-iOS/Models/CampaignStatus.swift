@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Parse
 
-final class AdvertStatus: PFObject {
+final class CampaignStatus: PFObject {
     
     var name: String {
         get {
@@ -31,8 +31,8 @@ final class AdvertStatus: PFObject {
     }
 }
 
-extension AdvertStatus: PFSubclassing {
+extension CampaignStatus: PFSubclassing {
     static func parseClassName() -> String {
-        return "AdvertStatus"
+        return "CampaignStatus"
     }
 }
