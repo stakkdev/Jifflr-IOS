@@ -246,4 +246,33 @@ class CampaignManager: NSObject {
             }
         }
     }
+    
+    func copy(campaign: Campaign, completion: @escaping (ErrorMessage?) -> Void) {
+        let newCampaign = Campaign()
+        newCampaign.budget = 0.0
+        newCampaign.costPerReview = campaign.costPerReview
+        newCampaign.name = campaign.name
+        newCampaign.creator = campaign.creator
+        newCampaign.locationFinancial = campaign.locationFinancial
+        newCampaign.advert = campaign.advert
+        
+        let newSchedule = Schedule()
+        newSchedule.daysOfWeek = campaign.schedule!.daysOfWeek
+        newSchedule.endDate = campaign.schedule!.endDate
+        newSchedule.startDate = campaign.schedule!.startDate
+        newCampaign.schedule = newSchedule
+        
+        let newDemographic = Demographic()
+        newDemographic.estimatedAudience = campaign.demographic!.estimatedAudience
+        newDemographic.gender = campaign.demographic?.gender
+        newDemographic.minAge = campaign.demographic!.minAge
+        newDemographic.maxAge = campaign.demographic!.maxAge
+        newDemographic.language = campaign.demographic!.language
+        newDemographic.location = campaign.demographic!.location
+        newCampaign.demographic = newDemographic
+        
+        newCampaign.saveInBackgroundAndPin { (error) in
+            completion(error)
+        }
+    }
 }

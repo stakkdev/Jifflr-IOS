@@ -64,6 +64,7 @@ public enum ErrorMessage {
     case increaseBudgetFailed
     case increaseBudgetFailedFromServer
     case getCampaignResultsFailed
+    case copyCampaignFailed
 
     public var failureTitle: String {
         switch self {
@@ -182,6 +183,8 @@ public enum ErrorMessage {
             return "error.increaseBudgetFailedFromServer".localized()
         case .getCampaignResultsFailed:
             return "error.getCampaignResultsFailed".localized()
+        case .copyCampaignFailed:
+            return "error.copyCampaignFailed".localized()
         }
     }
 }

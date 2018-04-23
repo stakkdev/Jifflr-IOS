@@ -70,7 +70,7 @@ class BudgetView: UIView {
         self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.textAlignment = .center
         self.addSubview(self.label)
-        self.value = 10.00
+        self.value = 1.00
     }
     
     func setupConstraints() {

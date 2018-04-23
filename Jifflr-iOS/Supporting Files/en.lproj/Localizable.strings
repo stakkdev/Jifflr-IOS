@@ -64,6 +64,7 @@
 "error.increaseBudgetFailed.yesButton" = "Yes";
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
+"error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
