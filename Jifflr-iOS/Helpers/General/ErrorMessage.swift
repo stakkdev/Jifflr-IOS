@@ -210,6 +210,7 @@ public enum AlertMessage {
     case increaseBudgetSuccess
     case campaignResultsSuccess
     case paypalTopUpSuccess
+    case scheduledDeleteCampaign
 
     public var title: String {
         switch self {
@@ -235,6 +236,8 @@ public enum AlertMessage {
             return "alert.campaignResultsSuccess.title".localized()
         case .paypalTopUpSuccess:
             return "alert.paypalTopUpSuccess.title".localized()
+        case .scheduledDeleteCampaign:
+            return "alert.scheduledDeleteCampaign.title".localized()
         }
     }
 
@@ -262,6 +265,8 @@ public enum AlertMessage {
             return "alert.campaignResultsSuccess.message".localized()
         case .paypalTopUpSuccess:
             return "alert.paypalTopUpSuccess.message".localized()
+        case .scheduledDeleteCampaign:
+            return "alert.scheduledDeleteCampaign.message".localized()
         }
     }
 }

@@ -42,6 +42,8 @@ class AdvertCell: UITableViewCell {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
         case CampaignStatusKey.nonCompliant:
             self.drawCircle(color: UIColor.mainRed)
+        case CampaignStatusKey.prepareToDelete:
+            self.setTimerImage(color: UIColor.mainRed)
         case CampaignStatusKey.nonCompliantScheduled:
             self.setTimerImage(color: UIColor.mainRed)
         default:

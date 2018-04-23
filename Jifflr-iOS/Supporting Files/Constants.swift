@@ -227,6 +227,7 @@ struct CampaignStatusKey {
     static let inactive = "inactive"
     static let nonCompliant = "nonCompliant"
     static let nonCompliantScheduled = "nonCompliantScheduled"
+    static let prepareToDelete = "prepareToDelete"
 }
 
 struct Day {

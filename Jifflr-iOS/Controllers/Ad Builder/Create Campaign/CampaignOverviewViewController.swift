@@ -255,6 +255,8 @@ class CampaignOverviewViewController: BaseViewController {
             self.drawCircle(color: UIColor.mainRed)
         case CampaignStatusKey.nonCompliantScheduled:
             self.setTimerImage(color: UIColor.mainRed)
+        case CampaignStatusKey.prepareToDelete:
+            self.setTimerImage(color: UIColor.mainRed)
         default:
             return
         }

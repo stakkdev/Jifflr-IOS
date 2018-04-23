@@ -20,7 +20,7 @@
 "error.profile.invalidField" = "Unable to save profile details. Please enter a valid:";
 "error.profile.invalidGender" = "Unable to save profile details. Please select a gender.";
 "error.profile.invalidDob" = "Oops! Users must be 18 years old or over, changes to your date of birth have not been saved.";
-"error.noInternetConnection" = "No internet connection - unable to fetch data. No previously saved data to use.";
+"error.noInternetConnection" = "No internet connection - unable to fetch data.";
 "error.invalidCurrentPassword" = "Please enter your current password.";
 "error.invalidNewPassword" = "Invalid new password. Please enter a valid password that is at least 8 characters.";
 "error.invalidInvitationCode" = "Invitation code not registered. Please enter a valid invitation code.";
@@ -105,6 +105,10 @@
 "alert.campaignResultsSuccess.message" = "The campaign's results have been sent to your email address.";
 "alert.paypalTopUpSuccess.title" = "Top-up Success!";
 "alert.paypalTopUpSuccess.message" = "The top-up was successful and your balance has been updated.";
+"alert.deleteCampaign.title" = "Delete Campaign";
+"alert.deleteCampaign.message" = "Are you sure you want to delete this campaign? This action cannot be undone. If the campaign is currently active, it will be scheduled to delete in 48 hours.";
+"alert.scheduledDeleteCampaign.title" = "Campaign Schedule to Delete";
+"alert.scheduledDeleteCampaign.message" = "This campaign was been scheduled to delete in the next 48 hours.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
