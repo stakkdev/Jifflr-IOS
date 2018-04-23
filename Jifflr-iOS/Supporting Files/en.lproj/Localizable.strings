@@ -65,6 +65,8 @@
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
+"error.minTopUpAmount" = "There is a minimum top-up amount of £10.";
+"error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -100,6 +102,8 @@
 "alert.increaseBudgetSuccess.message" = "The campaign's budget has been increased and your balance has been updated.";
 "alert.campaignResultsSuccess.title" = "Email Sent!";
 "alert.campaignResultsSuccess.message" = "The campaign's results have been sent to your email address.";
+"alert.paypalTopUpSuccess.title" = "Top-up Success!";
+"alert.paypalTopUpSuccess.message" = "The top-up was successful and your balance has been updated.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
@@ -344,3 +348,4 @@
 "balanceTopUp.topUpAmount.heading" = "Top-up Amount";
 "balanceTopUp.topUpAmount.placeholder" = "Enter top-up amount";
 "balanceWithdrawal.confirmButton.title" = "CONFIRM";
+"balanceTopUp.paypalRequest.title" = "Jifflr Balance Top-up";

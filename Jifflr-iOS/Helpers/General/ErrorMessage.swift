@@ -65,6 +65,8 @@ public enum ErrorMessage {
     case increaseBudgetFailedFromServer
     case getCampaignResultsFailed
     case copyCampaignFailed
+    case minTopUpAmount
+    case paypalTopUpFailed
 
     public var failureTitle: String {
         switch self {
@@ -185,6 +187,10 @@ public enum ErrorMessage {
             return "error.getCampaignResultsFailed".localized()
         case .copyCampaignFailed:
             return "error.copyCampaignFailed".localized()
+        case .minTopUpAmount:
+            return "error.minTopUpAmount".localized()
+        case .paypalTopUpFailed:
+            return "error.paypalTopUpFailed".localized()
         }
     }
 }
@@ -200,6 +206,7 @@ public enum AlertMessage {
     case withdrawalSuccess
     case increaseBudgetSuccess
     case campaignResultsSuccess
+    case paypalTopUpSuccess
 
     public var title: String {
         switch self {
@@ -223,6 +230,8 @@ public enum AlertMessage {
             return "alert.increaseBudgetSuccess.title".localized()
         case .campaignResultsSuccess:
             return "alert.campaignResultsSuccess.title".localized()
+        case .paypalTopUpSuccess:
+            return "alert.paypalTopUpSuccess.title".localized()
         }
     }
 
@@ -248,6 +257,8 @@ public enum AlertMessage {
             return "alert.increaseBudgetSuccess.message".localized()
         case .campaignResultsSuccess:
             return "alert.campaignResultsSuccess.message".localized()
+        case .paypalTopUpSuccess:
+            return "alert.paypalTopUpSuccess.message".localized()
         }
     }
 }
