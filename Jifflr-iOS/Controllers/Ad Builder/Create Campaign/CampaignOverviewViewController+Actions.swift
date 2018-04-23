@@ -65,15 +65,13 @@ extension CampaignOverviewViewController {
     }
     
     @IBAction func copyCampaignPressed(sender: JifflrButton) {
-        self.copyCampaignButton.animate()
-        CampaignManager.shared.copy(campaign: self.campaign) { (error) in
-            self.copyCampaignButton.stopAnimating()
-            guard error == nil else {
-                self.displayError(error: error)
-                return
-            }
-            
-            self.navigationController?.popViewController(animated: true)
+        let newCampaign = CampaignManager.shared.copy(campaign: self.campaign)
+        self.campaign = newCampaign
+        self.setupData()
+        self.setupUIBasedOnStatus()
+        let alert = AlertMessage.campaignCopied
+        self.displayMessage(title: alert.title, message: alert.message, dismissText: nil) { (action) in
+            self.scrollView.setContentOffset(.zero, animated: true)
         }
     }
     

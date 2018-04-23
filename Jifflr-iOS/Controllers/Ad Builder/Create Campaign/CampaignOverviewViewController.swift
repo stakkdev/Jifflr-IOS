@@ -17,7 +17,7 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var advertLabel: UILabel!
     @IBOutlet weak var statusHeadingLabel: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!
-    @IBOutlet weak var statusImageViewWidth: NSLayoutConstraint!
+    @IBOutlet var statusImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var dateHeadingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeHeadingLabel: UILabel!
@@ -51,15 +51,15 @@ class CampaignOverviewViewController: BaseViewController {
     
     @IBOutlet weak var activatedView: UIView!
     @IBOutlet weak var activateButton: JifflrButton!
-    @IBOutlet weak var budgetViewTop: NSLayoutConstraint!
+    @IBOutlet var budgetViewTop: NSLayoutConstraint!
     @IBOutlet weak var activeLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var campaignResultsButton: JifflrButton!
     @IBOutlet weak var updateButton: JifflrButton!
     @IBOutlet weak var copyCampaignButton: JifflrButton!
     @IBOutlet weak var deleteCampaign: JifflrButton!
-    @IBOutlet weak var activateButtonBottom: NSLayoutConstraint!
-    @IBOutlet weak var activatedViewBottom: NSLayoutConstraint!
+    @IBOutlet var activateButtonBottom: NSLayoutConstraint!
+    @IBOutlet var activatedViewBottom: NSLayoutConstraint!
     
     var campaign: Campaign!
 
@@ -94,9 +94,6 @@ class CampaignOverviewViewController: BaseViewController {
         self.updateButton.setBackgroundColor(color: UIColor.mainGreen)
         self.copyCampaignButton.setBackgroundColor(color: UIColor.mainOrange)
         self.deleteCampaign.setBackgroundColor(color: UIColor.mainBlueTransparent80)
-        
-        self.campaignNumberLabel.text = "C# \(self.campaign.number)"
-        self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
@@ -184,9 +181,17 @@ class CampaignOverviewViewController: BaseViewController {
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
         self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
         
-        var budgetCoverage = Double(campaignCost / self.budgetView.value)
-        budgetCoverage *= 100
+        self.budgetView.value = self.campaign.budget
+        
+        var budgetCoverage = 0.0
+        if self.budgetView.value != 0.0 {
+            budgetCoverage = Double(campaignCost / self.budgetView.value)
+            budgetCoverage *= 100
+        }
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        
+        self.campaignNumberLabel.text = "C# \(self.campaign.number)"
+        self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.updateBalanceButton()
     }

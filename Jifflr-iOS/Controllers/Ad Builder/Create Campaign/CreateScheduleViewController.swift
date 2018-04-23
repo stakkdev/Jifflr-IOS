@@ -189,9 +189,14 @@ class CreateScheduleViewController: BaseViewController {
                 return
             }
             
-            self.nextButton.animate()
-            campaign.saveAndPin {
-                self.nextButton.stopAnimating()
+            // Handle if the campaign is a previously saved object, or a copy.
+            if let _ = self.campaign?.objectId {
+                self.nextButton.animate()
+                campaign.saveAndPin {
+                    self.nextButton.stopAnimating()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } else {
                 self.navigationController?.popViewController(animated: true)
             }
         } else {

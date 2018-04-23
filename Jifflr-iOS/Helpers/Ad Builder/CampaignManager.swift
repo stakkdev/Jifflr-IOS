@@ -271,7 +271,7 @@ class CampaignManager: NSObject {
         }
     }
     
-    func copy(campaign: Campaign, completion: @escaping (ErrorMessage?) -> Void) {
+    func copy(campaign: Campaign) -> Campaign {
         let newCampaign = Campaign()
         newCampaign.budget = 0.0
         newCampaign.costPerReview = campaign.costPerReview
@@ -295,8 +295,6 @@ class CampaignManager: NSObject {
         newDemographic.location = campaign.demographic!.location
         newCampaign.demographic = newDemographic
         
-        newCampaign.saveInBackgroundAndPin { (error) in
-            completion(error)
-        }
+        return newCampaign
     }
 }
