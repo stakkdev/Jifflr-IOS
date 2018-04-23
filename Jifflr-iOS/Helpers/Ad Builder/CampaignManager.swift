@@ -176,6 +176,29 @@ class CampaignManager: NSObject {
         return result
     }
     
+    func fetchStatus(key: String, completion: @escaping (CampaignStatus?) -> Void) {
+        let query = CampaignStatus.query()
+        query?.whereKey("key", equalTo: key)
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let campaignStatus = object as? CampaignStatus, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            completion(campaignStatus)
+        })
+    }
+    
+    func shouldCampaignBeActiveAvailable(campaign: Campaign) -> Bool {
+        guard let schedule = campaign.schedule else { return false }
+        
+        if Date() > schedule.startDate && Date() < schedule.endDate {
+            return true
+        }
+        
+        return false
+    }
+    
     func withdraw(amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
         

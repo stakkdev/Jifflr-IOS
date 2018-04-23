@@ -82,7 +82,39 @@ extension CampaignOverviewViewController {
     }
     
     @IBAction func activateSwitchChanged(sender: UISwitch) {
+        let key = self.campaign.status?.key
+        guard key != CampaignStatusKey.nonCompliant && key != CampaignStatusKey.nonCompliantScheduled else {
+            sender.isOn = false
+            self.displayError(error: ErrorMessage.nonCompliantActivate)
+            return
+        }
         
+        var statusKey = CampaignStatusKey.inactive
+        
+        if sender.isOn {
+            if CampaignManager.shared.shouldCampaignBeActiveAvailable(campaign: self.campaign) {
+                statusKey = CampaignStatusKey.availableActive
+            } else {
+                statusKey = CampaignStatusKey.availableScheduled
+            }
+        }
+        
+        CampaignManager.shared.fetchStatus(key: statusKey) { (status) in
+            guard let status = status else {
+                sender.isOn = !sender.isOn
+                return
+            }
+            
+            self.campaign.status = status
+            self.campaign.saveInBackgroundAndPin(completion: { (error) in
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+                
+                self.handleStatus(status: status)
+            })
+        }
     }
     
     @objc func balanceButtonPressed(sender: UIButton) {

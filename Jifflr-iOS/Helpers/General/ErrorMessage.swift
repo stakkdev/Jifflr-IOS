@@ -67,6 +67,7 @@ public enum ErrorMessage {
     case copyCampaignFailed
     case minTopUpAmount
     case paypalTopUpFailed
+    case nonCompliantActivate
 
     public var failureTitle: String {
         switch self {
@@ -191,6 +192,8 @@ public enum ErrorMessage {
             return "error.minTopUpAmount".localizedFormat(Session.shared.currentCurrencySymbol)
         case .paypalTopUpFailed:
             return "error.paypalTopUpFailed".localized()
+        case .nonCompliantActivate:
+            return "error.nonCompliantActivate".localized()
         }
     }
 }

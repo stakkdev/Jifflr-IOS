@@ -46,6 +46,8 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var demographicView: UIView!
     @IBOutlet weak var statsView: UIView!
+    @IBOutlet weak var campaignNumberLabel: UILabel!
+    @IBOutlet weak var adNumberLabel: UILabel!
     
     @IBOutlet weak var activatedView: UIView!
     @IBOutlet weak var activateButton: JifflrButton!
@@ -92,6 +94,9 @@ class CampaignOverviewViewController: BaseViewController {
         self.updateButton.setBackgroundColor(color: UIColor.mainGreen)
         self.copyCampaignButton.setBackgroundColor(color: UIColor.mainOrange)
         self.deleteCampaign.setBackgroundColor(color: UIColor.mainBlueTransparent80)
+        
+        self.campaignNumberLabel.text = "C# \(self.campaign.number)"
+        self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
@@ -195,10 +200,14 @@ class CampaignOverviewViewController: BaseViewController {
     }
     
     func setupUIBasedOnStatus() {
-        self.setUIActivated()
+        if let status = self.campaign.status {
+            self.setUIActivated(status: status)
+        } else {
+            self.setUIUnactivated()
+        }
     }
     
-    func setUIActivated() {
+    func setUIActivated(status: CampaignStatus) {
         self.budgetViewTop.constant = 80.0
         self.activateButton.isHidden = true
         self.activateButton.isEnabled = false
@@ -208,6 +217,13 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedView.isUserInteractionEnabled = true
         self.activateButtonBottom.isActive = false
         self.activatedViewBottom.isActive = true
+        
+        switch status.key {
+        case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled:
+            self.activeSwitch.isOn = true
+        default:
+            self.activeSwitch.isOn = false
+        }
     }
     
     func setUIUnactivated() {

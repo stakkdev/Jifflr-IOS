@@ -118,6 +118,11 @@ extension Campaign {
         let group = DispatchGroup()
         
         group.enter()
+        self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
         self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
             group.leave()
         })
@@ -172,6 +177,11 @@ extension Campaign {
                     }
                     
                     let group = DispatchGroup()
+                    
+                    group.enter()
+                    self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
                     
                     group.enter()
                     self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in

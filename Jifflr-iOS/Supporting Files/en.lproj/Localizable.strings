@@ -67,6 +67,7 @@
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
+"error.nonCompliantActivate" = "Unable to activate your ad whilst it is non-compliant.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
