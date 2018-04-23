@@ -215,8 +215,11 @@ class AdvertManager: NSObject {
     }
 
     func fetchNextLocal(completion: @escaping (Advert?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
         let query = Advert.query()
         query?.fromPin(withName: self.pinName)
+        query?.whereKey("creator", notEqualTo: user)
         query?.includeKey("questionType")
         query?.includeKey("question")
         query?.includeKey("question.answers")

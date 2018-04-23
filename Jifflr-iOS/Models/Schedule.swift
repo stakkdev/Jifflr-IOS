@@ -30,9 +30,9 @@ final class Schedule: PFObject {
         }
     }
     
-    var daysOfWeek: [Int] {
+    var daysOfWeek: Int {
         get {
-            return self["daysOfWeek"] as? [Int] ?? []
+            return self["daysOfWeek"] as! Int
         }
         set {
             self["daysOfWeek"] = newValue

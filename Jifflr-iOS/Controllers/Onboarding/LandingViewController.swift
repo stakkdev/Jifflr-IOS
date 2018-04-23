@@ -71,10 +71,9 @@ class LandingViewController: UIViewController, DisplayMessage {
     func routeBasedOnLocationServices() {
         if LocationManager.shared.locationServicesEnabled() == true {
             
+            LocationManager.shared.fetchLocalLocation()
             if Reachability.isConnectedToNetwork() {
                 LocationManager.shared.getCurrentLocation()
-            } else {
-                LocationManager.shared.fetchLocalLocation()
             }
             
             self.rootDashboardViewController()

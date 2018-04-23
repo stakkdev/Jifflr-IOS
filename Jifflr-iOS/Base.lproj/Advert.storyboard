@@ -956,34 +956,47 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ogd-ma-nvL"/>
                                         </constraints>
-                                        <state key="normal" title="Website"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Website">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="websiteButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="AQ6-CB-TEQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3I-Ri-3E5" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="75" width="339" height="50"/>
-                                        <state key="normal" title="Facebook"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Facebook">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="facebookButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="iE5-d8-baH"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Os-xpS" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="339" height="50"/>
-                                        <state key="normal" title="Twitter"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Twitter">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="twitterButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="tDH-S2-eUi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-i0-zrF" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="339" height="50"/>
-                                        <state key="normal" title="Online Store"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Online Store">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onlineStoreButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="4Hr-qc-lFP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19D-T8-MPk" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300" width="339" height="50"/>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="App Store"/>
                                         <connections>
                                             <action selector="appStoreButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="cwE-nS-OWk"/>

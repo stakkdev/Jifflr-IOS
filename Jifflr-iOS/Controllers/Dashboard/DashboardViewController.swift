@@ -218,10 +218,7 @@ class DashboardViewController: BaseViewController {
     }
 
     func retryAdvertFetch() {
-        let error = ErrorMessage.advertFetchFailed
-        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
-            self.updateData()
-        })
+        self.updateData()
     }
 
     @IBAction func teamButtonPressed(_ sender: UIButton) {

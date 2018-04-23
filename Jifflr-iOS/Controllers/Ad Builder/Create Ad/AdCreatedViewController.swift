@@ -122,7 +122,7 @@ class AdCreatedViewController: BaseViewController {
         let adBuilderLandingViewController = AdBuilderLandingViewController.instantiateFromStoryboard(myAds: myAds)
         newViewControllers.insert(adBuilderLandingViewController, at: 1)
         self.navigationController?.setViewControllers(newViewControllers, animated: false)
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.advert)
+        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.advert, campaign: nil, isEdit: false)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -58,7 +58,7 @@ class CMSAdvertViewController: BaseViewController {
         self.spinner.startAnimating()
         
         if self.isPreview {
-            let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
+            let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed))
             self.navigationItem.leftBarButtonItem = dismissBarButton
         } else {
             let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
@@ -163,7 +163,7 @@ class CMSAdvertViewController: BaseViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    @objc func dismissButtonPressed(sender: UIBarButtonItem) {
+    @objc func dismissButtonPressed() {
         OrientationManager.shared.set(orientation: .portrait)
         
         self.navigationController?.dismiss(animated: true, completion: nil)
@@ -179,8 +179,8 @@ class CMSAdvertViewController: BaseViewController {
     
     func handleLoadError() {
         let error = ErrorMessage.advertFetchFailed
-        self.displayMessage(title: error.failureTitle, message: error.failureTitle, dismissText: nil, dismissAction: { (action) in
-            self.dismissButtonPressed(sender: self.navigationItem.leftBarButtonItem!)
+        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
+            self.dismissButtonPressed()
         })
     }
 }

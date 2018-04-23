@@ -45,11 +45,14 @@ class CreateTargetViewController: BaseViewController {
     var languagePickerView: UIPickerView!
     
     var genders:[Gender] = []
+    
+    var isEdit = false
 
-    class func instantiateFromStoryboard(campaign: Campaign) -> CreateTargetViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, isEdit: Bool) -> CreateTargetViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CreateTargetViewController") as! CreateTargetViewController
         vc.campaign = campaign
+        vc.isEdit = isEdit
         return vc
     }
     
@@ -58,6 +61,7 @@ class CreateTargetViewController: BaseViewController {
         
         self.setupUI()
         self.setupData()
+        self.setupEditData()
     }
     
     func setupUI() {
@@ -92,11 +96,17 @@ class CreateTargetViewController: BaseViewController {
     func setupLocalization() {
         self.title = "createTarget.navigation.title".localized()
         self.genderLabel.text = "createTarget.gender.heading".localized()
-        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(18, 35)
         self.locationLabel.text = "createTarget.location.heading".localized()
         self.languageLabel.text = "createTarget.language.heading".localized()
         self.audienceHeadingLabel.text = "createTarget.audienceSize.heading".localized()
         self.setupHelpButtonAttributedTitle()
+        
+        if self.isEdit {
+            self.nextButton.setTitle("createSchedule.saveButton.title".localized(), for: .normal)
+        } else {
+            self.nextButton.setTitle("createAd.nextButton.title".localized(), for: .normal)
+            self.agesLabel.text = "createTarget.ages.heading".localizedFormat(18, 35)
+        }
     }
     
     func setupHelpButtonAttributedTitle() {
@@ -121,7 +131,7 @@ class CreateTargetViewController: BaseViewController {
     }
     
     func setupData() {
-        self.locationTextField.animate()
+        if !self.isEdit { self.locationTextField.animate() }
         LocationManager.shared.fetchLocations { (locations) in
             self.locationTextField.stopAnimating()
             
@@ -132,16 +142,18 @@ class CreateTargetViewController: BaseViewController {
             
             self.locations = locations
             
-            if let location = Session.shared.currentLocation {
-                self.locationTextField.text = location.name
-                self.selectedLocation = location
-            } else {
-                self.locationTextField.text = locations.first?.name
-                self.selectedLocation = locations.first
+            if !self.isEdit {
+                if let location = Session.shared.currentLocation {
+                    self.locationTextField.text = location.name
+                    self.selectedLocation = location
+                } else {
+                    self.locationTextField.text = locations.first?.name
+                    self.selectedLocation = locations.first
+                }
             }
         }
         
-        self.languageTextField.animate()
+        if !self.isEdit { self.languageTextField.animate() }
         LanguageManager.shared.fetchLanguages { (languages) in
             self.languageTextField.stopAnimating()
             guard languages.count > 0 else {
@@ -150,8 +162,11 @@ class CreateTargetViewController: BaseViewController {
             }
             
             self.languages = languages
-            self.languageTextField.text = languages.first?.name
-            self.selectedLanguage = languages.first
+            
+            if !self.isEdit {
+                self.languageTextField.text = languages.first?.name
+                self.selectedLanguage = languages.first
+            }
         }
         
         UserManager.shared.fetchGenders { (genders) in
@@ -159,10 +174,51 @@ class CreateTargetViewController: BaseViewController {
         }
     }
     
+    func setupEditData() {
+        guard self.isEdit else { return }
+        guard let demographic = self.campaign.demographic else { return }
+        
+        if let gender = demographic.gender {
+            self.genderSegmentedControl.selectedSegmentIndex = gender.index
+        } else {
+            self.genderSegmentedControl.selectedSegmentIndex = 2
+        }
+        
+        self.agesSlider.selectedMinimum = Float(demographic.minAge)
+        self.agesSlider.selectedMaximum = Float(demographic.maxAge)
+        self.agesLabel.text = "createTarget.ages.heading".localizedFormat(Int(demographic.minAge), Int(demographic.maxAge))
+        self.locationTextField.text = demographic.location.name
+        self.selectedLocation = demographic.location
+        self.languageTextField.text = demographic.language.name
+        self.selectedLanguage = demographic.language
+        self.audienceLabel.text = "\(demographic.estimatedAudience)"
+    }
+    
     @IBAction func nextButtonPressed(sender: UIButton) {
         guard self.validateInput() else {
             self.displayError(error: ErrorMessage.addContent)
             return
+        }
+        
+        if self.isEdit {
+            self.nextButton.animate()
+            self.campaign.saveAndPin {
+                self.nextButton.stopAnimating()
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            self.nextButton.animate()
+            CampaignManager.shared.fetchCostPerReview(location: self.campaign.demographic!.location) { (costPerReview) in
+                self.nextButton.stopAnimating()
+                guard let costPerReview = costPerReview else {
+                    self.displayError(error: ErrorMessage.unknown)
+                    return
+                }
+                
+                self.campaign.costPerReview = costPerReview
+                let vc = CampaignOverviewViewController.instantiateFromStoryboard(campaign: self.campaign)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
@@ -172,7 +228,7 @@ class CreateTargetViewController: BaseViewController {
         guard let location = self.selectedLocation else { return false }
         guard let language = self.selectedLanguage else { return false }
         
-        let demographic = Demographic()
+        let demographic = self.campaign.demographic ?? Demographic()
         demographic.minAge = Int(minAge)
         demographic.maxAge = Int(maxAge)
         demographic.location = location
@@ -182,6 +238,10 @@ class CreateTargetViewController: BaseViewController {
         if genderIndex < 2 {
             guard let gender = self.genders.first(where: { $0.index == genderIndex }) else { return false }
             demographic.gender = gender
+        }
+        
+        if let text = self.audienceLabel.text, let audienceSize = Int(text) {
+            demographic.estimatedAudience = audienceSize
         }
         
         self.campaign.demographic = demographic
@@ -247,7 +307,7 @@ class CreateTargetViewController: BaseViewController {
     
     func updateAudienceSize() {
         guard self.validateInput() else { return }
-        let demographic = self.campaign.demographic
+        guard let demographic = self.campaign.demographic else { return }
         
         CampaignManager.shared.estimatedAudienceSize(demographic: demographic) { (size) in
             guard let size = size else { return }

@@ -101,6 +101,25 @@ class MyAdsManager: NSObject {
                 myAds.graph = graph
                 group.leave()
             }
+            
+            group.enter()
+            CampaignManager.shared.fetchCampaigns(completion: { (campaigns) in
+                guard let campaigns = campaigns else {
+                    completion(nil)
+                    return
+                }
+                
+                myAds.campaigns = campaigns
+                group.leave()
+            })
+            
+            group.enter()
+            CampaignManager.shared.countCampaigns(completion: { (count) in
+                if let count = count {
+                    myAds.campaignCount = count
+                }
+                group.leave()
+            })
 
             group.notify(queue: .main) {
                 myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
@@ -116,7 +135,6 @@ class MyAdsManager: NSObject {
         guard let currentUser = Session.shared.currentUser else { return }
         
         let query = Advert.query()
-        query?.fromPin(withName: self.pinName)
         query?.whereKey("creator", equalTo: currentUser)
         query?.order(byAscending: "createdAt")
         query?.includeKey("questionType")
@@ -196,6 +214,13 @@ class MyAdsManager: NSObject {
         query?.includeKey("adverts.details.template")
         query?.includeKey("adverts.status")
         query?.includeKey("graph")
+        query?.includeKey("campaign")
+        query?.includeKey("campaign.demographic")
+        query?.includeKey("campaign.demographic.location")
+        query?.includeKey("campaign.demographic.language")
+        query?.includeKey("campaign.demographic.gender")
+        query?.includeKey("campaign.schedule")
+        query?.includeKey("campaign.locationFinancial")
         query?.order(byDescending: "createdAt")
         query?.fromPin(withName: self.pinName)
         query?.getFirstObjectInBackground(block: { (object, error) in

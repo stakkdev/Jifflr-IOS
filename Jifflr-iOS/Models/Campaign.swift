@@ -21,27 +21,27 @@ final class Campaign: PFObject {
         }
     }
     
-    var demographic: Demographic {
+    var demographic: Demographic? {
         get {
-            return self["demographic"] as! Demographic
+            return self["demographic"] as? Demographic
         }
         set {
             self["demographic"] = newValue
         }
     }
     
-    var schedule: Schedule {
+    var schedule: Schedule? {
         get {
-            return self["schedule"] as! Schedule
+            return self["schedule"] as? Schedule
         }
         set {
             self["schedule"] = newValue
         }
     }
     
-    var budget: Float {
+    var budget: Double {
         get {
-            return self["budget"] as? Float ?? 0.0
+            return self["budget"] as? Double ?? 0.0
         }
         set {
             self["budget"] = newValue
@@ -65,10 +65,140 @@ final class Campaign: PFObject {
             self["locationFinancial"] = newValue
         }
     }
+    
+    var costPerReview: Double {
+        get {
+            return self["costPerReview"] as! Double
+        }
+        set {
+            self["costPerReview"] = newValue
+        }
+    }
+    
+    var number: Int {
+        get {
+            return self["number"] as? Int ?? 0
+        }
+        set {
+            self["number"] = newValue
+        }
+    }
+    
+    var creator: PFUser {
+        get {
+            return self["creator"] as! PFUser
+        }
+        set {
+            self["creator"] = newValue
+        }
+    }
 }
 
 extension Campaign: PFSubclassing {
     static func parseClassName() -> String {
         return "Campaign"
+    }
+}
+
+extension Campaign {
+    func saveAndPin(completion: @escaping () -> Void ) {
+        self.demographic?.saveEventually()
+        self.schedule?.saveEventually()
+        self.saveEventually()
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.location.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.language.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.demographic?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.schedule?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.enter()
+        self.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
+        
+        group.notify(queue: .main) {
+            completion()
+        }
+    }
+    
+    func saveInBackgroundAndPin(completion: @escaping (ErrorMessage?) -> Void ) {
+        self.demographic?.saveInBackground(block: { (success, error) in
+            guard success == true, error == nil else {
+                completion(ErrorMessage.copyCampaignFailed)
+                return
+            }
+            
+            self.schedule?.saveInBackground(block: { (success, error) in
+                guard success == true, error == nil else {
+                    completion(ErrorMessage.copyCampaignFailed)
+                    return
+                }
+                
+                self.saveInBackground(block: { (success, error) in
+                    guard success == true, error == nil else {
+                        completion(ErrorMessage.copyCampaignFailed)
+                        return
+                    }
+                    
+                    let group = DispatchGroup()
+                    
+                    group.enter()
+                    self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.enter()
+                    self.demographic?.location.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.enter()
+                    self.demographic?.language.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.enter()
+                    self.demographic?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.enter()
+                    self.schedule?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.enter()
+                    self.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
+                    
+                    group.notify(queue: .main) {
+                        completion(nil)
+                    }
+                })
+            })
+        })
     }
 }
