@@ -215,9 +215,7 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     }
     
     func playerPlaybackDidEnd(_ player: Player) {
-        if self.isPreview {
-            self.player?.playFromBeginning()
-        } else {
+        if !self.isPreview {
             self.showFeedback()
         }
     }
