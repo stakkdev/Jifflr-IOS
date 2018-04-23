@@ -52,8 +52,8 @@ class BalanceViewController: BaseViewController {
         
         guard let user = Session.shared.currentUser else { return }
         self.paypalEmailTextField.text = user.details.campaignPayPalEmail
-        self.amountTextField.text = "£\(String(format: "%.2f", 10.00))"
-        self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
+        self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
+        self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
     }
     
     func setupLocalization() {
@@ -97,7 +97,7 @@ class BalanceViewController: BaseViewController {
                     return
                 }
                 
-                self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
+                self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
                 
                 let title = AlertMessage.withdrawalSuccess.title
                 let message = AlertMessage.withdrawalSuccess.message
@@ -142,7 +142,7 @@ class BalanceViewController: BaseViewController {
             let newBalance = previousBalance + topUpAmount
             user.details.campaignBalance = newBalance
             user.saveAndPin(completion: { (error) in
-                self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
+                self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
                 self.confirmButton.stopAnimating()
                 
                 let alert = AlertMessage.paypalTopUpSuccess

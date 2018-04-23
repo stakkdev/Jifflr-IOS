@@ -120,7 +120,7 @@ class CampaignOverviewViewController: BaseViewController {
         
         let button = UIButton(type: .custom)
         button.titleLabel?.numberOfLines = 0
-        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
+        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = UIFont(name: Constants.FontNames.GothamBold, size: 14.0)
@@ -174,10 +174,10 @@ class CampaignOverviewViewController: BaseViewController {
         self.agesLabel.text = "\(minAge)-\(maxAge)"
         
         self.estimatedAudienceLabel.text = "\(demographic.estimatedAudience)"
-        self.costPerReviewLabel.text = "£\(self.campaign.costPerReview)"
+        self.costPerReviewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.campaign.costPerReview)"
         
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
-        self.estimatedCampaignCostLabel.text = "£\(String(format: "%.2f", campaignCost))"
+        self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
         
         var budgetCoverage = Double(campaignCost / self.budgetView.value)
         budgetCoverage *= 100
@@ -190,7 +190,7 @@ class CampaignOverviewViewController: BaseViewController {
         guard let userDetails = Session.shared.currentUser?.details else { return }
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         guard let button = barButtonItem.customView as? UIButton else { return }
-        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
+        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
     }
     

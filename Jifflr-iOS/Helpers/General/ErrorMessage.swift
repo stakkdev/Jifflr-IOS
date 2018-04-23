@@ -188,7 +188,7 @@ public enum ErrorMessage {
         case .copyCampaignFailed:
             return "error.copyCampaignFailed".localized()
         case .minTopUpAmount:
-            return "error.minTopUpAmount".localized()
+            return "error.minTopUpAmount".localizedFormat(Session.shared.currentCurrencySymbol)
         case .paypalTopUpFailed:
             return "error.paypalTopUpFailed".localized()
         }

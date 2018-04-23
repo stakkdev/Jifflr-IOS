@@ -65,7 +65,7 @@
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
-"error.minTopUpAmount" = "There is a minimum top-up amount of £10.";
+"error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
