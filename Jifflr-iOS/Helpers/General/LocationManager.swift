@@ -95,10 +95,12 @@ class LocationManager: NSObject {
             PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
                 country.pinInBackground(withName: self.pinName, block: { (success, error) in
                     country.locationStatus.pinInBackground(withName: self.pinName, block: { (success, error) in
-                        completion(country, nil)
+                        print("Country Pinned: \(success)")
                     })
                 })
             })
+            
+            completion(country, nil)
         })
     }
     
@@ -125,6 +127,7 @@ class LocationManager: NSObject {
         }
         
         Session.shared.currentLocation = location
+        print("HIT")
         
         switch location.locationStatus.type {
         case LocationStatusType.Active:
