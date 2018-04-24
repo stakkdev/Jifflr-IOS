@@ -12,9 +12,9 @@ import Parse
 
 final class Advert: PFObject {
 
-    var questions: PFRelation<Question>? {
+    var questions: [Question] {
         get {
-            return self["questions"] as? PFRelation
+            return self["questions"] as? [Question] ?? []
         }
         set {
             self["questions"] = newValue

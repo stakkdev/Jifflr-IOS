@@ -127,7 +127,6 @@ class LocationManager: NSObject {
         }
         
         Session.shared.currentLocation = location
-        print("HIT")
         
         switch location.locationStatus.type {
         case LocationStatusType.Active:

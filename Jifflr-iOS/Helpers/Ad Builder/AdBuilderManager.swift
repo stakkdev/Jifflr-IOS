@@ -92,6 +92,7 @@ class AdBuilderManager: NSObject {
         question.index = index
         question.type = type
         question.text = text
+        question.creator = Session.shared.currentUser!
         
         print("Index: \(index)")
         

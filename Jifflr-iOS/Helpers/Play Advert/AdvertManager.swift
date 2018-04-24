@@ -51,6 +51,8 @@ class AdvertManager: NSObject {
         let query = Advert.query()
         query?.whereKey("creator", notEqualTo: user)
         query?.includeKey("questions")
+        query?.includeKey("questions.answers")
+        query?.includeKey("questions.type")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.findObjectsInBackground(block: { (adverts, error) in
@@ -64,9 +66,21 @@ class AdvertManager: NSObject {
                 
                 for advert in adverts {
                     group.enter()
-                    self.fetchQuestionsAndAnswers(advert: advert, pinName: self.pinName, completion: { (error) in
+                    PFObject.pinAll(inBackground: advert.questions, withName: self.pinName, block: { (success, error) in
                         group.leave()
                     })
+                    
+                    for question in advert.questions {
+                        group.enter()
+                        PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                        
+                        group.enter()
+                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                    }
                     
                     if let details = advert.details {
                         group.enter()
@@ -98,101 +112,6 @@ class AdvertManager: NSObject {
             })
         })
     }
-    
-    func fetchQuestionsAndAnswers(advert: Advert, pinName: String, completion: @escaping (ErrorMessage?) -> Void) {
-        guard let query = advert.questions?.query() else {
-            completion(nil)
-            return
-        }
-        
-        query.includeKey("type")
-        query.includeKey("answers")
-        query.findObjectsInBackground { (questions, error) in
-            guard let questions = questions, error == nil else {
-                completion(ErrorMessage.advertFetchFailed)
-                return
-            }
-            
-            PFObject.pinAll(inBackground: questions, withName: pinName, block: { (success, error) in
-                guard success == true, error == nil else {
-                    completion(ErrorMessage.advertFetchFailed)
-                    return
-                }
-                
-                let group = DispatchGroup()
-                
-                var allAnswers:[Answer] = []
-                for question in questions {
-                    group.enter()
-                    
-                    let answersQuery = question.answers.query()
-                    answersQuery.findObjectsInBackground(block: { (answers, error) in
-                        if let answers = answers, error == nil {
-                            allAnswers += answers
-                        }
-                        
-                        question.type.pinInBackground(withName: pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                    })
-                }
-                
-                group.notify(queue: .main, execute: {
-                    PFObject.pinAll(inBackground: allAnswers, withName: pinName, block: { (success, error) in
-                        guard success == true, error == nil else {
-                            completion(ErrorMessage.advertFetchFailed)
-                            return
-                        }
-                        
-                        completion(nil)
-                    })
-                })
-            })
-        }
-    }
-    
-    func fetchLocalQuestionsAndAnswers(advert: Advert, pinName: String, completion: @escaping ([(question: Question, answers: [Answer])]) -> Void) {
-        guard let query = advert.questions?.query() else {
-            completion([])
-            return
-        }
-        
-        var content: [(question: Question, answers: [Answer])] = []
-        
-        query.fromPin(withName: pinName)
-        query.includeKey("type")
-        query.order(byAscending: "index")
-        query.findObjectsInBackground { (questions, error) in
-            guard let questions = questions, error == nil else {
-                completion([])
-                return
-            }
-            
-            let group = DispatchGroup()
-            
-            for question in questions {
-                group.enter()
-                
-                let answersQuery = question.answers.query()
-                answersQuery.fromPin(withName: pinName)
-                answersQuery.order(byAscending: "index")
-                answersQuery.findObjectsInBackground(block: { (answers, error) in
-                    guard let answers = answers, error == nil else {
-                        completion([])
-                        return
-                    }
-                    
-                    content.append((question: question, answers: answers))
-                    group.leave()
-                })
-            }
-            
-            group.notify(queue: .main, execute: {
-                completion(content)
-                return
-            })
-        }
-    }
 
     func countLocal(completion: @escaping (Int) -> Void) {
         let query = Advert.query()
@@ -215,8 +134,8 @@ class AdvertManager: NSObject {
         query?.fromPin(withName: self.pinName)
         query?.whereKey("creator", notEqualTo: user)
         query?.includeKey("questionType")
-        query?.includeKey("question")
-        query?.includeKey("question.answers")
+        query?.includeKey("questions")
+        query?.includeKey("questions.answers")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.whereKey("isCMS", equalTo: true)

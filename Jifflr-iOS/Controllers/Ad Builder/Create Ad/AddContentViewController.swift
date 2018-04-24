@@ -51,8 +51,6 @@ class AddContentViewController: BaseViewController {
         
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
         self.previewButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
-        self.nextButton.isEnabled = false
-        self.nextButton.animate()
     }
     
     func setupLocalization() {
@@ -100,11 +98,11 @@ class AddContentViewController: BaseViewController {
     }
     
     func fetchQuestionsAndAnswers() {
-        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert, pinName: MyAdsManager.shared.pinName) { (content) in
-            self.content = content
-            self.nextButton.isEnabled = true
-            self.nextButton.stopAnimating()
+        var content:[(question: Question, answers: [Answer])] = []
+        for question in self.advert.questions {
+            content.append((question: question, answers: question.answers))
         }
+        self.content = content
     }
     
     @IBAction func addImageButtonPressed(sender: UIButton) {

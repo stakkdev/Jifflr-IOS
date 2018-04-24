@@ -20,6 +20,8 @@ class MyAdsManager: NSObject {
         let query = Advert.query()
         query?.whereKey("creator", equalTo: currentUser)
         query?.includeKey("questions")
+        query?.includeKey("questions.answers")
+        query?.includeKey("questions.type")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.findObjectsInBackground(block: { (adverts, error) in
@@ -32,9 +34,21 @@ class MyAdsManager: NSObject {
                 
                 for advert in adverts {
                     group.enter()
-                    AdvertManager.shared.fetchQuestionsAndAnswers(advert: advert, pinName: self.pinName, completion: { (error) in
+                    PFObject.pinAll(inBackground: advert.questions, withName: self.pinName, block: { (success, error) in
                         group.leave()
                     })
+                    
+                    for question in advert.questions {
+                        group.enter()
+                        PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                        
+                        group.enter()
+                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                    }
                     
                     if let details = advert.details {
                         group.enter()
@@ -134,6 +148,8 @@ class MyAdsManager: NSObject {
         query?.includeKey("questionType")
         query?.includeKey("details")
         query?.includeKey("details.template")
+        query?.includeKey("questions")
+        query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let ads = objects as? [Advert], error == nil else {
                 completion([])
