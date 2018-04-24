@@ -30,7 +30,7 @@ extension CampaignOverviewViewController {
         
         let difference = self.budgetView.value - self.campaign.budget
         guard user.details.campaignBalance > difference else {
-            self.handleInsufficientBalance()
+            self.handleInsufficientBalance(isActivation: false)
             return
         }
         
@@ -48,8 +48,8 @@ extension CampaignOverviewViewController {
         }
     }
     
-    func handleInsufficientBalance() {
-        let error = ErrorMessage.increaseBudgetFailed
+    func handleInsufficientBalance(isActivation: Bool) {
+        let error = isActivation ? ErrorMessage.activationFailedInsufficientBalance : ErrorMessage.increaseBudgetFailed
         let alertController = UIAlertController(title: error.failureTitle, message: error.failureDescription, preferredStyle: .alert)
         
         let noAction = UIAlertAction(title: "error.increaseBudgetFailed.noButton".localized(), style: .cancel) { (action) in }
@@ -207,6 +207,47 @@ extension CampaignOverviewViewController {
     }
     
     @IBAction func activateButtonPressed(sender: JifflrButton) {
+        guard let user = Session.shared.currentUser else { return }
         
+        self.campaign.creator = user
+        self.campaign.budget = 0.0
+        
+        guard self.budgetView.value > self.campaign.budget else { return }
+        
+        let budget = self.budgetView.value - self.campaign.budget
+        guard user.details.campaignBalance > budget else {
+            self.handleInsufficientBalance(isActivation: true)
+            return
+        }
+        
+        self.activateButton.animate()
+        CampaignManager.shared.fetchStatus(key: CampaignStatusKey.availableScheduled) { (status) in
+            guard let status = status else {
+                self.activateButton.stopAnimating()
+                self.displayError(error: ErrorMessage.campaignActivationFailed)
+                return
+            }
+            
+            self.campaign.status = status
+            self.campaign.saveInBackgroundAndPin { (error) in
+                guard error == nil else {
+                    self.activateButton.stopAnimating()
+                    self.displayError(error: ErrorMessage.campaignActivationFailed)
+                    return
+                }
+                
+                CampaignManager.shared.activateCampaign(campaign: self.campaign, budget: budget, completion: { (error) in
+                    self.activateButton.stopAnimating()
+                    
+//                    guard error == nil else {
+//                        self.displayError(error: error)
+//                        return
+//                    }
+                    
+                    self.handleStatus(status: self.campaign.status)
+                    self.setupUIBasedOnStatus()
+                })
+            }
+        }
     }
 }

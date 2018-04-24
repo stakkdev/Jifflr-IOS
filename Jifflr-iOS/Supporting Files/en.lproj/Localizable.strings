@@ -60,6 +60,7 @@
 "error.withdrawalFailed" = "Unable to withdraw money. Please check your internet connection and try again.";
 "error.withdrawalEmail" = "Withdrawing funds to a different PayPal Account is not permitted.";
 "error.increaseBudgetFailed" = "Unable to increase budget - insufficient balance. Do you want to add money to your balance?";
+"error.activationFailedInsufficientBalance" = "Unable to activate campaign - insufficient balance. Do you want to add money to your balance?";
 "error.increaseBudgetFailed.noButton" = "No";
 "error.increaseBudgetFailed.yesButton" = "Yes";
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
@@ -68,6 +69,7 @@
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
 "error.nonCompliantActivate" = "Unable to activate your ad whilst it is non-compliant.";
+"error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

@@ -113,18 +113,18 @@ class CampaignManager: NSObject {
         completion(Int(arc4random_uniform(2000) + 1000))
     }
     
-    func fetchCostPerReview(location: Location, completion: @escaping (Double?) -> Void) {
+    func fetchCostPerReview(location: Location, completion: @escaping (Double?, LocationFinancial?) -> Void) {
         let query = LocationFinancial.query()
         query?.whereKey("location", equalTo: location)
         query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
             guard let locationFinancial = locationFinancial as? LocationFinancial, error == nil else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             let costPerReview = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
             
-            completion(costPerReview)
+            completion(costPerReview, locationFinancial)
         })
     }
     
@@ -264,6 +264,30 @@ class CampaignManager: NSObject {
             } else {
                 if let _ = error {
                     completion(ErrorMessage.getCampaignResultsFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+    
+    func activateCampaign(campaign: Campaign, budget: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!, "budget": budget] as [String : Any]
+        
+        PFCloud.callFunction(inBackground: "activate-campaign", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.campaignActivationFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.campaignActivationFailed)
                 } else {
                     completion(ErrorMessage.unknown)
                 }

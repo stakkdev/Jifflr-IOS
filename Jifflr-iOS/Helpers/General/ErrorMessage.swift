@@ -68,6 +68,8 @@ public enum ErrorMessage {
     case minTopUpAmount
     case paypalTopUpFailed
     case nonCompliantActivate
+    case activationFailedInsufficientBalance
+    case campaignActivationFailed
 
     public var failureTitle: String {
         switch self {
@@ -194,6 +196,10 @@ public enum ErrorMessage {
             return "error.paypalTopUpFailed".localized()
         case .nonCompliantActivate:
             return "error.nonCompliantActivate".localized()
+        case .activationFailedInsufficientBalance:
+            return "error.activationFailedInsufficientBalance".localized()
+        case .campaignActivationFailed:
+            return "error.campaignActivationFailed".localized()
         }
     }
 }
