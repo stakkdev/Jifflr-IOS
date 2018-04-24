@@ -133,9 +133,9 @@ class AdvertManager: NSObject {
         let query = Advert.query()
         query?.fromPin(withName: self.pinName)
         query?.whereKey("creator", notEqualTo: user)
-        query?.includeKey("questionType")
         query?.includeKey("questions")
         query?.includeKey("questions.answers")
+        query?.includeKey("questions.type")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.whereKey("isCMS", equalTo: true)
@@ -155,7 +155,6 @@ class AdvertManager: NSObject {
     func fetchLocalDefault(completion: @escaping (Advert?) -> Void) {
         let query = Advert.query()
         query?.fromPin(withName: self.pinName)
-        query?.includeKey("questionType")
         query?.whereKey("isCMS", equalTo: false)
         query?.getFirstObjectInBackground(block: { (object, error) in
             guard let advert = object as? Advert, error == nil else {

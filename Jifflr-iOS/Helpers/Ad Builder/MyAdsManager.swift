@@ -145,10 +145,10 @@ class MyAdsManager: NSObject {
         let query = Advert.query()
         query?.whereKey("creator", equalTo: currentUser)
         query?.order(byAscending: "createdAt")
-        query?.includeKey("questionType")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.includeKey("questions")
+        query?.includeKey("questions.type")
         query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let ads = objects as? [Advert], error == nil else {

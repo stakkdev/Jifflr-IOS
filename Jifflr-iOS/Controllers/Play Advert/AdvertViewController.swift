@@ -78,10 +78,8 @@ class AdvertViewController: BaseViewController {
             }
 
             self.questions = questions
-            questions.first!.fetchAnswers(completion: { (answers) in
-                self.answers = answers
-                self.setupAdmob()
-            })
+            self.answers = questions.first!.answers
+            self.setupAdmob()
         }
     }
 
