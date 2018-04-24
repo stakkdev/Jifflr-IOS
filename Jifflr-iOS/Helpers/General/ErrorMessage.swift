@@ -70,6 +70,7 @@ public enum ErrorMessage {
     case nonCompliantActivate
     case activationFailedInsufficientBalance
     case campaignActivationFailed
+    case campaignActivationFailedInvalidBalance
 
     public var failureTitle: String {
         switch self {
@@ -200,6 +201,8 @@ public enum ErrorMessage {
             return "error.activationFailedInsufficientBalance".localized()
         case .campaignActivationFailed:
             return "error.campaignActivationFailed".localized()
+        case .campaignActivationFailedInvalidBalance:
+            return "error.campaignActivationFailedInvalidBalance".localized()
         }
     }
 }

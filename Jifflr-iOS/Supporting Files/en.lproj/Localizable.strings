@@ -61,6 +61,7 @@
 "error.withdrawalEmail" = "Withdrawing funds to a different PayPal Account is not permitted.";
 "error.increaseBudgetFailed" = "Unable to increase budget - insufficient balance. Do you want to add money to your balance?";
 "error.activationFailedInsufficientBalance" = "Unable to activate campaign - insufficient balance. Do you want to add money to your balance?";
+"error.campaignActivationFailedInvalidBalance" = "Unable to activate campaign - invalid balance.";
 "error.increaseBudgetFailed.noButton" = "No";
 "error.increaseBudgetFailed.yesButton" = "Yes";
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";

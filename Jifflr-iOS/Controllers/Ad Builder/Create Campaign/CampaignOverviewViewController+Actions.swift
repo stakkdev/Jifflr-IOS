@@ -212,7 +212,10 @@ extension CampaignOverviewViewController {
         self.campaign.creator = user
         self.campaign.budget = 0.0
         
-        guard self.budgetView.value > self.campaign.budget else { return }
+        guard self.budgetView.value > self.campaign.budget && self.budgetView.value != 0.0 else {
+            self.displayError(error: ErrorMessage.campaignActivationFailedInvalidBalance)
+            return
+        }
         
         let budget = self.budgetView.value - self.campaign.budget
         guard user.details.campaignBalance > budget else {
@@ -246,8 +249,18 @@ extension CampaignOverviewViewController {
                     
                     self.handleStatus(status: self.campaign.status)
                     self.setupUIBasedOnStatus()
+                    self.updateNavigationStackAfterActivation()
                 })
             }
         }
+    }
+    
+    func updateNavigationStackAfterActivation() {
+        guard let viewControllers = self.navigationController?.viewControllers else { return }
+        guard let dashboardViewController = viewControllers.first as? DashboardViewController else { return }
+        guard let adBuilderLandingViewController = viewControllers[1] as? AdBuilderLandingViewController else { return }
+        guard let campaignOverviewViewController = viewControllers.last as? CampaignOverviewViewController else { return }
+        let newViewControllers = [dashboardViewController, adBuilderLandingViewController, campaignOverviewViewController]
+        self.navigationController?.setViewControllers(newViewControllers, animated: true)
     }
 }
