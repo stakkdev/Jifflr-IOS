@@ -88,7 +88,7 @@ class AdBuilderManager: NSObject {
     
     func createQuestion(index: Int, text: String, type: QuestionType, noOfRequiredAnswers: Int?) -> Question {
         let question = Question()
-        question.active = false
+        question.active = true
         question.index = index
         question.type = type
         question.text = text

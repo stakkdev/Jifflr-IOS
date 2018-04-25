@@ -120,15 +120,19 @@ class FeedbackViewController: BaseViewController {
     func pushToNextAd() {
         let group = DispatchGroup()
         
-        if advert.isCMS {
+        self.nextAdButton.animate()
+        
+        if self.advert.isCMS {
             group.enter()
-            self.advert.unpinInBackground(withName: AdvertManager.shared.pinName) { (success, error) in
+            AdvertManager.shared.unpin(advert: self.advert) {
                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
             AdvertManager.shared.fetchNextLocal(completion: { (advert) in
+                self.nextAdButton.stopAnimating()
+                
                 guard let advert = advert else {
                     self.dismiss(animated: false, completion: nil)
                     return

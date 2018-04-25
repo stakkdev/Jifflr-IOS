@@ -65,6 +65,7 @@
 "error.increaseBudgetFailed.noButton" = "No";
 "error.increaseBudgetFailed.yesButton" = "Yes";
 "error.increaseBudgetFailedFromServer" = "Unable to increase budget. Please check your internet connection and try again.";
+"error.decreaseBudget" = "Unable to update campaign. You are unable to decrease the campaign's budget.";
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";

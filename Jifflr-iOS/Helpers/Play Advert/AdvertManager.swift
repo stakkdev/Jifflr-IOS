@@ -239,4 +239,14 @@ class AdvertManager: NSObject {
             completion(nil)
         }
     }
+    
+    func unpin(advert: Advert, completion: @escaping () -> Void) {
+        PFObject.unpinAll(inBackground: advert.questions, withName: self.pinName) { (success, error) in
+            advert.details?.unpinInBackground(withName: self.pinName, block: { (success, error) in
+                advert.unpinInBackground(withName: self.pinName, block: { (success, error) in
+                    completion()
+                })
+            })
+        }
+    }
 }

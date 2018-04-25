@@ -26,7 +26,10 @@ extension CampaignOverviewViewController {
     
     @IBAction func updateButtonPressed(sender: JifflrButton) {
         guard let user = Session.shared.currentUser else { return }
-        guard self.budgetView.value > self.campaign.budget else { return }
+        guard self.budgetView.value >= self.campaign.budget else {
+            self.displayError(error: ErrorMessage.decreaseBudget)
+            return
+        }
         
         let difference = self.budgetView.value - self.campaign.budget
         guard user.details.campaignBalance > difference else {

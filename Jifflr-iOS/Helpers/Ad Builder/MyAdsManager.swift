@@ -130,13 +130,30 @@ class MyAdsManager: NSObject {
             })
 
             group.notify(queue: .main) {
-                myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
-                    print("My Ads Pinned: \(success)")
-                })
+                self.unpinAllMyAds {
+                    myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        print("My Ads Pinned: \(success)")
+                    })
+                }
 
                 completion(myAds)
             }
         }
+    }
+    
+    func unpinAllMyAds(completion: @escaping () -> Void) {
+        let query = MyAds.query()
+        query?.fromPin(withName: self.pinName)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let objects = objects, error == nil else {
+                completion()
+                return
+            }
+            
+            PFObject.unpinAll(inBackground: objects, withName: self.pinName, block: { (success, error) in
+                completion()
+            })
+        })
     }
     
     func fetchUserAds(completion: @escaping ([Advert]) -> Void) {
