@@ -19,7 +19,10 @@ class MyMoneyViewController: BaseViewController {
         didSet {
             self.tableView.reloadData()
 
-            guard let graphData = self.myMoney?.graph, graphData.count > 0 else { return }
+            guard let graphData = self.myMoney?.graph, graphData.count > 0 else {
+                self.chart.showNoDataLabel()
+                return
+            }
             self.chart.setData(data: graphData, color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
         }
     }
@@ -57,6 +60,8 @@ class MyMoneyViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.chart.startSpinner()
     }
 
     func setupLocalization() {
@@ -84,6 +89,7 @@ class MyMoneyViewController: BaseViewController {
     func updateLocalData() {
         MyMoneyManager.shared.fetchLocal { (myMoney, error) in
             guard let myMoney = myMoney, error == nil else {
+                self.chart.showNoDataLabel()
                 self.displayError(error: error)
                 return
             }

@@ -130,7 +130,11 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let adsViewed = self.adsViewed else { return UITableViewCell() }
+        guard let adsViewed = self.adsViewed else {
+            let cell = UITableViewCell()
+            cell.backgroundColor = UIColor.clear
+            return cell
+        }
 
         if self.segmentedControl.selectedSegmentIndex == 0 {
             if indexPath.row == 0 {
