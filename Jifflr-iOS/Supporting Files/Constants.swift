@@ -230,6 +230,12 @@ struct CampaignStatusKey {
     static let prepareToDelete = "prepareToDelete"
 }
 
+struct ModeratorStatusKey {
+    static let notModerator = "notModerator"
+    static let isModerator = "isModerator"
+    static let awaitingApproval = "awaitingApproval"
+}
+
 struct Day {
     static let Mon = 1
     static let Tue = 2

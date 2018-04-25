@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothamBold.otf">
+            <string>GothamBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--ModerationT Cs View Controller-->
+        <scene sceneID="JCr-Lt-Rol">
+            <objects>
+                <viewController storyboardIdentifier="ModerationTCsViewController" id="EUH-vz-r6C" customClass="ModerationTCsViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RIc-gh-zi0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tap-7t-3Fw">
+                                <rect key="frame" x="18" y="32" width="339" height="466"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zM-JL-7sD" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="569" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5lD-HN-eLm"/>
+                                </constraints>
+                                <state key="normal" title="APPLY"/>
+                                <connections>
+                                    <action selector="applyButtonPressedWithSender:" destination="EUH-vz-r6C" eventType="touchUpInside" id="qed-cH-xHO"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-QJ-pTR">
+                                <rect key="frame" x="290" y="520" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="UPb-uG-gM1"/>
+                                    <constraint firstAttribute="width" constant="49" id="nd3-N5-iYm"/>
+                                </constraints>
+                                <color key="onTintColor" red="0.95686274510000002" green="0.4941176471" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept the T&amp;Cs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QBg-Je-IiQ">
+                                <rect key="frame" x="36" y="525.5" width="246" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0SE-lM-UWt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="18"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QBg-Je-IiQ" firstAttribute="centerY" secondItem="L1E-QJ-pTR" secondAttribute="centerY" id="AvE-E6-zGe"/>
+                            <constraint firstItem="7ui-hV-aXw" firstAttribute="trailing" secondItem="1zM-JL-7sD" secondAttribute="trailing" constant="18" id="CLw-Sw-7kK"/>
+                            <constraint firstItem="Tap-7t-3Fw" firstAttribute="top" secondItem="7ui-hV-aXw" secondAttribute="top" constant="12" id="DT1-Ss-G77"/>
+                            <constraint firstItem="L1E-QJ-pTR" firstAttribute="top" secondItem="Tap-7t-3Fw" secondAttribute="bottom" constant="22" id="GrX-Lb-OHi"/>
+                            <constraint firstItem="1zM-JL-7sD" firstAttribute="top" secondItem="L1E-QJ-pTR" secondAttribute="bottom" constant="18" id="IAA-eh-3TI"/>
+                            <constraint firstItem="1zM-JL-7sD" firstAttribute="leading" secondItem="7ui-hV-aXw" secondAttribute="leading" constant="18" id="M81-BE-VBu"/>
+                            <constraint firstItem="L1E-QJ-pTR" firstAttribute="trailing" secondItem="1zM-JL-7sD" secondAttribute="trailing" constant="-18" id="ekD-ao-Akb"/>
+                            <constraint firstItem="7ui-hV-aXw" firstAttribute="bottom" secondItem="1zM-JL-7sD" secondAttribute="bottom" constant="48" id="gTz-P8-aY2"/>
+                            <constraint firstItem="7ui-hV-aXw" firstAttribute="trailing" secondItem="Tap-7t-3Fw" secondAttribute="trailing" constant="18" id="jea-f7-qAC"/>
+                            <constraint firstItem="QBg-Je-IiQ" firstAttribute="leading" secondItem="1zM-JL-7sD" secondAttribute="leading" constant="18" id="k8n-x7-JuL"/>
+                            <constraint firstItem="L1E-QJ-pTR" firstAttribute="leading" secondItem="QBg-Je-IiQ" secondAttribute="trailing" constant="8" id="peg-f7-fo8"/>
+                            <constraint firstItem="Tap-7t-3Fw" firstAttribute="leading" secondItem="7ui-hV-aXw" secondAttribute="leading" constant="18" id="zac-5P-3vS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7ui-hV-aXw"/>
+                    </view>
+                    <connections>
+                        <outlet property="acceptLabel" destination="QBg-Je-IiQ" id="XOn-Lt-8Iw"/>
+                        <outlet property="acceptSwitch" destination="L1E-QJ-pTR" id="jXw-z5-Zsz"/>
+                        <outlet property="applyButton" destination="1zM-JL-7sD" id="I1s-kS-at4"/>
+                        <outlet property="textView" destination="Tap-7t-3Fw" id="NBc-Vs-WJp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIa-bP-7zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="84" y="215.44227886056973"/>
+        </scene>
+    </scenes>
+</document>

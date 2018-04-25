@@ -25,9 +25,6 @@ class NoAdsViewController: BaseViewController {
         
         self.setupUI()
         self.updateNavigationStack()
-        
-        self.becomeModeratorButton.setBackgroundColor(color: UIColor.mainGreen)
-        self.createAdButton.setBackgroundColor(color: UIColor.mainPink)
     }
     
     func setupUI() {
@@ -36,6 +33,11 @@ class NoAdsViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
+        
+        self.becomeModeratorButton.setBackgroundColor(color: UIColor.mainGreen)
+        self.createAdButton.setBackgroundColor(color: UIColor.mainPink)
+        
+        self.handleModeratorStatus()
     }
     
     func setupLocalization() {
@@ -56,8 +58,22 @@ class NoAdsViewController: BaseViewController {
         }
     }
     
-    @IBAction func becomeModeratorPressed(sender: UIButton) {
+    func handleModeratorStatus() {
+        self.becomeModeratorButton.isHidden = true
+        self.becomeModeratorButton.isEnabled = false
         
+        guard let moderationStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
+        if moderationStatus.key == ModeratorStatusKey.isModerator {
+            self.becomeModeratorButton.isHidden = true
+            self.becomeModeratorButton.isEnabled = false
+        } else {
+            self.becomeModeratorButton.isHidden = false
+            self.becomeModeratorButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func becomeModeratorPressed(sender: UIButton) {
+        self.navigationController?.pushViewController(ModerationTCsViewController.instantiateFromStoryboard(), animated: true)
     }
     
     @IBAction func createAdPressed(sender: UIButton) {

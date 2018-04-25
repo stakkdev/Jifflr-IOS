@@ -59,9 +59,9 @@ class AdBuilderLandingViewController: BaseViewController {
             self.pushToNoAds()
             return
         }
-        
+
         self.spinner.stopAnimating()
-        
+
         if count == 0 {
             self.pushToNoAds()
         } else {
