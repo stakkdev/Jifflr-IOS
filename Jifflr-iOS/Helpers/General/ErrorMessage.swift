@@ -72,6 +72,8 @@ public enum ErrorMessage {
     case campaignActivationFailed
     case campaignActivationFailedInvalidBalance
     case decreaseBudget
+    case applyModerator
+    case applyModeratorFailedServer
 
     public var failureTitle: String {
         switch self {
@@ -206,6 +208,10 @@ public enum ErrorMessage {
             return "error.campaignActivationFailedInvalidBalance".localized()
         case .decreaseBudget:
             return "error.decreaseBudget".localized()
+        case .applyModerator:
+            return "error.applyModerator.termsAndConditions".localized()
+        case .applyModeratorFailedServer:
+            return "error.applyModeratorServer".localized()
         }
     }
 }
@@ -224,6 +230,7 @@ public enum AlertMessage {
     case paypalTopUpSuccess
     case scheduledDeleteCampaign
     case campaignCopied
+    case applyModerator
 
     public var title: String {
         switch self {
@@ -253,6 +260,8 @@ public enum AlertMessage {
             return "alert.scheduledDeleteCampaign.title".localized()
         case .campaignCopied:
             return "alert.campaignCopied.title".localized()
+        case .applyModerator:
+            return "alert.applyModerator.title".localized()
         }
     }
 
@@ -284,6 +293,8 @@ public enum AlertMessage {
             return "alert.scheduledDeleteCampaign.message".localized()
         case .campaignCopied:
             return "alert.campaignCopied.message".localized()
+        case .applyModerator:
+            return "alert.applyModerator.message".localized()
         }
     }
 }

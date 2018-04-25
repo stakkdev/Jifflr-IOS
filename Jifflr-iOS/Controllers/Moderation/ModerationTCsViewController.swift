@@ -85,6 +85,37 @@ class ModerationTCsViewController: BaseViewController {
     }
     
     @IBAction func applyButtonPressed(sender: JifflrButton) {
+        guard let user = Session.shared.currentUser else { return }
         
+        guard self.acceptSwitch.isOn else {
+            self.displayError(error: ErrorMessage.applyModerator)
+            return
+        }
+        
+        self.applyButton.animate()
+        ModerationManager.shared.fetchModeratorStatus(key: ModeratorStatusKey.awaitingApproval) { (moderatorStatus) in
+            guard let moderatorStatus = moderatorStatus else {
+                self.applyButton.stopAnimating()
+                self.displayError(error: ErrorMessage.applyModeratorFailedServer)
+                return
+            }
+            
+            user.details.moderatorStatus = moderatorStatus
+            user.details.saveInBackground(block: { (success, error) in
+                guard error == nil else {
+                    self.applyButton.stopAnimating()
+                    self.displayError(error: ErrorMessage.applyModeratorFailedServer)
+                    return
+                }
+                
+                user.details.pinInBackground(block: { (success, error) in
+                    self.applyButton.stopAnimating()
+                    self.handleBasedOnModeratorStatus()
+                    
+                    let alert = AlertMessage.applyModerator
+                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                })
+            })
+        }
     }
 }

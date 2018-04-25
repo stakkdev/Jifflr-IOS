@@ -20,6 +20,10 @@ class ModerationManager: NSObject {
                 return
             }
             
+            moderatorStatus.pinInBackground(block: { (success, error) in
+                print("Moderator Status Pinned: \(success)")
+            })
+            
             completion(moderatorStatus)
         })
     }

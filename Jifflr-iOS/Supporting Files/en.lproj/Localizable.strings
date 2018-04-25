@@ -72,6 +72,8 @@
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
 "error.nonCompliantActivate" = "Unable to activate your ad whilst it is non-compliant.";
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
+"error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";
+"error.applyModeratorServer" = "Unable to apply. Please check your internet connection and try again.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -115,6 +117,8 @@
 "alert.scheduledDeleteCampaign.message" = "This campaign was been scheduled to delete in the next 48 hours.";
 "alert.campaignCopied.title" = "Campaign Copied!";
 "alert.campaignCopied.message" = "Your campaign has been copied!";
+"alert.applyModerator.title" = "Application Submitted!";
+"alert.applyModerator.message" = "Your application to become a moderator has been submitted for approval.";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
