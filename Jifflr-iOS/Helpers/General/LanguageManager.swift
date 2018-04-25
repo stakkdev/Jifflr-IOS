@@ -23,4 +23,18 @@ class LanguageManager: NSObject {
             completion(languages)
         })
     }
+    
+    func fetchLanguage(languageCode: String, pinName: String?, completion: @escaping (Language?) -> Void) {
+        let query = Language.query()
+        if let pinName = pinName { query?.fromPin(withName: pinName) }
+        query?.whereKey("languageCode", equalTo: languageCode)
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let language = object as? Language, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            completion(language)
+        })
+    }
 }

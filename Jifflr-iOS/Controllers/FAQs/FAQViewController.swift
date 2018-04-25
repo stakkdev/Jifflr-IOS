@@ -54,25 +54,29 @@ class FAQViewController: BaseViewController {
     }
 
     func fetchData() {
+        if Reachability.isConnectedToNetwork() {
+            FAQManager.shared.fetchFAQs(languageCode: Session.shared.currentLanguage) { (data, error) in
+                guard let data = data, error == nil else {
+                    self.fetchLocalData()
+                    return
+                }
+                
+                self.faqData = data
+            }
+        } else {
+            self.fetchLocalData()
+        }
+    }
+    
+    func fetchLocalData() {
         FAQManager.shared.fetchLocalFAQs { (data, error) in
             guard let data = data, error == nil else {
                 if let error = error {
-                    self.displayMessage(title: error.failureTitle, message: error.failureDescription)
+                    self.displayError(error: error)
                 }
                 return
             }
-
-            self.faqData = data
-        }
-
-        FAQManager.shared.fetchFAQs(languageCode: Session.shared.currentLanguage) { (data, error) in
-            guard let data = data, error == nil else {
-                if let error = error {
-                    self.displayMessage(title: error.failureTitle, message: error.failureDescription)
-                }
-                return
-            }
-
+            
             self.faqData = data
         }
     }
