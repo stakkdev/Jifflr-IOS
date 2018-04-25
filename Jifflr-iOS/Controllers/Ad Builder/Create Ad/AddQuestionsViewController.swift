@@ -98,6 +98,9 @@ class AddQuestionsViewController: BaseViewController {
         self.questionTextView.textContainer.maximumNumberOfLines = 3
         self.questionTextView.textContainer.lineBreakMode = .byTruncatingTail
         
+        self.answersContainerView.isHidden = true
+        self.urlsContainerView.isHidden = true
+        
         let questionSwitch = UISwitch()
         questionSwitch.addTarget(self, action: #selector(self.questionSwitchToggled(sender:)), for: .valueChanged)
         questionSwitch.onTintColor = UIColor.mainOrange
@@ -106,7 +109,7 @@ class AddQuestionsViewController: BaseViewController {
         let switchBarButton = UIBarButtonItem(customView: questionSwitch)
         self.navigationItem.rightBarButtonItem = switchBarButton
         
-        questionSwitch.isOn = self.content.indices.contains(self.questionNumber - 1) || self.questionNumber == 1
+        questionSwitch.isOn = true
         self.questionSwitchToggled(sender: questionSwitch)
         
         self.createInputViews()
@@ -169,12 +172,8 @@ class AddQuestionsViewController: BaseViewController {
             self.drawInputUI(questionType: questionType)
             self.drawQuestionData(questionType: questionType)
         } else {
-            if self.questionNumber == 1 {
-                self.answerTypeTextField.questionType = self.questionTypes.first
-                self.drawInputUI(questionType: self.questionTypes.first!)
-            } else {
-                self.answerTypeTextField.questionType = nil
-            }
+            self.answerTypeTextField.questionType = self.questionTypes.first
+            self.drawInputUI(questionType: self.questionTypes.first!)
         }
     }
     
