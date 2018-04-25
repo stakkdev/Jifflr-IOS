@@ -29,10 +29,10 @@ final class Question: PFObject {
             self["type"] = newValue
         }
     }
-
-    var answers: PFRelation<Answer> {
+    
+    var answers: [Answer] {
         get {
-            return self["answers"] as! PFRelation
+            return self["answers"] as? [Answer] ?? []
         }
         set {
             self["answers"] = newValue
@@ -74,6 +74,15 @@ final class Question: PFObject {
             self["noOfRequiredAnswers"] = newValue
         }
     }
+    
+    var creator: PFUser? {
+        get {
+            return self["creator"] as? PFUser
+        }
+        set {
+            self["creator"] = newValue
+        }
+    }
 }
 
 extension Question: PFSubclassing {
@@ -84,23 +93,10 @@ extension Question: PFSubclassing {
 
 extension Question {
     func fetchAnswers(completion: @escaping ([Answer]) -> Void) {
-        let query = self.answers.query()
-        query.order(byAscending: "index")
-        query.findObjectsInBackground { (answers, error) in
-            guard let answers = answers, error == nil else {
-                completion([])
-                return
-            }
-
-            completion(answers)
-        }
+        completion(self.answers)
     }
     
     func setAnswers(answers: [Answer]) {
-        guard let relation = self.relation(forKey: "answers") as? PFRelation<Answer> else { return }
-        
-        for answer in answers {
-            relation.add(answer)
-        }
+        self.answers = answers
     }
 }

@@ -78,6 +78,24 @@ enum Environment: String {
             return "ca-app-pub-3023125219328196/3793918089"
         }
     }
+    
+    var braintreeKey: String {
+        switch self {
+        case .staging:
+            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+        case .production:
+            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+        }
+    }
+    
+    var braintreeUrlScheme: String {
+        switch self {
+        case .staging:
+            return "com.thedistance.Jifflr-iOS.payments"
+        case .production:
+            return "com.jifflr.Jifflr-iOS.payments"
+        }
+    }
 }
 
 struct OnboardingCustomizable: TDOnboardingCustomizable {
@@ -203,12 +221,13 @@ struct AdvertTemplateKey {
     static let imageTitleMessage = "imageTitleMessage"
 }
 
-struct AdvertStatusKey {
+struct CampaignStatusKey {
     static let availableActive = "availableActive"
     static let availableScheduled = "availableScheduled"
     static let inactive = "inactive"
     static let nonCompliant = "nonCompliant"
     static let nonCompliantScheduled = "nonCompliantScheduled"
+    static let prepareToDelete = "prepareToDelete"
 }
 
 struct Day {

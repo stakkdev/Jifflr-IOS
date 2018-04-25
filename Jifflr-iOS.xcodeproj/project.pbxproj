@@ -25,7 +25,7 @@
 		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
 		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
 		1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A79207E183700474598 /* JifflrBarChart.swift */; };
-		1A642A7C207E3BAF00474598 /* AdvertStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7B207E3BAF00474598 /* AdvertStatus.swift */; };
+		1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7B207E3BAF00474598 /* CampaignStatus.swift */; };
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
@@ -226,7 +226,7 @@
 		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
 		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
 		1A642A79207E183700474598 /* JifflrBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrBarChart.swift; path = Views/JifflrBarChart.swift; sourceTree = "<group>"; };
-		1A642A7B207E3BAF00474598 /* AdvertStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertStatus.swift; path = Models/AdvertStatus.swift; sourceTree = "<group>"; };
+		1A642A7B207E3BAF00474598 /* CampaignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignStatus.swift; path = Models/CampaignStatus.swift; sourceTree = "<group>"; };
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
@@ -885,7 +885,7 @@
 				E937F5B92036F87100171480 /* LocationFinancial.swift */,
 				E937F5BB2036F8DA00171480 /* LocationStatus.swift */,
 				E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */,
-				1A642A7B207E3BAF00474598 /* AdvertStatus.swift */,
+				1A642A7B207E3BAF00474598 /* CampaignStatus.swift */,
 				1A173244206A4545005837A7 /* AdvertDetails.swift */,
 				1AF1955620693E7800FE3896 /* AdvertTemplate.swift */,
 				E9B9721B20495406004F0876 /* Answer.swift */,
@@ -1220,6 +1220,7 @@
 				"${SRCROOT}/Libraries/Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -1238,6 +1239,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -1433,7 +1435,7 @@
 				1AA11E532085FF8D00BAE044 /* LanguageManager.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
-				1A642A7C207E3BAF00474598 /* AdvertStatus.swift in Sources */,
+				1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,

@@ -20,6 +20,14 @@ final class Session {
     var currentLanguage: String {
         return Locale.current.languageCode ?? "en"
     }
+    
+    var currentCurrencySymbol: String {
+        return Locale.current.currencySymbol ?? "£"
+    }
+    
+    var currentCurrencyCode: String {
+        return Locale.current.currencyCode ?? "en"
+    }
 
     var currentLocation: Location?
 

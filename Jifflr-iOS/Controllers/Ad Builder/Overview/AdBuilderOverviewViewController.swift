@@ -188,8 +188,9 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = campaign.name
                 cell.idLabel.text = "C# \(campaign.number)"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
-                cell.handleStatus(status: campaign.advert.status)
+                cell.handleStatus(status: campaign.status)
                 cell.handleDate(createdAt: campaign.createdAt)
+                cell.shouldHideStatus(yes: false)
                 
                 return cell
             }
@@ -210,8 +211,8 @@ extension AdBuilderOverviewViewController: UITableViewDelegate, UITableViewDataS
                 cell.nameLabel.text = advert.details?.name
                 cell.idLabel.text = "A# \(advert.details?.number ?? 0)"
                 cell.statusLabel.text = "adBuilderOverview.status.text".localized()
-                cell.handleStatus(status: advert.status)
                 cell.handleDate(createdAt: advert.createdAt)
+                cell.shouldHideStatus(yes: true)
                 
                 return cell
             }

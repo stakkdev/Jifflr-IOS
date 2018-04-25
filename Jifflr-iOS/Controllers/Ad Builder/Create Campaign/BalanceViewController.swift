@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Braintree
 
 class BalanceViewController: BaseViewController {
     
@@ -19,6 +20,8 @@ class BalanceViewController: BaseViewController {
     @IBOutlet weak var confirmButton: JifflrButton!
     
     var isWithdrawal = false
+    
+    var braintreeClient: BTAPIClient!
 
     class func instantiateFromStoryboard(isWithdrawal: Bool) -> BalanceViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -31,6 +34,8 @@ class BalanceViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        
+        self.braintreeClient = BTAPIClient(authorization: Constants.currentEnvironment.braintreeKey)
     }
     
     func setupUI() {
@@ -47,8 +52,8 @@ class BalanceViewController: BaseViewController {
         
         guard let user = Session.shared.currentUser else { return }
         self.paypalEmailTextField.text = user.details.campaignPayPalEmail
-        self.amountTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
-        self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
+        self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
+        self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
     }
     
     func setupLocalization() {
@@ -92,7 +97,7 @@ class BalanceViewController: BaseViewController {
                     return
                 }
                 
-                self.currentBalanceTextField.text = "£\(String(format: "%.2f", user.details.campaignBalance))"
+                self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
                 
                 let title = AlertMessage.withdrawalSuccess.title
                 let message = AlertMessage.withdrawalSuccess.message
@@ -109,7 +114,48 @@ class BalanceViewController: BaseViewController {
     }
     
     func handleTopUp() {
+        guard let user = Session.shared.currentUser else { return }
         
+        guard self.validateTopUp() else {
+            self.displayError(error: ErrorMessage.minTopUpAmount)
+            return
+        }
+        
+        self.confirmButton.animate()
+        
+        let topUpAmount = self.getAmount()
+        
+        let payPalDriver = BTPayPalDriver(apiClient: self.braintreeClient)
+        payPalDriver.viewControllerPresentingDelegate = self
+        payPalDriver.appSwitchDelegate = self
+        let payPalRequest = BTPayPalRequest(amount: "\(topUpAmount)")
+        payPalRequest.currencyCode = Session.shared.currentCurrencyCode
+        payPalRequest.displayName = "balanceTopUp.paypalRequest.title".localized()
+        payPalDriver.requestOneTimePayment(payPalRequest) { (tokenizedPayPalAccount, error) -> Void in
+            guard error == nil else {
+                self.confirmButton.stopAnimating()
+                self.displayError(error: ErrorMessage.paypalTopUpFailed)
+                return
+            }
+            
+            let previousBalance = user.details.campaignBalance
+            let newBalance = previousBalance + topUpAmount
+            user.details.campaignBalance = newBalance
+            user.saveAndPin(completion: { (error) in
+                self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+                self.confirmButton.stopAnimating()
+                
+                let alert = AlertMessage.paypalTopUpSuccess
+                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+            })
+        }
+    }
+    
+    func validateTopUp() -> Bool {
+        let topUpAmount = self.getAmount()
+        guard topUpAmount >= 10.0 else { return false }
+        
+        return true
     }
     
     func getAmount() -> Double {
@@ -163,5 +209,27 @@ extension BalanceViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+}
+
+extension BalanceViewController: BTViewControllerPresentingDelegate, BTAppSwitchDelegate {
+    func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
+        
+    }
+    
+    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
+        
+    }
+    
+    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
+        
     }
 }

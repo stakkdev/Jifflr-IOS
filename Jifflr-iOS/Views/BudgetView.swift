@@ -17,7 +17,7 @@ class BudgetView: UIView {
     var value = 0.00 {
         didSet {
             let valueString = String(format: "%.2f", self.value)
-            self.label.text = "£\(valueString)"
+            self.label.text = "\(Session.shared.currentCurrencySymbol)\(valueString)"
         }
     }
     

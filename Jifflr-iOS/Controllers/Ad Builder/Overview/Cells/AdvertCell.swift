@@ -27,26 +27,33 @@ class AdvertCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func handleStatus(status: AdvertStatus?) {
+    func handleStatus(status: CampaignStatus?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
         
         switch status.key {
-        case AdvertStatusKey.availableActive:
+        case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
-        case AdvertStatusKey.availableScheduled:
+        case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)
-        case AdvertStatusKey.inactive:
+        case CampaignStatusKey.inactive:
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
-        case AdvertStatusKey.nonCompliant:
+        case CampaignStatusKey.nonCompliant:
             self.drawCircle(color: UIColor.mainRed)
-        case AdvertStatusKey.nonCompliantScheduled:
+        case CampaignStatusKey.prepareToDelete:
+            self.setTimerImage(color: UIColor.mainRed)
+        case CampaignStatusKey.nonCompliantScheduled:
             self.setTimerImage(color: UIColor.mainRed)
         default:
             return
         }
+    }
+    
+    func shouldHideStatus(yes: Bool) {
+        self.statusLabel.isHidden = yes
+        self.statusImageView.isHidden = yes
     }
     
     func drawCircle(color: UIColor) {

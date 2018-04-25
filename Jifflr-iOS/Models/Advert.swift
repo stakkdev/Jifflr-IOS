@@ -12,9 +12,9 @@ import Parse
 
 final class Advert: PFObject {
 
-    var questions: PFRelation<Question>? {
+    var questions: [Question] {
         get {
-            return self["questions"] as? PFRelation
+            return self["questions"] as? [Question] ?? []
         }
         set {
             self["questions"] = newValue
@@ -47,15 +47,6 @@ final class Advert: PFObject {
             self["details"] = newValue
         }
     }
-    
-    var status: AdvertStatus? {
-        get {
-            return self["status"] as? AdvertStatus
-        }
-        set {
-            self["status"] = newValue
-        }
-    }
 }
 
 extension Advert: PFSubclassing {
@@ -66,23 +57,6 @@ extension Advert: PFSubclassing {
 
 extension Advert {
     func addQuestions(questions: [Question]) {
-        guard let relation = self.relation(forKey: "questions") as? PFRelation<Question> else { return }
-        
-        do {
-            let query = relation.query()
-            query.fromPin(withName: MyAdsManager.shared.pinName)
-            let oldQuestions = try query.findObjects()
-            
-            for question in oldQuestions {
-                relation.remove(question)
-                question.deleteEventually()
-            }
-            
-            for question in questions {
-                relation.add(question)
-            }
-        } catch {
-            return
-        }
+        self.questions = questions
     }
 }

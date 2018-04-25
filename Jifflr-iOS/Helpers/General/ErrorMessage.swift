@@ -65,6 +65,13 @@ public enum ErrorMessage {
     case increaseBudgetFailedFromServer
     case getCampaignResultsFailed
     case copyCampaignFailed
+    case minTopUpAmount
+    case paypalTopUpFailed
+    case nonCompliantActivate
+    case activationFailedInsufficientBalance
+    case campaignActivationFailed
+    case campaignActivationFailedInvalidBalance
+    case decreaseBudget
 
     public var failureTitle: String {
         switch self {
@@ -185,6 +192,20 @@ public enum ErrorMessage {
             return "error.getCampaignResultsFailed".localized()
         case .copyCampaignFailed:
             return "error.copyCampaignFailed".localized()
+        case .minTopUpAmount:
+            return "error.minTopUpAmount".localizedFormat(Session.shared.currentCurrencySymbol)
+        case .paypalTopUpFailed:
+            return "error.paypalTopUpFailed".localized()
+        case .nonCompliantActivate:
+            return "error.nonCompliantActivate".localized()
+        case .activationFailedInsufficientBalance:
+            return "error.activationFailedInsufficientBalance".localized()
+        case .campaignActivationFailed:
+            return "error.campaignActivationFailed".localized()
+        case .campaignActivationFailedInvalidBalance:
+            return "error.campaignActivationFailedInvalidBalance".localized()
+        case .decreaseBudget:
+            return "error.decreaseBudget".localized()
         }
     }
 }
@@ -200,6 +221,9 @@ public enum AlertMessage {
     case withdrawalSuccess
     case increaseBudgetSuccess
     case campaignResultsSuccess
+    case paypalTopUpSuccess
+    case scheduledDeleteCampaign
+    case campaignCopied
 
     public var title: String {
         switch self {
@@ -223,6 +247,12 @@ public enum AlertMessage {
             return "alert.increaseBudgetSuccess.title".localized()
         case .campaignResultsSuccess:
             return "alert.campaignResultsSuccess.title".localized()
+        case .paypalTopUpSuccess:
+            return "alert.paypalTopUpSuccess.title".localized()
+        case .scheduledDeleteCampaign:
+            return "alert.scheduledDeleteCampaign.title".localized()
+        case .campaignCopied:
+            return "alert.campaignCopied.title".localized()
         }
     }
 
@@ -248,6 +278,12 @@ public enum AlertMessage {
             return "alert.increaseBudgetSuccess.message".localized()
         case .campaignResultsSuccess:
             return "alert.campaignResultsSuccess.message".localized()
+        case .paypalTopUpSuccess:
+            return "alert.paypalTopUpSuccess.message".localized()
+        case .scheduledDeleteCampaign:
+            return "alert.scheduledDeleteCampaign.message".localized()
+        case .campaignCopied:
+            return "alert.campaignCopied.message".localized()
         }
     }
 }

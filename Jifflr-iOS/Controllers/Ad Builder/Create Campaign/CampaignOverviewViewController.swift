@@ -17,7 +17,7 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var advertLabel: UILabel!
     @IBOutlet weak var statusHeadingLabel: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!
-    @IBOutlet weak var statusImageViewWidth: NSLayoutConstraint!
+    @IBOutlet var statusImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var dateHeadingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeHeadingLabel: UILabel!
@@ -46,18 +46,20 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var demographicView: UIView!
     @IBOutlet weak var statsView: UIView!
+    @IBOutlet weak var campaignNumberLabel: UILabel!
+    @IBOutlet weak var adNumberLabel: UILabel!
     
     @IBOutlet weak var activatedView: UIView!
     @IBOutlet weak var activateButton: JifflrButton!
-    @IBOutlet weak var budgetViewTop: NSLayoutConstraint!
+    @IBOutlet var budgetViewTop: NSLayoutConstraint!
     @IBOutlet weak var activeLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var campaignResultsButton: JifflrButton!
     @IBOutlet weak var updateButton: JifflrButton!
     @IBOutlet weak var copyCampaignButton: JifflrButton!
     @IBOutlet weak var deleteCampaign: JifflrButton!
-    @IBOutlet weak var activateButtonBottom: NSLayoutConstraint!
-    @IBOutlet weak var activatedViewBottom: NSLayoutConstraint!
+    @IBOutlet var activateButtonBottom: NSLayoutConstraint!
+    @IBOutlet var activatedViewBottom: NSLayoutConstraint!
     
     var campaign: Campaign!
 
@@ -120,7 +122,7 @@ class CampaignOverviewViewController: BaseViewController {
         
         let button = UIButton(type: .custom)
         button.titleLabel?.numberOfLines = 0
-        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
+        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.font = UIFont(name: Constants.FontNames.GothamBold, size: 14.0)
@@ -159,7 +161,7 @@ class CampaignOverviewViewController: BaseViewController {
         guard let demographic = self.campaign.demographic else { return }
         self.campaignNameLabel.text = self.campaign.name
         self.advertLabel.text = self.campaign.advert.details?.name
-        self.handleStatus(status: self.campaign.advert.status)
+        self.handleStatus(status: self.campaign.status)
         self.genderLabel.text = demographic.gender?.name ?? "createTarget.gender.all".localized()
         self.locationLabel.text = demographic.location.name
         
@@ -174,14 +176,22 @@ class CampaignOverviewViewController: BaseViewController {
         self.agesLabel.text = "\(minAge)-\(maxAge)"
         
         self.estimatedAudienceLabel.text = "\(demographic.estimatedAudience)"
-        self.costPerReviewLabel.text = "£\(self.campaign.costPerReview)"
+        self.costPerReviewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.campaign.costPerReview)"
         
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
-        self.estimatedCampaignCostLabel.text = "£\(String(format: "%.2f", campaignCost))"
+        self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
         
-        var budgetCoverage = Double(campaignCost / self.budgetView.value)
-        budgetCoverage *= 100
+        self.budgetView.value = self.campaign.budget
+        
+        var budgetCoverage = 0.0
+        if self.budgetView.value != 0.0 {
+            budgetCoverage = Double(campaignCost / self.budgetView.value)
+            budgetCoverage *= 100
+        }
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        
+        self.campaignNumberLabel.text = "C# \(self.campaign.number)"
+        self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.updateBalanceButton()
     }
@@ -190,15 +200,19 @@ class CampaignOverviewViewController: BaseViewController {
         guard let userDetails = Session.shared.currentUser?.details else { return }
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         guard let button = barButtonItem.customView as? UIButton else { return }
-        let title = "campaignOverview.balanceButton.title".localizedFormat("£\(String(format: "%.2f", userDetails.campaignBalance))")
+        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
     }
     
     func setupUIBasedOnStatus() {
-        self.setUIActivated()
+        if let status = self.campaign.status {
+            self.setUIActivated(status: status)
+        } else {
+            self.setUIUnactivated()
+        }
     }
     
-    func setUIActivated() {
+    func setUIActivated(status: CampaignStatus) {
         self.budgetViewTop.constant = 80.0
         self.activateButton.isHidden = true
         self.activateButton.isEnabled = false
@@ -208,6 +222,13 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedView.isUserInteractionEnabled = true
         self.activateButtonBottom.isActive = false
         self.activatedViewBottom.isActive = true
+        
+        switch status.key {
+        case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled:
+            self.activeSwitch.isOn = true
+        default:
+            self.activeSwitch.isOn = false
+        }
     }
     
     func setUIUnactivated() {
@@ -222,22 +243,24 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedViewBottom.isActive = false
     }
     
-    func handleStatus(status: AdvertStatus?) {
+    func handleStatus(status: CampaignStatus?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
         
         switch status.key {
-        case AdvertStatusKey.availableActive:
+        case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
-        case AdvertStatusKey.availableScheduled:
+        case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)
-        case AdvertStatusKey.inactive:
+        case CampaignStatusKey.inactive:
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
-        case AdvertStatusKey.nonCompliant:
+        case CampaignStatusKey.nonCompliant:
             self.drawCircle(color: UIColor.mainRed)
-        case AdvertStatusKey.nonCompliantScheduled:
+        case CampaignStatusKey.nonCompliantScheduled:
+            self.setTimerImage(color: UIColor.mainRed)
+        case CampaignStatusKey.prepareToDelete:
             self.setTimerImage(color: UIColor.mainRed)
         default:
             return

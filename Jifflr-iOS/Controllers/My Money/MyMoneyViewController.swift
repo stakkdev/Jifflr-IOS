@@ -19,7 +19,10 @@ class MyMoneyViewController: BaseViewController {
         didSet {
             self.tableView.reloadData()
 
-            guard let graphData = self.myMoney?.graph, graphData.count > 0 else { return }
+            guard let graphData = self.myMoney?.graph, graphData.count > 0 else {
+                self.chart.showNoDataLabel()
+                return
+            }
             self.chart.setData(data: graphData, color: UIColor.mainGreen, fill: true, targetData: nil, targetColor: nil)
         }
     }
@@ -57,6 +60,8 @@ class MyMoneyViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
+        self.chart.startSpinner()
     }
 
     func setupLocalization() {
@@ -84,6 +89,7 @@ class MyMoneyViewController: BaseViewController {
     func updateLocalData() {
         MyMoneyManager.shared.fetchLocal { (myMoney, error) in
             guard let myMoney = myMoney, error == nil else {
+                self.chart.showNoDataLabel()
                 self.displayError(error: error)
                 return
             }
@@ -197,7 +203,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWithdrawnCell") as! TotalWithdrawnCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.amountLabel.text = "£\(myMoney.totalWithdrawn)"
+                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(myMoney.totalWithdrawn)"
                 cell.nameLabel.text = "myMoney.totalWithdrawnCell.title".localized()
                 return cell
 
@@ -226,7 +232,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.cashoutCell.heading".localized()
-                cell.amountLabel.text = "£\(myMoney.moneyAvailable)"
+                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(myMoney.moneyAvailable)"
                 cell.delegate = self
                 return cell
             }
@@ -235,7 +241,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawnHistoryCell") as! WithdrawnHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.amountLabel.text = "£\(userCashout.value)"
+            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(userCashout.value)"
             cell.emailLabel.text = userCashout.paypalEmail
 
             if let date = userCashout.createdAt {

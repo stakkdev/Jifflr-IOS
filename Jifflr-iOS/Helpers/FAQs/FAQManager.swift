@@ -41,77 +41,109 @@ class FAQManager: NSObject {
     }
 
     func countFAQs(languageCode: String, completion: @escaping (Int?, ErrorMessage?) -> Void) {
-        let query = FAQ.query()
-        query?.whereKey("languageCode", equalTo: languageCode)
-        query?.order(byAscending: "index")
-        query?.countObjectsInBackground(block: { (count, error) in
-            guard error == nil else {
+        LanguageManager.shared.fetchLanguage(languageCode: languageCode, pinName: nil) { (language) in
+            guard let language = language else {
                 completion(nil, ErrorMessage.faqsFailed)
                 return
             }
-
-            completion(Int(count), nil)
-        })
+            
+            let query = FAQ.query()
+            query?.whereKey("language", equalTo: language)
+            query?.order(byAscending: "index")
+            query?.countObjectsInBackground(block: { (count, error) in
+                guard error == nil else {
+                    completion(nil, ErrorMessage.faqsFailed)
+                    return
+                }
+                
+                completion(Int(count), nil)
+            })
+        }
     }
 
     func queryFAQs(languageCode: String, completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
-        let query = FAQ.query()
-        query?.whereKey("languageCode", equalTo: languageCode)
-        query?.order(byAscending: "index")
-        query?.includeKey("category")
-        query?.findObjectsInBackground(block: { (faqs, error) in
-            guard let faqs = faqs as? [FAQ], error == nil else {
+        LanguageManager.shared.fetchLanguage(languageCode: languageCode, pinName: nil) { (language) in
+            guard let language = language else {
                 completion(nil, ErrorMessage.faqsFailed)
                 return
             }
-
-            PFObject.pinAll(inBackground: faqs, withName: self.pinName, block: { (success, error) in
-                print("FAQs Pinned: \(success)")
-
-                if let error = error {
-                    print("Error: \(error)")
+            
+            let query = FAQ.query()
+            query?.whereKey("language", equalTo: language)
+            query?.order(byAscending: "index")
+            query?.includeKey("category")
+            query?.findObjectsInBackground(block: { (faqs, error) in
+                guard let faqs = faqs as? [FAQ], error == nil else {
+                    completion(nil, ErrorMessage.faqsFailed)
+                    return
                 }
+                
+                PFObject.pinAll(inBackground: faqs, withName: self.pinName, block: { (success, error) in
+                    print("FAQs Pinned: \(success)")
+                    
+                    if let error = error {
+                        print("Error: \(error)")
+                    }
+                })
+                
+                language.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    print("Language Pinned: \(success)")
+                })
+                
+                let data = self.parseFAQs(faqs: faqs)
+                completion(data, nil)
             })
-
-            let data = self.parseFAQs(faqs: faqs)
-            completion(data, nil)
-        })
+        }
     }
 
     func fetchLocalFAQs(completion: @escaping ([(category: FAQCategory, data: [FAQ])]?, ErrorMessage?) -> Void) {
-        let query = FAQ.query()
-        query?.whereKey("languageCode", equalTo: Session.shared.currentLanguage)
-        query?.order(byAscending: "index")
-        query?.includeKey("category")
-        query?.fromPin(withName: self.pinName)
-        query?.findObjectsInBackground(block: { (faqs, error) in
-            guard let faqs = faqs as? [FAQ], error == nil else {
+        LanguageManager.shared.fetchLanguage(languageCode: Session.shared.currentLanguage, pinName: self.pinName) { (language) in
+            guard let language = language else {
                 completion(nil, ErrorMessage.faqsFailed)
                 return
             }
-
-            if faqs.count > 0 {
-                let data = self.parseFAQs(faqs: faqs)
-                completion(data, nil)
-                return
-
-            } else {
-                let query = FAQ.query()
-                query?.whereKey("languageCode", equalTo: Session.shared.englishLanguageCode)
-                query?.order(byAscending: "index")
-                query?.includeKey("category")
-                query?.fromPin(withName: self.pinName)
-                query?.findObjectsInBackground(block: { (faqsEn, error) in
-                    guard let faqsEn = faqsEn as? [FAQ], error == nil else {
-                        completion(nil, ErrorMessage.faqsFailed)
-                        return
-                    }
-
-                    let data = self.parseFAQs(faqs: faqsEn)
+            
+            let query = FAQ.query()
+            query?.whereKey("language", equalTo: language)
+            query?.order(byAscending: "index")
+            query?.includeKey("category")
+            query?.fromPin(withName: self.pinName)
+            query?.findObjectsInBackground(block: { (faqs, error) in
+                guard let faqs = faqs as? [FAQ], error == nil else {
+                    completion(nil, ErrorMessage.faqsFailed)
+                    return
+                }
+                
+                if faqs.count > 0 {
+                    let data = self.parseFAQs(faqs: faqs)
                     completion(data, nil)
-                })
-            }
-        })
+                    return
+                    
+                } else {
+                    LanguageManager.shared.fetchLanguage(languageCode: Session.shared.englishLanguageCode, pinName: self.pinName) { (language) in
+                        guard let language = language else {
+                            completion(nil, ErrorMessage.faqsFailed)
+                            return
+                        }
+                        
+                        let query = FAQ.query()
+                        query?.whereKey("language", equalTo: language)
+                        query?.order(byAscending: "index")
+                        query?.includeKey("category")
+                        query?.fromPin(withName: self.pinName)
+                        query?.findObjectsInBackground(block: { (faqsEn, error) in
+                            guard let faqsEn = faqsEn as? [FAQ], error == nil else {
+                                completion(nil, ErrorMessage.faqsFailed)
+                                return
+                            }
+                            
+                            let data = self.parseFAQs(faqs: faqsEn)
+                            completion(data, nil)
+                        })
+                    }
+                }
+            })
+        }
     }
 
     func parseFAQs(faqs: [FAQ]) -> [(category: FAQCategory, data: [FAQ])] {

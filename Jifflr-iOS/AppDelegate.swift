@@ -17,6 +17,7 @@ import GoogleMobileAds
 import Appodeal
 import Localize_Swift
 import IQKeyboardManagerSwift
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaultsManager.shared.crashTrackerOn() {
             Fabric.with([Crashlytics.self])
         }
+        
+        BTAppSwitch.setReturnURLScheme(Constants.currentEnvironment.braintreeUrlScheme)
 
         self.configParse(in: application, with: launchOptions)
         self.configAdProviders()
@@ -43,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configLanguage()
 
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        if url.scheme?.localizedCaseInsensitiveCompare(Constants.currentEnvironment.braintreeUrlScheme) == .orderedSame {
+            return BTAppSwitch.handleOpen(url, options: options)
+        }
+        
+        return false
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -102,6 +113,8 @@ extension AppDelegate {
         Demographic.registerSubclass()
         Campaign.registerSubclass()
         Schedule.registerSubclass()
+        CampaignStatus.registerSubclass()
+        Gender.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

@@ -118,14 +118,11 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func fetchData() {
-        AdvertManager.shared.fetchLocalQuestionsAndAnswers(advert: self.advert, pinName: AdvertManager.shared.pinName) { (content) in
-            self.spinner.stopAnimating()
-            guard content.count > 0 else {
-                if !self.isPreview { self.handleLoadError() }
-                return
-            }
-            self.content = content
+        var content:[(question: Question, answers: [Answer])] = []
+        for question in self.advert.questions {
+            content.append((question: question, answers: question.answers))
         }
+        self.content = content
     }
     
     func startTimer() {
@@ -215,9 +212,7 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     }
     
     func playerPlaybackDidEnd(_ player: Player) {
-        if self.isPreview {
-            self.player?.playFromBeginning()
-        } else {
+        if !self.isPreview {
             self.showFeedback()
         }
     }

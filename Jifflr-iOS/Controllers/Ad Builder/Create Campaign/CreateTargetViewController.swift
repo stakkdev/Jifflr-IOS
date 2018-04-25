@@ -201,21 +201,27 @@ class CreateTargetViewController: BaseViewController {
         }
         
         if self.isEdit {
-            self.nextButton.animate()
-            self.campaign.saveAndPin {
-                self.nextButton.stopAnimating()
+            // Handle if the campaign is a previously saved object, or a copy.
+            if let _ = self.campaign?.objectId {
+                self.nextButton.animate()
+                self.campaign.saveAndPin {
+                    self.nextButton.stopAnimating()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } else {
                 self.navigationController?.popViewController(animated: true)
             }
         } else {
             self.nextButton.animate()
-            CampaignManager.shared.fetchCostPerReview(location: self.campaign.demographic!.location) { (costPerReview) in
+            CampaignManager.shared.fetchCostPerReview(location: self.campaign.demographic!.location) { (costPerReview, locationFinancial) in
                 self.nextButton.stopAnimating()
-                guard let costPerReview = costPerReview else {
+                guard let costPerReview = costPerReview, let locationFinancial = locationFinancial else {
                     self.displayError(error: ErrorMessage.unknown)
                     return
                 }
                 
                 self.campaign.costPerReview = costPerReview
+                self.campaign.locationFinancial = locationFinancial
                 let vc = CampaignOverviewViewController.instantiateFromStoryboard(campaign: self.campaign)
                 self.navigationController?.pushViewController(vc, animated: true)
             }

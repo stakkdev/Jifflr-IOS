@@ -113,18 +113,18 @@ class CampaignManager: NSObject {
         completion(Int(arc4random_uniform(2000) + 1000))
     }
     
-    func fetchCostPerReview(location: Location, completion: @escaping (Double?) -> Void) {
+    func fetchCostPerReview(location: Location, completion: @escaping (Double?, LocationFinancial?) -> Void) {
         let query = LocationFinancial.query()
         query?.whereKey("location", equalTo: location)
         query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
             guard let locationFinancial = locationFinancial as? LocationFinancial, error == nil else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             let costPerReview = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
             
-            completion(costPerReview)
+            completion(costPerReview, locationFinancial)
         })
     }
     
@@ -140,6 +140,7 @@ class CampaignManager: NSObject {
         query?.includeKey("schedule")
         query?.includeKey("advert")
         query?.includeKey("locationFinancial")
+        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let campaigns = objects as? [Campaign], error == nil else {
                 completion(nil)
@@ -173,6 +174,29 @@ class CampaignManager: NSObject {
             result += Days.all[index]
         }
         return result
+    }
+    
+    func fetchStatus(key: String, completion: @escaping (CampaignStatus?) -> Void) {
+        let query = CampaignStatus.query()
+        query?.whereKey("key", equalTo: key)
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let campaignStatus = object as? CampaignStatus, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            completion(campaignStatus)
+        })
+    }
+    
+    func shouldCampaignBeActiveAvailable(campaign: Campaign) -> Bool {
+        guard let schedule = campaign.schedule else { return false }
+        
+        if Date() > schedule.startDate && Date() < schedule.endDate {
+            return true
+        }
+        
+        return false
     }
     
     func withdraw(amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
@@ -247,7 +271,31 @@ class CampaignManager: NSObject {
         }
     }
     
-    func copy(campaign: Campaign, completion: @escaping (ErrorMessage?) -> Void) {
+    func activateCampaign(campaign: Campaign, budget: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
+        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!, "budget": budget] as [String : Any]
+        
+        PFCloud.callFunction(inBackground: "activate-campaign", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.campaignActivationFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.campaignActivationFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
+    
+    func copy(campaign: Campaign) -> Campaign {
         let newCampaign = Campaign()
         newCampaign.budget = 0.0
         newCampaign.costPerReview = campaign.costPerReview
@@ -271,8 +319,6 @@ class CampaignManager: NSObject {
         newDemographic.location = campaign.demographic!.location
         newCampaign.demographic = newDemographic
         
-        newCampaign.saveInBackgroundAndPin { (error) in
-            completion(error)
-        }
+        return newCampaign
     }
 }

@@ -92,6 +92,15 @@ final class Campaign: PFObject {
             self["creator"] = newValue
         }
     }
+    
+    var status: CampaignStatus? {
+        get {
+            return self["status"] as? CampaignStatus
+        }
+        set {
+            self["status"] = newValue
+        }
+    }
 }
 
 extension Campaign: PFSubclassing {
@@ -107,6 +116,11 @@ extension Campaign {
         self.saveEventually()
         
         let group = DispatchGroup()
+        
+        group.enter()
+        self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+            group.leave()
+        })
         
         group.enter()
         self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
@@ -163,6 +177,11 @@ extension Campaign {
                     }
                     
                     let group = DispatchGroup()
+                    
+                    group.enter()
+                    self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                        group.leave()
+                    })
                     
                     group.enter()
                     self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
