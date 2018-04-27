@@ -275,6 +275,8 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
-        
+        guard let advert = self.advert, advert.isCMS else { return }
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.moderator)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

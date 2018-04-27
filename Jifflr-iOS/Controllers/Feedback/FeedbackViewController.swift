@@ -98,17 +98,25 @@ class FeedbackViewController: BaseViewController {
     }
 
     @IBAction func nextButtonPressed(sender: JifflrButton) {
-        guard self.validateAnswers() else {
-            self.displayError(error: ErrorMessage.invalidFeedback)
-            return
-        }
-        
-        if self.content.count > 1 {
-            self.pushToNextQuestion()
+        if self.mode == AdViewMode.normal {
+            guard self.validateAnswers() else {
+                self.displayError(error: ErrorMessage.invalidFeedback)
+                return
+            }
+            
+            if self.content.count > 1 {
+                self.pushToNextQuestion()
+            } else {
+                FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+                    self.pushToNextAd()
+                })
+            }
         } else {
-            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
-                self.pushToNextAd()
-            })
+            if self.content.count > 1 {
+                self.pushToNextQuestion()
+            } else {
+                // TODO - Push to Feedback screen.
+            }
         }
     }
 
