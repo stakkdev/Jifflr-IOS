@@ -371,3 +371,8 @@
 "moderationTCs.applyLabel.text" = "Accept the T&Cs";
 "moderationTCs.applyButton.applyTitle" = "APPLY";
 "moderationTCs.applyButton.awaitingApprovalTitle" = "Awaiting Approval";
+
+"moderatorFeedback.navigation.title" = "Moderator Feedback";
+"moderatorFeedback.passedLabel.text" = "If Ad Has Passed";
+"moderatorFeedback.failedLabel.text" = "If Ad Has Failed";
+"moderatorFeedback.submitButton.title" = "SUBMIT";

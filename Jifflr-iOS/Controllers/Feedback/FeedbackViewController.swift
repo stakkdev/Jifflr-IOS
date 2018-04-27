@@ -115,7 +115,8 @@ class FeedbackViewController: BaseViewController {
             if self.content.count > 1 {
                 self.pushToNextQuestion()
             } else {
-                // TODO - Push to Feedback screen.
+                let vc = ModerationFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

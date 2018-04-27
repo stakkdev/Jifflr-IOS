@@ -27,6 +27,8 @@
 		1A4115AA2090C8D60078D32B /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A92090C8D60078D32B /* AppSettingsManager.swift */; };
 		1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115AB2090C9070078D32B /* AppSettings.swift */; };
 		1A4B5B442089FCB300CB8DAD /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */; };
+		1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */; };
+		1A5E090C209360E400F65876 /* FailedFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */; };
 		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
 		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
 		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
@@ -234,6 +236,8 @@
 		1A4115A92090C8D60078D32B /* AppSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsManager.swift; path = Helpers/General/AppSettingsManager.swift; sourceTree = "<group>"; };
 		1A4115AB2090C9070078D32B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Models/AppSettings.swift; sourceTree = "<group>"; };
 		1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BalanceViewController.swift; path = "Controllers/Ad Builder/Create Campaign/BalanceViewController.swift"; sourceTree = "<group>"; };
+		1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationFeedbackViewController.swift; path = Controllers/Moderation/ModerationFeedbackViewController.swift; sourceTree = "<group>"; };
+		1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FailedFeedbackCell.swift; path = Controllers/Moderation/Cells/FailedFeedbackCell.swift; sourceTree = "<group>"; };
 		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
 		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
 		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
@@ -453,7 +457,9 @@
 		1A41159E2090AC2E0078D32B /* Moderation */ = {
 			isa = PBXGroup;
 			children = (
+				1A5E090A209360B300F65876 /* Cells */,
 				1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */,
+				1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */,
 			);
 			name = Moderation;
 			sourceTree = "<group>";
@@ -464,6 +470,14 @@
 				1A4115A72090C4130078D32B /* ModerationManager.swift */,
 			);
 			name = Moderation;
+			sourceTree = "<group>";
+		};
+		1A5E090A209360B300F65876 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		1A642A74207E0A5C00474598 /* Cells */ = {
@@ -1472,6 +1486,7 @@
 				1AA11E532085FF8D00BAE044 /* LanguageManager.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
+				1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */,
 				1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
@@ -1493,6 +1508,7 @@
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,
 				1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */,
+				1A5E090C209360E400F65876 /* FailedFeedbackCell.swift in Sources */,
 				E96A0CEE203DAC3A0059DDAC /* FAQManager.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
