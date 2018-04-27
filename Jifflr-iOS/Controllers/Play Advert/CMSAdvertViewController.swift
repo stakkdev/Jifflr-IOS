@@ -23,14 +23,14 @@ class CMSAdvertViewController: BaseViewController {
     var player: Player?
 
     var advert: Advert!
-    var isPreview = false
+    var mode = 1
     var content:[(question: Question, answers: [Answer])] = []
 
-    class func instantiateFromStoryboard(advert: Advert, isPreview: Bool) -> CMSAdvertViewController {
+    class func instantiateFromStoryboard(advert: Advert, mode: Int) -> CMSAdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let advertViewController = storyboard.instantiateViewController(withIdentifier: "CMSAdvertViewController") as! CMSAdvertViewController
         advertViewController.advert = advert
-        advertViewController.isPreview = isPreview
+        advertViewController.mode = mode
         
         if advert.details?.template?.key == AdvertTemplateKey.imageVideoLandscape {
             OrientationManager.shared.set(orientation: .landscape)
@@ -57,10 +57,10 @@ class CMSAdvertViewController: BaseViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.spinner.startAnimating()
         
-        if self.isPreview {
+        if self.mode == AdViewMode.preview {
             let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed))
             self.navigationItem.leftBarButtonItem = dismissBarButton
-        } else {
+        } else if self.mode == AdViewMode.normal {
             let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
             self.navigationItem.rightBarButtonItem = flagBarButton
         }
@@ -70,7 +70,7 @@ class CMSAdvertViewController: BaseViewController {
         self.titleLabel.text = self.advert.details?.title
         self.messageTextView.text = self.advert.details?.message
         
-        if !self.isPreview {
+        if self.mode != AdViewMode.preview {
             self.fetchData()
         }
         
@@ -82,7 +82,7 @@ class CMSAdvertViewController: BaseViewController {
                 if let image = UIImage(data: data) {
                     self.imageView.image = image
                     
-                    if !self.isPreview {
+                    if self.mode != AdViewMode.preview {
                         self.startTimer()
                     }
                 }
@@ -112,7 +112,7 @@ class CMSAdvertViewController: BaseViewController {
     }
 
     func setupLocalization() {
-        if self.isPreview {
+        if self.mode == AdViewMode.preview {
             self.title = "adPreview.navigation.title".localized()
         }
     }
@@ -140,21 +140,21 @@ class CMSAdvertViewController: BaseViewController {
         
         switch question.type.type {
         case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.DatePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: false, isPreview: false)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: false, mode: self.mode)
         case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.NumberPicker:
-            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.Rating:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.TimePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: true, isPreview: false)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: true, mode: self.mode)
         case AdvertQuestionType.URLLinks:
-            controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         default:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isPreview: false)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
         }
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -212,7 +212,7 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     }
     
     func playerPlaybackDidEnd(_ player: Player) {
-        if !self.isPreview {
+        if self.mode != AdViewMode.preview {
             self.showFeedback()
         }
     }

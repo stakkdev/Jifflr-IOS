@@ -22,6 +22,10 @@ class DashboardViewController: BaseViewController {
     @IBOutlet weak var adsViewedButton: DashboardButtonRight!
     @IBOutlet weak var helpButton: JifflrButton!
     @IBOutlet weak var sloganLabel: UILabel!
+    @IBOutlet weak var moderateButton: UIButton!
+    @IBOutlet weak var helpButtonTop: NSLayoutConstraint!
+    @IBOutlet weak var helpButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var moderateButtonTop: NSLayoutConstraint!
 
     class func instantiateFromStoryboard() -> DashboardViewController {
         let storyboard = UIStoryboard(name: "Dashboard", bundle: nil)
@@ -78,6 +82,8 @@ class DashboardViewController: BaseViewController {
         self.myMoneyButton.setImage(image: UIImage(named: "DashboardButtonMyMoney"))
         self.adsViewedButton.setImage(image: UIImage(named: "DashboardButtonAdsViewed"))
         self.adBuilderButton.setImage(image: UIImage(named: "DashboardButtonAdBuilder"))
+        
+        self.setupModerateButton()
     }
 
     func setupLocalization() {
@@ -130,6 +136,33 @@ class DashboardViewController: BaseViewController {
         let attributedString = NSMutableAttributedString(string: title, attributes: attributes)
         attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: range)
         self.sloganLabel.attributedText = attributedString
+    }
+    
+    func setupModerateButton() {
+        let title = "dashboard.moderateButton.title".localized()
+        let font = UIFont(name: Constants.FontNames.GothamMedium, size: 14.0)!
+        let attributes = [
+            NSAttributedStringKey.font: font,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue
+        ] as [NSAttributedStringKey: Any]
+        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+        self.moderateButton.setAttributedTitle(attributedTitle, for: .normal)
+        self.moderateButtonTop.constant = Constants.isSmallScreen ? 8.0 : 20.0
+        
+        guard let moderatorStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
+        
+        if moderatorStatus.key == ModeratorStatusKey.isModerator {
+            self.moderateButton.isHidden = false
+            self.moderateButton.isEnabled = true
+            self.helpButtonTop.constant = 30.0
+            self.helpButtonBottom.constant = 68.0
+        } else {
+            self.moderateButton.isHidden = true
+            self.moderateButton.isEnabled = false
+            self.helpButtonTop.constant = 50.0
+            self.helpButtonBottom.constant = 48.0
+        }
     }
 
     func updateData() {
@@ -204,7 +237,7 @@ class DashboardViewController: BaseViewController {
             }
 
             if advert.isCMS {
-                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(advert: advert, isPreview: false))
+                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.normal))
                 navController.isNavigationBarHidden = false
                 self.navigationController?.present(navController, animated: false, completion: nil)
             } else {
@@ -239,5 +272,9 @@ class DashboardViewController: BaseViewController {
 
     @IBAction func helpButtonPressed(_ sender: UIButton) {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
+    }
+    
+    @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
+        
     }
 }

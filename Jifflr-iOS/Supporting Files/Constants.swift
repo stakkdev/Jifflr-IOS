@@ -236,6 +236,12 @@ struct ModeratorStatusKey {
     static let awaitingApproval = "awaitingApproval"
 }
 
+struct AdViewMode {
+    static let normal = 1
+    static let preview = 2
+    static let moderator = 3
+}
+
 struct Day {
     static let Mon = 1
     static let Tue = 2

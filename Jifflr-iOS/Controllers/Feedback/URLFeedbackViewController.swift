@@ -19,13 +19,13 @@ class URLFeedbackViewController: FeedbackViewController {
     
     var chosenAnswers:[Answer] = []
     
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], isPreview: Bool) -> URLFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> URLFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "URLFeedbackViewController") as! URLFeedbackViewController
         controller.advert = advert
         controller.content = content
         controller.questionAnswers = questionAnswers
-        controller.isPreview = isPreview
+        controller.mode = mode
         return controller
     }
 

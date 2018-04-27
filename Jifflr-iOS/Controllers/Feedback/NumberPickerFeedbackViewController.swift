@@ -14,13 +14,13 @@ class NumberPickerFeedbackViewController: FeedbackViewController {
 
     var numbers:[Int] = []
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], isPreview: Bool) -> NumberPickerFeedbackViewController {
+    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> NumberPickerFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NumberPickerFeedbackViewController") as! NumberPickerFeedbackViewController
         controller.advert = advert
         controller.content = content
         controller.questionAnswers = questionAnswers
-        controller.isPreview = isPreview
+        controller.mode = mode
         return controller
     }
 
