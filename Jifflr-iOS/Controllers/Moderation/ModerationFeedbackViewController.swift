@@ -14,11 +14,12 @@ class ModerationFeedbackViewController: BaseViewController {
     @IBOutlet weak var passedLabel: UILabel!
     @IBOutlet weak var passedTextField: JifflrTextFieldInvitation!
     @IBOutlet weak var failedLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: AdjustedHeightTableView!
     @IBOutlet weak var submitButton: JifflrButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     var advert: Advert!
+    var expandedIndexpaths = [IndexPath]()
     
     class func instantiateFromStoryboard(advert: Advert) -> ModerationFeedbackViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
@@ -31,6 +32,7 @@ class ModerationFeedbackViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+        self.setupNotifications()
     }
     
     func setupUI() {
@@ -42,17 +44,32 @@ class ModerationFeedbackViewController: BaseViewController {
         self.submitButton.setBackgroundColor(color: UIColor.mainPink)
         
         self.passedTextField.delegate = self
+        self.tableView.estimatedRowHeight = 60.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.separatorColor = UIColor.clear
-        self.tableView.estimatedRowHeight = 60.0
-        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func setupLocalization() {
         self.title = "moderatorFeedback.navigation.title".localized()
         self.passedLabel.text = "moderatorFeedback.passedLabel.text".localized()
         self.failedLabel.text = "moderatorFeedback.failedLabel.text".localized()
+    }
+    
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTableViewLayout), name: Constants.Notifications.tableViewHeightChanged, object: self.tableView)
+    }
+    
+    @objc func handleTableViewLayout() {
+        if self.tableViewHeight.constant != self.tableView.contentSize.height {
+            self.tableViewHeight.constant = self.tableView.contentSize.height
+            self.tableView.setNeedsUpdateConstraints()
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     @IBAction func submitButtonPressed(sender: UIButton) {
@@ -78,16 +95,18 @@ extension ModerationFeedbackViewController: UITableViewDelegate, UITableViewData
         cell.accessoryType = .none
         cell.selectionStyle = .none
         cell.textField.text = "Hello"
+        cell.expanded = self.expandedIndexpaths.contains(indexPath)
+        cell.updateUI(expand: cell.expanded)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? FailedFeedbackCell else { return }
-        cell.updateUI(expand: !cell.expanded)
-        self.tableView.setNeedsUpdateConstraints()
-        self.tableView.updateConstraintsIfNeeded()
-        self.tableView.beginUpdates()
-        self.tableView.endUpdates()
+        if let expandedIndexPath = self.expandedIndexpaths.index(of: indexPath) {
+            self.expandedIndexpaths.remove(at: expandedIndexPath)
+        } else {
+            self.expandedIndexpaths.append(indexPath)
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 

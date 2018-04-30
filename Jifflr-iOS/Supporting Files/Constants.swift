@@ -22,6 +22,7 @@ struct Constants {
     struct Notifications {
         static let locationFound = Notification.Name(rawValue: "locationFound")
         static let locationPermissionsChanged = Notification.Name(rawValue: "locationPermissionsChanged")
+        static let tableViewHeightChanged = Notification.Name(rawValue: "tableViewHeightChanged")
     }
 
     struct FontNames {

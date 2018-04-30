@@ -11,13 +11,10 @@ import UIKit
 class FailedFeedbackCell: UITableViewCell {
     
     @IBOutlet weak var textField: JifflrTextFieldDropdown!
-    @IBOutlet var textFieldBottom: NSLayoutConstraint!
-    
     @IBOutlet weak var tableBackgroundView: UIView!
-    @IBOutlet weak var tableHeaderView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: AdjustedHeightTableView!
+    @IBOutlet weak var textFieldBackgroundView: UIView!
     @IBOutlet var tableViewHeight: NSLayoutConstraint!
-    @IBOutlet var tableBackgroundViewBottom: NSLayoutConstraint!
     
     var expanded = false
 
@@ -26,8 +23,9 @@ class FailedFeedbackCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         self.textField.isUserInteractionEnabled = false
-        
-        self.updateUI(expand: false)
+        self.tableView.separatorColor = UIColor.clear
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,21 +36,43 @@ class FailedFeedbackCell: UITableViewCell {
         self.expanded = expand
         
         if expand {
-            self.textField.isHidden = true
-            self.textFieldBottom.isActive = false
+            self.textField.backgroundColor = UIColor.orange
+            self.textField.rightView = nil
+            self.textField.font = UIFont(name: Constants.FontNames.GothamBold, size: 20.0)
+            self.textField.textColor = UIColor.white
+            self.textFieldBackgroundView.isHidden = false
             
             self.tableBackgroundView.isHidden = false
             self.tableBackgroundView.isUserInteractionEnabled = true
-            self.tableBackgroundViewBottom.isActive = true
-            self.tableBackgroundViewBottom.constant = 10.0
         } else {
-            self.textField.isHidden = false
-            self.textFieldBottom.isActive = true
+            self.textField.backgroundColor = UIColor.white
+            self.textField.addRightImage(image: UIImage(named: "AnswerDropdown")!)
+            self.textField.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
+            self.textField.textColor = UIColor.mainBlue
+            self.textFieldBackgroundView.isHidden = true
             
             self.tableBackgroundView.isHidden = true
             self.tableBackgroundView.isUserInteractionEnabled = false
-            self.tableBackgroundViewBottom.isActive = false
-            self.textFieldBottom.constant = 10.0
         }
+        
+        self.tableView.layoutIfNeeded()
+        self.tableViewHeight.constant = !self.expanded ? 0.0 : self.tableView.contentSize.height
+    }
+}
+
+extension FailedFeedbackCell: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FailureReasonCell") as! FailureReasonCell
+        cell.accessoryType = .none
+        cell.selectionStyle = .none
+        return cell
     }
 }
