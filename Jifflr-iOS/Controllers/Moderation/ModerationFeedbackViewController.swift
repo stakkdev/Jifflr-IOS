@@ -29,6 +29,7 @@ class ModerationFeedbackViewController: BaseViewController {
     }
     
     var passedFeedback: ModeratorFeedback?
+    var selectedFailureFeedbacks: [ModeratorFeedback] = []
     
     class func instantiateFromStoryboard(advert: Advert) -> ModerationFeedbackViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
@@ -92,7 +93,11 @@ class ModerationFeedbackViewController: BaseViewController {
         self.passedTextField.animate()
         ModerationManager.shared.fetchAllModeratorFeedback { (feedback) in
             self.passedTextField.stopAnimating()
-            guard feedback.count > 0 else { return }
+            
+            guard feedback.count > 0 else {
+                self.displayError(error: ErrorMessage.noInternetConnection)
+                return
+            }
             
             var allFeedback = feedback
             if let passedFeedback = allFeedback.filter({$0.category.passed == true}).first {
@@ -109,7 +114,17 @@ class ModerationFeedbackViewController: BaseViewController {
     }
     
     @IBAction func submitButtonPressed(sender: UIButton) {
+        guard self.validateInput() else {
+            self.displayError(error: ErrorMessage.moderationValidation)
+            return
+        }
+    }
+    
+    func validateInput() -> Bool {
+        guard self.passedTextField.tag == 1 || self.selectedFailureFeedbacks.count > 0 else { return false }
+        if self.passedTextField.tag == 1 && self.selectedFailureFeedbacks.count > 0 { return false }
         
+        return true
     }
 }
 

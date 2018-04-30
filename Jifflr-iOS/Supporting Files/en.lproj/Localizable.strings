@@ -74,6 +74,7 @@
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
 "error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";
 "error.applyModeratorServer" = "Unable to apply. Please check your internet connection and try again.";
+"error.moderationValidation" = "Unable to submit. Please ensure you have selected valid moderation feedback.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";

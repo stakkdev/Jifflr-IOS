@@ -91,4 +91,34 @@ extension FailedFeedbackCell: UITableViewDelegate, UITableViewDataSource {
         cell.reasonLabel.text = self.feedback[indexPath.row].title
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let viewController = self.viewController() as? ModerationFeedbackViewController else { return }
+        
+        let feedback = self.feedback[indexPath.row]
+        if viewController.selectedFailureFeedbacks.contains(feedback) {
+            cell.setSelected(true, animated: false)
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        } else {
+            cell.setSelected(false, animated: true)
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewController = self.viewController() as? ModerationFeedbackViewController else { return }
+        
+        let feedback = self.feedback[indexPath.row]
+        guard !viewController.selectedFailureFeedbacks.contains(feedback) else { return }
+        viewController.selectedFailureFeedbacks.append(feedback)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let viewController = self.viewController() as? ModerationFeedbackViewController else { return }
+        
+        let feedback = self.feedback[indexPath.row]
+        if let index = viewController.selectedFailureFeedbacks.index(of: feedback) {
+            viewController.selectedFailureFeedbacks.remove(at: index)
+        }
+    }
 }
