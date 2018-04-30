@@ -34,6 +34,12 @@ class ChooseTemplateViewController: BaseViewController {
         self.setupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        MediaManager.shared.deleteCreateAdMedia()
+    }
+    
     func setupUI() {
         self.setupLocalization()
         
