@@ -28,6 +28,8 @@
 		1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115AB2090C9070078D32B /* AppSettings.swift */; };
 		1A4A5CD4209707B400C3D3C4 /* AdjustedHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD3209707B400C3D3C4 /* AdjustedHeightTableView.swift */; };
 		1A4A5CD620971C8C00C3D3C4 /* FailureReasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD520971C8C00C3D3C4 /* FailureReasonCell.swift */; };
+		1A4A5CD82097434D00C3D3C4 /* ModeratorFeedbackCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */; };
+		1A4A5CDA209743F400C3D3C4 /* ModeratorFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */; };
 		1A4B5B442089FCB300CB8DAD /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */; };
 		1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */; };
 		1A5E090C209360E400F65876 /* FailedFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */; };
@@ -239,6 +241,8 @@
 		1A4115AB2090C9070078D32B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Models/AppSettings.swift; sourceTree = "<group>"; };
 		1A4A5CD3209707B400C3D3C4 /* AdjustedHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdjustedHeightTableView.swift; path = Views/AdjustedHeightTableView.swift; sourceTree = "<group>"; };
 		1A4A5CD520971C8C00C3D3C4 /* FailureReasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FailureReasonCell.swift; path = Controllers/Moderation/Cells/FailureReasonCell.swift; sourceTree = "<group>"; };
+		1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorFeedbackCategory.swift; path = Models/ModeratorFeedbackCategory.swift; sourceTree = "<group>"; };
+		1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorFeedback.swift; path = Models/ModeratorFeedback.swift; sourceTree = "<group>"; };
 		1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BalanceViewController.swift; path = "Controllers/Ad Builder/Create Campaign/BalanceViewController.swift"; sourceTree = "<group>"; };
 		1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationFeedbackViewController.swift; path = Controllers/Moderation/ModerationFeedbackViewController.swift; sourceTree = "<group>"; };
 		1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FailedFeedbackCell.swift; path = Controllers/Moderation/Cells/FailedFeedbackCell.swift; sourceTree = "<group>"; };
@@ -954,6 +958,8 @@
 				1AA11E54208622FF00BAE044 /* Gender.swift */,
 				1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */,
 				1A4115AB2090C9070078D32B /* AppSettings.swift */,
+				1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */,
+				1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1458,6 +1464,7 @@
 				1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */,
 				E937F5B82036F77C00171480 /* Friends.swift in Sources */,
 				E97B9E25203B07AC0097BC65 /* FAQSegmentedControl.swift in Sources */,
+				1A4A5CD82097434D00C3D3C4 /* ModeratorFeedbackCategory.swift in Sources */,
 				E9A2CF4D1F8F7BF0008A7F40 /* Advert.swift in Sources */,
 				1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */,
 				1A4115A02090AC530078D32B /* ModerationTCsViewController.swift in Sources */,
@@ -1510,6 +1517,7 @@
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
 				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,
+				1A4A5CDA209743F400C3D3C4 /* ModeratorFeedback.swift in Sources */,
 				1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */,
 				E9608F17203459290055EFE7 /* DashboardButtonRight.swift in Sources */,
 				E9D8E1C7203C8E0D00F978D2 /* ProfileViewController+Saving.swift in Sources */,

@@ -17,6 +17,7 @@ class FailedFeedbackCell: UITableViewCell {
     @IBOutlet var tableViewHeight: NSLayoutConstraint!
     
     var expanded = false
+    var feedback: [ModeratorFeedback] = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +27,11 @@ class FailedFeedbackCell: UITableViewCell {
         self.tableView.separatorColor = UIColor.clear
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.contentOffset = CGPoint.zero
+        self.tableView.isScrollEnabled = false
+        self.tableView.rowHeight = 32
+        self.tableView.estimatedRowHeight = 32
+        self.tableView.allowsMultipleSelection = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,6 +50,8 @@ class FailedFeedbackCell: UITableViewCell {
             
             self.tableBackgroundView.isHidden = false
             self.tableBackgroundView.isUserInteractionEnabled = true
+            
+            self.tableView.contentInset = UIEdgeInsets(top: 8.0, left: 0.0, bottom: 8.0, right: 0.0)
         } else {
             self.textField.backgroundColor = UIColor.white
             self.textField.addRightImage(image: UIImage(named: "AnswerDropdown")!)
@@ -53,10 +61,13 @@ class FailedFeedbackCell: UITableViewCell {
             
             self.tableBackgroundView.isHidden = true
             self.tableBackgroundView.isUserInteractionEnabled = false
+            
+            self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         }
         
-        self.tableView.layoutIfNeeded()
-        self.tableViewHeight.constant = !self.expanded ? 0.0 : self.tableView.contentSize.height
+        self.tableView.reloadData()
+        let height = self.tableView.contentSize.height + self.tableView.contentInset.top + self.tableView.contentInset.bottom
+        self.tableViewHeight.constant = !self.expanded ? 0.0 : height
     }
 }
 
@@ -66,13 +77,18 @@ extension FailedFeedbackCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.feedback.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 32.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FailureReasonCell") as! FailureReasonCell
         cell.accessoryType = .none
         cell.selectionStyle = .none
+        cell.reasonLabel.text = self.feedback[indexPath.row].title
         return cell
     }
 }

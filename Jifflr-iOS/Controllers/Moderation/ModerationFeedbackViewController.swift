@@ -19,7 +19,16 @@ class ModerationFeedbackViewController: BaseViewController {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     var advert: Advert!
-    var expandedIndexpaths = [IndexPath]()
+    var expandedIndexpaths:[IndexPath] = []
+    var feedback: [(category: ModeratorFeedbackCategory, feedback: [ModeratorFeedback])] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var passedFeedback: ModeratorFeedback?
     
     class func instantiateFromStoryboard(advert: Advert) -> ModerationFeedbackViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
@@ -31,8 +40,12 @@ class ModerationFeedbackViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         self.setupUI()
         self.setupNotifications()
+        self.setupData()
     }
     
     func setupUI() {
@@ -46,9 +59,8 @@ class ModerationFeedbackViewController: BaseViewController {
         self.passedTextField.delegate = self
         self.tableView.estimatedRowHeight = 60.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
         self.tableView.separatorColor = UIColor.clear
+        self.tableView.isScrollEnabled = false
     }
     
     func setupLocalization() {
@@ -63,12 +75,36 @@ class ModerationFeedbackViewController: BaseViewController {
     
     @objc func handleTableViewLayout() {
         if self.tableViewHeight.constant != self.tableView.contentSize.height {
-            self.tableViewHeight.constant = self.tableView.contentSize.height
+            if self.tableView.contentSize.height == 0.0 {
+                self.tableViewHeight.constant = 1.0
+            } else {
+                self.tableViewHeight.constant = self.tableView.contentSize.height
+            }
             self.tableView.setNeedsUpdateConstraints()
             
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
+        }
+    }
+    
+    func setupData() {
+        self.passedTextField.animate()
+        ModerationManager.shared.fetchAllModeratorFeedback { (feedback) in
+            self.passedTextField.stopAnimating()
+            guard feedback.count > 0 else { return }
+            
+            var allFeedback = feedback
+            if let passedFeedback = allFeedback.filter({$0.category.passed == true}).first {
+                self.passedTextField.text = passedFeedback.category.title
+                self.passedFeedback = passedFeedback.feedback.first
+                
+                if let index = allFeedback.index(where: {$0 == passedFeedback}) {
+                    allFeedback.remove(at: index)
+                }
+            }
+            
+            self.feedback = allFeedback
         }
     }
     
@@ -83,7 +119,7 @@ extension ModerationFeedbackViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.feedback.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,9 +128,10 @@ extension ModerationFeedbackViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FailedFeedbackCell") as! FailedFeedbackCell
+        cell.feedback = self.feedback[indexPath.row].feedback
         cell.accessoryType = .none
         cell.selectionStyle = .none
-        cell.textField.text = "Hello"
+        cell.textField.text = self.feedback[indexPath.row].category.title
         cell.expanded = self.expandedIndexpaths.contains(indexPath)
         cell.updateUI(expand: cell.expanded)
         return cell
