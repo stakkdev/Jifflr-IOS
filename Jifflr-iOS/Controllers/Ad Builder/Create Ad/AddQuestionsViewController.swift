@@ -445,7 +445,8 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         toolbar.barStyle = UIBarStyle.default
         let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.pickerCloseButtonPressed))
-        toolbar.items = [closeButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [flexibleSpacer, closeButton]
         self.answerTypeTextField.inputAccessoryView = toolbar
     }
     
