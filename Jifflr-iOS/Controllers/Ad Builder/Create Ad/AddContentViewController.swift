@@ -108,12 +108,6 @@ class AddContentViewController: BaseViewController {
     @IBAction func addImageButtonPressed(sender: UIButton) {
         let alertController = UIAlertController(title: "addContent.actionSheet.title".localized(), message: nil, preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "addContent.takePhoto.title".localized(), style: .default) { (action) in
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alertController.addAction(cameraAction)
-        
         let libraryAction = UIAlertAction(title: "addContent.library.title".localized(), style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
