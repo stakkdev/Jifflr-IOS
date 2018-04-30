@@ -46,6 +46,11 @@ class ModerationFeedbackViewController: BaseViewController {
         
         self.setupUI()
         self.setupNotifications()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.setupData()
     }
     
