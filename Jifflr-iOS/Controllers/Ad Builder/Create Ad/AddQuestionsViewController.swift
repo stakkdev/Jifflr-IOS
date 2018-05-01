@@ -306,23 +306,42 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     func validateUrls(questionType: QuestionType, questionText: String) -> Bool {
-        guard let website = self.websiteTextField.text, website.isUrl() else { return false }
-        guard let facebook = self.facebookTextField.text, facebook.isUrl() else { return false }
-        guard let twitter = self.twitterTextField.text, twitter.isUrl() else { return false }
-        guard let onlineStore = self.onlineStoreTextField.text, onlineStore.isUrl() else { return false }
-        guard let appStore = self.appStoreTextField.text, appStore.isUrl() else { return false }
-        guard let playStore = self.playStoreTextField.text, playStore.isUrl() else { return false }
+        var answers: [Answer] = []
         
-        let websiteAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: website)
-        let facebookAnswer = AdBuilderManager.shared.createAnswer(index: 1, content: facebook)
-        let twitterAnswer = AdBuilderManager.shared.createAnswer(index: 2, content: twitter)
-        let onlineStoreAnswer = AdBuilderManager.shared.createAnswer(index: 3, content: onlineStore)
-        let appStoreAnswer = AdBuilderManager.shared.createAnswer(index: 4, content: appStore)
-        let playStoreAnswer = AdBuilderManager.shared.createAnswer(index: 5, content: playStore)
+        if let website = self.websiteTextField.text, website.isUrl() {
+            let websiteAnswer = AdBuilderManager.shared.createAnswer(url: website, urlType: URLTypes.website)
+            answers.append(websiteAnswer)
+        }
+        
+        if let facebook = self.facebookTextField.text, facebook.isUrl() {
+            let facebookAnswer = AdBuilderManager.shared.createAnswer(url: facebook, urlType: URLTypes.facebook)
+            answers.append(facebookAnswer)
+        }
+        
+        if let twitter = self.twitterTextField.text, twitter.isUrl() {
+            let twitterAnswer = AdBuilderManager.shared.createAnswer(url: twitter, urlType: URLTypes.twitter)
+            answers.append(twitterAnswer)
+        }
+        
+        if let onlineStore = self.onlineStoreTextField.text, onlineStore.isUrl() {
+            let onlineStoreAnswer = AdBuilderManager.shared.createAnswer(url: onlineStore, urlType: URLTypes.onlineStore)
+            answers.append(onlineStoreAnswer)
+        }
+        
+        if let appStore = self.appStoreTextField.text, appStore.isUrl() {
+            let appStoreAnswer = AdBuilderManager.shared.createAnswer(url: appStore, urlType: URLTypes.iOS)
+            answers.append(appStoreAnswer)
+        }
+        
+        if let playStore = self.playStoreTextField.text, playStore.isUrl() {
+            let playStoreAnswer = AdBuilderManager.shared.createAnswer(url: playStore, urlType: URLTypes.android)
+            answers.append(playStoreAnswer)
+        }
+        
+        guard answers.count > 0 else { return false }
         
         let number = self.questionNumber
         let question = AdBuilderManager.shared.createQuestion(index: number, text: questionText, type: questionType, noOfRequiredAnswers: nil)
-        let answers = [websiteAnswer, facebookAnswer, twitterAnswer, onlineStoreAnswer, appStoreAnswer, playStoreAnswer]
         
         self.insertContent(question: question, answers: answers)
         self.previewContent.append((question: question, answers: answers))

@@ -118,6 +118,13 @@ class AdBuilderManager: NSObject {
         return answer
     }
     
+    func createAnswer(url: String, urlType: String) -> Answer {
+        let answer = Answer()
+        answer.urlType = urlType
+        answer.text = url        
+        return answer
+    }
+    
     func fetchDefaultAnswers(questionType: QuestionType, completion: @escaping ([Answer]) -> Void) {
         let query = Answer.query()
         query?.order(byAscending: "index")

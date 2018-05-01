@@ -220,14 +220,36 @@ extension AddQuestionsViewController {
     
     func drawUrlsQuestionUI() {
         let answers = self.content[self.questionNumber - 1].answers
-        guard answers.count == 6 else { return }
+
+        if let index = answers.index(where: { $0.urlType == URLTypes.website }) {
+            let answer = answers[index]
+            self.websiteTextField.text = answer.text
+        }
         
-        self.websiteTextField.text = answers.first!.text
-        self.facebookTextField.text = answers[1].text
-        self.twitterTextField.text = answers[2].text
-        self.onlineStoreTextField.text = answers[3].text
-        self.appStoreTextField.text = answers[4].text
-        self.playStoreTextField.text = answers[5].text
+        if let index = answers.index(where: { $0.urlType == URLTypes.facebook }) {
+            let answer = answers[index]
+            self.facebookTextField.text = answer.text
+        }
+        
+        if let index = answers.index(where: { $0.urlType == URLTypes.twitter }) {
+            let answer = answers[index]
+            self.twitterTextField.text = answer.text
+        }
+        
+        if let index = answers.index(where: { $0.urlType == URLTypes.onlineStore }) {
+            let answer = answers[index]
+            self.onlineStoreTextField.text = answer.text
+        }
+        
+        if let index = answers.index(where: { $0.urlType == URLTypes.iOS }) {
+            let answer = answers[index]
+            self.appStoreTextField.text = answer.text
+        }
+        
+        if let index = answers.index(where: { $0.urlType == URLTypes.android }) {
+            let answer = answers[index]
+            self.playStoreTextField.text = answer.text
+        }
     }
     
     func drawMultipleChoiceQuestionUI() {
