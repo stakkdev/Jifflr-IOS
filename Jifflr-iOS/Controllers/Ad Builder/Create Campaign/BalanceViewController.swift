@@ -142,11 +142,28 @@ class BalanceViewController: BaseViewController {
             let newBalance = previousBalance + topUpAmount
             user.details.campaignBalance = newBalance
             user.saveAndPin(completion: { (error) in
-                self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
-                self.confirmButton.stopAnimating()
+                guard error == nil else {
+                    self.confirmButton.stopAnimating()
+                    self.displayError(error: ErrorMessage.paypalTopUpFailed)
+                    return
+                }
                 
-                let alert = AlertMessage.paypalTopUpSuccess
-                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                let campaignDeposit = CampaignDeposit()
+                campaignDeposit.user = user
+                campaignDeposit.value = topUpAmount
+                campaignDeposit.saveInBackground(block: { (success, error) in
+                    self.confirmButton.stopAnimating()
+                    
+                    guard error == nil else {
+                        self.displayError(error: ErrorMessage.paypalTopUpFailed)
+                        return
+                    }
+                    
+                    self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+                    
+                    let alert = AlertMessage.paypalTopUpSuccess
+                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                })
             })
         }
     }
