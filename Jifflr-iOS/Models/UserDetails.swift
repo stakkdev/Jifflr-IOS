@@ -146,6 +146,15 @@ final class UserDetails: PFObject {
             self["campaignPayPalEmail"] = newValue
         }
     }
+    
+    var moderatorStatus: ModeratorStatus? {
+        get {
+            return self["moderatorStatus"] as? ModeratorStatus
+        }
+        set {
+            self["moderatorStatus"] = newValue
+        }
+    }
 }
 
 extension UserDetails: PFSubclassing {

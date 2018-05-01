@@ -61,9 +61,19 @@ class JifflrTextFieldDropdown: JifflrTextField {
         let rightImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 50))
         rightImageView.image = image
         rightImageView.contentMode = .center
+        rightImageView.isUserInteractionEnabled = true
         rightWrapperView.addSubview(rightImageView)
+        rightWrapperView.isUserInteractionEnabled = true
         self.rightView = rightWrapperView
+        self.rightView?.isUserInteractionEnabled = true
         self.rightViewMode = .always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(rightViewTapped))
+        self.rightView?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func rightViewTapped() {
+        self.becomeFirstResponder()
     }
     
     func setRightViewColor(color: UIColor) {

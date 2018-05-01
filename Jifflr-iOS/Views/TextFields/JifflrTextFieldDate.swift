@@ -74,7 +74,8 @@ class JifflrTextFieldDate: JifflrTextField {
         let dateToolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         dateToolbar.barStyle = UIBarStyle.default
         let dateCloseButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dateCloseButtonPressed))
-        dateToolbar.items = [dateCloseButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        dateToolbar.items = [flexibleSpacer, dateCloseButton]
         self.inputAccessoryView = dateToolbar
     }
     

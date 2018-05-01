@@ -32,6 +32,10 @@ class UserManager: NSObject {
         if let invitationCode = userInfo["invitationCode"] as? String {
             userDetails.invitationCode = invitationCode
         }
+        
+        if let moderatorStatus = userInfo["moderatorStatus"] as? ModeratorStatus {
+            userDetails.moderatorStatus = moderatorStatus
+        }
 
         let newUser = PFUser()
         newUser.details = userDetails
@@ -138,25 +142,38 @@ class UserManager: NSObject {
                         return
                     }
                     
-                    user.pinInBackground(block: { (succeeded, error) in
-                        if error != nil {
-                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                        } else {
-                            userDetails.pinInBackground(block: { (success, error) in
-                                if error != nil {
-                                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                                } else {
-                                    gender.pinInBackground(block: { (success, error) in
-                                        if error != nil {
-                                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                                        } else {
-                                            PFInstallation.registerUser(user: user)
-                                            completion(user, nil)
-                                        }
-                                    })
-                                }
-                            })
+                    userDetails.moderatorStatus?.fetchInBackground(block: { (object, error) in
+                        guard let moderatorStatus = object as? ModeratorStatus, error == nil else {
+                            completion(nil, ErrorMessage.unknown)
+                            return
                         }
+                        
+                        user.pinInBackground(block: { (succeeded, error) in
+                            if error != nil {
+                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        gender.pinInBackground(block: { (success, error) in
+                                            if error != nil {
+                                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                            } else {
+                                                moderatorStatus.pinInBackground(block: { (success, error) in
+                                                    if error != nil {
+                                                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                                    } else {
+                                                        PFInstallation.registerUser(user: user)
+                                                        completion(user, nil)
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     })
                 })
             })
@@ -197,24 +214,37 @@ class UserManager: NSObject {
                             return
                         }
                         
-                        user.pinInBackground(block: { (succeeded, error) in
-                            if error != nil {
-                                completion(ErrorMessage.parseError(error!.localizedDescription))
-                            } else {
-                                userDetails.pinInBackground(block: { (success, error) in
-                                    if error != nil {
-                                        completion(ErrorMessage.parseError(error!.localizedDescription))
-                                    } else {
-                                        gender.pinInBackground(block: { (success, error) in
-                                            if error != nil {
-                                                completion(ErrorMessage.parseError(error!.localizedDescription))
-                                            } else {
-                                                completion(nil)
-                                            }
-                                        })
-                                    }
-                                })
+                        userDetails.moderatorStatus?.fetchInBackground(block: { (object, error) in
+                            guard let moderatorStatus = object as? ModeratorStatus, error == nil else {
+                                completion(ErrorMessage.unknown)
+                                return
                             }
+                            
+                            user.pinInBackground(block: { (succeeded, error) in
+                                if error != nil {
+                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                } else {
+                                    userDetails.pinInBackground(block: { (success, error) in
+                                        if error != nil {
+                                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                                        } else {
+                                            gender.pinInBackground(block: { (success, error) in
+                                                if error != nil {
+                                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                                } else {
+                                                    moderatorStatus.pinInBackground(block: { (success, error) in
+                                                        if error != nil {
+                                                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                                                        } else {
+                                                            completion(nil)
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
                         })
                     })
                 })
@@ -228,6 +258,7 @@ class UserManager: NSObject {
             query?.fromLocalDatastore()
             query?.includeKey("details")
             query?.includeKey("details.gender")
+            query?.includeKey("details.moderatorStatus")
             query?.getFirstObjectInBackground(block: { (user, error) in
                 guard let _ = user as? PFUser, error == nil else {
                     completion(ErrorMessage.unknown)

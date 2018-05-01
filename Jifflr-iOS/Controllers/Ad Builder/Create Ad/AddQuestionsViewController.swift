@@ -98,6 +98,9 @@ class AddQuestionsViewController: BaseViewController {
         self.questionTextView.textContainer.maximumNumberOfLines = 3
         self.questionTextView.textContainer.lineBreakMode = .byTruncatingTail
         
+        self.answersContainerView.isHidden = true
+        self.urlsContainerView.isHidden = true
+        
         let questionSwitch = UISwitch()
         questionSwitch.addTarget(self, action: #selector(self.questionSwitchToggled(sender:)), for: .valueChanged)
         questionSwitch.onTintColor = UIColor.mainOrange
@@ -106,7 +109,7 @@ class AddQuestionsViewController: BaseViewController {
         let switchBarButton = UIBarButtonItem(customView: questionSwitch)
         self.navigationItem.rightBarButtonItem = switchBarButton
         
-        questionSwitch.isOn = self.content.indices.contains(self.questionNumber - 1) || self.questionNumber == 1
+        questionSwitch.isOn = true
         self.questionSwitchToggled(sender: questionSwitch)
         
         self.createInputViews()
@@ -169,12 +172,8 @@ class AddQuestionsViewController: BaseViewController {
             self.drawInputUI(questionType: questionType)
             self.drawQuestionData(questionType: questionType)
         } else {
-            if self.questionNumber == 1 {
-                self.answerTypeTextField.questionType = self.questionTypes.first
-                self.drawInputUI(questionType: self.questionTypes.first!)
-            } else {
-                self.answerTypeTextField.questionType = nil
-            }
+            self.answerTypeTextField.questionType = self.questionTypes.first
+            self.drawInputUI(questionType: self.questionTypes.first!)
         }
     }
     
@@ -214,19 +213,19 @@ class AddQuestionsViewController: BaseViewController {
             
             switch questionType.type {
             case AdvertQuestionType.Binary:
-                controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+                controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.DatePicker:
-                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: false, isPreview: true)
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: false, mode: AdViewMode.preview)
             case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
-                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.NumberPicker:
-                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.Rating:
-                controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+                controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.TimePicker:
-                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, isPreview: true)
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, mode: AdViewMode.preview)
             case AdvertQuestionType.URLLinks:
-                controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isPreview: true)
+                controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             default:
                 return
             }
@@ -446,7 +445,8 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         toolbar.barStyle = UIBarStyle.default
         let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.pickerCloseButtonPressed))
-        toolbar.items = [closeButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [flexibleSpacer, closeButton]
         self.answerTypeTextField.inputAccessoryView = toolbar
     }
     

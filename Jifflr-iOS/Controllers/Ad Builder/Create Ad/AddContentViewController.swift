@@ -108,12 +108,6 @@ class AddContentViewController: BaseViewController {
     @IBAction func addImageButtonPressed(sender: UIButton) {
         let alertController = UIAlertController(title: "addContent.actionSheet.title".localized(), message: nil, preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "addContent.takePhoto.title".localized(), style: .default) { (action) in
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alertController.addAction(cameraAction)
-        
         let libraryAction = UIAlertAction(title: "addContent.library.title".localized(), style: .default) { (action) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -134,7 +128,7 @@ class AddContentViewController: BaseViewController {
             return
         }
         
-        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, isPreview: true)
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, mode: AdViewMode.preview)
         let navController = UINavigationController(rootViewController: vc)
         navController.isNavigationBarHidden = true
         self.navigationController?.present(navController, animated: true, completion: nil)

@@ -72,6 +72,11 @@
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
 "error.nonCompliantActivate" = "Unable to activate your ad whilst it is non-compliant.";
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
+"error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";
+"error.applyModeratorServer" = "Unable to apply. Please check your internet connection and try again.";
+"error.moderationValidation" = "Unable to submit. Please ensure you have selected valid moderation feedback.";
+"error.moderationSubmitFailed" = "Unable to submit moderation feedback. Please check your internet connection and try again.";
+"error.noAdsToModerate" = "There are currently no adverts to moderate. Please try again later.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -115,6 +120,11 @@
 "alert.scheduledDeleteCampaign.message" = "This campaign was been scheduled to delete in the next 48 hours.";
 "alert.campaignCopied.title" = "Campaign Copied!";
 "alert.campaignCopied.message" = "Your campaign has been copied!";
+"alert.applyModerator.title" = "Application Submitted!";
+"alert.applyModerator.message" = "Your application to become a moderator has been submitted for approval.";
+"alert.feedbackSubmitted.title" = "Feedback Submitted!";
+"alert.feedbackSubmitted.message" = "Your moderation feedback has been submitted.";
+
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
@@ -175,6 +185,7 @@
 "dashboard.adBuilderButton.title" = "Ad Builder";
 "dashboard.helpButton.title" = "NEED SOME HELP?"; // The last word before the '?' will be orange.
 "dashboard.slogan" = "IT PAYS\nTO PLAY"; // Need the \n to wrap onto a new line. The first line will be orange, second will be white.
+"dashboard.moderateButton.title" = "Moderate Ad";
 
 "myTeam.navigation.title" = "My Team";
 "myTeam.segmentedControlButton1.title" = "FRIENDS";
@@ -262,7 +273,6 @@
 "addContent.imageButton.title" = "Image";
 "addContent.previewButton.title" = "PREVIEW";
 "addContent.actionSheet.title" = "Add Photo";
-"addContent.takePhoto.title" = "Take a Photo";
 "addContent.library.title" = "Choose from Photo Library";
 "adPreview.navigation.title" = "Preview";
 "addQuestions.navigation.title" = "Question %i";
@@ -360,3 +370,14 @@
 "balanceTopUp.topUpAmount.placeholder" = "Enter top-up amount";
 "balanceWithdrawal.confirmButton.title" = "CONFIRM";
 "balanceTopUp.paypalRequest.title" = "Jifflr Balance Top-up";
+
+"moderationTCs.navigation.title" = "T&Cs";
+"moderationTCs.content" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.";
+"moderationTCs.applyLabel.text" = "Accept the T&Cs";
+"moderationTCs.applyButton.applyTitle" = "APPLY";
+"moderationTCs.applyButton.awaitingApprovalTitle" = "Awaiting Approval";
+
+"moderatorFeedback.navigation.title" = "Moderator Feedback";
+"moderatorFeedback.passedLabel.text" = "If Ad Has Passed";
+"moderatorFeedback.failedLabel.text" = "If Ad Has Failed";
+"moderatorFeedback.submitButton.title" = "SUBMIT";

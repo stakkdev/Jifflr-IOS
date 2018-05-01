@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,11 +27,11 @@
                         <viewControllerLayoutGuide type="bottom" id="M8t-qL-fuj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ARm-ct-Ty5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1021"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1050"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jp-Uo-lkv">
-                                <rect key="frame" x="0.0" y="64" width="414" height="957"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="986"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Bob" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gm6-CN-XZm" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="374" height="50"/>
@@ -160,7 +160,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRg-wE-yUI" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="856" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="912" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="F8j-6p-A1W"/>
                                         </constraints>
@@ -171,7 +171,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0D-rc-ofT" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="781" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="837" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bW0-Nd-4Px"/>
                                         </constraints>
@@ -192,6 +192,17 @@
                                             <action selector="changePasswordButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="7Wq-Xr-nuG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDK-4r-wqU" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="754" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="wMA-g7-yLg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="BECOME A MODERATOR"/>
+                                        <connections>
+                                            <action selector="becomeModeratorButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="wUK-Q1-aUy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4VU-RQ-gIf" firstAttribute="leading" secondItem="2jp-Uo-lkv" secondAttribute="leading" constant="30" id="18e-8c-aNn"/>
@@ -205,10 +216,14 @@
                                     <constraint firstItem="omb-IX-tks" firstAttribute="top" secondItem="qWw-u0-0Lu" secondAttribute="bottom" constant="8" id="8a8-bP-dMN"/>
                                     <constraint firstItem="kj8-DO-L0H" firstAttribute="trailing" secondItem="mne-yZ-Ea8" secondAttribute="trailing" id="9ni-y3-gUu"/>
                                     <constraint firstItem="cbe-iW-J0b" firstAttribute="trailing" secondItem="hYt-0f-TV3" secondAttribute="trailing" id="A1a-Qc-age"/>
+                                    <constraint firstItem="pDK-4r-wqU" firstAttribute="leading" secondItem="8LK-ah-Rqg" secondAttribute="leading" id="ACf-Fr-eJP"/>
+                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="pDK-4r-wqU" secondAttribute="bottom" constant="33" id="AvD-hk-Vwc"/>
                                     <constraint firstItem="8LK-ah-Rqg" firstAttribute="trailing" secondItem="mne-yZ-Ea8" secondAttribute="trailing" id="DGu-3z-Ww9"/>
                                     <constraint firstItem="Rta-iY-wi7" firstAttribute="top" secondItem="ApE-8l-OO9" secondAttribute="bottom" constant="12" id="DeL-d1-lbR"/>
+                                    <constraint firstItem="pDK-4r-wqU" firstAttribute="top" secondItem="8LK-ah-Rqg" secondAttribute="bottom" constant="33" id="FhF-9c-UpS"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="leading" secondItem="l1e-KL-KCf" secondAttribute="leading" id="GDf-4w-6eq"/>
                                     <constraint firstItem="B0D-rc-ofT" firstAttribute="trailing" secondItem="l1e-KL-KCf" secondAttribute="trailing" id="Hat-xP-cLx"/>
+                                    <constraint firstItem="pDK-4r-wqU" firstAttribute="trailing" secondItem="8LK-ah-Rqg" secondAttribute="trailing" id="Iqc-G5-tKL"/>
                                     <constraint firstItem="mne-yZ-Ea8" firstAttribute="top" secondItem="Rta-iY-wi7" secondAttribute="bottom" constant="8" id="JTD-Uy-yVh"/>
                                     <constraint firstItem="Rta-iY-wi7" firstAttribute="trailing" secondItem="ApE-8l-OO9" secondAttribute="trailing" id="JUI-o2-mbS"/>
                                     <constraint firstItem="qeY-dw-5mq" firstAttribute="trailing" secondItem="omb-IX-tks" secondAttribute="trailing" id="JaL-16-S2m"/>
@@ -228,7 +243,6 @@
                                     <constraint firstItem="SRg-wE-yUI" firstAttribute="trailing" secondItem="l1e-KL-KCf" secondAttribute="trailing" id="bwV-tH-X4o"/>
                                     <constraint firstItem="qWw-u0-0Lu" firstAttribute="trailing" secondItem="Gm6-CN-XZm" secondAttribute="trailing" id="emL-5A-XGP"/>
                                     <constraint firstItem="ApE-8l-OO9" firstAttribute="leading" secondItem="hYt-0f-TV3" secondAttribute="leading" id="fyO-8T-EfP"/>
-                                    <constraint firstItem="B0D-rc-ofT" firstAttribute="top" secondItem="8LK-ah-Rqg" secondAttribute="bottom" constant="60" id="g1V-aW-GY8"/>
                                     <constraint firstItem="SRg-wE-yUI" firstAttribute="top" secondItem="B0D-rc-ofT" secondAttribute="bottom" constant="25" id="g2p-Fi-ERk"/>
                                     <constraint firstItem="mne-yZ-Ea8" firstAttribute="trailing" secondItem="Rta-iY-wi7" secondAttribute="trailing" id="gR3-cs-tsa"/>
                                     <constraint firstItem="Y8O-S2-ffF" firstAttribute="leading" secondItem="omb-IX-tks" secondAttribute="leading" id="h2R-Vr-PRM"/>
@@ -260,8 +274,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y3z-sj-HBA"/>
                     </view>
-                    <size key="freeformSize" width="414" height="1021"/>
+                    <size key="freeformSize" width="414" height="1050"/>
                     <connections>
+                        <outlet property="becomeModeratorButton" destination="pDK-4r-wqU" id="pc5-Ph-eg8"/>
                         <outlet property="changePasswordButton" destination="8LK-ah-Rqg" id="u9o-uF-tRx"/>
                         <outlet property="changePasswordButtonTop" destination="XI1-9M-eD5" id="FsB-g8-0nc"/>
                         <outlet property="deleteAccountButton" destination="SRg-wE-yUI" id="UJC-mx-V3I"/>
@@ -322,7 +337,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXf-HX-JYl">
-                                        <rect key="frame" x="18" y="110" width="303" height="17.5"/>
+                                        <rect key="frame" x="18" y="110" width="303" height="120.5"/>
                                         <string key="text" base64-UTF8="YES">
 RGF0YSBDb2xsZWN0ZWQgc3VtbWFyeSAtIFdlIGNvbGxlY3QgZGF0YSBvbiADdGhlIHVzYWdlIG9mIHRo
 aXMgYXBwIHRvIHVuZGVyc3RhbmQgaG93IHdlIGNhbiBtYWtlIGl0IGJldHRlciBhbmQgZW5zdXJlIHRo
@@ -334,13 +349,13 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIE-vB-YhV">
-                                        <rect key="frame" x="18" y="154.5" width="138" height="22.5"/>
+                                        <rect key="frame" x="18" y="257.5" width="138" height="22.5"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
                                         <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0r-KJ-mM9">
-                                        <rect key="frame" x="272" y="150" width="51" height="31"/>
+                                        <rect key="frame" x="272" y="253" width="51" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="Ch1-07-v8Z"/>
                                             <constraint firstAttribute="height" constant="31" id="fBP-eg-Pgv"/>
@@ -351,25 +366,25 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                         </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crashlytics is used to collect crash reports which help us fix any issues more quickly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zo1-R0-THr">
-                                        <rect key="frame" x="18" y="192" width="303" height="17.5"/>
+                                        <rect key="frame" x="18" y="295" width="303" height="51.5"/>
                                         <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                         <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4i-yE-NWM">
-                                        <rect key="frame" x="18" y="232" width="94" height="22.5"/>
+                                        <rect key="frame" x="18" y="369" width="94" height="22.5"/>
                                         <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
                                         <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-CP-CPh">
-                                        <rect key="frame" x="18" y="270" width="303" height="17.5"/>
+                                        <rect key="frame" x="18" y="407" width="303" height="69"/>
                                         <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                         <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7G-P8-gQE">
-                                        <rect key="frame" x="272" y="228" width="51" height="31"/>
+                                        <rect key="frame" x="272" y="365" width="51" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="7jA-an-11f"/>
                                             <constraint firstAttribute="width" constant="49" id="ow4-mu-PQV"/>
@@ -494,7 +509,6 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="SAVE"/>
                                 <connections>
-                                    <action selector="changePasswordButtonPressedWithSender:" destination="iNy-en-h1P" eventType="touchUpInside" id="Ohe-9r-W0y"/>
                                     <action selector="saveButtonPressedWithSender:" destination="f0W-XK-SQl" eventType="touchUpInside" id="GVm-tM-o08"/>
                                 </connections>
                             </button>

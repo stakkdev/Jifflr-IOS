@@ -31,6 +31,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var deleteAccountButton: JifflrButton!
     @IBOutlet weak var changePasswordButton: JifflrButton!
     @IBOutlet weak var changePasswordButtonTop: NSLayoutConstraint!
+    @IBOutlet weak var becomeModeratorButton: JifflrButton!
     
     var genders:[Gender] = []
     var genderPickerView: UIPickerView!
@@ -85,6 +86,7 @@ class ProfileViewController: BaseViewController {
         self.logoutButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         self.deleteAccountButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         self.changePasswordButton.setBackgroundColor(color: UIColor.mainPink)
+        self.becomeModeratorButton.setBackgroundColor(color: UIColor.mainGreen)
 
         let settingsBarButton = UIBarButtonItem(image: UIImage(named: "SettingsButton"), style: .plain, target: self, action: #selector(self.settingsButtonPressed))
         self.navigationItem.rightBarButtonItem = settingsBarButton
@@ -109,6 +111,7 @@ class ProfileViewController: BaseViewController {
         self.deleteAccountButton.setTitle("profile.deleteAccountButton.title".localized(), for: .normal)
         self.logoutButton.setTitle("profile.logoutButton.title".localized(), for: .normal)
         self.changePasswordButton.setTitle("profile.changePasswordButton.title".localized(), for: .normal)
+        self.becomeModeratorButton.setTitle("adBuilderNoAds.becomeModeratorButton.title".localized(), for: .normal)
     }
 
     func setupData() {
@@ -163,7 +166,8 @@ class ProfileViewController: BaseViewController {
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         toolbar.barStyle = UIBarStyle.default
         let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.pickerCloseButtonPressed))
-        toolbar.items = [closeButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [flexibleSpacer, closeButton]
         self.genderTextField.inputAccessoryView = toolbar
 
         self.datePicker = UIDatePicker()
@@ -180,7 +184,7 @@ class ProfileViewController: BaseViewController {
         let dateToolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         dateToolbar.barStyle = UIBarStyle.default
         let dateCloseButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dateCloseButtonPressed))
-        dateToolbar.items = [dateCloseButton]
+        dateToolbar.items = [flexibleSpacer, dateCloseButton]
         self.dobTextField.inputAccessoryView = dateToolbar
     }
 
@@ -262,6 +266,10 @@ class ProfileViewController: BaseViewController {
 
     @IBAction func changePasswordButtonPressed(sender: UIButton) {
         self.navigationController?.pushViewController(ChangePasswordViewController.instantiateFromStoryboard(), animated: true)
+    }
+    
+    @IBAction func becomeModeratorButtonPressed(sender: UIButton) {
+        self.navigationController?.pushViewController(ModerationTCsViewController.instantiateFromStoryboard(), animated: true)
     }
 }
 

@@ -203,24 +203,30 @@ class RegisterViewController: BaseViewController {
         if let invitationCode = self.invitationCodeTextField.text, !invitationCode.isEmpty {
             userInfo["invitationCode"] = invitationCode
         }
-
-        UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
-            self.registerButton.stopAnimating()
-            
-            guard error == nil else {
-                if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
-                    let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
-                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
-                        self.rootAfterRegistration()
-                        return
-                    })
-                } else {
-                    self.displayError(error: error)
-                }
-                return
+        
+        ModerationManager.shared.fetchModeratorStatus(key: ModeratorStatusKey.notModerator) { (moderatorStatus) in
+            if let moderatorStatus = moderatorStatus {
+                userInfo["moderatorStatus"] = moderatorStatus
             }
-
-            self.rootAfterRegistration()
+            
+            UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+                self.registerButton.stopAnimating()
+                
+                guard error == nil else {
+                    if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
+                        let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
+                        self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
+                            self.rootAfterRegistration()
+                            return
+                        })
+                    } else {
+                        self.displayError(error: error)
+                    }
+                    return
+                }
+                
+                self.rootAfterRegistration()
+            }
         }
     }
 
@@ -242,7 +248,8 @@ class RegisterViewController: BaseViewController {
         let toolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         toolbar.barStyle = UIBarStyle.default
         let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.pickerCloseButtonPressed))
-        toolbar.items = [closeButton]
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [flexibleSpacer, closeButton]
         self.genderTextField.inputAccessoryView = toolbar
 
         self.datePicker = UIDatePicker()
@@ -255,7 +262,7 @@ class RegisterViewController: BaseViewController {
         let dateToolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: 44.0))
         dateToolbar.barStyle = UIBarStyle.default
         let dateCloseButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.dateCloseButtonPressed))
-        dateToolbar.items = [dateCloseButton]
+        dateToolbar.items = [flexibleSpacer, dateCloseButton]
         self.dobTextField.inputAccessoryView = dateToolbar
     }
 

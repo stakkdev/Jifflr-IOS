@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -119,6 +119,13 @@
                                     <action selector="playAdsButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="sEN-vp-0YS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfJ-ci-v0d">
+                                <rect key="frame" x="164" y="639" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="moderateAdsButtonPressed:" destination="19K-4C-w7K" eventType="touchUpInside" id="Fdo-Na-9wI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -126,6 +133,7 @@
                             <constraint firstItem="IVW-Fa-OTs" firstAttribute="top" secondItem="QKi-dV-7Z2" secondAttribute="bottom" constant="44" id="63N-gM-ZP3"/>
                             <constraint firstItem="QKi-dV-7Z2" firstAttribute="centerY" secondItem="bxb-p9-NXm" secondAttribute="centerY" constant="2" id="7RI-eE-eUS"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="centerX" secondItem="FVB-7c-0dS" secondAttribute="trailing" constant="5" id="88a-TR-Sek"/>
+                            <constraint firstItem="lfJ-ci-v0d" firstAttribute="centerX" secondItem="YEq-1W-hQK" secondAttribute="centerX" id="Axs-Vo-zdl"/>
                             <constraint firstItem="1eR-zd-WWo" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="centerY" constant="5" id="BU8-eW-0LF"/>
                             <constraint firstItem="1eR-zd-WWo" firstAttribute="leading" secondItem="Uso-3q-TdT" secondAttribute="centerX" constant="5" id="LG4-B9-aQ0"/>
                             <constraint firstItem="Uso-3q-TdT" firstAttribute="centerY" secondItem="Xbd-Jb-48s" secondAttribute="centerY" constant="40" id="MT3-7o-qNA"/>
@@ -147,6 +155,7 @@
                             <constraint firstItem="QKi-dV-7Z2" firstAttribute="centerX" secondItem="YEq-1W-hQK" secondAttribute="centerX" id="n5U-bV-1m9"/>
                             <constraint firstItem="HY8-cC-C0f" firstAttribute="width" secondItem="Xbd-Jb-48s" secondAttribute="width" multiplier="1:3" id="oye-rR-4kg"/>
                             <constraint firstItem="IVW-Fa-OTs" firstAttribute="centerX" secondItem="Xbd-Jb-48s" secondAttribute="centerX" id="qKB-Sa-bJD"/>
+                            <constraint firstItem="lfJ-ci-v0d" firstAttribute="top" secondItem="FXj-Rh-x82" secondAttribute="bottom" constant="20" id="qmK-QF-7IE"/>
                             <constraint firstItem="FVB-7c-0dS" firstAttribute="top" secondItem="Uso-3q-TdT" secondAttribute="centerY" constant="5" id="rQh-nd-4dC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YEq-1W-hQK"/>
@@ -155,6 +164,10 @@
                         <outlet property="adBuilderButton" destination="1eR-zd-WWo" id="ka4-gG-rIC"/>
                         <outlet property="adsViewedButton" destination="Yfx-xH-dnu" id="OlL-wt-evR"/>
                         <outlet property="helpButton" destination="FXj-Rh-x82" id="JuE-ad-apc"/>
+                        <outlet property="helpButtonBottom" destination="WYz-Oz-mUF" id="juA-La-vry"/>
+                        <outlet property="helpButtonTop" destination="ejB-pA-r7a" id="eeY-qN-AKr"/>
+                        <outlet property="moderateButton" destination="lfJ-ci-v0d" id="P6Y-eS-vkl"/>
+                        <outlet property="moderateButtonTop" destination="qmK-QF-7IE" id="ymu-mW-uf8"/>
                         <outlet property="myMoneyButton" destination="FVB-7c-0dS" id="n7G-Di-Zfb"/>
                         <outlet property="myTeamButton" destination="HY8-cC-C0f" id="R4t-Ii-kBQ"/>
                         <outlet property="playAdsButton" destination="Uso-3q-TdT" id="SLe-Sk-Tlx"/>

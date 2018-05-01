@@ -22,6 +22,7 @@ struct Constants {
     struct Notifications {
         static let locationFound = Notification.Name(rawValue: "locationFound")
         static let locationPermissionsChanged = Notification.Name(rawValue: "locationPermissionsChanged")
+        static let tableViewHeightChanged = Notification.Name(rawValue: "tableViewHeightChanged")
     }
 
     struct FontNames {
@@ -228,6 +229,18 @@ struct CampaignStatusKey {
     static let nonCompliant = "nonCompliant"
     static let nonCompliantScheduled = "nonCompliantScheduled"
     static let prepareToDelete = "prepareToDelete"
+}
+
+struct ModeratorStatusKey {
+    static let notModerator = "notModerator"
+    static let isModerator = "isModerator"
+    static let awaitingApproval = "awaitingApproval"
+}
+
+struct AdViewMode {
+    static let normal = 1
+    static let preview = 2
+    static let moderator = 3
 }
 
 struct Day {
