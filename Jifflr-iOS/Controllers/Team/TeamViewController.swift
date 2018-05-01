@@ -18,25 +18,31 @@ class TeamViewController: BaseViewController {
 
     var myTeam: MyTeam? {
         didSet {
-            self.tableView.reloadData()
-
-            guard let graphData = self.myTeam?.graph, graphData.count > 0 else {
-                self.chart.showNoDataLabel()
-                return
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+                guard let graphData = self.myTeam?.graph, graphData.count > 0 else {
+                    self.chart.showNoDataLabel()
+                    return
+                }
+                self.chart.setData(data: graphData, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
             }
-            self.chart.setData(data: graphData, color: UIColor.mainOrange, fill: true, targetData: nil, targetColor: nil)
         }
     }
 
     var friends:[MyTeamFriends] = [] {
         didSet {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
     var pendingFriends:[PendingUser] = [] {
         didSet {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -84,7 +90,9 @@ class TeamViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         if !self.isDismissingContacts {
-            self.updateData()
+            DispatchQueue.global(qos: .background).async {
+                self.updateData()
+            }
         }
         self.isDismissingContacts = false
     }
