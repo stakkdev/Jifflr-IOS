@@ -189,12 +189,16 @@ class DashboardViewController: BaseViewController {
                 self.myAds = myAds
             }
             
-            ModerationManager.shared.fetchAd { (advert) in
-                self.moderatorAdvert = advert
-            }
+            self.updateModerationAd()
         } else {
             self.updateLocalData()
             self.updateLocalAdvert()
+        }
+    }
+    
+    func updateModerationAd() {
+        ModerationManager.shared.fetchAd { (advert) in
+            self.moderatorAdvert = advert
         }
     }
 
@@ -279,7 +283,11 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
-        guard let advert = self.moderatorAdvert, advert.isCMS else { return }
+        guard let advert = self.moderatorAdvert, advert.isCMS else {
+            self.displayError(error: ErrorMessage.noAdsToModerate)
+            self.updateModerationAd()
+            return
+        }
         let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.moderator)
         self.navigationController?.pushViewController(vc, animated: true)
         self.moderatorAdvert = nil

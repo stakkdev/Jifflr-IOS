@@ -76,6 +76,7 @@
 "error.applyModeratorServer" = "Unable to apply. Please check your internet connection and try again.";
 "error.moderationValidation" = "Unable to submit. Please ensure you have selected valid moderation feedback.";
 "error.moderationSubmitFailed" = "Unable to submit moderation feedback. Please check your internet connection and try again.";
+"error.noAdsToModerate" = "There are currently no adverts to moderate. Please try again later.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
