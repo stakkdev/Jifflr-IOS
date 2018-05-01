@@ -77,6 +77,7 @@ public enum ErrorMessage {
     case moderationValidation
     case moderationSubmitFailed
     case noAdsToModerate
+    case invalidAnswersRequired
 
     public var failureTitle: String {
         switch self {
@@ -221,6 +222,8 @@ public enum ErrorMessage {
             return "error.moderationSubmitFailed".localized()
         case .noAdsToModerate:
             return "error.noAdsToModerate".localized()
+        case .invalidAnswersRequired:
+            return "error.invalidAnswersRequired".localized()
         }
     }
 }

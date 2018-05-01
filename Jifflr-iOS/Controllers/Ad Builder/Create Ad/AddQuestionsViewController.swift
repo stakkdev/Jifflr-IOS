@@ -84,6 +84,8 @@ class AddQuestionsViewController: BaseViewController {
         self.setupLocalization()
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         
+        self.answerTypeTextField.animate()
+        
         self.urlsContainerView.backgroundColor = UIColor.clear
         self.websiteTextField.addLeftView(image: UIImage(named: "URLAdBuilderWebsite"))
         self.facebookTextField.addLeftView(image: UIImage(named: "URLAdBuilderFacebook"))
@@ -100,6 +102,8 @@ class AddQuestionsViewController: BaseViewController {
         
         self.answersContainerView.isHidden = true
         self.urlsContainerView.isHidden = true
+        
+        self.answersRequiredTextField.delegate = self
         
         let questionSwitch = UISwitch()
         questionSwitch.addTarget(self, action: #selector(self.questionSwitchToggled(sender:)), for: .valueChanged)
@@ -163,6 +167,8 @@ class AddQuestionsViewController: BaseViewController {
     }
     
     func handleQuestionTypesFetch() {
+        self.answerTypeTextField.stopAnimating()
+        
         if self.content.indices.contains(self.questionNumber - 1) {
             let question = self.content[self.questionNumber - 1].question
             self.questionTextView.text = question.text
@@ -469,5 +475,18 @@ extension AddQuestionsViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.answerTypeTextField.questionType = self.questionTypes[row]
         self.drawInputUI(questionType: self.questionTypes[row])
+    }
+}
+
+extension AddQuestionsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == self.answersRequiredTextField {
+            if let requiredAnswersText = self.answersRequiredTextField.text, let requiredAnswers = Int(requiredAnswersText) {
+                if requiredAnswers <= 0 || requiredAnswers > 5 {
+                    textField.text = ""
+                    self.displayError(error: ErrorMessage.invalidAnswersRequired)
+                }
+            }
+        }
     }
 }

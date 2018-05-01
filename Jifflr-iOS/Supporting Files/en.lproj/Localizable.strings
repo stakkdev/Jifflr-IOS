@@ -49,6 +49,7 @@
 "error.mediaSaveFailed" = "Unable to save image/video, please try again.";
 "error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
 "error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
+"error.invalidAnswersRequired" = "Please enter a valid number of answers required.";
 "error.saveAd" = "Unable to save ad. Please check your internet connection and try again.";
 "error.adBuilderOverviewFetchFailed" = "Unable to fetch data. Please check your internet connection and try again.";
 "error.templateFetchFailed" = "Unable to fetch templates. Please check your internet connection and try again.";
