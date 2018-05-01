@@ -81,4 +81,57 @@ class ModerationManager: NSObject {
             completion(language)
         }
     }
+    
+    func fetchAd(completion: @escaping (Advert?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+//        PFCloud.callFunction(inBackground: "fetch-ads", withParameters: ["user": user.objectId!]) { responseJSON, error in
+//            if let responseJSON = responseJSON as? [String: Any], error == nil {
+//
+//                var adverts:[Advert] = []
+//                if let advert = responseJSON["defaultAd"] as? Advert {
+//                    adverts.append(advert)
+//                }
+//
+//                if let cmsAds = responseJSON["cmsAds"] as? [Advert] {
+//                    adverts += cmsAds
+//                }
+//
+//                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
+//                    if success == true, error == nil {
+//                        print("\(adverts.count) adverts pinned.")
+//                    }
+//
+//                    completion()
+//                })
+//            } else {
+//                completion()
+//            }
+//        }
+        
+        let query = Advert.query()
+        query?.whereKey("creator", notEqualTo: user)
+        query?.whereKey("isCMS", equalTo: true)
+        query?.includeKey("questions")
+        query?.includeKey("questions.answers")
+        query?.includeKey("questions.type")
+        query?.includeKey("details")
+        query?.includeKey("details.template")
+        query?.getFirstObjectInBackground(block: { (advert, error) in
+            guard let advert = advert as? Advert, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            advert.details?.image?.getDataInBackground(block: { (data, error) in
+                if let data = data, error == nil {
+                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                    let success = MediaManager.shared.save(data: data, id: advert.details?.objectId, fileExtension: fileExtension)
+                    print("Media: \(advert.details?.objectId ?? "") saved to File Manager: \(success)")
+                }
+                
+                completion(advert)
+            })
+        })
+    }
 }

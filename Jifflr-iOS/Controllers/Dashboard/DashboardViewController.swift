@@ -12,6 +12,7 @@ class DashboardViewController: BaseViewController {
 
     var timer: Timer?
     var advert: Advert?
+    var moderatorAdvert: Advert?
     var myAds: MyAds?
     var internetAlertShown = false
 
@@ -188,6 +189,9 @@ class DashboardViewController: BaseViewController {
                 self.myAds = myAds
             }
             
+            ModerationManager.shared.fetchAd { (advert) in
+                self.moderatorAdvert = advert
+            }
         } else {
             self.updateLocalData()
             self.updateLocalAdvert()
@@ -275,9 +279,9 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
-        guard let advert = self.advert, advert.isCMS else { return }
-        //let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.moderator)
-        let vc = ModerationFeedbackViewController.instantiateFromStoryboard(advert: advert)
+        guard let advert = self.moderatorAdvert, advert.isCMS else { return }
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.moderator)
         self.navigationController?.pushViewController(vc, animated: true)
+        self.moderatorAdvert = nil
     }
 }
