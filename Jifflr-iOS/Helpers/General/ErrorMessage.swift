@@ -75,6 +75,7 @@ public enum ErrorMessage {
     case applyModerator
     case applyModeratorFailedServer
     case moderationValidation
+    case moderationSubmitFailed
 
     public var failureTitle: String {
         switch self {
@@ -215,6 +216,8 @@ public enum ErrorMessage {
             return "error.applyModeratorServer".localized()
         case .moderationValidation:
             return "error.moderationValidation".localized()
+        case .moderationSubmitFailed:
+            return "error.moderationSubmitFailed".localized()
         }
     }
 }
@@ -234,6 +237,7 @@ public enum AlertMessage {
     case scheduledDeleteCampaign
     case campaignCopied
     case applyModerator
+    case feedbackSubmitted
 
     public var title: String {
         switch self {
@@ -265,6 +269,8 @@ public enum AlertMessage {
             return "alert.campaignCopied.title".localized()
         case .applyModerator:
             return "alert.applyModerator.title".localized()
+        case .feedbackSubmitted:
+            return "alert.feedbackSubmitted.title".localized()
         }
     }
 
@@ -298,6 +304,8 @@ public enum AlertMessage {
             return "alert.campaignCopied.message".localized()
         case .applyModerator:
             return "alert.applyModerator.message".localized()
+        case .feedbackSubmitted:
+            return "alert.feedbackSubmitted.message".localized()
         }
     }
 }

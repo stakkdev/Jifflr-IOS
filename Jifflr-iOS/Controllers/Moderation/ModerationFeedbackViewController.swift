@@ -17,6 +17,7 @@ class ModerationFeedbackViewController: BaseViewController {
     @IBOutlet weak var tableView: AdjustedHeightTableView!
     @IBOutlet weak var submitButton: JifflrButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var advert: Advert!
     var expandedIndexpaths:[IndexPath] = []
@@ -24,6 +25,7 @@ class ModerationFeedbackViewController: BaseViewController {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.setView(hidden: false)
             }
         }
     }
@@ -67,6 +69,8 @@ class ModerationFeedbackViewController: BaseViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.separatorColor = UIColor.clear
         self.tableView.isScrollEnabled = false
+        
+        self.setView(hidden: true)
     }
     
     func setupLocalization() {
@@ -94,11 +98,23 @@ class ModerationFeedbackViewController: BaseViewController {
         }
     }
     
+    func setView(hidden: Bool) {
+        if hidden {
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.stopAnimating()
+        }
+        
+        self.passedLabel.isHidden = hidden
+        self.passedTextField.isHidden = hidden
+        self.failedLabel.isHidden = hidden
+        self.tableView.isHidden = hidden
+        self.submitButton.isHidden = hidden
+        self.submitButton.isEnabled = !hidden
+    }
+    
     func setupData() {
-        self.passedTextField.animate()
         ModerationManager.shared.fetchAllModeratorFeedback { (feedback) in
-            self.passedTextField.stopAnimating()
-            
             guard feedback.count > 0 else {
                 self.displayError(error: ErrorMessage.noInternetConnection)
                 return
@@ -119,9 +135,39 @@ class ModerationFeedbackViewController: BaseViewController {
     }
     
     @IBAction func submitButtonPressed(sender: UIButton) {
+        guard let user = Session.shared.currentUser else { return }
+        
         guard self.validateInput() else {
             self.displayError(error: ErrorMessage.moderationValidation)
             return
+        }
+        
+        self.submitButton.animate()
+        
+        let moderatorAdReview = ModeratorAdReview()
+        moderatorAdReview.advert = self.advert
+        moderatorAdReview.moderator = user
+        
+        if let passedFeedback = self.passedFeedback, self.passedTextField.tag == 1 {
+            let passedFeedbackArray = [passedFeedback]
+            moderatorAdReview.feedback = passedFeedbackArray
+            moderatorAdReview.approved = true
+        } else {
+            moderatorAdReview.feedback = self.selectedFailureFeedbacks
+            moderatorAdReview.approved = false
+        }
+        
+        moderatorAdReview.saveInBackground { (success, error) in
+            self.submitButton.stopAnimating()
+            guard success == true, error == nil else {
+                self.displayError(error: ErrorMessage.moderationSubmitFailed)
+                return
+            }
+            
+            let alert = AlertMessage.feedbackSubmitted
+            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in
+                self.navigationController?.popToRootViewController(animated: true)
+            })
         }
     }
     

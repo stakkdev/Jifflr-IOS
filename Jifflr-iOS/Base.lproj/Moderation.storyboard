@@ -268,9 +268,17 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                                             <action selector="submitButtonPressedWithSender:" destination="kdy-7k-6xI" eventType="touchUpInside" id="c3r-E9-g7C"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Tob-St-qzg">
+                                        <rect key="frame" x="169" y="305" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="iRf-e5-c3o"/>
+                                            <constraint firstAttribute="width" constant="37" id="mro-Au-9UZ"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Gau-PR-K6Z" firstAttribute="leading" secondItem="5ua-tj-jBU" secondAttribute="leading" constant="7" id="2qi-hS-cry"/>
+                                    <constraint firstItem="Tob-St-qzg" firstAttribute="centerY" secondItem="07L-0d-Eci" secondAttribute="centerY" id="EUt-8f-KkS"/>
                                     <constraint firstItem="32w-dy-KTl" firstAttribute="top" secondItem="tpm-C6-CHX" secondAttribute="bottom" constant="8" id="IyZ-iS-Pcc"/>
                                     <constraint firstItem="5ua-tj-jBU" firstAttribute="top" secondItem="Gau-PR-K6Z" secondAttribute="bottom" constant="8" id="Qh7-g4-RQG"/>
                                     <constraint firstItem="5ua-tj-jBU" firstAttribute="leading" secondItem="32w-dy-KTl" secondAttribute="leading" id="R2y-pM-E5u"/>
@@ -284,6 +292,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                                     <constraint firstItem="32w-dy-KTl" firstAttribute="leading" secondItem="07L-0d-Eci" secondAttribute="leading" constant="18" id="mHa-LN-iE3"/>
                                     <constraint firstItem="yid-P3-p59" firstAttribute="leading" secondItem="5ua-tj-jBU" secondAttribute="leading" id="n3M-nf-E5m"/>
                                     <constraint firstItem="yid-P3-p59" firstAttribute="top" secondItem="5ua-tj-jBU" secondAttribute="bottom" constant="40" id="qNZ-TF-AU5"/>
+                                    <constraint firstItem="Tob-St-qzg" firstAttribute="centerX" secondItem="07L-0d-Eci" secondAttribute="centerX" id="wQf-9g-v9U"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -299,6 +308,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                         <viewLayoutGuide key="safeArea" id="WI6-e8-sg5"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Tob-St-qzg" id="QXy-4Q-bmO"/>
                         <outlet property="failedLabel" destination="Gau-PR-K6Z" id="EV7-2T-lDh"/>
                         <outlet property="passedLabel" destination="tpm-C6-CHX" id="TTB-sq-7KE"/>
                         <outlet property="passedTextField" destination="32w-dy-KTl" id="Tqh-H1-otS"/>
