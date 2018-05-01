@@ -32,8 +32,6 @@ class URLFeedbackViewController: FeedbackViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.validateInput()
-        
         if Constants.isSmallScreen {
             self.stackView.spacing = 10.0
         }
@@ -43,13 +41,8 @@ class URLFeedbackViewController: FeedbackViewController {
         self.twitterButton.setImage(UIImage(named: "URLButtonTwitter"), for: .normal)
         self.onlineStoreButton.setImage(UIImage(named: "URLButtonOnlineStore"), for: .normal)
         self.appStoreButton.setImage(UIImage(named: "URLButtonAppStore"), for: .normal)
-    }
-    
-    func validateInput() {
-        guard let answers = self.content.first?.answers, answers.count == 6 else {
-            self.nextButtonPressed(sender: self.nextAdButton)
-            return
-        }
+        
+        self.setupStackView()
     }
     
     override func setupLocalization() {
@@ -62,6 +55,35 @@ class URLFeedbackViewController: FeedbackViewController {
         self.appStoreButton.setTitle("urlLinks.appStore.title".localized(), for: .normal)
     }
     
+    func setupStackView() {
+        guard let content = self.content.first else { return }
+        
+        if !content.answers.contains(where: { $0.urlType == URLTypes.website }) {
+            self.stackView.removeArrangedSubview(self.websiteButton)
+            self.websiteButton.removeFromSuperview()
+        }
+        
+        if !content.answers.contains(where: { $0.urlType == URLTypes.facebook }) {
+            self.stackView.removeArrangedSubview(self.facebookButton)
+            self.facebookButton.removeFromSuperview()
+        }
+        
+        if !content.answers.contains(where: { $0.urlType == URLTypes.twitter }) {
+            self.stackView.removeArrangedSubview(self.twitterButton)
+            self.twitterButton.removeFromSuperview()
+        }
+        
+        if !content.answers.contains(where: { $0.urlType == URLTypes.onlineStore }) {
+            self.stackView.removeArrangedSubview(self.onlineStoreButton)
+            self.onlineStoreButton.removeFromSuperview()
+        }
+        
+        if !content.answers.contains(where: { $0.urlType == URLTypes.iOS }) {
+            self.stackView.removeArrangedSubview(self.appStoreButton)
+            self.appStoreButton.removeFromSuperview()
+        }
+    }
+    
     override func validateAnswers() -> Bool {
         self.createQuestionAnswers()
         
@@ -69,27 +91,28 @@ class URLFeedbackViewController: FeedbackViewController {
     }
     
     @IBAction func websiteButtonPressed(sender: UIButton) {
-        self.openLink(index: 0)
+        self.openLink(urlType: URLTypes.website)
     }
     
     @IBAction func facebookButtonPressed(sender: UIButton) {
-        self.openLink(index: 1)
+        self.openLink(urlType: URLTypes.facebook)
     }
     
     @IBAction func twitterButtonPressed(sender: UIButton) {
-        self.openLink(index: 2)
+        self.openLink(urlType: URLTypes.twitter)
     }
     
     @IBAction func onlineStoreButtonPressed(sender: UIButton) {
-        self.openLink(index: 3)
+        self.openLink(urlType: URLTypes.onlineStore)
     }
     
     @IBAction func appStoreButtonPressed(sender: UIButton) {
-        self.openLink(index: 4)
+        self.openLink(urlType: URLTypes.iOS)
     }
     
-    func openLink(index: Int) {
-        guard let answer = self.content.first?.answers[index] else { return }
+    func openLink(urlType: String) {
+        guard let answers = self.content.first?.answers.filter({ $0.urlType == urlType }) else { return }
+        guard let answer = answers.first else { return }
         guard let url = URL(string: answer.text) else { return }
         
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
