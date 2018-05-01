@@ -35,7 +35,9 @@ class AdBuilderLandingViewController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
         
-        self.spinner.startAnimating()
+        DispatchQueue.main.async {
+            self.spinner.startAnimating()
+        }
     }
     
     func setupLocalization() {
@@ -43,14 +45,16 @@ class AdBuilderLandingViewController: BaseViewController {
     }
     
     func setupData() {
-        if Reachability.isConnectedToNetwork() {
-            AdBuilderManager.shared.countUserAds(completion: { (count) in
-                self.routeBasedOnUserAdCount(count: count)
-            })
-        } else {
-            AdBuilderManager.shared.countLocalUserAds(completion: { (count) in
-                self.routeBasedOnUserAdCount(count: count)
-            })
+        DispatchQueue.global(qos: .background).async {
+            if Reachability.isConnectedToNetwork() {
+                AdBuilderManager.shared.countUserAds(completion: { (count) in
+                    self.routeBasedOnUserAdCount(count: count)
+                })
+            } else {
+                AdBuilderManager.shared.countLocalUserAds(completion: { (count) in
+                    self.routeBasedOnUserAdCount(count: count)
+                })
+            }
         }
     }
     
@@ -59,8 +63,6 @@ class AdBuilderLandingViewController: BaseViewController {
             self.pushToNoAds()
             return
         }
-
-        self.spinner.stopAnimating()
 
         if count == 0 {
             self.pushToNoAds()
