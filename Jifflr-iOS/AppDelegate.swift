@@ -44,6 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configAdProviders()
         self.configKeyboard()
         self.configLanguage()
+        
+        let homeDir = NSHomeDirectory()
+        print("Home directory: \(homeDir)")
 
         return true
     }

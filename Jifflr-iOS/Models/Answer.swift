@@ -56,6 +56,15 @@ final class Answer: PFObject {
             self["questionType"] = newValue
         }
     }
+    
+    var urlType: String {
+        get {
+            return self["urlType"] as? String ?? ""
+        }
+        set {
+            self["urlType"] = newValue
+        }
+    }
 }
 
 extension Answer: PFSubclassing {

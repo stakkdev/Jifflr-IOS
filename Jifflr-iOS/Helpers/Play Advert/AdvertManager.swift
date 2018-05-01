@@ -16,13 +16,13 @@ class AdvertManager: NSObject {
 
     func fetch(completion: @escaping () -> Void) {
         guard let user = Session.shared.currentUser else { return }
-//
-//        self.countLocal { (count) in
-//            guard self.shouldFetch(count: count) else {
-//                completion()
-//                return
-//            }
-//
+
+        self.countLocal { (count) in
+            guard self.shouldFetch(count: count) else {
+                completion()
+                return
+            }
+
 //            PFCloud.callFunction(inBackground: "fetch-ads", withParameters: ["user": user.objectId!]) { responseJSON, error in
 //                if let responseJSON = responseJSON as? [String: Any], error == nil {
 //
@@ -46,77 +46,80 @@ class AdvertManager: NSObject {
 //                    completion()
 //                }
 //            }
-//        }
-
-        let query = Advert.query()
-        query?.whereKey("creator", notEqualTo: user)
-        query?.includeKey("questions")
-        query?.includeKey("questions.answers")
-        query?.includeKey("questions.type")
-        query?.includeKey("details")
-        query?.includeKey("details.template")
-        query?.findObjectsInBackground(block: { (adverts, error) in
-            guard let adverts = adverts as? [Advert], error == nil else {
-                completion()
-                return
-            }
             
-            PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
-                let group = DispatchGroup()
-                
-                for advert in adverts {
-                    group.enter()
-                    PFObject.pinAll(inBackground: advert.questions, withName: self.pinName, block: { (success, error) in
-                        group.leave()
-                    })
-                    
-                    for question in advert.questions {
-                        group.enter()
-                        PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                        
-                        group.enter()
-                        question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                    }
-                    
-                    if let details = advert.details {
-                        group.enter()
-                        details.pinInBackground(withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                        
-                        group.enter()
-                        details.template?.pinInBackground(withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                        
-                        group.enter()
-                        details.image?.getDataInBackground(block: { (data, error) in
-                            if let data = data, error == nil {
-                                let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-                                let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
-                                print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
-                            }
-                            
-                            group.leave()
-                        })
-                    }
+            let query = Advert.query()
+            query?.whereKey("creator", notEqualTo: user)
+            query?.includeKey("questions")
+            query?.includeKey("questions.answers")
+            query?.includeKey("questions.type")
+            query?.includeKey("details")
+            query?.includeKey("details.template")
+            query?.findObjectsInBackground(block: { (adverts, error) in
+                guard let adverts = adverts as? [Advert], error == nil else {
+                    completion()
+                    return
                 }
                 
-                group.notify(queue: .main, execute: {
-                    completion()
+                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
+                    let group = DispatchGroup()
+                    
+                    for advert in adverts {
+                        group.enter()
+                        PFObject.pinAll(inBackground: advert.questions, withName: self.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                        
+                        for question in advert.questions {
+                            group.enter()
+                            PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                            
+                            group.enter()
+                            question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                        }
+                        
+                        if let details = advert.details {
+                            group.enter()
+                            details.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                            
+                            group.enter()
+                            details.template?.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+                            
+                            group.enter()
+                            details.image?.getDataInBackground(block: { (data, error) in
+                                if let data = data, error == nil {
+                                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                                    let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
+                                    print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                }
+                                
+                                group.leave()
+                            })
+                        }
+                    }
+                    
+                    group.notify(queue: .main, execute: {
+                        completion()
+                    })
                 })
             })
-        })
+        }
     }
 
     func countLocal(completion: @escaping (Int) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+        
         let query = Advert.query()
         query?.fromPin(withName: self.pinName)
         query?.whereKey("isCMS", equalTo: true)
+        query?.whereKey("creator", notEqualTo: user)
         query?.countObjectsInBackground(block: { (count, error) in
             guard error == nil else {
                 completion(0)

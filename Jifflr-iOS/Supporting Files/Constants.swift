@@ -237,6 +237,15 @@ struct ModeratorStatusKey {
     static let awaitingApproval = "awaitingApproval"
 }
 
+struct URLTypes {
+    static let website = "website"
+    static let facebook = "facebook"
+    static let twitter = "twitter"
+    static let iOS = "iOS"
+    static let android = "android"
+    static let onlineStore = "onlineStore"
+}
+
 struct AdViewMode {
     static let normal = 1
     static let preview = 2
