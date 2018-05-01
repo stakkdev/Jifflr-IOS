@@ -181,8 +181,6 @@ class AddQuestionsViewController: BaseViewController {
         if sender.isOn {
             self.questionTextView.text = "addQuestions.questionTextField.placeholder".localized()
             self.questionTextView.isUserInteractionEnabled = true
-            self.answersContainerView.isHidden = false
-            self.answersContainerView.isUserInteractionEnabled = true
             self.answerTypeTextField.isEnabled = true
             
             guard self.questionTypes.count > 0 else { return }
