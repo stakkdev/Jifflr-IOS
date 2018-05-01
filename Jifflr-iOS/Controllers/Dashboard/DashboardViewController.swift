@@ -65,7 +65,6 @@ class DashboardViewController: BaseViewController {
 
         self.timer?.invalidate()
         self.timer = nil
-        self.advert = nil
     }
 
     func setupUI() {
@@ -253,6 +252,8 @@ class DashboardViewController: BaseViewController {
                 navController.isNavigationBarHidden = true
                 self.navigationController?.present(navController, animated: false, completion: nil)
             }
+            
+            self.advert = nil
         } else {
             self.rootLocationRequiredViewController()
         }

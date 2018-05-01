@@ -156,6 +156,21 @@ class MyAdsManager: NSObject {
         })
     }
     
+    func unpinAllBarChartPoints(completion: @escaping () -> Void) {
+        let query = BarChartPoint.query()
+        query?.fromPin(withName: self.pinName)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let objects = objects, error == nil else {
+                completion()
+                return
+            }
+            
+            PFObject.unpinAll(inBackground: objects, withName: self.pinName, block: { (success, error) in
+                completion()
+            })
+        })
+    }
+    
     func fetchUserAds(completion: @escaping ([Advert]) -> Void) {
         guard let currentUser = Session.shared.currentUser else { return }
         
@@ -221,10 +236,11 @@ class MyAdsManager: NSObject {
                         graph.append(graphPoint)
                     }
         
-                    PFObject.pinAll(inBackground: graph, withName: self.pinName) { (success, error) in
-                        completion(graph)
+                    self.unpinAllBarChartPoints {
+                        PFObject.pinAll(inBackground: graph, withName: self.pinName) { (success, error) in
+                            completion(graph)
+                        }
                     }
-        
 //                }
 //
 //                completion(nil)
