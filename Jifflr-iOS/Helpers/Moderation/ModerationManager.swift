@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ModerationManager: NSObject {
     static let shared = ModerationManager()
@@ -127,11 +128,32 @@ class ModerationManager: NSObject {
                 if let data = data, error == nil {
                     let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
                     let success = MediaManager.shared.save(data: data, id: advert.details?.objectId, fileExtension: fileExtension)
-                    print("Media: \(advert.details?.objectId ?? "") saved to File Manager: \(success)")
+                    print("Moderation Media: \(advert.details?.objectId ?? "") saved to File Manager: \(success)")
                 }
                 
                 completion(advert)
             })
         })
+    }
+    
+    func fetchModeratorFeedbackCategories(completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {
+        self.fetchLanguage(languageCode: Session.shared.currentLanguage) { (language) in
+            guard let language = language else {
+                completion([])
+                return
+            }
+            
+            let query = ModeratorFeedbackCategory.query()
+            query?.whereKey("language", equalTo: language)
+            query?.whereKey("passed", equalTo: false)
+            query?.findObjectsInBackground(block: { (objects, error) in
+                guard let categories = objects as? [ModeratorFeedbackCategory], error == nil else {
+                    completion([])
+                    return
+                }
+                
+                completion(categories)
+            })
+        }
     }
 }

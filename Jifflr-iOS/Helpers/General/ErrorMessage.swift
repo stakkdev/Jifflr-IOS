@@ -244,6 +244,7 @@ public enum AlertMessage {
     case campaignCopied
     case applyModerator
     case feedbackSubmitted
+    case flagAdSuccess
 
     public var title: String {
         switch self {
@@ -277,6 +278,8 @@ public enum AlertMessage {
             return "alert.applyModerator.title".localized()
         case .feedbackSubmitted:
             return "alert.feedbackSubmitted.title".localized()
+        case .flagAdSuccess:
+            return "alert.flagAdSuccess.title".localized()
         }
     }
 
@@ -312,6 +315,8 @@ public enum AlertMessage {
             return "alert.applyModerator.message".localized()
         case .feedbackSubmitted:
             return "alert.feedbackSubmitted.message".localized()
+        case .flagAdSuccess:
+            return "alert.flagAdSuccess.message".localized()
         }
     }
 }

@@ -167,10 +167,36 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {
-        AdvertManager.shared.flag(advert: self.advert.objectId!) { (error) in
-            if let error = error {
-                self.displayError(error: error)
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        spinner.startAnimating()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+        
+        ModerationManager.shared.fetchModeratorFeedbackCategories { (categories) in
+            
+            let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
+            self.navigationItem.rightBarButtonItem = flagBarButton
+            
+            let title = "alert.flagAd.title".localized()
+            let message = "alert.flagAd.message".localized()
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelTitle = "alert.notifications.cancelButton".localized()
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { (action) in }
+            alertController.addAction(cancelAction)
+            
+            for category in categories {
+                let deleteAction = UIAlertAction(title: category.title, style: .default) { (action) in
+                    AdvertManager.shared.flag(advert: self.advert, moderatorFeedbackCategory: category)
+                    
+                    let alert = AlertMessage.flagAdSuccess
+                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in
+                        self.dismissButtonPressed()
+                    })
+                }
+                alertController.addAction(deleteAction)
             }
+            
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     

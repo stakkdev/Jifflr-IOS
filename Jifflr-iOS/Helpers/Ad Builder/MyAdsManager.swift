@@ -66,7 +66,7 @@ class MyAdsManager: NSObject {
                             if let data = data, error == nil {
                                 let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
                                 let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
-                                print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                print("MyAds Media: \(details.objectId ?? "") saved to File Manager: \(success)")
                             }
                             
                             group.leave()

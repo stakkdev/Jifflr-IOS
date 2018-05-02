@@ -97,7 +97,7 @@ class AdvertManager: NSObject {
                                 if let data = data, error == nil {
                                     let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
                                     let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
-                                    print("Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                    print("Ads Media: \(details.objectId ?? "") saved to File Manager: \(success)")
                                 }
                                 
                                 group.leave()
@@ -229,18 +229,14 @@ class AdvertManager: NSObject {
         return true
     }
     
-    func flag(advert: String, completion: @escaping (ErrorMessage?) -> Void) {
+    func flag(advert: Advert, moderatorFeedbackCategory: ModeratorFeedbackCategory) {
         guard let user = Session.shared.currentUser else { return }
         
-        let parameters = ["user": user.objectId!, "advert": advert]
-        PFCloud.callFunction(inBackground: "flag-ad", withParameters: parameters) { responseJSON, error in
-            guard error == nil else {
-                completion(ErrorMessage.flagAdFailed)
-                return
-            }
-            
-            completion(nil)
-        }
+        let userFlaggedAd = UserFlaggedAd()
+        userFlaggedAd.user = user
+        userFlaggedAd.advert = advert
+        userFlaggedAd.category = moderatorFeedbackCategory
+        userFlaggedAd.saveEventually()
     }
     
     func unpin(advert: Advert, completion: @escaping () -> Void) {
