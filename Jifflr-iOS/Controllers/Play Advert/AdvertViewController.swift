@@ -23,6 +23,7 @@ class AdvertViewController: BaseViewController {
     var advert: Advert!
     var questions: [Question] = []
     var answers: [Answer] = []
+    var rewardedAdmob = false
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -175,11 +176,16 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
 
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        self.rewardedAdmob = true
         self.dismiss(animated: false)
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
-        self.presentFeedback()
+        if self.rewardedAdmob {
+            self.presentFeedback()
+        } else {
+            self.dismiss(animated: false)
+        }
     }
 
     func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
