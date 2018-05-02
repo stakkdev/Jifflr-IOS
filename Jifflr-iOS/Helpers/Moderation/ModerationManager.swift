@@ -137,23 +137,49 @@ class ModerationManager: NSObject {
     }
     
     func fetchModeratorFeedbackCategories(completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {
-        self.fetchLanguage(languageCode: Session.shared.currentLanguage) { (language) in
-            guard let language = language else {
-                completion([])
-                return
-            }
-            
-            let query = ModeratorFeedbackCategory.query()
-            query?.whereKey("language", equalTo: language)
-            query?.whereKey("passed", equalTo: false)
-            query?.findObjectsInBackground(block: { (objects, error) in
-                guard let categories = objects as? [ModeratorFeedbackCategory], error == nil else {
+        if Reachability.isConnectedToNetwork() {
+            self.fetchLanguage(languageCode: Session.shared.currentLanguage) { (language) in
+                guard let language = language else {
                     completion([])
                     return
                 }
                 
+                let query = ModeratorFeedbackCategory.query()
+                query?.whereKey("language", equalTo: language)
+                query?.whereKey("passed", equalTo: false)
+                query?.findObjectsInBackground(block: { (objects, error) in
+                    guard let categories = objects as? [ModeratorFeedbackCategory], error == nil else {
+                        self.fetchLocalModeratorFeedbackCategories(completion: { (categories) in
+                            completion(categories)
+                        })
+                        return
+                    }
+                    
+                    PFObject.pinAll(inBackground: categories, withName: AdvertManager.shared.pinName, block: { (success, error) in
+                        print("ModeratorFeedbackCategory pinned: \(success)")
+                    })
+                    
+                    completion(categories)
+                })
+            }
+        } else {
+            self.fetchLocalModeratorFeedbackCategories(completion: { (categories) in
                 completion(categories)
             })
         }
+    }
+    
+    func fetchLocalModeratorFeedbackCategories(completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {
+        let query = ModeratorFeedbackCategory.query()
+        query?.whereKey("passed", equalTo: false)
+        query?.fromPin(withName: AdvertManager.shared.pinName)
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let categories = objects as? [ModeratorFeedbackCategory], error == nil else {
+                completion([])
+                return
+            }
+            
+            completion(categories)
+        })
     }
 }
