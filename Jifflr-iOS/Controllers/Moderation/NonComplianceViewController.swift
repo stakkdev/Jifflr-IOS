@@ -11,6 +11,7 @@ import UIKit
 class NonComplianceViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var advert: Advert!
     var moderatorFeedbacks: [ModeratorFeedback] = [] {
@@ -53,8 +54,10 @@ class NonComplianceViewController: BaseViewController {
     }
     
     func setupData() {
+        self.spinner.startAnimating()
         ModerationManager.shared.fetchNonComplianceFeedback(advert: self.advert) { (moderatorFeedback) in
             self.moderatorFeedbacks = moderatorFeedback
+            self.spinner.stopAnimating()
         }
     }
 }

@@ -287,20 +287,24 @@ class CampaignOverviewViewController: BaseViewController {
     }
     
     func handleNonComplianceFeedback() {
-        let title = "nonCompliance.alert.title".localized()
-        let message = "nonCompliance.alert.message".localized()
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let dismissAction = UIAlertAction(title: "error.dismiss".localized(), style: .cancel, handler: nil)
-        alertController.addAction(dismissAction)
-        
-        let viewAction = UIAlertAction(title: "nonCompliance.alert.viewAction".localized(), style: .default) { (action) in
-            let vc = NonComplianceViewController.instantiateFromStoryboard(advert: self.campaign.advert)
-            self.navigationController?.pushViewController(vc, animated: true)
+        ModerationManager.shared.shouldShowNonComplianceFeedback(campaign: self.campaign) { (yes) in
+            if yes {
+                let title = "nonCompliance.alert.title".localized()
+                let message = "nonCompliance.alert.message".localized()
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+                let dismissAction = UIAlertAction(title: "error.dismiss".localized(), style: .cancel, handler: nil)
+                alertController.addAction(dismissAction)
+                
+                let viewAction = UIAlertAction(title: "nonCompliance.alert.viewAction".localized(), style: .default) { (action) in
+                    let vc = NonComplianceViewController.instantiateFromStoryboard(advert: self.campaign.advert)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                alertController.addAction(viewAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-        alertController.addAction(viewAction)
-        
-        self.present(alertController, animated: true, completion: nil)
     }
 }
 

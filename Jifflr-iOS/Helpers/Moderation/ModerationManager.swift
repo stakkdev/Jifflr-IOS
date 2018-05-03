@@ -208,4 +208,18 @@ class ModerationManager: NSObject {
             completion(moderatorFeedback)
         })
     }
+    
+    func shouldShowNonComplianceFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
+        guard let status = campaign.status, status.key == CampaignStatusKey.nonCompliant || status.key == CampaignStatusKey.nonCompliantScheduled else {
+            completion(false)
+            return
+        }
+        
+        let query = ModeratorAdReview.query()
+        query?.whereKey("advert", equalTo: campaign.advert)
+        query?.whereKey("approved", equalTo: false)
+        query?.countObjectsInBackground(block: { (count, error) in
+            completion(Int(count) > 0)
+        })
+    }
 }

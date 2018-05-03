@@ -390,17 +390,27 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SeC-eY-JFG">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="7b4-GA-NsJ"/>
+                                    <constraint firstAttribute="width" constant="37" id="YW9-NK-guI"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="722-3Y-bTQ" firstAttribute="leading" secondItem="u9h-Eu-za2" secondAttribute="leading" id="2Yp-G3-TXY"/>
                             <constraint firstItem="u9h-Eu-za2" firstAttribute="bottom" secondItem="722-3Y-bTQ" secondAttribute="bottom" id="9PR-Ub-gTZ"/>
                             <constraint firstItem="722-3Y-bTQ" firstAttribute="top" secondItem="u9h-Eu-za2" secondAttribute="top" constant="10" id="Ivg-Hs-dn7"/>
+                            <constraint firstItem="SeC-eY-JFG" firstAttribute="centerY" secondItem="wxd-Wn-HqQ" secondAttribute="centerY" id="fT5-wP-U2e"/>
+                            <constraint firstItem="SeC-eY-JFG" firstAttribute="centerX" secondItem="wxd-Wn-HqQ" secondAttribute="centerX" id="gPg-sM-chq"/>
                             <constraint firstItem="u9h-Eu-za2" firstAttribute="trailing" secondItem="722-3Y-bTQ" secondAttribute="trailing" id="zp6-FA-Bag"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u9h-Eu-za2"/>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="SeC-eY-JFG" id="vpk-Pq-na8"/>
                         <outlet property="tableView" destination="722-3Y-bTQ" id="0P0-cR-aNx"/>
                     </connections>
                 </viewController>
