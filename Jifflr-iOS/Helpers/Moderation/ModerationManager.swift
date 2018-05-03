@@ -182,4 +182,44 @@ class ModerationManager: NSObject {
             completion(categories)
         })
     }
+    
+    func fetchNonComplianceFeedback(advert: Advert, completion: @escaping ([ModeratorFeedback]) -> Void) {
+        let query = ModeratorAdReview.query()
+        query?.whereKey("advert", equalTo: advert)
+        query?.whereKey("approved", equalTo: false)
+        query?.includeKey("advert")
+        query?.includeKey("feedback")
+        query?.includeKey("feedback.category")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let moderatorAdReviews = objects as? [ModeratorAdReview], error == nil else {
+                completion([])
+                return
+            }
+            
+            var moderatorFeedback: [ModeratorFeedback] = []
+            for moderatorAdReview in moderatorAdReviews {
+                for feedback in moderatorAdReview.feedback {
+                    if !moderatorFeedback.contains(feedback) {
+                        moderatorFeedback.append(feedback)
+                    }
+                }
+            }
+            
+            completion(moderatorFeedback)
+        })
+    }
+    
+    func shouldShowNonComplianceFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
+        guard let status = campaign.status, status.key == CampaignStatusKey.nonCompliant || status.key == CampaignStatusKey.nonCompliantScheduled else {
+            completion(false)
+            return
+        }
+        
+        let query = ModeratorAdReview.query()
+        query?.whereKey("advert", equalTo: campaign.advert)
+        query?.whereKey("approved", equalTo: false)
+        query?.countObjectsInBackground(block: { (count, error) in
+            completion(Int(count) > 0)
+        })
+    }
 }
