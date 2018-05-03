@@ -345,11 +345,7 @@ class UserManager: NSObject {
                     return
                 }
             } else {
-                if let error = error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(ErrorMessage.unknown)
-                }
+                completion(ErrorMessage.unknown)
             }
         }
     }
@@ -367,11 +363,7 @@ class UserManager: NSObject {
                     return
                 }
             } else {
-                if let error = error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(ErrorMessage.unknown)
-                }
+                completion(ErrorMessage.unknown)
             }
         }
     }
@@ -391,11 +383,7 @@ class UserManager: NSObject {
                     completion(ErrorMessage.invalidInvitationCode)
                 }
             } else {
-                if let error = error {
-                    completion(ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(ErrorMessage.unknown)
-                }
+                completion(ErrorMessage.unknown)
             }
         }
     }
