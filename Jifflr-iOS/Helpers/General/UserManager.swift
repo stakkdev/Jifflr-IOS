@@ -333,7 +333,7 @@ class UserManager: NSObject {
 
     func changePassword(oldPassword: String, newPassword: String, completion: @escaping (ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
-        let parameters = ["user": user.objectId!, "oldPassword": oldPassword, "newPassword": newPassword]
+        let parameters = ["username": user.username!, "oldPassword": oldPassword, "newPassword": newPassword]
 
         PFCloud.callFunction(inBackground: "change-password", withParameters: parameters) { responseJSON, error in
             if let success = responseJSON as? Bool {
