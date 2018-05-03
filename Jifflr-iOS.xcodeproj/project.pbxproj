@@ -41,6 +41,8 @@
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
+		1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */; };
+		1A7F2384209B054000718521 /* NonComplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2383209B054000718521 /* NonComplianceCell.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
 		1AA0448620849C65008385A6 /* JifflrTextFieldDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */; };
 		1AA044892084A4D4008385A6 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA044882084A4D4008385A6 /* DayCell.swift */; };
@@ -257,6 +259,8 @@
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
+		1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceViewController.swift; path = Controllers/Moderation/NonComplianceViewController.swift; sourceTree = "<group>"; };
+		1A7F2383209B054000718521 /* NonComplianceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceCell.swift; path = Controllers/Moderation/Cells/NonComplianceCell.swift; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
 		1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDate.swift; path = Views/TextFields/JifflrTextFieldDate.swift; sourceTree = "<group>"; };
 		1AA044882084A4D4008385A6 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayCell.swift; path = "Controllers/Ad Builder/Create Campaign/Cells/DayCell.swift"; sourceTree = "<group>"; };
@@ -474,6 +478,7 @@
 				1A5E090A209360B300F65876 /* Cells */,
 				1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */,
 				1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */,
+				1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */,
 			);
 			name = Moderation;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 			children = (
 				1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */,
 				1A4A5CD520971C8C00C3D3C4 /* FailureReasonCell.swift */,
+				1A7F2383209B054000718521 /* NonComplianceCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1496,6 +1502,7 @@
 				1AF985432081066D006525DB /* CreateScheduleViewController.swift in Sources */,
 				E97B9E20203B04940097BC65 /* FAQViewController.swift in Sources */,
 				E97B9E28203B091A0097BC65 /* FAQCell.swift in Sources */,
+				1A7F2384209B054000718521 /* NonComplianceCell.swift in Sources */,
 				E9237517203EC8AE00275199 /* Graph.swift in Sources */,
 				E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */,
 				1007B1CE20260FAB00C32CE1 /* BaseViewController.swift in Sources */,
@@ -1527,6 +1534,7 @@
 				1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */,
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
+				1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */,
 				1AF678A72099C5A6001F8BD5 /* UserFlaggedAd.swift in Sources */,
 				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,
 				1A4A5CDA209743F400C3D3C4 /* ModeratorFeedback.swift in Sources */,

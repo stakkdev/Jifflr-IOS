@@ -385,3 +385,8 @@
 "moderatorFeedback.passedLabel.text" = "If Ad Has Passed";
 "moderatorFeedback.failedLabel.text" = "If Ad Has Failed";
 "moderatorFeedback.submitButton.title" = "SUBMIT";
+
+"nonCompliance.navigation.title" = "Non-Compliance";
+"nonCompliance.alert.title" = "View Non-Compliance Feedback";
+"nonCompliance.alert.message" = "This campaign has been rejected. View the feedback to see the rejection reasons.";
+"nonCompliance.alert.viewAction" = "View Feedback";

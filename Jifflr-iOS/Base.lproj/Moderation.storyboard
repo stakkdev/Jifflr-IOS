@@ -322,5 +322,91 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
             </objects>
             <point key="canvasLocation" x="762" y="215"/>
         </scene>
+        <!--Non Compliance View Controller-->
+        <scene sceneID="fKq-fc-bCp">
+            <objects>
+                <viewController storyboardIdentifier="NonComplianceViewController" id="1uc-Ui-jMg" customClass="NonComplianceViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wxd-Wn-HqQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="722-3Y-bTQ">
+                                <rect key="frame" x="0.0" y="30" width="375" height="637"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NonComplianceCell" rowHeight="100" id="sex-03-C83" customClass="NonComplianceCell" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sex-03-C83" id="LSN-Pr-Iig">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bry-Xe-M9z">
+                                                    <rect key="frame" x="18" y="0.0" width="339" height="89.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="um3-zM-tfB">
+                                                            <rect key="frame" x="20" y="14" width="299" height="22.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
+                                                            <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUg-n7-hFG">
+                                                            <rect key="frame" x="20" y="44" width="299" height="17.5"/>
+                                                            <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                                            <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="um3-zM-tfB" firstAttribute="leading" secondItem="bry-Xe-M9z" secondAttribute="leading" constant="20" id="6FW-zi-2dL"/>
+                                                        <constraint firstItem="EUg-n7-hFG" firstAttribute="leading" secondItem="um3-zM-tfB" secondAttribute="leading" id="Jbt-y7-xmk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="um3-zM-tfB" secondAttribute="trailing" constant="20" id="N0H-bo-jyQ"/>
+                                                        <constraint firstItem="EUg-n7-hFG" firstAttribute="top" secondItem="um3-zM-tfB" secondAttribute="bottom" constant="8" id="T3J-Aj-cs2"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EUg-n7-hFG" secondAttribute="bottom" constant="14" id="TaH-h8-MLG"/>
+                                                        <constraint firstItem="EUg-n7-hFG" firstAttribute="trailing" secondItem="um3-zM-tfB" secondAttribute="trailing" id="ojo-43-NFg"/>
+                                                        <constraint firstItem="um3-zM-tfB" firstAttribute="top" secondItem="bry-Xe-M9z" secondAttribute="top" constant="14" id="yrN-P0-q0C"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bry-Xe-M9z" firstAttribute="top" secondItem="LSN-Pr-Iig" secondAttribute="top" id="277-qL-hhF"/>
+                                                <constraint firstAttribute="bottom" secondItem="bry-Xe-M9z" secondAttribute="bottom" constant="10" id="SHh-Xz-kCJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="bry-Xe-M9z" secondAttribute="trailing" constant="18" id="Z8h-Vs-dHd"/>
+                                                <constraint firstItem="bry-Xe-M9z" firstAttribute="leading" secondItem="LSN-Pr-Iig" secondAttribute="leading" constant="18" id="uXo-zF-N1n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="EUg-n7-hFG" id="7Wh-lP-QfU"/>
+                                            <outlet property="titleLabel" destination="um3-zM-tfB" id="oRy-He-rMa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="722-3Y-bTQ" firstAttribute="leading" secondItem="u9h-Eu-za2" secondAttribute="leading" id="2Yp-G3-TXY"/>
+                            <constraint firstItem="u9h-Eu-za2" firstAttribute="bottom" secondItem="722-3Y-bTQ" secondAttribute="bottom" id="9PR-Ub-gTZ"/>
+                            <constraint firstItem="722-3Y-bTQ" firstAttribute="top" secondItem="u9h-Eu-za2" secondAttribute="top" constant="10" id="Ivg-Hs-dn7"/>
+                            <constraint firstItem="u9h-Eu-za2" firstAttribute="trailing" secondItem="722-3Y-bTQ" secondAttribute="trailing" id="zp6-FA-Bag"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u9h-Eu-za2"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="722-3Y-bTQ" id="0P0-cR-aNx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OwM-eD-2ap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="215"/>
+        </scene>
     </scenes>
 </document>
