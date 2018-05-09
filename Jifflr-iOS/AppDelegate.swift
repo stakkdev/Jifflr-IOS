@@ -191,6 +191,10 @@ extension AppDelegate {
         guard let visibleViewController = navController.visibleViewController else { return }
             
         if visibleViewController is AdvertViewController || visibleViewController is CMSAdvertViewController {
+            if let visibleViewController = visibleViewController as? CMSAdvertViewController, visibleViewController.mode != AdViewMode.normal {
+                return
+            }
+            
             rootViewController.rootDashboardViewController()
         }
     }
