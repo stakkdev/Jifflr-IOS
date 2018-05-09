@@ -69,6 +69,8 @@ class DashboardViewController: BaseViewController {
 
     func setupUI() {
         self.setupLocalization()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         self.setBackgroundImage(image: UIImage(named: "DashboardBackground"))
 
