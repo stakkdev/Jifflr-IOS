@@ -64,6 +64,18 @@ class BudgetView: UIView {
         self.addButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.addButton)
         
+        let addGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.addButtonHeldDown(sender:)))
+        addGesture.minimumPressDuration = 0.5
+        addGesture.delaysTouchesBegan = false
+        addGesture.delaysTouchesEnded = false
+        self.addButton.addGestureRecognizer(addGesture)
+        
+        let subtractGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.subtractButtonHeldDown(sender:)))
+        subtractGesture.minimumPressDuration = 0.5
+        subtractGesture.delaysTouchesBegan = false
+        subtractGesture.delaysTouchesEnded = false
+        self.subtractButton.addGestureRecognizer(subtractGesture)
+        
         self.label = UILabel()
         self.label.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
         self.label.textColor = UIColor.mainBlue
@@ -99,8 +111,21 @@ class BudgetView: UIView {
         self.delegate?.valueChanged(value: self.value)
     }
     
+    @objc func subtractButtonHeldDown(sender: UILongPressGestureRecognizer) {
+        guard self.value > 1.0 else { return }
+        self.value -= 1.0
+        self.delegate?.valueChanged(value: self.value)
+    }
+    
     @objc func addButtonPressed(sender: UIButton) {
         self.value += 1.0
         self.delegate?.valueChanged(value: self.value)
+    }
+    
+    @objc func addButtonHeldDown(sender: UILongPressGestureRecognizer) {
+        if sender.state == .changed {
+            self.value += 1.0
+            self.delegate?.valueChanged(value: self.value)
+        }
     }
 }
