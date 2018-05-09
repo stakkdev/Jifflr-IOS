@@ -377,6 +377,8 @@ class AddQuestionsViewController: BaseViewController {
         guard let lastNumberText = self.maxTextField.text, !lastNumberText.isEmpty else { return false }
         guard let firstNumber = Int(firstNumberText) else { return false }
         guard let lastNumber = Int(lastNumberText) else { return false }
+        guard firstNumber < 1000000 else { return false }
+        guard lastNumber < 1000000 else { return false }
         guard lastNumber > firstNumber else { return false }
         
         let firstAnswer = AdBuilderManager.shared.createAnswer(index: 0, content: firstNumberText)
