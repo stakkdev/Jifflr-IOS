@@ -147,9 +147,9 @@ final class UserDetails: PFObject {
         }
     }
     
-    var moderatorStatus: ModeratorStatus? {
+    var moderatorStatus: String {
         get {
-            return self["moderatorStatus"] as? ModeratorStatus
+            return self["moderatorStatus"] as! String
         }
         set {
             self["moderatorStatus"] = newValue

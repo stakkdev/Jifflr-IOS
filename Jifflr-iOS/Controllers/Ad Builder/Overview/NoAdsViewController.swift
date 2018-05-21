@@ -63,7 +63,7 @@ class NoAdsViewController: BaseViewController {
         self.becomeModeratorButton.isEnabled = false
         
         guard let moderationStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
-        if moderationStatus.key == ModeratorStatusKey.isModerator {
+        if moderationStatus == ModeratorStatusKey.isModerator {
             self.becomeModeratorButton.isHidden = true
             self.becomeModeratorButton.isEnabled = false
         } else {

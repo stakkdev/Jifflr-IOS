@@ -154,7 +154,7 @@ class DashboardViewController: BaseViewController {
         
         guard let moderatorStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
         
-        if moderatorStatus.key == ModeratorStatusKey.isModerator {
+        if moderatorStatus == ModeratorStatusKey.isModerator {
             self.moderateButton.isHidden = false
             self.moderateButton.isEnabled = true
             self.helpButtonTop.constant = 30.0

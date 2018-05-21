@@ -58,7 +58,7 @@ class ModerationTCsViewController: BaseViewController {
             return
         }
         
-        switch status.key {
+        switch status {
         case ModeratorStatusKey.notModerator:
             AppSettingsManager.shared.canBecomeModerator { (yes) in
                 self.applyButton.setTitle("moderationTCs.applyButton.applyTitle".localized(), for: .normal)
@@ -93,29 +93,21 @@ class ModerationTCsViewController: BaseViewController {
         }
         
         self.applyButton.animate()
-        ModerationManager.shared.fetchModeratorStatus(key: ModeratorStatusKey.awaitingApproval) { (moderatorStatus) in
-            guard let moderatorStatus = moderatorStatus else {
+        user.details.moderatorStatus = ModeratorStatusKey.awaitingApproval
+        user.details.saveInBackground(block: { (success, error) in
+            guard error == nil else {
                 self.applyButton.stopAnimating()
                 self.displayError(error: ErrorMessage.applyModeratorFailedServer)
                 return
             }
             
-            user.details.moderatorStatus = moderatorStatus
-            user.details.saveInBackground(block: { (success, error) in
-                guard error == nil else {
-                    self.applyButton.stopAnimating()
-                    self.displayError(error: ErrorMessage.applyModeratorFailedServer)
-                    return
-                }
+            user.details.pinInBackground(block: { (success, error) in
+                self.applyButton.stopAnimating()
+                self.handleBasedOnModeratorStatus()
                 
-                user.details.pinInBackground(block: { (success, error) in
-                    self.applyButton.stopAnimating()
-                    self.handleBasedOnModeratorStatus()
-                    
-                    let alert = AlertMessage.applyModerator
-                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
-                })
+                let alert = AlertMessage.applyModerator
+                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
             })
-        }
+        })
     }
 }

@@ -12,22 +12,6 @@ import Parse
 class ModerationManager: NSObject {
     static let shared = ModerationManager()
     
-    func fetchModeratorStatus(key: String, completion: @escaping (ModeratorStatus?) -> Void) {
-        let query = ModeratorStatus.query()
-        query?.whereKey("key", equalTo: key)
-        query?.getFirstObjectInBackground(block: { (object, error) in
-            guard let moderatorStatus = object as? ModeratorStatus, error == nil else {
-                completion(nil)
-                return
-            }
-            
-            moderatorStatus.pinInBackground(block: { (success, error) in
-                print("Moderator Status Pinned: \(success)")
-            })
-            
-            completion(moderatorStatus)
-        })
-    }
     
     func fetchAllModeratorFeedback(completion: @escaping ([(category: ModeratorFeedbackCategory, feedback: [ModeratorFeedback])]) -> Void) {
         self.fetchLanguage(languageCode: Session.shared.currentLanguage) { (language) in

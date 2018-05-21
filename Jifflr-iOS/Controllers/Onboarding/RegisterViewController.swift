@@ -203,30 +203,24 @@ class RegisterViewController: BaseViewController {
         if let invitationCode = self.invitationCodeTextField.text, !invitationCode.isEmpty {
             userInfo["invitationCode"] = invitationCode
         }
-        
-        ModerationManager.shared.fetchModeratorStatus(key: ModeratorStatusKey.notModerator) { (moderatorStatus) in
-            if let moderatorStatus = moderatorStatus {
-                userInfo["moderatorStatus"] = moderatorStatus
+            
+        UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+            self.registerButton.stopAnimating()
+            
+            guard error == nil else {
+                if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
+                    let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
+                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
+                        self.rootAfterRegistration()
+                        return
+                    })
+                } else {
+                    self.displayError(error: error)
+                }
+                return
             }
             
-            UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
-                self.registerButton.stopAnimating()
-                
-                guard error == nil else {
-                    if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
-                        let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
-                        self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
-                            self.rootAfterRegistration()
-                            return
-                        })
-                    } else {
-                        self.displayError(error: error)
-                    }
-                    return
-                }
-                
-                self.rootAfterRegistration()
-            }
+            self.rootAfterRegistration()
         }
     }
 
