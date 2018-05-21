@@ -101,16 +101,26 @@ class CampaignManager: NSObject {
     }
     
     func estimatedAudienceSize(demographic: Demographic, completion: @escaping (Int?) -> Void) {
-//        PFCloud.callFunction(inBackground: "estimated-audience-size", withParameters: ["demographic": demographic]) { responseJSON, error in
-//            if let responseJSON = responseJSON as? [String: Any] {
-//                if let size = responseJSON["size"] as? Int {
-//                    completion(size)
-//                }
-//            } else {
-//                completion(nil)
-//            }
-//        }
-        completion(Int(arc4random_uniform(2000) + 1000))
+        var parameters = [
+            "minAge": demographic.minAge,
+            "maxAge": demographic.maxAge,
+            "location": demographic.location.objectId!,
+            "language": demographic.language.objectId!
+            ] as [String : Any]
+        
+        if let gender = demographic.gender {
+            parameters["gender"] = gender.objectId!
+        }
+        
+        PFCloud.callFunction(inBackground: "estimated-audience-size", withParameters: parameters) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any] {
+                if let size = responseJSON["size"] as? Int {
+                    completion(size)
+                }
+            } else {
+                completion(nil)
+            }
+        }
     }
     
     func fetchCostPerReview(location: Location, completion: @escaping (Double?, LocationFinancial?) -> Void) {
