@@ -95,9 +95,9 @@ final class Campaign: PFObject {
         }
     }
     
-    var status: CampaignStatus? {
+    var status: String? {
         get {
-            return self["status"] as? CampaignStatus
+            return self["status"] as? String
         }
         set {
             self["status"] = newValue
@@ -118,11 +118,6 @@ extension Campaign {
         self.saveEventually()
         
         let group = DispatchGroup()
-        
-        group.enter()
-        self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-            group.leave()
-        })
         
         group.enter()
         self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
@@ -179,11 +174,6 @@ extension Campaign {
                     }
                     
                     let group = DispatchGroup()
-                    
-                    group.enter()
-                    self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-                        group.leave()
-                    })
                     
                     group.enter()
                     self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in

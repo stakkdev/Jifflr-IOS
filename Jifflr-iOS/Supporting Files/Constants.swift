@@ -229,6 +229,8 @@ struct CampaignStatusKey {
     static let nonCompliant = "nonCompliant"
     static let nonCompliantScheduled = "nonCompliantScheduled"
     static let prepareToDelete = "prepareToDelete"
+    static let deleted = "deleted"
+    static let pendingModeration = "pendingModeration"
 }
 
 struct ModeratorStatusKey {

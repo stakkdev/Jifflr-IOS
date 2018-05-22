@@ -143,6 +143,7 @@ class CampaignManager: NSObject {
         
         let query = Campaign.query()
         query?.whereKey("creator", equalTo: user)
+        query?.whereKey("status", notEqualTo: CampaignStatusKey.deleted)
         query?.includeKey("demographic")
         query?.includeKey("demographic.location")
         query?.includeKey("demographic.language")
@@ -150,7 +151,6 @@ class CampaignManager: NSObject {
         query?.includeKey("schedule")
         query?.includeKey("advert")
         query?.includeKey("locationFinancial")
-        query?.includeKey("status")
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let campaigns = objects as? [Campaign], error == nil else {
                 completion(nil)
@@ -168,6 +168,7 @@ class CampaignManager: NSObject {
         
         let query = Campaign.query()
         query?.whereKey("creator", equalTo: currentUser)
+        query?.whereKey("status", notEqualTo: CampaignStatusKey.deleted)
         query?.countObjectsInBackground(block: { (count, error) in
             guard error == nil else {
                 completion(nil)
@@ -184,19 +185,6 @@ class CampaignManager: NSObject {
             result += Days.all[index]
         }
         return result
-    }
-    
-    func fetchStatus(key: String, completion: @escaping (CampaignStatus?) -> Void) {
-        let query = CampaignStatus.query()
-        query?.whereKey("key", equalTo: key)
-        query?.getFirstObjectInBackground(block: { (object, error) in
-            guard let campaignStatus = object as? CampaignStatus, error == nil else {
-                completion(nil)
-                return
-            }
-            
-            completion(campaignStatus)
-        })
     }
     
     func shouldCampaignBeActiveAvailable(campaign: Campaign) -> Bool {

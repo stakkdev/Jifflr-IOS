@@ -198,7 +198,6 @@ class MyAdsManager: NSObject {
         let query = Campaign.query()
         query?.whereKey("creator", equalTo: currentUser)
         query?.includeKey("advert")
-        query?.includeKey("status")
         query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let campaigns = objects as? [Campaign], error == nil else {
@@ -208,7 +207,7 @@ class MyAdsManager: NSObject {
             
             var ads:[String] = []
             for campaign in campaigns {
-                guard campaign.status?.key == CampaignStatusKey.availableActive else { continue }
+                guard campaign.status == CampaignStatusKey.availableActive else { continue }
                 guard !ads.contains(campaign.advert.objectId!) else { continue }
                 ads.append(campaign.advert.objectId!)
             }

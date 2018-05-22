@@ -194,7 +194,8 @@ class ModerationManager: NSObject {
     }
     
     func shouldShowNonComplianceFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
-        guard let status = campaign.status, status.key == CampaignStatusKey.nonCompliant || status.key == CampaignStatusKey.nonCompliantScheduled else {
+        let status = campaign.status
+        guard status == CampaignStatusKey.nonCompliant || status == CampaignStatusKey.nonCompliantScheduled else {
             completion(false)
             return
         }

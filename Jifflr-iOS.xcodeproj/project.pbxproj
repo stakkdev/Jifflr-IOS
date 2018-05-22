@@ -22,7 +22,6 @@
 		1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */; };
 		1A4115A02090AC530078D32B /* ModerationTCsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */; };
 		1A4115A32090ACB40078D32B /* Moderation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4115A12090ACB40078D32B /* Moderation.storyboard */; };
-		1A4115A52090BD0E0078D32B /* ModeratorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */; };
 		1A4115A82090C4130078D32B /* ModerationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A72090C4130078D32B /* ModerationManager.swift */; };
 		1A4115AA2090C8D60078D32B /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A92090C8D60078D32B /* AppSettingsManager.swift */; };
 		1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115AB2090C9070078D32B /* AppSettings.swift */; };
@@ -37,7 +36,6 @@
 		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
 		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
 		1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A79207E183700474598 /* JifflrBarChart.swift */; };
-		1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7B207E3BAF00474598 /* CampaignStatus.swift */; };
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
@@ -240,7 +238,6 @@
 		1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdCreatedViewController.swift; path = "Controllers/Ad Builder/Create Ad/AdCreatedViewController.swift"; sourceTree = "<group>"; };
 		1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationTCsViewController.swift; path = Controllers/Moderation/ModerationTCsViewController.swift; sourceTree = "<group>"; };
 		1A4115A22090ACB40078D32B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Moderation.storyboard; sourceTree = "<group>"; };
-		1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorStatus.swift; path = Models/ModeratorStatus.swift; sourceTree = "<group>"; };
 		1A4115A72090C4130078D32B /* ModerationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationManager.swift; path = Helpers/Moderation/ModerationManager.swift; sourceTree = "<group>"; };
 		1A4115A92090C8D60078D32B /* AppSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsManager.swift; path = Helpers/General/AppSettingsManager.swift; sourceTree = "<group>"; };
 		1A4115AB2090C9070078D32B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Models/AppSettings.swift; sourceTree = "<group>"; };
@@ -255,7 +252,6 @@
 		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
 		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
 		1A642A79207E183700474598 /* JifflrBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrBarChart.swift; path = Views/JifflrBarChart.swift; sourceTree = "<group>"; };
-		1A642A7B207E3BAF00474598 /* CampaignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignStatus.swift; path = Models/CampaignStatus.swift; sourceTree = "<group>"; };
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
@@ -951,7 +947,6 @@
 				E937F5B92036F87100171480 /* LocationFinancial.swift */,
 				E937F5BB2036F8DA00171480 /* LocationStatus.swift */,
 				E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */,
-				1A642A7B207E3BAF00474598 /* CampaignStatus.swift */,
 				1A173244206A4545005837A7 /* AdvertDetails.swift */,
 				1AF1955620693E7800FE3896 /* AdvertTemplate.swift */,
 				E9B9721B20495406004F0876 /* Answer.swift */,
@@ -969,7 +964,6 @@
 				1AF1009E20988D430082E458 /* CampaignDeposit.swift */,
 				1AE5A7F02084E58000B7CDAE /* Language.swift */,
 				1AA11E54208622FF00BAE044 /* Gender.swift */,
-				1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */,
 				1A4115AB2090C9070078D32B /* AppSettings.swift */,
 				1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */,
 				1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */,
@@ -1518,7 +1512,6 @@
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
 				1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */,
 				1AF1009F20988D430082E458 /* CampaignDeposit.swift in Sources */,
-				1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
@@ -1598,7 +1591,6 @@
 				1AA11E55208622FF00BAE044 /* Gender.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E96A0CDF203DAAF80059DDAC /* LocationManager.swift in Sources */,
-				1A4115A52090BD0E0078D32B /* ModeratorStatus.swift in Sources */,
 				1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */,
 				1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */,
 				E96A0CF4203DAC500059DDAC /* AdvertManager.swift in Sources */,

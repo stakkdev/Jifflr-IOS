@@ -213,7 +213,7 @@ class CampaignOverviewViewController: BaseViewController {
         }
     }
     
-    func setUIActivated(status: CampaignStatus) {
+    func setUIActivated(status: String) {
         self.budgetViewTop.constant = 80.0
         self.activateButton.isHidden = true
         self.activateButton.isEnabled = false
@@ -224,7 +224,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.activateButtonBottom.isActive = false
         self.activatedViewBottom.isActive = true
         
-        switch status.key {
+        switch status {
         case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled:
             self.activeSwitch.isOn = true
         default:
@@ -244,13 +244,13 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedViewBottom.isActive = false
     }
     
-    func handleStatus(status: CampaignStatus?) {
+    func handleStatus(status: String?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
-        
-        switch status.key {
+
+        switch status {
         case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:
