@@ -49,6 +49,16 @@ final class Campaign: PFObject {
         }
     }
     
+    var balance: Double {
+        get {
+            let balance = self["balance"] as? Double ?? 0.0
+            return balance == 0.0 ? 0.0 : balance / 100.0
+        }
+        set {
+            self["balance"] = newValue
+        }
+    }
+    
     var name: String {
         get {
             return self["name"] as! String
@@ -97,7 +107,11 @@ final class Campaign: PFObject {
     
     var status: String? {
         get {
-            return self["status"] as? String
+            if let status = self["status"] as? String {
+                return status.isEmpty ? nil : status
+            } else {
+                return nil
+            }
         }
         set {
             self["status"] = newValue

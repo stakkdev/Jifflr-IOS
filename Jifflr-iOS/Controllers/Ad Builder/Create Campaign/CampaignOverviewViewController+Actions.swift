@@ -196,38 +196,31 @@ extension CampaignOverviewViewController {
     @IBAction func activateButtonPressed(sender: JifflrButton) {
         guard let user = Session.shared.currentUser else { return }
         
-        self.campaign.creator = user
         self.campaign.budget = 0.0
         
-        guard self.budgetView.value > self.campaign.budget && self.budgetView.value != 0.0 else {
+        guard CampaignManager.shared.isValidBalance(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget) else {
             self.displayError(error: ErrorMessage.campaignActivationFailedInvalidBalance)
             return
         }
         
-        let budget = self.budgetView.value - self.campaign.budget
-        guard user.details.campaignBalance > budget else {
+        guard CampaignManager.shared.canActivateCampaign(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget, userCampaignBalance: user.details.campaignBalance) else {
             self.handleInsufficientBalance(isActivation: true)
             return
         }
         
-        self.activateButton.animate()
+        let budget = self.budgetView.value - self.campaign.budget
+        CampaignManager.shared.activateCampaign(user: user, campaign: self.campaign, budget: budget)
         
-        self.campaign.status = CampaignStatusKey.availableScheduled
+        self.activateButton.animate()
         self.campaign.saveInBackgroundAndPin { (error) in
-            guard error == nil else {
+            user.saveAndPin(completion: { (error) in
                 self.activateButton.stopAnimating()
-                self.displayError(error: ErrorMessage.campaignActivationFailed)
-                return
-            }
-            
-            CampaignManager.shared.activateCampaign(campaign: self.campaign, budget: budget, completion: { (error) in
-                self.activateButton.stopAnimating()
+                guard error == nil else {
+                    self.displayError(error: ErrorMessage.campaignActivationFailed)
+                    return
+                }
                 
-//                    guard error == nil else {
-//                        self.displayError(error: error)
-//                        return
-//                    }
-                
+                self.updateBalanceButton()
                 self.handleStatus(status: self.campaign.status)
                 self.setupUIBasedOnStatus()
                 self.updateNavigationStackAfterActivation()

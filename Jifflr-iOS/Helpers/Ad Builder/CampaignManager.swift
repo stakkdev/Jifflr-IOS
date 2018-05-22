@@ -269,28 +269,31 @@ class CampaignManager: NSObject {
         }
     }
     
-    func activateCampaign(campaign: Campaign, budget: Double, completion: @escaping (ErrorMessage?) -> Void) {
-        guard let user = Session.shared.currentUser else { return }
-        
-        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!, "budget": budget] as [String : Any]
-        
-        PFCloud.callFunction(inBackground: "activate-campaign", withParameters: parameters) { responseJSON, error in
-            if let success = responseJSON as? Bool, error == nil {
-                if success == true {
-                    completion(nil)
-                    return
-                } else {
-                    completion(ErrorMessage.campaignActivationFailed)
-                    return
-                }
-            } else {
-                if let _ = error {
-                    completion(ErrorMessage.campaignActivationFailed)
-                } else {
-                    completion(ErrorMessage.unknown)
-                }
-            }
+    func isValidBalance(budgetViewValue: Double, campaignBudget: Double) -> Bool {
+        guard budgetViewValue > campaignBudget && budgetViewValue != 0.0 else {
+            return false
         }
+        
+        return true
+    }
+    
+    func canActivateCampaign(budgetViewValue: Double, campaignBudget: Double, userCampaignBalance: Double) -> Bool {
+        let budget = budgetViewValue - campaignBudget
+        guard userCampaignBalance > budget else {
+            return false
+        }
+        
+        return true
+    }
+    
+    func activateCampaign(user: PFUser, campaign: Campaign, budget: Double) {
+        campaign.status = CampaignStatusKey.availableScheduled
+        campaign.budget = budget * 100
+        campaign.balance = budget * 100
+        campaign.creator = user
+        
+        let newUserBalance = user.details.campaignBalance - budget
+        user.details.campaignBalance = newUserBalance
     }
     
     func copy(campaign: Campaign) -> Campaign {

@@ -25,7 +25,7 @@ class UserTests: XCTestCase {
         userDetails.firstName = "James"
         userDetails.lastName = "Shaw"
         userDetails.dateOfBirth = Date.distantPast
-        userDetails.gender = "Male"
+        userDetails.gender = Gender()
         userDetails.emailVerified = false
         userDetails.location = location
         userDetails.geoPoint = PFGeoPoint(latitude: 53.14, longitude: -1.01)
@@ -53,7 +53,6 @@ class UserTests: XCTestCase {
         XCTAssertEqual(self.user.password, "test")
         XCTAssertEqual(self.user.details.displayLocation, "York, United Kingdom")
         XCTAssertEqual(self.user.details.invitationCode, "vyi7hHjsd")
-        XCTAssertEqual(self.user.details.gender, "Male")
         XCTAssertEqual(self.user.details.dateOfBirth, Date.distantPast)
     }
 }

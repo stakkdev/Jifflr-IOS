@@ -31,12 +31,6 @@ class UserDefaultsManagerTests: XCTestCase {
         XCTAssertEqual(requested, true)
     }
 
-    func testNotifications() {
-        UserDefaultsManager.shared.setNotifications(on: true)
-        let notifications = UserDefaultsManager.shared.notificationsOn()
-        XCTAssertEqual(notifications, true)
-    }
-
     func testCrashTracker() {
         UserDefaultsManager.shared.setCrashTracker(on: true)
         let on = UserDefaultsManager.shared.crashTrackerOn()

@@ -135,7 +135,7 @@ final class UserDetails: PFObject {
             return campaignBalance == 0.0 ? 0.0 : campaignBalance / 100.0
         }
         set {
-            self["campaignBalance"] = newValue
+            self["campaignBalance"] = newValue * 100.0
         }
     }
     
