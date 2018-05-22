@@ -342,7 +342,7 @@
 "campaignOverview.location.heading" = "Location";
 "campaignOverview.language.heading" = "Language";
 "campaignOverview.estimatedAudience.heading" = "Estimated Audience";
-"campaignOverview.costPerReview.heading" = "Cost / Review";
+"campaignOverview.costPerView.heading" = "Cost / Review";
 "campaignOverview.estimatedCampaignCost.heading" = "Estimated Campaign Cost";
 "campaignOverview.budgetCoverage.heading" = "Budget Coverage";
 "campaignOverview.activateButton.title" = "ACTIVATE";

@@ -123,7 +123,7 @@ class CampaignManager: NSObject {
         }
     }
     
-    func fetchCostPerReview(location: Location, completion: @escaping (Double?, LocationFinancial?) -> Void) {
+    func fetchCostPerView(location: Location, completion: @escaping (Double?, LocationFinancial?) -> Void) {
         let query = LocationFinancial.query()
         query?.whereKey("location", equalTo: location)
         query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
@@ -132,9 +132,9 @@ class CampaignManager: NSObject {
                 return
             }
             
-            let costPerReview = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
+            let costPerView = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
             
-            completion(costPerReview, locationFinancial)
+            completion(costPerView, locationFinancial)
         })
     }
     
@@ -296,7 +296,7 @@ class CampaignManager: NSObject {
     func copy(campaign: Campaign) -> Campaign {
         let newCampaign = Campaign()
         newCampaign.budget = 0.0
-        newCampaign.costPerReview = campaign.costPerReview
+        newCampaign.costPerView = campaign.costPerView
         newCampaign.name = campaign.name
         newCampaign.creator = campaign.creator
         newCampaign.locationFinancial = campaign.locationFinancial

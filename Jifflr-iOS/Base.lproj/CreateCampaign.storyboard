@@ -426,7 +426,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXu-o1-hXQ">
-                                                <rect key="frame" x="156" y="27" width="26" height="39"/>
+                                                <rect key="frame" x="155.5" y="27" width="26" height="39"/>
                                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="36"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -804,7 +804,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18-25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO2-xi-0kS">
-                                                <rect key="frame" x="214.5" y="25" width="36.5" height="16"/>
+                                                <rect key="frame" x="214.5" y="25" width="37" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="vHt-hZ-ere"/>
                                                 </constraints>
@@ -1141,8 +1141,8 @@
                         <outlet property="campaignNumberLabel" destination="ZAg-35-ZDK" id="uXs-Om-pGx"/>
                         <outlet property="campaignResultsButton" destination="uSE-0t-bIT" id="NpD-Zm-C13"/>
                         <outlet property="copyCampaignButton" destination="p6O-tC-PGK" id="C8T-xa-mhy"/>
-                        <outlet property="costPerReviewHeadingLabel" destination="PIj-M0-MDO" id="Sha-0I-8zB"/>
-                        <outlet property="costPerReviewLabel" destination="y1i-DY-tyA" id="q3B-CX-G3f"/>
+                        <outlet property="costPerViewHeadingLabel" destination="PIj-M0-MDO" id="Sha-0I-8zB"/>
+                        <outlet property="costPerViewLabel" destination="y1i-DY-tyA" id="q3B-CX-G3f"/>
                         <outlet property="dateHeadingLabel" destination="jpx-Mr-CFp" id="X8Y-av-14w"/>
                         <outlet property="dateLabel" destination="4h0-cy-JqE" id="oLI-Ye-APv"/>
                         <outlet property="daysOfWeekHeadingLabel" destination="vpV-4E-Hxp" id="XK3-mR-lbL"/>

@@ -67,13 +67,13 @@ final class Campaign: PFObject {
         }
     }
     
-    var costPerReview: Double {
+    var costPerView: Double {
         get {
-            let costPerReview = self["costPerReview"] as? Double ?? 0.0
-            return costPerReview == 0.0 ? 0.0 : costPerReview / 100.0
+            let costPerView = self["costPerView"] as? Double ?? 0.0
+            return costPerView == 0.0 ? 0.0 : costPerView / 100.0
         }
         set {
-            self["costPerReview"] = newValue
+            self["costPerView"] = newValue
         }
     }
     

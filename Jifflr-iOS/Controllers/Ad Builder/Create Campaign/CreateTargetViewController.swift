@@ -213,14 +213,14 @@ class CreateTargetViewController: BaseViewController {
             }
         } else {
             self.nextButton.animate()
-            CampaignManager.shared.fetchCostPerReview(location: self.campaign.demographic!.location) { (costPerReview, locationFinancial) in
+            CampaignManager.shared.fetchCostPerView(location: self.campaign.demographic!.location) { (costPerView, locationFinancial) in
                 self.nextButton.stopAnimating()
-                guard let costPerReview = costPerReview, let locationFinancial = locationFinancial else {
+                guard let costPerView = costPerView, let locationFinancial = locationFinancial else {
                     self.displayError(error: ErrorMessage.unknown)
                     return
                 }
                 
-                self.campaign.costPerReview = costPerReview
+                self.campaign.costPerView = costPerView
                 self.campaign.locationFinancial = locationFinancial
                 let vc = CampaignOverviewViewController.instantiateFromStoryboard(campaign: self.campaign)
                 self.navigationController?.pushViewController(vc, animated: true)
