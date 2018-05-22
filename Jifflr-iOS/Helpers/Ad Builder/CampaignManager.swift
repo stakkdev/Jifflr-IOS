@@ -144,6 +144,7 @@ class CampaignManager: NSObject {
         let query = Campaign.query()
         query?.whereKey("creator", equalTo: user)
         query?.whereKey("status", notEqualTo: CampaignStatusKey.deleted)
+        query?.order(byDescending: "createdAt")
         query?.includeKey("demographic")
         query?.includeKey("demographic.location")
         query?.includeKey("demographic.language")
