@@ -223,7 +223,7 @@ class DashboardViewController: BaseViewController {
     func updateUI(stats: DashboardStats) {
         DispatchQueue.main.async {
             self.myTeamButton.setValue(value: stats.teamSize)
-            self.myMoneyButton.valueLabel.text = "\(Session.shared.currentCurrencySymbol)\(stats.money)"
+            self.myMoneyButton.valueLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", stats.money))"
             self.adsViewedButton.setValue(value: stats.adsViewed)
             self.adBuilderButton.setValue(value: stats.adsCreated)
         }
