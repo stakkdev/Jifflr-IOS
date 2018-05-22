@@ -33,6 +33,10 @@ class UserManager: NSObject {
         if let invitationCode = userInfo["invitationCode"] as? String {
             userDetails.invitationCode = invitationCode
         }
+        
+        if let language = userInfo["language"] as? Language {
+            userDetails.language = language
+        }
 
         let newUser = PFUser()
         newUser.details = userDetails

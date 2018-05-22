@@ -203,24 +203,29 @@ class RegisterViewController: BaseViewController {
         if let invitationCode = self.invitationCodeTextField.text, !invitationCode.isEmpty {
             userInfo["invitationCode"] = invitationCode
         }
+        
+        LanguageManager.shared.fetchLanguage(languageCode: Session.shared.currentLanguage, pinName: nil) { (language) in
+            guard let language = language else { return }
+            userInfo["language"] = language
             
-        UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
-            self.registerButton.stopAnimating()
-            
-            guard error == nil else {
-                if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
-                    let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
-                    self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
-                        self.rootAfterRegistration()
-                        return
-                    })
-                } else {
-                    self.displayError(error: error)
+            UserManager.shared.signUp(withUserInfo: userInfo) { (error) in
+                self.registerButton.stopAnimating()
+                
+                guard error == nil else {
+                    if error!.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
+                        let dismissText = "error.invalidInvitationCodeRegistration.dismiss".localized()
+                        self.displayMessage(title: error!.failureTitle, message: error!.failureDescription, dismissText: dismissText, dismissAction: { (action) in
+                            self.rootAfterRegistration()
+                            return
+                        })
+                    } else {
+                        self.displayError(error: error)
+                    }
+                    return
                 }
-                return
+                
+                self.rootAfterRegistration()
             }
-            
-            self.rootAfterRegistration()
         }
     }
 

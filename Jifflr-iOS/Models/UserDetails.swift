@@ -156,6 +156,15 @@ final class UserDetails: PFObject {
             self["moderatorStatus"] = newValue
         }
     }
+    
+    var language: Language? {
+        get {
+            return self["language"] as? Language
+        }
+        set {
+            self["language"] = newValue
+        }
+    }
 }
 
 extension UserDetails: PFSubclassing {
