@@ -131,7 +131,8 @@ final class UserDetails: PFObject {
     
     var campaignBalance: Double {
         get {
-            return self["campaignBalance"] as? Double ?? 0.0
+            let campaignBalance = self["campaignBalance"] as? Double ?? 0.0
+            return campaignBalance == 0.0 ? 0.0 : campaignBalance / 100.0
         }
         set {
             self["campaignBalance"] = newValue

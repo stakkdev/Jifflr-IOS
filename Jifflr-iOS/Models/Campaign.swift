@@ -41,7 +41,8 @@ final class Campaign: PFObject {
     
     var budget: Double {
         get {
-            return self["budget"] as? Double ?? 0.0
+            let budget = self["budget"] as? Double ?? 0.0
+            return budget == 0.0 ? 0.0 : budget / 100.0
         }
         set {
             self["budget"] = newValue
@@ -68,7 +69,8 @@ final class Campaign: PFObject {
     
     var costPerReview: Double {
         get {
-            return self["costPerReview"] as! Double
+            let costPerReview = self["costPerReview"] as? Double ?? 0.0
+            return costPerReview == 0.0 ? 0.0 : costPerReview / 100.0
         }
         set {
             self["costPerReview"] = newValue

@@ -23,7 +23,8 @@ final class CampaignDeposit: PFObject {
     
     var value: Double {
         get {
-            return self["value"] as? Double ?? 0.0
+            let value = self["value"] as? Double ?? 0.0
+            return value == 0.0 ? 0.0 : value / 100.0
         }
         set {
             self["value"] = newValue
