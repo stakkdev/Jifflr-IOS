@@ -221,28 +221,12 @@ class CampaignManager: NSObject {
         }
     }
     
-    func updateCampaignBudget(campaign: Campaign, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
-        guard let user = Session.shared.currentUser else { return }
+    func updateCampaignBudget(campaign: Campaign, user: PFUser, amount: Double) {
+        campaign.budget = (campaign.budget + amount) * 100
+        campaign.balance = (campaign.balance + amount) * 100
         
-        let parameters = ["user": user.objectId!, "campaign": campaign.objectId!, "amount": amount] as [String : Any]
-        
-        PFCloud.callFunction(inBackground: "update-campaign-budget", withParameters: parameters) { responseJSON, error in
-            if let success = responseJSON as? Bool, error == nil {
-                if success == true {
-                    completion(nil)
-                    return
-                } else {
-                    completion(ErrorMessage.increaseBudgetFailedFromServer)
-                    return
-                }
-            } else {
-                if let _ = error {
-                    completion(ErrorMessage.increaseBudgetFailedFromServer)
-                } else {
-                    completion(ErrorMessage.unknown)
-                }
-            }
-        }
+        let newUserBalance = user.details.campaignBalance - amount
+        user.details.campaignBalance = newUserBalance
     }
     
     func getCampaignResults(campaign: Campaign, completion: @escaping (ErrorMessage?) -> Void) {

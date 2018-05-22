@@ -37,17 +37,22 @@ extension CampaignOverviewViewController {
             return
         }
         
+        CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, user: user, amount: difference)
+        
         self.updateButton.animate()
-        CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, amount: difference) { (error) in
-            self.updateButton.stopAnimating()
-            
-            guard error == nil else {
-                self.displayError(error: error)
-                return
-            }
-            
-            let alert = AlertMessage.increaseBudgetSuccess
-            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+        self.campaign.saveInBackgroundAndPin { (error) in
+            user.saveAndPin(completion: { (error) in
+                self.updateButton.stopAnimating()
+                guard error == nil else {
+                    self.displayError(error: ErrorMessage.increaseBudgetFailedFromServer)
+                    return
+                }
+                
+                self.updateBalanceButton()
+                
+                let alert = AlertMessage.increaseBudgetSuccess
+                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+            })
         }
     }
     

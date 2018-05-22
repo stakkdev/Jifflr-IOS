@@ -71,4 +71,22 @@ class CampaignManagerTests: XCTestCase {
         XCTAssertEqual(campaign.budget, 17.0)
         XCTAssertEqual(campaign.balance, 17.0)
     }
+    
+    func testUpdateBudget() {
+        let userDetails = UserDetails()
+        userDetails.campaignBalance = 20.0
+        
+        let user = PFUser()
+        user.details = userDetails
+        
+        let campaign = Campaign()
+        campaign.budget = 1500.0
+        campaign.balance = 1300.0
+        
+        CampaignManager.shared.updateCampaignBudget(campaign: campaign, user: user, amount: 18.0)
+        
+        XCTAssertEqual(user.details.campaignBalance, 2.0)
+        XCTAssertEqual(campaign.budget, 33.0)
+        XCTAssertEqual(campaign.balance, 31.0)
+    }
 }
