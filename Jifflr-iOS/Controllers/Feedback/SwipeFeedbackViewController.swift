@@ -94,8 +94,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
     func saveAndPushToNextAd() {
         if self.questions.count == 0 {
-            //TODO
-            FeedbackManager.shared.saveFeedback(advert: self.campaign.advert, questionAnswers: self.questionAnswers, completion: {
+            FeedbackManager.shared.saveFeedback(campaign: self.campaign, questionAnswers: self.questionAnswers, completion: {
                 self.pushToNextAd()
             })
         }

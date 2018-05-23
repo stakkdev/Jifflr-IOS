@@ -107,7 +107,7 @@ class FeedbackViewController: BaseViewController {
             if self.content.count > 1 {
                 self.pushToNextQuestion()
             } else {
-                FeedbackManager.shared.saveFeedback(advert: self.campaign.advert, questionAnswers: self.questionAnswers, completion: {
+                FeedbackManager.shared.saveFeedback(campaign: self.campaign, questionAnswers: self.questionAnswers, completion: {
                     self.pushToNextAd()
                 })
             }

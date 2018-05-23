@@ -100,7 +100,7 @@ extension AppDelegate {
         Answer.registerSubclass()
         Question.registerSubclass()
         QuestionType.registerSubclass()
-        UserSeenAdvert.registerSubclass()
+        UserSeenCampaign.registerSubclass()
         QuestionAnswers.registerSubclass()
         UserCashout.registerSubclass()
         UserMonthStats.registerSubclass()
