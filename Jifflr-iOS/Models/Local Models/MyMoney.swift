@@ -23,7 +23,8 @@ final class MyMoney: PFObject {
 
     var totalWithdrawn: Double {
         get {
-            return self["totalWithdrawn"] as? Double ?? 0.0
+            let totalWithdrawn = self["totalWithdrawn"] as? Double ?? 0.0
+            return totalWithdrawn == 0.0 ? 0.0 : totalWithdrawn / 100.0
         }
         set {
             self["totalWithdrawn"] = newValue
@@ -32,7 +33,8 @@ final class MyMoney: PFObject {
 
     var moneyAvailable: Double {
         get {
-            return self["moneyAvailable"] as? Double ?? 0.0
+            let moneyAvailable = self["moneyAvailable"] as? Double ?? 0.0
+            return moneyAvailable == 0.0 ? 0.0 : moneyAvailable / 100.0
         }
         set {
             self["moneyAvailable"] = newValue
