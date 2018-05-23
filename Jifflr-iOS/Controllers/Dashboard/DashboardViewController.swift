@@ -223,6 +223,10 @@ class DashboardViewController: BaseViewController {
                 self.advert = advert
             }
         })
+        
+        AdvertManager.shared.fetchDefaultAdExchange { (advert) in
+            self.advert = advert
+        }
     }
 
     func updateUI(stats: DashboardStats) {
@@ -245,7 +249,7 @@ class DashboardViewController: BaseViewController {
                 return
             }
 
-            if let campaign = self.campaign, campaign.advert.isCMS {
+            if let campaign = self.campaign {
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
                 navController.isNavigationBarHidden = false
                 self.navigationController?.present(navController, animated: false, completion: nil)

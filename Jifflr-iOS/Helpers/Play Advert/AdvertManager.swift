@@ -151,7 +151,7 @@ class AdvertManager: NSObject {
                 completion(campaign)
                 return
             } else {
-                self.fetchLocalDefault(completion: { (advert) in
+                self.fetchDefaultAdExchange(completion: { (advert) in
                     completion(advert)
                     return
                 })
@@ -159,9 +159,9 @@ class AdvertManager: NSObject {
         })
     }
 
-    func fetchLocalDefault(completion: @escaping (Advert?) -> Void) {
+    func fetchAdExchange(local: Bool, completion: @escaping (Advert?) -> Void) {
         let query = Advert.query()
-        query?.fromPin(withName: self.pinName)
+        if local { query?.fromPin(withName: self.pinName) }
         query?.whereKey("isCMS", equalTo: false)
         query?.getFirstObjectInBackground(block: { (object, error) in
             guard let advert = object as? Advert, error == nil else {
@@ -171,6 +171,23 @@ class AdvertManager: NSObject {
 
             completion(advert)
         })
+    }
+    
+    func fetchDefaultAdExchange(completion: @escaping (Advert?) -> Void) {
+        self.fetchAdExchange(local: true) { (advert) in
+            if let advert = advert {
+                completion(advert)
+                return
+            } else {
+                self.fetchAdExchange(local: false, completion: { (advert) in
+                    advert?.pinInBackground(block: { (success, error) in
+                        print("Ad Exchange Ad Pinned: \(success)")
+                        completion(advert)
+                        return
+                    })
+                })
+            }
+        }
     }
 
     func fetchSwipeQuestions(completion: @escaping ([Question]) -> Void) {
