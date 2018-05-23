@@ -49,6 +49,7 @@
 		1AA11E5720864F9E00BAE044 /* CampaignOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
+		1AAA232F20B5A71C00DDE404 /* AdExchangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */; };
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
 		1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */; };
 		1AB5C47B20B45EE800777CB9 /* CampaignManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */; };
@@ -266,6 +267,7 @@
 		1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignOverviewViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CampaignOverviewViewController.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdExchangeQuestion.swift; path = Models/AdExchangeQuestion.swift; sourceTree = "<group>"; };
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
 		1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDropdown.swift; path = Views/TextFields/JifflrTextFieldDropdown.swift; sourceTree = "<group>"; };
 		1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignManagerTests.swift; sourceTree = "<group>"; };
@@ -972,6 +974,7 @@
 				1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */,
 				1AF1009C20986B980082E458 /* ModeratorCampaignReview.swift */,
 				1AF678A62099C5A6001F8BD5 /* UserFlaggedCampaign.swift */,
+				1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1524,6 +1527,7 @@
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */,
+				1AAA232F20B5A71C00DDE404 /* AdExchangeQuestion.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,

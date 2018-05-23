@@ -13,10 +13,10 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var questions: [Question] = []
+    var questions: [AdExchangeQuestion] = []
     var answers: [Answer] = []
 
-    class func instantiateFromStoryboard(campaign: Campaign, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, questions: [AdExchangeQuestion], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.campaign = campaign
@@ -85,11 +85,11 @@ class SwipeFeedbackViewController: FeedbackViewController {
         CATransaction.commit()
     }
 
-    func createQuestionAnswers(yes: Bool, question: Question) {
+    func createQuestionAnswers(yes: Bool, question: AdExchangeQuestion) {
         guard self.answers.count == 2 else { return }
         let answer = yes == true ? self.answers.last! : self.answers.first!
-        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
-        self.questionAnswers.append(questionAnswer)
+        //let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
+        //self.questionAnswers.append(questionAnswer)
     }
 
     func saveAndPushToNextAd() {
@@ -129,11 +129,15 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SwipeFeedbackViewController: SwipeCellDelegate {
-    func cellSwiped(yes: Bool, question: Question) {
+    func cellSwiped(yes: Bool, question: AdExchangeQuestion) {
         if let index = self.questions.index(of: question) {
             let cellIndexPath = IndexPath(row: index, section: 0)
             self.questions.remove(at: index)
             self.tableView.deleteRows(at: [cellIndexPath as IndexPath], with: .fade)
+            
+            if let question = self.questions.first {
+                self.questionLabel.text = question.text
+            }
 
             self.createQuestionAnswers(yes: yes, question: question)
             self.saveAndPushToNextAd()

@@ -190,55 +190,35 @@ class AdvertManager: NSObject {
         }
     }
 
-    func fetchSwipeQuestions(completion: @escaping ([Question]) -> Void) {
+    func fetchSwipeQuestions(completion: @escaping ([AdExchangeQuestion]) -> Void) {
+        guard let location = Session.shared.currentLocation else { return }
 
-        self.fetchSwipeQuestionType { (questionType) in
-            guard let questionType = questionType else {
+        let countQuery = AdExchangeQuestion.query()
+        countQuery?.limit = 10000
+        countQuery?.whereKey("location", equalTo: location)
+        countQuery?.whereKey("active", equalTo: true)
+        countQuery?.countObjectsInBackground(block: { (count, error) in
+            guard error == nil, count > 0 else {
                 completion([])
                 return
             }
-
-            let countQuery = Question.query()
-            countQuery?.limit = 10000
-            countQuery?.whereKey("type", equalTo: questionType)
-            countQuery?.whereKey("active", equalTo: true)
-            countQuery?.countObjectsInBackground(block: { (count, error) in
-                guard error == nil, count > 0 else {
+            
+            let randomIndex = Int(arc4random_uniform(UInt32(count - 3)))
+            let query = AdExchangeQuestion.query()
+            query?.limit = 3
+            query?.skip = randomIndex
+            query?.whereKey("location", equalTo: location)
+            query?.whereKey("active", equalTo: true)
+            query?.includeKey("image")
+            query?.includeKey("answers")
+            query?.findObjectsInBackground(block: { (objects, error) in
+                guard let questions = objects as? [AdExchangeQuestion], error == nil else {
                     completion([])
                     return
                 }
-
-                let randomIndex = Int(arc4random_uniform(UInt32(count - 3)))
-                let query = Question.query()
-                query?.limit = 3
-                query?.skip = randomIndex
-                query?.whereKey("type", equalTo: questionType)
-                query?.whereKey("active", equalTo: true)
-                query?.includeKey("type")
-                query?.includeKey("answers")
-                query?.findObjectsInBackground(block: { (objects, error) in
-                    guard let questions = objects as? [Question], error == nil else {
-                        completion([])
-                        return
-                    }
-
-                    completion(questions)
-                })
+                
+                completion(questions)
             })
-
-        }
-    }
-
-    func fetchSwipeQuestionType(completion: @escaping (QuestionType?) -> Void) {
-        let query = QuestionType.query()
-        query?.whereKey("type", equalTo: AdvertQuestionType.Swipe)
-        query?.getFirstObjectInBackground(block: { (object, error) in
-            guard let questionType = object as? QuestionType, error == nil else {
-                completion(nil)
-                return
-            }
-
-            completion(questionType)
         })
     }
 
