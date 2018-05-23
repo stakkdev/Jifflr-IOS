@@ -32,7 +32,7 @@ final class Advert: PFObject {
 
     var isCMS: Bool {
         get {
-            return self["isCMS"] as? Bool ?? false
+            return self["isCMS"] as? Bool ?? true
         }
         set {
             self["isCMS"] = newValue
