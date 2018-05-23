@@ -22,17 +22,17 @@ class CMSAdvertViewController: BaseViewController {
     var timer: Timer?
     var player: Player?
 
-    var advert: Advert!
+    var campaign: Campaign!
     var mode = 1
     var content:[(question: Question, answers: [Answer])] = []
 
-    class func instantiateFromStoryboard(advert: Advert, mode: Int) -> CMSAdvertViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, mode: Int) -> CMSAdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let advertViewController = storyboard.instantiateViewController(withIdentifier: "CMSAdvertViewController") as! CMSAdvertViewController
-        advertViewController.advert = advert
+        advertViewController.campaign = campaign
         advertViewController.mode = mode
         
-        if advert.details?.template?.key == AdvertTemplateKey.imageVideoLandscape {
+        if campaign.advert.details?.template?.key == AdvertTemplateKey.imageVideoLandscape {
             OrientationManager.shared.set(orientation: .landscape)
         } else {
             OrientationManager.shared.set(orientation: .portrait)
@@ -67,8 +67,8 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     func setupData() {
-        self.titleLabel.text = self.advert.details?.title
-        self.messageTextView.text = self.advert.details?.message
+        self.titleLabel.text = self.campaign.advert.details?.title
+        self.messageTextView.text = self.campaign.advert.details?.message
         
         if self.mode != AdViewMode.preview {
             self.fetchData()
@@ -76,7 +76,7 @@ class CMSAdvertViewController: BaseViewController {
         
         self.spinner.stopAnimating()
         
-        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "jpg") {
+        if let url = MediaManager.shared.get(id: self.campaign.advert.details?.objectId, fileExtension: "jpg") {
             do {
                 let data = try Data(contentsOf: url)
                 if let image = UIImage(data: data) {
@@ -93,7 +93,7 @@ class CMSAdvertViewController: BaseViewController {
             return
         }
         
-        if let url = MediaManager.shared.get(id: self.advert.details?.objectId, fileExtension: "mp4") {
+        if let url = MediaManager.shared.get(id: self.campaign.advert.details?.objectId, fileExtension: "mp4") {
             self.player = Player()
             self.player?.playerDelegate = self
             self.player?.playbackDelegate = self
@@ -119,7 +119,7 @@ class CMSAdvertViewController: BaseViewController {
     
     func fetchData() {
         var content:[(question: Question, answers: [Answer])] = []
-        for question in self.advert.questions {
+        for question in self.campaign.advert.questions {
             content.append((question: question, answers: question.answers))
         }
         self.content = content
@@ -140,21 +140,21 @@ class CMSAdvertViewController: BaseViewController {
         
         switch question.type.type {
         case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.DatePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: false, mode: self.mode)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], isTime: false, mode: self.mode)
         case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.NumberPicker:
-            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.Rating:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         case AdvertQuestionType.TimePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], isTime: true, mode: self.mode)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], isTime: true, mode: self.mode)
         case AdvertQuestionType.URLLinks:
-            controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = URLFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         default:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         }
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -186,7 +186,7 @@ class CMSAdvertViewController: BaseViewController {
             
             for category in categories {
                 let deleteAction = UIAlertAction(title: category.title, style: .default) { (action) in
-                    AdvertManager.shared.flag(advert: self.advert, moderatorFeedbackCategory: category)
+                    AdvertManager.shared.flag(advert: self.campaign.advert, moderatorFeedbackCategory: category)
                     
                     let alert = AlertMessage.flagAdSuccess
                     self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in

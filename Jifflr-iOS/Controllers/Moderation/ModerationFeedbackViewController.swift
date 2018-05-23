@@ -19,7 +19,7 @@ class ModerationFeedbackViewController: BaseViewController {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var advert: Advert!
+    var campaign: Campaign!
     var expandedIndexpaths:[IndexPath] = []
     var feedback: [(category: ModeratorFeedbackCategory, feedback: [ModeratorFeedback])] = [] {
         didSet {
@@ -33,10 +33,10 @@ class ModerationFeedbackViewController: BaseViewController {
     var passedFeedback: ModeratorFeedback?
     var selectedFailureFeedbacks: [ModeratorFeedback] = []
     
-    class func instantiateFromStoryboard(advert: Advert) -> ModerationFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign) -> ModerationFeedbackViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ModerationFeedbackViewController") as! ModerationFeedbackViewController
-        vc.advert = advert
+        vc.campaign = campaign
         return vc
     }
 
@@ -145,7 +145,7 @@ class ModerationFeedbackViewController: BaseViewController {
         self.submitButton.animate()
         
         let moderatorAdReview = ModeratorAdReview()
-        moderatorAdReview.advert = self.advert
+        moderatorAdReview.advert = self.campaign.advert
         moderatorAdReview.moderator = user
         
         if let passedFeedback = self.passedFeedback, self.passedTextField.tag == 1 {

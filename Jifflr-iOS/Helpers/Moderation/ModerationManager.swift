@@ -67,7 +67,7 @@ class ModerationManager: NSObject {
         }
     }
     
-    func fetchAd(completion: @escaping (Advert?) -> Void) {
+    func fetchCampaign(completion: @escaping (Campaign?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
 
 //        PFCloud.callFunction(inBackground: "fetch-ads", withParameters: ["user": user.objectId!]) { responseJSON, error in
@@ -94,28 +94,28 @@ class ModerationManager: NSObject {
 //            }
 //        }
         
-        let query = Advert.query()
+        let query = Campaign.query()
         query?.whereKey("creator", notEqualTo: user)
-        query?.whereKey("isCMS", equalTo: true)
-        query?.includeKey("questions")
-        query?.includeKey("questions.answers")
-        query?.includeKey("questions.type")
-        query?.includeKey("details")
-        query?.includeKey("details.template")
-        query?.getFirstObjectInBackground(block: { (advert, error) in
-            guard let advert = advert as? Advert, error == nil else {
+        query?.includeKey("advert")
+        query?.includeKey("advert.questions")
+        query?.includeKey("advert.questions.answers")
+        query?.includeKey("advert.questions.type")
+        query?.includeKey("advert.details")
+        query?.includeKey("advert.details.template")
+        query?.getFirstObjectInBackground(block: { (campaign, error) in
+            guard let campaign = campaign as? Campaign, error == nil else {
                 completion(nil)
                 return
             }
             
-            advert.details?.image?.getDataInBackground(block: { (data, error) in
+            campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
                 if let data = data, error == nil {
                     let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-                    let success = MediaManager.shared.save(data: data, id: advert.details?.objectId, fileExtension: fileExtension)
-                    print("Moderation Media: \(advert.details?.objectId ?? "") saved to File Manager: \(success)")
+                    let success = MediaManager.shared.save(data: data, id: campaign.advert.details?.objectId, fileExtension: fileExtension)
+                    print("Moderation Media: \(campaign.advert.details?.objectId ?? "") saved to File Manager: \(success)")
                 }
                 
-                completion(advert)
+                completion(campaign)
             })
         })
     }

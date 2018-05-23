@@ -215,21 +215,24 @@ class AddQuestionsViewController: BaseViewController {
             
             var controller: UIViewController!
             
+            let campaign = Campaign()
+            campaign.advert = self.advert
+            
             switch questionType.type {
             case AdvertQuestionType.Binary:
-                controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
+                controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.DatePicker:
-                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: false, mode: AdViewMode.preview)
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], isTime: false, mode: AdViewMode.preview)
             case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
-                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
+                controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.NumberPicker:
-                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
+                controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.Rating:
-                controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
+                controller = ScaleFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             case AdvertQuestionType.TimePicker:
-                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], isTime: true, mode: AdViewMode.preview)
+                controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], isTime: true, mode: AdViewMode.preview)
             case AdvertQuestionType.URLLinks:
-                controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
+                controller = URLFeedbackViewController.instantiateFromStoryboard(campaign: campaign, content: self.previewContent, questionAnswers: [], mode: AdViewMode.preview)
             default:
                 return
             }

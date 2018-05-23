@@ -16,10 +16,10 @@ class SwipeFeedbackViewController: FeedbackViewController {
     var questions: [Question] = []
     var answers: [Answer] = []
 
-    class func instantiateFromStoryboard(advert: Advert, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
-        controller.advert = advert
+        controller.campaign = campaign
         controller.questions = questions
         controller.answers = answers
         return controller
@@ -94,7 +94,8 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
     func saveAndPushToNextAd() {
         if self.questions.count == 0 {
-            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+            //TODO
+            FeedbackManager.shared.saveFeedback(advert: self.campaign.advert, questionAnswers: self.questionAnswers, completion: {
                 self.pushToNextAd()
             })
         }

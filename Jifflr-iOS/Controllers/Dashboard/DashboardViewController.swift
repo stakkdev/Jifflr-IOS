@@ -12,7 +12,8 @@ class DashboardViewController: BaseViewController {
 
     var timer: Timer?
     var advert: Advert?
-    var moderatorAdvert: Advert?
+    var campaign: Campaign?
+    var moderatorCampaign: Campaign?
     var myAds: MyAds?
     var internetAlertShown = false
 
@@ -190,16 +191,16 @@ class DashboardViewController: BaseViewController {
                 self.myAds = myAds
             }
             
-            self.updateModerationAd()
+            self.updateModerationCampaign()
         } else {
             self.updateLocalData()
             self.updateLocalAdvert()
         }
     }
     
-    func updateModerationAd() {
-        ModerationManager.shared.fetchAd { (advert) in
-            self.moderatorAdvert = advert
+    func updateModerationCampaign() {
+        ModerationManager.shared.fetchCampaign { (campaign) in
+            self.moderatorCampaign = campaign
         }
     }
 
@@ -215,8 +216,12 @@ class DashboardViewController: BaseViewController {
     }
 
     func updateLocalAdvert() {
-        AdvertManager.shared.fetchNextLocal(completion: { (advert) in
-            self.advert = advert
+        AdvertManager.shared.fetchNextLocal(completion: { (object) in
+            if let campaign = object as? Campaign {
+                self.campaign = campaign
+            } else if let advert = object as? Advert {
+                self.advert = advert
+            }
         })
     }
 
@@ -239,23 +244,20 @@ class DashboardViewController: BaseViewController {
                 self.displayError(error: ErrorMessage.blockedCountry)
                 return
             }
-            
-            guard let advert = self.advert else {
-                self.retryAdvertFetch()
-                return
-            }
 
-            if advert.isCMS {
-                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.normal))
+            if let campaign = self.campaign, campaign.advert.isCMS {
+                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
                 navController.isNavigationBarHidden = false
                 self.navigationController?.present(navController, animated: false, completion: nil)
-            } else {
+                
+                self.campaign = nil
+            } else if let advert = self.advert {
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
                 self.navigationController?.present(navController, animated: false, completion: nil)
+            } else {
+                self.retryAdvertFetch()
             }
-            
-            self.advert = nil
         } else {
             self.rootLocationRequiredViewController()
         }
@@ -286,13 +288,14 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
-        guard let advert = self.moderatorAdvert, advert.isCMS else {
+        guard let campaign = self.moderatorCampaign else {
             self.displayError(error: ErrorMessage.noAdsToModerate)
-            self.updateModerationAd()
+            self.updateModerationCampaign()
             return
         }
-        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.moderator)
+        
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator)
         self.navigationController?.pushViewController(vc, animated: true)
-        self.moderatorAdvert = nil
+        self.moderatorCampaign = nil
     }
 }

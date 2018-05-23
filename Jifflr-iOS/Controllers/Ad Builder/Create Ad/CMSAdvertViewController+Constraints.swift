@@ -27,7 +27,7 @@ extension CMSAdvertViewController {
     }
     
     func setupConstraints() {
-        guard let template = self.advert.details?.template else { return }
+        guard let template = self.campaign.advert.details?.template else { return }
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleBackgroundView.translatesAutoresizingMaskIntoConstraints = false

@@ -17,10 +17,10 @@ class ScaleFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var scale4Button: ScaleButton!
     @IBOutlet weak var scale5Button: ScaleButton!
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> ScaleFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> ScaleFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "ScaleFeedbackViewController") as! ScaleFeedbackViewController
-        controller.advert = advert
+        controller.campaign = campaign
         controller.content = content
         controller.questionAnswers = questionAnswers
         controller.mode = mode
