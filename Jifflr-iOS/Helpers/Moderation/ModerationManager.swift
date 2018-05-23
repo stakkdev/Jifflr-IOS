@@ -167,15 +167,15 @@ class ModerationManager: NSObject {
         })
     }
     
-    func fetchNonComplianceFeedback(advert: Advert, completion: @escaping ([ModeratorFeedback]) -> Void) {
-        let query = ModeratorAdReview.query()
-        query?.whereKey("advert", equalTo: advert)
+    func fetchNonComplianceFeedback(campaign: Campaign, completion: @escaping ([ModeratorFeedback]) -> Void) {
+        let query = ModeratorCampaignReview.query()
+        query?.whereKey("campaign", equalTo: campaign)
         query?.whereKey("approved", equalTo: false)
         query?.includeKey("advert")
         query?.includeKey("feedback")
         query?.includeKey("feedback.category")
         query?.findObjectsInBackground(block: { (objects, error) in
-            guard let moderatorAdReviews = objects as? [ModeratorAdReview], error == nil else {
+            guard let moderatorAdReviews = objects as? [ModeratorCampaignReview], error == nil else {
                 completion([])
                 return
             }
@@ -200,8 +200,8 @@ class ModerationManager: NSObject {
             return
         }
         
-        let query = ModeratorAdReview.query()
-        query?.whereKey("advert", equalTo: campaign.advert)
+        let query = ModeratorCampaignReview.query()
+        query?.whereKey("campaign", equalTo: campaign)
         query?.whereKey("approved", equalTo: false)
         query?.countObjectsInBackground(block: { (count, error) in
             completion(Int(count) > 0)

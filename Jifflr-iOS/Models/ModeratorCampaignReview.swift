@@ -10,14 +10,14 @@ import UIKit
 import Foundation
 import Parse
 
-final class ModeratorAdReview: PFObject {
+final class ModeratorCampaignReview: PFObject {
     
-    var advert: Advert {
+    var campaign: Campaign {
         get {
-            return self["advert"] as! Advert
+            return self["campaign"] as! Campaign
         }
         set {
-            self["advert"] = newValue
+            self["campaign"] = newValue
         }
     }
     
@@ -49,8 +49,8 @@ final class ModeratorAdReview: PFObject {
     }
 }
 
-extension ModeratorAdReview: PFSubclassing {
+extension ModeratorCampaignReview: PFSubclassing {
     static func parseClassName() -> String {
-        return "ModeratorAdReview"
+        return "ModeratorCampaignReview"
     }
 }

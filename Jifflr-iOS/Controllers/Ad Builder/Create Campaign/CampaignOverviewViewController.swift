@@ -297,7 +297,7 @@ class CampaignOverviewViewController: BaseViewController {
                 alertController.addAction(dismissAction)
                 
                 let viewAction = UIAlertAction(title: "nonCompliance.alert.viewAction".localized(), style: .default) { (action) in
-                    let vc = NonComplianceViewController.instantiateFromStoryboard(advert: self.campaign.advert)
+                    let vc = NonComplianceViewController.instantiateFromStoryboard(campaign: self.campaign)
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 alertController.addAction(viewAction)
