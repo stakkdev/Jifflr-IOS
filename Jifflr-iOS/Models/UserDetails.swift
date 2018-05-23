@@ -165,6 +165,15 @@ final class UserDetails: PFObject {
             self["language"] = newValue
         }
     }
+    
+    var lastExchangeQuestion: AdExchangeQuestion? {
+        get {
+            return self["lastExchangeQuestion"] as? AdExchangeQuestion
+        }
+        set {
+            self["lastExchangeQuestion"] = newValue
+        }
+    }
 }
 
 extension UserDetails: PFSubclassing {

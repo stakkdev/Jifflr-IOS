@@ -249,14 +249,13 @@ class DashboardViewController: BaseViewController {
                 return
             }
 
-//            if let campaign = self.campaign {
-//                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
-//                navController.isNavigationBarHidden = false
-//                self.navigationController?.present(navController, animated: false, completion: nil)
-//
-//                self.campaign = nil
-//            } else
-                if let advert = self.advert {
+            if let campaign = self.campaign {
+                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
+                navController.isNavigationBarHidden = false
+                self.navigationController?.present(navController, animated: false, completion: nil)
+
+                self.campaign = nil
+            } else if let advert = self.advert {
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
                 self.navigationController?.present(navController, animated: false, completion: nil)

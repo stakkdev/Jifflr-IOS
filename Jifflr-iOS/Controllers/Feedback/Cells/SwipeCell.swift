@@ -33,6 +33,7 @@ class SwipeCell: UITableViewCell {
         super.awakeFromNib()
 
         self.backgroundColor = UIColor.clear
+        self.selectionStyle = .none
         self.drawGestureRecognizer()
     }
 

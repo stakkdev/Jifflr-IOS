@@ -15,6 +15,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
     
     var questions: [AdExchangeQuestion] = []
     var answers: [Answer] = []
+    var userSeenAdExchange = UserSeenAdExchange()
 
     class func instantiateFromStoryboard(campaign: Campaign, questions: [AdExchangeQuestion], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -86,17 +87,38 @@ class SwipeFeedbackViewController: FeedbackViewController {
     }
 
     func createQuestionAnswers(yes: Bool, question: AdExchangeQuestion) {
+        guard let user = Session.shared.currentUser else { return }
         guard self.answers.count == 2 else { return }
         let answer = yes == true ? self.answers.last! : self.answers.first!
-        //let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
-        //self.questionAnswers.append(questionAnswer)
+        
+        if self.userSeenAdExchange.question1 == nil {
+            self.userSeenAdExchange.question1 = question
+            self.userSeenAdExchange.response1 = answer
+            user.details.lastExchangeQuestion = question
+        } else if self.userSeenAdExchange.question2 == nil {
+            self.userSeenAdExchange.question2 = question
+            self.userSeenAdExchange.response2 = answer
+            user.details.lastExchangeQuestion = question
+        } else if self.userSeenAdExchange.question3 == nil {
+            self.userSeenAdExchange.question3 = question
+            self.userSeenAdExchange.response3 = answer
+            user.details.lastExchangeQuestion = question
+        }
     }
 
     func saveAndPushToNextAd() {
         if self.questions.count == 0 {
-            FeedbackManager.shared.saveFeedback(campaign: self.campaign, questionAnswers: self.questionAnswers, completion: {
-                self.pushToNextAd()
-            })
+            guard let user = Session.shared.currentUser else { return }
+            self.userSeenAdExchange.user = user
+            self.userSeenAdExchange.saveEventually { (success, error) in
+                print("Saved Swipe Feedback: \(success)")
+            }
+            
+            user.saveEventually { (success, error) in
+                print("User Updated")
+            }
+            
+            self.pushToNextAd()
         }
     }
 }
