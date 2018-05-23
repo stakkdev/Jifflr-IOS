@@ -10,14 +10,14 @@ import UIKit
 import Foundation
 import Parse
 
-final class UserFlaggedAd: PFObject {
+final class UserFlaggedCampaign: PFObject {
     
-    var advert: Advert {
+    var campaign: Campaign {
         get {
-            return self["advert"] as! Advert
+            return self["campaign"] as! Campaign
         }
         set {
-            self["advert"] = newValue
+            self["campaign"] = newValue
         }
     }
     
@@ -40,8 +40,8 @@ final class UserFlaggedAd: PFObject {
     }
 }
 
-extension UserFlaggedAd: PFSubclassing {
+extension UserFlaggedCampaign: PFSubclassing {
     static func parseClassName() -> String {
-        return "UserFlaggedAd"
+        return "UserFlaggedCampaign"
     }
 }

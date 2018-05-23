@@ -186,7 +186,7 @@ class CMSAdvertViewController: BaseViewController {
             
             for category in categories {
                 let deleteAction = UIAlertAction(title: category.title, style: .default) { (action) in
-                    AdvertManager.shared.flag(advert: self.campaign.advert, moderatorFeedbackCategory: category)
+                    AdvertManager.shared.flag(campaign: self.campaign, moderatorFeedbackCategory: category)
                     
                     let alert = AlertMessage.flagAdSuccess
                     self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in
