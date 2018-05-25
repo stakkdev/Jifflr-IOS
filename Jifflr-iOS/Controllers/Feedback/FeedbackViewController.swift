@@ -42,7 +42,7 @@ class FeedbackViewController: BaseViewController {
                 })
             })
         case AdViewMode.preview:
-            self.nextAdButton.isEnabled = false
+            self.nextAdButton.isEnabled = true
             self.nextAdButton.alpha = 0.5
         case AdViewMode.moderator:
             self.nextAdButton.isEnabled = true
@@ -100,7 +100,8 @@ class FeedbackViewController: BaseViewController {
     @IBAction func nextButtonPressed(sender: JifflrButton) {
         if self.mode == AdViewMode.normal {
             guard self.validateAnswers() else {
-                self.displayError(error: ErrorMessage.invalidFeedback)
+                let value = self.content.first?.question.noOfRequiredAnswers ?? 1
+                self.displayError(error: ErrorMessage.invalidFeedback(value))
                 return
             }
             
