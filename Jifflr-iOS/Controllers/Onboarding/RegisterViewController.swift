@@ -304,7 +304,9 @@ extension RegisterViewController: UITextFieldDelegate {
             let chooseLocation = ChooseLocationViewController.instantiateFromStoryboard()
             chooseLocation.searchString = text
             chooseLocation.delegate = self
-            self.present(chooseLocation, animated: true, completion: nil)
+            self.present(chooseLocation, animated: true) {
+                self.view.endEditing(true)
+            }
         }
     }
     
