@@ -14,11 +14,14 @@ class AppSettingsManager: NSObject {
     
     func canBecomeModerator(completion: @escaping (Bool) -> Void) {
         PFCloud.callFunction(inBackground: "can-become-moderator", withParameters: [:]) { responseJSON, error in
-            if let yes = responseJSON as? Bool, error == nil {
-                completion(yes)
+            if let responseJSON = responseJSON as? [String: Bool], error == nil {
+                if let yes = responseJSON["success"] {
+                    completion(yes)
+                } else {
+                    completion(false)
+                }
             } else {
-                // TODO - Change to false once endpoint implemented.
-                completion(true)
+                completion(false)
             }
         }
     }

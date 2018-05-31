@@ -33,7 +33,7 @@ class DashboardManager: NSObject {
                     dashboardStats.money = money
                 }
 
-                if let adsCreated = dashboardJSON["adsCreated"] as? Int {
+                if let adsCreated = dashboardJSON["campaignsCreated"] as? Int {
                     dashboardStats.adsCreated = adsCreated
                 }
 

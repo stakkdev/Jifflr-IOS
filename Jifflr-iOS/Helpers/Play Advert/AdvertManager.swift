@@ -23,99 +23,72 @@ class AdvertManager: NSObject {
                 return
             }
 
-//            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
-//                if let responseJSON = responseJSON as? [String: Any], error == nil {
-//
-//                    var adverts:[Advert] = []
-//                    if let advert = responseJSON["defaultAd"] as? Advert {
-//                        adverts.append(advert)
-//                    }
-//
-//                    if let cmsAds = responseJSON["cmsAds"] as? [Advert] {
-//                        adverts += cmsAds
-//                    }
-//
-//                    PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
-//                        if success == true, error == nil {
-//                            print("\(adverts.count) adverts pinned.")
-//                        }
-//
-//                        completion()
-//                    })
-//                } else {
-//                    completion()
-//                }
-//            }
-            
-            let query = Campaign.query()
-            query?.whereKey("creator", notEqualTo: user)
-            query?.includeKey("advert")
-            query?.includeKey("advert.questions")
-            query?.includeKey("advert.questions.answers")
-            query?.includeKey("advert.questions.type")
-            query?.includeKey("advert.details")
-            query?.includeKey("advert.details.template")
-            query?.findObjectsInBackground(block: { (campaigns, error) in
-                guard let campaigns = campaigns as? [Campaign], error == nil else {
-                    completion()
-                    return
-                }
-                
-                PFObject.pinAll(inBackground: campaigns, withName: self.pinName, block: { (success, error) in
-                    let group = DispatchGroup()
-                    
-                    for campaign in campaigns {
-                        group.enter()
-                        campaign.advert.pinInBackground(withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                        
-                        group.enter()
-                        PFObject.pinAll(inBackground: campaign.advert.questions, withName: self.pinName, block: { (success, error) in
-                            group.leave()
-                        })
-                        
-                        for question in campaign.advert.questions {
-                            group.enter()
-                            PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
-                            
-                            group.enter()
-                            question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
-                        }
-                        
-                        if let details = campaign.advert.details {
-                            group.enter()
-                            details.pinInBackground(withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
-                            
-                            group.enter()
-                            details.template?.pinInBackground(withName: self.pinName, block: { (success, error) in
-                                group.leave()
-                            })
-                            
-                            group.enter()
-                            details.image?.getDataInBackground(block: { (data, error) in
-                                if let data = data, error == nil {
-                                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-                                    let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
-                                    print("Ads Media: \(details.objectId ?? "") saved to File Manager: \(success)")
-                                }
-                                
-                                group.leave()
-                            })
-                        }
+            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
+                if let responseJSON = responseJSON as? [String: Any], error == nil {
+
+                    var campaigns:[Campaign] = []
+                    if let cmsAds = responseJSON["cmsAds"] as? [Campaign] {
+                        campaigns += cmsAds
                     }
-                    
-                    group.notify(queue: .main, execute: {
-                        completion()
+
+                    PFObject.pinAll(inBackground: campaigns, withName: self.pinName, block: { (success, error) in
+                        let group = DispatchGroup()
+    
+                        for campaign in campaigns {
+                            group.enter()
+                            campaign.advert.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+    
+                            group.enter()
+                            PFObject.pinAll(inBackground: campaign.advert.questions, withName: self.pinName, block: { (success, error) in
+                                group.leave()
+                            })
+    
+                            for question in campaign.advert.questions {
+                                group.enter()
+                                PFObject.pinAll(inBackground: question.answers, withName: self.pinName, block: { (success, error) in
+                                    group.leave()
+                                })
+    
+                                group.enter()
+                                question.type.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                    group.leave()
+                                })
+                            }
+    
+                            if let details = campaign.advert.details {
+                                group.enter()
+                                details.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                    group.leave()
+                                })
+    
+                                group.enter()
+                                details.template?.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                    group.leave()
+                                })
+    
+                                group.enter()
+                                details.image?.getDataInBackground(block: { (data, error) in
+                                    if let data = data, error == nil {
+                                        let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                                        let success = MediaManager.shared.save(data: data, id: details.objectId, fileExtension: fileExtension)
+                                        print("Ads Media: \(details.objectId ?? "") saved to File Manager: \(success)")
+                                    }
+    
+                                    group.leave()
+                                })
+                            }
+                        }
+    
+                        group.notify(queue: .main, execute: {
+                            completion()
+                        })
                     })
-                })
-            })
+                } else {
+                    completion()
+                }
+            }
         }
     }
 
