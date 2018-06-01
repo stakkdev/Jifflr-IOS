@@ -21,7 +21,7 @@ class AdvertViewController: BaseViewController {
 
     var shouldPushToFeedback = false
     var advert: Advert!
-    var questions: [Question] = []
+    var questions: [AdExchangeQuestion] = []
     var answers: [Answer] = []
     var rewardedAdmob = false
 
@@ -108,12 +108,9 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
-        guard let firstQuestion = self.questions.first, firstQuestion.type.type == AdvertQuestionType.Swipe else {
-            print("Invalid Question Type")
-            return
-        }
-
-        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, questions: self.questions, answers: self.answers)
+        let campaign = Campaign()
+        campaign.advert = self.advert
+        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, questions: self.questions, answers: self.answers)
         self.navigationController?.pushViewController(controller, animated: false)
     }
 

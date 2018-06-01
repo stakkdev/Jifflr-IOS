@@ -13,17 +13,17 @@ class NonComplianceViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    var advert: Advert!
+    var campaign: Campaign!
     var moderatorFeedbacks: [ModeratorFeedback] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
 
-    class func instantiateFromStoryboard(advert: Advert) -> NonComplianceViewController {
+    class func instantiateFromStoryboard(campaign: Campaign) -> NonComplianceViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "NonComplianceViewController") as! NonComplianceViewController
-        vc.advert = advert
+        vc.campaign = campaign
         return vc
     }
     
@@ -55,7 +55,7 @@ class NonComplianceViewController: BaseViewController {
     
     func setupData() {
         self.spinner.startAnimating()
-        ModerationManager.shared.fetchNonComplianceFeedback(advert: self.advert) { (moderatorFeedback) in
+        ModerationManager.shared.fetchNonComplianceFeedback(campaign: self.campaign) { (moderatorFeedback) in
             self.moderatorFeedbacks = moderatorFeedback
             self.spinner.stopAnimating()
         }

@@ -37,17 +37,22 @@ extension CampaignOverviewViewController {
             return
         }
         
+        CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, user: user, amount: difference)
+        
         self.updateButton.animate()
-        CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, amount: difference) { (error) in
-            self.updateButton.stopAnimating()
-            
-            guard error == nil else {
-                self.displayError(error: error)
-                return
-            }
-            
-            let alert = AlertMessage.increaseBudgetSuccess
-            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+        self.campaign.saveInBackgroundAndPin { (error) in
+            user.saveAndPin(completion: { (error) in
+                self.updateButton.stopAnimating()
+                guard error == nil else {
+                    self.displayError(error: ErrorMessage.increaseBudgetFailedFromServer)
+                    return
+                }
+                
+                self.updateBalanceButton()
+                
+                let alert = AlertMessage.increaseBudgetSuccess
+                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+            })
         }
     }
     
@@ -79,7 +84,7 @@ extension CampaignOverviewViewController {
     }
     
     @IBAction func deleteCampaign(sender: JifflrButton) {
-        guard self.campaign.status?.key != CampaignStatusKey.prepareToDelete else {
+        guard self.campaign.status != CampaignStatusKey.prepareToDelete else {
             let alert = AlertMessage.scheduledDeleteCampaign
             self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
             return
@@ -103,29 +108,21 @@ extension CampaignOverviewViewController {
     
     func campaignDelete() {
         self.deleteCampaign.animate()
-        CampaignManager.shared.fetchStatus(key: CampaignStatusKey.prepareToDelete) { (status) in
-            guard let status = status else {
-                self.deleteCampaign.stopAnimating()
+        self.campaign.status = CampaignStatusKey.prepareToDelete
+        self.campaign.saveInBackgroundAndPin(completion: { (error) in
+            self.deleteCampaign.stopAnimating()
+            guard error == nil else {
                 self.displayError(error: ErrorMessage.noInternetConnection)
                 return
             }
             
-            self.campaign.status = status
-            self.campaign.saveInBackgroundAndPin(completion: { (error) in
-                guard error == nil else {
-                    self.displayError(error: ErrorMessage.noInternetConnection)
-                    return
-                }
-                
-                self.deleteCampaign.stopAnimating()
-                self.handleStatus(status: status)
-                self.navigationController?.popViewController(animated: true)
-            })
-        }
+            self.handleStatus(status: self.campaign.status)
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     @IBAction func activateSwitchChanged(sender: UISwitch) {
-        let key = self.campaign.status?.key
+        let key = self.campaign.status
         guard key != CampaignStatusKey.nonCompliant && key != CampaignStatusKey.nonCompliantScheduled && key != CampaignStatusKey.prepareToDelete else {
             sender.isOn = false
             self.displayError(error: ErrorMessage.nonCompliantActivate)
@@ -142,24 +139,16 @@ extension CampaignOverviewViewController {
             }
         }
         
-        CampaignManager.shared.fetchStatus(key: statusKey) { (status) in
-            guard let status = status else {
+        self.campaign.status = statusKey
+        self.campaign.saveInBackgroundAndPin(completion: { (error) in
+            guard error == nil else {
                 sender.isOn = !sender.isOn
                 self.displayError(error: ErrorMessage.noInternetConnection)
                 return
             }
             
-            self.campaign.status = status
-            self.campaign.saveInBackgroundAndPin(completion: { (error) in
-                guard error == nil else {
-                    sender.isOn = !sender.isOn
-                    self.displayError(error: ErrorMessage.noInternetConnection)
-                    return
-                }
-                
-                self.handleStatus(status: status)
-            })
-        }
+            self.handleStatus(status: self.campaign.status)
+        })
     }
     
     @objc func balanceButtonPressed(sender: UIButton) {
@@ -212,49 +201,35 @@ extension CampaignOverviewViewController {
     @IBAction func activateButtonPressed(sender: JifflrButton) {
         guard let user = Session.shared.currentUser else { return }
         
-        self.campaign.creator = user
         self.campaign.budget = 0.0
         
-        guard self.budgetView.value > self.campaign.budget && self.budgetView.value != 0.0 else {
+        guard CampaignManager.shared.isValidBalance(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget) else {
             self.displayError(error: ErrorMessage.campaignActivationFailedInvalidBalance)
             return
         }
         
-        let budget = self.budgetView.value - self.campaign.budget
-        guard user.details.campaignBalance > budget else {
+        guard CampaignManager.shared.canActivateCampaign(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget, userCampaignBalance: user.details.campaignBalance) else {
             self.handleInsufficientBalance(isActivation: true)
             return
         }
         
+        let budget = self.budgetView.value - self.campaign.budget
+        CampaignManager.shared.activateCampaign(user: user, campaign: self.campaign, budget: budget)
+        
         self.activateButton.animate()
-        CampaignManager.shared.fetchStatus(key: CampaignStatusKey.availableScheduled) { (status) in
-            guard let status = status else {
+        self.campaign.saveInBackgroundAndPin { (error) in
+            user.saveAndPin(completion: { (error) in
                 self.activateButton.stopAnimating()
-                self.displayError(error: ErrorMessage.campaignActivationFailed)
-                return
-            }
-            
-            self.campaign.status = status
-            self.campaign.saveInBackgroundAndPin { (error) in
                 guard error == nil else {
-                    self.activateButton.stopAnimating()
                     self.displayError(error: ErrorMessage.campaignActivationFailed)
                     return
                 }
                 
-                CampaignManager.shared.activateCampaign(campaign: self.campaign, budget: budget, completion: { (error) in
-                    self.activateButton.stopAnimating()
-                    
-//                    guard error == nil else {
-//                        self.displayError(error: error)
-//                        return
-//                    }
-                    
-                    self.handleStatus(status: self.campaign.status)
-                    self.setupUIBasedOnStatus()
-                    self.updateNavigationStackAfterActivation()
-                })
-            }
+                self.updateBalanceButton()
+                self.handleStatus(status: self.campaign.status)
+                self.setupUIBasedOnStatus()
+                self.updateNavigationStackAfterActivation()
+            })
         }
     }
     

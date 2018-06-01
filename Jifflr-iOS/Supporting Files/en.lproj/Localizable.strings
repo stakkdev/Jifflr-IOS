@@ -39,7 +39,7 @@
 "error.paypalEmailSaveFailed" = "Unable to save PayPal email address. Please check your internet connection and try again.";
 "error.admobFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
 "error.advertFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
-"error.invalidFeedback" = "Please choose at least 1 answer to give feedback.";
+"error.invalidFeedback" = "Please choose at least %i answer to give feedback.";
 "error.blockedCountry" = "Unfortunately we are not operating in your country at the moment, please check back soon.";
 "error.changeInvitation.invalidName" = "Please enter the name of the person you are inviting.";
 "error.changeInvitation.invalidEmail" = "Please enter the email of the person you are inviting.";
@@ -342,7 +342,7 @@
 "campaignOverview.location.heading" = "Location";
 "campaignOverview.language.heading" = "Language";
 "campaignOverview.estimatedAudience.heading" = "Estimated Audience";
-"campaignOverview.costPerReview.heading" = "Cost / Review";
+"campaignOverview.costPerView.heading" = "Cost / Review";
 "campaignOverview.estimatedCampaignCost.heading" = "Estimated Campaign Cost";
 "campaignOverview.budgetCoverage.heading" = "Budget Coverage";
 "campaignOverview.activateButton.title" = "ACTIVATE";

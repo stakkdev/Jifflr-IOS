@@ -17,7 +17,7 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var nextAdButton: JifflrButton!
     @IBOutlet weak var createAdCampaignButton: UIButton!
 
-    var advert: Advert!
+    var campaign: Campaign!
     var content:[(question: Question, answers: [Answer])] = []
     var questionAnswers:[QuestionAnswers] = []
     
@@ -42,7 +42,7 @@ class FeedbackViewController: BaseViewController {
                 })
             })
         case AdViewMode.preview:
-            self.nextAdButton.isEnabled = false
+            self.nextAdButton.isEnabled = true
             self.nextAdButton.alpha = 0.5
         case AdViewMode.moderator:
             self.nextAdButton.isEnabled = true
@@ -100,14 +100,15 @@ class FeedbackViewController: BaseViewController {
     @IBAction func nextButtonPressed(sender: JifflrButton) {
         if self.mode == AdViewMode.normal {
             guard self.validateAnswers() else {
-                self.displayError(error: ErrorMessage.invalidFeedback)
+                let value = self.content.first?.question.noOfRequiredAnswers ?? 1
+                self.displayError(error: ErrorMessage.invalidFeedback(value))
                 return
             }
             
             if self.content.count > 1 {
                 self.pushToNextQuestion()
             } else {
-                FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
+                FeedbackManager.shared.saveFeedback(campaign: self.campaign, questionAnswers: self.questionAnswers, completion: {
                     self.pushToNextAd()
                 })
             }
@@ -115,7 +116,7 @@ class FeedbackViewController: BaseViewController {
             if self.content.count > 1 {
                 self.pushToNextQuestion()
             } else {
-                let vc = ModerationFeedbackViewController.instantiateFromStoryboard(advert: self.advert)
+                let vc = ModerationFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -140,26 +141,26 @@ class FeedbackViewController: BaseViewController {
         
         self.nextAdButton.animate()
         
-        if self.advert.isCMS {
+        if self.campaign.advert.isCMS {
             group.enter()
-            AdvertManager.shared.unpin(advert: self.advert) {
+            AdvertManager.shared.unpin(campaign: self.campaign) {
                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
-            AdvertManager.shared.fetchNextLocal(completion: { (advert) in
+            AdvertManager.shared.fetchNextLocal(completion: { (object) in
                 self.nextAdButton.stopAnimating()
                 
-                guard let advert = advert else {
+                guard let object = object else {
                     self.dismiss(animated: false, completion: nil)
                     return
                 }
                 
-                if advert.isCMS {
-                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(advert: advert, mode: AdViewMode.normal)
+                if let campaign = object as? Campaign {
+                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal)
                     self.navigationController?.pushViewController(advertViewController, animated: true)
-                } else {
+                } else if let advert = object as? Advert {
                     let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)
                     self.navigationController?.pushViewController(advertViewController, animated: true)
                 }
@@ -175,21 +176,21 @@ class FeedbackViewController: BaseViewController {
         
         switch question.type.type {
         case AdvertQuestionType.Binary:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
         case AdvertQuestionType.DatePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: false, mode: self.mode)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, isTime: false, mode: self.mode)
         case AdvertQuestionType.MultipleChoice, AdvertQuestionType.Month, AdvertQuestionType.DayOfWeek:
-            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
+            controller = MultiSelectFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
         case AdvertQuestionType.NumberPicker:
-            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
+            controller = NumberPickerFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
         case AdvertQuestionType.Rating:
-            controller = ScaleFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
+            controller = ScaleFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
         case AdvertQuestionType.TimePicker:
-            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, isTime: true, mode: self.mode)
+            controller = DateTimeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, isTime: true, mode: self.mode)
         case AdvertQuestionType.URLLinks:
-            controller = URLFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: [], mode: self.mode)
+            controller = URLFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         default:
-            controller = BinaryFeedbackViewController.instantiateFromStoryboard(advert: self.advert, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
+            controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: self.questionAnswers, mode: self.mode)
         }
         
         self.navigationController?.pushViewController(controller, animated: true)

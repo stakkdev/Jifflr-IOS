@@ -14,10 +14,10 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
     
     var selectedIndexPaths: [IndexPath] = []
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> MultiSelectFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> MultiSelectFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MultiSelectFeedbackViewController") as! MultiSelectFeedbackViewController
-        controller.advert = advert
+        controller.campaign = campaign
         controller.content = content
         controller.questionAnswers = questionAnswers
         controller.mode = mode

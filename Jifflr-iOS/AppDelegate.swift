@@ -100,7 +100,7 @@ extension AppDelegate {
         Answer.registerSubclass()
         Question.registerSubclass()
         QuestionType.registerSubclass()
-        UserSeenAdvert.registerSubclass()
+        UserSeenCampaign.registerSubclass()
         QuestionAnswers.registerSubclass()
         UserCashout.registerSubclass()
         UserMonthStats.registerSubclass()
@@ -113,8 +113,8 @@ extension AppDelegate {
         Demographic.registerSubclass()
         Campaign.registerSubclass()
         Schedule.registerSubclass()
-        CampaignStatus.registerSubclass()
         Gender.registerSubclass()
+        AdExchangeQuestion.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

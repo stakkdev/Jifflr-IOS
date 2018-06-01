@@ -128,7 +128,9 @@ class AddContentViewController: BaseViewController {
             return
         }
         
-        let vc = CMSAdvertViewController.instantiateFromStoryboard(advert: self.advert, mode: AdViewMode.preview)
+        let campaign = Campaign()
+        campaign.advert = self.advert
+        let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.preview)
         let navController = UINavigationController(rootViewController: vc)
         navController.isNavigationBarHidden = true
         self.navigationController?.present(navController, animated: true, completion: nil)

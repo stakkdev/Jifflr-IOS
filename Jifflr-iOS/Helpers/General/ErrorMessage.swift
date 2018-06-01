@@ -41,7 +41,7 @@ public enum ErrorMessage {
     case admobFetchFailed
     case advertFetchFailed
     case invalidDobProfile
-    case invalidFeedback
+    case invalidFeedback(Int)
     case blockedCountry
     case changeInvitationName
     case changeInvitationEmail
@@ -150,8 +150,8 @@ public enum ErrorMessage {
             return "error.advertFetchFailed".localized()
         case .invalidDobProfile:
             return "error.profile.invalidDob".localized()
-        case .invalidFeedback:
-            return "error.invalidFeedback".localized()
+        case .invalidFeedback(let value):
+            return "error.invalidFeedback".localizedFormat(value)
         case .blockedCountry:
             return "error.blockedCountry".localized()
         case .changeInvitationName:

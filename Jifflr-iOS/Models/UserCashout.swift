@@ -23,7 +23,8 @@ final class UserCashout: PFObject {
 
     var value: Double {
         get {
-            return self["value"] as! Double
+            let value = self["value"] as! Double
+            return value == 0.0 ? 0.0 : value / 100.0
         }
         set {
             self["value"] = newValue

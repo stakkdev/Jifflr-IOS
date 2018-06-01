@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SwipeCellDelegate: class {
-    func cellSwiped(yes: Bool, question: Question)
+    func cellSwiped(yes: Bool, question: AdExchangeQuestion)
 }
 
 class SwipeCell: UITableViewCell {
@@ -18,7 +18,7 @@ class SwipeCell: UITableViewCell {
     @IBOutlet weak var questionImageView: UIImageView!
 
     var delegate: SwipeCellDelegate?
-    var question: Question!
+    var question: AdExchangeQuestion!
 
     var animationOptions: UIViewAnimationOptions = [.allowUserInteraction, .beginFromCurrentState]
     var animationDuration: TimeInterval = 0.5
@@ -33,6 +33,7 @@ class SwipeCell: UITableViewCell {
         super.awakeFromNib()
 
         self.backgroundColor = UIColor.clear
+        self.selectionStyle = .none
         self.drawGestureRecognizer()
     }
 
@@ -63,7 +64,7 @@ class SwipeCell: UITableViewCell {
     }
 
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
+        return true
     }
 
     @objc func didPan(sender: UIPanGestureRecognizer) {

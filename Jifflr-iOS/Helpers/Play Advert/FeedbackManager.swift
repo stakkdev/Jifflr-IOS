@@ -24,7 +24,7 @@ class FeedbackManager: NSObject {
         return questionAnswer
     }
 
-    func saveFeedback(advert: Advert, questionAnswers: [QuestionAnswers], completion: @escaping () -> Void) {
+    func saveFeedback(campaign: Campaign, questionAnswers: [QuestionAnswers], completion: @escaping () -> Void) {
         guard let currentUser = UserManager.shared.currentUser else { return }
         guard let location = Session.shared.currentLocation else { return }
 
@@ -38,17 +38,17 @@ class FeedbackManager: NSObject {
 
         group.notify(queue: .main) {
 
-            let userSeenAdvert = UserSeenAdvert()
-            userSeenAdvert.advert = advert
-            userSeenAdvert.location = location
-            userSeenAdvert.user = currentUser
+            let userSeenCampaign = UserSeenCampaign()
+            userSeenCampaign.campaign = campaign
+            userSeenCampaign.location = location
+            userSeenCampaign.user = currentUser
 
-            let relation = userSeenAdvert.relation(forKey: "questionAnswers")
+            let relation = userSeenCampaign.relation(forKey: "questionAnswers")
             for questionAnswer in questionAnswers {
                 relation.add(questionAnswer)
             }
 
-            userSeenAdvert.saveEventually({ (success, error) in
+            userSeenCampaign.saveEventually({ (success, error) in
                 if success == true {
                     print("UserSeenAdvert Saved")
                 }

@@ -22,7 +22,6 @@
 		1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */; };
 		1A4115A02090AC530078D32B /* ModerationTCsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */; };
 		1A4115A32090ACB40078D32B /* Moderation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A4115A12090ACB40078D32B /* Moderation.storyboard */; };
-		1A4115A52090BD0E0078D32B /* ModeratorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */; };
 		1A4115A82090C4130078D32B /* ModerationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A72090C4130078D32B /* ModerationManager.swift */; };
 		1A4115AA2090C8D60078D32B /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A92090C8D60078D32B /* AppSettingsManager.swift */; };
 		1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115AB2090C9070078D32B /* AppSettings.swift */; };
@@ -37,7 +36,6 @@
 		1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */; };
 		1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A77207E0B8200474598 /* AdvertCell.swift */; };
 		1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A79207E183700474598 /* JifflrBarChart.swift */; };
-		1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7B207E3BAF00474598 /* CampaignStatus.swift */; };
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
@@ -51,8 +49,11 @@
 		1AA11E5720864F9E00BAE044 /* CampaignOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
+		1AAA232F20B5A71C00DDE404 /* AdExchangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */; };
+		1AAA233120B5AE4900DDE404 /* UserSeenAdExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */; };
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
 		1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */; };
+		1AB5C47B20B45EE800777CB9 /* CampaignManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */; };
 		1AC480622074D3B80092906C /* AddQuestionsViewController+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */; };
 		1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */; };
 		1AE5A7E92084DEF000B7CDAE /* CreateTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */; };
@@ -61,7 +62,7 @@
 		1AE5A7EF2084E4EA00B7CDAE /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EE2084E4EA00B7CDAE /* Campaign.swift */; };
 		1AE5A7F12084E58000B7CDAE /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7F02084E58000B7CDAE /* Language.swift */; };
 		1AE5A7F32084FA3000B7CDAE /* GenderSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7F22084FA3000B7CDAE /* GenderSegmentedControl.swift */; };
-		1AF1009D20986B980082E458 /* ModeratorAdReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1009C20986B980082E458 /* ModeratorAdReview.swift */; };
+		1AF1009D20986B980082E458 /* ModeratorCampaignReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1009C20986B980082E458 /* ModeratorCampaignReview.swift */; };
 		1AF1009F20988D430082E458 /* CampaignDeposit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1009E20988D430082E458 /* CampaignDeposit.swift */; };
 		1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1953B2068FF7800FE3896 /* AdBuilderOverview.storyboard */; };
 		1AF19542206902FD00FE3896 /* AdBuilderLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */; };
@@ -74,7 +75,7 @@
 		1AF195522069340600FE3896 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */; };
 		1AF19555206938AC00FE3896 /* ChooseTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF19554206938AC00FE3896 /* ChooseTemplateCell.swift */; };
 		1AF1955720693E7800FE3896 /* AdvertTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1955620693E7800FE3896 /* AdvertTemplate.swift */; };
-		1AF678A72099C5A6001F8BD5 /* UserFlaggedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF678A62099C5A6001F8BD5 /* UserFlaggedAd.swift */; };
+		1AF678A72099C5A6001F8BD5 /* UserFlaggedCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF678A62099C5A6001F8BD5 /* UserFlaggedCampaign.swift */; };
 		1AF985432081066D006525DB /* CreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF985422081066D006525DB /* CreateScheduleViewController.swift */; };
 		1AF985462081088B006525DB /* CreateCampaign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AF985442081088B006525DB /* CreateCampaign.storyboard */; };
 		1AFD1F6B20875A9F00293B31 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD1F6A20875A9F00293B31 /* BudgetView.swift */; };
@@ -167,7 +168,7 @@
 		E9A2CF4F1F8F7CCA008A7F40 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */; };
 		E9A2CF511F8F7D1D008A7F40 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */; };
 		E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF521F8F7D87008A7F40 /* Location.swift */; };
-		E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */; };
+		E9A2CF551F8F7DEB008A7F40 /* UserSeenCampaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2CF541F8F7DEB008A7F40 /* UserSeenCampaign.swift */; };
 		E9A717741F8B89AC00B07414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717731F8B89AC00B07414 /* AppDelegate.swift */; };
 		E9A7177A1F8B89AC00B07414 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A717791F8B89AC00B07414 /* CustomView.swift */; };
 		E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A7177C1F8B89AC00B07414 /* PFUser+Extensions.swift */; };
@@ -240,7 +241,6 @@
 		1A2C1AA1207CF58E00765D05 /* AdCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdCreatedViewController.swift; path = "Controllers/Ad Builder/Create Ad/AdCreatedViewController.swift"; sourceTree = "<group>"; };
 		1A41159F2090AC530078D32B /* ModerationTCsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationTCsViewController.swift; path = Controllers/Moderation/ModerationTCsViewController.swift; sourceTree = "<group>"; };
 		1A4115A22090ACB40078D32B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Moderation.storyboard; sourceTree = "<group>"; };
-		1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorStatus.swift; path = Models/ModeratorStatus.swift; sourceTree = "<group>"; };
 		1A4115A72090C4130078D32B /* ModerationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationManager.swift; path = Helpers/Moderation/ModerationManager.swift; sourceTree = "<group>"; };
 		1A4115A92090C8D60078D32B /* AppSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsManager.swift; path = Helpers/General/AppSettingsManager.swift; sourceTree = "<group>"; };
 		1A4115AB2090C9070078D32B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Models/AppSettings.swift; sourceTree = "<group>"; };
@@ -255,7 +255,6 @@
 		1A642A75207E0ADE00474598 /* ActiveAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActiveAdsCell.swift; path = "Controllers/Ad Builder/Overview/Cells/ActiveAdsCell.swift"; sourceTree = "<group>"; };
 		1A642A77207E0B8200474598 /* AdvertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertCell.swift; path = "Controllers/Ad Builder/Overview/Cells/AdvertCell.swift"; sourceTree = "<group>"; };
 		1A642A79207E183700474598 /* JifflrBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrBarChart.swift; path = Views/JifflrBarChart.swift; sourceTree = "<group>"; };
-		1A642A7B207E3BAF00474598 /* CampaignStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignStatus.swift; path = Models/CampaignStatus.swift; sourceTree = "<group>"; };
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
@@ -269,8 +268,11 @@
 		1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignOverviewViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CampaignOverviewViewController.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdExchangeQuestion.swift; path = Models/AdExchangeQuestion.swift; sourceTree = "<group>"; };
+		1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSeenAdExchange.swift; path = Models/UserSeenAdExchange.swift; sourceTree = "<group>"; };
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
 		1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDropdown.swift; path = Views/TextFields/JifflrTextFieldDropdown.swift; sourceTree = "<group>"; };
+		1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignManagerTests.swift; sourceTree = "<group>"; };
 		1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddQuestionsViewController+Drawing.swift"; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController+Drawing.swift"; sourceTree = "<group>"; };
 		1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignManager.swift; path = "Helpers/Ad Builder/CampaignManager.swift"; sourceTree = "<group>"; };
 		1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTargetViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateTargetViewController.swift"; sourceTree = "<group>"; };
@@ -279,7 +281,7 @@
 		1AE5A7EE2084E4EA00B7CDAE /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Campaign.swift; path = Models/Campaign.swift; sourceTree = "<group>"; };
 		1AE5A7F02084E58000B7CDAE /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Language.swift; path = Models/Language.swift; sourceTree = "<group>"; };
 		1AE5A7F22084FA3000B7CDAE /* GenderSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenderSegmentedControl.swift; path = Views/GenderSegmentedControl.swift; sourceTree = "<group>"; };
-		1AF1009C20986B980082E458 /* ModeratorAdReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorAdReview.swift; path = Models/ModeratorAdReview.swift; sourceTree = "<group>"; };
+		1AF1009C20986B980082E458 /* ModeratorCampaignReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorCampaignReview.swift; path = Models/ModeratorCampaignReview.swift; sourceTree = "<group>"; };
 		1AF1009E20988D430082E458 /* CampaignDeposit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignDeposit.swift; path = Models/CampaignDeposit.swift; sourceTree = "<group>"; };
 		1AF1953C2068FF7800FE3896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AdBuilderOverview.storyboard; sourceTree = "<group>"; };
 		1AF19541206902FD00FE3896 /* AdBuilderLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdBuilderLandingViewController.swift; path = "Controllers/Ad Builder/Overview/AdBuilderLandingViewController.swift"; sourceTree = "<group>"; };
@@ -292,7 +294,7 @@
 		1AF195512069340600FE3896 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseTemplateViewController.swift; path = "Controllers/Ad Builder/Create Ad/ChooseTemplateViewController.swift"; sourceTree = "<group>"; };
 		1AF19554206938AC00FE3896 /* ChooseTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChooseTemplateCell.swift; path = "Controllers/Ad Builder/Create Ad/Cells/ChooseTemplateCell.swift"; sourceTree = "<group>"; };
 		1AF1955620693E7800FE3896 /* AdvertTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvertTemplate.swift; path = Models/AdvertTemplate.swift; sourceTree = "<group>"; };
-		1AF678A62099C5A6001F8BD5 /* UserFlaggedAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserFlaggedAd.swift; path = Models/UserFlaggedAd.swift; sourceTree = "<group>"; };
+		1AF678A62099C5A6001F8BD5 /* UserFlaggedCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserFlaggedCampaign.swift; path = Models/UserFlaggedCampaign.swift; sourceTree = "<group>"; };
 		1AF985422081066D006525DB /* CreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateScheduleViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateScheduleViewController.swift"; sourceTree = "<group>"; };
 		1AF985452081088B006525DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateCampaign.storyboard; sourceTree = "<group>"; };
 		1AFD1F6A20875A9F00293B31 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BudgetView.swift; path = Views/BudgetView.swift; sourceTree = "<group>"; };
@@ -394,7 +396,7 @@
 		E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Models/Question.swift; sourceTree = "<group>"; };
 		E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionType.swift; path = Models/QuestionType.swift; sourceTree = "<group>"; };
 		E9A2CF521F8F7D87008A7F40 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
-		E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSeenAdvert.swift; path = Models/UserSeenAdvert.swift; sourceTree = "<group>"; };
+		E9A2CF541F8F7DEB008A7F40 /* UserSeenCampaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSeenCampaign.swift; path = Models/UserSeenCampaign.swift; sourceTree = "<group>"; };
 		E9A7176F1F8B89AC00B07414 /* Jifflr-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jifflr-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A717731F8B89AC00B07414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A717791F8B89AC00B07414 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomView.swift; path = Views/CustomView.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				E90C20091FA8DE0100A42461 /* UserManagerTests.swift */,
 				100684EE2043089F0004C675 /* TeamPaginationManagerTests.swift */,
 				100684F020430C8A0004C675 /* UserDefaultsManagerTests.swift */,
+				1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -951,13 +954,12 @@
 				E937F5B92036F87100171480 /* LocationFinancial.swift */,
 				E937F5BB2036F8DA00171480 /* LocationStatus.swift */,
 				E9A2CF4C1F8F7BF0008A7F40 /* Advert.swift */,
-				1A642A7B207E3BAF00474598 /* CampaignStatus.swift */,
 				1A173244206A4545005837A7 /* AdvertDetails.swift */,
 				1AF1955620693E7800FE3896 /* AdvertTemplate.swift */,
 				E9B9721B20495406004F0876 /* Answer.swift */,
 				E9A2CF4E1F8F7CCA008A7F40 /* Question.swift */,
 				E9A2CF501F8F7D1D008A7F40 /* QuestionType.swift */,
-				E9A2CF541F8F7DEB008A7F40 /* UserSeenAdvert.swift */,
+				E9A2CF541F8F7DEB008A7F40 /* UserSeenCampaign.swift */,
 				E9F317AD204EBA5600104565 /* QuestionAnswers.swift */,
 				E95179481F90D15E0000A08D /* UserCashout.swift */,
 				E923751E203EDD5000275199 /* UserMonthStats.swift */,
@@ -969,12 +971,13 @@
 				1AF1009E20988D430082E458 /* CampaignDeposit.swift */,
 				1AE5A7F02084E58000B7CDAE /* Language.swift */,
 				1AA11E54208622FF00BAE044 /* Gender.swift */,
-				1A4115A42090BD0E0078D32B /* ModeratorStatus.swift */,
 				1A4115AB2090C9070078D32B /* AppSettings.swift */,
 				1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */,
 				1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */,
-				1AF1009C20986B980082E458 /* ModeratorAdReview.swift */,
-				1AF678A62099C5A6001F8BD5 /* UserFlaggedAd.swift */,
+				1AF1009C20986B980082E458 /* ModeratorCampaignReview.swift */,
+				1AF678A62099C5A6001F8BD5 /* UserFlaggedCampaign.swift */,
+				1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */,
+				1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1289,12 +1292,11 @@
 		};
 		5D97304E00ECC13D26B50B86 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Libraries/Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
@@ -1313,7 +1315,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
@@ -1496,6 +1497,7 @@
 				1A2C1AA2207CF58E00765D05 /* AdCreatedViewController.swift in Sources */,
 				E937F5CE203741A400171480 /* AdsViewedDetailCell.swift in Sources */,
 				1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */,
+				1AAA233120B5AE4900DDE404 /* UserSeenAdExchange.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
@@ -1512,13 +1514,12 @@
 				1A642A76207E0ADE00474598 /* ActiveAdsCell.swift in Sources */,
 				1AA044892084A4D4008385A6 /* DayCell.swift in Sources */,
 				E9A7177D1F8B89AC00B07414 /* PFUser+Extensions.swift in Sources */,
-				1AF1009D20986B980082E458 /* ModeratorAdReview.swift in Sources */,
+				1AF1009D20986B980082E458 /* ModeratorCampaignReview.swift in Sources */,
 				1AA11E532085FF8D00BAE044 /* LanguageManager.swift in Sources */,
 				E96A0CF3203DAC500059DDAC /* FeedbackManager.swift in Sources */,
 				1AF1954D20692C8900FE3896 /* CreateAdViewController.swift in Sources */,
 				1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */,
 				1AF1009F20988D430082E458 /* CampaignDeposit.swift in Sources */,
-				1A642A7C207E3BAF00474598 /* CampaignStatus.swift in Sources */,
 				E9D8E1C5203C8D1800F978D2 /* SettingsViewController.swift in Sources */,
 				E97B9E2C203B0D7C0097BC65 /* FAQ.swift in Sources */,
 				E9DD58212035DDF3000735C3 /* JifflrTeamChart.swift in Sources */,
@@ -1528,14 +1529,15 @@
 				E923751B203ED94500275199 /* AdsViewedManager.swift in Sources */,
 				E9798C2D201A4C8E00E8A7D2 /* MultiSelectFeedbackViewController.swift in Sources */,
 				E91E6A642052F383009E9577 /* DateTimeFeedbackViewController.swift in Sources */,
+				1AAA232F20B5A71C00DDE404 /* AdExchangeQuestion.swift in Sources */,
 				E9EE632E2031D77F00188AA1 /* JifflrTextFieldLocation.swift in Sources */,
 				E96A0CEC203DABED0059DDAC /* UserManager.swift in Sources */,
 				E9798C18201A43C000E8A7D2 /* ViewControllerExtensions.swift in Sources */,
 				1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */,
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
-				E9A2CF551F8F7DEB008A7F40 /* UserSeenAdvert.swift in Sources */,
+				E9A2CF551F8F7DEB008A7F40 /* UserSeenCampaign.swift in Sources */,
 				1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */,
-				1AF678A72099C5A6001F8BD5 /* UserFlaggedAd.swift in Sources */,
+				1AF678A72099C5A6001F8BD5 /* UserFlaggedCampaign.swift in Sources */,
 				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,
 				1A4A5CDA209743F400C3D3C4 /* ModeratorFeedback.swift in Sources */,
 				1A642A7A207E183700474598 /* JifflrBarChart.swift in Sources */,
@@ -1598,7 +1600,6 @@
 				1AA11E55208622FF00BAE044 /* Gender.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
 				E96A0CDF203DAAF80059DDAC /* LocationManager.swift in Sources */,
-				1A4115A52090BD0E0078D32B /* ModeratorStatus.swift in Sources */,
 				1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */,
 				1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */,
 				E96A0CF4203DAC500059DDAC /* AdvertManager.swift in Sources */,
@@ -1643,6 +1644,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				100684F120430C8A0004C675 /* UserDefaultsManagerTests.swift in Sources */,
+				1AB5C47B20B45EE800777CB9 /* CampaignManagerTests.swift in Sources */,
 				E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */,
 				E90C20051FA8DAE500A42461 /* UserSeenAdvertTests.swift in Sources */,
 				E90C20011FA8D16E00A42461 /* AdvertTests.swift in Sources */,

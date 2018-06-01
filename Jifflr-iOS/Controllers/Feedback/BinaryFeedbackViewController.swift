@@ -14,10 +14,10 @@ class BinaryFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
 
-    class func instantiateFromStoryboard(advert: Advert, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> BinaryFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, content: [(question: Question, answers: [Answer])], questionAnswers: [QuestionAnswers], mode: Int) -> BinaryFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "BinaryFeedbackViewController") as! BinaryFeedbackViewController
-        controller.advert = advert
+        controller.campaign = campaign
         controller.content = content
         controller.questionAnswers = questionAnswers
         controller.mode = mode

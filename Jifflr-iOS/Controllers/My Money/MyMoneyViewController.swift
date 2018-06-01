@@ -203,7 +203,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TotalWithdrawnCell") as! TotalWithdrawnCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
-                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(myMoney.totalWithdrawn)"
+                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", myMoney.totalWithdrawn))"
                 cell.nameLabel.text = "myMoney.totalWithdrawnCell.title".localized()
                 return cell
 
@@ -232,7 +232,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
                 cell.nameLabel.text = "myMoney.cashoutCell.heading".localized()
-                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(myMoney.moneyAvailable)"
+                cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", myMoney.moneyAvailable))"
                 cell.delegate = self
                 return cell
             }
@@ -241,7 +241,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawnHistoryCell") as! WithdrawnHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(userCashout.value)"
+            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userCashout.value))"
             cell.emailLabel.text = userCashout.paypalEmail
 
             if let date = userCashout.createdAt {

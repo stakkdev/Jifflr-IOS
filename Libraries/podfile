@@ -24,7 +24,6 @@ target 'Jifflr-iOS' do
     pod 'Firebase/Core'
     pod 'SwiftLint'
     #pod 'EZSwiftExtensions' Waiting for Swift 4 support
-    pod 'Alamofire'
     pod 'Parse'
     pod 'Appodeal'
     pod 'Localize-Swift'

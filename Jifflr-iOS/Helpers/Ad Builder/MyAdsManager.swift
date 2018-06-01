@@ -198,7 +198,6 @@ class MyAdsManager: NSObject {
         let query = Campaign.query()
         query?.whereKey("creator", equalTo: currentUser)
         query?.includeKey("advert")
-        query?.includeKey("status")
         query?.fromPin(withName: self.pinName)
         query?.findObjectsInBackground(block: { (objects, error) in
             guard let campaigns = objects as? [Campaign], error == nil else {
@@ -208,7 +207,7 @@ class MyAdsManager: NSObject {
             
             var ads:[String] = []
             for campaign in campaigns {
-                guard campaign.status?.key == CampaignStatusKey.availableActive else { continue }
+                guard campaign.status == CampaignStatusKey.availableActive else { continue }
                 guard !ads.contains(campaign.advert.objectId!) else { continue }
                 ads.append(campaign.advert.objectId!)
             }
@@ -218,36 +217,32 @@ class MyAdsManager: NSObject {
     }
     
     func fetchChartData(completion: @escaping ([BarChartPoint]?) -> Void) {
-//        guard let user = Session.shared.currentUser else { return }
-//
-//        PFCloud.callFunction(inBackground: "campaign-chart", withParameters: ["user": user.objectId!]) { myAdsJSON, error in
-//            if let myAdsJSON = myAdsJSON as? [String: Any] {
-//                if let points = myAdsJSON["graph"] as? [[Any]] {
-                    var graph:[BarChartPoint] = []
+        guard let user = Session.shared.currentUser else { return }
+
+        PFCloud.callFunction(inBackground: "campaign-chart", withParameters: ["user": user.objectId!]) { myAdsJSON, error in
+            if let points = myAdsJSON as? [[Any]] {
+                var graph:[BarChartPoint] = []
+                
+                //let points = [["J", 20.0], ["F", 4.0], ["M", 16.0], ["A", 1.0], ["M", 3.0], ["J", 7.0], ["J", 9.0], ["A", 10.0], ["S", 21.0], ["O", 2.0], ["N", 4.0], ["D", 8.0]]
+                
+                for point in points {
+                    guard let month = point.first as? String, let value = point.last as? Double else { continue }
                     
-                    let points = [["J", 20.0], ["F", 4.0], ["M", 16.0], ["A", 1.0], ["M", 3.0], ["J", 7.0], ["J", 9.0], ["A", 10.0], ["S", 21.0], ["O", 2.0], ["N", 4.0], ["D", 8.0]]
-                    
-                    for point in points {
-                        guard let month = point.first as? String, let value = point.last as? Double else { continue }
-                        
-                        let graphPoint = BarChartPoint()
-                        graphPoint.x = month
-                        graphPoint.y = value
-                        graph.append(graphPoint)
+                    let graphPoint = BarChartPoint()
+                    graphPoint.x = month
+                    graphPoint.y = value
+                    graph.append(graphPoint)
+                }
+    
+                self.unpinAllBarChartPoints {
+                    PFObject.pinAll(inBackground: graph, withName: self.pinName) { (success, error) in
+                        completion(graph)
                     }
-        
-                    self.unpinAllBarChartPoints {
-                        PFObject.pinAll(inBackground: graph, withName: self.pinName) { (success, error) in
-                            completion(graph)
-                        }
-                    }
-//                }
-//
-//                completion(nil)
-//            } else {
-//                completion(nil)
-//            }
-//        }
+                }
+            } else {
+                completion(nil)
+            }
+        }
     }
     
     func fetchLocalData(completion: @escaping (MyAds?) -> Void) {

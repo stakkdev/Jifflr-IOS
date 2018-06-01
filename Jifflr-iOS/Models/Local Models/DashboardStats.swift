@@ -32,7 +32,8 @@ final class DashboardStats: PFObject {
 
     var money: Double {
         get {
-            return self["money"] as? Double ?? 0.0
+            let money = self["money"] as? Double ?? 0.0
+            return money == 0.0 ? 0.0 : money / 100.0
         }
         set {
             self["money"] = newValue

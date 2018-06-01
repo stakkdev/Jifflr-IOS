@@ -13,13 +13,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var questions: [Question] = []
+    var questions: [AdExchangeQuestion] = []
     var answers: [Answer] = []
+    var userSeenAdExchange = UserSeenAdExchange()
 
-    class func instantiateFromStoryboard(advert: Advert, questions: [Question], answers: [Answer]) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, questions: [AdExchangeQuestion], answers: [Answer]) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
-        controller.advert = advert
+        controller.campaign = campaign
         controller.questions = questions
         controller.answers = answers
         return controller
@@ -33,14 +34,6 @@ class SwipeFeedbackViewController: FeedbackViewController {
         super.viewDidAppear(animated)
 
         self.animateSwipeImageView()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        let inset = (self.tableView.frame.height - self.tableView.contentSize.height) / 2.0
-        let topInset = max(inset, 0.0)
-        self.tableView.contentInset.top = topInset
     }
 
     override func setupUI() {
@@ -73,30 +66,51 @@ class SwipeFeedbackViewController: FeedbackViewController {
             })
         })
 
-        let animation = CABasicAnimation(keyPath: "position")
+        let animation = CABasicAnimation(keyPath: "position.x")
         animation.duration = 0.2
         animation.repeatCount = 8
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.swipeAnimationImageView.center.x, y: self.swipeAnimationImageView.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: self.swipeAnimationImageView.center.x + 10.0, y: self.swipeAnimationImageView.center.y))
-        self.swipeAnimationImageView.layer.add(animation, forKey: "position")
+        animation.fromValue = self.swipeAnimationImageView.center.x
+        animation.toValue = self.swipeAnimationImageView.center.x + 10.0
+        self.swipeAnimationImageView.layer.add(animation, forKey: "position.x")
 
         CATransaction.commit()
     }
 
-    func createQuestionAnswers(yes: Bool, question: Question) {
+    func createQuestionAnswers(yes: Bool, question: AdExchangeQuestion) {
+        guard let user = Session.shared.currentUser else { return }
         guard self.answers.count == 2 else { return }
         let answer = yes == true ? self.answers.last! : self.answers.first!
-        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: [answer])
-        self.questionAnswers.append(questionAnswer)
+        
+        if self.userSeenAdExchange.question1 == nil {
+            self.userSeenAdExchange.question1 = question
+            self.userSeenAdExchange.response1 = answer
+            user.details.lastExchangeQuestion = question
+        } else if self.userSeenAdExchange.question2 == nil {
+            self.userSeenAdExchange.question2 = question
+            self.userSeenAdExchange.response2 = answer
+            user.details.lastExchangeQuestion = question
+        } else if self.userSeenAdExchange.question3 == nil {
+            self.userSeenAdExchange.question3 = question
+            self.userSeenAdExchange.response3 = answer
+            user.details.lastExchangeQuestion = question
+        }
     }
 
     func saveAndPushToNextAd() {
         if self.questions.count == 0 {
-            FeedbackManager.shared.saveFeedback(advert: self.advert, questionAnswers: self.questionAnswers, completion: {
-                self.pushToNextAd()
-            })
+            guard let user = Session.shared.currentUser else { return }
+            self.userSeenAdExchange.user = user
+            self.userSeenAdExchange.saveEventually { (success, error) in
+                print("Saved Swipe Feedback: \(success)")
+            }
+            
+            user.saveEventually { (success, error) in
+                print("User Updated")
+            }
+            
+            self.pushToNextAd()
         }
     }
 }
@@ -129,11 +143,15 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SwipeFeedbackViewController: SwipeCellDelegate {
-    func cellSwiped(yes: Bool, question: Question) {
+    func cellSwiped(yes: Bool, question: AdExchangeQuestion) {
         if let index = self.questions.index(of: question) {
             let cellIndexPath = IndexPath(row: index, section: 0)
             self.questions.remove(at: index)
             self.tableView.deleteRows(at: [cellIndexPath as IndexPath], with: .fade)
+            
+            if let question = self.questions.first {
+                self.questionLabel.text = question.text
+            }
 
             self.createQuestionAnswers(yes: yes, question: question)
             self.saveAndPushToNextAd()

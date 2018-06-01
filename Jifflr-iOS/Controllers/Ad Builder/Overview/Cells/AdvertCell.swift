@@ -27,13 +27,13 @@ class AdvertCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func handleStatus(status: CampaignStatus?) {
+    func handleStatus(status: String?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
-        
-        switch status.key {
+
+        switch status {
         case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:

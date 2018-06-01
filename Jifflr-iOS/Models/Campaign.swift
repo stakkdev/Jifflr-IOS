@@ -41,10 +41,21 @@ final class Campaign: PFObject {
     
     var budget: Double {
         get {
-            return self["budget"] as? Double ?? 0.0
+            let budget = self["budget"] as? Double ?? 0.0
+            return budget == 0.0 ? 0.0 : budget / 100.0
         }
         set {
             self["budget"] = newValue
+        }
+    }
+    
+    var balance: Double {
+        get {
+            let balance = self["balance"] as? Double ?? 0.0
+            return balance == 0.0 ? 0.0 : balance / 100.0
+        }
+        set {
+            self["balance"] = newValue
         }
     }
     
@@ -66,12 +77,13 @@ final class Campaign: PFObject {
         }
     }
     
-    var costPerReview: Double {
+    var costPerView: Double {
         get {
-            return self["costPerReview"] as! Double
+            let costPerView = self["costPerView"] as? Double ?? 0.0
+            return costPerView == 0.0 ? 0.0 : costPerView / 100.0
         }
         set {
-            self["costPerReview"] = newValue
+            self["costPerView"] = newValue
         }
     }
     
@@ -93,9 +105,13 @@ final class Campaign: PFObject {
         }
     }
     
-    var status: CampaignStatus? {
+    var status: String? {
         get {
-            return self["status"] as? CampaignStatus
+            if let status = self["status"] as? String {
+                return status.isEmpty ? nil : status
+            } else {
+                return nil
+            }
         }
         set {
             self["status"] = newValue
@@ -116,11 +132,6 @@ extension Campaign {
         self.saveEventually()
         
         let group = DispatchGroup()
-        
-        group.enter()
-        self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-            group.leave()
-        })
         
         group.enter()
         self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
@@ -177,11 +188,6 @@ extension Campaign {
                     }
                     
                     let group = DispatchGroup()
-                    
-                    group.enter()
-                    self.status?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-                        group.leave()
-                    })
                     
                     group.enter()
                     self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in

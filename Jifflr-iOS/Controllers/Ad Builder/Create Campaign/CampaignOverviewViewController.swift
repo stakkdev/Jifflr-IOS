@@ -36,8 +36,8 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet weak var estimatedAudienceLabel: UILabel!
     @IBOutlet weak var estimatedCampaignCostHeadingLabel: UILabel!
     @IBOutlet weak var estimatedCampaignCostLabel: UILabel!
-    @IBOutlet weak var costPerReviewHeadingLabel: UILabel!
-    @IBOutlet weak var costPerReviewLabel: UILabel!
+    @IBOutlet weak var costPerViewHeadingLabel: UILabel!
+    @IBOutlet weak var costPerViewLabel: UILabel!
     @IBOutlet weak var budgetCoverageHeadingLabel: UILabel!
     @IBOutlet weak var budgetCoverageLabel: UILabel!
     @IBOutlet weak var budgetView: BudgetView!
@@ -147,7 +147,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.locationHeadingLabel.text = "campaignOverview.location.heading".localized()
         self.languageHeadingLabel.text = "campaignOverview.language.heading".localized()
         self.estimatedAudienceHeadingLabel.text = "campaignOverview.estimatedAudience.heading".localized()
-        self.costPerReviewHeadingLabel.text = "campaignOverview.costPerReview.heading".localized()
+        self.costPerViewHeadingLabel.text = "campaignOverview.costPerView.heading".localized()
         self.estimatedCampaignCostHeadingLabel.text = "campaignOverview.estimatedCampaignCost.heading".localized()
         self.budgetCoverageHeadingLabel.text = "campaignOverview.budgetCoverage.heading".localized()
         self.activateButton.setTitle("campaignOverview.activateButton.title".localized(), for: .normal)
@@ -177,9 +177,9 @@ class CampaignOverviewViewController: BaseViewController {
         self.agesLabel.text = "\(minAge)-\(maxAge)"
         
         self.estimatedAudienceLabel.text = "\(demographic.estimatedAudience)"
-        self.costPerReviewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.campaign.costPerReview)"
+        self.costPerViewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.campaign.costPerView)"
         
-        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
+        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
         self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
         
         self.budgetView.value = self.campaign.budget
@@ -213,7 +213,7 @@ class CampaignOverviewViewController: BaseViewController {
         }
     }
     
-    func setUIActivated(status: CampaignStatus) {
+    func setUIActivated(status: String) {
         self.budgetViewTop.constant = 80.0
         self.activateButton.isHidden = true
         self.activateButton.isEnabled = false
@@ -224,7 +224,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.activateButtonBottom.isActive = false
         self.activatedViewBottom.isActive = true
         
-        switch status.key {
+        switch status {
         case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled:
             self.activeSwitch.isOn = true
         default:
@@ -244,13 +244,13 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedViewBottom.isActive = false
     }
     
-    func handleStatus(status: CampaignStatus?) {
+    func handleStatus(status: String?) {
         guard let status = status else {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
-        
-        switch status.key {
+
+        switch status {
         case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:
@@ -297,7 +297,7 @@ class CampaignOverviewViewController: BaseViewController {
                 alertController.addAction(dismissAction)
                 
                 let viewAction = UIAlertAction(title: "nonCompliance.alert.viewAction".localized(), style: .default) { (action) in
-                    let vc = NonComplianceViewController.instantiateFromStoryboard(advert: self.campaign.advert)
+                    let vc = NonComplianceViewController.instantiateFromStoryboard(campaign: self.campaign)
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 alertController.addAction(viewAction)
@@ -311,7 +311,7 @@ class CampaignOverviewViewController: BaseViewController {
 extension CampaignOverviewViewController: BudgetViewDelegate {
     func valueChanged(value: Double) {
         guard let demographic = self.campaign.demographic else { return }
-        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerReview
+        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
         
         var budgetCoverage = Double(campaignCost / value)
         budgetCoverage *= 100

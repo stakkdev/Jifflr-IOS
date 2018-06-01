@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Parse
 
-final class UserSeenAdvert: PFObject {
+final class UserSeenCampaign: PFObject {
 
     var user: PFUser {
         get {
@@ -30,12 +30,12 @@ final class UserSeenAdvert: PFObject {
         }
     }
 
-    var advert: Advert {
+    var campaign: Campaign {
         get {
-            return self["advert"] as! Advert
+            return self["campaign"] as! Campaign
         }
         set {
-            self["advert"] = newValue
+            self["campaign"] = newValue
         }
     }
 
@@ -49,8 +49,8 @@ final class UserSeenAdvert: PFObject {
     }
 }
 
-extension UserSeenAdvert: PFSubclassing {
+extension UserSeenCampaign: PFSubclassing {
     static func parseClassName() -> String {
-        return "UserSeenAdvert"
+        return "UserSeenCampaign"
     }
 }

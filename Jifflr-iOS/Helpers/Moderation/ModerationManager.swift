@@ -67,12 +67,12 @@ class ModerationManager: NSObject {
         }
     }
     
-    func fetchAd(completion: @escaping (Advert?) -> Void) {
+    func fetchCampaign(completion: @escaping (Campaign?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
 
-//        PFCloud.callFunction(inBackground: "fetch-ads", withParameters: ["user": user.objectId!]) { responseJSON, error in
-//            if let responseJSON = responseJSON as? [String: Any], error == nil {
-//
+        PFCloud.callFunction(inBackground: "campaigns-to-moderate", withParameters: ["user": user.objectId!]) { responseJSON, error in
+            if let responseJSON = responseJSON as? [String: Any], error == nil {
+
 //                var adverts:[Advert] = []
 //                if let advert = responseJSON["defaultAd"] as? Advert {
 //                    adverts.append(advert)
@@ -89,35 +89,35 @@ class ModerationManager: NSObject {
 //
 //                    completion()
 //                })
-//            } else {
-//                completion()
-//            }
-//        }
-        
-        let query = Advert.query()
-        query?.whereKey("creator", notEqualTo: user)
-        query?.whereKey("isCMS", equalTo: true)
-        query?.includeKey("questions")
-        query?.includeKey("questions.answers")
-        query?.includeKey("questions.type")
-        query?.includeKey("details")
-        query?.includeKey("details.template")
-        query?.getFirstObjectInBackground(block: { (advert, error) in
-            guard let advert = advert as? Advert, error == nil else {
+            } else {
                 completion(nil)
-                return
             }
-            
-            advert.details?.image?.getDataInBackground(block: { (data, error) in
-                if let data = data, error == nil {
-                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-                    let success = MediaManager.shared.save(data: data, id: advert.details?.objectId, fileExtension: fileExtension)
-                    print("Moderation Media: \(advert.details?.objectId ?? "") saved to File Manager: \(success)")
-                }
-                
-                completion(advert)
-            })
-        })
+        }
+        
+//        let query = Campaign.query()
+//        query?.whereKey("creator", notEqualTo: user)
+//        query?.includeKey("advert")
+//        query?.includeKey("advert.questions")
+//        query?.includeKey("advert.questions.answers")
+//        query?.includeKey("advert.questions.type")
+//        query?.includeKey("advert.details")
+//        query?.includeKey("advert.details.template")
+//        query?.getFirstObjectInBackground(block: { (campaign, error) in
+//            guard let campaign = campaign as? Campaign, error == nil else {
+//                completion(nil)
+//                return
+//            }
+//
+//            campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
+//                if let data = data, error == nil {
+//                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+//                    let success = MediaManager.shared.save(data: data, id: campaign.advert.details?.objectId, fileExtension: fileExtension)
+//                    print("Moderation Media: \(campaign.advert.details?.objectId ?? "") saved to File Manager: \(success)")
+//                }
+//
+//                completion(campaign)
+//            })
+//        })
     }
     
     func fetchModeratorFeedbackCategories(completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {
@@ -167,15 +167,15 @@ class ModerationManager: NSObject {
         })
     }
     
-    func fetchNonComplianceFeedback(advert: Advert, completion: @escaping ([ModeratorFeedback]) -> Void) {
-        let query = ModeratorAdReview.query()
-        query?.whereKey("advert", equalTo: advert)
+    func fetchNonComplianceFeedback(campaign: Campaign, completion: @escaping ([ModeratorFeedback]) -> Void) {
+        let query = ModeratorCampaignReview.query()
+        query?.whereKey("campaign", equalTo: campaign)
         query?.whereKey("approved", equalTo: false)
         query?.includeKey("advert")
         query?.includeKey("feedback")
         query?.includeKey("feedback.category")
         query?.findObjectsInBackground(block: { (objects, error) in
-            guard let moderatorAdReviews = objects as? [ModeratorAdReview], error == nil else {
+            guard let moderatorAdReviews = objects as? [ModeratorCampaignReview], error == nil else {
                 completion([])
                 return
             }
@@ -194,13 +194,14 @@ class ModerationManager: NSObject {
     }
     
     func shouldShowNonComplianceFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
-        guard let status = campaign.status, status.key == CampaignStatusKey.nonCompliant || status.key == CampaignStatusKey.nonCompliantScheduled else {
+        let status = campaign.status
+        guard status == CampaignStatusKey.nonCompliant || status == CampaignStatusKey.nonCompliantScheduled else {
             completion(false)
             return
         }
         
-        let query = ModeratorAdReview.query()
-        query?.whereKey("advert", equalTo: campaign.advert)
+        let query = ModeratorCampaignReview.query()
+        query?.whereKey("campaign", equalTo: campaign)
         query?.whereKey("approved", equalTo: false)
         query?.countObjectsInBackground(block: { (count, error) in
             completion(Int(count) > 0)

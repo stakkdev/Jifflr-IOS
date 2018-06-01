@@ -131,10 +131,11 @@ final class UserDetails: PFObject {
     
     var campaignBalance: Double {
         get {
-            return self["campaignBalance"] as? Double ?? 0.0
+            let campaignBalance = self["campaignBalance"] as? Double ?? 0.0
+            return campaignBalance == 0.0 ? 0.0 : campaignBalance / 100.0
         }
         set {
-            self["campaignBalance"] = newValue
+            self["campaignBalance"] = newValue * 100.0
         }
     }
     
@@ -153,6 +154,24 @@ final class UserDetails: PFObject {
         }
         set {
             self["moderatorStatus"] = newValue
+        }
+    }
+    
+    var language: Language? {
+        get {
+            return self["language"] as? Language
+        }
+        set {
+            self["language"] = newValue
+        }
+    }
+    
+    var lastExchangeQuestion: AdExchangeQuestion? {
+        get {
+            return self["lastExchangeQuestion"] as? AdExchangeQuestion
+        }
+        set {
+            self["lastExchangeQuestion"] = newValue
         }
     }
 }
