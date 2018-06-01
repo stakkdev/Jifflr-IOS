@@ -641,14 +641,25 @@
                                 <rect key="frame" x="178" y="410" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qd-gj-dWo">
+                                <rect key="frame" x="18" y="631" width="22" height="18"/>
+                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FNB-Z7-kmn" firstAttribute="top" secondItem="0Qd-gj-dWo" secondAttribute="bottom" constant="18" id="CCt-La-AXT"/>
+                            <constraint firstItem="0Qd-gj-dWo" firstAttribute="leading" secondItem="LSo-z0-IMg" secondAttribute="leading" constant="18" id="MSg-FC-iiQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="gGj-xH-POp" id="WmB-LE-Wbx"/>
                         <outlet property="messageTextView" destination="g3h-IX-qcm" id="yuK-GI-Ere"/>
                         <outlet property="spinner" destination="esb-C4-1Zw" id="VIo-tf-kK6"/>
+                        <outlet property="timeLabel" destination="0Qd-gj-dWo" id="TUy-b0-J8l"/>
                         <outlet property="titleBackgroundView" destination="Hd0-Om-ix5" id="s6H-pO-rxh"/>
                         <outlet property="titleLabel" destination="Odn-38-NvH" id="SRc-kr-Udg"/>
                         <outlet property="trianglesImageView" destination="im6-hd-7wl" id="Afh-Tg-ctM"/>

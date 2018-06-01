@@ -18,6 +18,7 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var trianglesImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var timer: Timer?
     var player: Player?
@@ -57,12 +58,16 @@ class CMSAdvertViewController: BaseViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.spinner.startAnimating()
         
-        if self.mode == AdViewMode.preview {
-            let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed))
-            self.navigationItem.leftBarButtonItem = dismissBarButton
-        } else if self.mode == AdViewMode.normal {
+        let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed))
+        self.navigationItem.leftBarButtonItem = dismissBarButton
+        
+        if self.mode == AdViewMode.normal {
             let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
             self.navigationItem.rightBarButtonItem = flagBarButton
+            
+            self.timeLabel.isHidden = false
+        } else {
+            self.timeLabel.isHidden = true
         }
     }
     
@@ -127,8 +132,15 @@ class CMSAdvertViewController: BaseViewController {
     
     func startTimer() {
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: false, block: { (timer) in
-                self.showFeedback()
+            var count = 30
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+                count -= 1
+                self.timeLabel.text = "\(count)"
+                
+                if count == 0 {
+                    self.timer?.invalidate()
+                    self.showFeedback()
+                }
             })
         }
     }
@@ -163,7 +175,8 @@ class CMSAdvertViewController: BaseViewController {
     @objc func dismissButtonPressed() {
         OrientationManager.shared.set(orientation: .portrait)
         
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        let animated = self.mode == AdViewMode.preview
+        self.navigationController?.dismiss(animated: animated, completion: nil)
     }
     
     @objc func flagButtonPressed(sender: UIBarButtonItem) {

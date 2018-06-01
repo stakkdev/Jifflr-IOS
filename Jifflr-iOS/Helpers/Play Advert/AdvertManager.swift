@@ -22,14 +22,30 @@ class AdvertManager: NSObject {
                 completion()
                 return
             }
-
-            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
-                if let responseJSON = responseJSON as? [String: Any], error == nil {
-
-                    var campaigns:[Campaign] = []
-                    if let cmsAds = responseJSON["cmsAds"] as? [Campaign] {
-                        campaigns += cmsAds
-                    }
+            
+            let query = Campaign.query()
+            query?.whereKey("creator", notEqualTo: user)
+            query?.includeKey("advert")
+            query?.includeKey("advert.questions")
+            query?.includeKey("advert.questions.answers")
+            query?.includeKey("advert.questions.type")
+            query?.includeKey("advert.details")
+            query?.includeKey("advert.details.template")
+            query?.includeKey("advert.details.image")
+            query?.findObjectsInBackground(block: { (campaigns, error) in
+                guard let campaigns = campaigns as? [Campaign], error == nil else {
+                    completion()
+                    return
+                }
+//
+//
+//            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
+//                if let responseJSON = responseJSON as? [String: Any], error == nil {
+//
+//                    var campaigns:[Campaign] = []
+//                    if let cmsAds = responseJSON["cmsAds"] as? [Campaign] {
+//                        campaigns += cmsAds
+//                    }
 
                     PFObject.pinAll(inBackground: campaigns, withName: self.pinName, block: { (success, error) in
                         let group = DispatchGroup()
@@ -85,10 +101,10 @@ class AdvertManager: NSObject {
                             completion()
                         })
                     })
-                } else {
-                    completion()
-                }
-            }
+//                } else {
+//                    completion()
+//                }
+            })
         }
     }
 
