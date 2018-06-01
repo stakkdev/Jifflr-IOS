@@ -64,7 +64,7 @@ class SwipeCell: UITableViewCell {
     }
 
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
+        return true
     }
 
     @objc func didPan(sender: UIPanGestureRecognizer) {

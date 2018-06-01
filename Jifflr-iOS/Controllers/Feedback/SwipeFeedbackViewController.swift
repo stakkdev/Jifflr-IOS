@@ -36,14 +36,6 @@ class SwipeFeedbackViewController: FeedbackViewController {
         self.animateSwipeImageView()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        let inset = (self.tableView.frame.height - self.tableView.contentSize.height) / 2.0
-        let topInset = max(inset, 0.0)
-        self.tableView.contentInset.top = topInset
-    }
-
     override func setupUI() {
         super.setupUI()
 
@@ -74,14 +66,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
             })
         })
 
-        let animation = CABasicAnimation(keyPath: "position")
+        let animation = CABasicAnimation(keyPath: "position.x")
         animation.duration = 0.2
         animation.repeatCount = 8
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.swipeAnimationImageView.center.x, y: self.swipeAnimationImageView.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: self.swipeAnimationImageView.center.x + 10.0, y: self.swipeAnimationImageView.center.y))
-        self.swipeAnimationImageView.layer.add(animation, forKey: "position")
+        animation.fromValue = self.swipeAnimationImageView.center.x
+        animation.toValue = self.swipeAnimationImageView.center.x + 10.0
+        self.swipeAnimationImageView.layer.add(animation, forKey: "position.x")
 
         CATransaction.commit()
     }
