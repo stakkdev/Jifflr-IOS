@@ -11,22 +11,75 @@ import UIKit
 import UserNotifications
 
 struct PushTypes {
-    static let goal = "goal:reached"
+    static let adDeficit = "adOverview"
+    static let invitationAccepted = "teamOverview"
+    static let joinTeam = "teamOverview"
+    static let newCampaignToModerator = "campaignToModerate"
+    static let payoutPush = "moneyOverview"
 }
 
 enum PushHandler {
     case text(String)
-    case goal
+    case adDeficit(String)
+    case invitationAccepted(String)
+    case joinTeam(String)
+    case newCampaignToModerator(String)
+    case payoutPush(String)
 
     func push() {
         switch self {
         case .text(let message):
-            print(message)
-            // TODO: Handle a default push notification with no type
+            self.pushViewController(viewController: nil, message: message)
             return
-        case .goal:
-            // TODO: Handle an example custom goal notification. e.g Present 'goals' view controller or perform some action.
+        case .adDeficit(let message):
+            let adsViewed = AdsViewedViewController.instantiateFromStoryboard()
+            self.pushViewController(viewController: adsViewed, message: message)
             return
+        case .invitationAccepted(let message):
+            let myTeam = TeamViewController.instantiateFromStoryboard()
+            self.pushViewController(viewController: myTeam, message: message)
+            return
+        case .joinTeam(let message):
+            let myTeam = TeamViewController.instantiateFromStoryboard()
+            self.pushViewController(viewController: myTeam, message: message)
+            return
+        case .newCampaignToModerator(let message):
+            self.pushViewController(viewController: nil, message: message)
+            return
+        case .payoutPush(let message):
+            let myMoney = MyMoneyViewController.instantiateFromStoryboard()
+            self.pushViewController(viewController: myMoney, message: message)
+            return
+        }
+    }
+    
+    private func pushViewController(viewController: UIViewController?, message: String) {
+        if let vc = UIApplication.shared.keyWindow?.topMostWindowController() {
+            
+            let title = "alert.notification.title".localized()
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let cancelTitle = "alert.notifications.cancelButton".localized()
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { (action) in }
+            alertController.addAction(cancelAction)
+            
+            let continueTitle = "alert.notification.continue".localized()
+            let continueAction = UIAlertAction(title: continueTitle, style: .default) { (action) in
+                let dashboardVC = DashboardViewController.instantiateFromStoryboard()
+                let navVC = UINavigationController(rootViewController: dashboardVC)
+                navVC.isNavigationBarHidden = true
+                
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                appDelegate.window!.rootViewController = navVC
+                
+                if let viewController = viewController {
+                    viewController.navigationItem.setHidesBackButton(true, animated: false)
+                    navVC.pushViewController(viewController, animated: true)
+                }
+            }
+            alertController.addAction(continueAction)
+            
+            vc.present(alertController, animated: true, completion: nil)
         }
     }
 
@@ -36,10 +89,22 @@ enum PushHandler {
             return
         }
 
-        if let type = userInfo["type"] as? String {
+        if let type = apsDict["type"] as? String {
             switch type {
-            case PushTypes.goal:
-                PushHandler.goal.push()
+            case PushTypes.adDeficit:
+                PushHandler.adDeficit(message).push()
+                return
+            case PushTypes.invitationAccepted:
+                PushHandler.invitationAccepted(message).push()
+                return
+            case PushTypes.joinTeam:
+                PushHandler.joinTeam(message).push()
+                return
+            case PushTypes.newCampaignToModerator:
+                PushHandler.newCampaignToModerator(message).push()
+                return
+            case PushTypes.payoutPush:
+                PushHandler.payoutPush(message).push()
                 return
             default:
                 break

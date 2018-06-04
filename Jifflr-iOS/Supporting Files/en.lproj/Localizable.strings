@@ -129,6 +129,8 @@
 "alert.flagAd.message" = "Please select a reason below as to why this ad is inappropriate.";
 "alert.flagAdSuccess.title" = "Ad Flagged";
 "alert.flagAdSuccess.message" = "Your feedback has been submitted. Thank you.";
+"alert.notification.title" = "Notification";
+"alert.notification.continue" = "Continue";
 
 "onboarding.title1" = "Earn up to £500 a month.";
 "onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";

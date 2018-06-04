@@ -72,7 +72,7 @@ class ChangePasswordViewController: BaseViewController {
             let message = "alert.passwordChanged.message".localized()
             let dismissText = "alert.passwordChanged.okayButton".localized()
             self.displayMessage(title: title, message: message, dismissText: dismissText, dismissAction: { (action) in
-                self.navigationController?.popViewController(animated: true)
+                self.rootLoginViewController()
             })
         }
     }
