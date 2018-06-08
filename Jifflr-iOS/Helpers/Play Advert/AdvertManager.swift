@@ -22,31 +22,15 @@ class AdvertManager: NSObject {
                 completion()
                 return
             }
-            
-            let query = Campaign.query()
-            query?.whereKey("creator", notEqualTo: user)
-            query?.includeKey("advert")
-            query?.includeKey("advert.questions")
-            query?.includeKey("advert.questions.answers")
-            query?.includeKey("advert.questions.type")
-            query?.includeKey("advert.details")
-            query?.includeKey("advert.details.template")
-            query?.includeKey("advert.details.image")
-            query?.findObjectsInBackground(block: { (campaigns, error) in
-                guard let campaigns = campaigns as? [Campaign], error == nil else {
-                    completion()
-                    return
-                }
-//
-//
-//            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
-//                if let responseJSON = responseJSON as? [String: Any], error == nil {
-//
-//                    var campaigns:[Campaign] = []
-//                    if let cmsAds = responseJSON["cmsAds"] as? [Campaign] {
-//                        campaigns += cmsAds
-//                    }
 
+            PFCloud.callFunction(inBackground: "fetch-campaigns", withParameters: ["user": user.objectId!]) { responseJSON, error in
+                if let responseJSON = responseJSON as? [String: Any], error == nil {
+
+                    var campaigns:[Campaign] = []
+                    if let cmsAds = responseJSON["cmsAds"] as? [Campaign] {
+                        campaigns += cmsAds
+                    }
+                    
                     PFObject.pinAll(inBackground: campaigns, withName: self.pinName, block: { (success, error) in
                         let group = DispatchGroup()
     
@@ -101,10 +85,10 @@ class AdvertManager: NSObject {
                             completion()
                         })
                     })
-//                } else {
-//                    completion()
-//                }
-            })
+                } else {
+                    completion()
+                }
+            }
         }
     }
 
@@ -179,34 +163,38 @@ class AdvertManager: NSObject {
         }
     }
 
-    func fetchSwipeQuestions(completion: @escaping ([AdExchangeQuestion]) -> Void) {
+    func fetchSwipeQuestion(completion: @escaping (AdExchangeQuestion?) -> Void) {
+        
+        PFCloud.callFunction(inBackground: "next-exchange-question", withParameters: nil) { (JSONResponse, error) in
+            print(JSONResponse)
+        }
+        
         guard let location = Session.shared.currentLocation else { return }
 
         let countQuery = AdExchangeQuestion.query()
         countQuery?.limit = 10000
         countQuery?.whereKey("location", equalTo: location)
-        countQuery?.whereKey("active", equalTo: true)
         countQuery?.countObjectsInBackground(block: { (count, error) in
             guard error == nil, count > 0 else {
-                completion([])
+                completion(nil)
                 return
             }
             
-            let randomIndex = Int(arc4random_uniform(UInt32(count - 3)))
+            let randomIndex = Int(arc4random_uniform(UInt32(count - 1)))
             let query = AdExchangeQuestion.query()
-            query?.limit = 3
+            query?.limit = 1
             query?.skip = randomIndex
             query?.whereKey("location", equalTo: location)
-            query?.whereKey("active", equalTo: true)
-            query?.includeKey("image")
-            query?.includeKey("answers")
+            query?.includeKey("image1")
+            query?.includeKey("image2")
+            query?.includeKey("image3")
             query?.findObjectsInBackground(block: { (objects, error) in
-                guard let questions = objects as? [AdExchangeQuestion], error == nil else {
-                    completion([])
+                guard let question = objects?.first as? AdExchangeQuestion, error == nil else {
+                    completion(nil)
                     return
                 }
                 
-                completion(questions)
+                completion(question)
             })
         })
     }

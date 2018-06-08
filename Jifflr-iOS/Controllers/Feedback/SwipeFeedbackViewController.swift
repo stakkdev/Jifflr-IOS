@@ -13,16 +13,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    var questions: [AdExchangeQuestion] = []
-    var answers: [Answer] = []
+    var question: AdExchangeQuestion!
     var userSeenAdExchange = UserSeenAdExchange()
 
-    class func instantiateFromStoryboard(campaign: Campaign, questions: [AdExchangeQuestion], answers: [Answer]) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, question: AdExchangeQuestion) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.campaign = campaign
-        controller.questions = questions
-        controller.answers = answers
+        controller.question = question
         return controller
     }
 
@@ -47,8 +45,8 @@ class SwipeFeedbackViewController: FeedbackViewController {
     }
     
     override func setupQuestionText() {
-        if let firstQuestion = self.questions.first {
-            self.questionLabel.text = firstQuestion.text
+        if let questionText = self.question?.question {
+            self.questionLabel.text = questionText
         }
     }
 
@@ -78,38 +76,29 @@ class SwipeFeedbackViewController: FeedbackViewController {
         CATransaction.commit()
     }
 
-    func createQuestionAnswers(yes: Bool, question: AdExchangeQuestion) {
-        guard let user = Session.shared.currentUser else { return }
-        guard self.answers.count == 2 else { return }
-        let answer = yes == true ? self.answers.last! : self.answers.first!
-        
-        if self.userSeenAdExchange.question1 == nil {
-            self.userSeenAdExchange.question1 = question
-            self.userSeenAdExchange.response1 = answer
-            user.details.lastExchangeQuestion = question
-        } else if self.userSeenAdExchange.question2 == nil {
-            self.userSeenAdExchange.question2 = question
-            self.userSeenAdExchange.response2 = answer
-            user.details.lastExchangeQuestion = question
-        } else if self.userSeenAdExchange.question3 == nil {
-            self.userSeenAdExchange.question3 = question
-            self.userSeenAdExchange.response3 = answer
-            user.details.lastExchangeQuestion = question
+    func handleAnswer(yes: Bool, row: Int) {
+        if self.userSeenAdExchange.response1 == nil {
+            self.userSeenAdExchange.response1 = yes
+        } else if self.userSeenAdExchange.response2 == nil {
+            self.userSeenAdExchange.response2 = yes
+        } else if self.userSeenAdExchange.response3 == nil {
+            self.userSeenAdExchange.response3 = yes
         }
     }
 
     func saveAndPushToNextAd() {
-        if self.questions.count == 0 {
+        if self.tableView.numberOfRows(inSection: 0) == 0 {
             guard let user = Session.shared.currentUser else { return }
+            guard let location = Session.shared.currentLocation else { return }
+            
             self.userSeenAdExchange.user = user
+            self.userSeenAdExchange.location = location
+            self.userSeenAdExchange.question = self.question
+            self.userSeenAdExchange.questionNumber = self.question.questionNumber
             self.userSeenAdExchange.saveEventually { (success, error) in
                 print("Saved Swipe Feedback: \(success)")
             }
-            
-            user.saveEventually { (success, error) in
-                print("User Updated")
-            }
-            
+
             self.pushToNextAd()
         }
     }
@@ -121,16 +110,25 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.questions.count
+        var count = 0
+        if self.userSeenAdExchange.response1 == nil { count += 1 }
+        if self.userSeenAdExchange.response2 == nil { count += 1 }
+        if self.userSeenAdExchange.response3 == nil { count += 1 }
+        
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwipeCell", for: indexPath) as! SwipeCell
-        cell.tag = indexPath.row
+        cell.tag = indexPath.row + 1000
         cell.delegate = self
-        cell.question = self.questions[indexPath.row]
+        cell.question = self.question
+        
+        var imageFile = self.question?.image1
+        if indexPath.row == 1 { imageFile = self.question?.image2 }
+        if indexPath.row == 2 { imageFile = self.question?.image3 }
 
-        if let imageFile = self.questions[indexPath.row].image {
+        if let imageFile = imageFile {
             imageFile.getDataInBackground(block: { (data, error) in
                 if let data = data, error == nil {
                     cell.questionImageView.image = UIImage(data: data)
@@ -143,18 +141,13 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SwipeFeedbackViewController: SwipeCellDelegate {
-    func cellSwiped(yes: Bool, question: AdExchangeQuestion) {
-        if let index = self.questions.index(of: question) {
-            let cellIndexPath = IndexPath(row: index, section: 0)
-            self.questions.remove(at: index)
-            self.tableView.deleteRows(at: [cellIndexPath as IndexPath], with: .fade)
-            
-            if let question = self.questions.first {
-                self.questionLabel.text = question.text
-            }
-
-            self.createQuestionAnswers(yes: yes, question: question)
-            self.saveAndPushToNextAd()
-        }
+    func cellSwiped(yes: Bool, row: Int) {
+        self.handleAnswer(yes: yes, row: row)
+        
+        guard let cell = self.tableView.viewWithTag(row) as? SwipeCell else { return }
+        guard let index = self.tableView.indexPath(for: cell) else { return }
+        self.tableView.deleteRows(at: [index], with: .fade)
+        
+        self.saveAndPushToNextAd()
     }
 }

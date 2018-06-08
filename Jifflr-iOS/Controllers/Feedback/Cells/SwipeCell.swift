@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SwipeCellDelegate: class {
-    func cellSwiped(yes: Bool, question: AdExchangeQuestion)
+    func cellSwiped(yes: Bool, row: Int)
 }
 
 class SwipeCell: UITableViewCell {
@@ -116,6 +116,6 @@ class SwipeCell: UITableViewCell {
     }
 
     func cellSwipedWith(yes: Bool) {
-        self.delegate?.cellSwiped(yes: yes, question: self.question)
+        self.delegate?.cellSwiped(yes: yes, row: self.tag)
     }
 }

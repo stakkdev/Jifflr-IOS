@@ -12,6 +12,24 @@ import Parse
 
 final class AdExchangeQuestion: PFObject {
     
+    var question: String {
+        get {
+            return self["question"] as! String
+        }
+        set {
+            self["question"] = newValue
+        }
+    }
+    
+    var questionNumber: Int {
+        get {
+            return self["questionNumber"] as? Int ?? 0
+        }
+        set {
+            self["questionNumber"] = newValue
+        }
+    }
+    
     var location: Location {
         get {
             return self["location"] as! Location
@@ -21,48 +39,30 @@ final class AdExchangeQuestion: PFObject {
         }
     }
     
-    var number: Int {
+    var image1: PFFile? {
         get {
-            return self["number"] as? Int ?? 0
+            return self["image1"] as? PFFile
         }
         set {
-            self["number"] = newValue
+            self["image1"] = newValue
         }
     }
     
-    var text: String {
+    var image2: PFFile? {
         get {
-            return self["text"] as! String
+            return self["image2"] as? PFFile
         }
         set {
-            self["text"] = newValue
+            self["image2"] = newValue
         }
     }
     
-    var image: PFFile? {
+    var image3: PFFile? {
         get {
-            return self["image"] as? PFFile
+            return self["image3"] as? PFFile
         }
         set {
-            self["image"] = newValue
-        }
-    }
-    
-    var answers: [Answer] {
-        get {
-            return self["answers"] as? [Answer] ?? []
-        }
-        set {
-            self["answers"] = newValue
-        }
-    }
-    
-    var active: Bool {
-        get {
-            return self["active"] as? Bool ?? true
-        }
-        set {
-            self["active"] = newValue
+            self["image3"] = newValue
         }
     }
 }

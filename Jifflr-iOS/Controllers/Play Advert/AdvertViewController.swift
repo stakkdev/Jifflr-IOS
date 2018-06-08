@@ -21,8 +21,7 @@ class AdvertViewController: BaseViewController {
 
     var shouldPushToFeedback = false
     var advert: Advert!
-    var questions: [AdExchangeQuestion] = []
-    var answers: [Answer] = []
+    var question: AdExchangeQuestion?
     var rewardedAdmob = false
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
@@ -72,14 +71,13 @@ class AdvertViewController: BaseViewController {
     func setupLocalization() { }
 
     func fetchData() {
-        AdvertManager.shared.fetchSwipeQuestions { (questions) in
-            guard questions.count > 0 else {
+        AdvertManager.shared.fetchSwipeQuestion { (question) in
+            guard let question = question else {
                 self.handleError()
                 return
             }
 
-            self.questions = questions
-            self.answers = questions.first!.answers
+            self.question = question
             self.setupAdmob()
         }
     }
@@ -108,9 +106,11 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentFeedback() {
+        guard let question = self.question else { return }
+        
         let campaign = Campaign()
         campaign.advert = self.advert
-        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, questions: self.questions, answers: self.answers)
+        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, question: question)
         self.navigationController?.pushViewController(controller, animated: false)
     }
 
