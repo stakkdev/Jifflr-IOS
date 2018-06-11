@@ -19,6 +19,7 @@ class MyAdsManager: NSObject {
         
         let query = Advert.query()
         query?.whereKey("creator", equalTo: currentUser)
+        query?.whereKey("isCMS", equalTo: true)
         query?.includeKey("questions")
         query?.includeKey("questions.answers")
         query?.includeKey("questions.type")
