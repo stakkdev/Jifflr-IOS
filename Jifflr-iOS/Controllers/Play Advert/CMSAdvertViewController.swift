@@ -19,6 +19,7 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeView: UIView!
     
     var timer: Timer?
     var player: Player?
@@ -66,8 +67,10 @@ class CMSAdvertViewController: BaseViewController {
             self.navigationItem.rightBarButtonItem = flagBarButton
             
             self.timeLabel.isHidden = false
+            self.timeView.isHidden = false
         } else {
             self.timeLabel.isHidden = true
+            self.timeView.isHidden = true
         }
     }
     
