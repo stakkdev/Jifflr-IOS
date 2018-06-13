@@ -11,8 +11,10 @@ import Foundation
 extension CampaignOverviewViewController {
     @IBAction func getCampaignResultsButtonPressed(sender: JifflrButton) {
         self.campaignResultsButton.animate()
+        self.disableButtons()
         CampaignManager.shared.getCampaignResults(campaign: self.campaign) { (error) in
             self.campaignResultsButton.stopAnimating()
+            self.enableButtons()
             
             guard error == nil else {
                 self.displayError(error: error)
@@ -40,9 +42,12 @@ extension CampaignOverviewViewController {
         CampaignManager.shared.updateCampaignBudget(campaign: self.campaign, user: user, amount: difference)
         
         self.updateButton.animate()
+        self.disableButtons()
         self.campaign.saveInBackgroundAndPin { (error) in
             user.saveAndPin(completion: { (error) in
                 self.updateButton.stopAnimating()
+                self.enableButtons()
+                
                 guard error == nil else {
                     self.displayError(error: ErrorMessage.increaseBudgetFailedFromServer)
                     return
@@ -108,9 +113,13 @@ extension CampaignOverviewViewController {
     
     func campaignDelete() {
         self.deleteCampaign.animate()
+        self.disableButtons()
+        
         self.campaign.status = CampaignStatusKey.prepareToDelete
         self.campaign.saveInBackgroundAndPin(completion: { (error) in
             self.deleteCampaign.stopAnimating()
+            self.enableButtons()
+            
             guard error == nil else {
                 self.displayError(error: ErrorMessage.noInternetConnection)
                 return
@@ -240,5 +249,19 @@ extension CampaignOverviewViewController {
         guard let campaignOverviewViewController = viewControllers.last as? CampaignOverviewViewController else { return }
         let newViewControllers = [dashboardViewController, adBuilderLandingViewController, campaignOverviewViewController]
         self.navigationController?.setViewControllers(newViewControllers, animated: true)
+    }
+    
+    func enableButtons() {
+        self.campaignResultsButton.isEnabled = true
+        self.updateButton.isEnabled = true
+        self.copyCampaignButton.isEnabled = true
+        self.deleteCampaign.isEnabled = true
+    }
+    
+    func disableButtons() {
+        self.campaignResultsButton.isEnabled = false
+        self.updateButton.isEnabled = false
+        self.copyCampaignButton.isEnabled = false
+        self.deleteCampaign.isEnabled = false
     }
 }
