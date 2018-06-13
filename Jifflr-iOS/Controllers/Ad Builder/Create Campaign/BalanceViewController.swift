@@ -169,6 +169,8 @@ class BalanceViewController: BaseViewController {
     }
     
     func validateTopUp() -> Bool {
+        guard let paypalEmail = self.paypalEmailTextField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else { return false }
+        
         let topUpAmount = self.getAmount()
         guard topUpAmount >= 10.0 else { return false }
         
@@ -219,7 +221,7 @@ extension BalanceViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.paypalEmailTextField {
             guard let user = Session.shared.currentUser else { return false }
-            if user.details.campaignBalance != 0.0 {
+            if user.details.campaignBalance != 0.0, let paypalEmail = user.details.campaignPayPalEmail, paypalEmail.isEmail(), !paypalEmail.isEmpty {
                 self.displayError(error: ErrorMessage.withdrawalEmail)
                 return false
             }
