@@ -166,37 +166,13 @@ class AdvertManager: NSObject {
     func fetchSwipeQuestion(completion: @escaping (AdExchangeQuestion?) -> Void) {
         
         PFCloud.callFunction(inBackground: "next-exchange-question", withParameters: nil) { (JSONResponse, error) in
-            print(JSONResponse)
-        }
-        
-        guard let location = Session.shared.currentLocation else { return }
-
-        let countQuery = AdExchangeQuestion.query()
-        countQuery?.limit = 10000
-        countQuery?.whereKey("location", equalTo: location)
-        countQuery?.countObjectsInBackground(block: { (count, error) in
-            guard error == nil, count > 0 else {
+            guard let adExchangeQuestion = JSONResponse as? AdExchangeQuestion, error == nil else {
                 completion(nil)
                 return
             }
             
-            let randomIndex = Int(arc4random_uniform(UInt32(count - 1)))
-            let query = AdExchangeQuestion.query()
-            query?.limit = 1
-            query?.skip = randomIndex
-            query?.whereKey("location", equalTo: location)
-            query?.includeKey("image1")
-            query?.includeKey("image2")
-            query?.includeKey("image3")
-            query?.findObjectsInBackground(block: { (objects, error) in
-                guard let question = objects?.first as? AdExchangeQuestion, error == nil else {
-                    completion(nil)
-                    return
-                }
-                
-                completion(question)
-            })
-        })
+            completion(adExchangeQuestion)
+        }
     }
 
     func shouldFetch(count: Int) -> Bool {
