@@ -42,7 +42,7 @@ class FeedbackViewController: BaseViewController {
                 })
             })
         case AdViewMode.preview:
-            self.nextAdButton.isEnabled = true
+            self.nextAdButton.isEnabled = false
             self.nextAdButton.alpha = 0.5
         case AdViewMode.moderator:
             self.nextAdButton.isEnabled = true
