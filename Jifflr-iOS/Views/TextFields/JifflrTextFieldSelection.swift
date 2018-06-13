@@ -34,7 +34,16 @@ class JifflrTextFieldSelection: JifflrTextField {
         rightImageView.image = image
         rightImageView.contentMode = .center
         rightWrapperView.addSubview(rightImageView)
+        rightWrapperView.isUserInteractionEnabled = true
         self.rightView = rightWrapperView
+        self.rightView?.isUserInteractionEnabled = true
         self.rightViewMode = .always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(rightViewTapped))
+        self.rightView?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func rightViewTapped() {
+        self.becomeFirstResponder()
     }
 }
