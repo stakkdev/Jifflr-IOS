@@ -30,6 +30,8 @@ class LoginViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserDefaultsManager.shared.setfirstLoadComplete(on: false)
 
         self.setupUI()
         self.setupLocation()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class DashboardViewController: BaseViewController {
 
@@ -169,9 +170,17 @@ class DashboardViewController: BaseViewController {
     }
 
     func updateData() {
+        
+        if !UserDefaultsManager.shared.firstLoadComplete() {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
 
         if Reachability.isConnectedToNetwork() {
+            let group = DispatchGroup()
+            
+            group.enter()
             DashboardManager.shared.fetchStats { (stats, error) in
+                group.leave()
                 guard let stats = stats, error == nil else {
                     self.displayError(error: error)
                     self.updateLocalData()
@@ -181,14 +190,25 @@ class DashboardViewController: BaseViewController {
                 self.updateUI(stats: stats)
             }
             
+            group.enter()
             self.updateLocalAdvert()
             AdvertManager.shared.fetch {
                 self.updateLocalAdvert()
+                group.leave()
             }
             
             MyAdsManager.shared.fetchMyAds()
+            group.enter()
             MyAdsManager.shared.fetchData { (myAds) in
                 self.myAds = myAds
+                group.leave()
+            }
+            
+            group.notify(queue: .main) {
+                if !UserDefaultsManager.shared.firstLoadComplete() {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    UserDefaultsManager.shared.setfirstLoadComplete(on: true)
+                }
             }
             
             self.updateModerationCampaign()

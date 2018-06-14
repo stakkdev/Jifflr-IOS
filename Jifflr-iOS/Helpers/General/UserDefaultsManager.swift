@@ -46,4 +46,13 @@ class UserDefaultsManager: NSObject {
     func setAnalytics(on: Bool) {
         UserDefaults.standard.set(on, forKey: "analyticsOn")
     }
+    
+    func firstLoadComplete() -> Bool {
+        let on = UserDefaults.standard.bool(forKey: "firstLoadComplete")
+        return on
+    }
+    
+    func setfirstLoadComplete(on: Bool) {
+        UserDefaults.standard.set(on, forKey: "firstLoadComplete")
+    }
 }

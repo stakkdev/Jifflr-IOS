@@ -33,6 +33,7 @@ target 'Jifflr-iOS' do
     pod 'Player'
     pod 'TTRangeSlider'
     pod 'Braintree'
+    pod 'MBProgressHUD'
 end
 
 # Google Analytics needs to be linked to the testing target otherwise there is an error with the Bridging-Header
