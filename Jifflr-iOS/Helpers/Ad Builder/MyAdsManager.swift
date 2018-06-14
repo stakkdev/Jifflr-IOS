@@ -224,8 +224,6 @@ class MyAdsManager: NSObject {
             if let points = myAdsJSON as? [[Any]] {
                 var graph:[BarChartPoint] = []
                 
-                //let points = [["J", 20.0], ["F", 4.0], ["M", 16.0], ["A", 1.0], ["M", 3.0], ["J", 7.0], ["J", 9.0], ["A", 10.0], ["S", 21.0], ["O", 2.0], ["N", 4.0], ["D", 8.0]]
-                
                 for point in points {
                     guard let month = point.first as? String, let value = point.last as? Double else { continue }
                     
