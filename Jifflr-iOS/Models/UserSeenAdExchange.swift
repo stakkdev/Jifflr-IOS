@@ -21,57 +21,57 @@ final class UserSeenAdExchange: PFObject {
         }
     }
     
-    var question1: AdExchangeQuestion? {
+    var question: AdExchangeQuestion? {
         get {
-            return self["question1"] as? AdExchangeQuestion
+            return self["question"] as? AdExchangeQuestion
         }
         set {
-            self["question1"] = newValue
+            self["question"] = newValue
         }
     }
     
-    var response1: Answer? {
+    var response1: Bool? {
         get {
-            return self["response1"] as? Answer
+            return self["response1"] as? Bool
         }
         set {
             self["response1"] = newValue
         }
     }
     
-    var question2: AdExchangeQuestion? {
+    var response2: Bool? {
         get {
-            return self["question2"] as? AdExchangeQuestion
-        }
-        set {
-            self["question2"] = newValue
-        }
-    }
-    
-    var response2: Answer? {
-        get {
-            return self["response2"] as? Answer
+            return self["response2"] as? Bool
         }
         set {
             self["response2"] = newValue
         }
     }
     
-    var question3: AdExchangeQuestion? {
+    var response3: Bool? {
         get {
-            return self["question3"] as? AdExchangeQuestion
-        }
-        set {
-            self["question3"] = newValue
-        }
-    }
-    
-    var response3: Answer? {
-        get {
-            return self["response3"] as? Answer
+            return self["response3"] as? Bool
         }
         set {
             self["response3"] = newValue
+        }
+    }
+    
+    var questionNumber: Int? {
+        get {
+            return self["questionNumber"] as? Int
+        }
+        set {
+            self["questionNumber"] = newValue
+        }
+    }
+    
+    var location: Location? {
+        get {
+            return self["location"] as? Location
+        }
+        set {
+            self["location"] = newValue
         }
     }
 }

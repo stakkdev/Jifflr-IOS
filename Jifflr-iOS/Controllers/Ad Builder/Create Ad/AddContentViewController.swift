@@ -186,14 +186,15 @@ class AddContentViewController: BaseViewController {
 extension AddContentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let data = UIImagePNGRepresentation(image) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let data = UIImageJPEGRepresentation(image, 1.0) {
             guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else {
                 self.displayError(error: ErrorMessage.mediaSaveFailed)
                 return
             }
             
+            let normalizedImage = self.fixOrientation(img: image)
             self.imageOverlayView.contentMode = .scaleAspectFill
-            self.imageOverlayView.image = image
+            self.imageOverlayView.image = normalizedImage
 
             self.advert.details?.image = PFFile(data: data, contentType: "image/jpg")
             
@@ -241,5 +242,20 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             print(error)
             return nil
         }
+    }
+    
+    func fixOrientation(img: UIImage) -> UIImage {
+        if (img.imageOrientation == .up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
     }
 }

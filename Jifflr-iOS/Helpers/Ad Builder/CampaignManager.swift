@@ -272,7 +272,7 @@ class CampaignManager: NSObject {
     }
     
     func activateCampaign(user: PFUser, campaign: Campaign, budget: Double) {
-        campaign.status = CampaignStatusKey.availableScheduled
+        campaign.status = CampaignStatusKey.pendingModeration
         campaign.budget = budget * 100
         campaign.balance = budget * 100
         campaign.creator = user

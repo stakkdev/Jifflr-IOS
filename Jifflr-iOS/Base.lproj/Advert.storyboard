@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -450,7 +450,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
-                                <rect key="frame" x="113" y="623" width="151" height="16"/>
+                                <rect key="frame" x="112.5" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="pri-Sl-CQ0"/>
                                 </constraints>
@@ -641,17 +641,35 @@
                                 <rect key="frame" x="178" y="410" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qd-gj-dWo">
-                                <rect key="frame" x="18" y="631" width="22" height="18"/>
-                                <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktj-zr-GZZ">
+                                <rect key="frame" x="18" y="621" width="30" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qd-gj-dWo">
+                                        <rect key="frame" x="4" y="6" width="22" height="18"/>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="1QH-0g-CIF"/>
+                                    <constraint firstAttribute="height" constant="30" id="3sb-MO-MAN"/>
+                                    <constraint firstItem="0Qd-gj-dWo" firstAttribute="centerX" secondItem="Ktj-zr-GZZ" secondAttribute="centerX" id="VF9-ww-uAa"/>
+                                    <constraint firstItem="0Qd-gj-dWo" firstAttribute="centerY" secondItem="Ktj-zr-GZZ" secondAttribute="centerY" id="rNg-1D-3nY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="FNB-Z7-kmn" firstAttribute="top" secondItem="0Qd-gj-dWo" secondAttribute="bottom" constant="18" id="CCt-La-AXT"/>
-                            <constraint firstItem="0Qd-gj-dWo" firstAttribute="leading" secondItem="LSo-z0-IMg" secondAttribute="leading" constant="18" id="MSg-FC-iiQ"/>
+                            <constraint firstItem="FNB-Z7-kmn" firstAttribute="top" secondItem="Ktj-zr-GZZ" secondAttribute="bottom" constant="16" id="VR3-yp-20M"/>
+                            <constraint firstItem="Ktj-zr-GZZ" firstAttribute="leading" secondItem="LSo-z0-IMg" secondAttribute="leading" constant="18" id="p7E-tF-zzK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
                     </view>
@@ -660,6 +678,7 @@
                         <outlet property="messageTextView" destination="g3h-IX-qcm" id="yuK-GI-Ere"/>
                         <outlet property="spinner" destination="esb-C4-1Zw" id="VIo-tf-kK6"/>
                         <outlet property="timeLabel" destination="0Qd-gj-dWo" id="TUy-b0-J8l"/>
+                        <outlet property="timeView" destination="Ktj-zr-GZZ" id="2Qd-O4-8OI"/>
                         <outlet property="titleBackgroundView" destination="Hd0-Om-ix5" id="s6H-pO-rxh"/>
                         <outlet property="titleLabel" destination="Odn-38-NvH" id="SRc-kr-Udg"/>
                         <outlet property="trianglesImageView" destination="im6-hd-7wl" id="Afh-Tg-ctM"/>

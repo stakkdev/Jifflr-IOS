@@ -71,53 +71,21 @@ class ModerationManager: NSObject {
         guard let user = Session.shared.currentUser else { return }
 
         PFCloud.callFunction(inBackground: "campaigns-to-moderate", withParameters: ["user": user.objectId!]) { responseJSON, error in
-            if let responseJSON = responseJSON as? [String: Any], error == nil {
+            if let campaigns = responseJSON as? [Campaign], let campaign = campaigns.first, error == nil {
 
-//                var adverts:[Advert] = []
-//                if let advert = responseJSON["defaultAd"] as? Advert {
-//                    adverts.append(advert)
-//                }
-//
-//                if let cmsAds = responseJSON["cmsAds"] as? [Advert] {
-//                    adverts += cmsAds
-//                }
-//
-//                PFObject.pinAll(inBackground: adverts, withName: self.pinName, block: { (success, error) in
-//                    if success == true, error == nil {
-//                        print("\(adverts.count) adverts pinned.")
-//                    }
-//
-//                    completion()
-//                })
+                campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
+                    if let data = data, error == nil {
+                        let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
+                        let success = MediaManager.shared.save(data: data, id: campaign.advert.details?.objectId, fileExtension: fileExtension)
+                        print("Moderation Media: \(campaign.advert.details?.objectId ?? "") saved to File Manager: \(success)")
+                    }
+                    
+                    completion(campaign)
+                })
             } else {
                 completion(nil)
             }
         }
-        
-//        let query = Campaign.query()
-//        query?.whereKey("creator", notEqualTo: user)
-//        query?.includeKey("advert")
-//        query?.includeKey("advert.questions")
-//        query?.includeKey("advert.questions.answers")
-//        query?.includeKey("advert.questions.type")
-//        query?.includeKey("advert.details")
-//        query?.includeKey("advert.details.template")
-//        query?.getFirstObjectInBackground(block: { (campaign, error) in
-//            guard let campaign = campaign as? Campaign, error == nil else {
-//                completion(nil)
-//                return
-//            }
-//
-//            campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
-//                if let data = data, error == nil {
-//                    let fileExtension = UIImage(data: data) != nil ? "jpg" : "mp4"
-//                    let success = MediaManager.shared.save(data: data, id: campaign.advert.details?.objectId, fileExtension: fileExtension)
-//                    print("Moderation Media: \(campaign.advert.details?.objectId ?? "") saved to File Manager: \(success)")
-//                }
-//
-//                completion(campaign)
-//            })
-//        })
     }
     
     func fetchModeratorFeedbackCategories(completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {

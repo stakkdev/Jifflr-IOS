@@ -225,7 +225,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.activatedViewBottom.isActive = true
         
         switch status {
-        case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled:
+        case CampaignStatusKey.availableActive, CampaignStatusKey.availableScheduled, CampaignStatusKey.pendingModeration:
             self.activeSwitch.isOn = true
         default:
             self.activeSwitch.isOn = false
@@ -252,6 +252,8 @@ class CampaignOverviewViewController: BaseViewController {
 
         switch status {
         case CampaignStatusKey.availableActive:
+            self.drawCircle(color: UIColor.mainGreen)
+        case CampaignStatusKey.pendingModeration:
             self.drawCircle(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)

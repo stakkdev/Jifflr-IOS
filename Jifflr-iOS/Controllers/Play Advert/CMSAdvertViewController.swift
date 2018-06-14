@@ -19,6 +19,7 @@ class CMSAdvertViewController: BaseViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeView: UIView!
     
     var timer: Timer?
     var player: Player?
@@ -66,8 +67,10 @@ class CMSAdvertViewController: BaseViewController {
             self.navigationItem.rightBarButtonItem = flagBarButton
             
             self.timeLabel.isHidden = false
+            self.timeView.isHidden = false
         } else {
             self.timeLabel.isHidden = true
+            self.timeView.isHidden = true
         }
     }
     
@@ -85,7 +88,8 @@ class CMSAdvertViewController: BaseViewController {
             do {
                 let data = try Data(contentsOf: url)
                 if let image = UIImage(data: data) {
-                    self.imageView.image = image
+                    let normalizedImage = self.fixOrientation(img: image)
+                    self.imageView.image = normalizedImage
                     
                     if self.mode != AdViewMode.preview {
                         self.startTimer()
@@ -120,6 +124,21 @@ class CMSAdvertViewController: BaseViewController {
         if self.mode == AdViewMode.preview {
             self.title = "adPreview.navigation.title".localized()
         }
+    }
+    
+    func fixOrientation(img: UIImage) -> UIImage {
+        if (img.imageOrientation == .up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
     }
     
     func fetchData() {
