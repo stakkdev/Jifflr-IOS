@@ -17,6 +17,8 @@ class JifflrTextFieldDate: JifflrTextField {
         }
     }
     
+    var minimumDate = false
+    
     var datePicker: UIDatePicker!
 
     override init(frame: CGRect) {
@@ -67,7 +69,11 @@ class JifflrTextFieldDate: JifflrTextField {
         self.datePicker = UIDatePicker()
         self.datePicker.date = date
         self.datePicker.datePickerMode = format == "HH:mm" ? .time : .date
-        self.datePicker.minimumDate = date
+        
+        if self.minimumDate && self.datePicker.datePickerMode == .date {
+            self.datePicker.minimumDate = date
+        }
+        
         self.datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
         self.inputView = self.datePicker
         

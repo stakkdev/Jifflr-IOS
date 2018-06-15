@@ -81,12 +81,16 @@ class CreateScheduleViewController: BaseViewController {
         self.advertTextField.text = self.advert.details?.name
         
         self.dateFromTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
+        self.dateFromTextField.minimumDate = true
         self.dateFromTextField.dateFormat = "dd/MM/yy"
         self.dateToTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
+        self.dateToTextField.minimumDate = true
         self.dateToTextField.dateFormat = "dd/MM/yy"
         self.timeFromTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
+        self.timeFromTextField.minimumDate = false
         self.timeFromTextField.dateFormat = "HH:mm"
         self.timeToTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
+        self.timeToTextField.minimumDate = false
         self.timeToTextField.dateFormat = "HH:mm"
         
         self.navigationController?.isNavigationBarHidden = false
