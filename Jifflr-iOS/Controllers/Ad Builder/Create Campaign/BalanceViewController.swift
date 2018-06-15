@@ -138,6 +138,11 @@ class BalanceViewController: BaseViewController {
                 return
             }
             
+            guard let _ = tokenizedPayPalAccount else {
+                self.confirmButton.stopAnimating()
+                return
+            }
+            
             let previousBalance = user.details.campaignBalance
             let newBalance = previousBalance + topUpAmount
             user.details.campaignBalance = newBalance
