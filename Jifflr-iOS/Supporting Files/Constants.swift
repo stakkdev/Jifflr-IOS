@@ -76,7 +76,7 @@ enum Environment: String {
         case .staging:
             return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
         case .production:
-            return "ca-app-pub-3023125219328196/3793918089"
+            return "ca-app-pub-9475640621523183~3852192325"
         }
     }
     
