@@ -97,7 +97,7 @@
 "alert.inviteSent.title" = "Invitation Sent!";
 "alert.inviteSent.message" = "Your invitation has been successfully sent to %@!";
 "alert.cashoutSuccess.title" = "Cash Out Successful!";
-"alert.cashoutSuccess.message" = "You have successfully cashed out your available balance to the PayPal email address entered.";
+"alert.cashoutSuccess.message" = "Thank you for requesting to cash-out. You will receive a notification when the cash-out is successful.";
 "alert.changeTeam.title" = "Change Team";
 "alert.changeTeam.message" = "Are you sure you would like to change team? This action cannot be undone.";
 "alert.changeTeam.cancelButton" = "Cancel";
