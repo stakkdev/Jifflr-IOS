@@ -132,6 +132,9 @@ class CreateTargetViewController: BaseViewController {
     
     func setupData() {
         if !self.isEdit { self.locationTextField.animate() }
+        
+        let group = DispatchGroup()
+        group.enter()
         LocationManager.shared.fetchLocations { (locations) in
             self.locationTextField.stopAnimating()
             
@@ -150,10 +153,13 @@ class CreateTargetViewController: BaseViewController {
                     self.locationTextField.text = locations.first?.name
                     self.selectedLocation = locations.first
                 }
+                
+                group.leave()
             }
         }
         
         if !self.isEdit { self.languageTextField.animate() }
+        group.enter()
         LanguageManager.shared.fetchLanguages { (languages) in
             self.languageTextField.stopAnimating()
             guard languages.count > 0 else {
@@ -166,11 +172,20 @@ class CreateTargetViewController: BaseViewController {
             if !self.isEdit {
                 self.languageTextField.text = languages.first?.name
                 self.selectedLanguage = languages.first
+                group.leave()
             }
         }
         
+        group.enter()
         UserManager.shared.fetchGenders { (genders) in
             self.genders = genders
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            if !self.isEdit {
+                self.updateAudienceSize()
+            }
         }
     }
     
