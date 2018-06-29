@@ -177,7 +177,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.agesLabel.text = "\(minAge)-\(maxAge)"
         
         self.estimatedAudienceLabel.text = "\(demographic.estimatedAudience)"
-        self.costPerViewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.campaign.costPerView)"
+        self.costPerViewLabel.text = "\(Session.shared.currentCurrencySymbol)\(self.formatCostPerView())"
         
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
         self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
@@ -195,6 +195,27 @@ class CampaignOverviewViewController: BaseViewController {
         self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.updateBalanceButton()
+    }
+    
+    func formatCostPerView() -> String {
+        let costPerView = String(format: "%.10f", self.campaign.costPerView)
+        let sections = costPerView.components(separatedBy: ".")
+        guard sections.count == 2 else { return costPerView }
+        
+        var afterDecimalPoint = sections.last!
+        for i in (0...afterDecimalPoint.count-1).reversed() {
+            let firstIndex = afterDecimalPoint.startIndex
+            let charIndex = afterDecimalPoint.index(firstIndex, offsetBy: i)
+            let char = afterDecimalPoint[charIndex]
+            if char == "0" {
+                afterDecimalPoint.remove(at: charIndex)
+            } else {
+                break
+            }
+        }
+        
+        let formattedCostPerView = sections.first! + "." + afterDecimalPoint
+        return formattedCostPerView
     }
     
     func updateBalanceButton() {
