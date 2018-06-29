@@ -21,7 +21,7 @@ class SwipeCell: UITableViewCell {
     var question: AdExchangeQuestion!
 
     var animationOptions: UIViewAnimationOptions = [.allowUserInteraction, .beginFromCurrentState]
-    var animationDuration: TimeInterval = 0.5
+    var animationDuration: TimeInterval = 0.3
     var animationDelay: TimeInterval = 0
     var animationSpingDamping: CGFloat = 0.5
     var animationInitialVelocity: CGFloat = 1
@@ -96,13 +96,13 @@ class SwipeCell: UITableViewCell {
         default:
             let offset = self.roundedView.frame.origin.x
             if offset > self.viewWidth {
-                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                     self.roundedView.frame.origin.x = self.frame.width
                 }, completion: { (value: Bool) in
                     self.cellSwipedWith(yes: true)
                 })
             } else if -offset > self.viewWidth {
-                UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                     self.roundedView.frame.origin.x = -self.frame.width
                 }, completion: { (value: Bool) in
                     self.cellSwipedWith(yes: false)

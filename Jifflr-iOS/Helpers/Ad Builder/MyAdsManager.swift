@@ -177,7 +177,7 @@ class MyAdsManager: NSObject {
         
         let query = Advert.query()
         query?.whereKey("creator", equalTo: currentUser)
-        query?.order(byAscending: "createdAt")
+        query?.order(byDescending: "createdAt")
         query?.includeKey("details")
         query?.includeKey("details.template")
         query?.includeKey("questions")

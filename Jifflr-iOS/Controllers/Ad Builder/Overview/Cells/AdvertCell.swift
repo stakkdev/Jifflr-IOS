@@ -49,7 +49,7 @@ class AdvertCell: UITableViewCell {
         case CampaignStatusKey.nonCompliantScheduled:
             self.setTimerImage(color: UIColor.mainRed)
         default:
-            return
+            self.drawCircle(color: UIColor.mainRed)
         }
     }
     

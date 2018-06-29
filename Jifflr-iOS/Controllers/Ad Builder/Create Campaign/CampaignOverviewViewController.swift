@@ -287,7 +287,7 @@ class CampaignOverviewViewController: BaseViewController {
         case CampaignStatusKey.prepareToDelete:
             self.setTimerImage(color: UIColor.mainRed)
         default:
-            return
+            self.drawCircle(color: UIColor.mainRed)
         }
     }
     

@@ -54,19 +54,12 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
         CATransaction.begin()
         CATransaction.setCompletionBlock({
-            UIView.animate(withDuration: 1.0, delay: 0.5, options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
-                self.swipeAnimationImageView.alpha = 0.0
-            }, completion: { (completion) -> Void in
-                if completion == true {
-                    self.swipeAnimationImageView.isHidden = true
-                    self.swipeAnimationImageView.alpha = 1.0
-                }
-            })
+            
         })
 
         let animation = CABasicAnimation(keyPath: "position.x")
         animation.duration = 0.2
-        animation.repeatCount = 8
+        animation.repeatCount = .infinity
         animation.autoreverses = true
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         animation.fromValue = self.swipeAnimationImageView.center.x
