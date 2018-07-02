@@ -259,6 +259,8 @@ class CreateTargetViewController: BaseViewController {
         if genderIndex < 2 {
             guard let gender = self.genders.first(where: { $0.index == genderIndex }) else { return false }
             demographic.gender = gender
+        } else {
+            demographic.remove(forKey: "gender")
         }
         
         if let text = self.audienceLabel.text, let audienceSize = Int(text) {
