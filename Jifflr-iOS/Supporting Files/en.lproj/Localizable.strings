@@ -263,13 +263,13 @@
 "settings.analytics.message" = "Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments.";
 
 "adBuilderOverview.navigation.title" = "My Ads";
-"adBuilderNoAds.titleLabel.title" = "Lorem";
-"adBuilderNoAds.descriptionLabel.title" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
+"adBuilderNoAds.titleLabel.title" = "Hi %@";
+"adBuilderNoAds.descriptionLabel.title" = "Create your first Ad in 3 super easy steps. Have a play; you can rewrite it as many times as you like!";
 "adBuilderNoAds.becomeModeratorButton.title" = "BECOME A MODERATOR";
 "adBuilderNoAds.createAdButton.title" = "CREATE AN AD";
 "createAd.navigation.title" = "New Ad";
 "createAd.titleLabel.title" = "Start Building your Ad";
-"createAd.descriptionLabel.title" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+"createAd.descriptionLabel.title" = "Create your Ad with up to 3 market research questions. It’s super easy!";
 "createAd.textField.placeholder" = "Enter Ad Name";
 "createAd.nextButton.title" = "NEXT";
 "chooseTemplate.navigation.title" = "Choose Template";
@@ -303,7 +303,7 @@
 "adCreated.saveAdButton.title" = "SAVE AD";
 "adCreated.createCampaignButton.title" = "CREATE CAMPAIGN";
 "adCreated.titleLabel.text" = "Ad Created";
-"adCreated.descriptionLabel.text" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.";
+"adCreated.descriptionLabel.text" = "Great, that's done.\n\nNow select ‘Create Campaign’ to schedule and target your Ad or select ‘Save Ad’ to use it later.";
 
 "adBuilderOverview.segmentedControlButton1.title" = "CAMPAIGNS";
 "adBuilderOverview.segmentedControlButton2.title" = "ADVERTS";

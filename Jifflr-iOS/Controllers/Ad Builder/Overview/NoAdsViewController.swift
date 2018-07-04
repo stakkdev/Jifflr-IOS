@@ -41,8 +41,10 @@ class NoAdsViewController: BaseViewController {
     }
     
     func setupLocalization() {
+        guard let firstName = Session.shared.currentUser?.details.firstName else { return }
+        
         self.title = "adBuilderOverview.navigation.title".localized()
-        self.titleLabel.text = "adBuilderNoAds.titleLabel.title".localized()
+        self.titleLabel.text = "adBuilderNoAds.titleLabel.title".localizedFormat(firstName)
         self.descriptionLabel.text = "adBuilderNoAds.descriptionLabel.title".localized()
         self.becomeModeratorButton.setTitle("adBuilderNoAds.becomeModeratorButton.title".localized(), for: .normal)
         self.createAdButton.setTitle("adBuilderNoAds.createAdButton.title".localized(), for: .normal)
