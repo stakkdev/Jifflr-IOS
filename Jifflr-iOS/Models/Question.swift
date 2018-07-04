@@ -14,7 +14,7 @@ final class Question: PFObject {
 
     var text: String {
         get {
-            return self["text"] as! String
+            return self["text"] as? String ?? ""
         }
         set {
             self["text"] = newValue

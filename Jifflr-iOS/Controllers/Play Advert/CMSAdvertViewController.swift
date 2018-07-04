@@ -65,12 +65,14 @@ class CMSAdvertViewController: BaseViewController {
         if self.mode == AdViewMode.normal {
             let flagBarButton = UIBarButtonItem(image: UIImage(named: "FlagAdButton"), style: .plain, target: self, action: #selector(self.flagButtonPressed(sender:)))
             self.navigationItem.rightBarButtonItem = flagBarButton
-            
-            self.timeLabel.isHidden = false
-            self.timeView.isHidden = false
-        } else {
+        }
+        
+        if self.mode == AdViewMode.preview {
             self.timeLabel.isHidden = true
             self.timeView.isHidden = true
+        } else {
+            self.timeLabel.isHidden = false
+            self.timeView.isHidden = false
         }
     }
     

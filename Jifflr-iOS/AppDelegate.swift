@@ -115,6 +115,7 @@ extension AppDelegate {
         Schedule.registerSubclass()
         Gender.registerSubclass()
         AdExchangeQuestion.registerSubclass()
+        CampaignToModerate.registerSubclass()
 
         Parse.initialize(with: configuration)
     }

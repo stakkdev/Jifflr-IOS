@@ -166,6 +166,8 @@ class ModerationFeedbackViewController: BaseViewController {
             
             let alert = AlertMessage.feedbackSubmitted
             self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in
+                guard let dashboardViewController = self.navigationController?.viewControllers.first as? DashboardViewController else { return }
+                dashboardViewController.moderatorCampaign = nil
                 self.navigationController?.popToRootViewController(animated: true)
             })
         }

@@ -25,6 +25,7 @@
 		1A4115A82090C4130078D32B /* ModerationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A72090C4130078D32B /* ModerationManager.swift */; };
 		1A4115AA2090C8D60078D32B /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115A92090C8D60078D32B /* AppSettingsManager.swift */; };
 		1A4115AC2090C9070078D32B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4115AB2090C9070078D32B /* AppSettings.swift */; };
+		1A49D7F220ECFBFE0081E956 /* CampaignToModerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49D7F120ECFBFE0081E956 /* CampaignToModerate.swift */; };
 		1A4A5CD4209707B400C3D3C4 /* AdjustedHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD3209707B400C3D3C4 /* AdjustedHeightTableView.swift */; };
 		1A4A5CD620971C8C00C3D3C4 /* FailureReasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD520971C8C00C3D3C4 /* FailureReasonCell.swift */; };
 		1A4A5CD82097434D00C3D3C4 /* ModeratorFeedbackCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */; };
@@ -244,6 +245,7 @@
 		1A4115A72090C4130078D32B /* ModerationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationManager.swift; path = Helpers/Moderation/ModerationManager.swift; sourceTree = "<group>"; };
 		1A4115A92090C8D60078D32B /* AppSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsManager.swift; path = Helpers/General/AppSettingsManager.swift; sourceTree = "<group>"; };
 		1A4115AB2090C9070078D32B /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettings.swift; path = Models/AppSettings.swift; sourceTree = "<group>"; };
+		1A49D7F120ECFBFE0081E956 /* CampaignToModerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignToModerate.swift; path = Models/CampaignToModerate.swift; sourceTree = "<group>"; };
 		1A4A5CD3209707B400C3D3C4 /* AdjustedHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdjustedHeightTableView.swift; path = Views/AdjustedHeightTableView.swift; sourceTree = "<group>"; };
 		1A4A5CD520971C8C00C3D3C4 /* FailureReasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FailureReasonCell.swift; path = Controllers/Moderation/Cells/FailureReasonCell.swift; sourceTree = "<group>"; };
 		1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorFeedbackCategory.swift; path = Models/ModeratorFeedbackCategory.swift; sourceTree = "<group>"; };
@@ -978,6 +980,7 @@
 				1AF678A62099C5A6001F8BD5 /* UserFlaggedCampaign.swift */,
 				1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */,
 				1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */,
+				1A49D7F120ECFBFE0081E956 /* CampaignToModerate.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1502,6 +1505,7 @@
 				1AAA233120B5AE4900DDE404 /* UserSeenAdExchange.swift in Sources */,
 				E96A0CFA203DAC660059DDAC /* PendingUserManager.swift in Sources */,
 				1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */,
+				1A49D7F220ECFBFE0081E956 /* CampaignToModerate.swift in Sources */,
 				E9A2CF531F8F7D87008A7F40 /* Location.swift in Sources */,
 				1AF985432081066D006525DB /* CreateScheduleViewController.swift in Sources */,
 				E97B9E20203B04940097BC65 /* FAQViewController.swift in Sources */,

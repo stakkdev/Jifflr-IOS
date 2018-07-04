@@ -71,7 +71,10 @@ class ModerationManager: NSObject {
         guard let user = Session.shared.currentUser else { return }
 
         PFCloud.callFunction(inBackground: "campaigns-to-moderate", withParameters: ["user": user.objectId!]) { responseJSON, error in
-            if let campaigns = responseJSON as? [Campaign], let campaign = campaigns.first, error == nil {
+            if let campaignsToModerate = responseJSON as? [CampaignToModerate], error == nil {
+                
+                let randomIndex = Int(arc4random_uniform(UInt32(campaignsToModerate.count)))
+                let campaign = campaignsToModerate[randomIndex].campaign
 
                 campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
                     if let data = data, error == nil {
