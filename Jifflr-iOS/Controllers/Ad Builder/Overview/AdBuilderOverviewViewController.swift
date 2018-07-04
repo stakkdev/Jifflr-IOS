@@ -141,7 +141,7 @@ extension AdBuilderOverviewViewController: JifflrSegmentedControlDelegate {
             addBarButton.isEnabled = false
         } else {
             self.tableView.contentOffset.y = 200.0
-            self.tableViewHeaderView.frame.size.height = 280.0
+            self.tableViewHeaderView.frame.size.height = 260.0
             
             guard let addBarButton = self.navigationItem.rightBarButtonItem else { return }
             addBarButton.tintColor = UIColor.white

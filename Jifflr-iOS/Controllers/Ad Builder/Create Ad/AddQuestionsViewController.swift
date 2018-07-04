@@ -104,6 +104,11 @@ class AddQuestionsViewController: BaseViewController {
         self.urlsContainerView.isHidden = true
         
         self.answersRequiredTextField.delegate = self
+        self.minTextField.delegate = self
+        self.maxTextField.delegate = self
+        self.answer3TextField.delegate = self
+        self.answer4TextField.delegate = self
+        self.answer5TextField.delegate = self
         
         let questionSwitch = UISwitch()
         questionSwitch.addTarget(self, action: #selector(self.questionSwitchToggled(sender:)), for: .valueChanged)
@@ -512,5 +517,16 @@ extension AddQuestionsViewController: UITextFieldDelegate {
                 }
             }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if self.answerTypeTextField.questionType?.type == AdvertQuestionType.MultipleChoice {
+            let currentCharacterCount = textField.text?.count ?? 0
+            if (range.length + range.location > currentCharacterCount) { return false }
+            let newLength = currentCharacterCount + string.count - range.length
+            return newLength <= 25
+        }
+        
+        return true
     }
 }

@@ -42,6 +42,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.allowsMultipleSelection = false
     }
     
     override func setupQuestionText() {

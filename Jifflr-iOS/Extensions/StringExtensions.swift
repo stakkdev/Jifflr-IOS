@@ -14,6 +14,12 @@ extension String {
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
     
+    func containsNumbers() -> Bool {
+        let numbersRange = self.rangeOfCharacter(from: .decimalDigits)
+        let hasNumbers = (numbersRange != nil)
+        return hasNumbers
+    }
+    
     func isUrl() -> Bool {
         if let url = URL(string: self) {
             return UIApplication.shared.canOpenURL(url)

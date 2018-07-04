@@ -127,13 +127,13 @@ class RegisterViewController: BaseViewController {
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {
-        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else {
+        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty, !firstName.containsNumbers() else {
             let error = ErrorMessage.invalidField("register.firstName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return
         }
 
-        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else {
+        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty, !lastName.containsNumbers() else {
             let error = ErrorMessage.invalidField("register.lastName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return
