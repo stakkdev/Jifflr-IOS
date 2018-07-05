@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>02.07.2018.1</string>
+	<string>05.07.2018</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
