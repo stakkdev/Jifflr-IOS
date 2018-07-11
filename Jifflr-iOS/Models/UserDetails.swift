@@ -14,7 +14,7 @@ final class UserDetails: PFObject {
 
     var firstName: String {
         get {
-            return self["firstName"] as! String
+            return self["firstName"] as? String ?? ""
         }
         set {
             self["firstName"] = newValue
@@ -23,7 +23,7 @@ final class UserDetails: PFObject {
 
     var lastName: String {
         get {
-            return self["lastName"] as! String
+            return self["lastName"] as? String ?? ""
         }
         set {
             self["lastName"] = newValue

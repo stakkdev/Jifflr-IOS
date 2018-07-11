@@ -56,6 +56,7 @@
 		1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */; };
 		1AB5C47B20B45EE800777CB9 /* CampaignManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */; };
 		1AC480622074D3B80092906C /* AddQuestionsViewController+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */; };
+		1AD4971320F63A2000A4089D /* TermsOfUse.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AD4971220F63A1F00A4089D /* TermsOfUse.html */; };
 		1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */; };
 		1AE5A7E92084DEF000B7CDAE /* CreateTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */; };
 		1AE5A7EB2084E4A200B7CDAE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */; };
@@ -276,6 +277,7 @@
 		1AAC90772073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDropdown.swift; path = Views/TextFields/JifflrTextFieldDropdown.swift; sourceTree = "<group>"; };
 		1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignManagerTests.swift; sourceTree = "<group>"; };
 		1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddQuestionsViewController+Drawing.swift"; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController+Drawing.swift"; sourceTree = "<group>"; };
+		1AD4971220F63A1F00A4089D /* TermsOfUse.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = TermsOfUse.html; path = "Supporting Files/TermsOfUse.html"; sourceTree = "<group>"; };
 		1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignManager.swift; path = "Helpers/Ad Builder/CampaignManager.swift"; sourceTree = "<group>"; };
 		1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTargetViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateTargetViewController.swift"; sourceTree = "<group>"; };
 		1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Schedule.swift; path = Models/Schedule.swift; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 				E9A717981F8B89AC00B07414 /* ReadMe.md */,
 				E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */,
 				E9DBBC3B20163485000B8835 /* Localizable.strings */,
+				1AD4971220F63A1F00A4089D /* TermsOfUse.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				E937F5C920373BEA00171480 /* AdsViewed.storyboard in Resources */,
 				E9A717A21F8B89AC00B07414 /* Assets.xcassets in Resources */,
 				E9A717931F8B89AC00B07414 /* Cartfile in Resources */,
+				1AD4971320F63A2000A4089D /* TermsOfUse.html in Resources */,
 				E9A717971F8B89AC00B07414 /* .gitignore in Resources */,
 				E9F89D87201B45CB00860FE3 /* MyMoney.storyboard in Resources */,
 				E9D8E1C3203C318500F978D2 /* Profile.storyboard in Resources */,

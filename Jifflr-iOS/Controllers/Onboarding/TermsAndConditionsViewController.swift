@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class TermsAndConditionsViewController: BaseViewController {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var containerView: UIView!
 
     class func instantiateFromStoryboard() -> TermsAndConditionsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -26,8 +28,14 @@ class TermsAndConditionsViewController: BaseViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        self.webView.frame = CGRect(x: 8.0, y: 8.0, width: self.containerView.frame.width - 16.0, height: self.containerView.frame.height - 16.0)
 
-        self.textView.setContentOffset(.zero, animated: false)
+        guard let url = Bundle.main.url(forResource: "TermsOfUse", withExtension: "html") else { return }
+        self.webView.loadFileURL(url, allowingReadAccessTo: url)
+        let request = URLRequest(url: url)
+        self.webView.load(request)
+        self.webView.scrollView.setContentOffset(.zero, animated: false)
     }
 
     func setupUI() {
@@ -45,15 +53,17 @@ class TermsAndConditionsViewController: BaseViewController {
         let dismissBarButton = UIBarButtonItem(image: UIImage(named: "NavigationDismiss"), style: .plain, target: self, action: #selector(self.dismissButtonPressed(sender:)))
         self.navigationBar.topItem?.rightBarButtonItem = dismissBarButton
 
-        self.textView.clipsToBounds = true
-        self.textView.layer.masksToBounds = true
-        self.textView.layer.cornerRadius = 10.0
-        self.textView.textContainerInset = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
+        self.containerView.clipsToBounds = true
+        self.containerView.layer.masksToBounds = true
+        self.containerView.layer.cornerRadius = 10.0
+        
+        let webConfiguration = WKWebViewConfiguration()
+        self.webView = WKWebView(frame: self.containerView.frame, configuration: webConfiguration)
+        self.containerView.addSubview(self.webView)
     }
 
     func setupLocalization() {
         self.navigationBar.topItem?.title = "termsAndConditions.navigation.title".localized()
-        self.textView.text = "termsAndConditions.content".localized()
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
