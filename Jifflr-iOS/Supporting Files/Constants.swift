@@ -15,6 +15,10 @@ struct Constants {
             if configuration.lowercased().range(of: "staging") != nil {
                 return Environment.staging
             }
+            
+            if configuration.lowercased().range(of: "testing") != nil {
+                return Environment.testing
+            }
         }
         return Environment.production
     }()
@@ -43,11 +47,14 @@ struct Constants {
 enum Environment: String {
     case staging
     case production
+    case testing
 
     var appURL: String {
         switch self {
         case .staging:
             return "https://jifflr.thecore.thedistance.co.uk/parse"
+        case .testing:
+            return "https://jifflr.testing.thecore.thedistance.co.uk/parse"
         case .production:
             return "https://jifflr.thedistance.co.uk/parse"
         }
@@ -56,6 +63,8 @@ enum Environment: String {
     var appodealKey: String {
         switch self {
         case .staging:
+            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
+        case .testing:
             return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
         case .production:
             return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
@@ -66,6 +75,8 @@ enum Environment: String {
         switch self {
         case .staging:
             return true
+        case .testing:
+            return true
         case .production:
             return false
         }
@@ -74,6 +85,8 @@ enum Environment: String {
     var admobKey: String {
         switch self {
         case .staging:
+            return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
+        case .testing:
             return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
         case .production:
             return "ca-app-pub-9475640621523183~3852192325"
@@ -84,6 +97,8 @@ enum Environment: String {
         switch self {
         case .staging:
             return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+        case .testing:
+            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
         case .production:
             return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
         }
@@ -92,6 +107,8 @@ enum Environment: String {
     var braintreeUrlScheme: String {
         switch self {
         case .staging:
+            return "com.thedistance.Jifflr-iOS.payments"
+        case .testing:
             return "com.thedistance.Jifflr-iOS.payments"
         case .production:
             return "com.jifflr.Jifflr-iOS.payments"

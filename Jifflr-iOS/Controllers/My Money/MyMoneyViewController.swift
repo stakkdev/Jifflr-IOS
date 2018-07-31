@@ -71,6 +71,8 @@ class MyMoneyViewController: BaseViewController {
     }
 
     func updateData() {
+        self.updateLocalData()
+        
         if Reachability.isConnectedToNetwork() {
             MyMoneyManager.shared.fetch { (myMoney, error) in
                 guard let myMoney = myMoney, error == nil else {
@@ -81,8 +83,6 @@ class MyMoneyViewController: BaseViewController {
 
                 self.myMoney = myMoney
             }
-        } else {
-            self.updateLocalData()
         }
     }
 
@@ -90,7 +90,6 @@ class MyMoneyViewController: BaseViewController {
         MyMoneyManager.shared.fetchLocal { (myMoney, error) in
             guard let myMoney = myMoney, error == nil else {
                 self.chart.showNoDataLabel()
-                self.displayError(error: error)
                 return
             }
 
