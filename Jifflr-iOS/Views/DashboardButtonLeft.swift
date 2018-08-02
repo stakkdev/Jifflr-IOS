@@ -52,6 +52,7 @@ class DashboardButtonLeft: UIButton {
         self.valueLabel.textColor = UIColor.white
         self.valueLabel.translatesAutoresizingMaskIntoConstraints = false
         self.valueLabel.text = "\(0)"
+        self.valueLabel.adjustsFontSizeToFitWidth = true
         self.addSubview(self.valueLabel)
 
         self.nameLabel = UILabel()
