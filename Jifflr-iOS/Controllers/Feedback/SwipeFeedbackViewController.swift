@@ -96,6 +96,24 @@ class SwipeFeedbackViewController: FeedbackViewController {
             self.pushToNextAd()
         }
     }
+    
+    override func dismissButtonPressed(sender: UIBarButtonItem) {
+        let title = "feedback.dismissSwipeAlert.title".localized()
+        let message = "feedback.dismissSwipeAlert.message".localized()
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelTitle = "alert.notifications.cancelButton".localized()
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let okayTitle = "alert.passwordChanged.okayButton".localized()
+        let okayAction = UIAlertAction(title: okayTitle, style: .default) { (action) in
+            self.dismiss(animated: false, completion: nil)
+        }
+        alertController.addAction(okayAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSource {

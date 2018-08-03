@@ -231,6 +231,8 @@
 
 "feedback.createAdButton.title" = "Create an Ad campaign";
 "feedback.nextAdButton.title" = "NEXT";
+"feedback.dismissSwipeAlert.title" = "Are you sure?";
+"feedback.dismissSwipeAlert.message" = "Are you sure you want to close? You will lose your ad view.";
 "urlLinks.website.title" = "WEBSITE";
 "urlLinks.facebook.title" = "FACEBOOK";
 "urlLinks.twitter.title" = "TWITTER";
