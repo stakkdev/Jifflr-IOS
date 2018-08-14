@@ -77,8 +77,8 @@ extension NonComplianceViewController: UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none
         
         let rowNumber = indexPath.row + 1
-        cell.titleLabel.text = "\(rowNumber). \(self.moderatorFeedbacks[indexPath.row].category.title)"
-        cell.descriptionLabel.text = self.moderatorFeedbacks[indexPath.row].title
+        cell.titleLabel.text = "\(rowNumber). \(self.moderatorFeedbacks[indexPath.row].title)"
+        cell.descriptionLabel.text = self.moderatorFeedbacks[indexPath.row].descriptionString
         
         return cell
     }

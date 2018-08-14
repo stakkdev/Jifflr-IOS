@@ -47,6 +47,15 @@ final class ModeratorFeedback: PFObject {
             self["index"] = newValue
         }
     }
+    
+    var descriptionString: String? {
+        get {
+            return self["description"] as? String
+        }
+        set {
+            self["description"] = newValue
+        }
+    }
 }
 
 extension ModeratorFeedback: PFSubclassing {
