@@ -310,6 +310,22 @@ extension RegisterViewController: UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.firstNameTextField || textField == self.lastNameTextField {
+            if string.count > 0 {
+                var allowedCharacters = CharacterSet.letters
+                allowedCharacters.insert(charactersIn: " -")
+                
+                let unwantedStr = string.trimmingCharacters(in: allowedCharacters)
+                return unwantedStr.count == 0
+            }
+            
+            return true
+        }
+        
+        return true
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.genderTextField, genders.count == 0 {
             self.displayError(error: ErrorMessage.genderFetchFailed)
