@@ -183,12 +183,12 @@ extension CampaignOverviewViewController {
     }
     
     @objc func campaignNamedTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
+        let vc = AddContentViewController.instantiateFromStoryboard(advert: self.campaign.advert)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func advertTapped(gesture: UITapGestureRecognizer) {
-        let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: self.campaign.advert, campaign: self.campaign, isEdit: true)
+        let vc = AddContentViewController.instantiateFromStoryboard(advert: self.campaign.advert)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
