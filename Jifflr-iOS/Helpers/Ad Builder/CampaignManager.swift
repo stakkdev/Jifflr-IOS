@@ -298,7 +298,11 @@ class CampaignManager: NSObject {
         
         let newDemographic = Demographic()
         newDemographic.estimatedAudience = campaign.demographic!.estimatedAudience
-        newDemographic.gender = campaign.demographic?.gender
+        
+        if let gender = campaign.demographic?.gender {
+            newDemographic.gender = gender
+        }
+        
         newDemographic.minAge = campaign.demographic!.minAge
         newDemographic.maxAge = campaign.demographic!.maxAge
         newDemographic.language = campaign.demographic!.language
