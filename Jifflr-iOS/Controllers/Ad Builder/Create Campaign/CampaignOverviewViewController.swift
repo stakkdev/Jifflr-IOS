@@ -186,7 +186,8 @@ class CampaignOverviewViewController: BaseViewController {
         
         var budgetCoverage = 0.0
         if self.budgetView.value != 0.0 {
-            budgetCoverage = Double(campaignCost / self.budgetView.value)
+            let noOfViews = self.campaign.budget / self.campaign.costPerView
+            budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
             budgetCoverage *= 100
         }
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
@@ -334,9 +335,9 @@ class CampaignOverviewViewController: BaseViewController {
 extension CampaignOverviewViewController: BudgetViewDelegate {
     func valueChanged(value: Double) {
         guard let demographic = self.campaign.demographic else { return }
-        let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
+        let noOfViews = value / self.campaign.costPerView
         
-        var budgetCoverage = Double(campaignCost / value)
+        var budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
         budgetCoverage *= 100
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
     }
