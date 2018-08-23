@@ -55,6 +55,7 @@ enum PushHandler {
     
     private func pushViewController(viewController: UIViewController?, message: String) {
         if let vc = UIApplication.shared.keyWindow?.topMostWindowController() {
+            if let _ = vc as? UIAlertController { return }
             
             let title = "alert.notification.title".localized()
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
