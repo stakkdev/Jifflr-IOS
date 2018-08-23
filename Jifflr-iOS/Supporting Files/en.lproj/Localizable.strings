@@ -379,7 +379,6 @@
 "balanceTopUp.paypalRequest.title" = "Jifflr Balance Top-up";
 
 "moderationTCs.navigation.title" = "T&Cs";
-"moderationTCs.content" = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.";
 "moderationTCs.applyLabel.text" = "Accept the T&Cs";
 "moderationTCs.applyButton.applyTitle" = "APPLY";
 "moderationTCs.applyButton.awaitingApprovalTitle" = "Awaiting Approval";

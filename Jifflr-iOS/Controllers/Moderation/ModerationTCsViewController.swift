@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import WebKit
 
 class ModerationTCsViewController: BaseViewController {
     
     @IBOutlet weak var acceptLabel: UILabel!
     @IBOutlet weak var acceptSwitch: UISwitch!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var applyButton: JifflrButton!
     
     class func instantiateFromStoryboard() -> ModerationTCsViewController {
@@ -29,24 +31,33 @@ class ModerationTCsViewController: BaseViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.textView.setContentOffset(.zero, animated: false)
+        let screenWidth = UIScreen.main.bounds.width
+        self.webView.frame = CGRect(x: 8.0, y: 8.0, width: screenWidth - 52.0, height: self.containerView.frame.height - 8.0)
+        
+        guard let url = Bundle.main.url(forResource: "TermsOfUseModerator", withExtension: "html") else { return }
+        self.webView.loadFileURL(url, allowingReadAccessTo: url)
+        let request = URLRequest(url: url)
+        self.webView.load(request)
+        self.webView.scrollView.setContentOffset(.zero, animated: false)
     }
     
     func setupUI() {
         self.setupLocalization()
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         
-        self.textView.clipsToBounds = true
-        self.textView.layer.masksToBounds = true
-        self.textView.layer.cornerRadius = 10.0
-        self.textView.textContainerInset = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
+        self.containerView.clipsToBounds = true
+        self.containerView.layer.masksToBounds = true
+        self.containerView.layer.cornerRadius = 10.0
+        
+        let webConfiguration = WKWebViewConfiguration()
+        self.webView = WKWebView(frame: CGRect.zero, configuration: webConfiguration)
+        self.containerView.addSubview(self.webView)
         
         self.handleBasedOnModeratorStatus()
     }
     
     func setupLocalization() {
         self.title = "moderationTCs.navigation.title".localized()
-        self.textView.text = "moderationTCs.content".localized()
         self.acceptLabel.text = "moderationTCs.applyLabel.text".localized()
     }
     

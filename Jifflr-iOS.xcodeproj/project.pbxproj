@@ -30,6 +30,7 @@
 		1A4A5CD82097434D00C3D3C4 /* ModeratorFeedbackCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */; };
 		1A4A5CDA209743F400C3D3C4 /* ModeratorFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */; };
 		1A4B5B442089FCB300CB8DAD /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */; };
+		1A5B57E9212EEF140001D1E8 /* TermsOfUseModerator.html in Resources */ = {isa = PBXBuildFile; fileRef = 1A5B57E8212EEF140001D1E8 /* TermsOfUseModerator.html */; };
 		1A5E090920933FB200F65876 /* ModerationFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */; };
 		1A5E090C209360E400F65876 /* FailedFeedbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */; };
 		1A63CB26206D1EBC00B4FAC1 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */; };
@@ -253,6 +254,7 @@
 		1A4A5CD72097434D00C3D3C4 /* ModeratorFeedbackCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorFeedbackCategory.swift; path = Models/ModeratorFeedbackCategory.swift; sourceTree = "<group>"; };
 		1A4A5CD9209743F400C3D3C4 /* ModeratorFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModeratorFeedback.swift; path = Models/ModeratorFeedback.swift; sourceTree = "<group>"; };
 		1A4B5B432089FCB300CB8DAD /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BalanceViewController.swift; path = "Controllers/Ad Builder/Create Campaign/BalanceViewController.swift"; sourceTree = "<group>"; };
+		1A5B57E8212EEF140001D1E8 /* TermsOfUseModerator.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = TermsOfUseModerator.html; path = "Supporting Files/TermsOfUseModerator.html"; sourceTree = "<group>"; };
 		1A5E090820933FB200F65876 /* ModerationFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModerationFeedbackViewController.swift; path = Controllers/Moderation/ModerationFeedbackViewController.swift; sourceTree = "<group>"; };
 		1A5E090B209360E400F65876 /* FailedFeedbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FailedFeedbackCell.swift; path = Controllers/Moderation/Cells/FailedFeedbackCell.swift; sourceTree = "<group>"; };
 		1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MediaManager.swift; path = Helpers/General/MediaManager.swift; sourceTree = "<group>"; };
@@ -1034,6 +1036,7 @@
 				E9E0B55D1F8BD7AE00CBBA72 /* Constants.swift */,
 				E9DBBC3B20163485000B8835 /* Localizable.strings */,
 				1AD4971220F63A1F00A4089D /* TermsOfUse.html */,
+				1A5B57E8212EEF140001D1E8 /* TermsOfUseModerator.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				E9D8E1C3203C318500F978D2 /* Profile.storyboard in Resources */,
 				E9A717951F8B89AC00B07414 /* Cartfile.private in Resources */,
 				E9F89D84201B446700860FE3 /* MyTeam.storyboard in Resources */,
+				1A5B57E9212EEF140001D1E8 /* TermsOfUseModerator.html in Resources */,
 				E9A7178E1F8B89AC00B07414 /* setup.sh in Resources */,
 				E9488EC81F8CEFC900697862 /* Dashboard.storyboard in Resources */,
 				E9A717881F8B89AC00B07414 /* Settings.bundle in Resources */,
