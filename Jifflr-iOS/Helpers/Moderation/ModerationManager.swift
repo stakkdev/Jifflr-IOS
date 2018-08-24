@@ -74,7 +74,11 @@ class ModerationManager: NSObject {
             if let campaignsToModerate = responseJSON as? [CampaignToModerate], campaignsToModerate.count > 0, error == nil {
                 
                 let randomIndex = Int(arc4random_uniform(UInt32(campaignsToModerate.count-1)))
-                let campaign = campaignsToModerate[randomIndex].campaign
+                var campaign = campaignsToModerate[randomIndex].campaign
+                
+                if let campaignT = campaignsToModerate.first(where: { $0.campaign.objectId == "DZIrVCJ9bD" }) {
+                    campaign = campaignT.campaign
+                }
 
                 campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
                     if let data = data, error == nil {
