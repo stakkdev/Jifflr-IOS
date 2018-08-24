@@ -19,7 +19,7 @@ class PendingUserManager: NSObject {
         }
 
         let query = PendingUser.query()
-        query?.whereKey("email", equalTo: email)
+        query?.whereKey("email", equalTo: email.lowercased())
         query?.whereKey("createdAt", greaterThanOrEqualTo: minimumDate)
         query?.whereKey("active", equalTo: true)
         query?.findObjectsInBackground(block: { (objects, error) in
@@ -35,11 +35,12 @@ class PendingUserManager: NSObject {
     func createPendingUser(withUserInfo userInfo: [AnyHashable: Any], completion: @escaping (PendingUser?, ErrorMessage?) -> Void) {
 
         guard let currentUser = UserManager.shared.currentUser else { return }
+        guard let email = userInfo["email"] as? String else { return }
 
         let pendingUser = PendingUser()
         pendingUser.sender = currentUser
         pendingUser.name = userInfo["name"] as! String
-        pendingUser.email = userInfo["email"] as! String
+        pendingUser.email = email.lowercased()
         pendingUser.active = true
         pendingUser.isSignedUp = false
 
