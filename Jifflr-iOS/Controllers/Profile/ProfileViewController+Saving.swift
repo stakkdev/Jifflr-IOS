@@ -101,6 +101,8 @@ extension ProfileViewController {
 
     func checkEmailAndSaveUser(email: String) {
         guard let currentUser = Session.shared.currentUser else { return }
+        guard let username = currentUser.username else { return }
+        guard username != email else { return }
 
         UserManager.shared.usernameAvailable(email: email, completion: { (available, error) in
             guard let available = available, error == nil else {

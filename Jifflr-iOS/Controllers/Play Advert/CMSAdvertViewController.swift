@@ -196,6 +196,11 @@ class CMSAdvertViewController: BaseViewController {
     @objc func dismissButtonPressed() {
         OrientationManager.shared.set(orientation: .portrait)
         
+        if self.mode == AdViewMode.moderator {
+            self.navigationController?.popViewController(animated: false)
+            return
+        }
+        
         let animated = self.mode == AdViewMode.preview
         self.navigationController?.dismiss(animated: animated, completion: nil)
     }
