@@ -199,7 +199,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .normal, title: "alert.deleteFriend.deleteButton".localized()) { (rowAction, indexPath) -> Void in
             self.deleteAtIndexPath(indexPath: indexPath)
         }
         deleteAction.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
@@ -210,29 +210,49 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     
     func deleteAtIndexPath(indexPath: IndexPath) {
         if self.segmentedControl.selectedSegmentIndex == 0 {
-            let friend = self.friends[indexPath.row]
-            MyTeamManager.shared.deleteFriend(friend: friend.user) { (error) in
-                guard error == nil else {
-                    self.displayError(error: error)
-                    return
-                }
-            
-                self.friends.remove(at: indexPath.row - 1)
-                let deleteIndexPath = IndexPath(row: indexPath.row - 1, section: 0)
-                self.tableView.deleteRows(at: [deleteIndexPath], with: .none)
-                self.updateData()
-            }
-        } else {
-            let pendingUser = self.pendingFriends[indexPath.row]
-            PendingUserManager.shared.deleteAndUnpinPendingUser(pendingUser: pendingUser) { (error) in
-                guard error == nil else {
-                    self.displayError(error: error)
-                    return
-                }
+            let title = "feedback.dismissSwipeAlert.title".localized()
+            let message = "alert.deleteFriend.message".localized()
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "alert.notifications.cancelButton".localized(), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "alert.deleteFriend.deleteButton".localized(), style: .destructive) { (action) in
                 
-                self.pendingFriends.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .none)
+                let friend = self.friends[indexPath.row]
+                MyTeamManager.shared.deleteFriend(friend: friend.user) { (error) in
+                    guard error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
+                    
+                    self.friends.remove(at: indexPath.row - 1)
+                    let deleteIndexPath = IndexPath(row: indexPath.row - 1, section: 0)
+                    self.tableView.deleteRows(at: [deleteIndexPath], with: .none)
+                    self.updateData()
+                }
             }
+            alertController.addAction(deleteAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let title = "feedback.dismissSwipeAlert.title".localized()
+            let message = "alert.deletePendingFriend.message".localized()
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "alert.notifications.cancelButton".localized(), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "alert.deleteFriend.deleteButton".localized(), style: .destructive) { (action) in
+                
+                let pendingUser = self.pendingFriends[indexPath.row]
+                PendingUserManager.shared.deleteAndUnpinPendingUser(pendingUser: pendingUser) { (error) in
+                    guard error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
+                    
+                    self.pendingFriends.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .none)
+                }
+            }
+            alertController.addAction(deleteAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
 

@@ -84,6 +84,9 @@
 "alert.notifications.title" = "Go To Settings";
 "alert.notifications.message" = "Notifications have previously been switched off. In order to turn notifications on, please go to the Settings app.";
 "alert.notifications.cancelButton" = "Cancel";
+"alert.deleteFriend.deleteButton" = "Delete";
+"alert.deleteFriend.message" = "Are you sure you would like to delete this user from your team?";
+"alert.deletePendingFriend.message" = "Are you sure you would like to delete this invitation to join your team?";
 "alert.notifications.goToSettingsButton" = "Go To Settings";
 "alert.noInternetConnection.title" = "No Internet Connection";
 "alert.noInternetConnection.message" = "No internet connection detected. Previously saved values will be displayed in the app and any changes will be save when you next have an internet connection.";
