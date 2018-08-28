@@ -62,6 +62,8 @@ class FeedbackViewController: BaseViewController {
     func setupUI() {
         self.setupLocalization()
         self.setupQuestionText()
+        
+        OrientationManager.shared.set(orientation: .portrait)
 
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false

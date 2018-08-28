@@ -29,12 +29,20 @@ class LanguageManager: NSObject {
         if let pinName = pinName { query?.fromPin(withName: pinName) }
         query?.whereKey("languageCode", equalTo: languageCode)
         query?.getFirstObjectInBackground(block: { (object, error) in
-            guard let language = object as? Language, error == nil else {
-                completion(nil)
-                return
+            if let language = object as? Language, error == nil {
+                completion(language)
+            } else {
+                let query = Language.query()
+                if let pinName = pinName { query?.fromPin(withName: pinName) }
+                query?.whereKey("languageCode", equalTo: languageCode.uppercased())
+                query?.getFirstObjectInBackground(block: { (object, error) in
+                    if let language = object as? Language, error == nil {
+                        completion(language)
+                    } else {
+                        completion(nil)
+                    }
+                })
             }
-            
-            completion(language)
         })
     }
 }

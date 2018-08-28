@@ -169,6 +169,8 @@ class CMSAdvertViewController: BaseViewController {
 
     func showFeedback() {
         guard let question = self.content.first?.question else { return }
+
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
         var controller: UIViewController!
         

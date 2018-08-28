@@ -17,4 +17,9 @@ class OrientationManager: NSObject {
     func set(orientation: UIInterfaceOrientationMask) {
         self.orientation = orientation
     }
+    
+    func lock(orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        self.set(orientation: orientation)
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+    }
 }
