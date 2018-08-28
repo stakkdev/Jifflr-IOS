@@ -85,4 +85,21 @@ class PendingUserManager: NSObject {
             }
         }
     }
+    
+    func deleteAndUnpinPendingUser(pendingUser: PendingUser, completion: @escaping (ErrorMessage?) -> Void) {
+        pendingUser.active = false
+        pendingUser.saveInBackground { (success, error) in
+            print("PendingUser Deleted: \(success)")
+            
+            guard success == true, error == nil else {
+                completion(ErrorMessage.noInternetConnection)
+                return
+            }
+            
+            pendingUser.unpinInBackground(withName: MyTeamManager.shared.pinName, block: { (success, error) in
+                print("PendingUser Unpinned: \(success)")
+                completion(nil)
+            })
+        }
+    }
 }

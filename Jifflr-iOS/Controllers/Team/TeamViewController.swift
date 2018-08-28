@@ -73,6 +73,8 @@ class TeamViewController: BaseViewController {
         self.segmentedControl.highlightedColor = UIColor.mainOrange
         self.segmentedControl.delegate = self
         self.tableView.estimatedRowHeight = 70.0
+        self.tableView.estimatedSectionHeaderHeight = 0.0
+        self.tableView.estimatedSectionFooterHeight = 0.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -185,6 +187,53 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
         
         let viewController = ChangeInvitationViewController.instantiateFromStoryboard(pendingUser: pendingFriend)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            return indexPath.row != 0
+        }
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) -> Void in
+            self.deleteAtIndexPath(indexPath: indexPath)
+        }
+        deleteAction.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+        deleteAction.backgroundEffect = nil
+        
+        return [deleteAction]
+    }
+    
+    func deleteAtIndexPath(indexPath: IndexPath) {
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            let friend = self.friends[indexPath.row]
+            MyTeamManager.shared.deleteFriend(friend: friend.user) { (error) in
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+            
+                self.friends.remove(at: indexPath.row - 1)
+                let deleteIndexPath = IndexPath(row: indexPath.row - 1, section: 0)
+                self.tableView.deleteRows(at: [deleteIndexPath], with: .none)
+                self.updateData()
+            }
+        } else {
+            let pendingUser = self.pendingFriends[indexPath.row]
+            PendingUserManager.shared.deleteAndUnpinPendingUser(pendingUser: pendingUser) { (error) in
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+                
+                self.pendingFriends.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .none)
+            }
+        }
     }
 
     func checkForPagination(indexPath: IndexPath) {
