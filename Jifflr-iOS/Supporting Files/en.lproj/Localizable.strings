@@ -199,7 +199,10 @@
 "myTeam.membersLabel.title" = "%i Members";
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
 "myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
-"myTeam.inviteEmail.body" = "Hello %@,\n\n%@ has sent you an invitation code for Jifflr! Here you go: %@"; // %@ is required to dynamically insert variables into text.
+"myTeam.inviteEmail.body" = "Hello %@,\n\nI’m using this great app called Jifflr and I’d like to invite you to use it too. You can earn up to £500 every month in about 5 hours just reviewing Ads; that's £100/hr!\n\nPlus, if you enter the code below you get an extra 25%% on your first cash out which could be as much as £125!\n\n%@\n\nSearch the Apple App Store to Android Play Store for Jifflr.\n\nWith Jifflr simply spend about 10 minutes a day reviewing Ads to make some money. It really is that easy!\n\nWhat have you got to lose?\n\n%@";
+
+// %@ is required to dynamically insert variables into text.
+
 "changeInvitation.navigation.title" = "Resend Invitation";
 "changeInvitation.name.heading" = "Name";
 "changeInvitation.name.placeholder" = "Enter name";
