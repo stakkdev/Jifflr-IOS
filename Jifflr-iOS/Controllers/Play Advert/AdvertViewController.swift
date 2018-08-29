@@ -96,7 +96,7 @@ class AdvertViewController: BaseViewController {
 
     func setupAdmob() {
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: Constants.currentEnvironment.admobKey)
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(), withAdUnitID: Constants.currentEnvironment.admobAdUnitId)
     }
 
     func presentAdmob() {
@@ -141,13 +141,13 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
     }
     
     func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!) {
-        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
-            
-        } else {
-            self.dismiss(animated: false, completion: {
-                self.rewardedVideoWillDismiss()
-            })
-        }
+//        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
+//
+//        } else {
+//            self.dismiss(animated: false, completion: {
+//                self.rewardedVideoWillDismiss()
+//            })
+//        }
     }
     
     func rewardedVideoDidFailToLoadAd() {

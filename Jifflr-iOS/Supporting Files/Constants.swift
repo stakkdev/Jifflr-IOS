@@ -56,18 +56,18 @@ enum Environment: String {
         case .testing:
             return "https://jifflr.testing.thecore.thedistance.co.uk/parse"
         case .production:
-            return "https://34.247.36.7/parse"
+            return "https://jifflr.thecore.thedistance.co.uk/parse"//"https://34.247.36.7/parse"
         }
     }
 
     var appodealKey: String {
         switch self {
         case .staging:
-            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
+            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
         case .testing:
-            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
+            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
         case .production:
-            return "d79d7acb562b96dfc542d052d4bbce859ca1ff9f788a2504"
+            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
         }
     }
 
@@ -85,11 +85,22 @@ enum Environment: String {
     var admobKey: String {
         switch self {
         case .staging:
-            return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
+            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
         case .testing:
-            return "ca-app-pub-3940256099942544/1712485313" // This is the sample unit ID provided by Google for testing
+            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
         case .production:
             return "ca-app-pub-9475640621523183~3852192325"
+        }
+    }
+    
+    var admobAdUnitId: String {
+        switch self {
+        case .staging:
+            return "ca-app-pub-3940256099942544/1712485313"
+        case .testing:
+            return "ca-app-pub-3940256099942544/1712485313"
+        case .production:
+            return "ca-app-pub-9475640621523183/7963236847"
         }
     }
     
@@ -100,18 +111,18 @@ enum Environment: String {
         case .testing:
             return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
         case .production:
-            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+            return "production_fcm4bcz7_s2d5w3dxdzz2bmxf"
         }
     }
     
     var braintreeUrlScheme: String {
         switch self {
         case .staging:
-            return "com.thedistance.Jifflr-iOS.payments"
+            return "com.jifflr.ios.payments"
         case .testing:
-            return "com.thedistance.Jifflr-iOS.payments"
+            return "com.jifflr.ios.payments"
         case .production:
-            return "com.jifflr.Jifflr-iOS.payments"
+            return "com.jifflr.ios.payments"
         }
     }
 }

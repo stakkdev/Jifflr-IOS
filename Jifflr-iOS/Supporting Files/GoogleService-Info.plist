@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>7090589031-tbjruj2bnvgjh2alvfe0ms3t6kjav8aq.apps.googleusercontent.com</string>
+	<string>314631901444-kr4c0h14sohjfmrbec3pmgc45kag8q90.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.7090589031-tbjruj2bnvgjh2alvfe0ms3t6kjav8aq</string>
+	<string>com.googleusercontent.apps.314631901444-kr4c0h14sohjfmrbec3pmgc45kag8q90</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBIrDbUdQt-cj8dME5egrDWbf-atS9Le1w</string>
+	<string>AIzaSyBSUFJsQE_ZCcGTob0kG8OJy4fdadOPbVY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>7090589031</string>
+	<string>314631901444</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.thedistance.Jifflr-iOS</string>
+	<string>com.jifflr.ios</string>
 	<key>PROJECT_ID</key>
-	<string>jifflr-5fac8</string>
+	<string>jifflr-d33b5</string>
 	<key>STORAGE_BUCKET</key>
-	<string>jifflr-5fac8.appspot.com</string>
+	<string>jifflr-d33b5.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:7090589031:ios:0ab4ee9f2abad563</string>
+	<string>1:314631901444:ios:37e5036079ebc8f6</string>
 	<key>DATABASE_URL</key>
-	<string>https://jifflr-5fac8.firebaseio.com</string>
+	<string>https://jifflr-d33b5.firebaseio.com</string>
 </dict>
 </plist>

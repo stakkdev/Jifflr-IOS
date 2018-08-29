@@ -27,12 +27,12 @@
 			<string>Braintree Payments</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.thedistance.Jifflr-iOS.payments</string>
+				<string>com.jifflr.ios.payments</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>28.08.2018</string>
+	<string>29.08.2018</string>
 	<key>Configuration</key>
 	<string>$(CONFIGURATION)</string>
 	<key>Fabric</key>
