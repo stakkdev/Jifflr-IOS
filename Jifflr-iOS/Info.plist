@@ -60,9 +60,15 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Jifflr uses your camera to add images when creating ads.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Jifflr uses your calendar settings for a better user experience.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Jifflr fetches your location to help with registration.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Jifflr uses your photo library to add images when creating ads.</string>
