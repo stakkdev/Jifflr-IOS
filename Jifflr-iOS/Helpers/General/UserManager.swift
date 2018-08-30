@@ -233,7 +233,8 @@ class UserManager: NSObject {
             query?.fromLocalDatastore()
             query?.includeKey("details")
             query?.includeKey("details.gender")
-            query?.includeKey("details.moderatorStatus")
+            query?.includeKey("details.location")
+            query?.includeKey("details.language")
             query?.getFirstObjectInBackground(block: { (user, error) in
                 guard let _ = user as? PFUser, error == nil else {
                     completion(ErrorMessage.unknown)
