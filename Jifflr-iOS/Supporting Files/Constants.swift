@@ -56,7 +56,7 @@ enum Environment: String {
         case .testing:
             return "https://jifflr.testing.thecore.thedistance.co.uk/parse"
         case .production:
-            return "https://jifflr.thecore.thedistance.co.uk/parse"//"https://34.247.36.7/parse"
+            return "https://cms.jifflr.com/parse"
         }
     }
 
