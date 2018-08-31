@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>314631901444-kr4c0h14sohjfmrbec3pmgc45kag8q90.apps.googleusercontent.com</string>
+	<string>559699179259-fkcfd392ossb7opm3nhptsokjm2ncjr1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.314631901444-kr4c0h14sohjfmrbec3pmgc45kag8q90</string>
+	<string>com.googleusercontent.apps.559699179259-fkcfd392ossb7opm3nhptsokjm2ncjr1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBSUFJsQE_ZCcGTob0kG8OJy4fdadOPbVY</string>
+	<string>AIzaSyB09QGF6RKRIUZmSXApeGlQjpIk7FN4PBg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>314631901444</string>
+	<string>559699179259</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.jifflr.ios</string>
 	<key>PROJECT_ID</key>
-	<string>jifflr-d33b5</string>
+	<string>jifflr-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>jifflr-d33b5.appspot.com</string>
+	<string>jifflr-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:314631901444:ios:37e5036079ebc8f6</string>
+	<string>1:559699179259:ios:37e5036079ebc8f6</string>
 	<key>DATABASE_URL</key>
-	<string>https://jifflr-d33b5.firebaseio.com</string>
+	<string>https://jifflr-app.firebaseio.com</string>
 </dict>
 </plist>
