@@ -37,20 +37,20 @@
 "error.invalidPayPalEmail" = "Invalid PayPal email address. Please ensure you have entered a valid PayPal email address.";
 "error.invalidCashoutPassword" = "Invalid Jifflr account password. Please confirm your Jifflr account password.";
 "error.paypalEmailSaveFailed" = "Unable to save PayPal email address. Please check your internet connection and try again.";
-"error.admobFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
-"error.advertFetchFailed" = "Unable to fetch ads. Please check your internet connection and try again.";
+"error.admobFetchFailed" = "Unable to fetch campaigns. Please check your internet connection and try again.";
+"error.advertFetchFailed" = "Unable to fetch campaigns. Please check your internet connection and try again.";
 "error.invalidFeedback" = "Please choose at least %i answer to give feedback.";
 "error.blockedCountry" = "Unfortunately we are not operating in your country at the moment, please check back soon.";
 "error.changeInvitation.invalidName" = "Please enter the name of the person you are inviting.";
 "error.changeInvitation.invalidEmail" = "Please enter the email of the person you are inviting.";
-"error.createAd.adName" = "Please enter a valid Ad Name.";
-"error.chooseTemplate" = "Please select an ad template to proceed.";
+"error.createAd.adName" = "Please enter a Name for this Content.";
+"error.chooseTemplate" = "Please select a content template to proceed.";
 "error.addContent" = "Please add the required content to proceed.";
 "error.mediaSaveFailed" = "Unable to save image/video, please try again.";
-"error.flagAdFailed" = "Unable to report Ad. Please check your internet connection and try again.";
+"error.flagAdFailed" = "Unable to report content. Please check your internet connection and try again.";
 "error.addQuestionsFetchAnswers" = "Unable to fetch answers for this answer type. Please check your internet connection and try again.";
 "error.invalidAnswersRequired" = "Please enter a valid number of answers required.";
-"error.saveAd" = "Unable to save ad. Please check your internet connection and try again.";
+"error.saveAd" = "Unable to save content. Please check your internet connection and try again.";
 "error.adBuilderOverviewFetchFailed" = "Unable to fetch data. Please check your internet connection and try again.";
 "error.templateFetchFailed" = "Unable to fetch templates. Please check your internet connection and try again.";
 "error.questionTypeFetchFailed" = "Unable to fetch question types. Please check your internet connection and try again.";
@@ -71,22 +71,19 @@
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
 "error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
-"error.nonCompliantActivate" = "Unable to activate your ad whilst it is non-compliant.";
+"error.nonCompliantActivate" = "Unable to activate your campaign whilst it is non-compliant.";
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
 "error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";
 "error.applyModeratorServer" = "Unable to apply. Please check your internet connection and try again.";
 "error.moderationValidation" = "Unable to submit. Please ensure you have selected valid moderation feedback.";
 "error.moderationSubmitFailed" = "Unable to submit moderation feedback. Please check your internet connection and try again.";
-"error.noAdsToModerate" = "There are currently no adverts to moderate. Please try again later.";
+"error.noAdsToModerate" = "There are currently no campaigns to moderate. Please try again later.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
 "alert.notifications.title" = "Go To Settings";
 "alert.notifications.message" = "Notifications have previously been switched off. In order to turn notifications on, please go to the Settings app.";
 "alert.notifications.cancelButton" = "Cancel";
-"alert.deleteFriend.deleteButton" = "Delete";
-"alert.deleteFriend.message" = "Are you sure you would like to delete this user from your team?";
-"alert.deletePendingFriend.message" = "Are you sure you would like to delete this invitation to join your team?";
 "alert.notifications.goToSettingsButton" = "Go To Settings";
 "alert.noInternetConnection.title" = "No Internet Connection";
 "alert.noInternetConnection.message" = "No internet connection detected. Previously saved values will be displayed in the app and any changes will be save when you next have an internet connection.";
@@ -106,7 +103,7 @@
 "alert.changeTeam.cancelButton" = "Cancel";
 "alert.changeTeam.yesButton" = "Change Team";
 "alert.leaveTeam.title" = "Leave Team";
-"alert.leaveTeam.message" = "Are you sure you would like to leave team? This action cannot be undone.";
+"alert.leaveTeam.message" = "Are you sure you would like to leave the team? This action cannot be undone.";
 "alert.leaveTeam.cancelButton" = "Cancel";
 "alert.leaveTeam.yesButton" = "Leave Team";
 "alert.noChartData" = "No chart data";
@@ -128,19 +125,19 @@
 "alert.applyModerator.message" = "Your application to become a moderator has been submitted for approval.";
 "alert.feedbackSubmitted.title" = "Feedback Submitted!";
 "alert.feedbackSubmitted.message" = "Your moderation feedback has been submitted.";
-"alert.flagAd.title" = "Flag Ad";
-"alert.flagAd.message" = "Please select a reason below as to why this ad is inappropriate.";
-"alert.flagAdSuccess.title" = "Ad Flagged";
+"alert.flagAd.title" = "Flag Campaign";
+"alert.flagAd.message" = "Please select a reason below as to why this campaign is inappropriate.";
+"alert.flagAdSuccess.title" = "Campaign Flagged";
 "alert.flagAdSuccess.message" = "Your feedback has been submitted. Thank you.";
 "alert.notification.title" = "Notification";
 "alert.notification.continue" = "Continue";
 
 "onboarding.title1" = "Earn up to £500 a month.";
-"onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 ads, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
+"onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 market research campaigns, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
 "onboarding.title2" = "Remember to build your team.";
 "onboarding.description2" = "A big team makes big money. Ideally invite 5 or 6 friends to join your team, encourage them to invite their friends and watch your team grow. There’s no limit to how big your team can be!";
 "onboarding.title3" = "Run market research campaigns.";
-"onboarding.description3" = "Use Ad Builder to easily create your own ads together with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
+"onboarding.description3" = "Use Campaign Builder to create your own market research campaigns, with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
 "onboarding.skipButton" = "Skip";
 "onboarding.closeButton" = "Complete";
 
@@ -160,7 +157,7 @@
 
 "locationRequired.navigation.title" = "Location Required";
 "locationRequired.button.title" = "ENABLE";
-"locationRequired.description" = "Jifflr would like to know your hometown or city so we can start to tailor the ads that we will send you.\n\nWe won’t share your detailed location information with anyone.";
+"locationRequired.description" = "Jifflr would like to know your hometown or city so we can start to tailor the campaigns that we'll show you.\n\nWe won’t share your detailed location information with anyone.";
 "locationRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your location while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable GPS access for Jifflr in your device’s settings and then restart the App.";
 
 "register.navigation.title" = "Register";
@@ -189,11 +186,11 @@
 
 "dashboard.myTeamButton.title" = "My Team";
 "dashboard.myMoneyButton.title" = "My Money";
-"dashboard.adsViewedButton.title" = "Ads Viewed";
-"dashboard.adBuilderButton.title" = "Ad Builder";
+"dashboard.adsViewedButton.title" = "Completed";
+"dashboard.adBuilderButton.title" = "Campaigns";
 "dashboard.helpButton.title" = "NEED SOME HELP?"; // The last word before the '?' will be orange.
 "dashboard.slogan" = "IT PAYS\nTO PLAY"; // Need the \n to wrap onto a new line. The first line will be orange, second will be white.
-"dashboard.moderateButton.title" = "Moderate Ad";
+"dashboard.moderateButton.title" = "Moderate Campaign";
 
 "myTeam.navigation.title" = "My Team";
 "myTeam.segmentedControlButton1.title" = "FRIENDS";
@@ -202,10 +199,7 @@
 "myTeam.membersLabel.title" = "%i Members";
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
 "myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
-"myTeam.inviteEmail.body" = "Hello %@,\n\nI’m using this great app called Jifflr and I’d like to invite you to use it too. You can earn up to £500 every month in about 5 hours just reviewing Ads; that's £100/hr!\n\nPlus, if you enter the code below you get an extra 25%% on your first cash out which could be as much as £125!\n\n%@\n\nSearch the Apple App Store to Android Play Store for Jifflr.\n\nWith Jifflr simply spend about 10 minutes a day reviewing Ads to make some money. It really is that easy!\n\nWhat have you got to lose?\n\n%@";
-
-// %@ is required to dynamically insert variables into text.
-
+"myTeam.inviteEmail.body" = "Hello %@,\n\n%@ has sent you an invitation code for Jifflr! Here you go: %@"; // %@ is required to dynamically insert variables into text.
 "changeInvitation.navigation.title" = "Resend Invitation";
 "changeInvitation.name.heading" = "Name";
 "changeInvitation.name.placeholder" = "Enter name";
@@ -214,16 +208,16 @@
 "changeInvitation.invitationCode.heading" = "Invitation Code";
 "changeInvitation.resendButton.title" = "RESEND INVITATION";
 
-"adsViewed.navigation.title" = "Ad Views";
-"adsViewed.segmentedControlButton1.title" = "AD PROGRESS";
-"adsViewed.segmentedControlButton2.title" = "AD HISTORY";
-"adsViewed.adsViewedCell.title" = "Ads Viewed";
-"adsViewed.targetLabel.title" = "Just %i Ads Per Day"; // %i required to dynamically insert integer into text.
+"adsViewed.navigation.title" = "My Completed Campaigns";
+"adsViewed.segmentedControlButton1.title" = "PROGRESS";
+"adsViewed.segmentedControlButton2.title" = "HISTORY";
+"adsViewed.adsViewedCell.title" = "Completed Campaigns";
+"adsViewed.targetLabel.title" = "Just %i Campaigns Per Day"; // %i required to dynamically insert integer into text.
 "adsViewed.detailLabel.title" = "To receive 100% of income";
-"adsViewed.adBacklog.title" = "Ad Backlog";
-"adsViewed.adBacklogMinimum.title" = "%i ads a day for no backlog";
+"adsViewed.adBacklog.title" = "Campaign Backlog";
+"adsViewed.adBacklogMinimum.title" = "Minimum %i campaigns per day";
 "adsViewed.percentageDue.title" = "% of Team Income Due";
-"adsViewed.percentageDue.detail" = "Review more ads to get 100%";
+"adsViewed.percentageDue.detail" = "Review more to get 100%";
 
 "myMoney.navigation.title" = "My Money";
 "myMoney.segmentedControlButton1.title" = "CASH OUT";
@@ -235,10 +229,10 @@
 "myMoney.confirmPasswordCell.placeholder" = "Enter Jifflr password";
 "myMoney.cashoutCell.heading" = "CASH OUT";
 
-"feedback.createAdButton.title" = "Create an Ad campaign";
+"feedback.createAdButton.title" = "Create a Market Research Campaign";
 "feedback.nextAdButton.title" = "NEXT";
 "feedback.dismissSwipeAlert.title" = "Are you sure?";
-"feedback.dismissSwipeAlert.message" = "Are you sure you want to close? You will lose your ad view.";
+"feedback.dismissSwipeAlert.message" = "Are you sure you want to close? You will lose your campaign review.";
 "urlLinks.website.title" = "WEBSITE";
 "urlLinks.facebook.title" = "FACEBOOK";
 "urlLinks.twitter.title" = "TWITTER";
@@ -269,20 +263,20 @@
 "settings.analytics.heading" = "Analytics";
 "settings.analytics.message" = "Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments.";
 
-"adBuilderOverview.navigation.title" = "My Ads";
+"adBuilderOverview.navigation.title" = "My Market Research Campaigns";
 "adBuilderNoAds.titleLabel.title" = "Hi %@";
-"adBuilderNoAds.descriptionLabel.title" = "Create your first Ad in 3 super easy steps. Have a play; you can rewrite it as many times as you like!";
+"adBuilderNoAds.descriptionLabel.title" = "Create your campaign content in 3 super easy steps. Have a play; you can rewrite it as many times as you like!";
 "adBuilderNoAds.becomeModeratorButton.title" = "BECOME A MODERATOR";
-"adBuilderNoAds.createAdButton.title" = "CREATE AN AD";
-"createAd.navigation.title" = "New Ad";
-"createAd.titleLabel.title" = "Start Building your Ad";
-"createAd.descriptionLabel.title" = "Create your Ad with up to 3 market research questions. It’s super easy!";
-"createAd.textField.placeholder" = "Enter Ad Name";
+"adBuilderNoAds.createAdButton.title" = "CREATE CAMPAIGN CONTENT";
+"createAd.navigation.title" = "New Content";
+"createAd.titleLabel.title" = "Start Building your Content";
+"createAd.descriptionLabel.title" = "Create your Content with up to 3 market research questions. It’s super easy!";
+"createAd.textField.placeholder" = "Enter Content Name";
 "createAd.nextButton.title" = "NEXT";
 "chooseTemplate.navigation.title" = "Choose Template";
 "addContent.navigation.title" = "Add Content";
-"addContent.titleTextField.placeholder" = "Enter Ad Title";
-"addContent.messageTextView.placeholder" = "Enter Ad Message";
+"addContent.titleTextField.placeholder" = "Enter Content Title";
+"addContent.messageTextView.placeholder" = "Enter Content Message";
 "addContent.imageButton.title" = "Image";
 "addContent.previewButton.title" = "PREVIEW";
 "addContent.actionSheet.title" = "Add Photo";
@@ -307,21 +301,21 @@
 "addQuestions.onlineStore.heading" = "Online Store";
 "addQuestions.appStore.heading" = "App Store";
 "addQuestions.playStore.heading" = "Play Store";
-"adCreated.saveAdButton.title" = "SAVE AD";
+"adCreated.saveAdButton.title" = "SAVE CONTENT";
 "adCreated.createCampaignButton.title" = "CREATE CAMPAIGN";
-"adCreated.titleLabel.text" = "Ad Created";
-"adCreated.descriptionLabel.text" = "Great, that's done.\n\nNow select ‘Create Campaign’ to schedule and target your Ad or select ‘Save Ad’ to use it later.";
+"adCreated.titleLabel.text" = "Content Created";
+"adCreated.descriptionLabel.text" = "Great, that's done.\n\nNow select ‘Create Campaign’ to schedule and target your Content or select ‘Save Content’ to use it later.";
 
 "adBuilderOverview.segmentedControlButton1.title" = "CAMPAIGNS";
-"adBuilderOverview.segmentedControlButton2.title" = "ADVERTS";
-"adBuilderOverview.myActiveAds.text" = "My Active Ads";
+"adBuilderOverview.segmentedControlButton2.title" = "CONTENT";
+"adBuilderOverview.myActiveAds.text" = "My Active Content";
 "adBuilderOverview.status.text" = "Status";
 "adBuilderOverview.totalCampaigns.text" = "Total Campaigns";
 
 "createSchedule.navigation.title" = "Schedule";
 "createSchedule.campaignName.heading" = "Campaign Name";
 "createSchedule.campaignName.placeholder" = "Enter campaign name";
-"createSchedule.advert.heading" = "Advert";
+"createSchedule.advert.heading" = "Content";
 "createSchedule.date.heading" = "Date";
 "createSchedule.time.heading" = "Time";
 "createSchedule.days.heading" = "Days of the week";
@@ -341,7 +335,7 @@
 "campaignOverview.navigation.title" = "Overview";
 "campaignOverview.balanceButton.title" = "Balance\n%@";
 "campaignOverview.campaignName.heading" = "Campaign Name";
-"campaignOverview.advert.heading" = "Advert";
+"campaignOverview.advert.heading" = "Content";
 "campaignOverview.status.heading" = "Status";
 "campaignOverview.date.heading" = "Date";
 "campaignOverview.time.heading" = "Time";
@@ -390,8 +384,8 @@
 "moderationTCs.applyButton.awaitingApprovalTitle" = "Awaiting Approval";
 
 "moderatorFeedback.navigation.title" = "Moderator Feedback";
-"moderatorFeedback.passedLabel.text" = "If Ad Has Passed";
-"moderatorFeedback.failedLabel.text" = "If Ad Has Failed";
+"moderatorFeedback.passedLabel.text" = "If Campaign Has Passed";
+"moderatorFeedback.failedLabel.text" = "If Campaign Has Failed";
 "moderatorFeedback.submitButton.title" = "SUBMIT";
 
 "nonCompliance.navigation.title" = "Non-Compliance";
