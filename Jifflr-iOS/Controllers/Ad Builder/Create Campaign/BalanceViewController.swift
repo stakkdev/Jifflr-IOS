@@ -11,8 +11,6 @@ import Stripe
 
 class BalanceViewController: BaseViewController {
     
-    @IBOutlet weak var paypalEmailHeadingLabel: UILabel!
-    @IBOutlet weak var paypalEmailTextField: JifflrTextField!
     @IBOutlet weak var currentBalanceHeadingLabel: UILabel!
     @IBOutlet weak var currentBalanceTextField: JifflrTextField!
     @IBOutlet weak var amountHeadingLabel: UILabel!
@@ -44,18 +42,14 @@ class BalanceViewController: BaseViewController {
         self.currentBalanceTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
         self.currentBalanceTextField.isUserInteractionEnabled = false
         self.amountTextField.delegate = self
-        self.paypalEmailTextField.delegate = self
         
         guard let user = Session.shared.currentUser else { return }
-        self.paypalEmailTextField.text = user.details.campaignPayPalEmail
         self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
         self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
     }
     
     func setupLocalization() {
         self.title = self.isWithdrawal ? "balanceWithdrawal.navigation.title".localized() : "balanceTopUp.navigation.title".localized()
-        self.paypalEmailHeadingLabel.text = "balanceWithdrawal.paypalEmail.heading".localized()
-        self.paypalEmailTextField.placeholder = "balanceWithdrawal.paypalEmail.placeholder".localized()
         self.currentBalanceHeadingLabel.text = "balanceWithdrawal.currentBalance.heading".localized()
         self.amountHeadingLabel.text = self.isWithdrawal ? "balanceWithdrawal.withdrawalAmount.heading".localized() : "balanceTopUp.topUpAmount.heading".localized()
         self.amountTextField.placeholder = self.isWithdrawal ? "balanceWithdrawal.withdrawalAmount.placeholder".localized() : "balanceTopUp.topUpAmount.placeholder".localized()
@@ -122,8 +116,6 @@ class BalanceViewController: BaseViewController {
     }
     
     func validateTopUp() -> Bool {
-        guard let paypalEmail = self.paypalEmailTextField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else { return false }
-        
         let topUpAmount = self.getAmount()
         guard topUpAmount >= 10.0 else { return false }
         
@@ -172,14 +164,6 @@ extension BalanceViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == self.paypalEmailTextField {
-            guard let user = Session.shared.currentUser else { return false }
-            if user.details.campaignBalance != 0.0, let paypalEmail = user.details.campaignPayPalEmail, paypalEmail.isEmail(), !paypalEmail.isEmpty {
-                self.displayError(error: ErrorMessage.withdrawalEmail)
-                return false
-            }
-        }
-        
         return true
     }
 }

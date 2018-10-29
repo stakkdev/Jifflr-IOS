@@ -36,19 +36,18 @@ class CreateScheduleViewController: BaseViewController {
             self.pickerView.reloadAllComponents()
         }
     }
-    var selectedAdvert: Advert!
-    
-    var advert: Advert!
+    var selectedAdvert: Advert?
+
     var days = ["M", "T", "W", "T", "F", "S", "S"]
     var selectedDays:[Int] = []
     
     var isEdit = false
     var campaign: Campaign?
     
-    class func instantiateFromStoryboard(advert: Advert, campaign: Campaign?, isEdit: Bool) -> CreateScheduleViewController {
+    class func instantiateFromStoryboard(advert: Advert?, campaign: Campaign?, isEdit: Bool) -> CreateScheduleViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CreateScheduleViewController") as! CreateScheduleViewController
-        vc.advert = advert
+
         vc.selectedAdvert = advert
         vc.campaign = campaign
         vc.isEdit = isEdit
@@ -78,7 +77,7 @@ class CreateScheduleViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.nextButton.setBackgroundColor(color: UIColor.mainPink)
         self.helpButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
-        self.advertTextField.text = self.advert.details?.name
+        self.advertTextField.text = self.selectedAdvert?.details?.name
         
         self.dateFromTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateFromTextField.minimumDate = true
@@ -152,6 +151,11 @@ class CreateScheduleViewController: BaseViewController {
     func setupData() {
         MyAdsManager.shared.fetchUserAds { (adverts) in
             self.adverts = adverts
+            
+            if self.selectedAdvert == nil, adverts.count > 0 {
+                self.selectedAdvert = adverts.first
+                self.advertTextField.text = self.selectedAdvert?.details?.name
+            }
         }
         
         guard let campaign = self.campaign else { return }
@@ -217,6 +221,7 @@ class CreateScheduleViewController: BaseViewController {
     }
     
     func validateInput(campaign: Campaign) -> Bool {
+        guard let selectedAdvert = self.selectedAdvert else { return false }
         guard let campaignName = self.campaignNameTextField.text, !campaignName.isEmpty else { return false }
         
         let dateFormatter = DateFormatter()
@@ -237,7 +242,7 @@ class CreateScheduleViewController: BaseViewController {
         guard self.selectedDays.count > 0 else { return false }
         
         if let schedule = self.campaign?.schedule {
-            campaign.advert = self.selectedAdvert
+            campaign.advert = selectedAdvert
             campaign.name = campaignName
             schedule.startDate = startDate
             schedule.endDate = endDate
@@ -248,7 +253,7 @@ class CreateScheduleViewController: BaseViewController {
             schedule.endDate = endDate
             schedule.daysOfWeek = CampaignManager.shared.getDayOfWeekBitwiseInt(dayInts: self.selectedDays)
             campaign.schedule = schedule
-            campaign.advert = self.selectedAdvert
+            campaign.advert = selectedAdvert
             campaign.name = campaignName
         }
         

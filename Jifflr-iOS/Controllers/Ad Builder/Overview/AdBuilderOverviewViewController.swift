@@ -56,8 +56,8 @@ class AdBuilderOverviewViewController: BaseViewController {
         self.tableView.delegate = self
         
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonPressed))
-        addBarButton.tintColor = UIColor.clear
-        addBarButton.isEnabled = false
+        addBarButton.tintColor = UIColor.white
+        addBarButton.isEnabled = true
         self.navigationItem.rightBarButtonItem = addBarButton
         
         self.barChart.startSpinner()
@@ -94,7 +94,12 @@ class AdBuilderOverviewViewController: BaseViewController {
     }
     
     @objc func addButtonPressed() {
-        self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(advert: nil), animated: true)
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            let vc = CreateScheduleViewController.instantiateFromStoryboard(advert: nil, campaign: nil, isEdit: false)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.navigationController?.pushViewController(CreateAdViewController.instantiateFromStoryboard(advert: nil), animated: true)
+        }
     }
     
     func updateData() {
@@ -135,17 +140,9 @@ extension AdBuilderOverviewViewController: JifflrSegmentedControlDelegate {
         if self.segmentedControl.selectedSegmentIndex == 0 {
             self.tableView.contentOffset.y = 0.0
             self.tableViewHeaderView.frame.size.height = 260.0
-            
-            guard let addBarButton = self.navigationItem.rightBarButtonItem else { return }
-            addBarButton.tintColor = UIColor.clear
-            addBarButton.isEnabled = false
         } else {
             self.tableView.contentOffset.y = 200.0
             self.tableViewHeaderView.frame.size.height = 260.0
-            
-            guard let addBarButton = self.navigationItem.rightBarButtonItem else { return }
-            addBarButton.tintColor = UIColor.white
-            addBarButton.isEnabled = true
         }
         
         self.tableView.reloadData()
