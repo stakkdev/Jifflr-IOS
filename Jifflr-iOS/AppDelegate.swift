@@ -17,7 +17,7 @@ import GoogleMobileAds
 import Appodeal
 import Localize_Swift
 import IQKeyboardManagerSwift
-import Braintree
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Running language: \(Session.shared.currentLanguage)")
 
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        STPPaymentConfiguration.shared().publishableKey = Constants.currentEnvironment.stripeKey
 
         FirebaseApp.configure()
         AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
@@ -37,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaultsManager.shared.crashTrackerOn() {
             Fabric.with([Crashlytics.self])
         }
-        
-        BTAppSwitch.setReturnURLScheme(Constants.currentEnvironment.braintreeUrlScheme)
 
         self.configParse(in: application, with: launchOptions)
         self.configAdProviders()
@@ -49,10 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        if url.scheme?.localizedCaseInsensitiveCompare(Constants.currentEnvironment.braintreeUrlScheme) == .orderedSame {
-            return BTAppSwitch.handleOpen(url, options: options)
-        }
-        
         return false
     }
     

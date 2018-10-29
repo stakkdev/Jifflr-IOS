@@ -32,7 +32,7 @@ target 'Jifflr-iOS' do
     pod 'Charts'
     pod 'Player'
     pod 'TTRangeSlider'
-    pod 'Braintree'
+    pod 'Stripe'
     pod 'MBProgressHUD'
 end
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Braintree
+import Stripe
 
 class BalanceViewController: BaseViewController {
     
@@ -20,8 +20,6 @@ class BalanceViewController: BaseViewController {
     @IBOutlet weak var confirmButton: JifflrButton!
     
     var isWithdrawal = false
-    
-    var braintreeClient: BTAPIClient!
 
     class func instantiateFromStoryboard(isWithdrawal: Bool) -> BalanceViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -34,8 +32,6 @@ class BalanceViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
-        
-        self.braintreeClient = BTAPIClient(authorization: Constants.currentEnvironment.braintreeKey)
     }
     
     func setupUI() {
@@ -114,63 +110,15 @@ class BalanceViewController: BaseViewController {
     }
     
     func handleTopUp() {
-        guard let user = Session.shared.currentUser else { return }
-        
         guard self.validateTopUp() else {
             self.displayError(error: ErrorMessage.minTopUpAmount)
             return
         }
-        
-        self.confirmButton.animate()
-        
-        let topUpAmount = self.getAmount()
-        
-        let payPalDriver = BTPayPalDriver(apiClient: self.braintreeClient)
-        payPalDriver.viewControllerPresentingDelegate = self
-        payPalDriver.appSwitchDelegate = self
-        let payPalRequest = BTPayPalRequest(amount: "\(topUpAmount)")
-        payPalRequest.currencyCode = Session.shared.currentCurrencyCode
-        payPalRequest.displayName = "balanceTopUp.paypalRequest.title".localized()
-        payPalDriver.requestOneTimePayment(payPalRequest) { (tokenizedPayPalAccount, error) -> Void in
-            guard error == nil else {
-                self.confirmButton.stopAnimating()
-                self.displayError(error: ErrorMessage.paypalTopUpFailed)
-                return
-            }
-            
-            guard let _ = tokenizedPayPalAccount else {
-                self.confirmButton.stopAnimating()
-                return
-            }
-            
-            let previousBalance = user.details.campaignBalance
-            let newBalance = previousBalance + topUpAmount
-            user.details.campaignBalance = newBalance
-            user.saveAndPin(completion: { (error) in
-                guard error == nil else {
-                    self.confirmButton.stopAnimating()
-                    self.displayError(error: ErrorMessage.paypalTopUpFailed)
-                    return
-                }
-                
-                let campaignDeposit = CampaignDeposit()
-                campaignDeposit.user = user
-                campaignDeposit.value = topUpAmount
-                campaignDeposit.saveInBackground(block: { (success, error) in
-                    self.confirmButton.stopAnimating()
-                    
-                    guard error == nil else {
-                        self.displayError(error: ErrorMessage.paypalTopUpFailed)
-                        return
-                    }
-                    
-                    self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
-                    
-                    let alert = AlertMessage.paypalTopUpSuccess
-                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
-                })
-            })
-        }
+
+        let addCardViewController = STPAddCardViewController()
+        addCardViewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: addCardViewController)
+        self.present(navigationController, animated: true)
     }
     
     func validateTopUp() -> Bool {
@@ -236,24 +184,39 @@ extension BalanceViewController: UITextFieldDelegate {
     }
 }
 
-extension BalanceViewController: BTViewControllerPresentingDelegate, BTAppSwitchDelegate {
-    func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
-        self.present(viewController, animated: true, completion: nil)
+extension BalanceViewController: STPAddCardViewControllerDelegate {
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
-        viewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         
-    }
-    
-    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
+        guard let user = Session.shared.currentUser else { return }
         
-    }
-    
-    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
-        
+        let topUpAmount = self.getAmount()
+        self.confirmButton.animate()
+        CampaignManager.shared.topUp(token: token.tokenId, amount: topUpAmount) { (error) in
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    self.displayError(error: error)
+                    self.confirmButton.stopAnimating()
+                    return
+                }
+                
+                UserManager.shared.syncUser(completion: { (error) in
+                    self.confirmButton.stopAnimating()
+                    
+                    guard error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
+                    
+                    self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+                    
+                    let alert = AlertMessage.paypalTopUpSuccess
+                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                })
+            }
+        }
     }
 }

@@ -104,25 +104,14 @@ enum Environment: String {
         }
     }
     
-    var braintreeKey: String {
+    var stripeKey: String {
         switch self {
         case .staging:
-            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+            return ""
         case .testing:
-            return "sandbox_xcfkygn4_h6669v8vrrcyk6sy"
+            return ""
         case .production:
-            return "production_fcm4bcz7_s2d5w3dxdzz2bmxf"
-        }
-    }
-    
-    var braintreeUrlScheme: String {
-        switch self {
-        case .staging:
-            return "com.jifflr.ios.payments"
-        case .testing:
-            return "com.jifflr.ios.payments"
-        case .production:
-            return "com.jifflr.ios.payments"
+            return ""
         }
     }
 }

@@ -311,4 +311,26 @@ class CampaignManager: NSObject {
         
         return newCampaign
     }
+    
+    func topUp(token: String, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        let parameters = ["token": token, "amount": amount] as [String : Any]
+        
+        PFCloud.callFunction(inBackground: "top-up", withParameters: parameters) { responseJSON, error in
+            if let success = responseJSON as? Bool, error == nil {
+                if success == true {
+                    completion(nil)
+                    return
+                } else {
+                    completion(ErrorMessage.paypalTopUpFailed)
+                    return
+                }
+            } else {
+                if let _ = error {
+                    completion(ErrorMessage.paypalTopUpFailed)
+                } else {
+                    completion(ErrorMessage.unknown)
+                }
+            }
+        }
+    }
 }
