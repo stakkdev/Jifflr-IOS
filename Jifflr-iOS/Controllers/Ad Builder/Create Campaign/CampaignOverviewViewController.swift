@@ -193,6 +193,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
         
         self.campaignNumberLabel.text = "C# \(self.campaign.number)"
+        self.campaignNumberLabel.isHidden = self.campaign.number == 0
         self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.updateBalanceButton()

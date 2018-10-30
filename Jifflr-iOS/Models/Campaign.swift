@@ -215,8 +215,10 @@ extension Campaign {
                     })
                     
                     group.enter()
-                    self.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-                        group.leave()
+                    self.fetchInBackground(block: { (campaign, error) in
+                        campaign?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                            group.leave()
+                        })
                     })
                     
                     group.notify(queue: .main) {

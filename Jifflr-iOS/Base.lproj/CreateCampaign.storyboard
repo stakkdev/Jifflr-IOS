@@ -574,9 +574,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C# 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAg-35-ZDK">
-                                                <rect key="frame" x="286" y="8" width="35" height="14"/>
+                                                <rect key="frame" x="295" y="8" width="26" height="14"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="35" id="FYK-Vs-JaA"/>
                                                     <constraint firstAttribute="height" constant="14" id="hYO-xM-lqI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="12"/>

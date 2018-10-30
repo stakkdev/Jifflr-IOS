@@ -154,14 +154,28 @@ class AdBuilderManager: NSObject {
                     return
                 }
                 
-                advert.pinInBackground(withName: self.pinName, block: { (success, error) in
-                    guard success == true, error == nil else {
+                advert.details?.fetchInBackground(block: { (advertDetails, error) in
+                    guard let advertDetails = advertDetails, error == nil else {
                         completion(ErrorMessage.saveAdFailed)
                         return
                     }
                     
-                    print("Advert Saved and Pinned")
-                    completion(nil)
+                    advert.pinInBackground(withName: self.pinName, block: { (success, error) in
+                        guard success == true, error == nil else {
+                            completion(ErrorMessage.saveAdFailed)
+                            return
+                        }
+                        
+                        advertDetails.pinInBackground(withName: self.pinName, block: { (success, error) in
+                            guard success == true, error == nil else {
+                                completion(ErrorMessage.saveAdFailed)
+                                return
+                            }
+                            
+                            print("Advert Saved and Pinned")
+                            completion(nil)
+                        })
+                    })
                 })
             }
         })

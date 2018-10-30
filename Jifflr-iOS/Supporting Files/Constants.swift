@@ -107,11 +107,11 @@ enum Environment: String {
     var stripeKey: String {
         switch self {
         case .staging:
-            return ""
+            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
         case .testing:
-            return ""
+            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
         case .production:
-            return ""
+            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
         }
     }
 }
