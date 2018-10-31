@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Running language: \(Session.shared.currentLanguage)")
 
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        STPPaymentConfiguration.shared().publishableKey = Constants.currentEnvironment.stripeKey
 
         FirebaseApp.configure()
         AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
@@ -44,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configAdProviders()
         self.configKeyboard()
         self.configLanguage()
+        self.configStripe()
 
         return true
     }
@@ -70,6 +69,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
 
+    }
+}
+
+extension AppDelegate {
+    func configStripe() {
+        STPPaymentConfiguration.shared().publishableKey = Constants.currentEnvironment.stripeKey
+        
+        STPTheme.default().errorColor = UIColor.mainRed
+        STPTheme.default().emphasisFont = UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!
+        STPTheme.default().font = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
+        STPTheme.default().primaryBackgroundColor = UIColor.mainBlue
+        STPTheme.default().secondaryForegroundColor = UIColor.greyPlaceholderColor
+        STPTheme.default().accentColor = UIColor.white
     }
 }
 

@@ -377,6 +377,7 @@
 "balanceTopUp.topUpAmount.placeholder" = "Enter top-up amount";
 "balanceWithdrawal.confirmButton.title" = "CONFIRM";
 "balanceTopUp.paypalRequest.title" = "Jifflr Balance Top-up";
+"balanceTopUp.stride.title" = "Use this Card";
 
 "moderationTCs.navigation.title" = "T&Cs";
 "moderationTCs.applyLabel.text" = "Accept the T&Cs";

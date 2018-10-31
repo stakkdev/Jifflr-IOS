@@ -111,7 +111,14 @@ class BalanceViewController: BaseViewController {
 
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
+        addCardViewController.title = "balanceTopUp.stride.title".localized()
         let navigationController = UINavigationController(rootViewController: addCardViewController)
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.isTranslucent = true
+        let font = UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController.navigationBar.tintColor = UIColor.white
         self.present(navigationController, animated: true)
     }
     

@@ -313,11 +313,12 @@ class CampaignManager: NSObject {
     }
     
     func topUp(token: String, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
-        let parameters = ["token": token, "amount": amount] as [String : Any]
+        let pence = amount * 100
+        let parameters = ["token": token, "amount": pence] as [String : Any]
         
         PFCloud.callFunction(inBackground: "top-up", withParameters: parameters) { responseJSON, error in
-            if let success = responseJSON as? Bool, error == nil {
-                if success == true {
+            if let responseJSON = responseJSON as? [String: Bool], error == nil {
+                if responseJSON["success"] == true {
                     completion(nil)
                     return
                 } else {
