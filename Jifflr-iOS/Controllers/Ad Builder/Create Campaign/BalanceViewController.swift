@@ -184,29 +184,31 @@ extension BalanceViewController: STPAddCardViewControllerDelegate {
         
         guard let user = Session.shared.currentUser else { return }
         
-        let topUpAmount = self.getAmount()
-        self.confirmButton.animate()
-        CampaignManager.shared.topUp(token: token.tokenId, amount: topUpAmount) { (error) in
-            DispatchQueue.main.async {
-                guard error == nil else {
-                    self.displayError(error: error)
-                    self.confirmButton.stopAnimating()
-                    return
-                }
-                
-                UserManager.shared.syncUser(completion: { (error) in
-                    self.confirmButton.stopAnimating()
-                    
+        self.dismiss(animated: true) {
+            let topUpAmount = self.getAmount()
+            self.confirmButton.animate()
+            CampaignManager.shared.topUp(token: token.tokenId, amount: topUpAmount) { (error) in
+                DispatchQueue.main.async {
                     guard error == nil else {
                         self.displayError(error: error)
+                        self.confirmButton.stopAnimating()
                         return
                     }
                     
-                    self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
-                    
-                    let alert = AlertMessage.paypalTopUpSuccess
-                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
-                })
+                    UserManager.shared.syncUser(completion: { (error) in
+                        self.confirmButton.stopAnimating()
+                        
+                        guard error == nil else {
+                            self.displayError(error: error)
+                            return
+                        }
+                        
+                        self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+                        
+                        let alert = AlertMessage.paypalTopUpSuccess
+                        self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                    })
+                }
             }
         }
     }
