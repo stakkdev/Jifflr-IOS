@@ -226,6 +226,7 @@ class CampaignOverviewViewController: BaseViewController {
         guard let button = barButtonItem.customView as? UIButton else { return }
         let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
+        button.sizeToFit()
     }
     
     func setupUIBasedOnStatus() {
