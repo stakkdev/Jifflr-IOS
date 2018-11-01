@@ -54,11 +54,14 @@ class JifflrTeamChart: UIView {
         self.lineChartView.xAxis.drawGridLinesEnabled = false
         self.lineChartView.xAxis.axisLineWidth = 2.0
 
-        self.lineChartView.leftAxis.axisLineColor = UIColor.white
         self.lineChartView.leftAxis.drawLabelsEnabled = false
         self.lineChartView.leftAxis.drawAxisLineEnabled = true
         self.lineChartView.leftAxis.drawGridLinesEnabled = false
         self.lineChartView.leftAxis.axisLineWidth = 2.0
+        self.lineChartView.leftAxis.axisLineColor = UIColor.white
+        self.lineChartView.leftAxis.drawZeroLineEnabled = true
+        self.lineChartView.leftAxis.zeroLineColor = UIColor.white
+        self.lineChartView.leftAxis.zeroLineWidth = 2.0
 
         self.lineChartView.rightAxis.drawLabelsEnabled = false
         self.lineChartView.rightAxis.drawAxisLineEnabled = false
@@ -89,6 +92,14 @@ class JifflrTeamChart: UIView {
 
     func setData(data: [Graph], color: UIColor, fill: Bool, targetData: [Graph]?, targetColor: UIColor?) {
         let allData = data + (targetData ?? [])
+        
+        if allData.contains(where: { $0.y < 0 }) {
+            self.lineChartView.xAxis.axisLineColor = UIColor.clear
+            self.lineChartView.leftAxis.drawZeroLineEnabled = true
+        } else {
+            self.lineChartView.xAxis.axisLineColor = UIColor.white
+            self.lineChartView.leftAxis.drawZeroLineEnabled = false
+        }
 
         var maxX = 0.0
         var minX = Double(CGFloat.greatestFiniteMagnitude)
