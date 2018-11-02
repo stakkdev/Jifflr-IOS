@@ -184,11 +184,15 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.percentageLabel.textColor = UIColor.mainBlue
             }
-
-            if let date = userMonthStats.createdAt {
+            
+            let period = userMonthStats.period
+            if !period.isEmpty {
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMMM yyyy"
-                cell.monthLabel.text = dateFormatter.string(from: date)
+                dateFormatter.dateFormat = "yyyy-MM"
+                if let date = dateFormatter.date(from: period) {
+                    dateFormatter.dateFormat = "MMMM yyyy"
+                    cell.monthLabel.text = dateFormatter.string(from: date)
+                }
             }
 
             return cell

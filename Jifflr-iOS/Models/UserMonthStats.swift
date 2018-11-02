@@ -38,6 +38,15 @@ final class UserMonthStats: PFObject {
             self["percentage"] = newValue
         }
     }
+    
+    var period: String {
+        get {
+            return self["period"] as? String ?? ""
+        }
+        set {
+            self["period"] = newValue
+        }
+    }
 }
 
 extension UserMonthStats: PFSubclassing {
