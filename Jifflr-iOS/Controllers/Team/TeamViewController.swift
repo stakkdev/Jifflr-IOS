@@ -224,10 +224,11 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                         return
                     }
                     
+                    self.tableView.beginUpdates()
                     self.friends.remove(at: indexPath.row - 1)
                     let deleteIndexPath = IndexPath(row: indexPath.row - 1, section: 0)
                     self.tableView.deleteRows(at: [deleteIndexPath], with: .none)
-                    self.updateData()
+                    self.tableView.endUpdates()
                 }
             }
             alertController.addAction(deleteAction)

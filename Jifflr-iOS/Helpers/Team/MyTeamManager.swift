@@ -164,17 +164,14 @@ class MyTeamManager: NSObject {
     func deleteFriend(friend: PFUser, completion: @escaping (ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
         
-        PFCloud.callFunction(inBackground: "my-team-overview", withParameters: ["user": user.objectId!, "friend": friend.objectId!]) { myTeamJSON, error in
-            if let success = myTeamJSON as? Bool {
-                if success {
-                    user.details.fetchInBackground(block: { (success, error) in
-                        user.details.pinInBackground(block: { (success, error) in
-                            completion(nil)
-                        })
+        let params = ["user": user.objectId!, "friend": friend.objectId!]
+        PFCloud.callFunction(inBackground: "remove-friend", withParameters: params) { myTeamJSON, error in
+            if let _ = myTeamJSON as? Int, error == nil {
+                user.details.fetchInBackground(block: { (success, error) in
+                    user.details.pinInBackground(block: { (success, error) in
+                        completion(nil)
                     })
-                } else {
-                    completion(ErrorMessage.noInternetConnection)
-                }
+                })
             } else {
                 completion(ErrorMessage.noInternetConnection)
             }
