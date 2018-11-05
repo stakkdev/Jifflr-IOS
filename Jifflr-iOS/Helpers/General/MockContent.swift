@@ -55,11 +55,11 @@ class MockContent: NSObject {
     }
 
     func createGraphData() -> [Graph] {
-        return [self.createGraphPoint(x: 0.0, y: 0.0),
-                self.createGraphPoint(x: 10.0, y: 7.0),
-                self.createGraphPoint(x: 20.0, y: 26.0),
-                self.createGraphPoint(x: 30.0, y: 34.0),
-                self.createGraphPoint(x: 40.0, y: 50.0),
+        return [self.createGraphPoint(x: 0.0, y: -200.0),
+                self.createGraphPoint(x: 10.0, y: -180.0),
+                self.createGraphPoint(x: 20.0, y: -120.0),
+                self.createGraphPoint(x: 30.0, y: -90.0),
+                self.createGraphPoint(x: 40.0, y: 10.0),
                 self.createGraphPoint(x: 50.0, y: 55.0),
                 self.createGraphPoint(x: 60.0, y: 55.0),
                 self.createGraphPoint(x: 70.0, y: 75.0),

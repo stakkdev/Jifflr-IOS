@@ -107,6 +107,9 @@ class JifflrTeamChart: UIView {
         var minY = Double(CGFloat.greatestFiniteMagnitude)
 
         for point in allData {
+            if point.y < -120.0 { point.y = -120.0 }
+            if point.y > 620.0 { point.y = 620.0 }
+            
             if point.x > maxX { maxX = point.x }
             if point.y > maxY { maxY = point.y }
             if point.x < minX { minX = point.x }
