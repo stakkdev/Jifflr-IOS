@@ -253,7 +253,7 @@ class DashboardViewController: BaseViewController {
         DispatchQueue.main.async {
             self.myTeamButton.setValue(value: stats.teamSize)
             self.myMoneyButton.valueLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", stats.money))"
-            self.adsViewedButton.setValue(value: stats.adsViewed)
+            self.adsViewedButton.valueLabel.text = "\(stats.adsViewed)/\(stats.adTotal)"
             self.adBuilderButton.setValue(value: stats.adsCreated)
         }
     }

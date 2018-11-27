@@ -36,6 +36,10 @@ class DashboardManager: NSObject {
                 if let adsCreated = dashboardJSON["campaignsCreated"] as? Int {
                     dashboardStats.adsCreated = adsCreated
                 }
+                
+                if let adTotal = dashboardJSON["adTotal"] as? Int {
+                    dashboardStats.adTotal = adTotal
+                }
 
                 PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
                     dashboardStats.pinInBackground(withName: self.pinName, block: { (success, error) in

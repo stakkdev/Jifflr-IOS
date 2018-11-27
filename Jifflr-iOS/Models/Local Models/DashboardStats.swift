@@ -48,6 +48,15 @@ final class DashboardStats: PFObject {
             self["adsCreated"] = newValue
         }
     }
+    
+    var adTotal: Int {
+        get {
+            return self["adTotal"] as? Int ?? 0
+        }
+        set {
+            self["adTotal"] = newValue
+        }
+    }
 }
 
 extension DashboardStats: PFSubclassing {
