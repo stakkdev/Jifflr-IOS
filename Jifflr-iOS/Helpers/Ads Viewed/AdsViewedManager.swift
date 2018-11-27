@@ -69,7 +69,8 @@ class AdsViewedManager: NSObject {
                 }
 
                 if let history = adsViewedJSON["history"] as? [UserMonthStats] {
-                    adsViewed.history = history
+                    let orderedHistory = history.sorted(by: {$0.createdAt! > $1.createdAt! })
+                    adsViewed.history = orderedHistory
                 }
 
                 PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in

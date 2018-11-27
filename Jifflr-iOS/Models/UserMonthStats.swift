@@ -32,7 +32,15 @@ final class UserMonthStats: PFObject {
 
     var percentage: Int {
         get {
-            return self["percentage"] as? Int ?? 0
+            if let percent = self["percentage"] as? Int {
+                return percent
+            } else if let percentString = self["percentage"] as? String {
+                return Int(percentString) ?? 0
+            } else if let percentDouble = self["percentage"] as? Double {
+                return Int(percentDouble)
+            } else {
+                return 0
+            }
         }
         set {
             self["percentage"] = newValue
