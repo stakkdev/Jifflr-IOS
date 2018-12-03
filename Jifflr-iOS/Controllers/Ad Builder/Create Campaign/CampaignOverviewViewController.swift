@@ -339,6 +339,11 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
         guard let demographic = self.campaign.demographic else { return }
         let noOfViews = value / self.campaign.costPerView
         
+        guard demographic.estimatedAudience != 0 else {
+            self.budgetCoverageLabel.text = "0%"
+            return
+        }
+        
         var budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
         budgetCoverage *= 100
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
