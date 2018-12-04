@@ -1,0 +1,29 @@
+//
+//  AppSettings.swift
+//  Jifflr-iOS
+//
+//  Created by James Shaw on 25/04/2018.
+//  Copyright © 2018 The Distance. All rights reserved.
+//
+
+import UIKit
+import Foundation
+import Parse
+
+final class AppSettings: PFObject {
+    
+    var canBecomeModerator: Bool {
+        get {
+            return self["canBecomeModerator"] as? Bool ?? false
+        }
+        set {
+            self["canBecomeModerator"] = newValue
+        }
+    }
+}
+
+extension AppSettings: PFSubclassing {
+    static func parseClassName() -> String {
+        return "AppSettings"
+    }
+}

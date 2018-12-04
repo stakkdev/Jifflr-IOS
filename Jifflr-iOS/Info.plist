@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Jifflr</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>03.12.2018</string>
+	<key>Configuration</key>
+	<string>$(CONFIGURATION)</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>015a3121c76ea8baec90c4a97c7bd1976400adad</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Jifflr uses your calendar settings for a better user experience.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Jifflr uses your camera to add images when creating ads.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Jifflr fetches your location to help with registration.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Jifflr uses your photo library to add images when creating ads.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Jifflr uses your photo library to add images when creating ads.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GothamBold.otf</string>
+		<string>GothamBook.otf</string>
+		<string>GothamMedium.otf</string>
+		<string>GothamLight.otf</string>
+	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>
