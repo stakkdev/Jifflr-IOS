@@ -83,8 +83,9 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentAppodeal() {
+        guard let navVC = self.navigationController else { return }
         Appodeal.setRewardedVideoDelegate(self)
-        Appodeal.showAd(.rewardedVideo, rootViewController: self.navigationController)
+        Appodeal.showAd(.rewardedVideo, rootViewController: navVC)
         
         self.appodealLoaded = false
         self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in

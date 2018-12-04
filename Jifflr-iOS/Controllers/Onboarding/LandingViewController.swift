@@ -63,9 +63,37 @@ class LandingViewController: UIViewController, DisplayMessage {
     }
 
     func presentOnboarding() {
-        let onboarding = TDOnboarding(titles: Onboarding.titles, subTitles: Onboarding.subTitles, images: Onboarding.images, backgroundImage: Onboarding.bgImage, options: OnboardingCustomizable())
+        let items: [TDOnboardingItem] = Onboarding.titles.enumerated().map {
+            let image = Onboarding.images[$0.offset]
+            let subtitleParagraphStyle = NSMutableParagraphStyle()
+            subtitleParagraphStyle.lineSpacing = 19.0
+            subtitleParagraphStyle.alignment = .center
+
+            let subtitleAttributes: [NSAttributedStringKey: Any] = [
+                .font: UIFont(name: Constants.FontNames.GothamBook, size: 13.5)!,
+                .foregroundColor: UIColor.mainBlue,
+                .paragraphStyle: subtitleParagraphStyle
+            ]
+            let subtitle = NSAttributedString(string: Onboarding.subTitles[$0.offset], attributes: subtitleAttributes)
+            let titleAttributes: [NSAttributedStringKey: Any] = [
+                .font: UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!,
+                .foregroundColor: UIColor.mainBlue
+            ]
+            let title = NSAttributedString(string: $0.element, attributes: titleAttributes)
+
+            let actionButtonAttributes: [NSAttributedStringKey: Any] = [
+                .font: UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!,
+                .foregroundColor: UIColor.white
+            ]
+            let actionButtonTitle = $0.offset == Onboarding.titles.count - 1 ? "onboarding.closeButton".localized() : "onboarding.skipButton".localized()
+            let actionButtonAttributedTitle = NSAttributedString(string: actionButtonTitle, attributes: actionButtonAttributes)
+            
+            return JifflrOnboardingItem(image: image, subtitle: subtitle, bottomTitle: title, topActionButtonTitle: actionButtonAttributedTitle)
+        }
+        
+        let onboarding = TDOnboarding(items: items, options: JifflrOnboardingOptions())
         onboarding.delegate = self
-        onboarding.presentOnboardingVC(from: self, animated: true)
+        onboarding.present(from: self, completion: nil)
     }
 
     func routeBasedOnLocationServices() {
@@ -83,9 +111,12 @@ class LandingViewController: UIViewController, DisplayMessage {
     }
 }
 
+
 extension LandingViewController: TDOnboardingDelegate {
-    func onboardingShouldComplete() {
-        UserDefaultsManager.shared.setOnboardingViewed()
+    func topActionButtonTapped(on onboarding: TDOnboarding, itemIndex: Int) {
+        if itemIndex == Onboarding.titles.count - 1 {
+            UserDefaultsManager.shared.setOnboardingViewed()
+        }
 
         if Session.shared.currentUser == nil {
             self.rootLoginViewController()
@@ -93,12 +124,54 @@ extension LandingViewController: TDOnboardingDelegate {
             self.routeBasedOnLocationServices()
         }
     }
+    
+    func bottomActionButtonTapped(on onboarding: TDOnboarding, itemIndex: Int) {
+    }
+}
 
-    func onboardingShouldSkip() {
-        if Session.shared.currentUser == nil {
-            self.rootLoginViewController()
-        } else {
-            self.routeBasedOnLocationServices()
+struct JifflrOnboardingOptions: TDOnboardingOptions {
+    var defaultBackgroundImage: UIImage {
+        return Onboarding.bgImage
+    }
+    
+    var statusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    func color(for component: TDOnboardingColorizableComponent) -> UIColor? {
+        switch component {
+        case .paginationItem:
+            return UIColor.mainBlue
+        case .bottomPanel:
+            return UIColor.white
+        case .backgroundImageOverlay:
+            return UIColor.clear
         }
+    }
+
+    func measure(for component: TDOnboardingMeasurableComponent) -> CGFloat? {
+        switch component {
+        case .bottomPanelHeight:
+            return 250
+        case .imageTopDistance:
+            return 10.0
+        case .imageBottomDistance:
+            return 10.0
+        default:
+            return nil
+        }
+    }
+}
+
+struct JifflrOnboardingItem: TDOnboardingItem {
+    var image: UIImage
+    var subtitle: NSAttributedString
+    var topTitle: NSAttributedString? {
+        return nil
+    }
+    var bottomTitle: NSAttributedString?
+    var topActionButtonTitle: NSAttributedString?
+    var bottomActionButtonTitle: NSAttributedString? {
+        return nil
     }
 }
