@@ -5,6 +5,6 @@
       location = "group:Jifflr-iOS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Libraries/Pods/Pods.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

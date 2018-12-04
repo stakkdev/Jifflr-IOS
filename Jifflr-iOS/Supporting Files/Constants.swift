@@ -52,23 +52,16 @@ enum Environment: String {
     var appURL: String {
         switch self {
         case .staging:
-            return "https://jifflr.thecore.thedistance.co.uk/parse"
+            return Secrets.stagingAPPURL
         case .testing:
-            return "https://jifflr.testing.thecore.thedistance.co.uk/parse"
+            return Secrets.testingAPPURL
         case .production:
-            return "https://cms.jifflr.com/parse"
+            return Secrets.productionAPPURL
         }
     }
 
     var appodealKey: String {
-        switch self {
-        case .staging:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        case .testing:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        case .production:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        }
+        return Secrets.appodealKey
     }
 
     var appodealTesting: Bool {
@@ -85,100 +78,27 @@ enum Environment: String {
     var admobKey: String {
         switch self {
         case .staging:
-            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
+            return Secrets.stagingAdmobKey // This is the sample unit ID provided by Google for testing
         case .testing:
-            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
+            return Secrets.stagingAdmobKey // This is the sample unit ID provided by Google for testing
         case .production:
-            return "ca-app-pub-9475640621523183~3852192325"
+            return Secrets.productionAdmobKey
         }
     }
     
     var admobAdUnitId: String {
         switch self {
         case .staging:
-            return "ca-app-pub-3940256099942544/1712485313"
+            return Secrets.stagingAdmobUnitID
         case .testing:
-            return "ca-app-pub-3940256099942544/1712485313"
+            return Secrets.stagingAdmobUnitID
         case .production:
-            return "ca-app-pub-9475640621523183/7963236847"
+            return Secrets.productionAdmobUnitID
         }
     }
     
     var stripeKey: String {
-        switch self {
-        case .staging:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        case .testing:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        case .production:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        }
-    }
-}
-
-struct OnboardingCustomizable: TDOnboardingCustomizable {
-    var titleTextColor: UIColor {
-        return UIColor.clear
-    }
-
-    var titleFont: UIFont? {
-        return UIFont(name: Constants.FontNames.GothamBold, size: 18.0)
-    }
-
-    var bottomTitleTextColor: UIColor? {
-        return UIColor.mainBlue
-    }
-
-    var bottomTitleFont: UIFont? {
-        return UIFont(name: Constants.FontNames.GothamBold, size: 18.0)
-    }
-
-    var pageControlSelectedTintColor: UIColor {
-        return UIColor.mainBlue
-    }
-
-    var pageControlTintColor: UIColor {
-        return UIColor.mainBlueTransparent40
-    }
-
-    var subtitleTextColor: UIColor {
-        return UIColor.mainBlue
-    }
-
-    var subTitleFont: UIFont? {
-        return UIFont(name: Constants.FontNames.GothamBook, size: 13.5)
-    }
-
-    var subtitleLineHeight: CGFloat? {
-        return 19
-    }
-
-    var closeButtonTitle: String {
-        return "onboarding.closeButton".localized()
-    }
-
-    var skipButtonTitle: String {
-        return "onboarding.skipButton".localized()
-    }
-
-    var skipButtonFont: UIFont? {
-        return UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
-    }
-
-    var skipButtonColor: UIColor? {
-        return UIColor.white
-    }
-
-    var specialLastChild: Bool {
-        return false
-    }
-
-    var bgImageOverlayColor: UIColor {
-        return UIColor.clear
-    }
-
-    var textBackgroundColor: UIColor? {
-        return UIColor.white
+        return Secrets.stripeKey
     }
 }
 
