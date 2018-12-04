@@ -52,23 +52,16 @@ enum Environment: String {
     var appURL: String {
         switch self {
         case .staging:
-            return "https://jifflr.thecore.thedistance.co.uk/parse"
+            return Secrets.stagingAPPURL
         case .testing:
-            return "https://jifflr.testing.thecore.thedistance.co.uk/parse"
+            return Secrets.testingAPPURL
         case .production:
-            return "https://cms.jifflr.com/parse"
+            return Secrets.productionAPPURL
         }
     }
 
     var appodealKey: String {
-        switch self {
-        case .staging:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        case .testing:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        case .production:
-            return "111283fbc4e6861d6f51c7cff1c980ba8c6b581adab92e3e"
-        }
+        return Secrets.appodealKey
     }
 
     var appodealTesting: Bool {
@@ -85,34 +78,27 @@ enum Environment: String {
     var admobKey: String {
         switch self {
         case .staging:
-            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
+            return Secrets.stagingAdmobKey // This is the sample unit ID provided by Google for testing
         case .testing:
-            return "ca-app-pub-3940256099942544~1458002511" // This is the sample unit ID provided by Google for testing
+            return Secrets.stagingAdmobKey // This is the sample unit ID provided by Google for testing
         case .production:
-            return "ca-app-pub-9475640621523183~3852192325"
+            return Secrets.productionAdmobKey
         }
     }
     
     var admobAdUnitId: String {
         switch self {
         case .staging:
-            return "ca-app-pub-3940256099942544/1712485313"
+            return Secrets.stagingAdmobUnitID
         case .testing:
-            return "ca-app-pub-3940256099942544/1712485313"
+            return Secrets.stagingAdmobUnitID
         case .production:
-            return "ca-app-pub-9475640621523183/7963236847"
+            return Secrets.productionAdmobUnitID
         }
     }
     
     var stripeKey: String {
-        switch self {
-        case .staging:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        case .testing:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        case .production:
-            return "pk_test_iJTtErCj79Uij3Db0C0LPlkl"
-        }
+        return Secrets.stripeKey
     }
 }
 

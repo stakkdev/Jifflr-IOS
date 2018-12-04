@@ -19,6 +19,7 @@ target 'Jifflr-iOS' do
   pod 'TTRangeSlider'
   pod 'Stripe'
   pod 'MBProgressHUD'
+  pod 'Sourcery'
 
   target 'Jifflr-iOSTests' do
     inherit! :search_paths

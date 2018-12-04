@@ -158,6 +158,7 @@ PODS:
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
   - Player (0.8.4)
+  - Sourcery (0.15.0)
   - Stripe (14.0.0)
   - SwiftLint (0.29.0)
   - TDOnboarding (2.0.2)
@@ -176,6 +177,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - Parse (= 1.17.1)
   - Player (= 0.8.4)
+  - Sourcery
   - Stripe
   - SwiftLint
   - TDOnboarding
@@ -201,6 +203,7 @@ SPEC REPOS:
     - nanopb
     - Parse
     - Player
+    - Sourcery
     - Stripe
     - SwiftLint
     - TDOnboarding
@@ -225,11 +228,12 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
+  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftLint: d4e7443d93e2bbe868dc302e6c7ac30b469d6a14
   TDOnboarding: b8f6d440a066aad39221de36dfddff4a14717127
   TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
 
-PODFILE CHECKSUM: 5df9f64bde11d768a90fa4b6479e35c84136b21d
+PODFILE CHECKSUM: c4d6df46e6ecf3066b852e58008ea1f8e9eddc83
 
 COCOAPODS: 1.5.3

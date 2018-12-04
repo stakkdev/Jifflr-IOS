@@ -84,6 +84,8 @@
 		1AFD725B2089FBE100417496 /* CampaignOverviewViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD725A2089FBE100417496 /* CampaignOverviewViewController+Actions.swift */; };
 		31125FEAC71278BAEFEF97B4 /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B61F5EA2415ED18D03331B9 /* Pods_Jifflr_iOSTests.framework */; };
 		93AD37B98F3D587EF08A1201 /* Pods_Jifflr_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207DBB832F3511A257053592 /* Pods_Jifflr_iOS.framework */; };
+		B400EDF421B6D2120016B492 /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = B400EDF321B6D2120016B492 /* Secrets.stencil */; };
+		B400EDF821B6D5260016B492 /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400EDF721B6D5260016B492 /* Secrets.generated.swift */; };
 		E90C1FFD1FA8C24000A42461 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFC1FA8C24000A42461 /* UserTests.swift */; };
 		E90C1FFF1FA8D02B00A42461 /* PendingUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C1FFE1FA8D02B00A42461 /* PendingUserTests.swift */; };
 		E90C20011FA8D16E00A42461 /* AdvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90C20001FA8D16E00A42461 /* AdvertTests.swift */; };
@@ -310,6 +312,8 @@
 		79EF06CCCA77A590DFF2DE0F /* Pods-Jifflr-iOS.release (production) .xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.release (production) .xcconfig"; path = "Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.release (production) .xcconfig"; sourceTree = "<group>"; };
 		8EE4E2F99AE008EABE86217C /* Pods-Jifflr-iOSTests.release (production) .xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (production) .xcconfig"; path = "Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (production) .xcconfig"; sourceTree = "<group>"; };
 		A38F629296417434E576EA7B /* Pods-Jifflr-iOS.debug (testing).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.debug (testing).xcconfig"; path = "Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.debug (testing).xcconfig"; sourceTree = "<group>"; };
+		B400EDF321B6D2120016B492 /* Secrets.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; name = Secrets.stencil; path = "Supporting Files/Secrets.stencil"; sourceTree = "<group>"; };
+		B400EDF721B6D5260016B492 /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
 		B47F1319A8CDE602BA5EC0F8 /* Pods-Jifflr-iOSTests.debug (testing).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.debug (testing).xcconfig"; path = "Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.debug (testing).xcconfig"; sourceTree = "<group>"; };
 		D3AD03257AF2631ACED57F41 /* Pods-Jifflr-iOS.debug (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.debug (staging).xcconfig"; path = "Pods/Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.debug (staging).xcconfig"; sourceTree = "<group>"; };
 		E90C1FFC1FA8C24000A42461 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
@@ -992,6 +996,7 @@
 		E9A7177E1F8B89AC00B07414 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B400EDF721B6D5260016B492 /* Secrets.generated.swift */,
 				E96A0CD5203DAA9A0059DDAC /* General */,
 				E96A0CE4203DAB430059DDAC /* Dashboard */,
 				E96A0CE5203DAB520059DDAC /* Team */,
@@ -1002,6 +1007,7 @@
 				E96A0CEA203DAB780059DDAC /* Profile */,
 				1AF1953A2068FF4900FE3896 /* Ad Builder */,
 				1A4115A62090C3DA0078D32B /* Moderation */,
+				B400EDF321B6D2120016B492 /* Secrets.stencil */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1128,6 +1134,8 @@
 			buildConfigurationList = E9A717B11F8B89AC00B07414 /* Build configuration list for PBXNativeTarget "Jifflr-iOS" */;
 			buildPhases = (
 				EF23A9174FCDCDDF6F2D6F46 /* [CP] Check Pods Manifest.lock */,
+				B400EDF621B6D4630016B492 /* alwaysRunHook */,
+				B400EDF521B6D2FF0016B492 /* Generate Secrets */,
 				E9A7176B1F8B89AC00B07414 /* Sources */,
 				E9A7176C1F8B89AC00B07414 /* Frameworks */,
 				E9A7176D1F8B89AC00B07414 /* Resources */,
@@ -1223,6 +1231,7 @@
 				1AF1953D2068FF7800FE3896 /* AdBuilderOverview.storyboard in Resources */,
 				1AF985462081088B006525DB /* CreateCampaign.storyboard in Resources */,
 				1AF1955020692D5F00FE3896 /* CreateAd.storyboard in Resources */,
+				B400EDF421B6D2120016B492 /* Secrets.stencil in Resources */,
 				E9691F2B1F8E52EC006070F6 /* Advert.storyboard in Resources */,
 				E9A717A01F8B89AC00B07414 /* Main.storyboard in Resources */,
 				E9DBBC3920163485000B8835 /* Localizable.strings in Resources */,
@@ -1377,6 +1386,44 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B400EDF521B6D2FF0016B492 /* Generate Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.alwaysRun",
+			);
+			name = "Generate Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/${TARGET_NAME}/Secrets.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif [ -f ./env-vars.sh ]\nthen\nsource ./env-vars.sh\nelse\necho \"Can't find env-vars.sh\"\nexit 1\nfi\n\n\n#no `else` case needed if the CI works as expected\n${PODS_ROOT}/Sourcery/bin/sourcery --templates ${SRCROOT}/${TARGET_NAME}/Supporting\\ Files/Secrets.stencil --output ${SRCROOT}/${TARGET_NAME}/ --sources ${SRCROOT}/${TARGET_NAME}/ --args staging_app_url=\\\"$STAGING_APP_URL\\\",testing_app_url=\\\"$TESTING_APP_URL\\\",production_app_url=\\\"$PRODUCTION_APP_URL\\\",appodeal_key=\\\"$APPODEAL_KEY\\\",staging_admob_key=\\\"$STAGING_ADMOB_KEY\\\",production_admob_key=\\\"$PRODUCTION_ADMOB_KEY\\\",staging_admob_unit_id=\\\"$STAGING_ADMOB_UNIT_ID\\\",production_admob_unit_id=\\\"$PRODUCTION_ADMOB_UNIT_ID\\\",stripe_key=\\\"$STRIPE_KEY\\\"\n";
+		};
+		B400EDF621B6D4630016B492 /* alwaysRunHook */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = alwaysRunHook;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ntouch ${SRCROOT}/.alwaysRun\n";
 		};
 		BFA686A3802741514DA7B2B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1587,6 +1634,7 @@
 				E96A0CE0203DAAF80059DDAC /* Reachability.swift in Sources */,
 				E937F5C220371A7700171480 /* TextFieldExtensions.swift in Sources */,
 				E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */,
+				B400EDF821B6D5260016B492 /* Secrets.generated.swift in Sources */,
 				E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
 				1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */,
