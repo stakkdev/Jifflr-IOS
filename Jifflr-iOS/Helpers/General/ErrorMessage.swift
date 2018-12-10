@@ -78,11 +78,18 @@ public enum ErrorMessage {
     case moderationSubmitFailed
     case noAdsToModerate
     case invalidAnswersRequired
+    case NoInternetConnectionRegistration
 
     public var failureTitle: String {
         switch self {
         case .invalidInvitationCodeRegistration:
             return "error.invalidInvitationCodeRegistration.title".localized()
+        case .NoInternetConnectionRegistration:
+            return "error.noInternetConnectionRegistration.title".localized()
+        case .userAlreadyExists:
+            return "error.register.userAlreadyExists.title".localized()
+        case .invalidField(let details):
+            return "error.register.invalidField.title".localizedFormat(details)
         default:
             return "error.title".localized()
         }
@@ -93,9 +100,9 @@ public enum ErrorMessage {
         case .parseError(let details):
             return "An error occured: \(details)"
         case .invalidField(let details):
-            return "\("error.register.invalidField".localized()) \(details)"
+            return "error.register.invalidField".localizedFormat(details)
         case .invalidProfileField(let details):
-            return "\("error.profile.invalidField".localized()) \(details)"
+            return "error.register.invalidField".localizedFormat(details)
         case .invalidPassword:
             return "error.register.invalidPassword".localized()
         case .invalidDob:
@@ -224,6 +231,8 @@ public enum ErrorMessage {
             return "error.noAdsToModerate".localized()
         case .invalidAnswersRequired:
             return "error.invalidAnswersRequired".localized()
+        case .NoInternetConnectionRegistration:
+            return "error.noInternetConnectionRegistration.message".localized()
         }
     }
 }

@@ -127,6 +127,11 @@ class RegisterViewController: BaseViewController {
     }
 
     @IBAction func registerButtonPressed(sender: UIButton) {
+        guard Reachability.isConnectedToNetwork() else {
+            self.displayError(error: ErrorMessage.NoInternetConnectionRegistration)
+            return
+        }
+        
         guard let firstName = self.firstNameTextField.text, !firstName.isEmpty, !firstName.containsNumbers() else {
             let error = ErrorMessage.invalidField("register.firstName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
