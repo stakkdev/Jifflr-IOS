@@ -85,52 +85,61 @@ class MyAdsManager: NSObject {
     func fetchData(completion: @escaping (MyAds?) -> Void) {
         let group = DispatchGroup()
         let myAds = MyAds()
+        var returnCount = 0
 
         self.fetchUserAds { (adverts) in
             myAds.adverts = adverts
 
             group.enter()
             self.countActiveUserAds { (count) in
-                guard let count = count else {
-                    completion(nil)
-                    return
+                DispatchQueue.main.async {
+                    if let count = count {
+                        myAds.activeAds = count
+                        returnCount += 1
+                    }
+                    group.leave()
                 }
-
-                myAds.activeAds = count
-                group.leave()
             }
 
             group.enter()
             self.fetchChartData { (points) in
-                guard let graph = points else {
-                    completion(nil)
-                    return
+                DispatchQueue.main.async {
+                    if let graph = points {
+                        myAds.graph = graph
+                        returnCount += 1
+                    }
+                    group.leave()
                 }
-
-                myAds.graph = graph
-                group.leave()
             }
             
             group.enter()
             CampaignManager.shared.fetchCampaigns(completion: { (campaigns) in
-                guard let campaigns = campaigns else {
-                    completion(nil)
-                    return
+                DispatchQueue.main.async {
+                    if let campaigns = campaigns {
+                        myAds.campaigns = campaigns
+                        returnCount += 1
+                    }
+                    group.leave()
                 }
-                
-                myAds.campaigns = campaigns
-                group.leave()
             })
             
             group.enter()
             CampaignManager.shared.countCampaigns(completion: { (count) in
-                if let count = count {
-                    myAds.campaignCount = count
+                DispatchQueue.main.async {
+                    if let count = count {
+                        myAds.campaignCount = count
+                        returnCount += 1
+                    }
+                    group.leave()
                 }
-                group.leave()
             })
 
             group.notify(queue: .main) {
+                guard returnCount == 4 else {
+                    completion(nil)
+                    return
+                }
+                
                 self.unpinAllMyAds {
                     myAds.pinInBackground(withName: self.pinName, block: { (success, error) in
                         print("My Ads Pinned: \(success)")

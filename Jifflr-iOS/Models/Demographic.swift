@@ -14,7 +14,7 @@ final class Demographic: PFObject {
     
     var minAge: Int {
         get {
-            return self["minAge"] as! Int
+            return self["minAge"] as? Int ?? 0
         }
         set {
             self["minAge"] = newValue
@@ -23,7 +23,7 @@ final class Demographic: PFObject {
     
     var maxAge: Int {
         get {
-            return self["maxAge"] as! Int
+            return self["maxAge"] as? Int ?? 100
         }
         set {
             self["maxAge"] = newValue
@@ -59,7 +59,7 @@ final class Demographic: PFObject {
     
     var estimatedAudience: Int {
         get {
-            return self["estimatedAudience"] as! Int
+            return self["estimatedAudience"] as? Int ?? 0
         }
         set {
             self["estimatedAudience"] = newValue

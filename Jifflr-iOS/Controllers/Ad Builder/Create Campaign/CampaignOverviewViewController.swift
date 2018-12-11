@@ -185,12 +185,12 @@ class CampaignOverviewViewController: BaseViewController {
         self.budgetView.value = self.campaign.budget
         
         var budgetCoverage = 0.0
-        if self.budgetView.value != 0.0 {
+        if self.budgetView.value != 0.0 && demographic.estimatedAudience != 0 {
             let noOfViews = self.campaign.budget / self.campaign.costPerView
             budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
             budgetCoverage *= 100
         }
-        self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        self.budgetCoverageLabel.text = "\(budgetCoverage.toInt())%"
         
         self.campaignNumberLabel.text = "C# \(self.campaign.number)"
         self.campaignNumberLabel.isHidden = self.campaign.number == 0
