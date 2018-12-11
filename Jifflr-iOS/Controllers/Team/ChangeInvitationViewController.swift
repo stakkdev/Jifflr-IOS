@@ -97,7 +97,7 @@ class ChangeInvitationViewController: BaseViewController {
         composeViewController.setSubject("myTeam.inviteEmail.subject".localized())
         
         let sender = "\(currentUser.details.firstName) \(currentUser.details.lastName)"
-        let body = "myTeam.inviteEmail.body".localizedFormat(name, invitationCode, sender)
+        let body = "myTeam.inviteEmail.body".localizedFormat(name, sender, invitationCode)
         composeViewController.setMessageBody(body, isHTML: false)
 
         self.navigationController?.present(composeViewController, animated: true, completion: nil)

@@ -43,22 +43,33 @@ class PendingUserManager: NSObject {
         pendingUser.email = email.lowercased()
         pendingUser.active = true
         pendingUser.isSignedUp = false
-
-        let query = PendingUser.query()
-        query?.whereKey("email", equalTo: pendingUser.email)
-        query?.whereKey("sender", equalTo: currentUser)
-        query?.findObjectsInBackground(block: { (objects, error) in
-            if let objects = objects, objects.count > 0, error == nil {
-                completion(nil, ErrorMessage.inviteAlreadySent)
-            } else {
-                pendingUser.saveInBackground { (succeeded, error) in
-                    if succeeded {
-                        completion(pendingUser, nil)
-                    } else {
-                        completion(nil, ErrorMessage.inviteSendFailed)
+        
+        let userQuery = PFUser.query()
+        userQuery?.whereKey("email", equalTo: pendingUser.email)
+        userQuery?.countObjectsInBackground(block: { (count, error) in
+            guard error == nil else {
+                completion(nil, ErrorMessage.inviteSendFailed)
+                return
+            }
+            
+            pendingUser.isSignedUp = count > 0
+            
+            let query = PendingUser.query()
+            query?.whereKey("email", equalTo: pendingUser.email)
+            query?.whereKey("sender", equalTo: currentUser)
+            query?.findObjectsInBackground(block: { (objects, error) in
+                if let objects = objects, objects.count > 0, error == nil {
+                    completion(nil, ErrorMessage.inviteAlreadySent)
+                } else {
+                    pendingUser.saveInBackground { (succeeded, error) in
+                        if succeeded {
+                            completion(pendingUser, nil)
+                        } else {
+                            completion(nil, ErrorMessage.inviteSendFailed)
+                        }
                     }
                 }
-            }
+            })
         })
     }
 
