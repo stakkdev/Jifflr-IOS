@@ -353,11 +353,16 @@ extension RegisterViewController: ChooseLocationViewControllerDelegate {
     }
 
     func fetchLocation(displayLocation: String, isoCountryCode: String, coordinate: CLLocationCoordinate2D) {
+        guard Reachability.isConnectedToNetwork() else {
+            self.displayError(error: ErrorMessage.locationFailed)
+            return
+        }
+        
         LocationManager.shared.fetchLocation(isoCountryCode: isoCountryCode) { (location, error) in
             self.locationTextField.stopAnimating()
 
             guard let location = location, error == nil else {
-                self.displayMessage(title: ErrorMessage.locationFailed.failureTitle, message: ErrorMessage.locationFailed.failureDescription)
+                self.displayError(error: ErrorMessage.blockedCountry)
                 return
             }
 
