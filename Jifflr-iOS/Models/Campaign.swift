@@ -189,10 +189,12 @@ extension Campaign {
                     
                     let group = DispatchGroup()
                     
-                    group.enter()
-                    self.demographic?.gender?.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
-                        group.leave()
-                    })
+                    if let gender = self.demographic?.gender {
+                        group.enter()
+                        gender.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in
+                            group.leave()
+                        })
+                    }
                     
                     group.enter()
                     self.demographic?.location.pinInBackground(withName: CampaignManager.shared.pinName, block: { (success, error) in

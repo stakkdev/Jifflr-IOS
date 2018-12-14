@@ -78,11 +78,13 @@ class LocationRequiredViewController: BaseViewController {
         if LocationManager.shared.locationServicesEnabled() == true {
             if Reachability.isConnectedToNetwork() {
                 LocationManager.shared.getCurrentLocation()
+                self.rootDashboardViewController()
             } else {
-                LocationManager.shared.fetchLocalLocation()
+                LocationManager.shared.fetchLocalLocation { (location) in
+                    LocationManager.shared.rootBasedOnBlockedlocation()
+                    self.rootDashboardViewController()
+                }
             }
-            
-            self.rootDashboardViewController()
         }
     }
 
@@ -95,7 +97,7 @@ class LocationRequiredViewController: BaseViewController {
             if Reachability.isConnectedToNetwork() {
                 LocationManager.shared.getCurrentLocation()
             } else {
-                LocationManager.shared.fetchLocalLocation()
+                LocationManager.shared.fetchLocalLocation { (location) in }
             }
             
             self.rootDashboardViewController()

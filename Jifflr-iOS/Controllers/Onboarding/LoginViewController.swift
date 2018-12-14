@@ -71,7 +71,7 @@ class LoginViewController: BaseViewController {
             if Reachability.isConnectedToNetwork() {
                 LocationManager.shared.getCurrentLocation()
             } else {
-                LocationManager.shared.fetchLocalLocation()
+                LocationManager.shared.fetchLocalLocation { (location) in }
             }
         }
     }

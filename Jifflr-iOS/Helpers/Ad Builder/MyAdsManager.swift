@@ -103,13 +103,11 @@ class MyAdsManager: NSObject {
 
             group.enter()
             self.fetchChartData { (points) in
-                DispatchQueue.main.async {
-                    if let graph = points {
-                        myAds.graph = graph
-                        returnCount += 1
-                    }
-                    group.leave()
+                if let graph = points {
+                    myAds.graph = graph
+                    returnCount += 1
                 }
+                group.leave()
             }
             
             group.enter()
@@ -244,8 +242,10 @@ class MyAdsManager: NSObject {
     
                 self.unpinAllBarChartPoints {
                     PFObject.pinAll(inBackground: graph, withName: self.pinName) { (success, error) in
-                        completion(graph)
+                        print("Chart Pinned: \(success)")
                     }
+                    
+                    completion(graph)
                 }
             } else {
                 completion(nil)

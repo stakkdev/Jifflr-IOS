@@ -68,16 +68,17 @@ class LocationManager: NSObject {
         })
     }
     
-    func fetchLocalLocation() {
+    func fetchLocalLocation(completion: @escaping (Location?) -> Void) {
         let query = Location.query()
         query?.fromPin(withName: self.pinName)
         query?.includeKey("locationStatus")
         query?.getFirstObjectInBackground(block: { (location, error) in
             guard let location = location as? Location, error == nil else {
-                self.rootBasedOnLocation(location: nil)
+                completion(nil)
                 return
             }
             
+            Session.shared.currentLocation = location
             self.rootBasedOnLocation(location: location)
         })
     }
@@ -100,6 +101,7 @@ class LocationManager: NSObject {
                 })
             })
             
+            Session.shared.currentLocation = country
             completion(country, nil)
         })
     }
