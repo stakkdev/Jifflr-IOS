@@ -215,6 +215,13 @@
 "changeInvitation.invitationCode.heading" = "Invitation Code";
 "changeInvitation.resendButton.title" = "RESEND INVITATION";
 
+"addEmail.navigation.title" = "Add Email";
+"addEmail.email.heading" = "Email";
+"addEmail.email.placeholder" = "Enter email";
+"addEmail.sendButton.title" = "SEND INVITATION";
+"addEmail.error.title" = "Error - Invalid Email";
+"addEmail.error.message" = "Please enter a valid email address.";
+
 "adsViewed.navigation.title" = "My Completed Campaigns";
 "adsViewed.segmentedControlButton1.title" = "PROGRESS";
 "adsViewed.segmentedControlButton2.title" = "HISTORY";

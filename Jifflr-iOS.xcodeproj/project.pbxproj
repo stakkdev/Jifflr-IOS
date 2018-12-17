@@ -43,6 +43,7 @@
 		1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */; };
 		1A7F2384209B054000718521 /* NonComplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2383209B054000718521 /* NonComplianceCell.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
+		1A9F0AD921C7EC3800421566 /* AddEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9F0AD821C7EC3800421566 /* AddEmailViewController.swift */; };
 		1AA0448620849C65008385A6 /* JifflrTextFieldDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */; };
 		1AA044892084A4D4008385A6 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA044882084A4D4008385A6 /* DayCell.swift */; };
 		1AA11E532085FF8D00BAE044 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E522085FF8D00BAE044 /* LanguageManager.swift */; };
@@ -264,6 +265,7 @@
 		1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceViewController.swift; path = Controllers/Moderation/NonComplianceViewController.swift; sourceTree = "<group>"; };
 		1A7F2383209B054000718521 /* NonComplianceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceCell.swift; path = Controllers/Moderation/Cells/NonComplianceCell.swift; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
+		1A9F0AD821C7EC3800421566 /* AddEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEmailViewController.swift; path = Controllers/Team/AddEmailViewController.swift; sourceTree = "<group>"; };
 		1AA0448520849C65008385A6 /* JifflrTextFieldDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JifflrTextFieldDate.swift; path = Views/TextFields/JifflrTextFieldDate.swift; sourceTree = "<group>"; };
 		1AA044882084A4D4008385A6 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DayCell.swift; path = "Controllers/Ad Builder/Create Campaign/Cells/DayCell.swift"; sourceTree = "<group>"; };
 		1AA11E522085FF8D00BAE044 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = Helpers/General/LanguageManager.swift; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 				E9305CEC2046B1BA00D4E4DD /* TeamViewController+Invitations.swift */,
 				1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */,
 				1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */,
+				1A9F0AD821C7EC3800421566 /* AddEmailViewController.swift */,
 				E9DD58192035C387000735C3 /* Cells */,
 			);
 			name = Team;
@@ -1612,6 +1615,7 @@
 				E9608F1B203482AD0055EFE7 /* PulsePlayButton.swift in Sources */,
 				1AA11E55208622FF00BAE044 /* Gender.swift in Sources */,
 				E9AC1FB7202DFF5300FAA9A7 /* JifflrTextFieldPassword.swift in Sources */,
+				1A9F0AD921C7EC3800421566 /* AddEmailViewController.swift in Sources */,
 				E96A0CDF203DAAF80059DDAC /* LocationManager.swift in Sources */,
 				1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */,
 				1A173245206A4545005837A7 /* AdvertDetails.swift in Sources */,

@@ -79,6 +79,7 @@ public enum ErrorMessage {
     case noAdsToModerate
     case invalidAnswersRequired
     case NoInternetConnectionRegistration
+    case addEmailInvalid
 
     public var failureTitle: String {
         switch self {
@@ -90,6 +91,8 @@ public enum ErrorMessage {
             return "error.register.userAlreadyExists.title".localized()
         case .invalidField(let details):
             return "error.register.invalidField.title".localizedFormat(details)
+        case .addEmailInvalid:
+            return "addEmail.error.title".localized()
         default:
             return "error.title".localized()
         }
@@ -233,6 +236,8 @@ public enum ErrorMessage {
             return "error.invalidAnswersRequired".localized()
         case .NoInternetConnectionRegistration:
             return "error.noInternetConnectionRegistration.message".localized()
+        case .addEmailInvalid:
+            return "addEmail.error.message".localized()
         }
     }
 }

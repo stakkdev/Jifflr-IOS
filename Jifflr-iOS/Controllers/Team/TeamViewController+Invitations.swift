@@ -31,27 +31,40 @@ extension TeamViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         self.isDismissingContacts = true
         picker.dismiss(animated: true, completion: {
+            
+            let name = "\(contact.givenName) \(contact.familyName)"
 
             guard contact.emailAddresses.count > 0 else {
-                self.displayError(error: ErrorMessage.contactsNoEmail)
+                let alert = UIAlertController(title: ErrorMessage.contactsNoEmail.failureTitle, message: ErrorMessage.contactsNoEmail.failureDescription, preferredStyle: .alert)
+                let dismissAction = UIAlertAction(title: "error.dismiss".localized(), style: .cancel, handler: nil)
+                let continueAction = UIAlertAction(title: "alert.notification.continue".localized(), style: .default, handler: { (alert) in
+                    let vc = AddEmailViewController.instantiateFromStoryboard(name: name)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                
+                alert.addAction(dismissAction)
+                alert.addAction(continueAction)
+                self.present(alert, animated: true, completion: nil)
                 return
             }
 
-            let name = "\(contact.givenName) \(contact.familyName)"
             let email = contact.emailAddresses.first!.value as String
-
-            var userInfo = [AnyHashable: Any]()
-            userInfo["name"] = name
-            userInfo["email"] = email
-
-            PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (pendingUser, error) in
-                guard let pendingUser = pendingUser, error == nil else {
-                    self.displayError(error: error)
-                    return
-                }
-
-                self.presentMail(name: name, email: email, pendingUser: pendingUser)
-            })
+            self.createPendingUser(name: name, email: email)
+        })
+    }
+    
+    func createPendingUser(name: String, email: String) {
+        var userInfo = [AnyHashable: Any]()
+        userInfo["name"] = name
+        userInfo["email"] = email
+        
+        PendingUserManager.shared.createPendingUser(withUserInfo: userInfo, completion: { (pendingUser, error) in
+            guard let pendingUser = pendingUser, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+            
+            self.presentMail(name: name, email: email, pendingUser: pendingUser)
         })
     }
 

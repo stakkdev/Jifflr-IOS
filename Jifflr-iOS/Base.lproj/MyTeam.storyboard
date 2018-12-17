@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,7 +77,7 @@
                                                     <rect key="frame" x="18" y="24" width="339" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaK-hu-dgQ">
-                                                            <rect key="frame" x="18" y="14.5" width="102.5" height="22.5"/>
+                                                            <rect key="frame" x="18" y="14" width="102.5" height="22.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="20"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -148,7 +148,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 June 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kaz-cA-uu1">
-                                                            <rect key="frame" x="215.5" y="36" width="103.5" height="17.5"/>
+                                                            <rect key="frame" x="215.5" y="36.5" width="103.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                                             <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -220,7 +220,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22 June 2017" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9T-br-dXr">
-                                                            <rect key="frame" x="215.5" y="36" width="103.5" height="17.5"/>
+                                                            <rect key="frame" x="215.5" y="36.5" width="103.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                                             <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -402,6 +402,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4pq-Uz-Wkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3604" y="-486"/>
+        </scene>
+        <!--Add Email View Controller-->
+        <scene sceneID="iH6-rn-go5">
+            <objects>
+                <viewController storyboardIdentifier="AddEmailViewController" id="tlh-Ps-5WP" customClass="AddEmailViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eXB-Yb-VNL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter contact email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-U1-buj" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="59" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xZA-gf-TeL"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRT-Yj-LRY">
+                                <rect key="frame" x="28" y="30" width="39.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="MV9-oO-S9h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5g-j7-rRx" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="557" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZVi-6f-0oH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SEND INVITATION"/>
+                                <connections>
+                                    <action selector="sendButtonPressedWithSender:" destination="tlh-Ps-5WP" eventType="touchUpInside" id="Hfn-h8-c3x"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jU5-o7-4AX" firstAttribute="trailing" secondItem="ua5-U1-buj" secondAttribute="trailing" constant="18" id="88b-Ox-Hqw"/>
+                            <constraint firstItem="jU5-o7-4AX" firstAttribute="bottom" secondItem="M5g-j7-rRx" secondAttribute="bottom" constant="60" id="DD7-9v-Cmx"/>
+                            <constraint firstItem="TRT-Yj-LRY" firstAttribute="top" secondItem="jU5-o7-4AX" secondAttribute="top" constant="10" id="ErB-HT-25Y"/>
+                            <constraint firstItem="ua5-U1-buj" firstAttribute="leading" secondItem="eXB-Yb-VNL" secondAttribute="leading" constant="18" id="MFG-5P-hFt"/>
+                            <constraint firstItem="TRT-Yj-LRY" firstAttribute="leading" secondItem="jU5-o7-4AX" secondAttribute="leading" constant="28" id="b8d-7W-vlm"/>
+                            <constraint firstItem="ua5-U1-buj" firstAttribute="top" secondItem="TRT-Yj-LRY" secondAttribute="bottom" constant="8" id="hil-8H-jhf"/>
+                            <constraint firstItem="M5g-j7-rRx" firstAttribute="trailing" secondItem="jU5-o7-4AX" secondAttribute="trailing" constant="-18" id="lcj-uG-OnA"/>
+                            <constraint firstItem="M5g-j7-rRx" firstAttribute="leading" secondItem="jU5-o7-4AX" secondAttribute="leading" constant="18" id="wBe-Jd-2q2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jU5-o7-4AX"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailHeadingLabel" destination="TRT-Yj-LRY" id="bqu-Ra-IqC"/>
+                        <outlet property="emailTextField" destination="ua5-U1-buj" id="cOm-kT-Va9"/>
+                        <outlet property="sendButton" destination="M5g-j7-rRx" id="01Y-uv-kHc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OC5-1g-Pc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4332" y="-486"/>
         </scene>
     </scenes>
 </document>
