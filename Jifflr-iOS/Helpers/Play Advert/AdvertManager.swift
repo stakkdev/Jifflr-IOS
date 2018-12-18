@@ -152,6 +152,11 @@ class AdvertManager: NSObject {
                 completion(advert)
                 return
             } else {
+                guard Reachability.isConnectedToNetwork() else {
+                    completion(nil)
+                    return
+                }
+                
                 self.fetchAdExchange(local: false, completion: { (advert) in
                     advert?.pinInBackground(block: { (success, error) in
                         print("Ad Exchange Ad Pinned: \(success)")

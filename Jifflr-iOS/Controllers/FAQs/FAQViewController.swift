@@ -17,14 +17,26 @@ class FAQViewController: BaseViewController {
         didSet {
             let categories = self.faqData!.map { $0.category }
             self.segmentedControl.setupButtons(categories: categories)
+            
+            if self.shouldSelectCampaigns {
+                if let index = categories.firstIndex(where: { $0.name.lowercased() == "campaigns" }) {
+                    if let button = self.segmentedControl.subviews.first(where: { $0.tag == index }) as? FAQSegmentedControlButton {
+                        segmentedControl.buttonPressed(sender: button)
+                    }
+                }
+            }
 
             self.tableView.reloadData()
         }
     }
+    
+    var shouldSelectCampaigns = false
 
-    class func instantiateFromStoryboard() -> FAQViewController {
+    class func instantiateFromStoryboard(shouldSelectCampaigns: Bool = false) -> FAQViewController {
         let storyboard = UIStoryboard(name: "FAQs", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "FAQViewController") as! FAQViewController
+        vc.shouldSelectCampaigns = shouldSelectCampaigns
+        return vc
     }
 
     override func viewDidLoad() {

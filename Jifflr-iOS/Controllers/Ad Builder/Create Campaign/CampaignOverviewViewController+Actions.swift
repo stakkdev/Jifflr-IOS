@@ -217,6 +217,12 @@ extension CampaignOverviewViewController {
             return
         }
         
+        guard user.details.campaignBalance != 0.0 else {
+            let vc = BalanceViewController.instantiateFromStoryboard(isWithdrawal: false)
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        
         guard CampaignManager.shared.canActivateCampaign(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget, userCampaignBalance: user.details.campaignBalance) else {
             self.handleInsufficientBalance(isActivation: true)
             return
@@ -227,6 +233,11 @@ extension CampaignOverviewViewController {
         
         self.activateButton.animate()
         self.campaign.saveInBackgroundAndPin { (error) in
+            guard error == nil else {
+                self.displayError(error: ErrorMessage.campaignActivationFailed)
+                return
+            }
+            
             user.saveAndPin(completion: { (error) in
                 self.activateButton.stopAnimating()
                 guard error == nil else {

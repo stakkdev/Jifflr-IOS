@@ -227,6 +227,9 @@ class CampaignOverviewViewController: BaseViewController {
         let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
         button.setTitle(title, for: .normal)
         button.sizeToFit()
+        
+        let buttonTitle = userDetails.campaignBalance != 0.0 ? "campaignOverview.activateButton.title".localized() : "campaignOverview.activateAndPayButton.title".localized()
+        self.activateButton.setTitle(buttonTitle, for: .normal)
     }
     
     func setupUIBasedOnStatus() {

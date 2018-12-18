@@ -273,7 +273,7 @@ class CreateTargetViewController: BaseViewController {
     }
     
     @IBAction func helpButtonPressed(sender: UIButton) {
-        self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(), animated: true)
+        self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(shouldSelectCampaigns: true), animated: true)
     }
     
     @IBAction func genderChanged(sender: UISegmentedControl) {

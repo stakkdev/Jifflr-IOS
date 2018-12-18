@@ -155,7 +155,11 @@ class FeedbackViewController: BaseViewController {
                 self.nextAdButton.stopAnimating()
                 
                 guard let object = object else {
-                    self.dismiss(animated: false, completion: nil)
+                    let title = ErrorMessage.noInternetConnection.failureTitle
+                    let message = ErrorMessage.noInternetConnection.failureDescription
+                    self.displayMessage(title: title, message: message, dismissText: nil, dismissAction: { (action) in
+                        self.dismiss(animated: false, completion: nil)
+                    })
                     return
                 }
                 

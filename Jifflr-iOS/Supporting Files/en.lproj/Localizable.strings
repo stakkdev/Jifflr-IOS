@@ -363,6 +363,7 @@
 "campaignOverview.estimatedCampaignCost.heading" = "Estimated Campaign Cost";
 "campaignOverview.budgetCoverage.heading" = "Budget Coverage";
 "campaignOverview.activateButton.title" = "ACTIVATE";
+"campaignOverview.activateAndPayButton.title" = "ACTIVATE AND PAY";
 "campaignOverview.days.monday" = "Mon";
 "campaignOverview.days.tuesday" = "Tue";
 "campaignOverview.days.wednesday" = "Wed";

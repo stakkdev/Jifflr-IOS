@@ -255,7 +255,7 @@ class CampaignManager: NSObject {
     }
     
     func isValidBalance(budgetViewValue: Double, campaignBudget: Double) -> Bool {
-        guard budgetViewValue > campaignBudget && budgetViewValue != 0.0 else {
+        guard budgetViewValue >= campaignBudget && budgetViewValue != 0.0 else {
             return false
         }
         
@@ -264,7 +264,7 @@ class CampaignManager: NSObject {
     
     func canActivateCampaign(budgetViewValue: Double, campaignBudget: Double, userCampaignBalance: Double) -> Bool {
         let budget = budgetViewValue - campaignBudget
-        guard userCampaignBalance > budget else {
+        guard userCampaignBalance >= budget else {
             return false
         }
         
