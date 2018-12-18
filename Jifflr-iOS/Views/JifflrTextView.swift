@@ -16,6 +16,8 @@ class JifflrTextView: UITextView {
         }
     }
     
+    var characterLimit: Int?
+    
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         
@@ -54,5 +56,32 @@ extension JifflrTextView: UITextViewDelegate {
             textView.text = self.placeholder
             textView.textColor = UIColor.greyPlaceholderColor
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if let characterLimit = self.characterLimit {
+            return textView.text.count < characterLimit || self.numberOfLines() <= 3 || text == ""
+        }
+        
+        return true
+    }
+}
+
+extension UITextView {
+    func numberOfLines() -> Int {
+        let layoutManager = self.layoutManager
+        let numberOfGlyphs = layoutManager.numberOfGlyphs
+        var lineRange: NSRange = NSMakeRange(0, 1)
+        var index = 0
+        var numberOfLines = 0
+        
+        while index < numberOfGlyphs {
+            layoutManager.lineFragmentRect(
+                forGlyphAt: index, effectiveRange: &lineRange
+            )
+            index = NSMaxRange(lineRange)
+            numberOfLines += 1
+        }
+        return numberOfLines
     }
 }

@@ -116,19 +116,16 @@ class UserManager: NSObject {
     }
 
     func login(withUsername username: String, password: String, completion: @escaping (PFUser?, ErrorMessage?) -> Void) {
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
-
-            guard let user = user, error == nil else {
-                if let error = error {
-                    completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                } else {
-                    completion(nil, ErrorMessage.unknown)
-                }
+        self.usernameAvailable(email: username) { (available, error) in
+            
+            guard let available = available, !available else {
+                completion(nil, ErrorMessage.loginNotRegistered)
                 return
             }
-
-            user.details.fetchInBackground(block: { (userDetails, error) in
-                guard let userDetails = userDetails as? UserDetails, error == nil else {
+            
+            PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+                
+                guard let user = user, error == nil else {
                     if let error = error {
                         completion(nil, ErrorMessage.parseError(error.localizedDescription))
                     } else {
@@ -137,34 +134,45 @@ class UserManager: NSObject {
                     return
                 }
                 
-                userDetails.gender.fetchInBackground(block: { (object, error) in
-                    guard let gender = object as? Gender, error == nil else {
-                        completion(nil, ErrorMessage.unknown)
+                user.details.fetchInBackground(block: { (userDetails, error) in
+                    guard let userDetails = userDetails as? UserDetails, error == nil else {
+                        if let error = error {
+                            completion(nil, ErrorMessage.parseError(error.localizedDescription))
+                        } else {
+                            completion(nil, ErrorMessage.unknown)
+                        }
                         return
                     }
-                        
-                    user.pinInBackground(block: { (succeeded, error) in
-                        if error != nil {
-                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                        } else {
-                            userDetails.pinInBackground(block: { (success, error) in
-                                if error != nil {
-                                    completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                                } else {
-                                    gender.pinInBackground(block: { (success, error) in
-                                        if error != nil {
-                                            completion(nil, ErrorMessage.parseError(error!.localizedDescription))
-                                        } else {
-                                            PFInstallation.registerUser(user: user)
-                                            completion(user, nil)
-                                        }
-                                    })
-                                }
-                            })
+                    
+                    userDetails.gender.fetchInBackground(block: { (object, error) in
+                        guard let gender = object as? Gender, error == nil else {
+                            completion(nil, ErrorMessage.unknown)
+                            return
                         }
+                        
+                        user.pinInBackground(block: { (succeeded, error) in
+                            if error != nil {
+                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                            } else {
+                                userDetails.pinInBackground(block: { (success, error) in
+                                    if error != nil {
+                                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                    } else {
+                                        gender.pinInBackground(block: { (success, error) in
+                                            if error != nil {
+                                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                            } else {
+                                                PFInstallation.registerUser(user: user)
+                                                completion(user, nil)
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     })
                 })
-            })
+            }
         }
     }
 

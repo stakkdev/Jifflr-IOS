@@ -80,6 +80,7 @@ public enum ErrorMessage {
     case invalidAnswersRequired
     case NoInternetConnectionRegistration
     case addEmailInvalid
+    case loginNotRegistered
 
     public var failureTitle: String {
         switch self {
@@ -93,6 +94,8 @@ public enum ErrorMessage {
             return "error.register.invalidField.title".localizedFormat(details)
         case .addEmailInvalid:
             return "addEmail.error.title".localized()
+        case .loginNotRegistered:
+            return "error.loginNotRegistered.title".localized()
         default:
             return "error.title".localized()
         }
@@ -238,6 +241,8 @@ public enum ErrorMessage {
             return "error.noInternetConnectionRegistration.message".localized()
         case .addEmailInvalid:
             return "addEmail.error.message".localized()
+        case .loginNotRegistered:
+            return "error.loginNotRegistered.message".localized()
         }
     }
 }

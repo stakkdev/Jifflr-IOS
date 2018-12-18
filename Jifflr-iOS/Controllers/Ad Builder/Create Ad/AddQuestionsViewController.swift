@@ -98,7 +98,8 @@ class AddQuestionsViewController: BaseViewController {
         self.previewButton.setBackgroundColor(color: UIColor.mainBlueTransparent80)
         
         self.questionTextView.textContainer.maximumNumberOfLines = 3
-        self.questionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        self.questionTextView.textContainer.lineBreakMode = .byWordWrapping
+        self.questionTextView.characterLimit = 50
         
         self.answersContainerView.isHidden = true
         self.urlsContainerView.isHidden = true

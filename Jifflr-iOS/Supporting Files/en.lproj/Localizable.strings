@@ -82,6 +82,8 @@
 "error.noAdsToModerate" = "There are currently no campaigns to moderate. Please try again later.";
 "error.noInternetConnectionRegistration.title" = "Error - No Internet Connection";
 "error.noInternetConnectionRegistration.message" = "Please check your internet connection and try again.";
+"error.loginNotRegistered.title" = "Error - Email not Registered";
+"error.loginNotRegistered.message" = "Email not found. Please ensure you have registered for an account using this email address.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
@@ -281,6 +283,7 @@
 "adBuilderNoAds.titleLabel.title" = "Hi %@";
 "adBuilderNoAds.descriptionLabel.title" = "Create your campaign content in 3 super easy steps. Have a play; you can rewrite it as many times as you like!";
 "adBuilderNoAds.becomeModeratorButton.title" = "BECOME A MODERATOR";
+"adBuilderNoAds.moderateCampaigns.title" = "MODERATE CAMPAIGNS";
 "adBuilderNoAds.createAdButton.title" = "CREATE CAMPAIGN CONTENT";
 "createAd.navigation.title" = "New Content";
 "createAd.titleLabel.title" = "Start Building your Content";

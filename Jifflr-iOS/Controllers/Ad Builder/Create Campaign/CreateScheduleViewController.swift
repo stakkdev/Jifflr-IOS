@@ -239,6 +239,9 @@ class CreateScheduleViewController: BaseViewController {
         guard let endDate = CampaignManager.shared.mergeDates(date: dateTo, time: timeTo) else { return false }
         guard endDate > startDate else { return false }
         
+        guard let minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) else { return false }
+        guard startDate >= minimumDate else { return false }
+        
         guard self.selectedDays.count > 0 else { return false }
         
         if let schedule = self.campaign?.schedule {

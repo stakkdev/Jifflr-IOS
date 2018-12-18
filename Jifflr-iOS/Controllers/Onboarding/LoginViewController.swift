@@ -77,6 +77,11 @@ class LoginViewController: BaseViewController {
     }
 
     @IBAction func loginButtonPressed(sender: UIButton) {
+        guard Reachability.isConnectedToNetwork() else {
+            self.displayError(error: ErrorMessage.NoInternetConnectionRegistration)
+            return
+        }
+        
         guard let email = self.emailTextField.text, !email.isEmpty, email.isEmail() else {
             self.displayError(error: ErrorMessage.loginFailed)
             return
@@ -100,7 +105,7 @@ class LoginViewController: BaseViewController {
             self.loginButton.stopAnimating()
             
             guard error == nil else {
-                self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
+                self.displayError(error: error)
                 return
             }
 

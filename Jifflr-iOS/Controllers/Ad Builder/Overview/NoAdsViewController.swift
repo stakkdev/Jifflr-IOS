@@ -61,21 +61,32 @@ class NoAdsViewController: BaseViewController {
     }
     
     func handleModeratorStatus() {
-        self.becomeModeratorButton.isHidden = true
-        self.becomeModeratorButton.isEnabled = false
-        
         guard let moderationStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
+        
         if moderationStatus == ModeratorStatusKey.isModerator {
-            self.becomeModeratorButton.isHidden = true
-            self.becomeModeratorButton.isEnabled = false
+            self.becomeModeratorButton.setTitle("adBuilderNoAds.moderateCampaigns.title".localized(), for: .normal)
         } else {
-            self.becomeModeratorButton.isHidden = false
-            self.becomeModeratorButton.isEnabled = true
+            self.becomeModeratorButton.setTitle("adBuilderNoAds.becomeModeratorButton.title".localized(), for: .normal)
         }
     }
     
     @IBAction func becomeModeratorPressed(sender: UIButton) {
-        self.navigationController?.pushViewController(ModerationTCsViewController.instantiateFromStoryboard(), animated: true)
+        guard let moderationStatus = Session.shared.currentUser?.details.moderatorStatus else { return }
+        if moderationStatus == ModeratorStatusKey.isModerator {
+            self.becomeModeratorButton.animate()
+            ModerationManager.shared.fetchCampaign { (campaign) in
+                self.becomeModeratorButton.stopAnimating()
+                guard let campaign = campaign else {
+                    self.displayError(error: ErrorMessage.noAdsToModerate)
+                    return
+                }
+                
+                let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            self.navigationController?.pushViewController(ModerationTCsViewController.instantiateFromStoryboard(), animated: true)
+        }
     }
     
     @IBAction func createAdPressed(sender: UIButton) {
