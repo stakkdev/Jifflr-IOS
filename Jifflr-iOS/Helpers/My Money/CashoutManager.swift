@@ -28,7 +28,7 @@ class CashoutManager: NSObject {
                 if let _ = error {
                     completion(ErrorMessage.cashoutFailed)
                 } else {
-                    completion(ErrorMessage.unknown)
+                    completion(ErrorMessage.cashoutFailed)
                 }
             }
         }

@@ -17,6 +17,10 @@ class BalanceViewController: BaseViewController {
     @IBOutlet weak var amountTextField: JifflrTextField!
     @IBOutlet weak var confirmButton: JifflrButton!
     
+    @IBOutlet weak var paypalEmailHeadingLabel: UILabel!
+    @IBOutlet weak var paypalEmailTextField: JifflrTextField!
+    @IBOutlet weak var currentBalanceHeadingLabelTop: NSLayoutConstraint!
+    
     var isWithdrawal = false
 
     class func instantiateFromStoryboard(isWithdrawal: Bool) -> BalanceViewController {
@@ -42,10 +46,22 @@ class BalanceViewController: BaseViewController {
         self.currentBalanceTextField.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
         self.currentBalanceTextField.isUserInteractionEnabled = false
         self.amountTextField.delegate = self
+        self.paypalEmailTextField.delegate = self
+        
+        if self.isWithdrawal {
+            self.currentBalanceHeadingLabelTop.constant = 150.0
+            self.paypalEmailTextField.isHidden = false
+            self.paypalEmailHeadingLabel.isHidden = false
+        } else {
+            self.currentBalanceHeadingLabelTop.constant = 10.0
+            self.paypalEmailTextField.isHidden = true
+            self.paypalEmailHeadingLabel.isHidden = true
+        }
         
         guard let user = Session.shared.currentUser else { return }
         self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
         self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+        self.paypalEmailTextField.text = user.details.campaignPayPalEmail
     }
     
     func setupLocalization() {
@@ -54,6 +70,8 @@ class BalanceViewController: BaseViewController {
         self.amountHeadingLabel.text = self.isWithdrawal ? "balanceWithdrawal.withdrawalAmount.heading".localized() : "balanceTopUp.topUpAmount.heading".localized()
         self.amountTextField.placeholder = self.isWithdrawal ? "balanceWithdrawal.withdrawalAmount.placeholder".localized() : "balanceTopUp.topUpAmount.placeholder".localized()
         self.confirmButton.setTitle("balanceWithdrawal.confirmButton.title".localized(), for: .normal)
+        self.paypalEmailHeadingLabel.text = "balanceWithdrawal.paypalEmail.heading".localized()
+        self.paypalEmailTextField.placeholder = "balanceWithdrawal.paypalEmail.placeholder".localized()
     }
     
     @IBAction func confirmButtonPressed(sender: JifflrButton) {
@@ -99,6 +117,7 @@ class BalanceViewController: BaseViewController {
     func validateWithdrawal() -> Bool {
         guard let user = Session.shared.currentUser else { return false }
         guard user.details.campaignBalance >= self.getAmount() else { return false }
+        guard let paypalEmail = self.paypalEmailTextField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else { return false }
         
         return true
     }
