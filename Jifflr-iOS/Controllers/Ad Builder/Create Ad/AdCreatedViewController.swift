@@ -54,6 +54,16 @@ class AdCreatedViewController: BaseViewController {
 
         AdBuilderManager.shared.saveAndPin(advert: self.advert, content: self.content) { (error) in
             sender.stopAnimating()
+            
+            if let url = MediaManager.shared.get(id: nil, fileExtension: "jpg") {
+                do {
+                    let data = try Data(contentsOf: url)
+                    guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else {
+                        self.displayError(error: ErrorMessage.mediaSaveFailed)
+                        return
+                    }
+                } catch { }
+            }
 
             guard error == nil else {
                 self.displayError(error: error)
