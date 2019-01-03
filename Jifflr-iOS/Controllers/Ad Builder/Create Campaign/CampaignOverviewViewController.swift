@@ -280,8 +280,12 @@ class CampaignOverviewViewController: BaseViewController {
         switch status {
         case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
+            self.campaignResultsButton.isEnabled = false
+            self.campaignResultsButton.setBackgroundColor(color: UIColor.mainPinkTransparent50)
+            self.copyCampaignButton.isEnabled = false
+            self.copyCampaignButton.setBackgroundColor(color: UIColor.mainOrangeTransparent50)
         case CampaignStatusKey.pendingModeration:
-            self.drawCircle(color: UIColor.mainGreen)
+            self.setTimerImage(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)
         case CampaignStatusKey.inactive:

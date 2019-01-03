@@ -37,7 +37,7 @@ class AdvertCell: UITableViewCell {
         case CampaignStatusKey.availableActive:
             self.drawCircle(color: UIColor.mainGreen)
         case CampaignStatusKey.pendingModeration:
-            self.drawCircle(color: UIColor.mainGreen)
+            self.setTimerImage(color: UIColor.mainGreen)
         case CampaignStatusKey.availableScheduled:
             self.setTimerImage(color: UIColor.mainGreen)
         case CampaignStatusKey.inactive:
