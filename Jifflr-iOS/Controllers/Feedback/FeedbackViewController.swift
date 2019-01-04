@@ -34,7 +34,7 @@ class FeedbackViewController: BaseViewController {
         
         switch self.mode {
         case AdViewMode.normal:
-            self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            self.timer = Timer.scheduledTimer(withTimeInterval: UserDefaultsManager.shared.questionDuration(), repeats: false, block: { (timer) in
                 self.nextAdButton.isEnabled = true
                 
                 UIView.animate(withDuration: 0.2, animations: {

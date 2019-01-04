@@ -204,6 +204,8 @@ class DashboardViewController: BaseViewController {
                 group.leave()
             }
             
+            AppSettingsManager.shared.updateQuestionDuration()
+            
             group.notify(queue: .main) {
                 if !UserDefaultsManager.shared.firstLoadComplete() {
                     MBProgressHUD.hide(for: self.view, animated: true)

@@ -20,6 +20,15 @@ final class AppSettings: PFObject {
             self["canBecomeModerator"] = newValue
         }
     }
+    
+    var questionDuration: Int {
+        get {
+            return self["questionDuration"] as? Int ?? 5
+        }
+        set {
+            self["questionDuration"] = newValue
+        }
+    }
 }
 
 extension AppSettings: PFSubclassing {

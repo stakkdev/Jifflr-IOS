@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
+        
+        UserDefaultsManager.shared.setQuestionDuration(time: 5)
 
         if UserDefaultsManager.shared.crashTrackerOn() {
             Fabric.with([Crashlytics.self])

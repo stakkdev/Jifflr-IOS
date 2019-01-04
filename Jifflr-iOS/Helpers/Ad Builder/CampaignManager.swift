@@ -132,7 +132,7 @@ class CampaignManager: NSObject {
                 return
             }
             
-            let costPerView = (Double(locationFinancial.cpmRateCMS) / 1000.0) / 100.0
+            let costPerView = Double(locationFinancial.cpmRateCMS) / 1000.0
             
             completion(costPerView, locationFinancial)
         })

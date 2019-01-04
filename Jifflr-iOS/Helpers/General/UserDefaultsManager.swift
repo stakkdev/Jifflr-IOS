@@ -55,4 +55,13 @@ class UserDefaultsManager: NSObject {
     func setfirstLoadComplete(on: Bool) {
         UserDefaults.standard.set(on, forKey: "firstLoadComplete")
     }
+    
+    func questionDuration() -> Double {
+        let time = UserDefaults.standard.integer(forKey: "questionDuration")
+        return Double(time)
+    }
+    
+    func setQuestionDuration(time: Int) {
+        UserDefaults.standard.set(time, forKey: "questionDuration")
+    }
 }

@@ -25,4 +25,12 @@ class AppSettingsManager: NSObject {
             }
         }
     }
+    
+    func updateQuestionDuration() {
+        let query = AppSettings.query()
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let appSettings = object as? AppSettings, error == nil else { return }
+            UserDefaultsManager.shared.setQuestionDuration(time: appSettings.questionDuration)
+        })
+    }
 }

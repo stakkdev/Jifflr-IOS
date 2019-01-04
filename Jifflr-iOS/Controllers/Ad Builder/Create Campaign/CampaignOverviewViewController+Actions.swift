@@ -55,7 +55,7 @@ extension CampaignOverviewViewController {
                 
                 self.updateBalanceButton()
                 
-                let alert = AlertMessage.increaseBudgetSuccess
+                let alert = difference > 0 ? AlertMessage.increaseBudgetSuccess : AlertMessage.campaignUpdated
                 self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
             })
         }
