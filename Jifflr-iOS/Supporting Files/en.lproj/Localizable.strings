@@ -35,7 +35,8 @@
 "error.inviteSendFailed" = "Unable to send invite. Please check your internet connection and try again.";
 "error.locationFailed" = "Unable to fetch location. Please check your internet connection and try again.";
 "error.unknown" = "An unknown error occured.";
-"error.cashoutFailed" = "Unable to cashout. Please check your internet connection and try again.";
+"error.cashoutFailed" = "Your cash out failed. Please try again.";
+"error.cashoutFailedInternet" = "Your cash out failed. Please ensure you have an internet connection and try again.";
 "error.invalidPayPalEmail" = "Invalid PayPal email address. Please ensure you have entered a valid PayPal email address.";
 "error.invalidCashoutPassword" = "Invalid Jifflr account password. Please confirm your Jifflr account password.";
 "error.paypalEmailSaveFailed" = "Unable to save PayPal email address. Please check your internet connection and try again.";

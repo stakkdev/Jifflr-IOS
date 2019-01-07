@@ -165,6 +165,7 @@ class CampaignOverviewViewController: BaseViewController {
         self.handleStatus(status: self.campaign.status)
         self.genderLabel.text = demographic.gender?.name ?? "createTarget.gender.all".localized()
         self.locationLabel.text = demographic.location.name
+        self.languageLabel.text = demographic.language.name
         
         if let schedule = self.campaign.schedule {
             self.dateLabel.text = CampaignManager.shared.startEndDateString(schedule: schedule)
@@ -182,7 +183,7 @@ class CampaignOverviewViewController: BaseViewController {
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
         self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
         
-        self.budgetView.value = self.campaign.budget
+        self.budgetView.value = self.campaign.balance
         
         var budgetCoverage = 0.0
         if self.budgetView.value != 0.0 && demographic.estimatedAudience != 0 {

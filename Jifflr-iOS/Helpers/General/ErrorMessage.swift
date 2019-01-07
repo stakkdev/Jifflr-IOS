@@ -81,6 +81,7 @@ public enum ErrorMessage {
     case NoInternetConnectionRegistration
     case addEmailInvalid
     case loginNotRegistered
+    case cashoutFailedInternet
 
     public var failureTitle: String {
         switch self {
@@ -151,6 +152,8 @@ public enum ErrorMessage {
             return "error.inviteSendFailed".localized()
         case .cashoutFailed:
             return "error.cashoutFailed".localized()
+        case .cashoutFailedInternet:
+            return "error.cashoutFailedInternet".localized()
         case .invalidPayPalEmail:
             return "error.invalidPayPalEmail".localized()
         case .invalidCashoutPassword:

@@ -14,6 +14,11 @@ class CashoutManager: NSObject {
 
     func cashout(password: String, completion: @escaping (ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
+        
+        guard Reachability.isConnectedToNetwork() else {
+            completion(ErrorMessage.cashoutFailedInternet)
+            return
+        }
 
         PFCloud.callFunction(inBackground: "cash-out", withParameters: ["user": user.objectId!, "password": password]) { responseJSON, error in
             if let success = responseJSON as? Bool, error == nil {
