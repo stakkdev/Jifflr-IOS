@@ -52,9 +52,11 @@ class JifflrButton: UIButton {
         self.originalColor = self.titleColor(for: .normal)
         self.setTitleColor(UIColor.clear, for: .normal)
         self.activity.startAnimating()
+        self.isEnabled = false
     }
 
     func stopAnimating() {
+        self.isEnabled = true
         self.activity.stopAnimating()
 
         if let color = self.originalColor {

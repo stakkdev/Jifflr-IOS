@@ -92,14 +92,19 @@ class LoginViewController: BaseViewController {
             return
         }
         
-        if Session.shared.currentLocation != nil {
-            guard Session.shared.currentLocation?.locationStatus.type != LocationStatusType.Disabled else {
-                self.displayError(error: ErrorMessage.blockedCountry)
-                return
-            }
-        }
-
         self.loginButton.animate()
+        
+        if Session.shared.currentLocation != nil {
+            do {
+                try Session.shared.currentLocation?.fetch()
+                try Session.shared.currentLocation?.locationStatus.fetch()
+                guard Session.shared.currentLocation?.locationStatus.type != LocationStatusType.Disabled else {
+                    self.displayError(error: ErrorMessage.blockedCountry)
+                    self.loginButton.animate()
+                    return
+                }
+            } catch { }
+        }
 
         UserManager.shared.login(withUsername: email, password: password) { (_, error) in
             self.loginButton.stopAnimating()

@@ -120,6 +120,12 @@ extension MyMoneyViewController: CashoutCellDelegate {
             self.displayError(error: ErrorMessage.invalidPayPalEmail)
             return
         }
+        
+        guard Reachability.isConnectedToNetwork() else {
+            cell.stopAnimating()
+            self.displayError(error: ErrorMessage.cashoutFailedInternet)
+            return
+        }
 
         currentUser.details.paypalEmail = paypalEmail
         currentUser.details.saveInBackground { (success, error) in

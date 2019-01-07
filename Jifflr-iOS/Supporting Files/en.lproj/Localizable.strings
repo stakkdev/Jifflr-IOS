@@ -37,7 +37,7 @@
 "error.unknown" = "An unknown error occured.";
 "error.cashoutFailed" = "Your cash out failed. Please try again.";
 "error.cashoutFailedInternet" = "Your cash out failed. Please ensure you have an internet connection and try again.";
-"error.invalidPayPalEmail" = "Invalid PayPal email address. Please ensure you have entered a valid PayPal email address.";
+"error.invalidPayPalEmail" = "No PayPal account was found with your email address. Please ensure the email address is used with PayPal.";
 "error.invalidCashoutPassword" = "Invalid Jifflr account password. Please confirm your Jifflr account password.";
 "error.paypalEmailSaveFailed" = "Unable to save PayPal email address. Please check your internet connection and try again.";
 "error.admobFetchFailed" = "Unable to fetch campaigns. Please check your internet connection and try again.";
