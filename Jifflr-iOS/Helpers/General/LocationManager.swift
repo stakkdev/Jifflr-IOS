@@ -70,16 +70,17 @@ class LocationManager: NSObject {
     
     func fetchLocalLocation(completion: @escaping (Location?) -> Void) {
         let query = Location.query()
-        query?.fromPin(withName: self.pinName)
+        query?.fromPin()
         query?.includeKey("locationStatus")
-        query?.getFirstObjectInBackground(block: { (location, error) in
-            guard let location = location as? Location, error == nil else {
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let location = objects?.first as? Location, error == nil else {
                 completion(nil)
                 return
             }
             
             Session.shared.currentLocation = location
             self.rootBasedOnLocation(location: location)
+            completion(location)
         })
     }
 
@@ -94,8 +95,8 @@ class LocationManager: NSObject {
             }
             
             PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
-                country.pinInBackground(withName: self.pinName, block: { (success, error) in
-                    country.locationStatus.pinInBackground(withName: self.pinName, block: { (success, error) in
+                country.locationStatus.pinInBackground(withName: self.pinName, block: { (success, error) in
+                    country.pinInBackground(withName: self.pinName, block: { (success, error) in
                         print("Country Pinned: \(success)")
                     })
                 })
@@ -130,17 +131,24 @@ class LocationManager: NSObject {
         
         Session.shared.currentLocation = location
         
-        switch location.locationStatus.type {
-        case LocationStatusType.Active:
-            print("Location (\(location.name)) is active.")
-            return
-        case LocationStatusType.Disabled:
-            self.rootBasedOnBlockedlocation()
-        case LocationStatusType.AllowCashOut:
-            print("Location (\(location.name)) allows cash out.")
-            return
-        default:
-            return
+        do {
+            try location.fetchIfNeeded()
+            try location.locationStatus.fetchIfNeeded()
+            
+            switch location.locationStatus.type {
+            case LocationStatusType.Active:
+                print("Location (\(location.name)) is active.")
+                return
+            case LocationStatusType.Disabled:
+                self.rootBasedOnBlockedlocation()
+            case LocationStatusType.AllowCashOut:
+                print("Location (\(location.name)) allows cash out.")
+                return
+            default:
+                return
+            }
+        } catch {
+            
         }
     }
     

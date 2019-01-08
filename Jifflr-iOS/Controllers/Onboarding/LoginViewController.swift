@@ -100,7 +100,7 @@ class LoginViewController: BaseViewController {
                 try Session.shared.currentLocation?.locationStatus.fetch()
                 guard Session.shared.currentLocation?.locationStatus.type != LocationStatusType.Disabled else {
                     self.displayError(error: ErrorMessage.blockedCountry)
-                    self.loginButton.animate()
+                    self.loginButton.stopAnimating()
                     return
                 }
             } catch { }
