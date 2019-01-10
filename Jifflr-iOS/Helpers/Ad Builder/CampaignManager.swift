@@ -350,4 +350,18 @@ class CampaignManager: NSObject {
             }
         }
     }
+    
+    func getAdSubmissionFee(demographic: Demographic, completion: @escaping (Int) -> Void ) {
+        let query = LocationFinancial.query()
+        query?.whereKey("location", equalTo: demographic.location)
+        query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
+            guard let locationFinancial = locationFinancial as? LocationFinancial, error == nil else {
+                completion(2)
+                return
+            }
+            
+            let adSubmissionFee = locationFinancial.adSubmissionFee / 100
+            completion(adSubmissionFee)
+        })
+    }
 }

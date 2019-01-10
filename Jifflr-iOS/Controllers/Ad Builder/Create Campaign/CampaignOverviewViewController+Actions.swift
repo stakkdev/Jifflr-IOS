@@ -240,21 +240,35 @@ extension CampaignOverviewViewController {
             self.activateButton.animate()
             self.campaign.saveInBackgroundAndPin { (error) in
                 guard error == nil else {
+                    self.activateButton.stopAnimating()
                     self.displayError(error: ErrorMessage.campaignActivationFailed)
                     return
                 }
                 
-                user.saveAndPin(completion: { (error) in
-                    self.activateButton.stopAnimating()
-                    guard error == nil else {
+                self.campaign.fetchInBackground(block: { (campaign, error) in
+                    guard let campaign = campaign as? Campaign, error == nil else {
+                        self.activateButton.stopAnimating()
                         self.displayError(error: ErrorMessage.campaignActivationFailed)
                         return
                     }
                     
-                    self.updateBalanceButton()
-                    self.handleStatus(status: self.campaign.status)
-                    self.setupUIBasedOnStatus()
-                    self.updateNavigationStackAfterActivation()
+                    self.campaign = campaign
+                    
+                    user.saveAndPin(completion: { (error) in
+                        self.activateButton.stopAnimating()
+                        guard error == nil else {
+                            self.displayError(error: ErrorMessage.campaignActivationFailed)
+                            return
+                        }
+                        
+                        self.setupData()
+                        self.updateBalanceButton()
+                        self.handleStatus(status: self.campaign.status)
+                        self.setupUIBasedOnStatus()
+                        self.updateNavigationStackAfterActivation()
+                    })
+                    
+                    campaign.pinInBackground(withName: CampaignManager.shared.pinName)
                 })
             }
         }
@@ -263,9 +277,18 @@ extension CampaignOverviewViewController {
     func updateNavigationStackAfterActivation() {
         guard let viewControllers = self.navigationController?.viewControllers else { return }
         guard let dashboardViewController = viewControllers.first as? DashboardViewController else { return }
-        guard let adBuilderLandingViewController = viewControllers[1] as? AdBuilderLandingViewController else { return }
+        
+        var vc: UIViewController!
+        if let noAds = viewControllers[1] as? NoAdsViewController {
+            vc = noAds
+        } else if let adBuilder = viewControllers[1] as? AdBuilderOverviewViewController {
+            vc = adBuilder
+        } else {
+            return
+        }
+
         guard let campaignOverviewViewController = viewControllers.last as? CampaignOverviewViewController else { return }
-        let newViewControllers = [dashboardViewController, adBuilderLandingViewController, campaignOverviewViewController]
+        let newViewControllers = [dashboardViewController, vc!, campaignOverviewViewController]
         self.navigationController?.setViewControllers(newViewControllers, animated: true)
     }
     

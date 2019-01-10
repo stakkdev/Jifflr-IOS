@@ -62,6 +62,7 @@ class CampaignOverviewViewController: BaseViewController {
     @IBOutlet var activatedViewBottom: NSLayoutConstraint!
     
     var campaign: Campaign!
+    var adSubmissionFee = 5
 
     class func instantiateFromStoryboard(campaign: Campaign) -> CampaignOverviewViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -185,19 +186,33 @@ class CampaignOverviewViewController: BaseViewController {
         
         self.budgetView.value = self.campaign.balance
         
-        var budgetCoverage = 0.0
-        if self.budgetView.value != 0.0 && demographic.estimatedAudience != 0 {
-            let noOfViews = self.campaign.budget / self.campaign.costPerView
-            budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
-            budgetCoverage *= 100
-        }
-        self.budgetCoverageLabel.text = "\(budgetCoverage.toInt())%"
-        
         self.campaignNumberLabel.text = "C# \(self.campaign.number)"
         self.campaignNumberLabel.isHidden = self.campaign.number == 0
         self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
         self.updateBalanceButton()
+        
+        CampaignManager.shared.getAdSubmissionFee(demographic: demographic) { (adSubmissionFee) in
+            self.adSubmissionFee = adSubmissionFee
+            
+            let val = self.campaign.objectId == nil ? self.campaign.balance - Double(self.adSubmissionFee) : self.campaign.balance
+            
+            guard val > 0 else {
+                self.budgetCoverageLabel.text = "0%"
+                return
+            }
+            
+            let noOfViews = val / self.campaign.costPerView
+            
+            guard demographic.estimatedAudience != 0 else {
+                self.budgetCoverageLabel.text = "0%"
+                return
+            }
+            
+            var budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
+            budgetCoverage *= 100
+            self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        }
     }
     
     func formatCostPerView() -> String {
@@ -350,7 +365,14 @@ class CampaignOverviewViewController: BaseViewController {
 extension CampaignOverviewViewController: BudgetViewDelegate {
     func valueChanged(value: Double) {
         guard let demographic = self.campaign.demographic else { return }
-        let noOfViews = value / self.campaign.costPerView
+        let val = self.campaign.objectId == nil ? value - Double(self.adSubmissionFee) : value
+        
+        guard val > 0 else {
+            self.budgetCoverageLabel.text = "0%"
+            return
+        }
+        
+        let noOfViews = val / self.campaign.costPerView
         
         guard demographic.estimatedAudience != 0 else {
             self.budgetCoverageLabel.text = "0%"
