@@ -270,6 +270,11 @@ class DashboardViewController: BaseViewController {
                 self.displayError(error: ErrorMessage.blockedCountry)
                 return
             }
+            
+            guard AppSettingsManager.shared.canViewAds else {
+                self.displayError(error: ErrorMessage.maxCampaignsLimitReached)
+                return
+            }
 
             if let campaign = self.campaign {
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))

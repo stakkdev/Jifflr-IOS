@@ -277,6 +277,11 @@ class CampaignOverviewViewController: BaseViewController {
             self.drawCircle(color: UIColor.inactiveAdvertGrey)
             return
         }
+        
+        self.campaignResultsButton.isEnabled = true
+        self.campaignResultsButton.setBackgroundColor(color: UIColor.mainPink)
+        self.copyCampaignButton.isEnabled = true
+        self.copyCampaignButton.setBackgroundColor(color: UIColor.mainOrange)
 
         switch status {
         case CampaignStatusKey.availableActive:

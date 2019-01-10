@@ -254,12 +254,28 @@ class CampaignManager: NSObject {
         }
     }
     
-    func isValidBalance(budgetViewValue: Double, campaignBudget: Double) -> Bool {
-        guard budgetViewValue >= campaignBudget && budgetViewValue != 0.0 else {
-            return false
+    func isValidBalance(balance: Double, campaign: Campaign, completion: @escaping (Bool, ErrorMessage?) -> Void ) {
+        guard balance >= campaign.budget && balance != 0.0 else {
+            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance)
+            return
         }
         
-        return true
+        guard let location = campaign.demographic?.location else {
+            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance)
+            return
+        }
+        
+        let query = LocationFinancial.query()
+        query?.whereKey("location", equalTo: location)
+        query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
+            guard let locationFinancial = locationFinancial as? LocationFinancial, error == nil else {
+                completion(false, ErrorMessage.budgetLessThanAdSubmissionFee)
+                return
+            }
+            
+            let valid = balance > Double(locationFinancial.adSubmissionFee / 100)
+            completion(valid, valid ? nil : ErrorMessage.budgetLessThanAdSubmissionFee)
+        })
     }
     
     func canActivateCampaign(budgetViewValue: Double, campaignBudget: Double, userCampaignBalance: Double) -> Bool {

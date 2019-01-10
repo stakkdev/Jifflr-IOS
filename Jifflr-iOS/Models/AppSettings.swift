@@ -29,6 +29,15 @@ final class AppSettings: PFObject {
             self["questionDuration"] = newValue
         }
     }
+    
+    var adsSeenCap: Int {
+        get {
+            return self["adsSeenCap"] as? Int ?? 1200
+        }
+        set {
+            self["adsSeenCap"] = newValue
+        }
+    }
 }
 
 extension AppSettings: PFSubclassing {

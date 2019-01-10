@@ -12,6 +12,8 @@ import Parse
 class AppSettingsManager: NSObject {
     static let shared = AppSettingsManager()
     
+    var canViewAds = true
+    
     func canBecomeModerator(completion: @escaping (Bool) -> Void) {
         PFCloud.callFunction(inBackground: "can-become-moderator", withParameters: [:]) { responseJSON, error in
             if let responseJSON = responseJSON as? [String: Bool], error == nil {
@@ -31,6 +33,17 @@ class AppSettingsManager: NSObject {
         query?.getFirstObjectInBackground(block: { (object, error) in
             guard let appSettings = object as? AppSettings, error == nil else { return }
             UserDefaultsManager.shared.setQuestionDuration(time: appSettings.questionDuration)
+        })
+    }
+    
+    func canViewAds(currentCount: Int, completion: @escaping (Bool) -> Void) {
+        let query = AppSettings.query()
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let appSettings = object as? AppSettings, error == nil else { return }
+            
+            self.canViewAds = currentCount < appSettings.adsSeenCap
+            completion(self.canViewAds)
+            return
         })
     }
 }

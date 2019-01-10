@@ -29,6 +29,12 @@ final class LocationFinancial: PFObject {
             return self["cpmRateExternal"] as! Int
         }
     }
+    
+    var adSubmissionFee: Int {
+        get {
+            return self["adSubmissionFee"] as! Int
+        }
+    }
 }
 
 extension LocationFinancial: PFSubclassing {

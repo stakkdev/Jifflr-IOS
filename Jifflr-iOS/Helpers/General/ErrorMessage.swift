@@ -82,6 +82,8 @@ public enum ErrorMessage {
     case addEmailInvalid
     case loginNotRegistered
     case cashoutFailedInternet
+    case maxCampaignsLimitReached
+    case budgetLessThanAdSubmissionFee
 
     public var failureTitle: String {
         switch self {
@@ -246,6 +248,10 @@ public enum ErrorMessage {
             return "addEmail.error.message".localized()
         case .loginNotRegistered:
             return "error.loginNotRegistered.message".localized()
+        case .maxCampaignsLimitReached:
+            return "error.maxCampaignsLimitReached.message".localized()
+        case .budgetLessThanAdSubmissionFee:
+            return "error.budgetLessThanAdSubmissionFee.message".localized()
         }
     }
 }

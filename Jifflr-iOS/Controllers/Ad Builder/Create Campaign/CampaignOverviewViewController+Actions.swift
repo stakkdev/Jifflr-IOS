@@ -212,44 +212,51 @@ extension CampaignOverviewViewController {
         
         self.campaign.budget = 0.0
         
-        guard CampaignManager.shared.isValidBalance(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget) else {
-            self.displayError(error: ErrorMessage.campaignActivationFailedInvalidBalance)
-            return
-        }
-        
-        guard user.details.campaignBalance != 0.0 else {
-            let vc = BalanceViewController.instantiateFromStoryboard(isWithdrawal: false)
-            self.navigationController?.pushViewController(vc, animated: true)
-            return
-        }
-        
-        guard CampaignManager.shared.canActivateCampaign(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget, userCampaignBalance: user.details.campaignBalance) else {
-            self.handleInsufficientBalance(isActivation: true)
-            return
-        }
-        
-        let budget = self.budgetView.value - self.campaign.budget
-        CampaignManager.shared.activateCampaign(user: user, campaign: self.campaign, budget: budget)
-        
         self.activateButton.animate()
-        self.campaign.saveInBackgroundAndPin { (error) in
-            guard error == nil else {
-                self.displayError(error: ErrorMessage.campaignActivationFailed)
+        
+        CampaignManager.shared.isValidBalance(balance: self.budgetView.value, campaign: self.campaign) { (valid, error) in
+            guard valid == true, error == nil else {
+                self.activateButton.stopAnimating()
+                self.displayError(error: error)
                 return
             }
             
-            user.saveAndPin(completion: { (error) in
+            guard user.details.campaignBalance != 0.0 else {
                 self.activateButton.stopAnimating()
+                let vc = BalanceViewController.instantiateFromStoryboard(isWithdrawal: false)
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+            
+            guard CampaignManager.shared.canActivateCampaign(budgetViewValue: self.budgetView.value, campaignBudget: self.campaign.budget, userCampaignBalance: user.details.campaignBalance) else {
+                self.activateButton.stopAnimating()
+                self.handleInsufficientBalance(isActivation: true)
+                return
+            }
+            
+            let budget = self.budgetView.value - self.campaign.budget
+            CampaignManager.shared.activateCampaign(user: user, campaign: self.campaign, budget: budget)
+            
+            self.activateButton.animate()
+            self.campaign.saveInBackgroundAndPin { (error) in
                 guard error == nil else {
                     self.displayError(error: ErrorMessage.campaignActivationFailed)
                     return
                 }
                 
-                self.updateBalanceButton()
-                self.handleStatus(status: self.campaign.status)
-                self.setupUIBasedOnStatus()
-                self.updateNavigationStackAfterActivation()
-            })
+                user.saveAndPin(completion: { (error) in
+                    self.activateButton.stopAnimating()
+                    guard error == nil else {
+                        self.displayError(error: ErrorMessage.campaignActivationFailed)
+                        return
+                    }
+                    
+                    self.updateBalanceButton()
+                    self.handleStatus(status: self.campaign.status)
+                    self.setupUIBasedOnStatus()
+                    self.updateNavigationStackAfterActivation()
+                })
+            }
         }
     }
     
