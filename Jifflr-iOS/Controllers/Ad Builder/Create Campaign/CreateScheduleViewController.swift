@@ -40,6 +40,7 @@ class CreateScheduleViewController: BaseViewController {
 
     var days = ["M", "T", "W", "T", "F", "S", "S"]
     var selectedDays:[Int] = []
+    var availableDays:[Int] = []
     
     var isEdit = false
     var campaign: Campaign?
@@ -82,9 +83,11 @@ class CreateScheduleViewController: BaseViewController {
         self.dateFromTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateFromTextField.minimumDate = true
         self.dateFromTextField.dateFormat = "dd/MM/yy"
+        self.dateFromTextField.delegate = self
         self.dateToTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateToTextField.minimumDate = true
         self.dateToTextField.dateFormat = "dd/MM/yy"
+        self.dateToTextField.delegate = self
         self.timeFromTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
         self.timeFromTextField.minimumDate = false
         self.timeFromTextField.dateFormat = "HH:mm"
@@ -266,6 +269,56 @@ class CreateScheduleViewController: BaseViewController {
     @IBAction func helpButtonPressed(sender: UIButton) {
         self.navigationController?.pushViewController(FAQViewController.instantiateFromStoryboard(shouldSelectCampaigns: true), animated: true)
     }
+    
+    func getDaysBetweenDates() {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = self.dateFromTextField.dateFormat
+        guard let startDate = dateFormatter.date(from: self.dateFromTextField.text!) else { return }
+        
+        dateFormatter.dateFormat = self.dateToTextField.dateFormat
+        guard let endDate = dateFormatter.date(from: self.dateToTextField.text!) else { return }
+        
+        guard let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day else { return }
+        guard numberOfDays > 0 else {
+            self.availableDays = []
+            self.collectionView.reloadData()
+            return
+        }
+        
+        dateFormatter.dateFormat = "EEEE"
+        let startDay = dateFormatter.string(from: startDate)
+        let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        self.availableDays = []
+        
+        if let index = days.firstIndex(where: { $0 == startDay }) {
+            self.availableDays.append(index)
+            let startingIndex = index + 1
+            let endIndex = startingIndex + numberOfDays - 1
+            for i in startingIndex...endIndex {
+                if !self.availableDays.contains(i) && i < 7  {
+                    self.availableDays.append(i)
+                }
+            }
+            
+            let overlap = numberOfDays - (7 - startingIndex) - 1
+            if overlap >= 0 {
+                for i in 0...overlap {
+                    if !self.availableDays.contains(i) && i < 7 {
+                        self.availableDays.append(i)
+                    }
+                }
+            }
+        }
+        
+        self.collectionView.reloadData()
+    }
+}
+
+extension CreateScheduleViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.getDaysBetweenDates()
+    }
 }
 
 extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -284,10 +337,25 @@ extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionVi
         if let schedule = self.campaign?.schedule {
             let value = schedule.daysOfWeek
             let resultArray = Days.all.map { $0 & value }
-            if resultArray[indexPath.row] != 0 {
-                self.setCellSelected(cell: cell, indexPath: indexPath)
+            
+            if self.availableDays.contains(indexPath.row) {
+                if resultArray[indexPath.row] != 0 {
+                    self.setCellSelected(cell: cell, indexPath: indexPath)
+                } else {
+                    self.setCellUnselected(cell: cell, indexPath: indexPath)
+                }
             } else {
-                self.setCellUnselected(cell: cell, indexPath: indexPath)
+                self.setCellNotAvailable(cell: cell, indexPath: indexPath)
+            }
+        } else {
+            if !self.availableDays.contains(indexPath.row) {
+                self.setCellNotAvailable(cell: cell, indexPath: indexPath)
+            } else {
+                if !self.selectedDays.contains(indexPath.row) {
+                    self.setCellUnselected(cell: cell, indexPath: indexPath)
+                } else {
+                    self.setCellSelected(cell: cell, indexPath: indexPath)
+                }
             }
         }
         
@@ -320,8 +388,11 @@ extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionVi
         cell.roundedView.backgroundColor = UIColor.mainOrange
         cell.titleLabel.textColor = UIColor.white
         cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBold, size: 20.0)
+        cell.isUserInteractionEnabled = true
         
-        self.selectedDays.append(indexPath.row)
+        if !self.selectedDays.contains(indexPath.row) {
+            self.selectedDays.append(indexPath.row)
+        }
     }
     
     func setCellUnselected(cell: DayCell, indexPath: IndexPath) {
@@ -329,9 +400,26 @@ extension CreateScheduleViewController: UICollectionViewDelegate, UICollectionVi
         cell.roundedView.backgroundColor = UIColor.white
         cell.titleLabel.textColor = UIColor.mainBlue
         cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
+        cell.isUserInteractionEnabled = true
         
         if let index = self.selectedDays.index(of: indexPath.row) {
             self.selectedDays.remove(at: index)
+        }
+    }
+    
+    func setCellNotAvailable(cell: DayCell, indexPath: IndexPath) {
+        cell.roundedView.tag = 0
+        cell.roundedView.backgroundColor = UIColor.mainWhiteTransparent40
+        cell.titleLabel.textColor = UIColor.mainBlue
+        cell.titleLabel.font = UIFont(name: Constants.FontNames.GothamBook, size: 20.0)
+        cell.isUserInteractionEnabled = false
+        
+        for day in self.selectedDays {
+            if !self.availableDays.contains(day) {
+                if let deleteIndex = self.selectedDays.firstIndex(of: day) {
+                    self.selectedDays.remove(at: deleteIndex)
+                }
+            }
         }
     }
 }

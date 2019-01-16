@@ -137,6 +137,9 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Members" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-Pn-cEZ">
                                                             <rect key="frame" x="245.5" y="19" width="73.5" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73.5" id="zA7-VQ-UJQ"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="12"/>
                                                             <color key="textColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -209,6 +212,9 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CODE: 123456" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri9-Lj-3xQ">
                                                             <rect key="frame" x="231.5" y="19" width="87.5" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="QR7-JN-qDU"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="12"/>
                                                             <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>

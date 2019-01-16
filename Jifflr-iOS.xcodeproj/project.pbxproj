@@ -40,6 +40,7 @@
 		1A642A7E207E3ED400474598 /* MyAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7D207E3ED400474598 /* MyAdsManager.swift */; };
 		1A642A80207E445300474598 /* MyAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A7F207E445300474598 /* MyAds.swift */; };
 		1A642A82207E6CD500474598 /* BarChartPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A642A81207E6CD500474598 /* BarChartPoint.swift */; };
+		1A6A2F8C21EE244E00B84310 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A2F8B21EE244E00B84310 /* LoadingViewController.swift */; };
 		1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */; };
 		1A7F2384209B054000718521 /* NonComplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7F2383209B054000718521 /* NonComplianceCell.swift */; };
 		1A9654EF207383E100F9DCF3 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9654EE207383E100F9DCF3 /* OrientationManager.swift */; };
@@ -262,6 +263,7 @@
 		1A642A7D207E3ED400474598 /* MyAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAdsManager.swift; path = "Helpers/Ad Builder/MyAdsManager.swift"; sourceTree = "<group>"; };
 		1A642A7F207E445300474598 /* MyAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAds.swift; path = "Models/Local Models/MyAds.swift"; sourceTree = "<group>"; };
 		1A642A81207E6CD500474598 /* BarChartPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BarChartPoint.swift; path = "Models/Local Models/BarChartPoint.swift"; sourceTree = "<group>"; };
+		1A6A2F8B21EE244E00B84310 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingViewController.swift; path = "Controllers/Play Advert/LoadingViewController.swift"; sourceTree = "<group>"; };
 		1A7F2381209AFBB700718521 /* NonComplianceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceViewController.swift; path = Controllers/Moderation/NonComplianceViewController.swift; sourceTree = "<group>"; };
 		1A7F2383209B054000718521 /* NonComplianceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonComplianceCell.swift; path = Controllers/Moderation/Cells/NonComplianceCell.swift; sourceTree = "<group>"; };
 		1A9654EE207383E100F9DCF3 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrientationManager.swift; path = Helpers/General/OrientationManager.swift; sourceTree = "<group>"; };
@@ -813,6 +815,7 @@
 				E91E6A5F2052DA76009E9577 /* CMSAdvertViewController.swift */,
 				1A17324C206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift */,
 				E9798C24201A4C6800E8A7D2 /* AdvertViewController.swift */,
+				1A6A2F8B21EE244E00B84310 /* LoadingViewController.swift */,
 				E9798C26201A4C8E00E8A7D2 /* Feedback */,
 			);
 			name = "Play Advert";
@@ -1556,6 +1559,7 @@
 				1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */,
 				E923751F203EDD5000275199 /* UserMonthStats.swift in Sources */,
 				E9A2CF551F8F7DEB008A7F40 /* UserSeenCampaign.swift in Sources */,
+				1A6A2F8C21EE244E00B84310 /* LoadingViewController.swift in Sources */,
 				1A7F2382209AFBB700718521 /* NonComplianceViewController.swift in Sources */,
 				1AF678A72099C5A6001F8BD5 /* UserFlaggedCampaign.swift in Sources */,
 				1A155414207B81B500BEAF7A /* URLFeedbackViewController.swift in Sources */,

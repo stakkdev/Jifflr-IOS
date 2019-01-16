@@ -41,6 +41,10 @@ class AdvertViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -102,12 +106,22 @@ class AdvertViewController: BaseViewController {
 
     func presentAdmob() {
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
-            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+            
+            // This additional ViewController is required because of the Google Admob SDK bug.
+            // See https://github.com/firebase/firebase-ios-sdk/issues/2118 Open as of Jan 2019
+            let vc = LoadingViewController.instantiateFromStoryboard()
+            self.present(vc, animated: false) {
+                GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: vc)
+            }
         }
     }
 
     func presentFeedback() {
         guard let question = self.question else { return }
+        
+        if self.presentedViewController is LoadingViewController {
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
         
         let campaign = Campaign()
         campaign.advert = self.advert
@@ -141,7 +155,7 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
         }
     }
     
-    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!) {
+    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String?) {
 //        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
 //
 //        } else {
@@ -175,7 +189,6 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         self.rewardedAdmob = true
-        self.dismiss(animated: false)
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {

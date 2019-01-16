@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,13 +124,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with dislike to like options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-LI-tB4">
-                                <rect key="frame" x="20" y="28" width="334.5" height="43"/>
+                                <rect key="frame" x="20" y="28" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcP-ta-vJA">
-                                <rect key="frame" x="111.5" y="623" width="151" height="16"/>
+                                <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="iR1-Bt-Lli"/>
                                 </constraints>
@@ -153,7 +151,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-mk-dEu" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="561" width="334.5" height="50"/>
+                                <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0jl-Cg-R10"/>
                                 </constraints>
@@ -167,10 +165,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RVs-Cb-8I5">
-                                <rect key="frame" x="20" y="285" width="334.5" height="57.5"/>
+                                <rect key="frame" x="20" y="285" width="335" height="57"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-3f-cX6" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="57" height="57.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cnI-3f-cX6" secondAttribute="height" multiplier="1:1" id="hbc-28-BHj"/>
                                         </constraints>
@@ -180,7 +178,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRc-Tg-hEi" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="69.5" y="0.0" width="57" height="57.5"/>
+                                        <rect key="frame" x="69.5" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RRc-Tg-hEi" secondAttribute="height" multiplier="1:1" id="gJi-j8-3fK"/>
                                         </constraints>
@@ -190,7 +188,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyv-RD-mmB" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="139" y="0.0" width="57" height="57.5"/>
+                                        <rect key="frame" x="139" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qyv-RD-mmB" secondAttribute="height" multiplier="1:1" id="A1t-ZX-IOO"/>
                                         </constraints>
@@ -200,7 +198,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJs-fe-WTk" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="208" y="0.0" width="57" height="57.5"/>
+                                        <rect key="frame" x="208.5" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RJs-fe-WTk" secondAttribute="height" multiplier="1:1" id="5VH-EQ-UZd"/>
                                         </constraints>
@@ -210,7 +208,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpP-4w-vzQ" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="277.5" y="0.0" width="57" height="57.5"/>
+                                        <rect key="frame" x="278" y="0.0" width="57" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XpP-4w-vzQ" secondAttribute="height" multiplier="1:1" id="pEt-Qz-bQQ"/>
                                         </constraints>
@@ -450,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
-                                <rect key="frame" x="112.5" y="623" width="151" height="16"/>
+                                <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="pri-Sl-CQ0"/>
                                 </constraints>
@@ -472,7 +470,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Ux-ank" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="561" width="336" height="50"/>
+                                <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Jp-fi-rby"/>
                                 </constraints>
@@ -487,40 +485,40 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left or right to choose  your preference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRl-T7-VxH">
-                                <rect key="frame" x="20" y="28" width="336" height="43"/>
+                                <rect key="frame" x="20" y="28" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeFaces" translatesAutoresizingMaskIntoConstraints="NO" id="KHf-bb-vXF">
-                                <rect key="frame" x="24" y="86" width="328" height="56"/>
+                                <rect key="frame" x="24" y="86" width="327" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="tfb-HG-rsi"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeAnimation" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-tm-7fa">
-                                <rect key="frame" x="112.5" y="79" width="151" height="70"/>
+                                <rect key="frame" x="112" y="79" width="151" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="HT5-gc-vya"/>
                                     <constraint firstAttribute="width" constant="151" id="kYx-mg-5aW"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6hl-eW-i0O">
-                                <rect key="frame" x="0.0" y="159" width="376" height="454"/>
+                                <rect key="frame" x="0.0" y="159" width="375" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwipeCell" rowHeight="145" id="XCm-bP-AKg" customClass="SwipeCell" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="376" height="145"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XCm-bP-AKg" id="wYe-fR-a09">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04K-FM-niY">
                                                     <rect key="frame" x="18" y="0.0" width="340" height="135"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyQ-Lk-78S">
-                                                            <rect key="frame" x="72" y="15" width="196.5" height="105"/>
+                                                            <rect key="frame" x="71.5" y="15" width="197" height="105"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dyQ-Lk-78S" secondAttribute="height" multiplier="15:8" id="YTh-HU-9zh"/>
                                                             </constraints>
@@ -593,6 +591,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGT-Vy-DZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2488.8000000000002" y="156.97151424287858"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="7tF-gb-dWL">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" id="N0N-ew-42c" customClass="LoadingViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9py-Br-jVg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GLu-Gh-fu6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bN4-wI-nlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1780" y="157"/>
         </scene>
         <!--Advert View Controller-->
         <scene sceneID="c85-BY-9Qz">

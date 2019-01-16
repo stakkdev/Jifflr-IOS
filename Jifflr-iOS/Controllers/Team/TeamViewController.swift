@@ -148,9 +148,10 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamFriendCell") as! TeamFriendCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
+                cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(friend.teamSize)
+                cell.teamSizeLabel.sizeToFit()
                 cell.nameLabel.text = "\(friend.user.details.firstName) \(friend.user.details.lastName)"
                 cell.emailLabel.text = "\(friend.user.username ?? "")"
-                cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(friend.teamSize)
 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd MMM yyyy"
