@@ -254,14 +254,14 @@ class CampaignManager: NSObject {
         }
     }
     
-    func isValidBalance(balance: Double, campaign: Campaign, completion: @escaping (Bool, ErrorMessage?) -> Void ) {
+    func isValidBalance(balance: Double, campaign: Campaign, completion: @escaping (Bool, ErrorMessage?, String?) -> Void ) {
         guard balance >= campaign.budget && balance != 0.0 else {
-            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance)
+            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance, nil)
             return
         }
         
         guard let location = campaign.demographic?.location else {
-            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance)
+            completion(false, ErrorMessage.campaignActivationFailedInvalidBalance, nil)
             return
         }
         
@@ -269,12 +269,13 @@ class CampaignManager: NSObject {
         query?.whereKey("location", equalTo: location)
         query?.getFirstObjectInBackground(block: { (locationFinancial, error) in
             guard let locationFinancial = locationFinancial as? LocationFinancial, error == nil else {
-                completion(false, ErrorMessage.budgetLessThanAdSubmissionFee)
+                completion(false, ErrorMessage.budgetLessThanAdSubmissionFee, nil)
                 return
             }
             
-            let valid = balance > Double(locationFinancial.adSubmissionFee / 100)
-            completion(valid, valid ? nil : ErrorMessage.budgetLessThanAdSubmissionFee)
+            let adSubmissionFee = Double(locationFinancial.adSubmissionFee / 100)
+            let valid = balance > adSubmissionFee
+            completion(valid, valid ? nil : ErrorMessage.budgetLessThanAdSubmissionFee, "\(String(format: "%.2f", adSubmissionFee))")
         })
     }
     
