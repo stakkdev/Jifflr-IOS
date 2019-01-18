@@ -218,7 +218,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
             alertController.addAction(cancelAction)
             let deleteAction = UIAlertAction(title: "alert.deleteFriend.deleteButton".localized(), style: .destructive) { (action) in
                 
-                let friend = self.friends[indexPath.row]
+                let friend = self.friends[indexPath.row - 1]
                 MyTeamManager.shared.deleteFriend(friend: friend.user) { (error) in
                     guard error == nil else {
                         self.displayError(error: error)
