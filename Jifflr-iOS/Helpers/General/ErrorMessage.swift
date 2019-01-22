@@ -14,6 +14,7 @@ public enum ErrorMessage {
     case parseError(String)
     case userAlreadyExists
     case loginFailed
+    case loginWrongPassword
     case locationFailed
     case unknown
     case contactsAccessFailed
@@ -99,6 +100,8 @@ public enum ErrorMessage {
             return "addEmail.error.title".localized()
         case .loginNotRegistered:
             return "error.loginNotRegistered.title".localized()
+        case .loginWrongPassword:
+            return "error.loginWrongPassword.title".localized()
         default:
             return "error.title".localized()
         }
@@ -126,6 +129,8 @@ public enum ErrorMessage {
             return "error.register.userAlreadyExists".localized()
         case .loginFailed:
             return "error.login.message".localized()
+        case .loginWrongPassword:
+            return "error.loginWrongPassword.message".localized()
         case .resetPasswordFailed:
             return "error.resetPassword.message".localized()
         case .faqsFailed:

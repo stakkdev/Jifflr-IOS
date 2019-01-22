@@ -116,6 +116,12 @@ class UserManager: NSObject {
     }
 
     func login(withUsername username: String, password: String, completion: @escaping (PFUser?, ErrorMessage?) -> Void) {
+        
+        guard Reachability.isConnectedToNetwork() else {
+            completion(nil, ErrorMessage.NoInternetConnectionRegistration)
+            return
+        }
+        
         self.usernameAvailable(email: username) { (available, error) in
             
             guard let available = available, !available else {
@@ -126,21 +132,13 @@ class UserManager: NSObject {
             PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
                 
                 guard let user = user, error == nil else {
-                    if let error = error {
-                        completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                    } else {
-                        completion(nil, ErrorMessage.unknown)
-                    }
+                    completion(nil, ErrorMessage.loginWrongPassword)
                     return
                 }
                 
                 user.details.fetchInBackground(block: { (userDetails, error) in
                     guard let userDetails = userDetails as? UserDetails, error == nil else {
-                        if let error = error {
-                            completion(nil, ErrorMessage.parseError(error.localizedDescription))
-                        } else {
-                            completion(nil, ErrorMessage.unknown)
-                        }
+                        completion(nil, ErrorMessage.unknown)
                         return
                     }
                     
@@ -152,15 +150,15 @@ class UserManager: NSObject {
                         
                         user.pinInBackground(block: { (succeeded, error) in
                             if error != nil {
-                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                completion(nil, ErrorMessage.unknown)
                             } else {
                                 userDetails.pinInBackground(block: { (success, error) in
                                     if error != nil {
-                                        completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                        completion(nil, ErrorMessage.unknown)
                                     } else {
                                         gender.pinInBackground(block: { (success, error) in
                                             if error != nil {
-                                                completion(nil, ErrorMessage.parseError(error!.localizedDescription))
+                                                completion(nil, ErrorMessage.unknown)
                                             } else {
                                                 PFInstallation.registerUser(user: user)
                                                 completion(user, nil)

@@ -87,6 +87,8 @@
 "error.loginNotRegistered.message" = "Email not found. Please ensure you have registered for an account using this email address.";
 "error.maxCampaignsLimitReached.message" = "Wow, you’ve hit the maximum number of paid reviews this month, well done!";
 "error.budgetLessThanAdSubmissionFee.message" = "Please ensure the campaign budget is greater than the ad submission fee.";
+"error.loginWrongPassword.title" = "Error - Invalid Login";
+"error.loginWrongPassword.message" = "Unable to login. Please ensure you have entered valid login credentials.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
