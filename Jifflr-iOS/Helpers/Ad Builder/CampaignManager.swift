@@ -298,35 +298,42 @@ class CampaignManager: NSObject {
         user.details.campaignBalance = newUserBalance
     }
     
-    func copy(campaign: Campaign) -> Campaign {
-        let newCampaign = Campaign()
-        newCampaign.budget = 0.0
-        newCampaign.costPerView = campaign.costPerView
-        newCampaign.name = campaign.name
-        newCampaign.creator = campaign.creator
-        newCampaign.locationFinancial = campaign.locationFinancial
-        newCampaign.advert = campaign.advert
+    func copy(campaign: Campaign, completion: @escaping (Campaign?) -> Void) {
         
-        let newSchedule = Schedule()
-        newSchedule.daysOfWeek = campaign.schedule!.daysOfWeek
-        newSchedule.endDate = campaign.schedule!.endDate
-        newSchedule.startDate = campaign.schedule!.startDate
-        newCampaign.schedule = newSchedule
-        
-        let newDemographic = Demographic()
-        newDemographic.estimatedAudience = campaign.demographic!.estimatedAudience
-        
-        if let gender = campaign.demographic?.gender {
-            newDemographic.gender = gender
+        let location = campaign.locationFinancial.location
+        CampaignManager.shared.fetchCostPerView(location: location) { (costPerView, locationFinancial) in
+            CampaignManager.shared.estimatedAudienceSize(demographic: campaign.demographic!, completion: { (size) in
+                
+                let newCampaign = Campaign()
+                newCampaign.budget = 0.0
+                newCampaign.costPerView = costPerView ?? campaign.costPerView
+                newCampaign.name = campaign.name
+                newCampaign.creator = campaign.creator
+                newCampaign.locationFinancial = locationFinancial ?? campaign.locationFinancial
+                newCampaign.advert = campaign.advert
+                
+                let newSchedule = Schedule()
+                newSchedule.daysOfWeek = campaign.schedule!.daysOfWeek
+                newSchedule.endDate = campaign.schedule!.endDate
+                newSchedule.startDate = campaign.schedule!.startDate
+                newCampaign.schedule = newSchedule
+                
+                let newDemographic = Demographic()
+                newDemographic.estimatedAudience = size ?? campaign.demographic!.estimatedAudience
+                
+                if let gender = campaign.demographic?.gender {
+                    newDemographic.gender = gender
+                }
+                
+                newDemographic.minAge = campaign.demographic!.minAge
+                newDemographic.maxAge = campaign.demographic!.maxAge
+                newDemographic.language = campaign.demographic!.language
+                newDemographic.location = campaign.demographic!.location
+                newCampaign.demographic = newDemographic
+                
+                completion(newCampaign)
+            })
         }
-        
-        newDemographic.minAge = campaign.demographic!.minAge
-        newDemographic.maxAge = campaign.demographic!.maxAge
-        newDemographic.language = campaign.demographic!.language
-        newDemographic.location = campaign.demographic!.location
-        newCampaign.demographic = newDemographic
-        
-        return newCampaign
     }
     
     func topUp(token: String, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {

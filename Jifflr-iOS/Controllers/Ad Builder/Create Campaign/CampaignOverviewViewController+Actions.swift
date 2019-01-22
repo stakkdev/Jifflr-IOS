@@ -53,10 +53,21 @@ extension CampaignOverviewViewController {
                     return
                 }
                 
-                self.updateBalanceButton()
-                
-                let alert = difference > 0 ? AlertMessage.increaseBudgetSuccess : AlertMessage.campaignUpdated
-                self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                self.campaign.fetchInBackground(block: { (campaign, error) in
+                    guard let campaign = campaign as? Campaign, error == nil else {
+                        self.activateButton.stopAnimating()
+                        self.displayError(error: ErrorMessage.increaseBudgetFailedFromServer)
+                        return
+                    }
+                    
+                    self.campaign = campaign
+                    campaign.pinInBackground(withName: CampaignManager.shared.pinName)
+                    
+                    self.updateBalanceButton()
+                    
+                    let alert = difference > 0 ? AlertMessage.increaseBudgetSuccess : AlertMessage.campaignUpdated
+                    self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                })
             })
         }
     }
@@ -78,13 +89,23 @@ extension CampaignOverviewViewController {
     }
     
     @IBAction func copyCampaignPressed(sender: JifflrButton) {
-        let newCampaign = CampaignManager.shared.copy(campaign: self.campaign)
-        self.campaign = newCampaign
-        self.setupData()
-        self.setupUIBasedOnStatus()
-        let alert = AlertMessage.campaignCopied
-        self.displayMessage(title: alert.title, message: alert.message, dismissText: nil) { (action) in
-            self.scrollView.setContentOffset(.zero, animated: true)
+        self.copyCampaignButton.animate()
+        
+        CampaignManager.shared.copy(campaign: self.campaign) { (campaign) in
+            self.copyCampaignButton.stopAnimating()
+            
+            guard let campaign = campaign else {
+                self.displayError(error: .unknown)
+                return
+            }
+            
+            self.campaign = campaign
+            self.setupData()
+            self.setupUIBasedOnStatus()
+            let alert = AlertMessage.campaignCopied
+            self.displayMessage(title: alert.title, message: alert.message, dismissText: nil) { (action) in
+                self.scrollView.setContentOffset(.zero, animated: true)
+            }
         }
     }
     
