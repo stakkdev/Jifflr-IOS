@@ -8,12 +8,19 @@
 
 import UIKit
 
+enum DateType {
+    case dateFrom
+    case dateTo
+    case timeFrom
+    case timeTo
+}
+
 class JifflrTextFieldDate: JifflrTextField {
     
-    var dateFormat = "" {
+    var type: DateType = .dateFrom {
         didSet {
-            self.createInputViews(format: self.dateFormat)
-            self.setupDate(format: self.dateFormat)
+            self.setupDate(type: self.type)
+            self.createInputViews(type: self.type)
         }
     }
     
@@ -56,32 +63,43 @@ class JifflrTextFieldDate: JifflrTextField {
         leftView.backgroundColor = color
     }
     
-    func setupDate(format: String) {
-        let rightNow = Date()
-        let interval = 15
-        let nextDiff = interval - Calendar.current.component(.minute, from: rightNow) % interval
-        let nextDate = Calendar.current.date(byAdding: .minute, value: nextDiff, to: rightNow) ?? Date()
+    func setupDate(type: DateType) {
+        let daysToAdd = type == .dateFrom ? 2 : 32
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        guard let date = Calendar.current.date(byAdding: .day, value: 1, to: nextDate) else { return }
+        dateFormatter.dateFormat = (type == .dateFrom || type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
+        guard let date = Calendar.current.date(byAdding: .day, value: daysToAdd, to: Date()) else { return }
         let dateString = dateFormatter.string(from: date)
-        self.text = dateString
+        
+        switch type {
+        case .dateFrom:
+            self.text = dateString
+        case .dateTo:
+            self.text = dateString
+        case .timeFrom:
+            self.text = "00:00"
+        case .timeTo:
+            self.text = "23:45"
+        }
     }
     
-    func createInputViews(format: String) {
-        let rightNow = Date()
-        let interval = 15
-        let nextDiff = interval - Calendar.current.component(.minute, from: rightNow) % interval
-        let nextDate = Calendar.current.date(byAdding: .minute, value: nextDiff, to: rightNow) ?? Date()
+    func createInputViews(type: DateType) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = (self.type == .dateFrom || self.type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
+        guard let date = dateFormatter.date(from: self.text!) else { return }
         
-        guard let date = Calendar.current.date(byAdding: .day, value: 1, to: nextDate) else { return }
         self.datePicker = UIDatePicker()
         self.datePicker.date = date
-        self.datePicker.datePickerMode = format == "HH:mm" ? .time : .date
+        self.datePicker.datePickerMode = (type == .dateFrom || type == .dateTo) ? .date : .time
         self.datePicker.minuteInterval = 15
         
         if self.minimumDate && self.datePicker.datePickerMode == .date {
+            let rightNow = Date()
+            let interval = 15
+            let nextDiff = interval - Calendar.current.component(.minute, from: rightNow) % interval
+            let nextDate = Calendar.current.date(byAdding: .minute, value: nextDiff, to: rightNow) ?? Date()
+            
+            guard let date = Calendar.current.date(byAdding: .day, value: 1, to: nextDate) else { return }
             self.datePicker.minimumDate = date
         }
         
@@ -98,7 +116,7 @@ class JifflrTextFieldDate: JifflrTextField {
     
     @objc func datePicked(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = self.dateFormat
+        dateFormatter.dateFormat = (self.type == .dateFrom || self.type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
         self.text = dateFormatter.string(from: sender.date)
     }
     
