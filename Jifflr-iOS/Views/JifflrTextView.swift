@@ -60,7 +60,7 @@ extension JifflrTextView: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if let characterLimit = self.characterLimit {
-            return textView.text.count < characterLimit || self.numberOfLines() <= 3 || text == ""
+            return textView.text.count < characterLimit || text == ""
         }
         
         return true

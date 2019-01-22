@@ -39,8 +39,8 @@ class CreateScheduleViewController: BaseViewController {
     var selectedAdvert: Advert?
 
     var days = ["M", "T", "W", "T", "F", "S", "S"]
-    var selectedDays:[Int] = []
-    var availableDays:[Int] = []
+    var selectedDays:[Int] = [0, 1, 2, 3, 4, 5, 6]
+    var availableDays:[Int] = [0, 1, 2, 3, 4, 5, 6]
     
     var isEdit = false
     var campaign: Campaign?
@@ -82,18 +82,21 @@ class CreateScheduleViewController: BaseViewController {
         
         self.dateFromTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateFromTextField.minimumDate = true
-        self.dateFromTextField.dateFormat = "dd/MM/yy"
+        self.dateFromTextField.type = .dateFrom
         self.dateFromTextField.delegate = self
+        
         self.dateToTextField.addLeftImage(image: UIImage(named: "ScheduleDate")!)
         self.dateToTextField.minimumDate = true
-        self.dateToTextField.dateFormat = "dd/MM/yy"
+        self.dateToTextField.type = .dateTo
         self.dateToTextField.delegate = self
+        
         self.timeFromTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
+        self.timeFromTextField.type = .timeFrom
         self.timeFromTextField.minimumDate = false
-        self.timeFromTextField.dateFormat = "HH:mm"
+        
         self.timeToTextField.addLeftImage(image: UIImage(named: "ScheduleTime")!)
+        self.timeToTextField.type = .timeTo
         self.timeToTextField.minimumDate = false
-        self.timeToTextField.dateFormat = "HH:mm"
         
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
@@ -228,16 +231,15 @@ class CreateScheduleViewController: BaseViewController {
         guard let campaignName = self.campaignNameTextField.text, !campaignName.isEmpty else { return false }
         
         let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = self.dateFromTextField.dateFormat
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let dateFrom = dateFormatter.date(from: self.dateFromTextField.text!) else { return false }
-        dateFormatter.dateFormat = self.timeFromTextField.dateFormat
+        dateFormatter.dateFormat = "HH:mm"
         guard let timeFrom = dateFormatter.date(from: self.timeFromTextField.text!) else { return false }
         guard let startDate = CampaignManager.shared.mergeDates(date: dateFrom, time: timeFrom) else { return false }
         
-        dateFormatter.dateFormat = self.dateToTextField.dateFormat
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let dateTo = dateFormatter.date(from: self.dateToTextField.text!) else { return false }
-        dateFormatter.dateFormat = self.timeToTextField.dateFormat
+        dateFormatter.dateFormat = "HH:mm"
         guard let timeTo = dateFormatter.date(from: self.timeToTextField.text!) else { return false }
         guard let endDate = CampaignManager.shared.mergeDates(date: dateTo, time: timeTo) else { return false }
         guard endDate > startDate else { return false }
@@ -273,10 +275,10 @@ class CreateScheduleViewController: BaseViewController {
     func getDaysBetweenDates() {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = self.dateFromTextField.dateFormat
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let startDate = dateFormatter.date(from: self.dateFromTextField.text!) else { return }
         
-        dateFormatter.dateFormat = self.dateToTextField.dateFormat
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let endDate = dateFormatter.date(from: self.dateToTextField.text!) else { return }
         
         guard let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day else { return }
