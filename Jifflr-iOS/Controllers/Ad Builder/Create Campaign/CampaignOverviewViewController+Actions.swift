@@ -231,6 +231,11 @@ extension CampaignOverviewViewController {
     @IBAction func activateButtonPressed(sender: JifflrButton) {
         guard let user = Session.shared.currentUser else { return }
         
+        guard Reachability.isConnectedToNetwork() else {
+            self.displayError(error: ErrorMessage.NoInternetConnectionRegistration)
+            return
+        }
+        
         self.campaign.budget = 0.0
         
         self.activateButton.animate()
