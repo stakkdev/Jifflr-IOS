@@ -46,8 +46,10 @@ class ForgotPasswordViewController: BaseViewController {
             self.displayMessage(title: ErrorMessage.resetPasswordFailed.failureTitle, message: ErrorMessage.resetPasswordFailed.failureDescription)
             return
         }
-
+        
+        self.passwordResetButton.animate()
         UserManager.shared.resetPassword(email: email) { (error) in
+            self.passwordResetButton.stopAnimating()
             if error != nil {
                 self.displayMessage(title: error!.failureTitle, message: error!.failureDescription)
             } else {

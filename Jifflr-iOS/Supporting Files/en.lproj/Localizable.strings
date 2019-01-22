@@ -91,7 +91,7 @@
 "error.loginWrongPassword.message" = "Unable to login. Please ensure you have entered valid login credentials.";
 
 "alert.resetEmailSent.title" = "Success";
-"alert.resetEmailSent.title" = "An email has been sent to the email entered containing a reset password link.";
+"alert.resetEmailSent.message" = "An email has been sent to the email entered containing a reset password link.";
 "alert.notifications.title" = "Go To Settings";
 "alert.notifications.message" = "Notifications have previously been switched off. In order to turn notifications on, please go to the Settings app.";
 "alert.notifications.cancelButton" = "Cancel";

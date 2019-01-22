@@ -303,7 +303,7 @@ class UserManager: NSObject {
     }
 
     func resetPassword(email: String, completion: @escaping (ErrorMessage?) -> Void) {
-        PFUser.requestPasswordResetForEmail(inBackground: email, block: { (success, error) -> Void in
+        PFUser.requestPasswordResetForEmail(inBackground: email.lowercased(), block: { (success, error) -> Void in
             if error == nil && success == true {
                 completion(nil)
             } else {
