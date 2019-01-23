@@ -39,7 +39,10 @@ class AppSettingsManager: NSObject {
     func canViewAds(currentCount: Int, completion: @escaping (Bool) -> Void) {
         let query = AppSettings.query()
         query?.getFirstObjectInBackground(block: { (object, error) in
-            guard let appSettings = object as? AppSettings, error == nil else { return }
+            guard let appSettings = object as? AppSettings, error == nil else {
+                completion(false)
+                return
+            }
             
             self.canViewAds = currentCount < appSettings.adsSeenCap
             completion(self.canViewAds)

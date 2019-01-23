@@ -127,11 +127,11 @@ extension AddQuestionsViewController {
     
     func createMinMaxInputViews(questionType: QuestionType) {
         self.datePicker = UIDatePicker()
-        self.datePicker.date = Date()
         if questionType.type == AdvertQuestionType.DatePicker {
             self.datePicker.datePickerMode = .date
         } else {
             self.datePicker.datePickerMode = .time
+            self.datePicker.minuteInterval = 15
         }
         self.datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
         self.minTextField.inputView = self.datePicker
