@@ -61,7 +61,10 @@ class BalanceViewController: BaseViewController {
         guard let user = Session.shared.currentUser else { return }
         self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
         self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
-        self.paypalEmailTextField.text = user.details.campaignPayPalEmail
+        
+        if let email = user.details.paypalEmail {
+            self.paypalEmailTextField.text = email
+        }
     }
     
     func setupLocalization() {
@@ -190,6 +193,11 @@ extension BalanceViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let text = textField.text, text.isEmail(), textField == self.paypalEmailTextField {
+            self.displayError(error: ErrorMessage.withdrawalEmail)
+            return false
+        }
+        
         return true
     }
 }
