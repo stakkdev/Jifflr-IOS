@@ -95,6 +95,8 @@ extension TeamViewController: CNContactPickerDelegate {
 extension TeamViewController: MFMailComposeViewControllerDelegate {
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        self.segmentedControl.button2Pressed(sender: self.segmentedControl.button2)
 
         guard let pendingUser = self.pendingUser else { return }
         guard error == nil else {
