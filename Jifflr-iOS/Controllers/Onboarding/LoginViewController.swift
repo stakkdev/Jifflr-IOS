@@ -106,7 +106,7 @@ class LoginViewController: BaseViewController {
             } catch { }
         }
 
-        UserManager.shared.login(withUsername: email, password: password) { (_, error) in
+        UserManager.shared.login(withUsername: email.lowercased(), password: password) { (_, error) in
             self.loginButton.stopAnimating()
             
             guard error == nil else {
