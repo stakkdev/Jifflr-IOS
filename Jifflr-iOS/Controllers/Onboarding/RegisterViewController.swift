@@ -197,7 +197,7 @@ class RegisterViewController: BaseViewController {
         var userInfo = [AnyHashable: Any]()
         userInfo["firstName"] = firstName
         userInfo["lastName"] = lastName
-        userInfo["email"] = email
+        userInfo["email"] = email.lowercased()
         userInfo["password"] = password
         userInfo["displayLocation"] = displayLocation
         userInfo["location"] = location
