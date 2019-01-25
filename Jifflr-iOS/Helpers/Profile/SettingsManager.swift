@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import Fabric
 import Crashlytics
+import Parse
 
 class SettingsManager: NSObject {
     static let shared = SettingsManager()
@@ -18,6 +19,18 @@ class SettingsManager: NSObject {
         guard let currentUser = Session.shared.currentUser else { return }
         currentUser.details.pushNotifications = on
         currentUser.saveInBackground()
+        
+        if !on {
+            self.removeInstallationDeviceToken()
+        } else {
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func removeInstallationDeviceToken() {
+        let installation = PFInstallation.current()
+        installation?.setDeviceTokenFrom(nil)
+        installation?.saveInBackground()
     }
 
     func toggleCrashTracker(on: Bool) {

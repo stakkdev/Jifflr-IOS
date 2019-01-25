@@ -39,6 +39,12 @@ class LandingViewController: UIViewController, DisplayMessage {
         } else {
             UserManager.shared.syncUser(completion: { (error) in
                 if error == nil {
+                    if let currentUser = Session.shared.currentUser, !currentUser.details.pushNotifications {
+                        SettingsManager.shared.removeInstallationDeviceToken()
+                    } else {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                    
                     if UserDefaultsManager.shared.onboardingViewed() == true {
                         self.routeBasedOnLocationServices()
                     } else {
