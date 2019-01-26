@@ -199,24 +199,47 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             self.advert.details?.image = PFFile(data: data, contentType: "image/jpg")
             
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
+            let asset = AVAsset(url: videoUrl)
+            let preset = AVAssetExportPresetHighestQuality
+            let outFileType = AVFileType.mp4
+            
+            guard let export = AVAssetExportSession(asset: asset, presetName: preset) else { return }
+            export.outputFileType = outFileType
+            export.shouldOptimizeForNetworkUse = true
+            let newUrl = FileManager.default.temporaryDirectory.appendingPathComponent("temp.mp4")
+            
             do {
-                let videoData = try Data(contentsOf: videoUrl)
-                self.advert.details?.image = PFFile(data: videoData, contentType: "video/mp4")
-                
-                guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else {
-                    self.displayError(error: ErrorMessage.mediaSaveFailed)
-                    return
+                if FileManager.default.fileExists(atPath: newUrl.path) {
+                    try FileManager.default.removeItem(at: newUrl)
                 }
-                
-                guard let thumbnail = self.getThumbnailFrom(path: videoUrl) else {
-                    self.displayError(error: ErrorMessage.mediaSaveFailed)
-                    return
-                }
-                
-                self.imageOverlayView.contentMode = .scaleAspectFill
-                self.imageOverlayView.image = thumbnail
             } catch let error {
                 print(error)
+            }
+            
+            export.outputURL = newUrl
+            
+            export.exportAsynchronously { () -> Void in
+                do {
+                    let videoData = try Data(contentsOf: newUrl)
+                    self.advert.details?.image = PFFile(data: videoData, contentType: "video/mp4")
+                    
+                    guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else {
+                        self.displayError(error: ErrorMessage.mediaSaveFailed)
+                        return
+                    }
+                    
+                    guard let thumbnail = self.getThumbnailFrom(path: videoUrl) else {
+                        self.displayError(error: ErrorMessage.mediaSaveFailed)
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.imageOverlayView.contentMode = .scaleAspectFill
+                        self.imageOverlayView.image = thumbnail
+                    }
+                } catch let error {
+                    print(error)
+                }
             }
         }
         
