@@ -178,8 +178,7 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.percentageLabel.text = "\(userMonthStats.percentage)%"
 
-            let minPercentage = adsViewed.adBacklogThreshold / adsViewed.adsPerDay
-            if userMonthStats.percentage < minPercentage {
+            if userMonthStats.percentage == 0 {
                 cell.percentageLabel.textColor = UIColor.mainRed
             } else {
                 cell.percentageLabel.textColor = UIColor.mainBlue
