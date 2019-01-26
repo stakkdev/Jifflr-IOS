@@ -37,6 +37,7 @@ class DateTimeFeedbackViewController: FeedbackViewController {
         
         if self.isTime {
             self.datePicker.datePickerMode = .time
+            self.datePicker.minuteInterval = 15
         } else {
             self.datePicker.datePickerMode = .date
         }
