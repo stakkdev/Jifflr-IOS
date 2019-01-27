@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SwipeFeedbackViewController: FeedbackViewController {
 
@@ -89,6 +90,11 @@ class SwipeFeedbackViewController: FeedbackViewController {
             self.userSeenAdExchange.location = location
             self.userSeenAdExchange.question = self.question
             self.userSeenAdExchange.questionNumber = self.question.questionNumber
+            
+            if let currentCoordinate = Session.shared.currentCoordinate {
+                self.userSeenAdExchange.geoPoint = PFGeoPoint(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
+            }
+            
             self.userSeenAdExchange.saveEventually { (success, error) in
                 print("Saved Swipe Feedback: \(success)")
             }

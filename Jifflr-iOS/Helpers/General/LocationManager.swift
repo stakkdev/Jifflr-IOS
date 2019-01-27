@@ -196,6 +196,7 @@ extension LocationManager: CLLocationManagerDelegate {
         }
 
         let location = locations.first!
+        Session.shared.currentCoordinate = location.coordinate
         self.geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             guard let placemark = placemarks?.first, error == nil else {
                 self.handleLocation(isoCountryCode: nil)

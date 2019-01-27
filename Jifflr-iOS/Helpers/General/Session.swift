@@ -30,6 +30,8 @@ final class Session {
     }
 
     var currentLocation: Location?
+    
+    var currentCoordinate: CLLocationCoordinate2D?
 
     var englishLanguageCode: String {
         return "en"

@@ -42,6 +42,10 @@ class FeedbackManager: NSObject {
             userSeenCampaign.campaign = campaign
             userSeenCampaign.location = location
             userSeenCampaign.user = currentUser
+            
+            if let currentCoordinate = Session.shared.currentCoordinate {
+                userSeenCampaign.geoPoint = PFGeoPoint(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
+            }
 
             let relation = userSeenCampaign.relation(forKey: "questionAnswers")
             for questionAnswer in questionAnswers {

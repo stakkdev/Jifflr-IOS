@@ -47,6 +47,15 @@ final class UserSeenCampaign: PFObject {
             self["questionAnswers"] = newValue
         }
     }
+    
+    var geoPoint: PFGeoPoint? {
+        get {
+            return self["geoPoint"] as? PFGeoPoint
+        }
+        set {
+            self["geoPoint"] = newValue
+        }
+    }
 }
 
 extension UserSeenCampaign: PFSubclassing {

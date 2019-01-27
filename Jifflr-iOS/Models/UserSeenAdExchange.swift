@@ -74,6 +74,15 @@ final class UserSeenAdExchange: PFObject {
             self["location"] = newValue
         }
     }
+    
+    var geoPoint: PFGeoPoint? {
+        get {
+            return self["geoPoint"] as? PFGeoPoint
+        }
+        set {
+            self["geoPoint"] = newValue
+        }
+    }
 }
 
 extension UserSeenAdExchange: PFSubclassing {
