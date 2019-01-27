@@ -70,7 +70,16 @@ class AdCreatedViewController: BaseViewController {
                 return
             }
             
-            self.updateNavigationStackAfterSave()
+            if let campaign = CampaignManager.shared.campaignInEdit {
+                campaign.status = CampaignStatusKey.pendingModeration
+                campaign.saveInBackground(block: { (success, error) in
+                    campaign.pinInBackground(withName: CampaignManager.shared.pinName)
+                    CampaignManager.shared.campaignInEdit = nil
+                    self.updateNavigationStackAfterSave()
+                })
+            } else {
+                self.updateNavigationStackAfterSave()
+            }
         }
     }
     

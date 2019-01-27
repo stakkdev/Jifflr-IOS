@@ -14,6 +14,8 @@ class CampaignManager: NSObject {
     
     let pinName = "Campaigns"
     
+    var campaignInEdit: Campaign?
+    
     func startEndDateString(schedule: Schedule) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"

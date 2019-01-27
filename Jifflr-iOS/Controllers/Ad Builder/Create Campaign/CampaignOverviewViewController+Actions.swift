@@ -28,12 +28,12 @@ extension CampaignOverviewViewController {
     
     @IBAction func updateButtonPressed(sender: JifflrButton) {
         guard let user = Session.shared.currentUser else { return }
-        guard self.budgetView.value >= self.campaign.budget else {
+        guard self.budgetView.value >= self.campaign.balance else {
             self.displayError(error: ErrorMessage.decreaseBudget)
             return
         }
         
-        let difference = self.budgetView.value - self.campaign.budget
+        let difference = self.budgetView.value - self.campaign.balance
         guard user.details.campaignBalance > difference else {
             self.handleInsufficientBalance(isActivation: false)
             return
@@ -170,15 +170,17 @@ extension CampaignOverviewViewController {
         }
         
         self.campaign.status = statusKey
-        self.campaign.saveInBackgroundAndPin(completion: { (error) in
+        self.campaign.saveInBackground { (success, error) in
             guard error == nil else {
                 sender.isOn = !sender.isOn
                 self.displayError(error: ErrorMessage.noInternetConnection)
                 return
             }
             
+            self.campaign.pinInBackground(withName: CampaignManager.shared.pinName)
+            
             self.handleStatus(status: self.campaign.status)
-        })
+        }
     }
     
     @objc func balanceButtonPressed(sender: UIButton) {
@@ -204,13 +206,36 @@ extension CampaignOverviewViewController {
     }
     
     @objc func campaignNamedTapped(gesture: UITapGestureRecognizer) {
-        let vc = AddContentViewController.instantiateFromStoryboard(advert: self.campaign.advert)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.goToAdvert()
     }
     
     @objc func advertTapped(gesture: UITapGestureRecognizer) {
-        let vc = AddContentViewController.instantiateFromStoryboard(advert: self.campaign.advert)
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.goToAdvert()
+    }
+    
+    func goToAdvert() {
+        let amount = "\(Session.shared.currentCurrencySymbol)\(self.adSubmissionFee)"
+        
+        guard self.budgetView.value >= Double(self.adSubmissionFee) else {
+            self.displayError(error: ErrorMessage.updateCampaignContent(amount))
+            return
+        }
+        
+        let alertController = UIAlertController(title: "alert.adSubmissionFee.title".localized(), message: "alert.contentChangedSubmissionFee.message".localizedFormat(amount), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "alert.adSubmissionFee.cancel".localized(), style: .cancel, handler: { (action) in
+            self.activateButton.stopAnimating()
+            return
+        })
+        alertController.addAction(cancelAction)
+        
+        let agreeAction = UIAlertAction(title: "alert.adSubmissionFee.agree".localized(), style: .default, handler: { (action) in
+            CampaignManager.shared.campaignInEdit = self.campaign
+            let vc = AddContentViewController.instantiateFromStoryboard(advert: self.campaign.advert)
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
+        
+        alertController.addAction(agreeAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc func scheduleTapped(gesture: UITapGestureRecognizer) {

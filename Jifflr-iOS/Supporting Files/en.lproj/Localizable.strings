@@ -89,6 +89,7 @@
 "error.budgetLessThanAdSubmissionFee.message" = "Please ensure the campaign budget is greater than the ad submission fee.";
 "error.loginWrongPassword.title" = "Error - Invalid Login";
 "error.loginWrongPassword.message" = "Unable to login. Please ensure you have entered valid login credentials.";
+"error.updateCampaignContent.message" = "In order to change the content of this campaign, the campaign will need to be re-moderated. Please ensure your campaign balance covers the %@ Content Insertion Fee.";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.message" = "An email has been sent to the email entered containing a reset password link.";
@@ -149,6 +150,7 @@
 "alert.campaignUpdated.message" = "The campaign has been updated.";
 "alert.adSubmissionFee.title" = "Just so you know...";
 "alert.adSubmissionFee.message" = "As the Content in this Campaign hasn’t been used before there's a one-time %@ Content Insertion Fee. See the FAQs for more details.";
+"alert.contentChangedSubmissionFee.message" = "As you are wanting to change the Content of this Campaign, there will be %@ Content Insertion Fee. See the FAQs for more details.";
 "alert.adSubmissionFee.agree" = "Agree";
 "alert.adSubmissionFee.cancel" = "Cancel";
 

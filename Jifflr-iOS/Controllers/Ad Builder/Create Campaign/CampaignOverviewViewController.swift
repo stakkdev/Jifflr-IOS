@@ -192,6 +192,8 @@ class CampaignOverviewViewController: BaseViewController {
         
         self.updateBalanceButton()
         
+        CampaignManager.shared.campaignInEdit = nil
+        
         CampaignManager.shared.getAdSubmissionFee(demographic: demographic) { (adSubmissionFee) in
             self.adSubmissionFee = adSubmissionFee
             
