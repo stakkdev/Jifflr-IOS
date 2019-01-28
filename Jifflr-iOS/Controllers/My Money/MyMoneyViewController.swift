@@ -248,7 +248,7 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             
             let percentage = userCashout.adjustment == 0 ? "" : " + \(userCashout.adjustment)%"
-            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userCashout.value))\(percentage))"
+            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userCashout.value))\(percentage)"
             cell.emailLabel.text = userCashout.paypalEmail
 
             if let date = userCashout.createdAt {
