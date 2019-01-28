@@ -52,17 +52,28 @@ class AdCreatedViewController: BaseViewController {
     @IBAction func saveAdButtonPressed(sender: JifflrButton) {
         sender.animate()
         
-        let newAdvertContent = self.createNewAd()
-        let newAdvert = newAdvertContent.0
-        let newContent = newAdvertContent.1
+        var advert: Advert!
+        var content: [(question: Question, answers: [Answer])] = []
+        
+        if let _ = CampaignManager.shared.campaignInEdit {
+            let newAdvertContent = self.createNewAd()
+            let newAdvert = newAdvertContent.0
+            let newContent = newAdvertContent.1
+            
+            advert = newAdvert
+            content = newContent
+        } else {
+            advert = self.advert
+            content = self.content
+        }
 
-        AdBuilderManager.shared.saveAndPin(advert: newAdvert, content: newContent) { (error) in
+        AdBuilderManager.shared.saveAndPin(advert: advert, content: content) { (error) in
             sender.stopAnimating()
             
             if let url = MediaManager.shared.get(id: nil, fileExtension: "jpg") {
                 do {
                     let data = try Data(contentsOf: url)
-                    guard MediaManager.shared.save(data: data, id: newAdvert.details?.objectId, fileExtension: "jpg") else {
+                    guard MediaManager.shared.save(data: data, id: advert.details?.objectId, fileExtension: "jpg") else {
                         self.displayError(error: ErrorMessage.mediaSaveFailed)
                         return
                     }
@@ -75,7 +86,7 @@ class AdCreatedViewController: BaseViewController {
             }
             
             if let campaign = CampaignManager.shared.campaignInEdit {
-                campaign.advert = newAdvert
+                campaign.advert = advert
                 campaign.status = CampaignStatusKey.pendingModeration
                 campaign.saveInBackground(block: { (success, error) in
                     campaign.pinInBackground(withName: CampaignManager.shared.pinName)
@@ -111,18 +122,22 @@ class AdCreatedViewController: BaseViewController {
             if let noOfRequiredAnswers = contentTuple.question.noOfRequiredAnswers { newQuestion.noOfRequiredAnswers = noOfRequiredAnswers }
             newQuestion.text = contentTuple.question.text
             newQuestion.type = contentTuple.question.type
+            newQuestion.active = contentTuple.question.active
             
             var newAnswers: [Answer] = []
             for answer in contentTuple.answers {
-                let newAnswer = Answer()
-                if let date = answer.date { newAnswer.date = date }
-                if let image = answer.image { newAnswer.image = image }
-                newAnswer.index = answer.index
-                newAnswer.questionType = answer.questionType
-                newAnswer.text = answer.text
-                newAnswer.urlType = answer.urlType
-                
-                newAnswers.append(newAnswer)
+                if answer.questionType == nil {
+                    let newAnswer = Answer()
+                    if let date = answer.date { newAnswer.date = date }
+                    if let image = answer.image { newAnswer.image = image }
+                    newAnswer.index = answer.index
+                    newAnswer.text = answer.text
+                    newAnswer.urlType = answer.urlType
+                    
+                    newAnswers.append(newAnswer)
+                } else {
+                    newAnswers.append(answer)
+                }
             }
             
             newContent.append((question: newQuestion, answers: newAnswers))
