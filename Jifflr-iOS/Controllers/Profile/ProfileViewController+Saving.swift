@@ -128,14 +128,22 @@ extension ProfileViewController {
         guard let currentUser = Session.shared.currentUser else { return }
 
         UserManager.shared.changeTeam(invitationCode: invitationCode) { (error) in
-            self.invitationCodeTextField.text = currentUser.details.invitationCode
-
             guard error == nil else {
+                self.invitationCodeTextField.text = currentUser.details.invitationCode
                 self.displayError(error: error)
                 return
             }
-
-            self.displayMessage(title: AlertMessage.teamChanged.title, message: AlertMessage.teamChanged.message)
+            
+            UserManager.shared.syncUser(completion: { (error) in
+                self.invitationCodeTextField.text = currentUser.details.invitationCode
+                
+                guard error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+                
+                self.displayMessage(title: AlertMessage.teamChanged.title, message: AlertMessage.teamChanged.message)
+            })
         }
     }
 }

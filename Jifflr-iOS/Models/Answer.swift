@@ -21,9 +21,9 @@ final class Answer: PFObject {
         }
     }
 
-    var image: PFFile {
+    var image: PFFile? {
         get {
-            return self["image"] as! PFFile
+            return self["image"] as? PFFile
         }
         set {
             self["image"] = newValue

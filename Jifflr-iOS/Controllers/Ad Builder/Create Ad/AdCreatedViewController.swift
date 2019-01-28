@@ -51,14 +51,18 @@ class AdCreatedViewController: BaseViewController {
     
     @IBAction func saveAdButtonPressed(sender: JifflrButton) {
         sender.animate()
+        
+        let newAdvertContent = self.createNewAd()
+        let newAdvert = newAdvertContent.0
+        let newContent = newAdvertContent.1
 
-        AdBuilderManager.shared.saveAndPin(advert: self.advert, content: self.content) { (error) in
+        AdBuilderManager.shared.saveAndPin(advert: newAdvert, content: newContent) { (error) in
             sender.stopAnimating()
             
             if let url = MediaManager.shared.get(id: nil, fileExtension: "jpg") {
                 do {
                     let data = try Data(contentsOf: url)
-                    guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else {
+                    guard MediaManager.shared.save(data: data, id: newAdvert.details?.objectId, fileExtension: "jpg") else {
                         self.displayError(error: ErrorMessage.mediaSaveFailed)
                         return
                     }
@@ -71,6 +75,7 @@ class AdCreatedViewController: BaseViewController {
             }
             
             if let campaign = CampaignManager.shared.campaignInEdit {
+                campaign.advert = newAdvert
                 campaign.status = CampaignStatusKey.pendingModeration
                 campaign.saveInBackground(block: { (success, error) in
                     campaign.pinInBackground(withName: CampaignManager.shared.pinName)
@@ -81,6 +86,49 @@ class AdCreatedViewController: BaseViewController {
                 self.updateNavigationStackAfterSave()
             }
         }
+    }
+    
+    func createNewAd() -> (Advert, [(question: Question, answers: [Answer])])  {
+        let newDetails = AdvertDetails()
+        if let image = self.advert.details?.image { newDetails.image = image }
+        if let message = self.advert.details?.message { newDetails.message = message }
+        newDetails.name = self.advert.details?.name ?? ""
+        if let template = self.advert.details?.template { newDetails.template = template }
+        newDetails.title = self.advert.details?.title ?? ""
+        
+        let newAdvert = Advert()
+        newAdvert.isCMS = true
+        newAdvert.details = newDetails
+        newAdvert.creator = self.advert.creator
+        
+        var newContent: [(question: Question, answers: [Answer])] = []
+        
+        for contentTuple in self.content {
+            let newQuestion = Question()
+            if let creator = contentTuple.question.creator { newQuestion.creator = creator }
+            if let image = contentTuple.question.image { newQuestion.image = image }
+            if let index = contentTuple.question.index { newQuestion.index = index }
+            if let noOfRequiredAnswers = contentTuple.question.noOfRequiredAnswers { newQuestion.noOfRequiredAnswers = noOfRequiredAnswers }
+            newQuestion.text = contentTuple.question.text
+            newQuestion.type = contentTuple.question.type
+            
+            var newAnswers: [Answer] = []
+            for answer in contentTuple.answers {
+                let newAnswer = Answer()
+                if let date = answer.date { newAnswer.date = date }
+                if let image = answer.image { newAnswer.image = image }
+                newAnswer.index = answer.index
+                newAnswer.questionType = answer.questionType
+                newAnswer.text = answer.text
+                newAnswer.urlType = answer.urlType
+                
+                newAnswers.append(newAnswer)
+            }
+            
+            newContent.append((question: newQuestion, answers: newAnswers))
+        }
+        
+        return (newAdvert, newContent)
     }
     
     func updateNavigationStackAfterSave() {
