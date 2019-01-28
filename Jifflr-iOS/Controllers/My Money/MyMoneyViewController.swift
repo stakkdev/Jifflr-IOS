@@ -246,7 +246,9 @@ extension MyMoneyViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawnHistoryCell") as! WithdrawnHistoryCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
-            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userCashout.value))"
+            
+            let percentage = userCashout.adjustment == 0 ? "" : " + \(userCashout.adjustment)%"
+            cell.amountLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userCashout.value))\(percentage))"
             cell.emailLabel.text = userCashout.paypalEmail
 
             if let date = userCashout.createdAt {

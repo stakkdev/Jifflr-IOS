@@ -39,6 +39,15 @@ final class UserCashout: PFObject {
             self["paypalEmail"] = newValue
         }
     }
+    
+    var adjustment: Int {
+        get {
+            return self["adjustment"] as? Int ?? 0
+        }
+        set {
+            self["adjustment"] = newValue
+        }
+    }
 }
 
 extension UserCashout: PFSubclassing {
