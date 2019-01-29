@@ -26,14 +26,18 @@ class CashoutManager: NSObject {
                     completion(nil)
                     return
                 } else {
-                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                    let dict = (error as NSError?)?.userInfo["NSLocalizedDescription"] as? [String: Any]
+                    let message = dict?["message"] as? String
+                    completion(ErrorMessage.parseError(message ?? ""))
                     return
                 }
             } else {
-                if let _ = error {
-                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                if let error = error {
+                    let dict = (error as NSError?)?.userInfo["NSLocalizedDescription"] as? [String: Any]
+                    let message = dict?["message"] as? String
+                    completion(ErrorMessage.parseError(message ?? ""))
                 } else {
-                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                    completion(ErrorMessage.unknown)
                 }
             }
         }
