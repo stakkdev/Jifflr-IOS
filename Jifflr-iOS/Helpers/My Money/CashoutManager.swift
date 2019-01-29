@@ -26,14 +26,14 @@ class CashoutManager: NSObject {
                     completion(nil)
                     return
                 } else {
-                    completion(ErrorMessage.cashoutFailed)
+                    completion(ErrorMessage.parseError(error!.localizedDescription))
                     return
                 }
             } else {
                 if let _ = error {
-                    completion(ErrorMessage.cashoutFailed)
+                    completion(ErrorMessage.parseError(error!.localizedDescription))
                 } else {
-                    completion(ErrorMessage.cashoutFailed)
+                    completion(ErrorMessage.parseError(error!.localizedDescription))
                 }
             }
         }
