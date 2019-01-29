@@ -231,6 +231,7 @@ class CreateScheduleViewController: BaseViewController {
         guard let campaignName = self.campaignNameTextField.text, !campaignName.isEmpty else { return false }
         
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let dateFrom = dateFormatter.date(from: self.dateFromTextField.text!) else { return false }
         dateFormatter.dateFormat = "HH:mm"
@@ -274,6 +275,7 @@ class CreateScheduleViewController: BaseViewController {
     
     func getDaysBetweenDates() {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
         
         dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let startDate = dateFormatter.date(from: self.dateFromTextField.text!) else { return }

@@ -67,6 +67,7 @@ class JifflrTextFieldDate: JifflrTextField {
         let daysToAdd = type == .dateFrom ? 2 : 32
         
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.dateFormat = (type == .dateFrom || type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
         guard let date = Calendar.current.date(byAdding: .day, value: daysToAdd, to: Date()) else { return }
         let dateString = dateFormatter.string(from: date)
@@ -85,6 +86,7 @@ class JifflrTextFieldDate: JifflrTextField {
     
     func createInputViews(type: DateType) {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.dateFormat = (self.type == .dateFrom || self.type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
         guard let date = dateFormatter.date(from: self.text!) else { return }
         
@@ -116,6 +118,7 @@ class JifflrTextFieldDate: JifflrTextField {
     
     @objc func datePicked(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.dateFormat = (self.type == .dateFrom || self.type == .dateTo) ? "dd/MM/yyyy" : "HH:mm"
         self.text = dateFormatter.string(from: sender.date)
     }
