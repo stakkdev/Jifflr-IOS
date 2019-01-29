@@ -203,11 +203,13 @@ class AdvertManager: NSObject {
     func flag(campaign: Campaign, moderatorFeedbackCategory: ModeratorFeedbackCategory) {
         guard let user = Session.shared.currentUser else { return }
         
-        let userFlaggedCampaign = UserFlaggedCampaign()
-        userFlaggedCampaign.user = user
-        userFlaggedCampaign.campaign = campaign
-        userFlaggedCampaign.category = moderatorFeedbackCategory
-        userFlaggedCampaign.saveEventually()
+        self.unpin(campaign: campaign) {
+            let userFlaggedCampaign = UserFlaggedCampaign()
+            userFlaggedCampaign.user = user
+            userFlaggedCampaign.campaign = campaign
+            userFlaggedCampaign.category = moderatorFeedbackCategory
+            userFlaggedCampaign.saveEventually()
+        }
     }
     
     func unpin(campaign: Campaign, completion: @escaping () -> Void) {
