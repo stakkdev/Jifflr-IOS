@@ -36,4 +36,6 @@ final class Session {
     var englishLanguageCode: String {
         return "en"
     }
+    
+    var currentCampaignToModerate: CampaignToModerate?
 }

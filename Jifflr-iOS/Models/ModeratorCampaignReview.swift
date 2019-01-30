@@ -47,6 +47,15 @@ final class ModeratorCampaignReview: PFObject {
             self["approved"] = newValue
         }
     }
+    
+    var campaignToModerate: CampaignToModerate? {
+        get {
+            return self["campaignToModerate"] as? CampaignToModerate
+        }
+        set {
+            self["campaignToModerate"] = newValue
+        }
+    }
 }
 
 extension ModeratorCampaignReview: PFSubclassing {

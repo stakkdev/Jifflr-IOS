@@ -137,7 +137,7 @@ class ModerationFeedbackViewController: BaseViewController {
     @IBAction func submitButtonPressed(sender: UIButton) {
         guard let user = Session.shared.currentUser else { return }
         
-        guard self.validateInput() else {
+        guard self.validateInput(), let currentCampaignToModerate = Session.shared.currentCampaignToModerate else {
             self.displayError(error: ErrorMessage.moderationValidation)
             return
         }
@@ -157,12 +157,15 @@ class ModerationFeedbackViewController: BaseViewController {
             moderatorCampaignReview.approved = false
         }
         
+        moderatorCampaignReview.campaignToModerate = currentCampaignToModerate
         moderatorCampaignReview.saveInBackground { (success, error) in
             self.submitButton.stopAnimating()
             guard success == true, error == nil else {
                 self.displayError(error: ErrorMessage.moderationSubmitFailed)
                 return
             }
+            
+            Session.shared.currentCampaignToModerate = nil
             
             let alert = AlertMessage.feedbackSubmitted
             self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in

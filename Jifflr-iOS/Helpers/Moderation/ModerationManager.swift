@@ -74,7 +74,8 @@ class ModerationManager: NSObject {
             if let campaignsToModerate = responseJSON as? [CampaignToModerate], campaignsToModerate.count > 0, error == nil {
                 
                 let randomIndex = Int(arc4random_uniform(UInt32(campaignsToModerate.count-1)))
-                let campaign = campaignsToModerate[randomIndex].campaign
+                let campaignToModerate = campaignsToModerate[randomIndex]
+                let campaign = campaignToModerate.campaign
                 
                 campaign.advert.details?.image?.getDataInBackground(block: { (data, error) in
                     if let data = data, error == nil {
@@ -83,6 +84,7 @@ class ModerationManager: NSObject {
                         print("Moderation Media: \(campaign.advert.details?.objectId ?? "") saved to File Manager: \(success)")
                     }
                     
+                    Session.shared.currentCampaignToModerate = campaignToModerate
                     completion(campaign)
                 })
             } else {
