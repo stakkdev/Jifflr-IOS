@@ -13,17 +13,25 @@ class NonComplianceViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    var isNonCompliant = true
     var campaign: Campaign!
     var moderatorFeedbacks: [ModeratorFeedback] = [] {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
+    var moderatorFeedbackCategories: [ModeratorFeedbackCategory] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
-    class func instantiateFromStoryboard(campaign: Campaign) -> NonComplianceViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, isNonCompliant: Bool = true) -> NonComplianceViewController {
         let storyboard = UIStoryboard(name: "Moderation", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "NonComplianceViewController") as! NonComplianceViewController
         vc.campaign = campaign
+        vc.isNonCompliant = isNonCompliant
         return vc
     }
     
@@ -55,9 +63,17 @@ class NonComplianceViewController: BaseViewController {
     
     func setupData() {
         self.spinner.startAnimating()
-        ModerationManager.shared.fetchNonComplianceFeedback(campaign: self.campaign) { (moderatorFeedback) in
-            self.moderatorFeedbacks = moderatorFeedback
-            self.spinner.stopAnimating()
+        
+        if self.isNonCompliant {
+            ModerationManager.shared.fetchNonComplianceFeedback(campaign: self.campaign) { (moderatorFeedback) in
+                self.moderatorFeedbacks = moderatorFeedback
+                self.spinner.stopAnimating()
+            }
+        } else {
+            ModerationManager.shared.fetchCampaignFlagged(campaign: self.campaign) { (moderatorFeedbackCategories) in
+                self.moderatorFeedbackCategories = moderatorFeedbackCategories
+                self.spinner.stopAnimating()
+            }
         }
     }
 }
@@ -68,7 +84,7 @@ extension NonComplianceViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.moderatorFeedbacks.count
+        return self.isNonCompliant ? self.moderatorFeedbacks.count : self.moderatorFeedbackCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,8 +93,14 @@ extension NonComplianceViewController: UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none
         
         let rowNumber = indexPath.row + 1
-        cell.titleLabel.text = "\(rowNumber). \(self.moderatorFeedbacks[indexPath.row].title)"
-        cell.descriptionLabel.text = self.moderatorFeedbacks[indexPath.row].descriptionString
+        
+        if self.isNonCompliant {
+            cell.titleLabel.text = "\(rowNumber). \(self.moderatorFeedbacks[indexPath.row].title)"
+            cell.descriptionLabel.text = self.moderatorFeedbacks[indexPath.row].descriptionString
+        } else {
+            cell.titleLabel.text = "\(rowNumber). \(self.moderatorFeedbackCategories[indexPath.row].title)"
+            cell.descriptionLabel.text = ""
+        }
         
         return cell
     }

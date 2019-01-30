@@ -359,6 +359,29 @@ class CampaignOverviewViewController: BaseViewController {
                 alertController.addAction(viewAction)
                 
                 self.present(alertController, animated: true, completion: nil)
+            } else {
+                self.handleAdFlaggedFeedback()
+            }
+        }
+    }
+    
+    func handleAdFlaggedFeedback() {
+        ModerationManager.shared.shouldShowAdFlaggedFeedback(campaign: self.campaign) { (yes) in
+            if yes {
+                let title = "feedback.alert.title".localized()
+                let message = "feedback.alert.message".localized()
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+                let dismissAction = UIAlertAction(title: "error.dismiss".localized(), style: .cancel, handler: nil)
+                alertController.addAction(dismissAction)
+                
+                let viewAction = UIAlertAction(title: "nonCompliance.alert.viewAction".localized(), style: .default) { (action) in
+                    let vc = NonComplianceViewController.instantiateFromStoryboard(campaign: self.campaign, isNonCompliant: false)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                alertController.addAction(viewAction)
+                
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }

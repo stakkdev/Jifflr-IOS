@@ -164,6 +164,25 @@ class ModerationManager: NSObject {
         })
     }
     
+    func fetchCampaignFlagged(campaign: Campaign, completion: @escaping ([ModeratorFeedbackCategory]) -> Void) {
+        let query = UserFlaggedCampaign.query()
+        query?.whereKey("campaign", equalTo: campaign)
+        query?.includeKey("category")
+        query?.findObjectsInBackground(block: { (objects, error) in
+            guard let userFlaggedCampaigns = objects as? [UserFlaggedCampaign], error == nil else {
+                completion([])
+                return
+            }
+            
+            var moderatorFeedbackCategories: [ModeratorFeedbackCategory] = []
+            for flaggedCampaign in userFlaggedCampaigns {
+                moderatorFeedbackCategories.append(flaggedCampaign.category)
+            }
+            
+            completion(moderatorFeedbackCategories)
+        })
+    }
+    
     func shouldShowNonComplianceFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
         let status = campaign.status
         guard status == CampaignStatusKey.nonCompliant || status == CampaignStatusKey.nonCompliantScheduled else {
@@ -174,6 +193,20 @@ class ModerationManager: NSObject {
         let query = ModeratorCampaignReview.query()
         query?.whereKey("campaign", equalTo: campaign)
         query?.whereKey("approved", equalTo: false)
+        query?.countObjectsInBackground(block: { (count, error) in
+            completion(Int(count) > 0)
+        })
+    }
+    
+    func shouldShowAdFlaggedFeedback(campaign: Campaign, completion: @escaping (Bool) -> Void) {
+        let status = campaign.status
+        guard status == CampaignStatusKey.flagged else {
+            completion(false)
+            return
+        }
+        
+        let query = UserFlaggedCampaign.query()
+        query?.whereKey("campaign", equalTo: campaign)
         query?.countObjectsInBackground(block: { (count, error) in
             completion(Int(count) > 0)
         })

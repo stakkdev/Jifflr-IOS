@@ -168,6 +168,7 @@ struct CampaignStatusKey {
     static let prepareToDelete = "prepareToDelete"
     static let deleted = "deleted"
     static let pendingModeration = "pendingModeration"
+    static let flagged = "flagged"
 }
 
 struct ModeratorStatusKey {
