@@ -103,7 +103,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-CD-cng" customClass="JifflrTextFieldDate" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-CD-cng" customClass="JifflrTextFieldDate" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="18" y="202" width="152.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KjA-r9-KJJ"/>
@@ -112,7 +112,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bw8-wK-nB9" customClass="JifflrTextFieldDate" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Bw8-wK-nB9" customClass="JifflrTextFieldDate" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="205" y="202" width="152" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XEW-NQ-n0t"/>
