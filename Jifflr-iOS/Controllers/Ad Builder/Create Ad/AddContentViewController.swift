@@ -188,7 +188,10 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let data = UIImageJPEGRepresentation(image, 1.0) {
             guard MediaManager.shared.save(data: data, id: self.advert.details?.objectId, fileExtension: "jpg") else {
-                self.displayError(error: ErrorMessage.mediaSaveFailed)
+                self.dismiss(animated: true) {
+                    self.displayError(error: ErrorMessage.mediaSaveFailed)
+                }
+                
                 return
             }
             
@@ -200,6 +203,17 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             let asset = AVAsset(url: videoUrl)
+            
+            let duration = asset.duration
+            let durationTime = CMTimeGetSeconds(duration)
+            guard durationTime <= 30.0 else {
+                self.dismiss(animated: true) {
+                    self.displayError(error: ErrorMessage.videoTooLong)
+                }
+                
+                return
+            }
+            
             let preset = AVAssetExportPresetHighestQuality
             let outFileType = AVFileType.mp4
             

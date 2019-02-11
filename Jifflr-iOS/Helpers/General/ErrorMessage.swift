@@ -86,6 +86,7 @@ public enum ErrorMessage {
     case maxCampaignsLimitReached
     case budgetLessThanAdSubmissionFee
     case updateCampaignContent(String)
+    case videoTooLong
 
     public var failureTitle: String {
         switch self {
@@ -260,6 +261,8 @@ public enum ErrorMessage {
             return "error.budgetLessThanAdSubmissionFee.message".localized()
         case .updateCampaignContent(let amount):
             return "error.updateCampaignContent.message".localizedFormat(amount)
+        case .videoTooLong:
+            return "error.videoTooLong.message".localized()
         }
     }
 }
