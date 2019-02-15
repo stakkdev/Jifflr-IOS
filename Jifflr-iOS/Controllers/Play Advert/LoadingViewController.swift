@@ -24,6 +24,6 @@ class LoadingViewController: BaseViewController {
     
     func setupUI() {
         self.view.backgroundColor = UIColor.clear
-        self.backgroundImageView.backgroundColor = UIColor.clear
+        self.setBackgroundImage(image: UIImage(named: "MainBackground"))
     }
 }
