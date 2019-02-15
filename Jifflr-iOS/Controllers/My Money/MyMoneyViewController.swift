@@ -114,6 +114,7 @@ extension MyMoneyViewController: JifflrSegmentedControlDelegate {
 
 extension MyMoneyViewController: CashoutCellDelegate {
     func cashoutCellPressed(cell: CashoutCell) {
+        guard let myMoney = self.myMoney else { return }
         guard let currentUser = Session.shared.currentUser else { return }
         guard let paypalEmail = self.paypalEmail, !paypalEmail.isEmpty else {
             cell.stopAnimating()
@@ -140,17 +141,25 @@ extension MyMoneyViewController: CashoutCellDelegate {
                 self.displayError(error: ErrorMessage.invalidCashoutPassword)
                 return
             }
-
-            CashoutManager.shared.cashout(password: password) { (error) in
-                cell.stopAnimating()
+            
+            AppSettingsManager.shared.validCashOutAmount(pounds: myMoney.moneyAvailable, completion: { (error) in
                 guard error == nil else {
+                    cell.stopAnimating()
                     self.displayError(error: error)
                     return
                 }
-
-                self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
-                self.updateData()
-            }
+                
+                CashoutManager.shared.cashout(password: password) { (error) in
+                    cell.stopAnimating()
+                    guard error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
+                    
+                    self.displayMessage(title: AlertMessage.cashoutSuccess.title, message: AlertMessage.cashoutSuccess.message)
+                    self.updateData()
+                }
+            })
         }
     }
 }

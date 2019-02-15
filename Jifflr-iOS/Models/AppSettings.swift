@@ -38,6 +38,21 @@ final class AppSettings: PFObject {
             self["adsSeenCap"] = newValue
         }
     }
+    
+    var minCashout: Double {
+        get {
+            if let minCashout = self["minCashout"] as? Int {
+                return minCashout == 0 ? 0.0 : Double(minCashout) / 100.0
+            } else if let minCashoutString = self["minCashout"] as? String, let minCashout = Int(minCashoutString) {
+                return minCashout == 0 ? 0.0 : Double(minCashout) / 100.0
+            }
+            
+            return 0.0
+        }
+        set {
+            self["minCashout"] = newValue
+        }
+    }
 }
 
 extension AppSettings: PFSubclassing {

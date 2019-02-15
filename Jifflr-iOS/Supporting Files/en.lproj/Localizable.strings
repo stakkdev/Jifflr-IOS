@@ -91,6 +91,7 @@
 "error.loginWrongPassword.message" = "Unable to login. Please ensure you have entered valid login credentials.";
 "error.updateCampaignContent.message" = "In order to change the content of this campaign, the campaign will need to be re-moderated. Please ensure your campaign balance covers the %@ Content Insertion Fee.";
 "error.videoTooLong.message" = "Please ensure the video selected is less than 30 seconds in length.";
+"error.minCashoutAmount.message" = "You've not reached the minimum cash-out amount of %@ yet, but you're getting there!";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.message" = "An email has been sent to the email entered containing a reset password link.";

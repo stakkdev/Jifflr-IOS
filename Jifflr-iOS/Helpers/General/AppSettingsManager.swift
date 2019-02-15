@@ -49,4 +49,19 @@ class AppSettingsManager: NSObject {
             return
         })
     }
+    
+    func validCashOutAmount(pounds: Double, completion: @escaping (ErrorMessage?) -> Void) {
+        let query = AppSettings.query()
+        query?.getFirstObjectInBackground(block: { (object, error) in
+            guard let appSettings = object as? AppSettings, error == nil else {
+                completion(ErrorMessage.unknown)
+                return
+            }
+            
+            let amount = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", appSettings.minCashout))"
+            let error = pounds < appSettings.minCashout ? ErrorMessage.minCashoutAmount(amount) : nil
+            completion(error)
+            return
+        })
+    }
 }
