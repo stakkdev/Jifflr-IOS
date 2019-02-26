@@ -233,7 +233,9 @@ extension BalanceViewController: STPAddCardViewControllerDelegate {
                         self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
                         
                         let alert = AlertMessage.paypalTopUpSuccess
-                        self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: nil)
+                        self.displayMessage(title: alert.title, message: alert.message, dismissText: nil, dismissAction: { (action) in
+                            self.navigationController?.popViewController(animated: true)
+                        })
                     })
                 }
             }
