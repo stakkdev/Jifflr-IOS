@@ -20,6 +20,15 @@ final class Language: PFObject {
             self["name"] = newValue
         }
     }
+    
+    var languageCode: String {
+        get {
+            return self["languageCode"] as? String ?? ""
+        }
+        set {
+            self["languageCode"] = newValue
+        }
+    }
 }
 
 extension Language: PFSubclassing {
