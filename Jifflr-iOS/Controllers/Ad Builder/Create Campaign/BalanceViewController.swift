@@ -175,11 +175,11 @@ extension BalanceViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.amountTextField {
             guard let text = textField.text else { return }
-            if text.count == 1 {
-                var newText = text
-                newText += "1.00"
-                textField.text = newText
-            }
+            guard let currency = text.first else { return }
+            guard let value = Double(text[1..<text.count]) else { return }
+            
+            let newString = String(format: "%@%.2f", "\(currency)", value)
+            textField.text = newString
         } else {
             guard let paypalEmail = textField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else { return }
             guard let user = Session.shared.currentUser else { return }
