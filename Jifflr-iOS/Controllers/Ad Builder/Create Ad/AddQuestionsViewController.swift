@@ -116,9 +116,10 @@ class AddQuestionsViewController: BaseViewController {
         questionSwitch.onTintColor = UIColor.mainOrange
         questionSwitch.backgroundColor = UIColor.offSwitchGrey
         questionSwitch.layer.cornerRadius = 16.0
-        let switchBarButton = UIBarButtonItem(customView: questionSwitch)
-        self.navigationItem.rightBarButtonItem = switchBarButton
-        
+        if self.questionNumber != 1 {
+            let switchBarButton = UIBarButtonItem(customView: questionSwitch)
+            self.navigationItem.rightBarButtonItem = switchBarButton
+        }
         questionSwitch.isOn = true
         self.questionSwitchToggled(sender: questionSwitch)
         
