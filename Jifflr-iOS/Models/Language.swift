@@ -14,7 +14,7 @@ final class Language: PFObject {
     
     var name: String {
         get {
-            return self["name"] as! String
+            return self["name"] as? String ?? ""
         }
         set {
             self["name"] = newValue
