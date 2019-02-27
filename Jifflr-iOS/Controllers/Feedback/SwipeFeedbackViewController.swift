@@ -44,6 +44,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.allowsMultipleSelection = false
+        self.tableView.isMultipleTouchEnabled = false
     }
     
     override func setupQuestionText() {
@@ -159,6 +160,8 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
         cell.tag = indexPath.row + 1000
         cell.delegate = self
         cell.question = self.question
+        cell.contentView.isExclusiveTouch = true
+        cell.isExclusiveTouch = true
         
         var imageFile = self.question?.image1
         if indexPath.row == 1 { imageFile = self.question?.image2 }
@@ -183,6 +186,7 @@ extension SwipeFeedbackViewController: SwipeCellDelegate {
         guard let cell = self.tableView.viewWithTag(row) as? SwipeCell else { return }
         guard let index = self.tableView.indexPath(for: cell) else { return }
         self.tableView.deleteRows(at: [index], with: .fade)
+        self.tableView.reloadData()
         
         self.saveAndPushToNextAd()
     }
