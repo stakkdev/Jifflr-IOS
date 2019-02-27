@@ -81,8 +81,7 @@ class ChangeInvitationViewController: BaseViewController {
     }
     
     func presentMail() {
-        
-        guard let currentUser = UserManager.shared.currentUser, MFMailComposeViewController.canSendMail() == true else {
+        guard MFMailComposeViewController.canSendMail() == true else {
             self.displayError(error: ErrorMessage.inviteSendFailed)
             return
         }
@@ -96,8 +95,8 @@ class ChangeInvitationViewController: BaseViewController {
         composeViewController.setToRecipients([email])
         composeViewController.setSubject("myTeam.inviteEmail.subject".localized())
         
-        let sender = "\(currentUser.details.firstName) \(currentUser.details.lastName)"
-        let body = "myTeam.inviteEmail.body".localizedFormat(name, sender, invitationCode)
+        guard let shortName = name.components(separatedBy: " ").first else { return }
+        let body = "myTeam.inviteEmail.body".localizedFormat(shortName, invitationCode)
         composeViewController.setMessageBody(body, isHTML: false)
 
         self.navigationController?.present(composeViewController, animated: true, completion: nil)
