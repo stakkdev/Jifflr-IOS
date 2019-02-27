@@ -347,12 +347,13 @@ extension CampaignOverviewViewController {
             vc = noAds
         } else if let adBuilder = viewControllers[1] as? AdBuilderOverviewViewController {
             vc = adBuilder
+        } else if let adBuilder = viewControllers[1] as? AdBuilderLandingViewController {
+            vc = adBuilder
         } else {
             return
         }
 
-        guard let campaignOverviewViewController = viewControllers.last as? CampaignOverviewViewController else { return }
-        let newViewControllers = [dashboardViewController, vc!, campaignOverviewViewController]
+        let newViewControllers = [dashboardViewController, vc!]
         self.navigationController?.setViewControllers(newViewControllers, animated: true)
     }
     
