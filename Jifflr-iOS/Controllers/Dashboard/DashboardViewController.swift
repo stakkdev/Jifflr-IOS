@@ -319,14 +319,22 @@ class DashboardViewController: BaseViewController {
     }
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
-        guard let campaign = self.moderatorCampaign else {
-            self.displayError(error: ErrorMessage.noAdsToModerate)
-            self.updateModerationCampaign()
-            return
+        if let campaign = self.moderatorCampaign {
+            let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator)
+            self.navigationController?.pushViewController(vc, animated: true)
+            self.moderatorCampaign = nil
+        } else {
+            ModerationManager.shared.fetchCampaign { (newCampaign) in
+                guard let newCampaign = newCampaign else {
+                    self.displayError(error: ErrorMessage.noAdsToModerate)
+                    return
+                }
+                
+                self.moderatorCampaign = newCampaign
+                let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: newCampaign, mode: AdViewMode.moderator)
+                self.navigationController?.pushViewController(vc, animated: true)
+                self.moderatorCampaign = nil
+            }
         }
-        
-        let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator)
-        self.navigationController?.pushViewController(vc, animated: true)
-        self.moderatorCampaign = nil
     }
 }

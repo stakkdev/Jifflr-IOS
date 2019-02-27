@@ -25,6 +25,11 @@ class AdBuilderLandingViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.setupData()
     }
     

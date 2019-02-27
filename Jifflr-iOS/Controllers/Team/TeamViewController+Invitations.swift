@@ -70,7 +70,7 @@ extension TeamViewController: CNContactPickerDelegate {
 
     func presentMail(name: String, email: String, pendingUser: PendingUser) {
 
-        guard let currentUser = UserManager.shared.currentUser, MFMailComposeViewController.canSendMail() == true else {
+        guard MFMailComposeViewController.canSendMail() == true else {
             self.displayError(error: ErrorMessage.inviteSendFailed)
             PendingUserManager.shared.deletePendingUser(pendingUser: pendingUser)
             return
@@ -83,8 +83,8 @@ extension TeamViewController: CNContactPickerDelegate {
         composeViewController.setToRecipients([email])
         composeViewController.setSubject("myTeam.inviteEmail.subject".localized())
 
-        let sender = "\(currentUser.details.firstName) \(currentUser.details.lastName)"
-        let body = "myTeam.inviteEmail.body".localizedFormat(name, sender, invitationCode)
+        guard let shortName = name.components(separatedBy: " ").first else { return }
+        let body = "myTeam.inviteEmail.body".localizedFormat(shortName, invitationCode)
         composeViewController.setMessageBody(body, isHTML: false)
 
         self.pendingUser = pendingUser

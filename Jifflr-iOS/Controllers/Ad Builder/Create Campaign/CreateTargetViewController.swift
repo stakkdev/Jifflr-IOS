@@ -170,8 +170,18 @@ class CreateTargetViewController: BaseViewController {
             self.languages = languages
             
             if !self.isEdit {
-                self.languageTextField.text = languages.first?.name
-                self.selectedLanguage = languages.first
+                if let language = languages.first(where: { $0.languageCode == Session.shared.currentLanguage }) {
+                    self.selectedLanguage = language
+                    
+                    if let index = languages.firstIndex(of: language) {
+                        self.languagePickerView.selectRow(index, inComponent: 0, animated: false)
+                    }
+                } else {
+                    self.selectedLanguage = languages.first
+                }
+                
+                self.languageTextField.text = self.selectedLanguage?.name
+                
                 group.leave()
             }
         }

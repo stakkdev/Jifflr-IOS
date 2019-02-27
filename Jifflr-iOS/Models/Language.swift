@@ -14,10 +14,19 @@ final class Language: PFObject {
     
     var name: String {
         get {
-            return self["name"] as! String
+            return self["name"] as? String ?? ""
         }
         set {
             self["name"] = newValue
+        }
+    }
+    
+    var languageCode: String {
+        get {
+            return self["languageCode"] as? String ?? ""
+        }
+        set {
+            self["languageCode"] = newValue
         }
     }
 }
