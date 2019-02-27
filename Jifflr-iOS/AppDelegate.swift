@@ -144,8 +144,7 @@ extension AppDelegate {
     }
 
     func configLanguage() {
-        guard let languageCode = Locale.current.languageCode else { return }
-        Localize.setCurrentLanguage(languageCode)
+        Localize.setCurrentLanguage(Locale.current.identifier)
     }
 }
 

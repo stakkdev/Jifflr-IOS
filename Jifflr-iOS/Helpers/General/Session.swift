@@ -18,7 +18,7 @@ final class Session {
     }
 
     var currentLanguage: String {
-        return Locale.current.languageCode ?? "en"
+        return Locale.current.identifier
     }
     
     var currentCurrencySymbol: String {
