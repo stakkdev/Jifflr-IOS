@@ -20,6 +20,15 @@ final class Location: PFObject {
             self["isoCountryCode"] = newValue
         }
     }
+    
+    var isoCurrencyCode: String {
+        get {
+            return self["isoCurrencyCode"] as? String ?? "GBP"
+        }
+        set {
+            self["isoCurrencyCode"] = newValue
+        }
+    }
 
     var name: String {
         get {

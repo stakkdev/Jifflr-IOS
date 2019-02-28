@@ -22,11 +22,13 @@ final class Session {
     }
     
     var currentCurrencySymbol: String {
-        return Locale.current.currencySymbol ?? "£"
-    }
-    
-    var currentCurrencyCode: String {
-        return Locale.current.currencyCode ?? "en"
+        let symbol = Locale.current.currencySymbol ?? "£"
+        guard let isoCurrencyCode = self.currentUser?.details.location.isoCurrencyCode else {
+            return symbol
+        }
+        
+        let result = Locale.availableIdentifiers.map { Locale(identifier: $0) }.first { $0.currencyCode == isoCurrencyCode }
+        return result?.currencySymbol ?? symbol
     }
 
     var currentLocation: Location?
