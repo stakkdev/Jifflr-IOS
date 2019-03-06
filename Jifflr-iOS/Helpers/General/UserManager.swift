@@ -207,25 +207,38 @@ class UserManager: NSObject {
                             completion(ErrorMessage.unknown)
                             return
                         }
-                            
-                        user.pinInBackground(block: { (succeeded, error) in
-                            if error != nil {
-                                completion(ErrorMessage.parseError(error!.localizedDescription))
-                            } else {
-                                userDetails.pinInBackground(block: { (success, error) in
-                                    if error != nil {
-                                        completion(ErrorMessage.parseError(error!.localizedDescription))
-                                    } else {
-                                        gender.pinInBackground(block: { (success, error) in
-                                            if error != nil {
-                                                completion(ErrorMessage.parseError(error!.localizedDescription))
-                                            } else {
-                                                completion(nil)
-                                            }
-                                        })
-                                    }
-                                })
+                        
+                        userDetails.location.fetchInBackground(block: { (object, error) in
+                            guard let location = object as? Location, error == nil else {
+                                completion(ErrorMessage.unknown)
+                                return
                             }
+                            
+                            user.pinInBackground(block: { (succeeded, error) in
+                                if error != nil {
+                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                } else {
+                                    userDetails.pinInBackground(block: { (success, error) in
+                                        if error != nil {
+                                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                                        } else {
+                                            gender.pinInBackground(block: { (success, error) in
+                                                if error != nil {
+                                                    completion(ErrorMessage.parseError(error!.localizedDescription))
+                                                } else {
+                                                    location.pinInBackground(block: { (success, error) in
+                                                        if error != nil {
+                                                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                                                        } else {
+                                                            completion(nil)
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
                         })
                     })
                 })
