@@ -324,7 +324,12 @@ class DashboardViewController: BaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             self.moderatorCampaign = nil
         } else {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            self.moderateButton.isEnabled = false
             ModerationManager.shared.fetchCampaign { (newCampaign) in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.moderateButton.isEnabled = true
+                
                 guard let newCampaign = newCampaign else {
                     self.displayError(error: ErrorMessage.noAdsToModerate)
                     return
