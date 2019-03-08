@@ -70,14 +70,21 @@ class UserManager: NSObject {
                                         return
                                     }
                                     
-                                    if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
-                                        self.registrationInvitation(completion: { (error) in
-                                            completion(error)
-                                        })
-                                    } else {
-                                        PFInstallation.registerUser(user: newUser)
-                                        completion(nil)
-                                    }
+                                    userDetails.location.pinInBackground(block: { (success, error) in
+                                        guard error == nil else {
+                                            completion(ErrorMessage.parseError(error!.localizedDescription))
+                                            return
+                                        }
+                                        
+                                        if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
+                                            self.registrationInvitation(completion: { (error) in
+                                                completion(error)
+                                            })
+                                        } else {
+                                            PFInstallation.registerUser(user: newUser)
+                                            completion(nil)
+                                        }
+                                    })
                                 })
                             })
                         })
@@ -148,25 +155,38 @@ class UserManager: NSObject {
                             return
                         }
                         
-                        user.pinInBackground(block: { (succeeded, error) in
-                            if error != nil {
+                        userDetails.location.fetchInBackground(block: { (object, error) in
+                            guard let location = object as? Location, error == nil else {
                                 completion(nil, ErrorMessage.unknown)
-                            } else {
-                                userDetails.pinInBackground(block: { (success, error) in
-                                    if error != nil {
-                                        completion(nil, ErrorMessage.unknown)
-                                    } else {
-                                        gender.pinInBackground(block: { (success, error) in
-                                            if error != nil {
-                                                completion(nil, ErrorMessage.unknown)
-                                            } else {
-                                                PFInstallation.registerUser(user: user)
-                                                completion(user, nil)
-                                            }
-                                        })
-                                    }
-                                })
+                                return
                             }
+                            
+                            user.pinInBackground(block: { (succeeded, error) in
+                                if error != nil {
+                                    completion(nil, ErrorMessage.unknown)
+                                } else {
+                                    userDetails.pinInBackground(block: { (success, error) in
+                                        if error != nil {
+                                            completion(nil, ErrorMessage.unknown)
+                                        } else {
+                                            gender.pinInBackground(block: { (success, error) in
+                                                if error != nil {
+                                                    completion(nil, ErrorMessage.unknown)
+                                                } else {
+                                                    location.pinInBackground(block: { (success, error) in
+                                                        if error != nil {
+                                                            completion(nil, ErrorMessage.unknown)
+                                                        } else {
+                                                            PFInstallation.registerUser(user: user)
+                                                            completion(user, nil)
+                                                        }
+                                                    })
+                                                }
+                                            })
+                                        }
+                                    })
+                                }
+                            })
                         })
                     })
                 })

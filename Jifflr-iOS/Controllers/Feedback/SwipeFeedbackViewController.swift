@@ -163,16 +163,18 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
         cell.contentView.isExclusiveTouch = true
         cell.isExclusiveTouch = true
         
-        var imageFile = self.question?.image1
-        if indexPath.row == 1 { imageFile = self.question?.image2 }
-        if indexPath.row == 2 { imageFile = self.question?.image3 }
+        if cell.questionImageView.image == nil {
+            var imageFile = self.question?.image1
+            if indexPath.row == 1 { imageFile = self.question?.image2 }
+            if indexPath.row == 2 { imageFile = self.question?.image3 }
 
-        if let imageFile = imageFile {
-            imageFile.getDataInBackground(block: { (data, error) in
-                if let data = data, error == nil {
-                    cell.questionImageView.image = UIImage(data: data)
-                }
-            })
+            if let imageFile = imageFile {
+                imageFile.getDataInBackground(block: { (data, error) in
+                    if let data = data, error == nil {
+                        cell.questionImageView.image = UIImage(data: data)
+                    }
+                })
+            }
         }
 
         return cell
