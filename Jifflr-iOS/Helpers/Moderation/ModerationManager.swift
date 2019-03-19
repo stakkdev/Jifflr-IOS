@@ -13,8 +13,8 @@ class ModerationManager: NSObject {
     static let shared = ModerationManager()
     
     
-    func fetchAllModeratorFeedback(completion: @escaping ([(category: ModeratorFeedbackCategory, feedback: [ModeratorFeedback])]) -> Void) {
-        self.fetchLanguage(languageCode: Session.shared.currentLanguage) { (language) in
+    func fetchAllModeratorFeedback(languageCode: String, completion: @escaping ([(category: ModeratorFeedbackCategory, feedback: [ModeratorFeedback])]) -> Void) {
+        self.fetchLanguage(languageCode: languageCode) { (language) in
             guard let language = language else {
                 completion([])
                 return
@@ -57,7 +57,7 @@ class ModerationManager: NSObject {
     func fetchLanguage(languageCode: String, completion: @escaping (Language?) -> Void) {
         LanguageManager.shared.fetchLanguage(languageCode: languageCode, pinName: nil) { (language) in
             guard let language = language else {
-                self.fetchLanguage(languageCode: "en", completion: { (language) in
+                self.fetchLanguage(languageCode: "en_GB", completion: { (language) in
                     completion(language)
                 })
                 return

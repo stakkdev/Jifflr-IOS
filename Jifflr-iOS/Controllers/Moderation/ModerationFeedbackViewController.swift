@@ -114,23 +114,39 @@ class ModerationFeedbackViewController: BaseViewController {
     }
     
     func setupData() {
-        ModerationManager.shared.fetchAllModeratorFeedback { (feedback) in
-            guard feedback.count > 0 else {
-                self.displayError(error: ErrorMessage.noInternetConnection)
-                return
-            }
-            
-            var allFeedback = feedback
-            if let passedFeedback = allFeedback.filter({$0.category.passed == true}).first {
-                self.passedTextField.text = passedFeedback.category.title
-                self.passedFeedback = passedFeedback.feedback.first
-                
-                if let index = allFeedback.index(where: {$0 == passedFeedback}) {
-                    allFeedback.remove(at: index)
+        ModerationManager.shared.fetchAllModeratorFeedback(languageCode: Session.shared.currentLanguage) { (feedback) in
+            if feedback.count > 0 {
+                var allFeedback = feedback
+                if let passedFeedback = allFeedback.filter({$0.category.passed == true}).first {
+                    self.passedTextField.text = passedFeedback.category.title
+                    self.passedFeedback = passedFeedback.feedback.first
+                    
+                    if let index = allFeedback.index(where: {$0 == passedFeedback}) {
+                        allFeedback.remove(at: index)
+                    }
                 }
+                
+                self.feedback = allFeedback
+            } else {
+                ModerationManager.shared.fetchAllModeratorFeedback(languageCode: "en_GB", completion: { (feedback) in
+                    guard feedback.count > 0 else {
+                        self.displayError(error: ErrorMessage.noInternetConnection)
+                        return
+                    }
+                    
+                    var allFeedback = feedback
+                    if let passedFeedback = allFeedback.filter({$0.category.passed == true}).first {
+                        self.passedTextField.text = passedFeedback.category.title
+                        self.passedFeedback = passedFeedback.feedback.first
+                        
+                        if let index = allFeedback.index(where: {$0 == passedFeedback}) {
+                            allFeedback.remove(at: index)
+                        }
+                    }
+                    
+                    self.feedback = allFeedback
+                })
             }
-            
-            self.feedback = allFeedback
         }
     }
     
