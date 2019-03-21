@@ -18,6 +18,11 @@ final class Session {
     }
 
     var currentLanguage: String {
+        if let languageString = Locale.preferredLanguages.first {
+            let identifier = languageString.replacingOccurrences(of: "-", with: "_")
+            return identifier
+        }
+        
         return Locale.current.identifier
     }
     
@@ -36,7 +41,7 @@ final class Session {
     var currentCoordinate: CLLocationCoordinate2D?
 
     var englishLanguageCode: String {
-        return "en"
+        return "en_GB"
     }
     
     var currentCampaignToModerate: CampaignToModerate?
