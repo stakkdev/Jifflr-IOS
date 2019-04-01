@@ -187,8 +187,16 @@ extension SwipeFeedbackViewController: SwipeCellDelegate {
         
         guard let cell = self.tableView.viewWithTag(row) as? SwipeCell else { return }
         guard let index = self.tableView.indexPath(for: cell) else { return }
+        
+        CATransaction.begin()
+        self.tableView.beginUpdates()
+        CATransaction.setCompletionBlock {
+            self.tableView.isUserInteractionEnabled = true
+        }
+        self.tableView.isUserInteractionEnabled = false
         self.tableView.deleteRows(at: [index], with: .fade)
-        self.tableView.reloadData()
+        self.tableView.endUpdates()
+        CATransaction.commit()
         
         self.saveAndPushToNextAd()
     }

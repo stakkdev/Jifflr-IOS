@@ -200,6 +200,67 @@ class CampaignManager: NSObject {
         return false
     }
     
+    func handleEnableCampaign(on: Bool, campaign: Campaign, completion: @escaping (Campaign, ErrorMessage?) -> Void) {
+        guard Reachability.isConnectedToNetwork() else {
+            completion(campaign, ErrorMessage.noInternetConnection)
+            return
+        }
+        
+        if on {
+            let query = ModeratorCampaignReview.query()
+            query?.whereKey("campaign", equalTo: campaign)
+            query?.countObjectsInBackground(block: { (count, error) in
+                if count > 0 {
+                    if self.shouldCampaignBeActiveAvailable(campaign: campaign) {
+                        campaign.status = CampaignStatusKey.availableActive
+                        campaign.saveInBackground { (success, error) in
+                            guard error == nil else {
+                                completion(campaign, ErrorMessage.campaignActivationFailed)
+                                return
+                            }
+                            
+                            campaign.pinInBackground(withName: self.pinName)
+                            completion(campaign, nil)
+                        }
+                    } else {
+                        campaign.status = CampaignStatusKey.availableScheduled
+                        campaign.saveInBackground { (success, error) in
+                            guard error == nil else {
+                                completion(campaign, ErrorMessage.campaignActivationFailed)
+                                return
+                            }
+                            
+                            campaign.pinInBackground(withName: self.pinName)
+                            completion(campaign, nil)
+                        }
+                    }
+                } else {
+                    campaign.status = CampaignStatusKey.pendingModeration
+                    campaign.saveInBackground { (success, error) in
+                        guard error == nil else {
+                            completion(campaign, ErrorMessage.campaignActivationFailed)
+                            return
+                        }
+                        
+                        campaign.pinInBackground(withName: self.pinName)
+                        completion(campaign, nil)
+                    }
+                }
+            })
+        } else {
+            campaign.status = CampaignStatusKey.inactive
+            campaign.saveInBackground { (success, error) in
+                guard error == nil else {
+                    completion(campaign, ErrorMessage.campaignActivationFailed)
+                    return
+                }
+                
+                campaign.pinInBackground(withName: self.pinName)
+                completion(campaign, nil)
+            }
+        }
+    }
+    
     func withdraw(amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
         guard let user = Session.shared.currentUser else { return }
         

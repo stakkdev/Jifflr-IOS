@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 
 extension CampaignOverviewViewController {
     @IBAction func getCampaignResultsButtonPressed(sender: JifflrButton) {
@@ -159,26 +160,17 @@ extension CampaignOverviewViewController {
             return
         }
         
-        var statusKey = CampaignStatusKey.inactive
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        if sender.isOn {
-            if CampaignManager.shared.shouldCampaignBeActiveAvailable(campaign: self.campaign) {
-                statusKey = CampaignStatusKey.availableActive
-            } else {
-                statusKey = CampaignStatusKey.availableScheduled
-            }
-        }
-        
-        self.campaign.status = statusKey
-        self.campaign.saveInBackground { (success, error) in
+        CampaignManager.shared.handleEnableCampaign(on: sender.isOn, campaign: self.campaign) { (campaign, error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             guard error == nil else {
                 sender.isOn = !sender.isOn
-                self.displayError(error: ErrorMessage.noInternetConnection)
+                self.displayError(error: error!)
                 return
             }
             
-            self.campaign.pinInBackground(withName: CampaignManager.shared.pinName)
-            
+            self.campaign = campaign
             self.handleStatus(status: self.campaign.status)
         }
     }
