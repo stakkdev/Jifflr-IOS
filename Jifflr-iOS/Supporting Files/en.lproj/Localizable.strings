@@ -209,7 +209,7 @@
 "termsAndConditions.navigation.title" = "Terms & Conditions";
 
 "dashboard.myTeamButton.title" = "My Team";
-"dashboard.myMoneyButton.title" = "My Money";
+"dashboard.myMoneyButton.title" = "Max Cash";
 "dashboard.adsViewedButton.title" = "Completed";
 "dashboard.adBuilderButton.title" = "Campaigns";
 "dashboard.helpButton.title" = "NEED SOME HELP?"; // The last word before the '?' will be orange.
@@ -247,7 +247,7 @@
 "adsViewed.detailLabel.title" = "To receive 100% of income";
 "adsViewed.adBacklog.title" = "Campaign Backlog";
 "adsViewed.adBacklogMinimum.title" = "Minimum %i campaigns per day";
-"adsViewed.percentageDue.title" = "% of Team Income Due";
+"adsViewed.percentageDue.title" = "% of Max Cash Due";
 "adsViewed.percentageDue.detail" = "Review more to get 100%";
 
 "myMoney.navigation.title" = "My Money";

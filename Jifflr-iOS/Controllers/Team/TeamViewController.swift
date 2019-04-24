@@ -160,10 +160,13 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         } else {
-            let pendingFriend = self.pendingFriends[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: "TeamPendingFriendCell") as! TeamPendingFriendCell
             cell.accessoryType = .none
             cell.selectionStyle = .none
+            
+            guard self.pendingFriends.count > indexPath.row else { return cell }
+            
+            let pendingFriend = self.pendingFriends[indexPath.row]
             cell.nameLabel.text = pendingFriend.name
             cell.emailLabel.text = pendingFriend.email
             cell.codeLabel.text = "myTeam.codeLabel.title".localizedFormat(pendingFriend.invitationCode)
