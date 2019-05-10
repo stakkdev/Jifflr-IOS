@@ -18,6 +18,8 @@ class CampaignManager: NSObject {
     
     func startEndDateString(schedule: Schedule) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
         let startDateString = dateFormatter.string(from: schedule.startDate)
@@ -28,6 +30,8 @@ class CampaignManager: NSObject {
     
     func startEndTimeString(schedule: Schedule) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "HH.mm"
         
         let startDateString = dateFormatter.string(from: schedule.startDate)
@@ -38,12 +42,16 @@ class CampaignManager: NSObject {
     
     func dateString(date: Date) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: date)
     }
     
     func timeString(date: Date) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: date)
     }
@@ -86,7 +94,9 @@ class CampaignManager: NSObject {
     }
     
     func mergeDates(date: Date, time: Date) -> Date? {
-        let calendar = NSCalendar.current
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = Locale.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)

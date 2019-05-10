@@ -231,7 +231,8 @@ class CreateScheduleViewController: BaseViewController {
         guard let campaignName = self.campaignNameTextField.text, !campaignName.isEmpty else { return false }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_GB")
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "dd/MM/yyyy"
         guard let dateFrom = dateFormatter.date(from: self.dateFromTextField.text!) else { return false }
         dateFormatter.dateFormat = "HH:mm"
@@ -244,6 +245,7 @@ class CreateScheduleViewController: BaseViewController {
         guard let timeTo = dateFormatter.date(from: self.timeToTextField.text!) else { return false }
         guard let endDate = CampaignManager.shared.mergeDates(date: dateTo, time: timeTo) else { return false }
         guard endDate > startDate else { return false }
+        guard timeTo > timeFrom else { return false }
         
         guard self.selectedDays.count > 0 else { return false }
         
