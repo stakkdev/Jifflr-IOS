@@ -149,4 +149,30 @@ class MockContent: NSObject {
         question.text = "Do you like Fish and Chips?"
         return question
     }
+    
+    func createAdvert() -> Advert {
+        let advert = Advert()
+        advert.isCMS = true
+        advert.creator = self.createUser()
+        
+        let template = AdvertTemplate()
+        template.key = "imageVideoLandscape"
+        
+        let advertDetails = AdvertDetails()
+        advertDetails.template = template
+        advert.details = advertDetails
+        return advert
+    }
+    
+    func createCampaign() -> Campaign {
+        let campaign = Campaign()
+        campaign.balance = 100.0
+        campaign.budget = 100.0
+        campaign.costPerView = 10.0
+        campaign.creator = self.createUser()
+        campaign.number = 1
+        campaign.name = "Test Campaign"
+        campaign.advert = self.createAdvert()
+        return campaign
+    }
 }

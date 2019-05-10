@@ -109,7 +109,7 @@ class CMSAdvertViewController: BaseViewController {
             self.player?.playerDelegate = self
             self.player?.playbackDelegate = self
             self.player?.playbackLoops = false
-            self.player?.fillMode = PlayerFillMode.resizeAspectFill.avFoundationType
+            self.player?.fillMode = PlayerFillMode.resizeAspectFit.avFoundationType
             self.player?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             
             self.addChildViewController(self.player!)
@@ -199,6 +199,7 @@ class CMSAdvertViewController: BaseViewController {
     
     @objc func dismissButtonPressed() {
         OrientationManager.shared.set(orientation: .portrait)
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
         if self.mode == AdViewMode.moderator {
             self.navigationController?.popViewController(animated: false)

@@ -34,6 +34,9 @@ final class AdvertTemplate: PFObject {
         get {
             return self["key"] as! String
         }
+        set {
+            self["key"] = newValue
+        }
     }
 }
 
