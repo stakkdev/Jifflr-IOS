@@ -320,8 +320,9 @@ class DashboardViewController: BaseViewController {
     
     @IBAction func moderateAdsButtonPressed(_ sender: UIButton) {
         if let campaign = self.moderatorCampaign {
-            let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator)
-            self.navigationController?.pushViewController(vc, animated: true)
+            let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator))
+            navController.isNavigationBarHidden = false
+            self.navigationController?.present(navController, animated: false, completion: nil)
             self.moderatorCampaign = nil
         } else {
             MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -336,8 +337,9 @@ class DashboardViewController: BaseViewController {
                 }
                 
                 self.moderatorCampaign = newCampaign
-                let vc = CMSAdvertViewController.instantiateFromStoryboard(campaign: newCampaign, mode: AdViewMode.moderator)
-                self.navigationController?.pushViewController(vc, animated: true)
+                let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: newCampaign, mode: AdViewMode.moderator))
+                navController.isNavigationBarHidden = false
+                self.navigationController?.present(navController, animated: false, completion: nil)
                 self.moderatorCampaign = nil
             }
         }

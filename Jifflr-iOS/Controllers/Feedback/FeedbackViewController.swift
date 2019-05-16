@@ -208,7 +208,7 @@ class FeedbackViewController: BaseViewController {
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
         if self.mode == AdViewMode.moderator {
-            self.navigationController?.popToRootViewController(animated: false)
+            self.navigationController?.dismiss(animated: false, completion: nil)
             return
         }
         

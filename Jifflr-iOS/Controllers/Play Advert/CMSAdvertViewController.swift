@@ -201,11 +201,6 @@ class CMSAdvertViewController: BaseViewController {
         OrientationManager.shared.set(orientation: .portrait)
         OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
-        if self.mode == AdViewMode.moderator {
-            self.navigationController?.popViewController(animated: false)
-            return
-        }
-        
         let animated = self.mode == AdViewMode.preview
         self.navigationController?.dismiss(animated: animated, completion: nil)
     }
