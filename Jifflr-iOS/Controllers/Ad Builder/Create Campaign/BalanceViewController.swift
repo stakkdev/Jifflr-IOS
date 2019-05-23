@@ -157,7 +157,7 @@ class BalanceViewController: BaseViewController {
         amountString.remove(at: amountString.startIndex)
         
         guard let amount = Double(amountString) else { return 0.0 }
-        return amount
+        return amount.rounded(toPlaces: 2)
     }
 }
 

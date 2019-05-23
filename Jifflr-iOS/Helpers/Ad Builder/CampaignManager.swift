@@ -411,7 +411,7 @@ class CampaignManager: NSObject {
     }
     
     func topUp(token: String, amount: Double, completion: @escaping (ErrorMessage?) -> Void) {
-        let pence = amount * 100
+        let pence = Int((amount * 100).rounded(.up))
         let parameters = ["token": token, "amount": pence] as [String : Any]
         
         PFCloud.callFunction(inBackground: "top-up", withParameters: parameters) { responseJSON, error in
