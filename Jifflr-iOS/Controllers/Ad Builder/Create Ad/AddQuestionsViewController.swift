@@ -111,6 +111,13 @@ class AddQuestionsViewController: BaseViewController {
         self.answer4TextField.delegate = self
         self.answer5TextField.delegate = self
         
+        self.websiteTextField.delegate = self
+        self.facebookTextField.delegate = self
+        self.twitterTextField.delegate = self
+        self.onlineStoreTextField.delegate = self
+        self.appStoreTextField.delegate = self
+        self.playStoreTextField.delegate = self
+        
         let questionSwitch = UISwitch()
         questionSwitch.addTarget(self, action: #selector(self.questionSwitchToggled(sender:)), for: .valueChanged)
         questionSwitch.onTintColor = UIColor.mainOrange
@@ -518,6 +525,27 @@ extension AddQuestionsViewController: UITextFieldDelegate {
                     self.displayError(error: ErrorMessage.invalidAnswersRequired)
                 }
             }
+        } else if textField == self.websiteTextField ||
+            textField == self.facebookTextField ||
+            textField == self.twitterTextField ||
+            textField == self.onlineStoreTextField ||
+            textField == self.appStoreTextField ||
+            textField == self.playStoreTextField {
+            guard let text = textField.text else { return }
+            textField.text = text == "https://" ? "" : textField.text
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == self.websiteTextField ||
+            textField == self.facebookTextField ||
+            textField == self.twitterTextField ||
+            textField == self.onlineStoreTextField ||
+            textField == self.appStoreTextField ||
+            textField == self.playStoreTextField {
+            
+            guard let text = textField.text else { return }
+            textField.text = text.isEmpty ? "https://" : textField.text
         }
     }
     
