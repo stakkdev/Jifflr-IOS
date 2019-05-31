@@ -122,7 +122,11 @@ class JifflrTeamChart: UIView {
         self.lineChartView.leftAxis.axisMaximum = maxY + topPadding
         self.lineChartView.xAxis.axisMinimum = minX
         self.lineChartView.leftAxis.axisMinimum = minY
-
+        
+        if let lastPoint = data.last, lastPoint.y == 0.0, data.count >= 3 {
+            lastPoint.y = data[data.count - 2].y
+        }
+        
         let lineDataSet = self.lineDataSet(data: data, color: color, fill: fill)
         var dataSets:[LineChartDataSet] = []
 
