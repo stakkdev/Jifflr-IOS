@@ -92,6 +92,7 @@
 "error.updateCampaignContent.message" = "In order to change the content of this campaign, the campaign will need to be re-moderated. Please ensure your campaign balance covers the %@ Content Insertion Fee.";
 "error.videoTooLong.message" = "Please ensure the video selected is less than 30 seconds in length.";
 "error.minCashoutAmount.message" = "You've not reached the minimum cash-out amount of %@ yet, but you're getting there!";
+"error.teamUpdating.message" = "Good news! Your team has grown… We are busy updating your team, please check back later…";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.message" = "An email has been sent to the email entered containing a reset password link.";
