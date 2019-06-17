@@ -253,7 +253,13 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     }
     
     func playerPlaybackStateDidChange(_ player: Player) {
+        guard let navigationController = self.navigationController else { return }
+        guard let viewController = navigationController.viewControllers.last else { return }
         
+        if let _ = viewController as? FeedbackViewController, player.playbackState == .playing {
+            player.stop()
+            player.muted = true
+        }
     }
     
     func playerBufferingStateDidChange(_ player: Player) {
@@ -273,11 +279,14 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     }
     
     func playerPlaybackWillStartFromBeginning(_ player: Player) {
-        
+
     }
     
     func playerPlaybackDidEnd(_ player: Player) {
-        if self.mode != AdViewMode.preview {
+        guard let navigationController = self.navigationController else { return }
+        guard let viewController = navigationController.viewControllers.last else { return }
+        
+        if let _ = viewController as? CMSAdvertViewController, self.mode != AdViewMode.preview {
             self.showFeedback()
         }
     }

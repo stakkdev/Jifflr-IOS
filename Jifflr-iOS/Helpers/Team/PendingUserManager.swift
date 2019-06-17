@@ -57,6 +57,7 @@ class PendingUserManager: NSObject {
             let query = PendingUser.query()
             query?.whereKey("email", equalTo: pendingUser.email)
             query?.whereKey("sender", equalTo: currentUser)
+            query?.whereKey("active", equalTo: true)
             query?.findObjectsInBackground(block: { (objects, error) in
                 if let objects = objects, objects.count > 0, error == nil {
                     completion(nil, ErrorMessage.inviteAlreadySent)
