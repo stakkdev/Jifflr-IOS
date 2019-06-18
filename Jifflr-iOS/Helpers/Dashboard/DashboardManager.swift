@@ -53,7 +53,11 @@ class DashboardManager: NSObject {
 
                 completion(dashboardStats, nil)
             } else {
-                completion(nil, ErrorMessage.unknown)
+                if let newError = error, let dict = (newError as NSError).userInfo["error"] as? NSDictionary, let code = dict["code"] as? Int, code == 300 {
+                    completion(nil, ErrorMessage.teamUpdating)
+                } else {
+                    completion(nil, ErrorMessage.unknown)
+                }
             }
         }
     }
