@@ -29,6 +29,15 @@ final class QuestionAnswers: PFObject {
             self["answers"] = newValue
         }
     }
+    
+    var answerObjectIds: [String] {
+        get {
+            return self["answerObjectIds"] as? [String] ?? []
+        }
+        set {
+            self["answerObjectIds"] = newValue
+        }
+    }
 }
 
 extension QuestionAnswers: PFSubclassing {

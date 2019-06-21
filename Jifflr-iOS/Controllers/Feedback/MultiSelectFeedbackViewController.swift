@@ -62,7 +62,11 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
             chosenAnswers.append(answer)
         }
         
-        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: chosenAnswers)
+        let objectIds = chosenAnswers.map({ (answer) -> String in
+            return answer.objectId!
+        })
+        
+        let questionAnswer = FeedbackManager.shared.createQuestionAnswers(question: question, answers: chosenAnswers, answerObjectIds: objectIds)
         self.questionAnswers.append(questionAnswer)
     }
 }

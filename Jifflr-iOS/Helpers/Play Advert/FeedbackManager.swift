@@ -12,13 +12,17 @@ import Parse
 class FeedbackManager: NSObject {
     static let shared = FeedbackManager()
 
-    func createQuestionAnswers(question: Question, answers: [Answer]) -> QuestionAnswers {
+    func createQuestionAnswers(question: Question, answers: [Answer], answerObjectIds: [String]? = nil) -> QuestionAnswers {
         let questionAnswer = QuestionAnswers()
         questionAnswer.question = question
 
         let relation = questionAnswer.relation(forKey: "answers")
         for answer in answers {
             relation.add(answer)
+        }
+        
+        if let answerObjectIds = answerObjectIds {
+            questionAnswer.answerObjectIds = answerObjectIds
         }
 
         return questionAnswer
