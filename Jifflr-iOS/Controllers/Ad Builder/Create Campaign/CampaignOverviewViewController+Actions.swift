@@ -277,7 +277,7 @@ extension CampaignOverviewViewController {
                 return
             }
             
-            let amount = "\(Session.shared.currentCurrencySymbol)\(fee)"
+            let amount = "\(fee) GBP"
             let alertController = UIAlertController(title: "alert.adSubmissionFee.title".localized(), message: "alert.adSubmissionFee.message".localizedFormat(amount), preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "alert.adSubmissionFee.cancel".localized(), style: .cancel, handler: { (action) in
                 self.activateButton.stopAnimating()

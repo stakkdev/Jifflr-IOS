@@ -152,7 +152,7 @@
 "alert.campaignUpdated.title" = "Campaign updated!";
 "alert.campaignUpdated.message" = "The campaign has been updated.";
 "alert.adSubmissionFee.title" = "Just so you know...";
-"alert.adSubmissionFee.message" = "As the Content in this Campaign hasn’t been used before there's a one-time %@ Content Insertion Fee. See the FAQs for more details.";
+"alert.adSubmissionFee.message" = "We want Jifflr to be safe, enjoyable and rewarding so there’s a %@ insertion fee to maintain our quality standards. See the FAQs for more details.";
 "alert.contentChangedSubmissionFee.message" = "As you are wanting to change the Content of this Campaign, there will be %@ Content Insertion Fee. See the FAQs for more details.";
 "alert.adSubmissionFee.agree" = "Agree";
 "alert.adSubmissionFee.cancel" = "Cancel";
