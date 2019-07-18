@@ -94,6 +94,13 @@ class LocationManager: NSObject {
                 return
             }
             
+            Session.shared.currentLocation = country
+            
+            guard country.locationStatus.type != LocationStatusType.Disabled else {
+                completion(nil, ErrorMessage.blockedCountry)
+                return
+            }
+            
             PFObject.unpinAllObjectsInBackground(withName: self.pinName, block: { (success, error) in
                 country.locationStatus.pinInBackground(withName: self.pinName, block: { (success, error) in
                     country.pinInBackground(withName: self.pinName, block: { (success, error) in
@@ -164,6 +171,14 @@ class LocationManager: NSObject {
             
             if let newRootViewController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 if let visibleViewController = newRootViewController.visibleViewController as? BaseViewController {
+                    if let _ = visibleViewController as? RegisterViewController {
+                        let error = ErrorMessage.blockedCountry
+                        visibleViewController.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
+                            visibleViewController.navigationController?.popViewController(animated: true)
+                        })
+                        return
+                    }
+                    
                     visibleViewController.displayError(error: ErrorMessage.blockedCountry)
                 }
             }

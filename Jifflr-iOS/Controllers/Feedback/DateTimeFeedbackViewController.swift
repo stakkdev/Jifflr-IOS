@@ -22,6 +22,9 @@ class DateTimeFeedbackViewController: FeedbackViewController {
         controller.questionAnswers = questionAnswers
         controller.isTime = isTime
         controller.mode = mode
+        
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
+        
         return controller
     }
 

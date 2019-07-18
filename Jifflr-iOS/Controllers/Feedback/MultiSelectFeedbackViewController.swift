@@ -21,6 +21,9 @@ class MultiSelectFeedbackViewController: FeedbackViewController {
         controller.content = content
         controller.questionAnswers = questionAnswers
         controller.mode = mode
+        
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
+        
         return controller
     }
 

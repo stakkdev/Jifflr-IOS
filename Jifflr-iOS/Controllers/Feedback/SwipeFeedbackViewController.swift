@@ -22,6 +22,9 @@ class SwipeFeedbackViewController: FeedbackViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.campaign = campaign
         controller.question = question
+        
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
+        
         return controller
     }
 

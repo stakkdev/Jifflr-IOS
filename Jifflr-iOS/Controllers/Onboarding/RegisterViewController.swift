@@ -362,7 +362,10 @@ extension RegisterViewController: ChooseLocationViewControllerDelegate {
             self.locationTextField.stopAnimating()
 
             guard let location = location, error == nil else {
-                self.displayError(error: ErrorMessage.blockedCountry)
+                let error = ErrorMessage.blockedCountry
+                self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                })
                 return
             }
 

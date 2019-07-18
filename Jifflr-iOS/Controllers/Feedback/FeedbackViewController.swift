@@ -63,7 +63,7 @@ class FeedbackViewController: BaseViewController {
         self.setupLocalization()
         self.setupQuestionText()
         
-        OrientationManager.shared.set(orientation: .portrait)
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
 
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false

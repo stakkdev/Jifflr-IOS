@@ -35,9 +35,9 @@ class CMSAdvertViewController: BaseViewController {
         advertViewController.mode = mode
         
         if campaign.advert.details?.template?.key == AdvertTemplateKey.imageVideoLandscape {
-            OrientationManager.shared.set(orientation: .landscape)
+            OrientationManager.shared.lock(orientation: .landscape, andRotateTo: .landscapeLeft)
         } else {
-            OrientationManager.shared.set(orientation: .portrait)
+            OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         }
         
         return advertViewController
@@ -198,7 +198,6 @@ class CMSAdvertViewController: BaseViewController {
     }
     
     @objc func dismissButtonPressed() {
-        OrientationManager.shared.set(orientation: .portrait)
         OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
         let animated = self.mode == AdViewMode.preview
