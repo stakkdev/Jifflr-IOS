@@ -89,6 +89,7 @@ public enum ErrorMessage {
     case videoTooLong
     case minCashoutAmount(String)
     case teamUpdating
+    case expiredActivateCampaign
 
     public var failureTitle: String {
         switch self {
@@ -269,6 +270,8 @@ public enum ErrorMessage {
             return "error.minCashoutAmount.message".localizedFormat(amount)
         case .teamUpdating:
             return "error.teamUpdating.message".localized()
+        case .expiredActivateCampaign:
+            return "error.expiredActivateCampaign.message".localized()
         }
     }
 }

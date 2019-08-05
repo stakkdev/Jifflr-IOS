@@ -160,6 +160,14 @@ extension CampaignOverviewViewController {
             return
         }
         
+        if sender.isOn {
+            guard let endDate = self.campaign.schedule?.endDate, Date() < endDate else {
+                self.activeSwitch.isOn = false
+                self.displayError(error: ErrorMessage.expiredActivateCampaign)
+                return
+            }
+        }
+        
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
         CampaignManager.shared.handleEnableCampaign(on: sender.isOn, campaign: self.campaign) { (campaign, error) in
@@ -250,6 +258,11 @@ extension CampaignOverviewViewController {
         
         guard Reachability.isConnectedToNetwork() else {
             self.displayError(error: ErrorMessage.NoInternetConnectionRegistration)
+            return
+        }
+        
+        guard let endDate = self.campaign.schedule?.endDate, Date() < endDate else {
+            self.displayError(error: ErrorMessage.expiredActivateCampaign)
             return
         }
         
