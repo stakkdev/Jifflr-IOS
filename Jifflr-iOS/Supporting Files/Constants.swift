@@ -121,9 +121,9 @@ struct Onboarding {
 
     static var images: [UIImage] {
         return [
-            #imageLiteral(resourceName: "Onboarding1"),
-            #imageLiteral(resourceName: "Onboarding1"),
-            #imageLiteral(resourceName: "Onboarding1")
+            UIImage(named: "Onboarding1")!,
+            UIImage(named: "Onboarding3")!,
+            UIImage(named: "Onboarding2")!
         ]
     }
 
