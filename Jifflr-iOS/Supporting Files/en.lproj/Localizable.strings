@@ -183,7 +183,7 @@
 
 "locationRequired.navigation.title" = "Location Required";
 "locationRequired.button.title" = "ENABLE";
-"locationRequired.description" = "Jifflr would like to know your hometown or city so we can start to tailor the campaigns that we'll show you.\n\nWe won’t share your detailed location information with anyone.";
+"locationRequired.description" = "Jifflr would like to know your location so we can tailor the campaigns that we send to you and add geographic context to the market research responses you give.\n\nBut we won’t share your detailed location information with anyone.";
 "locationRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your location while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable GPS access for Jifflr in your device’s settings and then restart the App.";
 
 "register.navigation.title" = "Register";
