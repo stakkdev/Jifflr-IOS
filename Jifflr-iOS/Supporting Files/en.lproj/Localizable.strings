@@ -245,12 +245,12 @@
 "adsViewed.segmentedControlButton1.title" = "PROGRESS";
 "adsViewed.segmentedControlButton2.title" = "HISTORY";
 "adsViewed.adsViewedCell.title" = "Completed Campaigns";
-"adsViewed.targetLabel.title" = "Just %i Campaigns Per Day"; // %i required to dynamically insert integer into text.
-"adsViewed.detailLabel.title" = "To receive 100% of income";
-"adsViewed.adBacklog.title" = "Campaign Backlog";
-"adsViewed.adBacklogMinimum.title" = "Minimum %i campaigns per day";
+"adsViewed.targetLabel.title" = "Review as many as you wish"; // %i required to dynamically insert integer into text.
+"adsViewed.detailLabel.title" = "We really value your feedback";
+"adsViewed.adBacklog.title" = "Earning Threshold";
+"adsViewed.adBacklogMinimum.title" = "Campaigns to meet earning threshold";
 "adsViewed.percentageDue.title" = "% of Max Cash Due";
-"adsViewed.percentageDue.detail" = "Review more to get 100%";
+"adsViewed.percentageDue.detail" = "Percentage increases with reviews";
 
 "myMoney.navigation.title" = "My Money";
 "myMoney.segmentedControlButton1.title" = "CASH OUT";

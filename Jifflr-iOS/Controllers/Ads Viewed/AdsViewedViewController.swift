@@ -152,19 +152,19 @@ extension AdsViewedViewController: UITableViewDelegate, UITableViewDataSource {
 
                 switch indexPath.row {
                 case 1:
-                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(adsViewed.adsPerDay)
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localized()
                     cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 case 2:
                     cell.mainLabel.text = "adsViewed.adBacklog.title".localized()
-                    cell.detailLabel.text = "adsViewed.adBacklogMinimum.title".localizedFormat(adsViewed.adBacklogThreshold)
+                    cell.detailLabel.text = "adsViewed.adBacklogMinimum.title".localized()
                     cell.rightLabel.text = "\(adsViewed.adBacklog)"
                 case 3:
                     cell.mainLabel.text = "adsViewed.percentageDue.title".localized()
                     cell.detailLabel.text = "adsViewed.percentageDue.detail".localized()
                     cell.rightLabel.text = "\(adsViewed.teamIncomeDuePercentage)%"
                 default:
-                    cell.mainLabel.text = "adsViewed.targetLabel.title".localizedFormat(adsViewed.adsPerDay)
+                    cell.mainLabel.text = "adsViewed.targetLabel.title".localized()
                     cell.detailLabel.text = "adsViewed.detailLabel.title".localized()
                     cell.rightLabel.text = ""
                 }
