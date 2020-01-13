@@ -134,7 +134,7 @@
 "alert.deleteCampaign.title" = "Delete Campaign";
 "alert.deleteCampaign.message" = "Are you sure you want to delete this campaign? This action cannot be undone. If the campaign is currently active, it will be scheduled to delete in 48 hours.";
 "alert.scheduledDeleteCampaign.title" = "Campaign Schedule to Delete";
-"alert.scheduledDeleteCampaign.message" = "This campaign was been scheduled to delete in the next 48 hours.";
+"alert.scheduledDeleteCampaign.message" = "This campaign has been scheduled to delete in the next 48 hours.";
 "alert.campaignCopied.title" = "Campaign Copied!";
 "alert.campaignCopied.message" = "Your campaign has been copied!";
 "alert.applyModerator.title" = "Application Submitted!";
@@ -158,10 +158,10 @@
 "alert.adSubmissionFee.agree" = "Agree";
 "alert.adSubmissionFee.cancel" = "Cancel";
 
-"onboarding.title1" = "Earn up to £500 a month.";
-"onboarding.description1" = "When you and people in your team spend about 10 minutes a day reviewing 20 market research campaigns, you could earn up to £500 in around 5 hours each month, that’s £100 per hour!";
-"onboarding.title2" = "Remember to build your team.";
-"onboarding.description2" = "A big team makes big money. Ideally invite 5 or 6 friends to join your team, encourage them to invite their friends and watch your team grow. There’s no limit to how big your team can be!";
+"onboarding.title1" = "Make your voice heard.";
+"onboarding.description1" = "Smart people never underestimate the value of good market research. In around 10 minutes a day just answer some quick questions and you can make a real difference; shape the future!";
+"onboarding.title2" = "Earn real money.";
+"onboarding.description2" = "Businesses pay really well for valuable market research insights. But don't keep it to yourself, let your friends and family know, then everyone has a chance to earn up to £500 each month.";
 "onboarding.title3" = "Run market research campaigns.";
 "onboarding.description3" = "Use Campaign Builder to create your own market research campaigns, with 3 questions, then show them to your preferred audience. It’s never been easier to understand your future customers.";
 "onboarding.skipButton" = "Skip";
@@ -245,12 +245,12 @@
 "adsViewed.segmentedControlButton1.title" = "PROGRESS";
 "adsViewed.segmentedControlButton2.title" = "HISTORY";
 "adsViewed.adsViewedCell.title" = "Completed Campaigns";
-"adsViewed.targetLabel.title" = "Just %i Campaigns Per Day"; // %i required to dynamically insert integer into text.
-"adsViewed.detailLabel.title" = "To receive 100% of income";
-"adsViewed.adBacklog.title" = "Campaign Backlog";
-"adsViewed.adBacklogMinimum.title" = "Minimum %i campaigns per day";
+"adsViewed.targetLabel.title" = "Review as many as you wish"; // %i required to dynamically insert integer into text.
+"adsViewed.detailLabel.title" = "We really value your feedback";
+"adsViewed.adBacklog.title" = "Earning Threshold";
+"adsViewed.adBacklogMinimum.title" = "Campaigns to meet earning threshold";
 "adsViewed.percentageDue.title" = "% of Max Cash Due";
-"adsViewed.percentageDue.detail" = "Review more to get 100%";
+"adsViewed.percentageDue.detail" = "Percentage increases with reviews";
 
 "myMoney.navigation.title" = "My Money";
 "myMoney.segmentedControlButton1.title" = "CASH OUT";
