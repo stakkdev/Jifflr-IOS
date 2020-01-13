@@ -73,7 +73,7 @@
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
-"error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
+"error.paypalTopUpFailed" = "An error occurred. No money has been taken. Please check your card details and Internet connection and try again.";
 "error.nonCompliantActivate" = "Unable to activate your campaign whilst it is non-compliant.";
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
 "error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";

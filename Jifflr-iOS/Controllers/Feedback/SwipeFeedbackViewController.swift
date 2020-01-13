@@ -14,6 +14,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
+    var imageLoadCount = 0
     var question: AdExchangeQuestion!
     var userSeenAdExchange = UserSeenAdExchange()
 
@@ -48,6 +49,13 @@ class SwipeFeedbackViewController: FeedbackViewController {
         self.tableView.dataSource = self
         self.tableView.allowsMultipleSelection = false
         self.tableView.isMultipleTouchEnabled = false
+        self.tableView.isUserInteractionEnabled = false
+        
+        if let vc = UIApplication.shared.keyWindow?.topMostWindowController() {
+            if let alert = vc as? UIAlertController {
+                alert.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     override func setupQuestionText() {
@@ -175,6 +183,11 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
                 imageFile.getDataInBackground(block: { (data, error) in
                     if let data = data, error == nil {
                         cell.questionImageView.image = UIImage(data: data)
+                        
+                        self.imageLoadCount += 1
+                        if self.imageLoadCount == self.tableView.numberOfRows(inSection: 0) {
+                            self.tableView.isUserInteractionEnabled = true
+                        }
                     }
                 })
             }

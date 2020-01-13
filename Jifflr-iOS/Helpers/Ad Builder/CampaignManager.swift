@@ -347,7 +347,7 @@ class CampaignManager: NSObject {
                 return
             }
             
-            let adSubmissionFee = Double(locationFinancial.adSubmissionFee / 100)
+            let adSubmissionFee = Double(Double(locationFinancial.adSubmissionFee) / 100.0)
             let valid = balance > adSubmissionFee
             completion(valid, valid ? nil : ErrorMessage.budgetLessThanAdSubmissionFee, "\(String(format: "%.2f", adSubmissionFee))")
         })
