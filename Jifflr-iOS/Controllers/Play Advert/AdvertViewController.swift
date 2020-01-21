@@ -111,6 +111,8 @@ class AdvertViewController: BaseViewController {
             // This additional ViewController is required because of the Google Admob SDK bug.
             // See https://github.com/firebase/firebase-ios-sdk/issues/2118 Open as of Jan 2019
             let vc = LoadingViewController.instantiateFromStoryboard()
+            vc.modalPresentationStyle = .fullScreen
+            self.modalPresentationStyle = .fullScreen
             self.present(vc, animated: false) {
                 GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: vc)
             }

@@ -18,11 +18,13 @@ extension TeamViewController {
                 self.displayError(error: ErrorMessage.contactsAccessFailed)
                 return
             }
-
-            let contactPickerViewController = CNContactPickerViewController()
-            contactPickerViewController.delegate = self
-            contactPickerViewController.displayedPropertyKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey]
-            self.navigationController?.present(contactPickerViewController, animated: true, completion: nil)
+            
+            DispatchQueue.main.async {
+                let contactPickerViewController = CNContactPickerViewController()
+                contactPickerViewController.delegate = self
+                contactPickerViewController.displayedPropertyKeys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey]
+                self.navigationController?.present(contactPickerViewController, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -115,6 +117,10 @@ extension TeamViewController: MFMailComposeViewControllerDelegate {
                 }
                 
                 controller.dismiss(animated: true, completion: {
+                    DispatchQueue.global(qos: .background).async {
+                        self.updateData()
+                    }
+                    
                     let alert = AlertMessage.inviteSent(pendingUser.name)
                     self.displayMessage(title: alert.title, message: alert.message)
                 })

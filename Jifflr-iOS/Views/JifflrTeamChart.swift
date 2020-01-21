@@ -38,7 +38,7 @@ class JifflrTeamChart: UIView {
         self.lineChartView = LineChartView()
         self.lineChartView.noDataText = "alert.noChartData".localized()
         self.lineChartView.noDataTextColor = UIColor.clear
-        self.lineChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
+        self.lineChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
 
         self.lineChartView.gridBackgroundColor = UIColor.clear
         self.lineChartView.backgroundColor = UIColor.clear
@@ -153,7 +153,7 @@ class JifflrTeamChart: UIView {
             chartDataEntry.append(ChartDataEntry(x: point.x, y: point.y))
         }
 
-        let dataSet = LineChartDataSet(values: chartDataEntry, label: "")
+        let dataSet = LineChartDataSet(entries: chartDataEntry, label: "")
         dataSet.axisDependency = .left
         dataSet.setColor(color)
         dataSet.lineWidth = 3.0
@@ -179,7 +179,7 @@ class JifflrTeamChart: UIView {
             chartDataEntry.append(ChartDataEntry(x: point.x, y: point.y))
         }
 
-        let dataSet = LineChartDataSet(values: chartDataEntry, label: "")
+        let dataSet = LineChartDataSet(entries: chartDataEntry, label: "")
         dataSet.axisDependency = .left
         dataSet.setColor(color)
         dataSet.lineWidth = 2.5

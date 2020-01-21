@@ -10,7 +10,7 @@ target 'Jifflr-iOS' do
   pod 'Firebase/Core'
   pod 'SwiftLint'
   pod 'Parse', '1.17.1'
-  pod 'Appodeal'
+  pod 'Appodeal', '2.5.12'
   pod 'Localize-Swift'
   pod 'IQKeyboardManagerSwift', '5.0.8'
   pod 'TDOnboarding'
