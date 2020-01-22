@@ -17,7 +17,7 @@ target 'Jifflr-iOS' do
   pod 'Charts'
   pod 'Player', '0.8.4'
   pod 'TTRangeSlider'
-  pod 'Stripe'
+  pod 'Stripe', '15.0.1'
   pod 'MBProgressHUD'
   pod 'Sourcery'
 

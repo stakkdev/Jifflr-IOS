@@ -141,6 +141,8 @@ class BalanceViewController: BaseViewController {
         let font = UIFont(name: Constants.FontNames.GothamBold, size: 18.0)!
         navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController.navigationBar.tintColor = UIColor.white
+        self.modalPresentationStyle = .fullScreen
+        navigationController.modalPresentationStyle = .fullScreen
         self.present(navigationController, animated: true)
     }
     
