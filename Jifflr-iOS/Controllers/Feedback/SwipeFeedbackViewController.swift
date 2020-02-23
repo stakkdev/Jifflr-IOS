@@ -208,8 +208,10 @@ extension SwipeFeedbackViewController: SwipeCellDelegate {
         self.tableView.beginUpdates()
         CATransaction.setCompletionBlock {
             self.tableView.isUserInteractionEnabled = true
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
         self.tableView.isUserInteractionEnabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.tableView.deleteRows(at: [index], with: .fade)
         self.tableView.endUpdates()
         CATransaction.commit()
