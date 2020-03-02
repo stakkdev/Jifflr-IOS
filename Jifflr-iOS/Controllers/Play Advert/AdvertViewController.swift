@@ -23,6 +23,7 @@ class AdvertViewController: BaseViewController {
     var advert: Advert!
     var question: AdExchangeQuestion?
     var rewardedAdmob = false
+    var loadError = false
 
     class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
@@ -93,7 +94,7 @@ class AdvertViewController: BaseViewController {
         
         self.appodealLoaded = false
         self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
-            if !self.appodealLoaded {
+            if !self.appodealLoaded && !self.loadError {
                 self.presentAppodeal()
             }
         })
@@ -105,11 +106,13 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentAdmob() {
-        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true && !self.loadError {
             
             // This additional ViewController is required because of the Google Admob SDK bug.
             // See https://github.com/firebase/firebase-ios-sdk/issues/2118 Open as of Jan 2019
             let vc = LoadingViewController.instantiateFromStoryboard()
+            vc.modalPresentationStyle = .fullScreen
+            self.modalPresentationStyle = .fullScreen
             self.present(vc, animated: false) {
                 GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: vc)
             }
@@ -135,6 +138,7 @@ class AdvertViewController: BaseViewController {
     }
     
     func handleError() {
+        self.loadError = true
         let error = ErrorMessage.admobFetchFailed
         self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
             self.timer?.invalidate()

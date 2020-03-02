@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         FirebaseApp.configure()
-        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
+        Analytics.setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
         
         UserDefaultsManager.shared.setQuestionDuration(time: 5)
 

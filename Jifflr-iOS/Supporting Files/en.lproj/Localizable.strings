@@ -73,7 +73,7 @@
 "error.getCampaignResultsFailed" = "Unable to fetch campaign results. Please check your internet connection and try again.";
 "error.copyCampaignFailed" = "Unable to copy and save campaign. Please check your internet connection and try again.";
 "error.minTopUpAmount" = "There is a minimum top-up amount of %@10.";
-"error.paypalTopUpFailed" = "An error occured, unable to top-up your account. No money has been taken. Please check your internet connection and try again.";
+"error.paypalTopUpFailed" = "An error occurred. No money has been taken. Please check your card details and Internet connection and try again.";
 "error.nonCompliantActivate" = "Unable to activate your campaign whilst it is non-compliant.";
 "error.campaignActivationFailed" = "Unable to activate campaign. Please check your internet connection and try again.";
 "error.applyModerator.termsAndConditions" = "Unable to apply. Please accept the terms and conditions.";
@@ -225,7 +225,7 @@
 "myTeam.membersLabel.title" = "%i Members";
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
 "myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
-"myTeam.inviteEmail.body" = "Hi %@,\n\nI’m using this great app called Jifflr and I’d like to invite you to use it too. You can earn up to £500 every month in about 5 hours just reviewing market research campaigns; that's £100/hr!\n\nPlus, if you enter the code below you could get an extra £125 with your first cash-out, meaning you could make £625!\n\n%@\n\nDownload Jifflr here:\n- Apple App Store: http://appurl.co/jifflr\n- Android Play Store: http://appurl.co/jifflr\n\nWith Jifflr simply spend about 10 minutes a day reviewing these campaigns to make some money. It really is that easy!\n\nWhat have you got to lose?"; // %@ is required to dynamically insert variables into text.
+"myTeam.inviteEmail.body" = "Hi %@,\n\nI’m using this great app called Jifflr and I’d like to invite you to use it too. You can earn up to £500 every month in about 5 hours just reviewing market research campaigns; that's £100/hr!\n\nPlus, if you enter the code below you could get an extra £125 with your first cash-out, meaning you could make £625!\n\n%@\n\nDownload Jifflr here: http://appurl.co/jifflr\n\nWith Jifflr simply spend about 10 minutes a day reviewing these campaigns to make some money. It really is that easy!\n\nWhat have you got to lose?"; // %@ is required to dynamically insert variables into text.
 "changeInvitation.navigation.title" = "Resend Invitation";
 "changeInvitation.name.heading" = "Name";
 "changeInvitation.name.placeholder" = "Enter name";

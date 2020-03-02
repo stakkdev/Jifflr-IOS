@@ -282,9 +282,10 @@ class DashboardViewController: BaseViewController {
                 self.navigationController?.present(navController, animated: false, completion: nil)
 
                 self.campaign = nil
-            } else if let advert = self.advert {
+            } else  if let advert = self.advert {
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
+                navController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(navController, animated: false, completion: nil)
             } else {
                 self.retryAdvertFetch()

@@ -183,8 +183,8 @@ class CampaignOverviewViewController: BaseViewController {
         
         let campaignCost = Double(demographic.estimatedAudience) * self.campaign.costPerView
         self.estimatedCampaignCostLabel.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", campaignCost))"
-        
-        self.budgetView.value = self.campaign.balance
+
+        self.budgetView.value = self.campaign.balance == 0.0 ? self.budgetView.value : self.campaign.balance
         
         self.campaignNumberLabel.text = "C# \(self.campaign.number)"
         self.campaignNumberLabel.isHidden = self.campaign.number == 0

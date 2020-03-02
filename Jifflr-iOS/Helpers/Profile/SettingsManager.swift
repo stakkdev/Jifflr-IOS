@@ -38,7 +38,7 @@ class SettingsManager: NSObject {
     }
 
     func toggleAnalytics(on: Bool) {
-        AnalyticsConfiguration.shared().setAnalyticsCollectionEnabled(on)
+        Analytics.setAnalyticsCollectionEnabled(on)
         UserDefaultsManager.shared.setAnalytics(on: on)
     }
 }

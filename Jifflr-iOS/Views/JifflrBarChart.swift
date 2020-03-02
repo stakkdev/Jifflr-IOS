@@ -35,7 +35,7 @@ class JifflrBarChart: UIView {
         self.barChartView = BarChartView()
         self.barChartView.noDataText = "alert.noChartData".localized()
         self.barChartView.noDataTextColor = UIColor.clear
-        self.barChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)
+        self.barChartView.noDataFont = UIFont(name: Constants.FontNames.GothamBook, size: 16.0)!
         self.barChartView.drawBarShadowEnabled = false
         self.barChartView.setScaleEnabled(false)
         
@@ -149,7 +149,7 @@ extension BarChartView {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: label)
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: label)
         chartDataSet.colors = [UIColor.mainLightBlue]
         self.fitBars = true
         let chartData = BarChartData(dataSet: chartDataSet)
