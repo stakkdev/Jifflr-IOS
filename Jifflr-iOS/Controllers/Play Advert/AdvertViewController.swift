@@ -133,7 +133,9 @@ class AdvertViewController: BaseViewController {
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false) {
+            self.rootDashboardViewController()
+        }
         self.timer?.invalidate()
     }
     
@@ -142,7 +144,9 @@ class AdvertViewController: BaseViewController {
         let error = ErrorMessage.admobFetchFailed
         self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
             self.timer?.invalidate()
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false) {
+                self.rootDashboardViewController()
+            }
         })
     }
 }
@@ -193,13 +197,20 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
 extension AdvertViewController: GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         self.rewardedAdmob = true
+        print("User Rewarded")
     }
 
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        print("rewardBasedVideoAdDidClose")
         if self.rewardedAdmob {
+            print("Presenting Feedback")
             self.presentFeedback()
         } else {
-            self.dismiss(animated: false)
+            print("Dismissing Loading View")
+            self.dismiss(animated: false) {
+                print("rootDashboardViewController")
+                self.rootDashboardViewController()
+            }
         }
     }
 

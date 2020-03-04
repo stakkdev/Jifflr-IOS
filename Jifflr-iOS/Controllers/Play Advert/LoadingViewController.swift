@@ -10,6 +10,8 @@ import UIKit
 
 class LoadingViewController: BaseViewController {
     
+    var timer: Timer?
+    
     class func instantiateFromStoryboard() -> LoadingViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let loadingViewController = storyboard.instantiateViewController(withIdentifier: "LoadingViewController") as! LoadingViewController
@@ -20,6 +22,22 @@ class LoadingViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { (timer) in
+            print("Fallback Timer Completed")
+            self.rootDashboardViewController()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     func setupUI() {
