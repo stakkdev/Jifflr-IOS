@@ -279,6 +279,7 @@ class DashboardViewController: BaseViewController {
             if let campaign = self.campaign {
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
                 navController.isNavigationBarHidden = false
+                navController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(navController, animated: false, completion: nil)
 
                 self.campaign = nil
