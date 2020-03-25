@@ -88,7 +88,11 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentAppodeal() {
-        guard let navVC = self.navigationController else { return }
+        guard let navVC = self.navigationController else {
+            self.handleError()
+            return
+        }
+        
         Appodeal.setRewardedVideoDelegate(self)
         Appodeal.showAd(.rewardedVideo, rootViewController: navVC)
         
@@ -116,11 +120,16 @@ class AdvertViewController: BaseViewController {
             self.present(vc, animated: false) {
                 GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: vc)
             }
+        } else {
+            self.handleError()
         }
     }
 
     func presentFeedback() {
-        guard let question = self.question else { return }
+        guard let question = self.question else {
+            self.handleError()
+            return
+        }
         
         if self.presentedViewController is LoadingViewController {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
