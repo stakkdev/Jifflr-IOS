@@ -94,6 +94,7 @@
 "error.minCashoutAmount.message" = "You've not reached the minimum cash-out amount of %@ yet, but you're getting there!";
 "error.teamUpdating.message" = "Good news! Your team has grown… We are busy updating your team, please check back later…";
 "error.expiredActivateCampaign.message" = "Please amend the campaign schedule in order to proceed.";
+"error.advertisingTurnedOff.message" = "Testing testing";
 
 "alert.resetEmailSent.title" = "Success";
 "alert.resetEmailSent.message" = "An email has been sent to the email entered containing a reset password link.";

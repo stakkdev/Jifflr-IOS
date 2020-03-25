@@ -134,7 +134,7 @@ class AdvertViewController: BaseViewController {
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
         self.dismiss(animated: false) {
-            self.rootDashboardViewController()
+            self.rootDashboardViewController(animated: false)
         }
         self.timer?.invalidate()
     }
@@ -145,7 +145,7 @@ class AdvertViewController: BaseViewController {
         self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
             self.timer?.invalidate()
             self.dismiss(animated: false) {
-                self.rootDashboardViewController()
+                self.rootDashboardViewController(animated: false)
             }
         })
     }
@@ -209,7 +209,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
             print("Dismissing Loading View")
             self.dismiss(animated: false) {
                 print("rootDashboardViewController")
-                self.rootDashboardViewController()
+                self.rootDashboardViewController(animated: false)
             }
         }
     }

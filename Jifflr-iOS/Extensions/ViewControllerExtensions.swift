@@ -25,12 +25,17 @@ extension UIViewController {
         self.set(root: navVC)
     }
 
-    func rootDashboardViewController() {
+    func rootDashboardViewController(animated: Bool = true) {
         let dashboardVC = DashboardViewController.instantiateFromStoryboard()
         let navVC = UINavigationController(rootViewController: dashboardVC)
         navVC.isNavigationBarHidden = true
-
-        self.set(root: navVC)
+        
+        if animated {
+            self.set(root: navVC)
+        } else {
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate //swiftlint:disable:this force_cast
+            appDelegate.window!.rootViewController = navVC
+        }
     }
 
     func set(root viewController: UIViewController) {

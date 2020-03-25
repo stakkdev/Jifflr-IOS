@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import AdSupport
 
 class DashboardViewController: BaseViewController {
 
@@ -283,7 +284,12 @@ class DashboardViewController: BaseViewController {
                 self.navigationController?.present(navController, animated: false, completion: nil)
 
                 self.campaign = nil
-            } else  if let advert = self.advert {
+            } else if let advert = self.advert {
+                guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+                    self.displayError(error: .advertisingTurnedOff)
+                    return
+                }
+                
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
                 navController.modalPresentationStyle = .fullScreen
