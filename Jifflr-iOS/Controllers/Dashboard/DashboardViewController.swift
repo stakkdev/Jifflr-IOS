@@ -330,6 +330,7 @@ class DashboardViewController: BaseViewController {
         if let campaign = self.moderatorCampaign {
             let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator))
             navController.isNavigationBarHidden = false
+            navController.modalPresentationStyle = .fullScreen
             self.navigationController?.present(navController, animated: false, completion: nil)
             self.moderatorCampaign = nil
         } else {
@@ -347,6 +348,7 @@ class DashboardViewController: BaseViewController {
                 self.moderatorCampaign = newCampaign
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: newCampaign, mode: AdViewMode.moderator))
                 navController.isNavigationBarHidden = false
+                navController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(navController, animated: false, completion: nil)
                 self.moderatorCampaign = nil
             }
