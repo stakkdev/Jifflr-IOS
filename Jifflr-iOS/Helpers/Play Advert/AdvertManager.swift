@@ -146,7 +146,7 @@ class AdvertManager: NSObject {
 
     func fetchAdExchange(local: Bool, completion: @escaping (Advert?) -> Void) {
         let query = Advert.query()
-        if local { query?.fromPin(withName: self.pinName) }
+        if local { query?.fromLocalDatastore() }
         query?.whereKey("isCMS", equalTo: false)
         query?.getFirstObjectInBackground(block: { (object, error) in
             guard let advert = object as? Advert, error == nil else {

@@ -88,7 +88,11 @@ class AdvertViewController: BaseViewController {
     }
 
     func presentAppodeal() {
-        guard let navVC = self.navigationController else { return }
+        guard let navVC = self.navigationController else {
+            self.handleError()
+            return
+        }
+        
         Appodeal.setRewardedVideoDelegate(self)
         Appodeal.showAd(.rewardedVideo, rootViewController: navVC)
         
@@ -116,11 +120,16 @@ class AdvertViewController: BaseViewController {
             self.present(vc, animated: false) {
                 GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: vc)
             }
+        } else {
+            self.handleError()
         }
     }
 
     func presentFeedback() {
-        guard let question = self.question else { return }
+        guard let question = self.question else {
+            self.handleError()
+            return
+        }
         
         if self.presentedViewController is LoadingViewController {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
@@ -134,7 +143,7 @@ class AdvertViewController: BaseViewController {
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
         self.dismiss(animated: false) {
-            self.rootDashboardViewController()
+            self.rootDashboardViewController(animated: false)
         }
         self.timer?.invalidate()
     }
@@ -145,7 +154,7 @@ class AdvertViewController: BaseViewController {
         self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil, dismissAction: { (alert) in
             self.timer?.invalidate()
             self.dismiss(animated: false) {
-                self.rootDashboardViewController()
+                self.rootDashboardViewController(animated: false)
             }
         })
     }
@@ -209,7 +218,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
             print("Dismissing Loading View")
             self.dismiss(animated: false) {
                 print("rootDashboardViewController")
-                self.rootDashboardViewController()
+                self.rootDashboardViewController(animated: false)
             }
         }
     }

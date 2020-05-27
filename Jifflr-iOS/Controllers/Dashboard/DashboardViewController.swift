@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import AdSupport
 
 class DashboardViewController: BaseViewController {
 
@@ -283,7 +284,12 @@ class DashboardViewController: BaseViewController {
                 self.navigationController?.present(navController, animated: false, completion: nil)
 
                 self.campaign = nil
-            } else  if let advert = self.advert {
+            } else if let advert = self.advert {
+                guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+                    self.displayError(error: .advertisingTurnedOff)
+                    return
+                }
+                
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
                 navController.isNavigationBarHidden = true
                 navController.modalPresentationStyle = .fullScreen
@@ -324,6 +330,7 @@ class DashboardViewController: BaseViewController {
         if let campaign = self.moderatorCampaign {
             let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.moderator))
             navController.isNavigationBarHidden = false
+            navController.modalPresentationStyle = .fullScreen
             self.navigationController?.present(navController, animated: false, completion: nil)
             self.moderatorCampaign = nil
         } else {
@@ -341,6 +348,7 @@ class DashboardViewController: BaseViewController {
                 self.moderatorCampaign = newCampaign
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: newCampaign, mode: AdViewMode.moderator))
                 navController.isNavigationBarHidden = false
+                navController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(navController, animated: false, completion: nil)
                 self.moderatorCampaign = nil
             }

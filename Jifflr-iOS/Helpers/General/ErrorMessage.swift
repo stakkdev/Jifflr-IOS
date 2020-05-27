@@ -40,6 +40,7 @@ public enum ErrorMessage {
     case invalidCashoutPassword
     case paypalEmailSaveFailed
     case admobFetchFailed
+    case advertisingTurnedOff
     case advertFetchFailed
     case invalidDobProfile
     case invalidFeedback(Int)
@@ -272,6 +273,8 @@ public enum ErrorMessage {
             return "error.teamUpdating.message".localized()
         case .expiredActivateCampaign:
             return "error.expiredActivateCampaign.message".localized()
+        case .advertisingTurnedOff:
+            return "error.advertisingTurnedOff.message".localized()
         }
     }
 }
