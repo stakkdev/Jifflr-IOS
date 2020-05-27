@@ -37,7 +37,8 @@ class FAQDetailViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(false, animated: false)
-
+        
+        self.textView.backgroundColor = .white
         self.textView.clipsToBounds = true
         self.textView.layer.masksToBounds = true
         self.textView.layer.cornerRadius = 10.0
