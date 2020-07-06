@@ -17,6 +17,7 @@ class FeedbackViewController: BaseViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var nextAdButton: JifflrButton!
     @IBOutlet weak var createAdCampaignButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView?
 
     var campaign: Campaign!
     var content:[(question: Question, answers: [Answer])] = []

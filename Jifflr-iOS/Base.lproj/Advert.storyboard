@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a Yes or No type response" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF0-pm-Fgy">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -42,7 +40,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -66,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PL0-Vv-Lnu">
-                                <rect key="frame" x="56.5" y="275.5" width="96" height="96"/>
+                                <rect key="frame" x="56.5" y="265.5" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="WFe-bB-0j9"/>
                                     <constraint firstAttribute="width" constant="96" id="xb8-fK-jJY"/>
@@ -77,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjK-4c-kIu">
-                                <rect key="frame" x="222.5" y="275.5" width="96" height="96"/>
+                                <rect key="frame" x="222.5" y="265.5" width="96" height="96"/>
                                 <state key="normal" image="FeedbackYesButton"/>
                                 <connections>
                                     <action selector="yesPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="eQc-af-g1G"/>
@@ -124,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with dislike to like options." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-LI-tB4">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -139,7 +137,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -165,7 +163,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RVs-Cb-8I5">
-                                <rect key="frame" x="20" y="285" width="335" height="57"/>
+                                <rect key="frame" x="20" y="275" width="335" height="57"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-3f-cX6" customClass="ScaleButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
@@ -270,7 +268,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -298,7 +296,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-0s-Bee">
-                                <rect key="frame" x="0.0" y="91" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="482"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Hou-OI-c2m">
                                     <size key="itemSize" width="375" height="50"/>
@@ -357,7 +355,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with multiple answers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4q-ZF-7FO">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -404,7 +402,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2K-8I-xrR">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="YC6-dK-Z11"/>
                                 </constraints>
@@ -457,7 +455,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -485,26 +483,26 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left or right to choose  your preference." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRl-T7-VxH">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeFaces" translatesAutoresizingMaskIntoConstraints="NO" id="KHf-bb-vXF">
-                                <rect key="frame" x="24" y="86" width="327" height="56"/>
+                                <rect key="frame" x="24" y="66" width="327" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="tfb-HG-rsi"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwipeAnimation" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-tm-7fa">
-                                <rect key="frame" x="112" y="79" width="151" height="70"/>
+                                <rect key="frame" x="112" y="59" width="151" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="HT5-gc-vya"/>
                                     <constraint firstAttribute="width" constant="151" id="kYx-mg-5aW"/>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6hl-eW-i0O">
-                                <rect key="frame" x="0.0" y="159" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="474"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwipeCell" rowHeight="145" id="XCm-bP-AKg" customClass="SwipeCell" customModule="Jifflr_iOS" customModuleProvider="target">
@@ -555,6 +553,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-rK-opk">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -568,6 +570,7 @@
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="top" secondItem="YlT-tm-7fa" secondAttribute="bottom" constant="10" id="KN7-Sl-Pt2"/>
                             <constraint firstItem="YlT-tm-7fa" firstAttribute="centerX" secondItem="KHf-bb-vXF" secondAttribute="centerX" id="OtX-6F-icM"/>
                             <constraint firstItem="knZ-AT-yKt" firstAttribute="centerX" secondItem="oop-8S-p44" secondAttribute="centerX" id="Pgd-er-gBT"/>
+                            <constraint firstItem="xj1-rK-opk" firstAttribute="centerX" secondItem="ZUw-Ln-Hrg" secondAttribute="centerX" id="Que-EJ-4gZ"/>
                             <constraint firstItem="KHf-bb-vXF" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="24" id="T57-ua-Oza"/>
                             <constraint firstItem="YlT-tm-7fa" firstAttribute="top" secondItem="NRl-T7-VxH" secondAttribute="bottom" constant="8" id="Wm7-5J-GOG"/>
                             <constraint firstItem="knZ-AT-yKt" firstAttribute="top" secondItem="rmr-Ux-ank" secondAttribute="bottom" constant="12" id="X0c-YJ-f3w"/>
@@ -576,6 +579,7 @@
                             <constraint firstItem="rmr-Ux-ank" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="20" id="fCp-to-ob5"/>
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="top" secondItem="KHf-bb-vXF" secondAttribute="bottom" constant="17" id="fNg-08-6eW"/>
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" id="nNW-Dh-MvU"/>
+                            <constraint firstItem="xj1-rK-opk" firstAttribute="centerY" secondItem="ZUw-Ln-Hrg" secondAttribute="centerY" id="nwb-i0-z3f"/>
                             <constraint firstItem="KHf-bb-vXF" firstAttribute="top" secondItem="NRl-T7-VxH" secondAttribute="bottom" constant="15" id="oWS-bs-fOk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oop-8S-p44"/>
@@ -584,6 +588,7 @@
                         <outlet property="createAdCampaignButton" destination="knZ-AT-yKt" id="kkm-ee-J72"/>
                         <outlet property="nextAdButton" destination="rmr-Ux-ank" id="dJN-Bg-cmW"/>
                         <outlet property="questionLabel" destination="NRl-T7-VxH" id="4TZ-qH-OPz"/>
+                        <outlet property="spinner" destination="xj1-rK-opk" id="zeB-U8-tu9"/>
                         <outlet property="swipeAnimationImageView" destination="YlT-tm-7fa" id="y1q-gw-Fhe"/>
                         <outlet property="tableView" destination="6hl-eW-i0O" id="Bl8-q9-MKf"/>
                     </connections>
@@ -735,7 +740,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -763,30 +768,30 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a number answers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRE-fl-Kgf">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIP-cI-xNJ">
-                                <rect key="frame" x="0.0" y="91" width="375" height="450"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="470"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4o-ns-p0G">
-                                        <rect key="frame" x="0.0" y="117" width="375" height="216"/>
+                                        <rect key="frame" x="0.0" y="127" width="375" height="216"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="X4h-Oq-jEz"/>
                                         </constraints>
                                     </pickerView>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pve-F8-gPP">
-                                        <rect key="frame" x="0.0" y="206.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="216.5" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Bxg-Mn-Vn8"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7R-KA-N0w">
-                                        <rect key="frame" x="0.0" y="242.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="252.5" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="wLS-He-aOt"/>
@@ -853,7 +858,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -881,32 +886,29 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a number answers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iM7-yl-YsE">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaJ-qm-Vrf">
-                                <rect key="frame" x="0.0" y="91" width="375" height="450"/>
+                                <rect key="frame" x="0.0" y="71" width="375" height="470"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qua-G0-6g5">
-                                        <rect key="frame" x="0.0" y="117" width="375" height="216"/>
+                                        <rect key="frame" x="0.0" y="127" width="375" height="216"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="216" id="AGq-7r-ivU"/>
                                         </constraints>
-                                        <date key="date" timeIntervalSinceReferenceDate="542307535.31296694">
-                                            <!--2018-03-09 16:58:55 +0000-->
-                                        </date>
                                     </datePicker>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03r-pB-Z5S">
-                                        <rect key="frame" x="0.0" y="206.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="216.5" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Yn0-a2-FRS"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0E-h3-iYw">
-                                        <rect key="frame" x="0.0" y="242.5" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="252.5" width="375" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ZI6-rc-0an"/>
@@ -973,7 +975,7 @@
                                         <fragment content="Create an Ad campaign">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                             </attributes>
                                         </fragment>
@@ -1001,7 +1003,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a question with a number answers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImU-Jr-9qf">
-                                <rect key="frame" x="20" y="28" width="335" height="43"/>
+                                <rect key="frame" x="20" y="8" width="335" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="NBP-IB-Tqf"/>
                                 </constraints>
@@ -1010,7 +1012,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-9x-JOA">
-                                <rect key="frame" x="18" y="106" width="339" height="350"/>
+                                <rect key="frame" x="18" y="86" width="339" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bv4-4N-gks" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>

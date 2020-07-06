@@ -110,7 +110,8 @@ class SwipeFeedbackViewController: FeedbackViewController {
             self.userSeenAdExchange.saveEventually { (success, error) in
                 print("Saved Swipe Feedback: \(success)")
             }
-
+            
+            self.spinner?.startAnimating()
             self.pushToNextAd()
         }
     }
