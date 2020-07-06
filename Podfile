@@ -20,6 +20,7 @@ target 'Jifflr-iOS' do
   pod 'Stripe', '15.0.2'
   pod 'MBProgressHUD'
   pod 'Sourcery'
+  pod 'FBSDKCoreKit/Swift'
 
   target 'Jifflr-iOSTests' do
     inherit! :search_paths

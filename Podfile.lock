@@ -109,6 +109,10 @@ PODS:
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
   - FBSDKCoreKit/Basics (5.14.0)
+  - FBSDKCoreKit/Core (5.14.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKCoreKit/Swift (5.14.0):
+    - FBSDKCoreKit/Core
   - Firebase (6.15.0):
     - Firebase/Core (= 6.15.0)
   - Firebase/Core (6.15.0):
@@ -202,6 +206,7 @@ DEPENDENCIES:
   - Charts
   - Crashlytics
   - Fabric
+  - FBSDKCoreKit/Swift
   - Firebase
   - Firebase/Core
   - GoogleAnalytics
@@ -283,6 +288,6 @@ SPEC CHECKSUMS:
   TDOnboarding: 2885b251825a593df18d29185cbd709d1fa71089
   TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
 
-PODFILE CHECKSUM: 29f325a63c54d8dcefc91b6e689bbe2ebbd4414c
+PODFILE CHECKSUM: 6497dddc497e9aea0b91eb4406d388a7a6dc53f0
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
