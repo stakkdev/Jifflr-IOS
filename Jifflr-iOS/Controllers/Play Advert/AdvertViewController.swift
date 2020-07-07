@@ -172,14 +172,14 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
         }
     }
     
-    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String?) {
-//        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
-//
-//        } else {
-//            self.dismiss(animated: false, completion: {
-//                self.rewardedVideoWillDismiss()
-//            })
-//        }
+    func rewardedVideoDidFinish(_ rewardAmount: Float, name rewardName: String?) {
+        if let _ = self.navigationController?.visibleViewController as? AdvertViewController {
+
+        } else {
+            self.dismiss(animated: false, completion: {
+                self.rewardedVideoWillDismiss()
+            })
+        }
     }
     
     func rewardedVideoDidFailToLoadAd() {
