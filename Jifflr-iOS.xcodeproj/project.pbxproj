@@ -60,6 +60,7 @@
 		1AB5C47B20B45EE800777CB9 /* CampaignManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */; };
 		1AC480622074D3B80092906C /* AddQuestionsViewController+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */; };
 		1AD4971320F63A2000A4089D /* TermsOfUse.html in Resources */ = {isa = PBXBuildFile; fileRef = 1AD4971220F63A1F00A4089D /* TermsOfUse.html */; };
+		1AD95EA524B7B22B00CFDE88 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD95EA424B7B22B00CFDE88 /* AddContactViewController.swift */; };
 		1AE5A7E72084D7E500B7CDAE /* CampaignManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */; };
 		1AE5A7E92084DEF000B7CDAE /* CreateTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */; };
 		1AE5A7EB2084E4A200B7CDAE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */; };
@@ -286,6 +287,7 @@
 		1AB5C47A20B45EE800777CB9 /* CampaignManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignManagerTests.swift; sourceTree = "<group>"; };
 		1AC480612074D3B80092906C /* AddQuestionsViewController+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddQuestionsViewController+Drawing.swift"; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController+Drawing.swift"; sourceTree = "<group>"; };
 		1AD4971220F63A1F00A4089D /* TermsOfUse.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = TermsOfUse.html; path = "Supporting Files/TermsOfUse.html"; sourceTree = "<group>"; };
+		1AD95EA424B7B22B00CFDE88 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddContactViewController.swift; path = Controllers/Team/AddContactViewController.swift; sourceTree = "<group>"; };
 		1AE5A7E62084D7E500B7CDAE /* CampaignManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignManager.swift; path = "Helpers/Ad Builder/CampaignManager.swift"; sourceTree = "<group>"; };
 		1AE5A7E82084DEF000B7CDAE /* CreateTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateTargetViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CreateTargetViewController.swift"; sourceTree = "<group>"; };
 		1AE5A7EA2084E4A200B7CDAE /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Schedule.swift; path = Models/Schedule.swift; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 				1071E83A2041FF6E00C32570 /* TeamPaginationManager.swift */,
 				1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */,
 				1A9F0AD821C7EC3800421566 /* AddEmailViewController.swift */,
+				1AD95EA424B7B22B00CFDE88 /* AddContactViewController.swift */,
 				E9DD58192035C387000735C3 /* Cells */,
 			);
 			name = Team;
@@ -1618,6 +1621,7 @@
 				E9798C2E201A4C8E00E8A7D2 /* ScaleFeedbackViewController.swift in Sources */,
 				B400EDF821B6D5260016B492 /* Secrets.generated.swift in Sources */,
 				E9F317AE204EBA5600104565 /* QuestionAnswers.swift in Sources */,
+				1AD95EA524B7B22B00CFDE88 /* AddContactViewController.swift in Sources */,
 				E9305CF12046FFCF00D4E4DD /* MyMoneyManager.swift in Sources */,
 				1A17324D206A8AE1005837A7 /* CMSAdvertViewController+Constraints.swift in Sources */,
 				E97B9E1B203AE4C70097BC65 /* CashoutCell.swift in Sources */,
@@ -1849,7 +1853,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 07.07.2020;
+				CURRENT_PROJECT_VERSION = 09.07.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -1859,7 +1863,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2009,7 +2013,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 07.07.2020;
+				CURRENT_PROJECT_VERSION = 09.07.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2019,7 +2023,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.2;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2039,7 +2043,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 07.07.2020;
+				CURRENT_PROJECT_VERSION = 09.07.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				ENABLE_TESTABILITY = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -2050,7 +2054,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2165,7 +2169,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 07.07.2020;
+				CURRENT_PROJECT_VERSION = 09.07.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2175,7 +2179,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2265,7 +2269,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 07.07.2020;
+				CURRENT_PROJECT_VERSION = 09.07.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2275,7 +2279,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

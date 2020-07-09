@@ -227,6 +227,10 @@
 "myTeam.codeLabel.title" = "CODE %@"; // %@ is required to dynamically insert the invitation code into text.
 "myTeam.inviteEmail.subject" = "Jifflr Invitation Code!";
 "myTeam.inviteEmail.body" = "Hi %@,\n\nI’m using this great app called Jifflr and I’d like to invite you to use it too. You can earn up to £500 every month in about 5 hours just reviewing market research campaigns; that's £100/hr!\n\nPlus, if you enter the code below you could get an extra £125 with your first cash-out, meaning you could make £625!\n\n%@\n\nDownload Jifflr here: http://appurl.co/jifflr\n\nWith Jifflr simply spend about 10 minutes a day reviewing these campaigns to make some money. It really is that easy!\n\nWhat have you got to lose?"; // %@ is required to dynamically insert variables into text.
+"myTeam.addContactAlert.title" = "New Contact";
+"myTeam.addContactAlert.message" = "How would you like to add your friend's email address?";
+"myTeam.addContactAlert.button1Title" = "Contacts";
+"myTeam.addContactAlert.button2Title" = "Manually";
 "changeInvitation.navigation.title" = "Resend Invitation";
 "changeInvitation.name.heading" = "Name";
 "changeInvitation.name.placeholder" = "Enter name";
@@ -241,6 +245,15 @@
 "addEmail.sendButton.title" = "SEND INVITATION";
 "addEmail.error.title" = "Error - Invalid Email";
 "addEmail.error.message" = "Please enter a valid email address.";
+
+"addContact.navigation.title" = "Add Contact";
+"addContact.name.heading" = "Name";
+"addContact.name.placeholder" = "Enter contact name";
+"addContact.email.heading" = "Email";
+"addContact.email.placeholder" = "Enter contact email";
+"addContact.sendButton.title" = "SEND INVITATION";
+"addContact.error.title" = "Error - Invalid Input";
+"addContact.error.message" = "Please enter a valid name and email address.";
 
 "adsViewed.navigation.title" = "My Completed Campaigns";
 "adsViewed.segmentedControlButton1.title" = "PROGRESS";

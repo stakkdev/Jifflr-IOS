@@ -13,6 +13,26 @@ import ContactsUI
 
 extension TeamViewController {
     @objc func addButtonPressed(_ sender: UIBarButtonItem) {
+        let title = "myTeam.addContactAlert.title".localized()
+        let message = "myTeam.addContactAlert.message".localized()
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let contactsTitle = "myTeam.addContactAlert.button1Title".localized()
+        let contactsAction = UIAlertAction(title: contactsTitle, style: .default) { (action) in
+            self.addViaContacts()
+        }
+        
+        let manuallyTitle = "myTeam.addContactAlert.button2Title".localized()
+        let manuallyAction = UIAlertAction(title: manuallyTitle, style: .default) { (action) in
+            self.addManually()
+        }
+        
+        alertController.addAction(contactsAction)
+        alertController.addAction(manuallyAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    private func addViaContacts() {
         ContactsManager.shared.requestAccess { (access) in
             guard access == true else {
                 self.displayError(error: ErrorMessage.contactsAccessFailed)
@@ -26,6 +46,11 @@ extension TeamViewController {
                 self.navigationController?.present(contactPickerViewController, animated: true, completion: nil)
             }
         }
+    }
+    
+    private func addManually() {
+        let vc = AddContactViewController.instantiateFromStoryboard()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

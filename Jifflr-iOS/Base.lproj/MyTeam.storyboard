@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,14 +25,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b1-Wl-gcf">
-                                <rect key="frame" x="0.0" y="28" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="3oO-tX-Jut"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6v-qf-XVr">
-                                <rect key="frame" x="0.0" y="29" width="375" height="638"/>
+                                <rect key="frame" x="0.0" y="9" width="375" height="658"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="z2A-0l-dmt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -305,16 +303,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Bob" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-bI-zXV" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="59" width="339" height="50"/>
+                                <rect key="frame" x="18" y="39" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eZY-0h-zGK"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-Ed-ERm">
-                                <rect key="frame" x="28" y="30" width="41.5" height="21"/>
+                                <rect key="frame" x="28" y="10" width="41.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="8DC-Jl-7dO"/>
                                 </constraints>
@@ -323,16 +320,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g Smith" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-Gh-iQn" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="150" width="339" height="50"/>
+                                <rect key="frame" x="18" y="130" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NfA-ww-8BK"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ny-dM-mIu">
-                                <rect key="frame" x="28" y="121" width="329" height="21"/>
+                                <rect key="frame" x="28" y="101" width="329" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="hVP-rB-raQ"/>
                                 </constraints>
@@ -341,16 +337,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g bob@smith.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xv-IJ-Xxa" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="241" width="339" height="50"/>
+                                <rect key="frame" x="18" y="221" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ff2-mp-Pqx"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qz-D2-VTr">
-                                <rect key="frame" x="28" y="212" width="329" height="21"/>
+                                <rect key="frame" x="28" y="192" width="329" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4Qn-D5-xaA"/>
                                 </constraints>
@@ -418,16 +413,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter contact email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ua5-U1-buj" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="59" width="339" height="50"/>
+                                <rect key="frame" x="18" y="39" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xZA-gf-TeL"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRT-Yj-LRY">
-                                <rect key="frame" x="28" y="30" width="39.5" height="21"/>
+                                <rect key="frame" x="28" y="10" width="39.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="MV9-oO-S9h"/>
                                 </constraints>
@@ -469,6 +463,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OC5-1g-Pc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4332" y="-486"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="Ia5-gx-e1x">
+            <objects>
+                <viewController storyboardIdentifier="AddContactViewController" id="fY1-k9-atg" customClass="AddContactViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v3h-wd-xar">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2J-JW-RHK" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="39" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pMh-NH-gzO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWd-bt-yv3">
+                                <rect key="frame" x="28" y="10" width="41.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Pa2-7T-aFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyt-eU-eH5" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="557" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lxS-s2-i6g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SEND INVITATION"/>
+                                <connections>
+                                    <action selector="sendButtonPressedWithSender:" destination="fY1-k9-atg" eventType="touchUpInside" id="GLt-bd-PgW"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter contact email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRy-EO-zdK" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="130" width="339" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Sgv-V9-YdC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNW-qW-Kvo">
+                                <rect key="frame" x="28" y="101" width="39.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="r43-gL-Aze"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamBold" family="GothamBold" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TNW-qW-Kvo" firstAttribute="leading" secondItem="SWd-bt-yv3" secondAttribute="leading" id="1cu-Aj-IkY"/>
+                            <constraint firstItem="x2J-JW-RHK" firstAttribute="top" secondItem="SWd-bt-yv3" secondAttribute="bottom" constant="8" id="BXN-SH-SOu"/>
+                            <constraint firstItem="s1I-Oq-1qz" firstAttribute="bottom" secondItem="oyt-eU-eH5" secondAttribute="bottom" constant="60" id="Rdh-uB-ULw"/>
+                            <constraint firstItem="s1I-Oq-1qz" firstAttribute="trailing" secondItem="x2J-JW-RHK" secondAttribute="trailing" constant="18" id="Sal-Ve-nbl"/>
+                            <constraint firstItem="tRy-EO-zdK" firstAttribute="trailing" secondItem="x2J-JW-RHK" secondAttribute="trailing" id="XeV-NF-fM6"/>
+                            <constraint firstItem="x2J-JW-RHK" firstAttribute="leading" secondItem="v3h-wd-xar" secondAttribute="leading" constant="18" id="boV-0X-aVh"/>
+                            <constraint firstItem="oyt-eU-eH5" firstAttribute="trailing" secondItem="s1I-Oq-1qz" secondAttribute="trailing" constant="-18" id="bsA-Vg-xzq"/>
+                            <constraint firstItem="tRy-EO-zdK" firstAttribute="top" secondItem="TNW-qW-Kvo" secondAttribute="bottom" constant="8" id="hAu-FA-u61"/>
+                            <constraint firstItem="tRy-EO-zdK" firstAttribute="leading" secondItem="x2J-JW-RHK" secondAttribute="leading" id="hUd-u0-ZnT"/>
+                            <constraint firstItem="SWd-bt-yv3" firstAttribute="leading" secondItem="s1I-Oq-1qz" secondAttribute="leading" constant="28" id="mVG-C5-Cb3"/>
+                            <constraint firstItem="SWd-bt-yv3" firstAttribute="top" secondItem="s1I-Oq-1qz" secondAttribute="top" constant="10" id="qgQ-E9-BIr"/>
+                            <constraint firstItem="TNW-qW-Kvo" firstAttribute="top" secondItem="x2J-JW-RHK" secondAttribute="bottom" constant="12" id="wBd-0t-Kba"/>
+                            <constraint firstItem="oyt-eU-eH5" firstAttribute="leading" secondItem="s1I-Oq-1qz" secondAttribute="leading" constant="18" id="wMD-Io-Mi1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="s1I-Oq-1qz"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailHeadingLabel" destination="TNW-qW-Kvo" id="E51-Rv-JhZ"/>
+                        <outlet property="emailTextField" destination="tRy-EO-zdK" id="df3-qf-TXC"/>
+                        <outlet property="nameHeadingLabel" destination="SWd-bt-yv3" id="lV4-0y-J2F"/>
+                        <outlet property="nameTextField" destination="x2J-JW-RHK" id="DgQ-9k-xLC"/>
+                        <outlet property="sendButton" destination="oyt-eU-eH5" id="LLM-I1-ybO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfB-nt-kQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5025" y="-486"/>
         </scene>
     </scenes>
 </document>
