@@ -82,6 +82,7 @@ public enum ErrorMessage {
     case invalidAnswersRequired
     case NoInternetConnectionRegistration
     case addEmailInvalid
+    case addContactInvalid
     case loginNotRegistered
     case cashoutFailedInternet
     case maxCampaignsLimitReached
@@ -104,6 +105,8 @@ public enum ErrorMessage {
             return "error.register.invalidField.title".localizedFormat(details)
         case .addEmailInvalid:
             return "addEmail.error.title".localized()
+        case .addContactInvalid:
+            return "addContact.error.title".localized()
         case .loginNotRegistered:
             return "error.loginNotRegistered.title".localized()
         case .loginWrongPassword:
@@ -115,6 +118,8 @@ public enum ErrorMessage {
 
     public var failureDescription: String {
         switch self {
+        case .addContactInvalid:
+            return "addContact.error.message".localized()
         case .parseError(let details):
             return "An error occured: \(details)"
         case .invalidField(let details):

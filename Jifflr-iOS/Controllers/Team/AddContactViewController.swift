@@ -48,12 +48,12 @@ class AddContactViewController: BaseViewController {
     
     @IBAction func sendButtonPressed(sender: UIButton) {
         guard let name = self.nameTextField.text, !name.isEmpty else {
-            self.displayError(error: ErrorMessage.addEmailInvalid)
+            self.displayError(error: ErrorMessage.addContactInvalid)
             return
         }
         
         guard let email = self.emailTextField.text, !email.isEmpty, email.isEmail() else {
-            self.displayError(error: ErrorMessage.addEmailInvalid)
+            self.displayError(error: ErrorMessage.addContactInvalid)
             return
         }
         
