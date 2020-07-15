@@ -246,11 +246,11 @@
 "addEmail.error.title" = "Error - Invalid Email";
 "addEmail.error.message" = "Please enter a valid email address.";
 
-"addContact.navigation.title" = "Add Contact";
+"addContact.navigation.title" = "Add Friend";
 "addContact.name.heading" = "Name";
-"addContact.name.placeholder" = "Enter contact name";
+"addContact.name.placeholder" = "Enter friend's name";
 "addContact.email.heading" = "Email";
-"addContact.email.placeholder" = "Enter contact email";
+"addContact.email.placeholder" = "Enter friend's email";
 "addContact.sendButton.title" = "SEND INVITATION";
 "addContact.error.title" = "Error - Invalid Input";
 "addContact.error.message" = "Please enter a valid name and email address.";
