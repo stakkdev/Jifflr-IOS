@@ -178,7 +178,9 @@ class ModerationManager: NSObject {
             
             var moderatorFeedbackCategories: [ModeratorFeedbackCategory] = []
             for flaggedCampaign in userFlaggedCampaigns {
-                moderatorFeedbackCategories.append(flaggedCampaign.category)
+                if !moderatorFeedbackCategories.contains(flaggedCampaign.category) {
+                    moderatorFeedbackCategories.append(flaggedCampaign.category)
+                }
             }
             
             completion(moderatorFeedbackCategories)
