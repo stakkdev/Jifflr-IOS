@@ -62,7 +62,7 @@
 "error.genderFetchFailed" = "Unable to fetch genders. Please check your internet connection and try again.";
 "error.withdrawalValidationFailed" = "Unable to withdraw money. Please ensure your account balance has sufficient funds.";
 "error.withdrawalFailed" = "Unable to withdraw money. Please check your internet connection and try again.";
-"error.withdrawalEmail" = "Withdrawing funds to a different PayPal Account is not permitted.";
+"error.withdrawalEmail" = "Invalid email address. Please enter a valid PayPal email address.";
 "error.increaseBudgetFailed" = "Unable to increase budget - insufficient balance. Do you want to add money to your balance?";
 "error.activationFailedInsufficientBalance" = "Unable to activate campaign - insufficient balance. Do you want to add money to your balance?";
 "error.campaignActivationFailedInvalidBalance" = "Unable to activate campaign - invalid balance.";
