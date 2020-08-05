@@ -14,7 +14,7 @@ final class Schedule: PFObject {
     
     var startDate: Date {
         get {
-            return self["startDate"] as! Date
+            return self["startDate"] as? Date ?? Date()
         }
         set {
             self["startDate"] = newValue
@@ -23,7 +23,7 @@ final class Schedule: PFObject {
     
     var endDate: Date {
         get {
-            return self["endDate"] as! Date
+            return self["endDate"] as? Date ?? Date()
         }
         set {
             self["endDate"] = newValue
@@ -32,7 +32,7 @@ final class Schedule: PFObject {
     
     var daysOfWeek: Int {
         get {
-            return self["daysOfWeek"] as! Int
+            return self["daysOfWeek"] as? Int ?? 0
         }
         set {
             self["daysOfWeek"] = newValue

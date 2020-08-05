@@ -52,6 +52,11 @@ class AdvertManager: NSObject {
                                 })
                                 
                                 group.enter()
+                                campaign.schedule?.pinInBackground(withName: self.pinName, block: { (success, error) in
+                                    group.leave()
+                                })
+                                
+                                group.enter()
                                 PFObject.pinAll(inBackground: campaign.advert.questions, withName: self.pinName, block: { (success, error) in
                                     group.leave()
                                 })
@@ -131,9 +136,18 @@ class AdvertManager: NSObject {
         query?.includeKey("advert.questions.type")
         query?.includeKey("advert.details")
         query?.includeKey("advert.details.template")
+        query?.includeKey("schedule")
         query?.getFirstObjectInBackground(block: { (object, error) in
             if let campaign = object as? Campaign, error == nil {
-                completion(campaign)
+                if self.validDate(campaign: campaign) {
+                    completion(campaign)
+                } else {
+                    self.unpin(campaign: campaign) {
+                        self.fetchNextLocal { (newObject) in
+                            completion(newObject)
+                        }
+                    }
+                }
                 return
             } else {
                 self.fetchDefaultAdExchange(completion: { (advert) in
@@ -142,6 +156,32 @@ class AdvertManager: NSObject {
                 })
             }
         })
+    }
+    
+    func validDate(campaign: Campaign) -> Bool {
+        guard let schedule = campaign.schedule else { return true }
+        
+        var calendar = Calendar.current
+        calendar.locale = Locale.current
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        var startTimeComponents = calendar.dateComponents([.hour, .minute, .second], from: schedule.startDate)
+        var endTimeComponents = calendar.dateComponents([.hour, .minute, .second], from: schedule.endDate)
+        
+        startTimeComponents.timeZone = TimeZone(identifier: "UTC")!
+        startTimeComponents.calendar = calendar
+        endTimeComponents.timeZone = TimeZone(identifier: "UTC")!
+        endTimeComponents.calendar = calendar
+        
+        guard let startDate = calendar.date(from: startTimeComponents) else { return false }
+        guard let endDate = calendar.date(from: endTimeComponents) else { return false }
+        
+        calendar.timeZone = TimeZone.current
+        var currentTimeComponents = calendar.dateComponents([.hour, .minute, .second], from: Date())
+        currentTimeComponents.timeZone = TimeZone.current
+        currentTimeComponents.calendar = calendar
+        guard let currentDate = calendar.date(from: currentTimeComponents) else { return false }
+        
+        return currentDate >= startDate && currentDate <= endDate
     }
 
     func fetchAdExchange(local: Bool, completion: @escaping (Advert?) -> Void) {
