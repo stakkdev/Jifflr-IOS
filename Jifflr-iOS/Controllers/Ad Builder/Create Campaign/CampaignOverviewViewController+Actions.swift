@@ -154,7 +154,7 @@ extension CampaignOverviewViewController {
     
     @IBAction func activateSwitchChanged(sender: UISwitch) {
         let key = self.campaign.status
-        guard key != CampaignStatusKey.nonCompliant && key != CampaignStatusKey.nonCompliantScheduled && key != CampaignStatusKey.prepareToDelete else {
+        guard key != CampaignStatusKey.nonCompliant && key != CampaignStatusKey.nonCompliantScheduled && key != CampaignStatusKey.prepareToDelete && key != CampaignStatusKey.flagged else {
             sender.isOn = false
             self.displayError(error: ErrorMessage.nonCompliantActivate)
             return
