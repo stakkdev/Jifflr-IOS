@@ -220,7 +220,7 @@ class CampaignManager: NSObject {
             let query = ModeratorCampaignReview.query()
             query?.whereKey("campaign", equalTo: campaign)
             query?.countObjectsInBackground(block: { (count, error) in
-                if count > 0 {
+                if count > 0 && !campaign.toBeModerated {
                     if self.shouldCampaignBeActiveAvailable(campaign: campaign) {
                         campaign.status = CampaignStatusKey.availableActive
                         campaign.saveInBackground { (success, error) in

@@ -30,6 +30,15 @@ final class Campaign: PFObject {
         }
     }
     
+    var toBeModerated: Bool {
+        get {
+            return self["toBeModerated"] as? Bool ?? false
+        }
+        set {
+            self["toBeModerated"] = newValue
+        }
+    }
+    
     var schedule: Schedule? {
         get {
             return self["schedule"] as? Schedule
