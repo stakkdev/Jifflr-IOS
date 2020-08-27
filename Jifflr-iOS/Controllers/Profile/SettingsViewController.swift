@@ -22,6 +22,7 @@ class SettingsViewController: BaseViewController {
     @IBOutlet weak var analyticsHeadingLabel: UILabel!
     @IBOutlet weak var analyticsLabel: UILabel!
     @IBOutlet weak var analyticsSwitch: UISwitch!
+    @IBOutlet weak var versionLabel: UILabel!
 
     class func instantiateFromStoryboard() -> SettingsViewController {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
@@ -56,6 +57,15 @@ class SettingsViewController: BaseViewController {
 
         guard let currentUser = Session.shared.currentUser else { return }
         self.notificationsSwitch.isOn = currentUser.details.pushNotifications
+        
+        self.setupVersionLabel()
+    }
+    
+    private func setupVersionLabel() {
+        let environmentString = Constants.currentEnvironment == .production ? "" : Constants.currentEnvironment.rawValue
+        let appVersionString = Bundle.main.appVersion
+        let appBuildString = Bundle.main.appBuild
+        self.versionLabel.text = "Version \(appVersionString ?? "N/A") (\(appBuildString ?? "N/A")) \(environmentString)"
     }
 
     func setupLocalization() {
@@ -80,4 +90,25 @@ class SettingsViewController: BaseViewController {
     @IBAction func analyticsChanged(sender: UISwitch) {
         SettingsManager.shared.toggleAnalytics(on: sender.isOn)
     }
+}
+
+extension Bundle {
+  public var appVersion: String? {
+    return self.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+  }
+
+  public var appBuild: String? {
+    return self.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+  }
+
+  public var appVersionAndBuild: String? {
+    if appVersion != nil && appBuild != nil {
+      if appVersion == appBuild {
+        return "v\(appVersion!)"
+      } else {
+        return "v\(appVersion!)(\(appBuild!))"
+      }
+    }
+    return nil
+  }
 }

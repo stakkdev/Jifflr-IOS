@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +36,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pqX-fq-F4d"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
                                     </textField>
@@ -56,7 +53,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cvZ-GK-80x"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
                                     </textField>
@@ -74,7 +70,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ohR-FI-TyN"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
@@ -92,7 +87,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ROl-pv-73y"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="location"/>
                                     </textField>
@@ -110,7 +104,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="OZQ-LW-AUH"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -128,7 +121,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="xeE-5k-n5r"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -146,7 +138,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LH1-2b-Y1m"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -311,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-De-fNV">
-                                <rect key="frame" x="18" y="50" width="339" height="572"/>
+                                <rect key="frame" x="18" y="30" width="339" height="592"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndj-oH-sSv">
                                         <rect key="frame" x="18" y="28" width="130.5" height="22.5"/>
@@ -355,7 +346,7 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0r-KJ-mM9">
-                                        <rect key="frame" x="272" y="253" width="51" height="31"/>
+                                        <rect key="frame" x="272" y="253.5" width="51" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="Ch1-07-v8Z"/>
                                             <constraint firstAttribute="height" constant="31" id="fBP-eg-Pgv"/>
@@ -378,7 +369,7 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Analytics is used to help us build a picture of how the app is used to inform updates and new developments." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-CP-CPh">
-                                        <rect key="frame" x="18" y="407" width="303" height="69"/>
+                                        <rect key="frame" x="18" y="406.5" width="303" height="69"/>
                                         <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
                                         <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -394,17 +385,29 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                             <action selector="analyticsChangedWithSender:" destination="gLr-t0-fuB" eventType="valueChanged" id="kmM-bk-1RR"/>
                                         </connections>
                                     </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTw-uz-qzu">
+                                        <rect key="frame" x="18" y="505.5" width="303" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="GJS-o6-n10"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                        <color key="textColor" red="0.1529411765" green="0.13725490200000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="AIE-vB-YhV" firstAttribute="leading" secondItem="egQ-l2-K2L" secondAttribute="leading" id="249-6Y-xGa"/>
                                     <constraint firstItem="u4i-yE-NWM" firstAttribute="top" secondItem="Zo1-R0-THr" secondAttribute="bottom" constant="22.5" id="7Xf-9n-k8w"/>
+                                    <constraint firstItem="mTw-uz-qzu" firstAttribute="top" secondItem="HLh-CP-CPh" secondAttribute="bottom" constant="30" id="9g6-oX-JFo"/>
                                     <constraint firstItem="HLh-CP-CPh" firstAttribute="trailing" secondItem="h0r-KJ-mM9" secondAttribute="trailing" id="B2h-hv-0eD"/>
                                     <constraint firstItem="egQ-l2-K2L" firstAttribute="leading" secondItem="Ndj-oH-sSv" secondAttribute="leading" id="EXE-Vj-Bwa"/>
                                     <constraint firstItem="x7G-P8-gQE" firstAttribute="centerX" secondItem="h0r-KJ-mM9" secondAttribute="centerX" id="EjJ-sI-31m"/>
                                     <constraint firstItem="x7G-P8-gQE" firstAttribute="centerY" secondItem="u4i-yE-NWM" secondAttribute="centerY" id="F5t-3t-cgq"/>
+                                    <constraint firstItem="mTw-uz-qzu" firstAttribute="leading" secondItem="HLh-CP-CPh" secondAttribute="leading" id="Gd2-qV-agA"/>
                                     <constraint firstItem="AIE-vB-YhV" firstAttribute="top" secondItem="DXf-HX-JYl" secondAttribute="bottom" constant="27" id="I2f-b0-c7l"/>
                                     <constraint firstItem="Ndj-oH-sSv" firstAttribute="leading" secondItem="3HR-De-fNV" secondAttribute="leading" constant="18" id="L3Z-R4-QI8"/>
+                                    <constraint firstItem="mTw-uz-qzu" firstAttribute="trailing" secondItem="HLh-CP-CPh" secondAttribute="trailing" id="N3z-KV-5MI"/>
                                     <constraint firstItem="Ndj-oH-sSv" firstAttribute="top" secondItem="3HR-De-fNV" secondAttribute="top" constant="28" id="RDn-zP-Mdm"/>
                                     <constraint firstItem="u4i-yE-NWM" firstAttribute="leading" secondItem="AIE-vB-YhV" secondAttribute="leading" id="Ugb-f6-fUQ"/>
                                     <constraint firstItem="tXF-Qg-KyF" firstAttribute="centerY" secondItem="Ndj-oH-sSv" secondAttribute="centerY" id="VBz-Yy-Bko"/>
@@ -451,11 +454,12 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                         <outlet property="notificationsHeadingLabel" destination="Ndj-oH-sSv" id="OpZ-hw-9sG"/>
                         <outlet property="notificationsSwitch" destination="tXF-Qg-KyF" id="xab-Zk-jFn"/>
                         <outlet property="scrollView" destination="3HR-De-fNV" id="s42-di-nS7"/>
+                        <outlet property="versionLabel" destination="mTw-uz-qzu" id="jac-GO-GCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJz-VT-Rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="-21"/>
+            <point key="canvasLocation" x="2992.8000000000002" y="-21.139430284857571"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="uEL-Lk-3Zp">
@@ -470,7 +474,6 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0IM-2b-ghZ"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
                             </textField>
@@ -488,7 +491,6 @@ YW5kIGNhbm5vdCBiZSB0cmFjZWQgdG8geW91Lg
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eAL-z7-hQs"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
                             </textField>
