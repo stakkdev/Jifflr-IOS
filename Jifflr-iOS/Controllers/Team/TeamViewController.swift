@@ -144,10 +144,15 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
 
             } else {
-                let friend = self.friends[indexPath.row - 1]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TeamFriendCell") as! TeamFriendCell
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
+                
+                guard self.friends.count > indexPath.row - 1 else {
+                    return cell
+                }
+                
+                let friend = self.friends[indexPath.row - 1]
                 cell.teamSizeLabel.text = "myTeam.membersLabel.title".localizedFormat(friend.teamSize)
                 cell.teamSizeLabel.sizeToFit()
                 cell.nameLabel.text = "\(friend.user.details.firstName) \(friend.user.details.lastName)"

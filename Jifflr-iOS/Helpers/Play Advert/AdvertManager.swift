@@ -139,7 +139,7 @@ class AdvertManager: NSObject {
         query?.includeKey("schedule")
         query?.getFirstObjectInBackground(block: { (object, error) in
             if let campaign = object as? Campaign, error == nil {
-                if self.validDate(campaign: campaign) {
+                if self.validDate(campaign: campaign) && self.campaignHasMedia(objectId: campaign.advert.details?.objectId) {
                     completion(campaign)
                 } else {
                     self.unpin(campaign: campaign) {
@@ -156,6 +156,13 @@ class AdvertManager: NSObject {
                 })
             }
         })
+    }
+    
+    func campaignHasMedia(objectId: String?) -> Bool {
+        let imageURL = MediaManager.shared.get(id: objectId, fileExtension: "jpg")
+        let videoURL = MediaManager.shared.get(id: objectId, fileExtension: "mp4")
+        
+        return videoURL != nil || imageURL != nil
     }
     
     func validDate(campaign: Campaign) -> Bool {
