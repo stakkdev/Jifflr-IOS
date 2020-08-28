@@ -250,8 +250,14 @@ class CreateScheduleViewController: BaseViewController {
         guard self.selectedDays.count > 0 else { return false }
         
         if let schedule = self.campaign?.schedule {
-            campaign.advert = selectedAdvert
-            campaign.name = campaignName
+            if campaign.advert.objectId != selectedAdvert.objectId {
+                campaign.advert = selectedAdvert
+            }
+            
+            if campaign.name != campaignName {
+                campaign.name = campaignName
+            }
+            
             schedule.startDate = startDate
             schedule.endDate = endDate
             schedule.daysOfWeek = CampaignManager.shared.getDayOfWeekBitwiseInt(dayInts: self.selectedDays)
