@@ -248,7 +248,7 @@ class CMSAdvertViewController: BaseViewController {
 
 extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
     func playerReady(_ player: Player) {
-        
+        print("Ready to Play")
     }
     
     func playerPlaybackStateDidChange(_ player: Player) {
@@ -258,6 +258,10 @@ extension CMSAdvertViewController: PlayerPlaybackDelegate, PlayerDelegate {
         if let _ = viewController as? FeedbackViewController, player.playbackState == .playing {
             player.stop()
             player.muted = true
+        }
+        
+        if player.playbackState == .failed {
+            print("Failed")
         }
     }
     
