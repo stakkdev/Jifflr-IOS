@@ -56,6 +56,14 @@ class SwipeFeedbackViewController: FeedbackViewController {
                 alert.dismiss(animated: false, completion: nil)
             }
         }
+        
+        if !Reachability.isConnectedToNetwork() {
+            let title = ErrorMessage.noInternetConnection.failureTitle
+            let message = ErrorMessage.noInternetConnection.failureDescription
+            self.displayMessage(title: title, message: message, dismissText: nil) { (action) in
+                self.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     override func setupQuestionText() {
