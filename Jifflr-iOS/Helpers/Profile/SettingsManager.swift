@@ -8,8 +8,6 @@
 
 import UIKit
 import Firebase
-import Fabric
-import Crashlytics
 import Parse
 
 class SettingsManager: NSObject {
@@ -35,6 +33,7 @@ class SettingsManager: NSObject {
 
     func toggleCrashTracker(on: Bool) {
         UserDefaultsManager.shared.setCrashTracker(on: on)
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(on)
     }
 
     func toggleAnalytics(on: Bool) {

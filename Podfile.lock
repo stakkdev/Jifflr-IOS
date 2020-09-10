@@ -47,8 +47,6 @@ PODS:
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
   - FBSDKCoreKit/Basics (5.14.0)
   - FBSDKCoreKit/Core (5.14.0):
@@ -57,11 +55,16 @@ PODS:
     - FBSDKCoreKit/Core
   - Firebase (6.15.0):
     - Firebase/Core (= 6.15.0)
+  - Firebase/Analytics (6.15.0):
+    - Firebase/Core
   - Firebase/Core (6.15.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.2.1)
   - Firebase/CoreOnly (6.15.0):
     - FirebaseCore (= 6.6.0)
+  - Firebase/Crashlytics (6.15.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.0.0-beta.1)
   - FirebaseAnalytics (6.2.1):
     - FirebaseCore (~> 6.6)
     - FirebaseInstanceID (~> 4.3)
@@ -71,6 +74,7 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
   - FirebaseCore (6.6.0):
     - FirebaseCoreDiagnostics (~> 1.2)
     - FirebaseCoreDiagnosticsInterop (~> 1.2)
@@ -83,6 +87,11 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseCrashlytics (4.0.0-beta.5):
+    - FirebaseAnalyticsInterop (~> 1.2)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (1.1.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
@@ -173,11 +182,12 @@ DEPENDENCIES:
   - APDUnityAdapter (= 2.6.5.1)
   - APDYandexAdapter (= 2.6.5.1)
   - Charts
-  - Crashlytics
   - Fabric
   - FBSDKCoreKit/Swift
   - Firebase
-  - Firebase/Core
+  - Firebase/Analytics (~> 6.15.0)
+  - Firebase/Core (~> 6.15.0)
+  - Firebase/Crashlytics (~> 6.15.0)
   - GoogleAnalytics
   - IQKeyboardManagerSwift (= 5.0.8)
   - Localize-Swift
@@ -215,14 +225,15 @@ SPEC REPOS:
     - Appodeal
     - Bolts
     - Charts
-    - Crashlytics
     - Fabric
     - FBSDKCoreKit
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FirebaseInstanceID
     - Google-Mobile-Ads-SDK
@@ -269,14 +280,15 @@ SPEC CHECKSUMS:
   Appodeal: 8b7785dda5b698d688fc9ff7872e2f8f395af638
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FBSDKCoreKit: a72c8d2c42aa4c4d5eaa5f160be9580750f70d2e
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
   FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
   FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseCrashlytics: 7c95218730d1debf493e987233c7b41dd7ba1329
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   Google-Mobile-Ads-SDK: d70efb31e7ea19fe99d466dc5d4788966b6914f8
@@ -299,6 +311,6 @@ SPEC CHECKSUMS:
   TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
   YandexMobileMetrica: e985e1f77e405390a2d13f11741d86ff2f00c4ce
 
-PODFILE CHECKSUM: f9c3600db04f8ab77d37c191376d4ddb996246c0
+PODFILE CHECKSUM: efc142cd22b0e20c2d04cd2143b50c5a7f1d82ea
 
 COCOAPODS: 1.9.3

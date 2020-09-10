@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Fabric
-import Crashlytics
 import Firebase
 import Parse
 import UserNotifications
@@ -35,10 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Analytics.setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
         
         UserDefaultsManager.shared.setQuestionDuration(time: 5)
-
-        if UserDefaultsManager.shared.crashTrackerOn() {
-            Fabric.with([Crashlytics.self])
-        }
+        
+        let enabled = UserDefaultsManager.shared.crashTrackerOn()
+        Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(enabled)
 
         self.configParse(in: application, with: launchOptions)
         self.configAdProviders()

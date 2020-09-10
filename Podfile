@@ -6,8 +6,9 @@ target 'Jifflr-iOS' do
   use_frameworks!
   pod 'GoogleAnalytics'
   pod 'Fabric'
-  pod 'Crashlytics'
-  pod 'Firebase/Core'
+  pod 'Firebase/Core', '~> 6.15.0'
+  pod 'Firebase/Analytics', '~> 6.15.0'
+  pod 'Firebase/Crashlytics', '~> 6.15.0'
   pod 'SwiftLint'
   pod 'Parse', '1.17.1'
   pod 'Localize-Swift'
