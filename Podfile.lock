@@ -43,7 +43,7 @@ PODS:
     - Appodeal (= 2.6.5)
     - YandexMobileMetrica (< 4.0.0, >= 3.2.0)
   - Appodeal (2.6.5)
-  - Bolts/Tasks (1.9.0)
+  - Bolts/Tasks (1.9.1)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
@@ -140,10 +140,10 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
-  - Parse (1.17.1):
-    - Parse/Core (= 1.17.1)
-  - Parse/Core (1.17.1):
-    - Bolts/Tasks (~> 1.9)
+  - Parse (1.19.0):
+    - Parse/Core (= 1.19.0)
+  - Parse/Core (1.19.0):
+    - Bolts/Tasks (= 1.9.1)
   - Player (0.8.4)
   - PromisesObjC (1.2.8)
   - Sourcery (0.17.0)
@@ -192,7 +192,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (= 5.0.8)
   - Localize-Swift
   - MBProgressHUD
-  - Parse (= 1.17.1)
+  - Parse (= 1.19.0)
   - Player (= 0.8.4)
   - Sourcery
   - Stripe (= 15.0.2)
@@ -278,9 +278,9 @@ SPEC CHECKSUMS:
   APDUnityAdapter: d5067f01f5e4ee7317cc083d85ebcce8d771a408
   APDYandexAdapter: 9ba8920db634812f34c532684cf7532463ddd184
   Appodeal: 8b7785dda5b698d688fc9ff7872e2f8f395af638
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FBSDKCoreKit: a72c8d2c42aa4c4d5eaa5f160be9580750f70d2e
   Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
   FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
@@ -301,7 +301,7 @@ SPEC CHECKSUMS:
   Localize-Swift: 4bed4f0ccac8be2ec3517ee359da80ba2adb0fae
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
+  Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Sourcery: 3ed61be7c8a1218fce349266139379dba477efe0
@@ -311,6 +311,6 @@ SPEC CHECKSUMS:
   TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
   YandexMobileMetrica: e985e1f77e405390a2d13f11741d86ff2f00c4ce
 
-PODFILE CHECKSUM: efc142cd22b0e20c2d04cd2143b50c5a7f1d82ea
+PODFILE CHECKSUM: c6d28b409f7462241a798d8bf01bc915b2f7325f
 
 COCOAPODS: 1.9.3

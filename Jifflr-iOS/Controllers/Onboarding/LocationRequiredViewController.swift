@@ -78,13 +78,22 @@ class LocationRequiredViewController: BaseViewController {
         if LocationManager.shared.locationServicesEnabled() == true {
             if Reachability.isConnectedToNetwork() {
                 LocationManager.shared.getCurrentLocation()
-                self.rootDashboardViewController()
+                self.rootAfterPermissionsGranted()
             } else {
                 LocationManager.shared.fetchLocalLocation { (location) in
                     LocationManager.shared.rootBasedOnBlockedlocation()
-                    self.rootDashboardViewController()
+                    self.rootAfterPermissionsGranted()
                 }
             }
+        }
+    }
+    
+    private func rootAfterPermissionsGranted() {
+        if AdTrackingManager.shared.adTrackingEnabled() {
+            self.rootDashboardViewController()
+        } else {
+            let vc = AdTrackingViewController.instantiateFromStoryboard()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -100,7 +109,7 @@ class LocationRequiredViewController: BaseViewController {
                 LocationManager.shared.fetchLocalLocation { (location) in }
             }
             
-            self.rootDashboardViewController()
+            self.rootAfterPermissionsGranted()
         } else {
             self.setupPermissionDeniedUI()
         }

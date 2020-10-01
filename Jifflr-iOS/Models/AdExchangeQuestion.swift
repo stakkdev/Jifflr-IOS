@@ -39,27 +39,27 @@ final class AdExchangeQuestion: PFObject {
         }
     }
     
-    var image1: PFFile? {
+    var image1: PFFileObject? {
         get {
-            return self["image1"] as? PFFile
+            return self["image1"] as? PFFileObject
         }
         set {
             self["image1"] = newValue
         }
     }
     
-    var image2: PFFile? {
+    var image2: PFFileObject? {
         get {
-            return self["image2"] as? PFFile
+            return self["image2"] as? PFFileObject
         }
         set {
             self["image2"] = newValue
         }
     }
     
-    var image3: PFFile? {
+    var image3: PFFileObject? {
         get {
-            return self["image3"] as? PFFile
+            return self["image3"] as? PFFileObject
         }
         set {
             self["image3"] = newValue

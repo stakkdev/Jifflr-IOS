@@ -105,13 +105,17 @@ class LandingViewController: UIViewController, DisplayMessage {
     func routeBasedOnLocationServices() {
         if LocationManager.shared.locationServicesEnabled() == true {
             
-            LocationManager.shared.fetchLocalLocation { (location) in
-                if Reachability.isConnectedToNetwork() {
-                    LocationManager.shared.getCurrentLocation()
+            if AdTrackingManager.shared.adTrackingEnabled() {
+                LocationManager.shared.fetchLocalLocation { (location) in
+                    if Reachability.isConnectedToNetwork() {
+                        LocationManager.shared.getCurrentLocation()
+                    }
                 }
+                
+                self.rootDashboardViewController()
+            } else {
+                self.rootAdTrackingViewController()
             }
-            
-            self.rootDashboardViewController()
         } else {
             self.rootLocationRequiredViewController()
         }

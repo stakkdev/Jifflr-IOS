@@ -52,6 +52,8 @@
 		1AA11E5720864F9E00BAE044 /* CampaignOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */; };
 		1AA6DB3E2063C1D8006A0AD7 /* ChangeInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */; };
 		1AA6DB402063D45A006A0AD7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */; };
+		1AA848012525D9B7005330CC /* AdTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA848002525D9B7005330CC /* AdTrackingViewController.swift */; };
+		1AA848072525DCC9005330CC /* AdTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA848062525DCC9005330CC /* AdTrackingManager.swift */; };
 		1AAA232F20B5A71C00DDE404 /* AdExchangeQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */; };
 		1AAA233120B5AE4900DDE404 /* UserSeenAdExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */; };
 		1AAC90762073C82100D3D8E1 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */; };
@@ -279,6 +281,8 @@
 		1AA11E5620864F9E00BAE044 /* CampaignOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CampaignOverviewViewController.swift; path = "Controllers/Ad Builder/Create Campaign/CampaignOverviewViewController.swift"; sourceTree = "<group>"; };
 		1AA6DB3D2063C1D8006A0AD7 /* ChangeInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChangeInvitationViewController.swift; path = Controllers/Team/ChangeInvitationViewController.swift; sourceTree = "<group>"; };
 		1AA6DB3F2063D45A006A0AD7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		1AA848002525D9B7005330CC /* AdTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdTrackingViewController.swift; path = Controllers/Onboarding/AdTrackingViewController.swift; sourceTree = "<group>"; };
+		1AA848062525DCC9005330CC /* AdTrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdTrackingManager.swift; path = Helpers/General/AdTrackingManager.swift; sourceTree = "<group>"; };
 		1AAA232E20B5A71C00DDE404 /* AdExchangeQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdExchangeQuestion.swift; path = Models/AdExchangeQuestion.swift; sourceTree = "<group>"; };
 		1AAA233020B5AE4900DDE404 /* UserSeenAdExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSeenAdExchange.swift; path = Models/UserSeenAdExchange.swift; sourceTree = "<group>"; };
 		1AAC90752073C82100D3D8E1 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = "Controllers/Ad Builder/Create Ad/AddQuestionsViewController.swift"; sourceTree = "<group>"; };
@@ -697,6 +701,7 @@
 				E96A0CDA203DAAF80059DDAC /* Reachability.swift */,
 				E96A0CEB203DABED0059DDAC /* UserManager.swift */,
 				E96A0CD9203DAAF80059DDAC /* LocationManager.swift */,
+				1AA848062525DCC9005330CC /* AdTrackingManager.swift */,
 				E96A0CE2203DAB100059DDAC /* UserDefaultsManager.swift */,
 				1A63CB25206D1EBC00B4FAC1 /* MediaManager.swift */,
 				1A9654EE207383E100F9DCF3 /* OrientationManager.swift */,
@@ -773,6 +778,7 @@
 				E9798C0F201A416500E8A7D2 /* LoginViewController.swift */,
 				E9798C0D201A416500E8A7D2 /* RegisterViewController.swift */,
 				E9798C0E201A416500E8A7D2 /* LocationRequiredViewController.swift */,
+				1AA848002525D9B7005330CC /* AdTrackingViewController.swift */,
 				E9EE6329203198A700188AA1 /* ForgotPasswordViewController.swift */,
 				E9EE632F2031E92D00188AA1 /* TermsAndConditionsViewController.swift */,
 				E937F5BD2037125600171480 /* ChooseLocationViewController.swift */,
@@ -1546,6 +1552,7 @@
 				1A5E090C209360E400F65876 /* FailedFeedbackCell.swift in Sources */,
 				E96A0CEE203DAC3A0059DDAC /* FAQManager.swift in Sources */,
 				E937F5B22036E6BD00171480 /* MyTeam.swift in Sources */,
+				1AA848012525D9B7005330CC /* AdTrackingViewController.swift in Sources */,
 				E97B9E30203B32000097BC65 /* FAQDetailViewController.swift in Sources */,
 				E96A0CE3203DAB100059DDAC /* UserDefaultsManager.swift in Sources */,
 				E97B9E2A203B0D680097BC65 /* FAQCategory.swift in Sources */,
@@ -1614,6 +1621,7 @@
 				1A17324B206A5E02005837A7 /* AddContentViewController+Constraints.swift in Sources */,
 				E9798C25201A4C6800E8A7D2 /* AdvertViewController.swift in Sources */,
 				E96A0CFE203DACE30059DDAC /* DashboardManager.swift in Sources */,
+				1AA848072525DCC9005330CC /* AdTrackingManager.swift in Sources */,
 				1AAC90782073DC1A00D3D8E1 /* JifflrTextFieldDropdown.swift in Sources */,
 				1A642A78207E0B8200474598 /* AdvertCell.swift in Sources */,
 				E937F5BA2036F87100171480 /* LocationFinancial.swift in Sources */,
@@ -1855,7 +1863,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10.09.2020;
+				CURRENT_PROJECT_VERSION = 01.10.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -1865,7 +1873,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2015,7 +2023,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10.09.2020;
+				CURRENT_PROJECT_VERSION = 01.10.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2025,7 +2033,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2045,7 +2053,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10.09.2020;
+				CURRENT_PROJECT_VERSION = 01.10.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				ENABLE_TESTABILITY = NO;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -2056,7 +2064,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2171,7 +2179,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10.09.2020;
+				CURRENT_PROJECT_VERSION = 01.10.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2181,7 +2189,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2271,7 +2279,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10.09.2020;
+				CURRENT_PROJECT_VERSION = 01.10.2020;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
 				EXPANDED_CODE_SIGN_IDENTITY_NAME = "-";
@@ -2281,7 +2289,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

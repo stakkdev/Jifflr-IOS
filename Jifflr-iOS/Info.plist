@@ -78,6 +78,15 @@
 	<string>Jifflr uses your photo library to add images when creating ads.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Jifflr uses your photo library to add images when creating ads.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Jifflr uses anonymised data to provide targeted campaigns.</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GothamBold.otf</string>

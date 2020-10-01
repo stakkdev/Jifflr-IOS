@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gk6-wG-sJO">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gk6-wG-sJO">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fRB-Xl-z6p">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="-20" width="414" height="756"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,16 +58,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0V-Tm-oDV" customClass="JifflrTextField" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="231" width="378" height="50"/>
+                                <rect key="frame" x="18" y="211" width="378" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HAd-kC-M8y"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el9-dq-vPZ">
-                                <rect key="frame" x="29" y="202" width="356" height="21"/>
+                                <rect key="frame" x="29" y="182" width="356" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9hT-nx-RIj"/>
                                 </constraints>
@@ -78,16 +75,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wIb-DH-G4Y" customClass="JifflrTextFieldPassword" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="324" width="378" height="50"/>
+                                <rect key="frame" x="18" y="304" width="378" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="m6N-Rv-Taa"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tal-7Z-boy">
-                                <rect key="frame" x="29" y="295" width="356" height="21"/>
+                                <rect key="frame" x="29" y="275" width="356" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="xCg-nf-ONP"/>
                                 </constraints>
@@ -95,8 +91,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgG-eO-X5E" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="414" width="378" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgG-eO-X5E" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="394" width="378" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ffG-fL-gdb"/>
                                 </constraints>
@@ -107,13 +103,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JifflrLogo" translatesAutoresizingMaskIntoConstraints="NO" id="JZ8-7x-xwT">
-                                <rect key="frame" x="60" y="60" width="294" height="71"/>
+                                <rect key="frame" x="60" y="40" width="294" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="DCd-sy-rvF"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz1-ou-RYE">
-                                <rect key="frame" x="107" y="491" width="200" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz1-ou-RYE">
+                                <rect key="frame" x="107" y="471" width="200" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="6pq-pC-szf"/>
                                     <constraint firstAttribute="width" constant="200" id="oY6-sZ-49k"/>
@@ -126,8 +122,8 @@
                                     <action selector="forgotPasswordPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ZN-KN-RIu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQp-Dx-FkV" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                <rect key="frame" x="18" y="550" width="378" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQp-Dx-FkV" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                <rect key="frame" x="18" y="530" width="378" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xFp-7T-Efh"/>
                                 </constraints>
@@ -206,7 +202,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HxY-kN-OaX"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="given-name"/>
                                     </textField>
@@ -224,7 +219,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="r0I-0B-dvs"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="family-name"/>
                                     </textField>
@@ -242,7 +236,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="u9c-Cl-zjk"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
@@ -260,7 +253,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="hCT-kw-xWF"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
@@ -278,7 +270,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nvS-Ea-vnV"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="location"/>
                                     </textField>
@@ -296,7 +287,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3eB-dc-hD8"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -314,7 +304,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="q5P-Xb-cuE"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -332,7 +321,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5qR-Sl-pp2"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
@@ -353,7 +341,7 @@
                                         </constraints>
                                         <color key="onTintColor" red="0.77647058823529413" green="0.10980392156862745" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP9-Mv-kz5" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP9-Mv-kz5" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="20" y="831" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="uY4-OU-wLO"/>
@@ -364,7 +352,7 @@
                                             <action selector="registerButtonPressedWithSender:" destination="8o7-Eb-YNp" eventType="touchUpInside" id="6xC-7W-YJN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHl-E9-3gW">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHl-E9-3gW">
                                         <rect key="frame" x="30" y="766.66666666666663" width="208" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="YAP-AV-epv"/>
@@ -489,10 +477,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XF7-H6-kcx">
-                                <rect key="frame" x="20" y="50" width="374" height="656"/>
+                                <rect key="frame" x="20" y="30" width="374" height="676"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="548" width="334" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2N-XN-vf6" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="568" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="HoL-M4-f5u"/>
                                         </constraints>
@@ -503,14 +491,14 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationRequired" translatesAutoresizingMaskIntoConstraints="NO" id="7Qd-0G-Yfl">
-                                        <rect key="frame" x="139" y="136" width="96" height="96"/>
+                                        <rect key="frame" x="139" y="146" width="96" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="96" id="Twm-j0-z0L"/>
                                             <constraint firstAttribute="height" constant="96" id="iKQ-yS-avo"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kq-Yo-7fB">
-                                        <rect key="frame" x="20" y="265" width="334" height="126.33333333333331"/>
+                                        <rect key="frame" x="20" y="275" width="334" height="126.33333333333331"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Jifflr would like to know your hometown or city so we can start to tailor the ads that we will send you.
@@ -575,7 +563,7 @@ We won’t share your detailed location information with anyone.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gw3-v2-GFm">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="X38-uJ-p1s"/>
                                 </constraints>
@@ -584,7 +572,7 @@ We won’t share your detailed location information with anyone.</string>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajO-kY-thO">
-                                <rect key="frame" x="20" y="94" width="374" height="614"/>
+                                <rect key="frame" x="20" y="74" width="374" height="634"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -625,7 +613,6 @@ We won’t share your detailed location information with anyone.</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iGX-lZ-eHW"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                             </textField>
@@ -638,7 +625,7 @@ We won’t share your detailed location information with anyone.</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34l-VH-zym" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34l-VH-zym" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="18" y="477.66666666666669" width="378" height="50.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="n2h-RL-ZYz"/>
@@ -650,7 +637,7 @@ We won’t share your detailed location information with anyone.</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JifflrLogo" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-gM-dfN">
-                                <rect key="frame" x="60" y="60" width="294" height="71"/>
+                                <rect key="frame" x="60" y="40" width="294" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="XeE-WX-Qnm"/>
                                 </constraints>
@@ -692,7 +679,7 @@ We won’t share your detailed location information with anyone.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tbZ-OT-Ya7">
-                                <rect key="frame" x="18" y="152" width="378" height="566"/>
+                                <rect key="frame" x="18" y="132" width="378" height="586"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" textLabel="LDI-TG-rUu" imageView="fW8-ge-uKD" style="IBUITableViewCellStyleDefault" id="22m-L6-5Kw">
@@ -709,13 +696,13 @@ We won’t share your detailed location information with anyone.</string>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-Bc-mqX">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ou3-Bc-mqX">
                                                     <rect key="frame" x="50" y="41" width="312" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="LocationGPS" id="fW8-ge-uKD">
-                                                    <rect key="frame" x="20" y="10" width="17" height="23"/>
+                                                    <rect key="frame" x="20" y="10.333333333333336" width="17" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -726,7 +713,7 @@ We won’t share your detailed location information with anyone.</string>
                                 </prototypes>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzG-t3-VM7">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="t0f-g9-STC"/>
                                 </constraints>
@@ -735,7 +722,7 @@ We won’t share your detailed location information with anyone.</string>
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxh-Iv-XVf">
-                                <rect key="frame" x="18" y="84" width="378" height="50"/>
+                                <rect key="frame" x="18" y="64" width="378" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -751,6 +738,7 @@ We won’t share your detailed location information with anyone.</string>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="AHP-TC-SdT"/>
                         <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tbZ-OT-Ya7" firstAttribute="top" secondItem="lxh-Iv-XVf" secondAttribute="bottom" constant="18" id="0VI-ru-G06"/>
@@ -764,7 +752,6 @@ We won’t share your detailed location information with anyone.</string>
                             <constraint firstItem="tbZ-OT-Ya7" firstAttribute="leading" secondItem="AHP-TC-SdT" secondAttribute="leading" constant="18" id="xs9-96-gBZ"/>
                             <constraint firstItem="lxh-Iv-XVf" firstAttribute="leading" secondItem="AHP-TC-SdT" secondAttribute="leading" constant="18" id="zpW-n3-b7l"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="AHP-TC-SdT"/>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="FzG-t3-VM7" id="zlw-Mn-kO4"/>
@@ -776,8 +763,95 @@ We won’t share your detailed location information with anyone.</string>
             </objects>
             <point key="canvasLocation" x="4451" y="32"/>
         </scene>
+        <!--Ad Tracking View Controller-->
+        <scene sceneID="Rhi-Yj-IFm">
+            <objects>
+                <viewController storyboardIdentifier="AdTrackingViewController" id="jtv-dA-tSa" customClass="AdTrackingViewController" customModule="Jifflr_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BeD-8e-qtP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Og6-UA-8hF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qco-LD-fLk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLe-bH-uVa">
+                                <rect key="frame" x="20" y="30" width="374" height="676"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWx-aA-frp" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="568" width="334" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hm9-D3-bGi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="ENABLE"/>
+                                        <connections>
+                                            <action selector="enableButtonPressed:" destination="jtv-dA-tSa" eventType="touchUpInside" id="etS-qE-oVd"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AdTrackingRequired" translatesAutoresizingMaskIntoConstraints="NO" id="9A4-5m-Yq3">
+                                        <rect key="frame" x="139" y="146" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="GSa-5i-554"/>
+                                            <constraint firstAttribute="width" constant="96" id="bqY-RJ-pXX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMB-M8-eur">
+                                        <rect key="frame" x="20" y="275" width="334" height="126.33333333333331"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Jifflr would like to know your hometown or city so we can start to tailor the ads that we will send you.
+
+We won’t share your detailed location information with anyone.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.15294117647058825" green="0.13725490196078433" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" metaFont="system" size="16"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9A4-5m-Yq3" firstAttribute="centerX" secondItem="eLe-bH-uVa" secondAttribute="centerX" id="0a5-iT-lOR"/>
+                                    <constraint firstAttribute="bottom" secondItem="nWx-aA-frp" secondAttribute="bottom" constant="58" id="0vD-iI-mQe"/>
+                                    <constraint firstItem="ZMB-M8-eur" firstAttribute="top" secondItem="9A4-5m-Yq3" secondAttribute="bottom" constant="33" id="QsY-oG-UMZ"/>
+                                    <constraint firstItem="ZMB-M8-eur" firstAttribute="leading" secondItem="eLe-bH-uVa" secondAttribute="leading" constant="20" id="Sza-rJ-zuJ"/>
+                                    <constraint firstItem="ZMB-M8-eur" firstAttribute="centerY" secondItem="eLe-bH-uVa" secondAttribute="centerY" id="UsT-6d-SY8"/>
+                                    <constraint firstAttribute="trailing" secondItem="nWx-aA-frp" secondAttribute="trailing" constant="20" id="gZ6-So-F3c"/>
+                                    <constraint firstItem="nWx-aA-frp" firstAttribute="leading" secondItem="eLe-bH-uVa" secondAttribute="leading" constant="20" id="mIK-MC-xiO"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZMB-M8-eur" secondAttribute="trailing" constant="20" id="oyp-z0-uIh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eLe-bH-uVa" firstAttribute="leading" secondItem="Qco-LD-fLk" secondAttribute="leading" constant="20" id="3mB-r5-S9E"/>
+                            <constraint firstAttribute="trailing" secondItem="eLe-bH-uVa" secondAttribute="trailing" constant="20" id="DU6-R1-lop"/>
+                            <constraint firstItem="Og6-UA-8hF" firstAttribute="top" secondItem="eLe-bH-uVa" secondAttribute="bottom" constant="30" id="f6I-xN-fYB"/>
+                            <constraint firstItem="eLe-bH-uVa" firstAttribute="top" secondItem="BeD-8e-qtP" secondAttribute="bottom" constant="30" id="url-Fm-mvt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="ZMB-M8-eur" id="140-9H-3eI"/>
+                        <outlet property="enableButton" destination="nWx-aA-frp" id="1ye-yA-4zT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gch-HC-AeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2990" y="695"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="AdTrackingRequired" width="33.333332061767578" height="33.333332061767578"/>
         <image name="JifflrLogo" width="255" height="71"/>
         <image name="LocationGPS" width="17" height="23"/>
         <image name="LocationRequired" width="96" height="96"/>

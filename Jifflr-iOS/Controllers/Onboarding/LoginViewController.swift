@@ -114,11 +114,14 @@ class LoginViewController: BaseViewController {
                 return
             }
 
-            if LocationManager.shared.locationServicesEnabled() == true {
+            if LocationManager.shared.locationServicesEnabled() && AdTrackingManager.shared.adTrackingEnabled() {
                 self.rootDashboardViewController()
-            } else {
+            } else if !LocationManager.shared.locationServicesEnabled() {
                 let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
                 self.navigationController?.pushViewController(locationRequiredViewController, animated: true)
+            } else {
+                let adTrackingViewController = AdTrackingViewController.instantiateFromStoryboard()
+                self.navigationController?.pushViewController(adTrackingViewController, animated: true)
             }
         }
     }

@@ -10,7 +10,7 @@ target 'Jifflr-iOS' do
   pod 'Firebase/Analytics', '~> 6.15.0'
   pod 'Firebase/Crashlytics', '~> 6.15.0'
   pod 'SwiftLint'
-  pod 'Parse', '1.17.1'
+  pod 'Parse', '1.19.0'
   pod 'Localize-Swift'
   pod 'IQKeyboardManagerSwift', '5.0.8'
   pod 'TDOnboarding'
@@ -47,6 +47,6 @@ target 'Jifflr-iOS' do
     inherit! :search_paths
     pod 'Firebase'
     pod 'GoogleAnalytics'
-    pod 'Parse', '1.17.1'
+    pod 'Parse', '1.19.0'
   end
 end

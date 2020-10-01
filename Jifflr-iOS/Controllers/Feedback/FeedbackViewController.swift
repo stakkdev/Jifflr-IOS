@@ -169,12 +169,19 @@ class FeedbackViewController: BaseViewController {
                     let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal)
                     self.navigationController?.pushViewController(advertViewController, animated: true)
                 } else if let advert = object as? Advert {
-                    guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
-                        let error = ErrorMessage.advertisingTurnedOff
-                        self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil) { (action) in
-                            self.rootDashboardViewController()
+                    if #available(iOS 14, *) {
+                        guard AdTrackingManager.shared.adTrackingEnabled() else {
+                            self.rootAdTrackingViewController()
+                            return
                         }
-                        return
+                    } else {
+                        guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+                            let error = ErrorMessage.advertisingTurnedOff
+                            self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil) { (action) in
+                                self.rootDashboardViewController()
+                            }
+                            return
+                        }
                     }
                     
                     let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)

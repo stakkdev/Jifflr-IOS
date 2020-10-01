@@ -187,6 +187,11 @@
 "locationRequired.description" = "Jifflr would like to know your location so we can tailor the campaigns that we send to you and add geographic context to the market research responses you give.\n\nBut we won’t share your detailed location information with anyone.";
 "locationRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your location while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable GPS access for Jifflr in your device’s settings and then restart the App.";
 
+"adTrackingRequired.navigation.title" = "App Tracking Transparency";
+"adTrackingRequired.button.title" = "ENABLE";
+"adTrackingRequired.description" = "Jifflr requires you to provide your input and interact with a range of campaigns. To do so, we need your permission to share your anonymised data.";
+"adTrackingRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your anonymised data while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable App Tracking Transparency for Jifflr in your device’s settings and then restart the App.";
+
 "register.navigation.title" = "Register";
 "register.firstName.heading" = "First Name";
 "register.firstName.placeholder" = "Enter first name";

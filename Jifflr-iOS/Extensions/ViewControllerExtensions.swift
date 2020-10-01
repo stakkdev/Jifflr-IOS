@@ -24,6 +24,14 @@ extension UIViewController {
 
         self.set(root: navVC)
     }
+    
+    func rootAdTrackingViewController() {
+        let loginVC = AdTrackingViewController.instantiateFromStoryboard()
+        let navVC = UINavigationController(rootViewController: loginVC)
+        navVC.isNavigationBarHidden = false
+
+        self.set(root: navVC)
+    }
 
     func rootDashboardViewController(animated: Bool = true) {
         let dashboardVC = DashboardViewController.instantiateFromStoryboard()

@@ -235,11 +235,16 @@ class RegisterViewController: BaseViewController {
     }
 
     func rootAfterRegistration() {
-        if LocationManager.shared.locationServicesEnabled() == true && Session.shared.currentLocation != nil {
+        if LocationManager.shared.locationServicesEnabled() &&
+            AdTrackingManager.shared.adTrackingEnabled() &&
+            Session.shared.currentLocation != nil {
             self.rootDashboardViewController()
-        } else {
+        } else if !LocationManager.shared.locationServicesEnabled() || Session.shared.currentLocation == nil {
             let locationRequiredViewController = LocationRequiredViewController.instantiateFromStoryboard()
             self.navigationController?.present(locationRequiredViewController, animated: true, completion: nil)
+        } else {
+            let adTrackingViewController = AdTrackingViewController.instantiateFromStoryboard()
+            self.navigationController?.present(adTrackingViewController, animated: true, completion: nil)
         }
     }
 

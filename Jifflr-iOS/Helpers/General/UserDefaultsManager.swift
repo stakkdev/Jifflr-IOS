@@ -28,6 +28,15 @@ class UserDefaultsManager: NSObject {
         let viewed = UserDefaults.standard.bool(forKey: "locationPermissionsRequested")
         return viewed
     }
+    
+    func setAppTrackingRequested() {
+        UserDefaults.standard.set(true, forKey: "appTracking")
+    }
+
+    func appTrackingRequested() -> Bool {
+        let viewed = UserDefaults.standard.bool(forKey: "appTracking")
+        return viewed
+    }
 
     func crashTrackerOn() -> Bool {
         let on = UserDefaults.standard.bool(forKey: "crashTrackerOn")

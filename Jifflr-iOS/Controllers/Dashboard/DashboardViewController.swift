@@ -285,9 +285,16 @@ class DashboardViewController: BaseViewController {
 
                 self.campaign = nil
             } else if let advert = self.advert {
-                guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
-                    self.displayError(error: .advertisingTurnedOff)
-                    return
+                if #available(iOS 14, *) {
+                    guard AdTrackingManager.shared.adTrackingEnabled() else {
+                        self.rootAdTrackingViewController()
+                        return
+                    }
+                } else {
+                    guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+                        self.displayError(error: .advertisingTurnedOff)
+                        return
+                    }
                 }
                 
                 let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))

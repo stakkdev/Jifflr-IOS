@@ -200,10 +200,10 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
             self.imageOverlayView.image = normalizedImage
             
             let randomName = UUID().uuidString
-            if let file = try? PFFile(name: "\(randomName).jpg", data: data, contentType: "image/jpg") {
+            if let file = try? PFFileObject(name: "\(randomName).jpg", data: data, contentType: "image/jpg") {
                 self.advert.details?.image = file
             } else {
-                self.advert.details?.image = PFFile(data: data, contentType: "image/jpg")
+                self.advert.details?.image = PFFileObject(data: data, contentType: "image/jpg")
             }
         } else if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             let asset = AVAsset(url: videoUrl)
@@ -241,10 +241,10 @@ extension AddContentViewController: UIImagePickerControllerDelegate, UINavigatio
                     let videoData = try Data(contentsOf: newUrl)
                     
                     let randomName = UUID().uuidString
-                    if let file = try? PFFile(name: "\(randomName).mp4", data: videoData, contentType: "video/mp4") {
+                    if let file = try? PFFileObject(name: "\(randomName).mp4", data: videoData, contentType: "video/mp4") {
                         self.advert.details?.image = file
                     } else {
-                        self.advert.details?.image = PFFile(data: videoData, contentType: "video/mp4")
+                        self.advert.details?.image = PFFileObject(data: videoData, contentType: "video/mp4")
                     }
                     
                     guard MediaManager.shared.save(data: videoData, id: self.advert.details?.objectId, fileExtension: "mp4") else {
