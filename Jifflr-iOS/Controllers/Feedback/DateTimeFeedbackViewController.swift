@@ -36,7 +36,6 @@ class DateTimeFeedbackViewController: FeedbackViewController {
     
     func setupDatePicker() {
         self.datePicker.setValue(UIColor.white, forKey: "textColor")
-        self.datePicker.setValue(false, forKey: "highlightsToday")
         
         if self.isTime {
             self.datePicker.datePickerMode = .time
