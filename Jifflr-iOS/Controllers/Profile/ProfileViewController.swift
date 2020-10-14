@@ -176,6 +176,10 @@ class ProfileViewController: BaseViewController {
         } else {
             self.datePicker.date = Date()
         }
+        
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
         self.datePicker.datePickerMode = .date
         self.datePicker.maximumDate = Date()
         self.datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)

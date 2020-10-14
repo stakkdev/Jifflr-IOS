@@ -262,6 +262,9 @@ class RegisterViewController: BaseViewController {
         self.genderTextField.inputAccessoryView = toolbar
 
         self.datePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
         self.datePicker.date = Date()
         self.datePicker.datePickerMode = .date
         self.datePicker.maximumDate = Date()

@@ -35,14 +35,19 @@ class DateTimeFeedbackViewController: FeedbackViewController {
     }
     
     func setupDatePicker() {
-        self.datePicker.setValue(UIColor.white, forKey: "textColor")
-        
         if self.isTime {
             self.datePicker.datePickerMode = .time
             self.datePicker.minuteInterval = 15
         } else {
             self.datePicker.datePickerMode = .date
         }
+        
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
+        
+        self.datePicker.setValue(UIColor.white, forKey: "textColor")
+        self.datePicker.setValue(false, forKey: "highlightsToday")
         
         guard let answers = self.content.first?.answers else { return }
         guard answers.count == 2 else { return }

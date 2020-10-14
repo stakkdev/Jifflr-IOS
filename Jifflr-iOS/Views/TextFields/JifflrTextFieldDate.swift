@@ -91,6 +91,10 @@ class JifflrTextFieldDate: JifflrTextField {
         guard let date = dateFormatter.date(from: self.text!) else { return }
         
         self.datePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
+        
         self.datePicker.date = date
         self.datePicker.datePickerMode = (type == .dateFrom || type == .dateTo) ? .date : .time
         self.datePicker.minuteInterval = 15

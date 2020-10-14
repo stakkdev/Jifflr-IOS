@@ -133,6 +133,10 @@ extension AddQuestionsViewController {
             self.datePicker.datePickerMode = .time
             self.datePicker.minuteInterval = 15
         }
+        
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
         self.datePicker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
         self.minTextField.inputView = self.datePicker
         self.maxTextField.inputView = self.datePicker
