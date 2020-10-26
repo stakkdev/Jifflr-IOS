@@ -188,9 +188,11 @@
 "locationRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your location while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable GPS access for Jifflr in your device’s settings and then restart the App.";
 
 "adTrackingRequired.navigation.title" = "App Tracking Transparency";
-"adTrackingRequired.button.title" = "ENABLE";
-"adTrackingRequired.description" = "Jifflr requires you to provide your input and interact with a range of campaigns. To do so, we need your permission to share your anonymised data.";
-"adTrackingRequired.permissionDeniedDescription" = "You selected ‘Don’t Allow’ Jifflr to use your anonymised data while you use the App. The App will now exit.\n\nIf you’d like to use Jifflr please enable App Tracking Transparency for Jifflr in your device’s settings and then restart the App.";
+"adTrackingRequired.button.title" = "NEXT";
+"adTrackingRequired.button.titlePermissionDenied" = "OK";
+"adTrackingRequired.description" = "Jifflr is a market research app that can generate an income for you.\n\nContent from some third parties requires your anonymised feedback (including responses, data and tracking IDs) to generate that income.\n\nTo maximise your income we need your permission to share your anonymised data.";
+"adTrackingRequired.permissionDeniedDescription" = "You selected ‘Ask App Not to Track’ so we won’t show you content from some third parties that require your anonymised data.\n\nBut we’re still really grateful that you downloaded our app and we hope that you still find Jifflr rewarding.";
+"adTrackingRequired.noCMSAdsDescription" = "Hmmm, it looks like there’s no more content from our providers for users that have disabled ‘Ad Tracking’.\n\nPlease check in again later.\n\nSee ‘FAQS | Campaigns’ for more info.\n\nThanks for using Jifflr.";
 
 "register.navigation.title" = "Register";
 "register.firstName.heading" = "First Name";

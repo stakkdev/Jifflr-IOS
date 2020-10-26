@@ -26,8 +26,8 @@ extension UIViewController {
     }
     
     func rootAdTrackingViewController() {
-        let loginVC = AdTrackingViewController.instantiateFromStoryboard()
-        let navVC = UINavigationController(rootViewController: loginVC)
+        let adVC = AdTrackingViewController.instantiateFromStoryboard(noCMSAds: true)
+        let navVC = UINavigationController(rootViewController: adVC)
         navVC.isNavigationBarHidden = false
 
         self.set(root: navVC)

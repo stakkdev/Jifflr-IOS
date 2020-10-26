@@ -13,10 +13,14 @@ class AdTrackingViewController: BaseViewController {
 
     @IBOutlet weak var enableButton: JifflrButton!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var noCMSAds = false
 
-    class func instantiateFromStoryboard() -> AdTrackingViewController {
+    class func instantiateFromStoryboard(noCMSAds: Bool = false) -> AdTrackingViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "AdTrackingViewController") as! AdTrackingViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AdTrackingViewController") as! AdTrackingViewController
+        vc.noCMSAds = noCMSAds
+        return vc
     }
 
     override func viewDidLoad() {
@@ -31,8 +35,10 @@ class AdTrackingViewController: BaseViewController {
         self.setBackgroundImage(image: UIImage(named: "MainBackground"))
         self.enableButton.setBackgroundColor(color: UIColor.mainPink)
         self.navigationItem.setHidesBackButton(true, animated: false)
-
-        if UserDefaultsManager.shared.appTrackingRequested() {
+        
+        if self.noCMSAds {
+            self.setupNoCMSAdsUI()
+        } else if UserDefaultsManager.shared.appTrackingRequested() {
             self.setupPermissionDeniedUI()
         } else {
             self.setupNoPermissionsUI()
@@ -48,12 +54,24 @@ class AdTrackingViewController: BaseViewController {
         self.descriptionLabel.text = "adTrackingRequired.description".localized()
         self.enableButton.isEnabled = true
         self.enableButton.isHidden = false
+        self.enableButton.tag = 0
+        self.enableButton.setTitle("adTrackingRequired.button.title".localized(), for: .normal)
     }
 
     func setupPermissionDeniedUI() {
         self.descriptionLabel.text = "adTrackingRequired.permissionDeniedDescription".localized()
-        self.enableButton.isHidden = true
-        self.enableButton.isEnabled = false
+        self.enableButton.isHidden = false
+        self.enableButton.isEnabled = true
+        self.enableButton.tag = 1
+        self.enableButton.setTitle("adTrackingRequired.button.titlePermissionDenied".localized(), for: .normal)
+    }
+    
+    func setupNoCMSAdsUI() {
+        self.descriptionLabel.text = "adTrackingRequired.noCMSAdsDescription".localized()
+        self.enableButton.isHidden = false
+        self.enableButton.isEnabled = true
+        self.enableButton.tag = 1
+        self.enableButton.setTitle("adTrackingRequired.button.titlePermissionDenied".localized(), for: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,14 +87,18 @@ class AdTrackingViewController: BaseViewController {
     }
 
     @IBAction func enableButtonPressed(_ sender: UIButton) {
-        AdTrackingManager.shared.requestPermissions { (granted) in
-            DispatchQueue.main.async {
-                if granted {
-                    self.rootDashboardViewController()
-                } else {
-                    self.setupPermissionDeniedUI()
+        if sender.tag == 0 {
+            AdTrackingManager.shared.requestPermissions { (granted) in
+                DispatchQueue.main.async {
+                    if granted {
+                        self.rootDashboardViewController()
+                    } else {
+                        self.setupPermissionDeniedUI()
+                    }
                 }
             }
+        } else {
+            self.rootDashboardViewController()
         }
     }
 
