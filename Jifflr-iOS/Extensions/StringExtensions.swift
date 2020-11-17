@@ -29,6 +29,16 @@ extension String {
         return false
     }
     
+    func isValidNameInput() -> Bool {
+        if self.count > 253 || self.count < 1 {
+            return false
+        }
+        if self == " " {
+            return false
+        }
+        return true
+    }
+    
     subscript(_ range: CountableRange<Int>) -> String {
         let idx1 = index(startIndex, offsetBy: max(0, range.lowerBound))
         let idx2 = index(startIndex, offsetBy: min(self.count, range.upperBound))

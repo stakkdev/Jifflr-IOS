@@ -132,13 +132,13 @@ class RegisterViewController: BaseViewController {
             return
         }
         
-        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty, !firstName.containsNumbers() else {
+        guard let firstName = self.firstNameTextField.text, !firstName.isEmpty, firstName.isValidNameInput() else {
             let error = ErrorMessage.invalidField("register.firstName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return
         }
 
-        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty, !lastName.containsNumbers() else {
+        guard let lastName = self.lastNameTextField.text, !lastName.isEmpty, lastName.isValidNameInput() else {
             let error = ErrorMessage.invalidField("register.lastName.heading".localized())
             self.displayMessage(title: error.failureTitle, message: error.failureDescription)
             return

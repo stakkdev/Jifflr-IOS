@@ -13,7 +13,7 @@ extension ProfileViewController {
         guard let currentUser = Session.shared.currentUser else { return }
 
         if textField == self.firstNameTextField {
-            guard let firstName = self.firstNameTextField.text, !firstName.isEmpty else {
+            guard let firstName = self.firstNameTextField.text, !firstName.isEmpty, firstName.isValidNameInput() else {
                 let error = ErrorMessage.invalidProfileField("register.firstName.heading".localized())
                 self.displayMessage(title: error.failureTitle, message: error.failureDescription)
                 return
@@ -23,7 +23,7 @@ extension ProfileViewController {
             self.saveAndPinUser()
 
         } else if textField == self.lastNameTextField {
-            guard let lastName = self.lastNameTextField.text, !lastName.isEmpty else {
+            guard let lastName = self.lastNameTextField.text, !lastName.isEmpty, lastName.isValidNameInput() else {
                 let error = ErrorMessage.invalidProfileField("register.lastName.heading".localized())
                 self.displayMessage(title: error.failureTitle, message: error.failureDescription)
                 return

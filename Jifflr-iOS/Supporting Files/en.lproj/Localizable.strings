@@ -195,10 +195,10 @@
 "adTrackingRequired.noCMSAdsDescription" = "Hmmm, it looks like there’s no more content from our providers for users that have disabled ‘Ad Tracking’.\n\nPlease check in again later.\n\nSee ‘FAQS | Campaigns’ for more info.\n\nThanks for using Jifflr.";
 
 "register.navigation.title" = "Register";
-"register.firstName.heading" = "First Name";
-"register.firstName.placeholder" = "Enter first name";
-"register.lastName.heading" = "Last Name";
-"register.lastName.placeholder" = "Enter last name";
+"register.firstName.heading" = "Given Name";
+"register.firstName.placeholder" = "Enter given name";
+"register.lastName.heading" = "Family Name";
+"register.lastName.placeholder" = "Enter family name";
 "register.email.heading" = "Email";
 "register.email.placeholder" = "Enter email";
 "register.password.heading" = "Password";
