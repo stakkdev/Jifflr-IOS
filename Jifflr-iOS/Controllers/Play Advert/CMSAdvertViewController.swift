@@ -118,6 +118,7 @@ class CMSAdvertViewController: BaseViewController {
             
             self.player?.url = url
             self.player?.playFromBeginning()
+            self.timeView.isHidden = true
         } else {
             self.handleLoadError()
         }
