@@ -185,7 +185,7 @@ class FeedbackViewController: BaseViewController {
                     }
                     
                     let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)
-                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                    self.navigationController?.pushViewController(advertViewController, animated: false)
                 }
             })
         }
