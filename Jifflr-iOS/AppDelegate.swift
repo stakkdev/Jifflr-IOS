@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Analytics.setAnalyticsCollectionEnabled(UserDefaultsManager.shared.analyticsOn())
         
         UserDefaultsManager.shared.setQuestionDuration(time: 5)
+        UserDefaultsManager.shared.setInitialPlayPressed(done: false)
         
         let enabled = UserDefaultsManager.shared.crashTrackerOn()
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(enabled)

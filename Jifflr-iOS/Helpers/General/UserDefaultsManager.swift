@@ -61,8 +61,17 @@ class UserDefaultsManager: NSObject {
         return on
     }
     
+    func initialPlayPressed() -> Bool {
+        let done = UserDefaults.standard.bool(forKey: "initialPlayPressed")
+        return done
+    }
+    
     func setfirstLoadComplete(on: Bool) {
         UserDefaults.standard.set(on, forKey: "firstLoadComplete")
+    }
+    
+    func setInitialPlayPressed(done: Bool) {
+        UserDefaults.standard.set(done, forKey: "initialPlayPressed")
     }
     
     func questionDuration() -> Double {

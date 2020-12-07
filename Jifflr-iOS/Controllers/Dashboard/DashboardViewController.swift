@@ -18,6 +18,8 @@ class DashboardViewController: BaseViewController {
     var moderatorCampaign: Campaign?
     var myAds: MyAds?
     var internetAlertShown = false
+    var initialPlayPress = false
+    var playPressDelayAttemptNumber = 0
 
     @IBOutlet weak var playAdsButton: PulsePlayButton!
     @IBOutlet weak var myTeamButton: DashboardButtonLeft!
@@ -38,6 +40,9 @@ class DashboardViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let initialPlayPressed = UserDefaultsManager.shared.initialPlayPressed()
+        self.initialPlayPress = !initialPlayPressed
 
         self.setupUI()
     }
@@ -276,6 +281,25 @@ class DashboardViewController: BaseViewController {
                 self.displayError(error: ErrorMessage.maxCampaignsLimitReached)
                 return
             }
+            
+            // PER CLIENT REQUIREMENT CHANGE REQUEST:
+            // Only on first press of the play button: check whether any cms ads have been donwloaded
+            // if not wait for 2 seconds before proceeding to show adverts
+            // allowing for more time to pass and possible cms campaigns to sync
+            if initialPlayPress == true {
+                if self.campaign == nil, self.playPressDelayAttemptNumber < 2 {
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                    self.playPressDelayAttemptNumber += 1
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.playAdsButtonPressed(_: self.playAdsButton)
+                    }
+                    return
+                } else {
+                    self.initialPlayPress = false
+                    UserDefaultsManager.shared.setInitialPlayPressed(done: true)
+                }
+            }
+         
 
             if let campaign = self.campaign {
                 let navController = UINavigationController(rootViewController: CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal))
