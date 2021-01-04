@@ -211,7 +211,7 @@ class CampaignOverviewViewController: BaseViewController {
                 return
             }
             
-            var budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
+            var budgetCoverage = noOfViews / (Double(demographic.estimatedAudience) - Double(self.campaign.adsViewedCount))
             budgetCoverage *= 100
             self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
         }
@@ -404,7 +404,7 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
             return
         }
         
-        var budgetCoverage = noOfViews / Double(demographic.estimatedAudience)
+        var budgetCoverage = noOfViews / (Double(demographic.estimatedAudience) - Double(self.campaign.adsViewedCount))
         budgetCoverage *= 100
         self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
     }

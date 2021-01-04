@@ -105,6 +105,15 @@ final class Campaign: PFObject {
         }
     }
     
+    var adsViewedCount: Int {
+        get {
+            return self["adsViewedCount"] as? Int ?? 0
+        }
+        set {
+            self["adsViewedCount"] = newValue
+        }
+    }
+    
     var creator: PFUser {
         get {
             return self["creator"] as! PFUser

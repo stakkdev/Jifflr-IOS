@@ -324,9 +324,10 @@ extension RegisterViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == self.firstNameTextField || textField == self.lastNameTextField {
-            
-            // JIFF-1124 - Remove validation
+        
+        // JIFF-1124 - Remove validation
+        
+//        if textField == self.firstNameTextField || textField == self.lastNameTextField {
 //            if string.count > 0 {
 //                var allowedCharacters = CharacterSet.letters
 //                allowedCharacters.insert(charactersIn: " -")
@@ -334,9 +335,8 @@ extension RegisterViewController: UITextFieldDelegate {
 //                let unwantedStr = string.trimmingCharacters(in: allowedCharacters)
 //                return unwantedStr.count == 0
 //            }
-            
-            return true
-        }
+//            return true
+//        }
         
         return true
     }
