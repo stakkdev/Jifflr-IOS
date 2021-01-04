@@ -113,6 +113,8 @@ public enum ErrorMessage {
             return "error.loginNotRegistered.title".localized()
         case .loginWrongPassword:
             return "error.loginWrongPassword.title".localized()
+        case .teamUpdating:
+            return "error.teamUpdating.title".localized()
         default:
             return "error.title".localized()
         }
