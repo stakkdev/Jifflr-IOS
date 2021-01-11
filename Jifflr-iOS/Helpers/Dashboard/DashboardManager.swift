@@ -54,7 +54,9 @@ class DashboardManager: NSObject {
                 completion(dashboardStats, nil)
             } else {
                 if let newError = error, let dict = (newError as NSError).userInfo["error"] as? NSDictionary, let code = dict["code"] as? Int, code == 300 {
-                    completion(nil, ErrorMessage.teamUpdating)
+                    // JIFF-1171
+//                    completion(nil, ErrorMessage.teamUpdating)
+                    completion(nil, nil)
                 } else {
                     completion(nil, ErrorMessage.unknown)
                 }

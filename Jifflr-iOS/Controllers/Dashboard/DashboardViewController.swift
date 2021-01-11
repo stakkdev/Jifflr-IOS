@@ -187,7 +187,12 @@ class DashboardViewController: BaseViewController {
             group.enter()
             DashboardManager.shared.fetchStats { (stats, error) in
                 group.leave()
+              
                 guard let stats = stats, error == nil else {
+                    // JIFF-1171
+                    if error == nil {
+                        return
+                    }
                     self.displayError(error: error)
                     self.updateLocalData()
                     return
