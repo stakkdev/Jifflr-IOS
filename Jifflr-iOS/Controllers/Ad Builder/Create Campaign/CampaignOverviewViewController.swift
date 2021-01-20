@@ -211,9 +211,11 @@ class CampaignOverviewViewController: BaseViewController {
                 return
             }
             
-            var budgetCoverage = noOfViews / (Double(demographic.estimatedAudience) - Double(self.campaign.adsViewedCount))
-            budgetCoverage *= 100
-            self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+            let remainingAudienceCost: Double = Double((demographic.estimatedAudience - self.campaign.adsViewedCount)) * self.campaign.costPerView
+            let budgetCoverage = self.campaign.balance / remainingAudienceCost
+            let coveragePercentage = budgetCoverage * 100
+            
+            self.budgetCoverageLabel.text = "\(Int(coveragePercentage))%"
         }
     }
     
@@ -404,8 +406,9 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
             return
         }
         
-        var budgetCoverage = noOfViews / (Double(demographic.estimatedAudience) - Double(self.campaign.adsViewedCount))
-        budgetCoverage *= 100
-        self.budgetCoverageLabel.text = "\(Int(budgetCoverage))%"
+        let remainingAudienceCost: Double = Double((demographic.estimatedAudience - self.campaign.adsViewedCount)) * self.campaign.costPerView
+        let budgetCoverage = self.campaign.balance / remainingAudienceCost
+        let coveragePercentage = budgetCoverage * 100
+        self.budgetCoverageLabel.text = "\(Int(coveragePercentage))%"
     }
 }
