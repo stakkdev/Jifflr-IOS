@@ -210,12 +210,10 @@ class CampaignOverviewViewController: BaseViewController {
                 self.budgetCoverageLabel.text = "0%"
                 return
             }
-            
-            let remainingAudienceCost: Double = Double((demographic.estimatedAudience - self.campaign.adsViewedCount)) * self.campaign.costPerView
-            let budgetCoverage = self.campaign.balance / remainingAudienceCost
-            let coveragePercentage = budgetCoverage * 100
-            
-            self.budgetCoverageLabel.text = "\(Int(coveragePercentage))%"
+            let totalBalance = self.campaign.balance + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
+            let totalAudienceCost: Double =  Double(self.campaign.demographic?.estimatedAudience ?? 0) * self.campaign.costPerView
+            let budgetCoverage = totalBalance / totalAudienceCost
+            self.budgetCoverageLabel.text = "\(round(budgetCoverage * 100))%"
         }
     }
     
