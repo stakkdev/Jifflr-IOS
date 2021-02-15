@@ -46,6 +46,14 @@ extension CampaignOverviewViewController {
         self.disableButtons()
         self.campaign.saveInBackgroundAndPin { (error) in
             user.saveAndPin(completion: { (error) in
+                CampaignManager.shared.fetchMyBalance { (myBalance, error) in
+                    guard let myBalance = myBalance, error == nil else {
+                        self.displayError(error: error)
+                        return
+                    }
+                    self.myBalance = myBalance
+                    self.updateBalanceButton()
+                }
                 self.updateButton.stopAnimating()
                 self.enableButtons()
                 
