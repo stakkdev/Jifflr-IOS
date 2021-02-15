@@ -15,14 +15,16 @@ class SwipeFeedbackViewController: FeedbackViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var imageLoadCount = 0
+    var answeredQuestionsCount = 0
     var question: AdExchangeQuestion!
     var userSeenAdExchange = UserSeenAdExchange()
 
-    class func instantiateFromStoryboard(campaign: Campaign, question: AdExchangeQuestion) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, question: AdExchangeQuestion, answeredQuestionsCount: Int = 0) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.campaign = campaign
         controller.question = question
+        controller.answeredQuestionsCount = answeredQuestionsCount
         
         OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
@@ -120,7 +122,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
             }
             
             self.spinner?.startAnimating()
-            self.pushToNextAd()
+            self.pushToNextQuestionOrAdd()
         }
     }
     
@@ -135,7 +137,7 @@ class SwipeFeedbackViewController: FeedbackViewController {
         
         let okayTitle = "alert.passwordChanged.okayButton".localized()
         let okayAction = UIAlertAction(title: okayTitle, style: .default) { (action) in
-            self.pushToNextAd()
+            self.pushToNextQuestionOrAdd()
         }
         alertController.addAction(okayAction)
         
@@ -159,6 +161,28 @@ class SwipeFeedbackViewController: FeedbackViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+     func pushToNextQuestionOrAdd() {
+        self.answeredQuestionsCount += 1
+        if self.answeredQuestionsCount > 2 {
+            pushToNextAd()
+        } else {
+            fetchNextSwipeQuestion()
+        }
+    }
+    
+    func fetchNextSwipeQuestion() {
+        AdvertManager.shared.fetchSwipeQuestion { (question) in
+            guard let question = question else {
+                self.pushToNextAd()
+                return
+            }
+            let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, question: question, answeredQuestionsCount: self.answeredQuestionsCount)
+            self.navigationController?.pushViewController(controller, animated: false)
+        }
+    }
+    
+    
 }
 
 extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSource {
