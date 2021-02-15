@@ -22,6 +22,11 @@ class BalanceViewController: BaseViewController {
     @IBOutlet weak var currentBalanceHeadingLabelTop: NSLayoutConstraint!
     
     var isWithdrawal = false
+    var myBalance: MyBalance = MyBalance() {
+        didSet {
+            updateUI()
+        }
+    }
 
     class func instantiateFromStoryboard(isWithdrawal: Bool) -> BalanceViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -32,8 +37,24 @@ class BalanceViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateData()
+    }
+    
+    func updateData() {
+        if Reachability.isConnectedToNetwork() {
+            CampaignManager.shared.fetchMyBalance { (myBalance, error) in
+                guard let myBalance = myBalance, error == nil else {
+                    self.displayError(error: error)
+                    return
+                }
+                self.myBalance = myBalance
+            }
+        }
     }
     
     func setupUI() {
@@ -60,11 +81,17 @@ class BalanceViewController: BaseViewController {
         
         guard let user = Session.shared.currentUser else { return }
         self.amountTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", 10.00))"
-        self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", user.details.campaignBalance))"
+
         
         if let email = user.details.campaignPayPalEmail {
             self.paypalEmailTextField.text = email
         }
+    }
+    
+    func updateUI() {
+        let total: Double = myBalance.totalBalance
+        self.currentBalanceTextField.text = "\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", total))"
+        
     }
     
     func setupLocalization() {
@@ -88,8 +115,8 @@ class BalanceViewController: BaseViewController {
     func handleWithdrawal() {
         guard let user = Session.shared.currentUser else { return }
         
-        guard self.validateWithdrawal() else {
-            self.displayError(error: ErrorMessage.withdrawalValidationFailed)
+        if let error = self.validateWithrawal()  {
+            self.displayError(error: error)
             return
         }
         
@@ -117,12 +144,21 @@ class BalanceViewController: BaseViewController {
         }
     }
     
-    func validateWithdrawal() -> Bool {
-        guard let user = Session.shared.currentUser else { return false }
-        guard user.details.campaignBalance >= self.getAmount() else { return false }
-        guard let paypalEmail = self.paypalEmailTextField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else { return false }
+    func validateWithrawal() -> ErrorMessage? {
         
-        return true
+        guard let paypalEmail = self.paypalEmailTextField.text, !paypalEmail.isEmpty, paypalEmail.isEmail() else {
+            return ErrorMessage.withdrawalValidationFailed
+        }
+        
+        guard myBalance.totalBalance >= self.getAmount() else {
+            return ErrorMessage.withdrawalValidationFailed
+        }
+        
+        guard myBalance.availableBalance >= self.getAmount() else {
+            return ErrorMessage.withdrawalValidationAmount(myBalance.availableBalance, myBalance.credit)
+        }
+        
+        return nil
     }
     
     func handleTopUp() {

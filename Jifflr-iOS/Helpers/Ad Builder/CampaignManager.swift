@@ -446,4 +446,41 @@ class CampaignManager: NSObject {
             completion(adSubmissionFee)
         })
     }
+    
+    func fetchMyBalance(completion: @escaping (MyBalance?, ErrorMessage?) -> Void) {
+        guard let user = Session.shared.currentUser else { return }
+
+        PFCloud.callFunction(inBackground: "available-to-withdraw", withParameters: ["user": user.objectId!]) { myBalanceJson, error in
+            if let myBalanceJson = myBalanceJson as? [String: Any] {
+                let myBalance = MyBalance()
+
+                if let totalBalance = myBalanceJson["totalBalance"] as? Double {
+                    myBalance.totalBalance = totalBalance
+                }
+                
+                if let credit = myBalanceJson["credit"] as? Double {
+                    myBalance.credit = credit
+                }
+                
+                if let availableBalance = myBalanceJson["availableBalance"] as? Double {
+                    myBalance.availableBalance = availableBalance
+                }
+
+
+                PFObject.unpinAllObjectsInBackground(withName: myBalance.pinName, block: { (success, error) in
+                    myBalance.pinInBackground(withName: myBalance.pinName, block: { (success, error) in
+                        print("MyBalance Pinned: \(success)")
+
+                        if let error = error {
+                            print("Error: \(error)")
+                        }
+                    })
+                })
+
+                completion(myBalance, nil)
+            } else {
+                completion(nil, ErrorMessage.unknown)
+            }
+        }
+    }
 }
