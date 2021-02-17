@@ -450,15 +450,15 @@ extension DisplayMessage {
       let appVersionAndBuild = "Version \(appVersionString ?? "N/A") (\(appBuildString ?? "N/A")) \(environmentString)"
       
       if let userId = Session.shared.currentUser?.objectId {
-        Crashlytics.crashlytics().setUserID(userId)
+        Firebase.Crashlytics.crashlytics().setUserID(userId)
       }
       
-      Crashlytics.crashlytics().setCustomValue("errorTitle", forKey: error.failureTitle)
-      Crashlytics.crashlytics().setCustomValue("errorDescription", forKey: error.failureDescription)
-      Crashlytics.crashlytics().setCustomValue("screen", forKey: screenName)
-      Crashlytics.crashlytics().setCustomValue("device", forKey: UIDevice.current.deviceModelReadable)
-      Crashlytics.crashlytics().setCustomValue("os", forKey: UIDevice.current.systemVersionReadable)
-      Crashlytics.crashlytics().setCustomValue("version", forKey: appVersionAndBuild)
+        Firebase.Crashlytics.crashlytics().setCustomValue("errorTitle", forKey: error.failureTitle)
+        Firebase.Crashlytics.crashlytics().setCustomValue("errorDescription", forKey: error.failureDescription)
+        Firebase.Crashlytics.crashlytics().setCustomValue("screen", forKey: screenName)
+        Firebase.Crashlytics.crashlytics().setCustomValue("device", forKey: UIDevice.current.deviceModelReadable)
+        Firebase.Crashlytics.crashlytics().setCustomValue("os", forKey: UIDevice.current.systemVersionReadable)
+        Firebase.Crashlytics.crashlytics().setCustomValue("version", forKey: appVersionAndBuild)
     }
 }
 
