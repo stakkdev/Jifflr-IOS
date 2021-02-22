@@ -226,7 +226,7 @@ public enum ErrorMessage {
         case .withdrawalValidationFailed:
             return "error.withdrawalValidationFailed".localized()
         case .withdrawalValidationAmount(let available, let credit):
-            return "\("error.withdrawalValidationAmountPart1".localized())\(String(format: "%.2f", available))\("error.withdrawalValidationAmountPart2".localized())\(String(format: "%.2f", credit))\("error.withdrawalValidationAmountPart3".localized())"
+            return "\("error.withdrawalValidationAmountPart1".localized())\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", available))\("error.withdrawalValidationAmountPart2".localized())\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", credit))\("error.withdrawalValidationAmountPart3".localized())"
         case .withdrawalFailed:
             return "error.withdrawalFailed".localized()
         case .withdrawalEmail:

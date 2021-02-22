@@ -61,8 +61,8 @@
 "error.languageFetchFailed" = "Unable to fetch languages. Please check your internet connection and try again.";
 "error.genderFetchFailed" = "Unable to fetch genders. Please check your internet connection and try again.";
 "error.withdrawalValidationFailed" = "Unable to withdraw money. Please ensure your account balance has sufficient funds.";
-"error.withdrawalValidationAmountPart1" = "Unable to withdraw money. You may only withdraw a maximum of £";
-"error.withdrawalValidationAmountPart2" = " as your total balance includes £";
+"error.withdrawalValidationAmountPart1" = "Unable to withdraw money. You may only withdraw a maximum of ";
+"error.withdrawalValidationAmountPart2" = " as your total balance includes ";
 "error.withdrawalValidationAmountPart3" = " in Jifflr credit.";
 "error.withdrawalFailed" = "Unable to withdraw money. Please check your internet connection and try again.";
 "error.withdrawalEmail" = "Invalid email address. Please enter a valid PayPal email address.";
