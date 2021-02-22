@@ -80,8 +80,9 @@ class UserManager: NSObject {
                                             self.registrationInvitation(user: newUser,completion: { (error) in
                                                 
                                                 if error?.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
-                                                    userDetails.invitationCode = nil
+                                                    userDetails.setValue(NSNull(), forKey: "invitationCode")
                                                     userDetails.pinInBackground()
+                                                    
                                                 }
                                                 completion(error)
                                                 
