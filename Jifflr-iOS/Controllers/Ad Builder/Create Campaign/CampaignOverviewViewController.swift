@@ -203,8 +203,6 @@ class CampaignOverviewViewController: BaseViewController {
                 return
             }
             
-            let noOfViews = val / self.campaign.costPerView
-            
             guard demographic.estimatedAudience != 0 else {
                 self.budgetCoverageLabel.text = "0%"
                 return
@@ -405,17 +403,14 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
             return
         }
         
-        let noOfViews = val / self.campaign.costPerView
-        
         guard demographic.estimatedAudience != 0 else {
             self.budgetCoverageLabel.text = "0%"
             return
         }
         
-        let totalBalance = self.campaign.balance + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
+        let totalBalance = value + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
         let totalAudienceCost: Double =  Double(self.campaign.demographic?.estimatedAudience ?? 0) * self.campaign.costPerView
         let budgetCoverage = totalBalance / totalAudienceCost
-        
         self.budgetCoverageLabel.text = "\(round(budgetCoverage * 100))%"
     }
 }
