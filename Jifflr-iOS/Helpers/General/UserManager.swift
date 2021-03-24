@@ -81,7 +81,9 @@ class UserManager: NSObject {
                                                 
                                                 if error?.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
                                                     userDetails.setValue(NSNull(), forKey: "invitationCode")
-                                                    userDetails.pinInBackground()
+                                                    userDetails.saveInBackground { (success, error) in
+                                                        userDetails.pinInBackground()
+                                                    }
                                                     
                                                 }
                                                 completion(error)
