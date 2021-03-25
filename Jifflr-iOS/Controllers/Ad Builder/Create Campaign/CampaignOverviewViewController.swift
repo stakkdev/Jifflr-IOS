@@ -63,6 +63,7 @@ class CampaignOverviewViewController: BaseViewController {
     
     var campaign: Campaign!
     var adSubmissionFee = 5
+    var myBalance: MyBalance?
 
     class func instantiateFromStoryboard(campaign: Campaign) -> CampaignOverviewViewController {
         let storyboard = UIStoryboard(name: "CreateCampaign", bundle: nil)
@@ -190,8 +191,6 @@ class CampaignOverviewViewController: BaseViewController {
         self.campaignNumberLabel.isHidden = self.campaign.number == 0
         self.adNumberLabel.text = "A# \(self.campaign.advert.details?.number ?? 0)"
         
-        self.updateBalanceButton()
-        
         CampaignManager.shared.campaignInEdit = nil
         
         CampaignManager.shared.getAdSubmissionFee(demographic: demographic) { (adSubmissionFee) in
@@ -204,18 +203,23 @@ class CampaignOverviewViewController: BaseViewController {
                 return
             }
             
-            let noOfViews = val / self.campaign.costPerView
-            
             guard demographic.estimatedAudience != 0 else {
                 self.budgetCoverageLabel.text = "0%"
                 return
             }
+            let totalBalance = self.campaign.balance + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
+            let totalAudienceCost: Double =  Double(self.campaign.demographic?.estimatedAudience ?? 0) * self.campaign.costPerView
+            let budgetCoverage = totalBalance / totalAudienceCost
+            self.budgetCoverageLabel.text = "\(round(budgetCoverage * 100))%"
             
-            let remainingAudienceCost: Double = Double((demographic.estimatedAudience - self.campaign.adsViewedCount)) * self.campaign.costPerView
-            let budgetCoverage = self.campaign.balance / remainingAudienceCost
-            let coveragePercentage = budgetCoverage * 100
-            
-            self.budgetCoverageLabel.text = "\(Int(coveragePercentage))%"
+        }
+        CampaignManager.shared.fetchMyBalance { (myBalance, error) in
+            guard let myBalance = myBalance, error == nil else {
+                self.displayError(error: error)
+                return
+            }
+            self.myBalance = myBalance
+            self.updateBalanceButton()
         }
     }
     
@@ -244,10 +248,10 @@ class CampaignOverviewViewController: BaseViewController {
         guard let userDetails = Session.shared.currentUser?.details else { return }
         guard let barButtonItem = self.navigationItem.rightBarButtonItem else { return }
         guard let button = barButtonItem.customView as? UIButton else { return }
-        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", userDetails.campaignBalance))")
+        let currentBalance: Double = myBalance?.totalBalance ?? 0
+        let title = "campaignOverview.balanceButton.title".localizedFormat("\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", currentBalance))")
         button.setTitle(title, for: .normal)
         button.sizeToFit()
-        
         let buttonTitle = userDetails.campaignBalance != 0.0 ? "campaignOverview.activateButton.title".localized() : "campaignOverview.activateAndPayButton.title".localized()
         self.activateButton.setTitle(buttonTitle, for: .normal)
     }
@@ -399,16 +403,14 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
             return
         }
         
-        let noOfViews = val / self.campaign.costPerView
-        
         guard demographic.estimatedAudience != 0 else {
             self.budgetCoverageLabel.text = "0%"
             return
         }
         
-        let remainingAudienceCost: Double = Double((demographic.estimatedAudience - self.campaign.adsViewedCount)) * self.campaign.costPerView
-        let budgetCoverage = self.campaign.balance / remainingAudienceCost
-        let coveragePercentage = budgetCoverage * 100
-        self.budgetCoverageLabel.text = "\(Int(coveragePercentage))%"
+        let totalBalance = value + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
+        let totalAudienceCost: Double =  Double(self.campaign.demographic?.estimatedAudience ?? 0) * self.campaign.costPerView
+        let budgetCoverage = totalBalance / totalAudienceCost
+        self.budgetCoverageLabel.text = "\(round(budgetCoverage * 100))%"
     }
 }

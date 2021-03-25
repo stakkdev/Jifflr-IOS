@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96N-AP-ao8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96N-AP-ao8">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="B6F-1b-cWs"/>
@@ -50,7 +50,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="f38-XB-CWF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4T-cX-mZq" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4T-cX-mZq" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="18" y="561" width="339" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="roj-si-2W7"/>
@@ -82,6 +82,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="avi-Va-5CO"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pF0-pm-Fgy" firstAttribute="top" secondItem="avi-Va-5CO" secondAttribute="top" constant="8" id="Das-yA-Cr3"/>
@@ -99,7 +100,6 @@
                             <constraint firstItem="96N-AP-ao8" firstAttribute="top" secondItem="H4T-cX-mZq" secondAttribute="bottom" constant="12" id="sRb-Ja-XSZ"/>
                             <constraint firstItem="PL0-Vv-Lnu" firstAttribute="centerY" secondItem="avi-Va-5CO" secondAttribute="centerY" constant="-20" id="zo4-ir-rbf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="avi-Va-5CO"/>
                     </view>
                     <connections>
                         <outlet property="createAdCampaignButton" destination="96N-AP-ao8" id="ZfA-ef-hIt"/>
@@ -127,7 +127,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcP-ta-vJA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcP-ta-vJA">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="iR1-Bt-Lli"/>
@@ -148,7 +148,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="fn9-u4-j9w"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-mk-dEu" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-mk-dEu" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0jl-Cg-R10"/>
@@ -218,6 +218,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hmq-Oz-FT6"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CcP-ta-vJA" firstAttribute="top" secondItem="NX7-mk-dEu" secondAttribute="bottom" constant="12" id="2QG-Te-4cS"/>
@@ -232,7 +233,6 @@
                             <constraint firstItem="hmq-Oz-FT6" firstAttribute="trailing" secondItem="NX7-mk-dEu" secondAttribute="trailing" constant="20" id="sxQ-a4-S6p"/>
                             <constraint firstItem="RVs-Cb-8I5" firstAttribute="centerY" secondItem="hmq-Oz-FT6" secondAttribute="centerY" constant="-30" id="y5Z-ox-jUW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hmq-Oz-FT6"/>
                     </view>
                     <connections>
                         <outlet property="createAdCampaignButton" destination="CcP-ta-vJA" id="2MT-jh-Stl"/>
@@ -258,7 +258,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ly2-XF-3RP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ly2-XF-3RP">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="lZR-oh-UzK"/>
@@ -280,7 +280,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="Llw-ad-Vbo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyo-8B-dp8" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyo-8B-dp8" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MIJ-yI-OQe"/>
@@ -361,6 +361,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="x83-D2-b2d"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3NB-0s-Bee" firstAttribute="leading" secondItem="x83-D2-b2d" secondAttribute="leading" id="Eqj-Tf-ylB"/>
@@ -376,7 +377,6 @@
                             <constraint firstItem="cyo-8B-dp8" firstAttribute="leading" secondItem="x83-D2-b2d" secondAttribute="leading" constant="20" id="yI2-nR-JUF"/>
                             <constraint firstItem="m4q-ZF-7FO" firstAttribute="leading" secondItem="x83-D2-b2d" secondAttribute="leading" constant="20" id="zN4-60-qLj"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="x83-D2-b2d"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="3NB-0s-Bee" id="jxh-7H-ejG"/>
@@ -418,6 +418,7 @@
                                 </constraints>
                             </activityIndicatorView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qJi-Zw-mOA"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="x2K-8I-xrR" firstAttribute="top" secondItem="eTy-NY-efL" secondAttribute="bottom" id="Mvs-Fb-Qge"/>
@@ -426,7 +427,6 @@
                             <constraint firstItem="x2K-8I-xrR" firstAttribute="leading" secondItem="NS2-3Q-zPE" secondAttribute="leading" id="lXE-V4-88y"/>
                             <constraint firstItem="NNa-M5-9jy" firstAttribute="centerX" secondItem="NS2-3Q-zPE" secondAttribute="centerX" id="qJi-7p-J1I"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qJi-Zw-mOA"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="NNa-M5-9jy" id="ZWN-zd-kXt"/>
@@ -445,7 +445,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="knZ-AT-yKt">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="pri-Sl-CQ0"/>
@@ -467,7 +467,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="ib7-Ue-VM1" eventType="touchUpInside" id="jbi-yY-tag"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Ux-ank" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-Ux-ank" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Jp-fi-rby"/>
@@ -553,11 +553,52 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N1B-eL-UD0">
+                                <rect key="frame" x="10" y="617" width="34" height="34"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRf-jw-zUb">
+                                        <rect key="frame" x="2" y="2" width="30" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="bdl-WN-qbu"/>
+                                            <constraint firstAttribute="height" constant="30" id="eKP-0z-Mx1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD1-RI-xzC">
+                                        <rect key="frame" x="6" y="8" width="22" height="18"/>
+                                        <fontDescription key="fontDescription" name="GothamBook" family="GothamBook" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uRf-jw-zUb" firstAttribute="centerX" secondItem="N1B-eL-UD0" secondAttribute="centerX" id="N9A-ef-sqr"/>
+                                    <constraint firstItem="uRf-jw-zUb" firstAttribute="centerY" secondItem="N1B-eL-UD0" secondAttribute="centerY" id="Y37-gD-Gi3"/>
+                                    <constraint firstAttribute="width" constant="34" id="Zft-Fv-aVP"/>
+                                    <constraint firstItem="PD1-RI-xzC" firstAttribute="centerX" secondItem="N1B-eL-UD0" secondAttribute="centerX" id="ZjZ-1k-xel"/>
+                                    <constraint firstAttribute="height" constant="34" id="ho3-xW-JxX"/>
+                                    <constraint firstItem="PD1-RI-xzC" firstAttribute="centerY" secondItem="N1B-eL-UD0" secondAttribute="centerY" id="nkU-4I-tWd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-rK-opk">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="oop-8S-p44"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="knZ-AT-yKt" firstAttribute="top" secondItem="6hl-eW-i0O" secondAttribute="bottom" constant="10" id="ANg-U2-tUa"/>
@@ -568,6 +609,7 @@
                             <constraint firstItem="oop-8S-p44" firstAttribute="trailing" secondItem="6hl-eW-i0O" secondAttribute="trailing" id="Ifs-Ma-uij"/>
                             <constraint firstItem="NRl-T7-VxH" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="20" id="Jld-uC-SFJ"/>
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="top" secondItem="YlT-tm-7fa" secondAttribute="bottom" constant="10" id="KN7-Sl-Pt2"/>
+                            <constraint firstItem="N1B-eL-UD0" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="10" id="Mi0-8G-FS4"/>
                             <constraint firstItem="YlT-tm-7fa" firstAttribute="centerX" secondItem="KHf-bb-vXF" secondAttribute="centerX" id="OtX-6F-icM"/>
                             <constraint firstItem="knZ-AT-yKt" firstAttribute="centerX" secondItem="oop-8S-p44" secondAttribute="centerX" id="Pgd-er-gBT"/>
                             <constraint firstItem="xj1-rK-opk" firstAttribute="centerX" secondItem="ZUw-Ln-Hrg" secondAttribute="centerX" id="Que-EJ-4gZ"/>
@@ -576,13 +618,13 @@
                             <constraint firstItem="knZ-AT-yKt" firstAttribute="top" secondItem="rmr-Ux-ank" secondAttribute="bottom" constant="12" id="X0c-YJ-f3w"/>
                             <constraint firstItem="oop-8S-p44" firstAttribute="bottom" secondItem="knZ-AT-yKt" secondAttribute="bottom" constant="28" id="aTO-gA-Q1i"/>
                             <constraint firstItem="oop-8S-p44" firstAttribute="trailing" secondItem="NRl-T7-VxH" secondAttribute="trailing" constant="20" id="bGX-e7-6Hm"/>
+                            <constraint firstItem="oop-8S-p44" firstAttribute="bottom" secondItem="N1B-eL-UD0" secondAttribute="bottom" constant="16" id="e0l-fP-BUi"/>
                             <constraint firstItem="rmr-Ux-ank" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" constant="20" id="fCp-to-ob5"/>
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="top" secondItem="KHf-bb-vXF" secondAttribute="bottom" constant="17" id="fNg-08-6eW"/>
                             <constraint firstItem="6hl-eW-i0O" firstAttribute="leading" secondItem="oop-8S-p44" secondAttribute="leading" id="nNW-Dh-MvU"/>
                             <constraint firstItem="xj1-rK-opk" firstAttribute="centerY" secondItem="ZUw-Ln-Hrg" secondAttribute="centerY" id="nwb-i0-z3f"/>
                             <constraint firstItem="KHf-bb-vXF" firstAttribute="top" secondItem="NRl-T7-VxH" secondAttribute="bottom" constant="15" id="oWS-bs-fOk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="oop-8S-p44"/>
                     </view>
                     <connections>
                         <outlet property="createAdCampaignButton" destination="knZ-AT-yKt" id="kkm-ee-J72"/>
@@ -591,6 +633,8 @@
                         <outlet property="spinner" destination="xj1-rK-opk" id="zeB-U8-tu9"/>
                         <outlet property="swipeAnimationImageView" destination="YlT-tm-7fa" id="y1q-gw-Fhe"/>
                         <outlet property="tableView" destination="6hl-eW-i0O" id="Bl8-q9-MKf"/>
+                        <outlet property="timeLabel" destination="PD1-RI-xzC" id="2FH-7I-wso"/>
+                        <outlet property="timeView" destination="N1B-eL-UD0" id="ghE-63-sRR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGT-Vy-DZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,8 +648,8 @@
                     <view key="view" contentMode="scaleToFill" id="9py-Br-jVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="GLu-Gh-fu6"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bN4-wI-nlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -700,12 +744,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FNB-Z7-kmn" firstAttribute="top" secondItem="Ktj-zr-GZZ" secondAttribute="bottom" constant="16" id="VR3-yp-20M"/>
                             <constraint firstItem="Ktj-zr-GZZ" firstAttribute="leading" secondItem="LSo-z0-IMg" secondAttribute="leading" constant="18" id="p7E-tF-zzK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LSo-z0-IMg"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="gGj-xH-POp" id="WmB-LE-Wbx"/>
@@ -730,7 +774,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDm-36-3Ue">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDm-36-3Ue">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="O33-KM-8So"/>
@@ -752,7 +796,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="8Xv-01-1dW" eventType="touchUpInside" id="jtD-kg-ypV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eS-Pt-tnV" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eS-Pt-tnV" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LqZ-yt-dRH"/>
@@ -812,6 +856,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="4lN-tn-rHw"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tRE-fl-Kgf" firstAttribute="leading" secondItem="4lN-tn-rHw" secondAttribute="leading" constant="20" id="4bS-l4-8bP"/>
@@ -827,7 +872,6 @@
                             <constraint firstItem="1eS-Pt-tnV" firstAttribute="leading" secondItem="4lN-tn-rHw" secondAttribute="leading" constant="20" id="xMZ-Jw-qsm"/>
                             <constraint firstItem="fIP-cI-xNJ" firstAttribute="top" secondItem="tRE-fl-Kgf" secondAttribute="bottom" constant="20" id="zhI-xE-viq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4lN-tn-rHw"/>
                     </view>
                     <connections>
                         <outlet property="createAdCampaignButton" destination="RDm-36-3Ue" id="69A-30-nIt"/>
@@ -848,7 +892,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-ur-yZW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-ur-yZW">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="9Ae-ZJ-7LS"/>
@@ -870,7 +914,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="ad0-a5-AZd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVN-5k-auj" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVN-5k-auj" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="spw-cE-ZwN"/>
@@ -929,6 +973,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="NBr-mL-2Mq"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="iM7-yl-YsE" firstAttribute="leading" secondItem="NBr-mL-2Mq" secondAttribute="leading" constant="20" id="ItQ-CW-x6j"/>
@@ -944,7 +989,6 @@
                             <constraint firstItem="iM7-yl-YsE" firstAttribute="top" secondItem="NBr-mL-2Mq" secondAttribute="top" constant="8" id="qUb-ia-j6y"/>
                             <constraint firstItem="5e1-ur-yZW" firstAttribute="centerX" secondItem="NBr-mL-2Mq" secondAttribute="centerX" id="r81-Cr-QT7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NBr-mL-2Mq"/>
                     </view>
                     <connections>
                         <outlet property="createAdCampaignButton" destination="5e1-ur-yZW" id="AIb-5w-tzB"/>
@@ -965,7 +1009,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4km-dL-dgl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4km-dL-dgl">
                                 <rect key="frame" x="112" y="623" width="151" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="h1k-TA-lz1"/>
@@ -987,7 +1031,7 @@
                                     <action selector="createAdCampaignButtonPressedWithSender:" destination="8uM-nX-l0A" eventType="touchUpInside" id="fcE-SZ-e73"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-m2-90U" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wm-m2-90U" customClass="JifflrButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="561" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9xZ-7I-MbI"/>
@@ -1014,7 +1058,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xiG-9x-JOA">
                                 <rect key="frame" x="18" y="86" width="339" height="350"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bv4-4N-gks" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bv4-4N-gks" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ogd-ma-nvL"/>
@@ -1027,7 +1071,7 @@
                                             <action selector="websiteButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="AQ6-CB-TEQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3I-Ri-3E5" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3I-Ri-3E5" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="75" width="339" height="50"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Facebook">
@@ -1037,7 +1081,7 @@
                                             <action selector="facebookButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="iE5-d8-baH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Os-xpS" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-Os-xpS" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="339" height="50"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Twitter">
@@ -1047,7 +1091,7 @@
                                             <action selector="twitterButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="tDH-S2-eUi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-i0-zrF" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBF-i0-zrF" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="339" height="50"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Online Store">
@@ -1057,7 +1101,7 @@
                                             <action selector="onlineStoreButtonPressedWithSender:" destination="F19-Nj-ZQP" eventType="touchUpInside" id="4Hr-qc-lFP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19D-T8-MPk" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19D-T8-MPk" customClass="JifflrURLButton" customModule="Jifflr_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="300" width="339" height="50"/>
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="App Store"/>
@@ -1074,6 +1118,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ha7-Ow-zTX"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="5Wm-m2-90U" secondAttribute="trailing" constant="20" id="9N1-NO-eEP"/>
@@ -1089,7 +1134,6 @@
                             <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="ImU-Jr-9qf" secondAttribute="trailing" constant="20" id="hgJ-qK-Yfh"/>
                             <constraint firstItem="Ha7-Ow-zTX" firstAttribute="trailing" secondItem="xiG-9x-JOA" secondAttribute="trailing" constant="18" id="l4B-dF-PSu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ha7-Ow-zTX"/>
                     </view>
                     <connections>
                         <outlet property="appStoreButton" destination="19D-T8-MPk" id="AUD-59-rkf"/>

@@ -13,16 +13,23 @@ class SwipeFeedbackViewController: FeedbackViewController {
 
     @IBOutlet weak var swipeAnimationImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeView: UIView!
     
     var imageLoadCount = 0
+    var answeredQuestionsCount = 0
     var question: AdExchangeQuestion!
     var userSeenAdExchange = UserSeenAdExchange()
+    
+    var swipeTimer: Timer?
+    var timerFinished = false
 
-    class func instantiateFromStoryboard(campaign: Campaign, question: AdExchangeQuestion) -> SwipeFeedbackViewController {
+    class func instantiateFromStoryboard(campaign: Campaign, question: AdExchangeQuestion, answeredQuestionsCount: Int = 0) -> SwipeFeedbackViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SwipeFeedbackViewController") as! SwipeFeedbackViewController
         controller.campaign = campaign
         controller.question = question
+        controller.answeredQuestionsCount = answeredQuestionsCount
         
         OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
         
@@ -63,6 +70,27 @@ class SwipeFeedbackViewController: FeedbackViewController {
             self.displayMessage(title: title, message: message, dismissText: nil) { (action) in
                 self.dismiss(animated: false, completion: nil)
             }
+        }
+        
+        self.timeLabel.text = "\(Int(UserDefaultsManager.shared.questionDuration()))"
+    }
+    
+    func startTimer() {
+        DispatchQueue.main.async {
+            var count = UserDefaultsManager.shared.questionDuration()
+            self.swipeTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+                count -= 1
+                self.timeLabel.text = "\(Int(count))"
+                
+                if count == 0 {
+                    self.swipeTimer?.invalidate()
+                    self.timerFinished = true
+                    
+                    if self.tableView.numberOfRows(inSection: 0) == 0 {
+                        self.saveAndPushToNextAd()
+                    }
+                }
+            })
         }
     }
     
@@ -115,12 +143,10 @@ class SwipeFeedbackViewController: FeedbackViewController {
                 self.userSeenAdExchange.geoPoint = PFGeoPoint(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
             }
             
-            self.userSeenAdExchange.saveEventually { (success, error) in
-                print("Saved Swipe Feedback: \(success)")
-            }
+            AdvertManager.shared.userSeenAdExchangeToSave.append(self.userSeenAdExchange)
             
             self.spinner?.startAnimating()
-            self.pushToNextAd()
+            self.pushToNextQuestionOrAdd()
         }
     }
     
@@ -159,6 +185,31 @@ class SwipeFeedbackViewController: FeedbackViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+     func pushToNextQuestionOrAdd() {
+        self.answeredQuestionsCount += 1
+        if self.answeredQuestionsCount > 2 {
+            pushToAdmob()
+        } else {
+            fetchNextSwipeQuestion()
+        }
+    }
+    
+    func pushToAdmob() {
+        let controller = AdvertViewController.instantiateFromStoryboard(campaign: self.campaign)
+        self.navigationController?.pushViewController(controller, animated: false)
+    }
+    
+    func fetchNextSwipeQuestion() {
+        AdvertManager.shared.fetchSwipeQuestion { (question) in
+            guard let question = question else {
+                self.pushToNextAd()
+                return
+            }
+            let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, question: question, answeredQuestionsCount: self.answeredQuestionsCount)
+            self.navigationController?.pushViewController(controller, animated: false)
+        }
+    }
 }
 
 extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSource {
@@ -196,6 +247,7 @@ extension SwipeFeedbackViewController: UITableViewDelegate, UITableViewDataSourc
                         self.imageLoadCount += 1
                         if self.imageLoadCount == self.tableView.numberOfRows(inSection: 0) {
                             self.tableView.isUserInteractionEnabled = true
+                            self.startTimer()
                         }
                     }
                 })
@@ -225,6 +277,8 @@ extension SwipeFeedbackViewController: SwipeCellDelegate {
         self.tableView.endUpdates()
         CATransaction.commit()
         
-        self.saveAndPushToNextAd()
+        if self.timerFinished {
+            self.saveAndPushToNextAd()
+        }
     }
 }

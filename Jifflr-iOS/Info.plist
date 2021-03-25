@@ -69,11 +69,11 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Jifflr uses your contacts to provide suggestions of users to invite.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>It allows us to verify that you&apos;re in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
+	<string>It allows us to verify that you're in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>It allows us to verify that you&apos;re in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
+	<string>It allows us to verify that you're in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>It allows us to verify that you&apos;re in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
+	<string>It allows us to verify that you're in a country where we operate, to send you relevant research campaigns and to include some imprecise geographic context e.g. your town in the campaigns that you complete.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Jifflr uses your photo library to add images when creating ads.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

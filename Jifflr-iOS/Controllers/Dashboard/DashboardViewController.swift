@@ -15,6 +15,7 @@ class DashboardViewController: BaseViewController {
     var timer: Timer?
     var advert: Advert?
     var campaign: Campaign?
+    var question: AdExchangeQuestion?
     var moderatorCampaign: Campaign?
     var myAds: MyAds?
     var internetAlertShown = false
@@ -215,6 +216,12 @@ class DashboardViewController: BaseViewController {
                 group.leave()
             }
             
+            group.enter()
+            AdvertManager.shared.fetchSwipeQuestion { (question) in
+                self.question = question
+                group.leave()
+            }
+            
             AppSettingsManager.shared.updateQuestionDuration()
             
             group.notify(queue: .main) {
@@ -276,6 +283,8 @@ class DashboardViewController: BaseViewController {
     }
 
     @IBAction func playAdsButtonPressed(_ sender: UIButton) {
+        AdvertManager.shared.userSeenAdExchangeToSave = []
+        
         if LocationManager.shared.locationServicesEnabled() == true {
             guard LocationManager.shared.canViewAdverts() else {
                 self.displayError(error: ErrorMessage.blockedCountry)
@@ -313,7 +322,7 @@ class DashboardViewController: BaseViewController {
                 self.navigationController?.present(navController, animated: false, completion: nil)
 
                 self.campaign = nil
-            } else if let advert = self.advert {
+            } else if let advert = self.advert, let question = self.question {
                 if #available(iOS 14, *) {
                     guard AdTrackingManager.shared.adTrackingEnabled() else {
                         self.rootAdTrackingViewController()
@@ -326,7 +335,10 @@ class DashboardViewController: BaseViewController {
                     }
                 }
                 
-                let navController = UINavigationController(rootViewController: AdvertViewController.instantiateFromStoryboard(advert: advert))
+                let campaign = Campaign()
+                campaign.advert = advert
+                let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, question: question)
+                let navController = UINavigationController(rootViewController: controller)
                 navController.isNavigationBarHidden = true
                 navController.modalPresentationStyle = .fullScreen
                 self.navigationController?.present(navController, animated: false, completion: nil)

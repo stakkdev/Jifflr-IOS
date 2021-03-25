@@ -77,8 +77,17 @@ class UserManager: NSObject {
                                         }
                                         
                                         if let invitationCode = userDetails.invitationCode, !invitationCode.isEmpty {
-                                            self.registrationInvitation(completion: { (error) in
+                                            self.registrationInvitation(user: newUser,completion: { (error) in
+                                                
+                                                if error?.failureDescription == ErrorMessage.invalidInvitationCodeRegistration.failureDescription {
+                                                    userDetails.setValue(NSNull(), forKey: "invitationCode")
+                                                    userDetails.saveInBackground { (success, error) in
+                                                        userDetails.pinInBackground()
+                                                    }
+                                                    
+                                                }
                                                 completion(error)
+                                                
                                             })
                                         } else {
                                             PFInstallation.registerUser(user: newUser)
@@ -100,9 +109,7 @@ class UserManager: NSObject {
         })
     }
 
-    func registrationInvitation(completion: @escaping (ErrorMessage?) -> Void) {
-        guard let user = Session.shared.currentUser else { return }
-
+    func registrationInvitation(user: PFUser, completion: @escaping (ErrorMessage?) -> Void) {
         PFCloud.callFunction(inBackground: "registration-invitation", withParameters: ["user": user.objectId!]) { responseJSON, error in
             if let success = responseJSON as? Bool, error == nil {
                 if success == true {

@@ -63,6 +63,7 @@ public enum ErrorMessage {
     case languageFetchFailed
     case genderFetchFailed
     case withdrawalValidationFailed
+    case withdrawalValidationAmount(Double, Double)
     case withdrawalFailed
     case withdrawalEmail
     case increaseBudgetFailed
@@ -224,6 +225,8 @@ public enum ErrorMessage {
             return "error.genderFetchFailed".localized()
         case .withdrawalValidationFailed:
             return "error.withdrawalValidationFailed".localized()
+        case .withdrawalValidationAmount(let available, let credit):
+            return "\("error.withdrawalValidationAmountPart1".localized())\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", available))\("error.withdrawalValidationAmountPart2".localized())\(Session.shared.currentCurrencySymbol)\(String(format: "%.2f", credit))\("error.withdrawalValidationAmountPart3".localized())"
         case .withdrawalFailed:
             return "error.withdrawalFailed".localized()
         case .withdrawalEmail:
@@ -447,15 +450,15 @@ extension DisplayMessage {
       let appVersionAndBuild = "Version \(appVersionString ?? "N/A") (\(appBuildString ?? "N/A")) \(environmentString)"
       
       if let userId = Session.shared.currentUser?.objectId {
-        Crashlytics.crashlytics().setUserID(userId)
+        Firebase.Crashlytics.crashlytics().setUserID(userId)
       }
       
-      Crashlytics.crashlytics().setCustomValue("errorTitle", forKey: error.failureTitle)
-      Crashlytics.crashlytics().setCustomValue("errorDescription", forKey: error.failureDescription)
-      Crashlytics.crashlytics().setCustomValue("screen", forKey: screenName)
-      Crashlytics.crashlytics().setCustomValue("device", forKey: UIDevice.current.deviceModelReadable)
-      Crashlytics.crashlytics().setCustomValue("os", forKey: UIDevice.current.systemVersionReadable)
-      Crashlytics.crashlytics().setCustomValue("version", forKey: appVersionAndBuild)
+        Firebase.Crashlytics.crashlytics().setCustomValue("errorTitle", forKey: error.failureTitle)
+        Firebase.Crashlytics.crashlytics().setCustomValue("errorDescription", forKey: error.failureDescription)
+        Firebase.Crashlytics.crashlytics().setCustomValue("screen", forKey: screenName)
+        Firebase.Crashlytics.crashlytics().setCustomValue("device", forKey: UIDevice.current.deviceModelReadable)
+        Firebase.Crashlytics.crashlytics().setCustomValue("os", forKey: UIDevice.current.systemVersionReadable)
+        Firebase.Crashlytics.crashlytics().setCustomValue("version", forKey: appVersionAndBuild)
     }
 }
 
