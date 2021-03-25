@@ -9,6 +9,7 @@
 import UIKit
 import Appodeal
 import GoogleMobileAds
+import AdSupport
 
 class AdvertViewController: BaseViewController {
     
@@ -20,15 +21,15 @@ class AdvertViewController: BaseViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var shouldPushToFeedback = false
-    var advert: Advert!
+    var campaign: Campaign!
     var question: AdExchangeQuestion?
     var rewardedAdmob = false
     var loadError = false
 
-    class func instantiateFromStoryboard(advert: Advert) -> AdvertViewController {
+    class func instantiateFromStoryboard(campaign: Campaign) -> AdvertViewController {
         let storyboard = UIStoryboard(name: "Advert", bundle: nil)
         let advertViewController = storyboard.instantiateViewController(withIdentifier: "AdvertViewController") as! AdvertViewController
-        advertViewController.advert = advert
+        advertViewController.campaign = campaign
         return advertViewController
     }
 
@@ -125,20 +126,65 @@ class AdvertViewController: BaseViewController {
         }
     }
 
-    func presentFeedback() {
-        guard let question = self.question else {
-            self.handleError()
-            return
-        }
-        
+    func presentNextAd() {
         if self.presentedViewController is LoadingViewController {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
         
-        let campaign = Campaign()
-        campaign.advert = self.advert
-        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, question: question)
-        self.navigationController?.pushViewController(controller, animated: false)
+        let adsToSave = AdvertManager.shared.userSeenAdExchangeToSave
+        for ad in adsToSave {
+            ad.saveEventually { (success, error) in
+                print("Saved Swipe Feedback: \(success)")
+            }
+        }
+        AdvertManager.shared.userSeenAdExchangeToSave = []
+        
+        let group = DispatchGroup()
+        
+        if self.campaign.advert.isCMS {
+            group.enter()
+            AdvertManager.shared.unpin(campaign: self.campaign) {
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            AdvertManager.shared.fetchNextLocal(completion: { (object) in
+                guard let object = object else {
+                    let title = ErrorMessage.noInternetConnection.failureTitle
+                    let message = ErrorMessage.noInternetConnection.failureDescription
+                    self.displayMessage(title: title, message: message, dismissText: nil, dismissAction: { (action) in
+                        self.dismiss(animated: false, completion: nil)
+                    })
+                    return
+                }
+                
+                if let campaign = object as? Campaign {
+                    let advertViewController = CMSAdvertViewController.instantiateFromStoryboard(campaign: campaign, mode: AdViewMode.normal)
+                    self.navigationController?.pushViewController(advertViewController, animated: true)
+                } else if let advert = object as? Advert, let question = self.question {
+                    if #available(iOS 14, *) {
+                        guard AdTrackingManager.shared.adTrackingEnabled() else {
+                            self.rootAdTrackingViewController()
+                            return
+                        }
+                    } else {
+                        guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+                            let error = ErrorMessage.advertisingTurnedOff
+                            self.displayMessage(title: error.failureTitle, message: error.failureDescription, dismissText: nil) { (action) in
+                                self.rootDashboardViewController()
+                            }
+                            return
+                        }
+                    }
+                    
+                    let campaign = Campaign()
+                    campaign.advert = advert
+                    let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, question: question)
+                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            })
+        }
     }
 
     @objc func dismissButtonPressed(sender: UIBarButtonItem) {
@@ -165,7 +211,7 @@ extension AdvertViewController: AppodealRewardedVideoDelegate {
         self.timer?.invalidate()
         
         if self.appodealShown {
-            self.presentFeedback()
+            self.presentNextAd()
         } else {
             self.activityIndicator.startAnimating()
             self.presentAppodeal()
@@ -213,7 +259,7 @@ extension AdvertViewController: GADRewardBasedVideoAdDelegate {
         print("rewardBasedVideoAdDidClose")
         if self.rewardedAdmob {
             print("Presenting Feedback")
-            self.presentFeedback()
+            self.presentNextAd()
         } else {
             print("Dismissing Loading View")
             self.dismiss(animated: false) {

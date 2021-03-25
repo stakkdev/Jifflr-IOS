@@ -11,6 +11,8 @@ import Parse
 
 class AdvertManager: NSObject {
     static let shared = AdvertManager()
+    
+    var userSeenAdExchangeToSave: [UserSeenAdExchange] = []
 
     let pinName = "Ads"
 
