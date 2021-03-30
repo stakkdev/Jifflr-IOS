@@ -1,35 +1,16 @@
 //
-//  UserSeenAdExchange.swift
+//  AdExchangeAnswer.swift
 //  Jifflr-iOS
 //
-//  Created by James Shaw on 23/05/2018.
-//  Copyright © 2018 The Distance. All rights reserved.
+//  Created by James Shaw on 30/03/2021.
+//  Copyright © 2021 The Distance. All rights reserved.
 //
 
 import UIKit
 import Foundation
 import Parse
 
-final class UserSeenAdExchange: PFObject {
-    
-    var user: PFUser {
-        get {
-            return self["user"] as! PFUser
-        }
-        set {
-            self["user"] = newValue
-        }
-    }
-    
-    var answers: PFRelation<AdExchangeAnswer> {
-        get {
-            return self["answers"] as! PFRelation
-        }
-        set {
-            self["answers"] = newValue
-        }
-    }
-    
+final class AdExchangeAnswer: PFObject {
     var question: AdExchangeQuestion? {
         get {
             return self["question"] as? AdExchangeQuestion
@@ -74,28 +55,10 @@ final class UserSeenAdExchange: PFObject {
             self["questionNumber"] = newValue
         }
     }
-    
-    var location: Location? {
-        get {
-            return self["location"] as? Location
-        }
-        set {
-            self["location"] = newValue
-        }
-    }
-    
-    var geoPoint: PFGeoPoint? {
-        get {
-            return self["geoPoint"] as? PFGeoPoint
-        }
-        set {
-            self["geoPoint"] = newValue
-        }
-    }
 }
 
-extension UserSeenAdExchange: PFSubclassing {
+extension AdExchangeAnswer: PFSubclassing {
     static func parseClassName() -> String {
-        return "UserSeenAdExchange"
+        return "AdExchangeAnswer"
     }
 }

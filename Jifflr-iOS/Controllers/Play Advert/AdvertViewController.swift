@@ -10,6 +10,7 @@ import UIKit
 import Appodeal
 import GoogleMobileAds
 import AdSupport
+import Parse
 
 class AdvertViewController: BaseViewController {
     
@@ -125,19 +126,58 @@ class AdvertViewController: BaseViewController {
             self.handleError()
         }
     }
+    
+    func saveAnswers() {
+        guard let user = Session.shared.currentUser else { return }
+        guard let location = Session.shared.currentLocation else { return }
+        
+        var answers: [AdExchangeAnswer] = []
+        let userSeenAdExchangeToSave = AdvertManager.shared.userSeenAdExchangeToSave
+        for ad in userSeenAdExchangeToSave {
+            let answer = AdExchangeAnswer()
+            answer.questionNumber = ad.questionNumber
+            answer.response1 = ad.response1
+            answer.response2 = ad.response2
+            answer.response3 = ad.response3
+            answer.question = ad.question
+            answers.append(answer)
+        }
+        
+        let group = DispatchGroup()
+        for answer in answers {
+            group.enter()
+            answer.saveEventually({ (success, error) in
+                print("AdExchangeAnswer Saved: ", success)
+                group.leave()
+            })
+        }
+
+        group.notify(queue: .main) {
+            let userSeenAdExchange = UserSeenAdExchange()
+            userSeenAdExchange.user = user
+            userSeenAdExchange.location = location
+            if let currentCoordinate = Session.shared.currentCoordinate {
+                userSeenAdExchange.geoPoint = PFGeoPoint(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
+            }
+            let relation = userSeenAdExchange.relation(forKey: "answers")
+            for answer in answers {
+                relation.add(answer)
+            }
+            
+            userSeenAdExchange.saveEventually { (success, error) in
+                print("UserSeenAdExchange Saved: ", success)
+            }
+            
+            AdvertManager.shared.userSeenAdExchangeToSave = []
+        }
+    }
 
     func presentNextAd() {
         if self.presentedViewController is LoadingViewController {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
         
-        let adsToSave = AdvertManager.shared.userSeenAdExchangeToSave
-        for ad in adsToSave {
-            ad.saveEventually { (success, error) in
-                print("Saved Swipe Feedback: \(success)")
-            }
-        }
-        AdvertManager.shared.userSeenAdExchangeToSave = []
+        self.saveAnswers()
         
         let group = DispatchGroup()
         
