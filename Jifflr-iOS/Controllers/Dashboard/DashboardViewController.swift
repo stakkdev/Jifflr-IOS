@@ -296,6 +296,7 @@ class DashboardViewController: BaseViewController {
                     MBProgressHUD.showAdded(to: self.view, animated: true)
                     self.playPressDelayAttemptNumber += 1
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         self.playAdsButtonPressed(_: self.playAdsButton)
                     }
                     return
