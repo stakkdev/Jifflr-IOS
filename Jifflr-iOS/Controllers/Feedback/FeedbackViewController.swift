@@ -146,6 +146,8 @@ class FeedbackViewController: BaseViewController {
     }
 
     func pushToNextAd() {
+        AdvertManager.shared.userSeenAdExchangeToSave = []
+        
         let group = DispatchGroup()
         
         self.nextAdButton.animate()
@@ -159,8 +161,6 @@ class FeedbackViewController: BaseViewController {
         
         group.notify(queue: .main) {
             AdvertManager.shared.fetchNextLocal(completion: { (object) in
-                self.nextAdButton.stopAnimating()
-                
                 guard let object = object else {
                     let title = ErrorMessage.noInternetConnection.failureTitle
                     let message = ErrorMessage.noInternetConnection.failureDescription
@@ -189,8 +189,17 @@ class FeedbackViewController: BaseViewController {
                         }
                     }
                     
-                    let advertViewController = AdvertViewController.instantiateFromStoryboard(advert: advert)
-                    self.navigationController?.pushViewController(advertViewController, animated: false)
+                    AdvertManager.shared.fetchSwipeQuestion { (question) in
+                        guard let question = question else {
+                            self.rootDashboardViewController()
+                            return
+                        }
+                        
+                        let campaign = Campaign()
+                        campaign.advert = advert
+                        let controller = SwipeFeedbackViewController.instantiateFromStoryboard(campaign: campaign, question: question)
+                        self.navigationController?.pushViewController(controller, animated: false)
+                    }
                 }
             })
         }
