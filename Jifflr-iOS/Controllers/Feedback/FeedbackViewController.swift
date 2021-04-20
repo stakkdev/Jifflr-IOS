@@ -53,6 +53,11 @@ class FeedbackViewController: BaseViewController {
             return
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        OrientationManager.shared.lock(orientation: .portrait, andRotateTo: .portrait)
+    }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
