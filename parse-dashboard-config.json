@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+        "serverURL": "https://jifflr.thecore.thedistance.co.uk/parse",
+        "appId": "jifflr",
+        "masterKey": "RxCoWl481DeEedQAFnbCDmb61rrps1KnI7op13HOwGU",
+        "appName": "Jifflr (Staging)",
+        "appNameForURL": "JIFF-S",
+        "production": false
+    },
+    {
+        "serverURL": "https://cms.jifflr.com/parse",
+        "appId": "jifflr",
+        "masterKey": "oBielozie0ohfohD2eej0iengow6ahr5",
+        "appName": "Jifflr (Production)",
+        "appNameForURL": "JIFF-P",
+        "production": true
+    }
+  ]
+}
