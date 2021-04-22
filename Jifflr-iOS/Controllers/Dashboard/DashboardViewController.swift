@@ -178,8 +178,12 @@ class DashboardViewController: BaseViewController {
 
     func updateData() {
         
+        var spinnerPresented = false
+        
         if !UserDefaultsManager.shared.firstLoadComplete() {
             MBProgressHUD.showAdded(to: self.view, animated: true)
+            UserDefaultsManager.shared.setfirstLoadComplete(on: true)
+            spinnerPresented = true
         }
 
         if Reachability.isConnectedToNetwork() {
@@ -225,9 +229,8 @@ class DashboardViewController: BaseViewController {
             AppSettingsManager.shared.updateQuestionDuration()
             
             group.notify(queue: .main) {
-                if !UserDefaultsManager.shared.firstLoadComplete() {
+                if spinnerPresented {
                     MBProgressHUD.hide(for: self.view, animated: true)
-                    UserDefaultsManager.shared.setfirstLoadComplete(on: true)
                 }
             }
             
