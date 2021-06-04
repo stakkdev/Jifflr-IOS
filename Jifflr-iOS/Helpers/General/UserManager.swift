@@ -366,6 +366,9 @@ class UserManager: NSObject {
                     completion(ErrorMessage.unknown)
                     return
                 }
+            } else if let nsError = error as NSError?,
+                      nsError.code == 101  {
+                completion(ErrorMessage.invalidCashoutPassword)
             } else {
                 completion(ErrorMessage.unknown)
             }
