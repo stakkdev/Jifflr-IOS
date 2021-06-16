@@ -411,6 +411,6 @@ extension CampaignOverviewViewController: BudgetViewDelegate {
         let totalBalance = value + (Double(self.campaign.adsViewedCount) * self.campaign.costPerView)
         let totalAudienceCost: Double =  Double(self.campaign.demographic?.estimatedAudience ?? 0) * self.campaign.costPerView
         let budgetCoverage = totalBalance / totalAudienceCost
-        self.budgetCoverageLabel.text = "\(round(budgetCoverage * 100))%"
+        self.budgetCoverageLabel.text = "\(Double(budgetCoverage * 100).rounded(.down))%"
     }
 }
