@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ChooseTemplateViewController: BaseViewController {
     
@@ -96,6 +97,10 @@ class ChooseTemplateViewController: BaseViewController {
         
         let template = self.templates[indexPath.row]
         self.advert.details?.template = template
+        
+        if self.advert.objectId == nil && self.advert.details?.image != nil {
+            self.advert.details?.remove(forKey: "image")
+        }
         
         let vc = AddContentViewController.instantiateFromStoryboard(advert: self.advert)
         self.navigationController?.pushViewController(vc, animated: true)
