@@ -1,0 +1,321 @@
+PODS:
+  - APDAdColonyAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDAmazonAdsAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDAppLovinAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDAppodealAdExchangeAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDChartboostAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDFacebookAudienceAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+    - FBSDKCoreKit/Basics (>= 7.0.1)
+  - APDGoogleAdMobAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+    - Google-Mobile-Ads-SDK (~> 7.66.0)
+  - APDInMobiAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDInnerActiveAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDIronSourceAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDMintegralAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDMyTargetAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDOguryAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDOpenXAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDPubnativeAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDSmaatoAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDStartAppAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDTapjoyAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDUnityAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+  - APDYandexAdapter (2.7.5.1):
+    - Appodeal (= 2.7.5)
+    - YandexMobileMetrica (< 4.0.0, >= 3.2.0)
+  - Appodeal (2.7.5)
+  - Bolts/Tasks (1.9.1)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
+  - Fabric (1.10.2)
+  - FBSDKCoreKit (9.0.1):
+    - FBSDKCoreKit/Basics (= 9.0.1)
+    - FBSDKCoreKit/Core (= 9.0.1)
+  - FBSDKCoreKit/Basics (9.0.1)
+  - FBSDKCoreKit/Core (9.0.1):
+    - FBSDKCoreKit/Basics
+  - Firebase (6.15.0):
+    - Firebase/Core (= 6.15.0)
+  - Firebase/Analytics (6.15.0):
+    - Firebase/Core
+  - Firebase/Core (6.15.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.2.1)
+  - Firebase/CoreOnly (6.15.0):
+    - FirebaseCore (= 6.6.0)
+  - Firebase/Crashlytics (6.15.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.0.0-beta.1)
+  - FirebaseAnalytics (6.2.1):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleAppMeasurement (= 6.2.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
+  - FirebaseCore (6.6.0):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.0):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseCrashlytics (4.0.0-beta.5):
+    - FirebaseAnalyticsInterop (~> 1.2)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstallations (1.1.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.0):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - Google-Mobile-Ads-SDK (7.66.0):
+    - GoogleAppMeasurement (~> 6.0)
+    - GoogleUserMessagingPlatform (~> 1.1)
+  - GoogleAnalytics (3.17.0)
+  - GoogleAppMeasurement (6.2.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (3.3.0)
+  - GoogleDataTransportCCTSupport (1.3.0):
+    - GoogleDataTransport (~> 3.3)
+    - nanopb (~> 0.3.901)
+  - GoogleUserMessagingPlatform (1.4.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.5.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.5.0)
+  - GoogleUtilities/Logger (6.5.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.5.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.5.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.5.0)"
+  - GoogleUtilities/Reachability (6.5.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.5.0):
+    - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (5.0.8)
+  - Localize-Swift (3.1.0)
+  - MBProgressHUD (1.2.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - Parse (1.19.0):
+    - Parse/Core (= 1.19.0)
+  - Parse/Core (1.19.0):
+    - Bolts/Tasks (= 1.9.1)
+  - Player (0.8.4)
+  - PromisesObjC (1.2.8)
+  - Sourcery (0.17.0)
+  - Stripe (15.0.3)
+  - SwiftLint (0.38.2)
+  - TDOnboarding (2.1)
+  - TTRangeSlider (1.0.6)
+  - YandexMobileMetrica (3.14.1):
+    - YandexMobileMetrica/Static (= 3.14.1)
+  - YandexMobileMetrica/Static (3.14.1):
+    - YandexMobileMetrica/Static/Core (= 3.14.1)
+    - YandexMobileMetrica/Static/Crashes (= 3.14.1)
+  - YandexMobileMetrica/Static/Core (3.14.1)
+  - YandexMobileMetrica/Static/Crashes (3.14.1):
+    - YandexMobileMetrica/Static/Core
+
+DEPENDENCIES:
+  - APDAdColonyAdapter (= 2.7.5.1)
+  - APDAmazonAdsAdapter (= 2.7.5.1)
+  - APDAppLovinAdapter (= 2.7.5.1)
+  - APDAppodealAdExchangeAdapter (= 2.7.5.1)
+  - APDChartboostAdapter (= 2.7.5.1)
+  - APDFacebookAudienceAdapter (= 2.7.5.1)
+  - APDGoogleAdMobAdapter (= 2.7.5.1)
+  - APDInMobiAdapter (= 2.7.5.1)
+  - APDInnerActiveAdapter (= 2.7.5.1)
+  - APDIronSourceAdapter (= 2.7.5.1)
+  - APDMintegralAdapter (= 2.7.5.1)
+  - APDMyTargetAdapter (= 2.7.5.1)
+  - APDOguryAdapter (= 2.7.5.1)
+  - APDOpenXAdapter (= 2.7.5.1)
+  - APDPubnativeAdapter (= 2.7.5.1)
+  - APDSmaatoAdapter (= 2.7.5.1)
+  - APDStartAppAdapter (= 2.7.5.1)
+  - APDTapjoyAdapter (= 2.7.5.1)
+  - APDUnityAdapter (= 2.7.5.1)
+  - APDYandexAdapter (= 2.7.5.1)
+  - Charts
+  - Fabric
+  - FBSDKCoreKit
+  - Firebase
+  - Firebase/Analytics (~> 6.15.0)
+  - Firebase/Core (~> 6.15.0)
+  - Firebase/Crashlytics (~> 6.15.0)
+  - GoogleAnalytics
+  - IQKeyboardManagerSwift (= 5.0.8)
+  - Localize-Swift
+  - MBProgressHUD
+  - Parse (= 1.19.0)
+  - Player (= 0.8.4)
+  - Sourcery
+  - Stripe (= 15.0.3)
+  - SwiftLint
+  - TDOnboarding
+  - TTRangeSlider
+
+SPEC REPOS:
+  trunk:
+    - APDAdColonyAdapter
+    - APDAmazonAdsAdapter
+    - APDAppLovinAdapter
+    - APDAppodealAdExchangeAdapter
+    - APDChartboostAdapter
+    - APDFacebookAudienceAdapter
+    - APDGoogleAdMobAdapter
+    - APDInMobiAdapter
+    - APDInnerActiveAdapter
+    - APDIronSourceAdapter
+    - APDMintegralAdapter
+    - APDMyTargetAdapter
+    - APDOguryAdapter
+    - APDOpenXAdapter
+    - APDPubnativeAdapter
+    - APDSmaatoAdapter
+    - APDStartAppAdapter
+    - APDTapjoyAdapter
+    - APDUnityAdapter
+    - APDYandexAdapter
+    - Appodeal
+    - Bolts
+    - Charts
+    - Fabric
+    - FBSDKCoreKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - FirebaseInstanceID
+    - Google-Mobile-Ads-SDK
+    - GoogleAnalytics
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUserMessagingPlatform
+    - GoogleUtilities
+    - IQKeyboardManagerSwift
+    - Localize-Swift
+    - MBProgressHUD
+    - nanopb
+    - Parse
+    - Player
+    - PromisesObjC
+    - Sourcery
+    - Stripe
+    - SwiftLint
+    - TDOnboarding
+    - TTRangeSlider
+    - YandexMobileMetrica
+
+SPEC CHECKSUMS:
+  APDAdColonyAdapter: 84932603b9bc4269bbba8a00c8b06bcfd052455a
+  APDAmazonAdsAdapter: c41e6244c43c948af5cf5b9914baa1b9373f681d
+  APDAppLovinAdapter: 610222500011624cdd92fc27cfb6094d0df2d3d1
+  APDAppodealAdExchangeAdapter: 4b92a0d77dc7d1e1c5fe448a38bf12814bf1b2a9
+  APDChartboostAdapter: b97a8c5b3b3feb5ae4ea1bbfef30cfe3c67866d6
+  APDFacebookAudienceAdapter: 9ffa78add90e255e2de531d51ed01cba9db6b0b8
+  APDGoogleAdMobAdapter: cc1abe7b84e49933ab77fd30890e63c9b48db7fd
+  APDInMobiAdapter: fd73e826e4e323cdbc84245e3e5f08369d02dc9e
+  APDInnerActiveAdapter: 1c310251fe94f3bd9f1dd3f92da6975526c07f91
+  APDIronSourceAdapter: aaf56121f738f796ba549851f85c70e87756ca97
+  APDMintegralAdapter: c7cd449651b91b4539e5b2802b383648cf2ee8e6
+  APDMyTargetAdapter: 1dc70ef7545ee7fdcdbb3c525b6e3417714de6a2
+  APDOguryAdapter: 920629d4260059224404d8cfeb01ef4de107f99c
+  APDOpenXAdapter: 4475ea419fbab78da14bbf5a1be429b37ab8fcf5
+  APDPubnativeAdapter: 69363f12f856419870c11ba5540d19e0b4fca055
+  APDSmaatoAdapter: 6a7a34d0c68f9010bed6e79966370ae87d483313
+  APDStartAppAdapter: d5bca350cc0579916b8a93ce8953dd02835334eb
+  APDTapjoyAdapter: ab4867778efdd7ed8a43252665eefec0d2250726
+  APDUnityAdapter: e0bfe2187e0aebb8d6d67d89cdf18c5ee32add85
+  APDYandexAdapter: 9231e8573696e0a943e3726d83950554a809a40b
+  Appodeal: bbcfbf63be492476f235bac82af1afffdcec5684
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
+  FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
+  Firebase: 5d77105d9740a07ca6b16927ca971db7e860faaf
+  FirebaseAnalytics: e83e64b1231dedcd9ddd4bdecd9bcfd6ba341679
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
+  FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
+  FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseCrashlytics: 7c95218730d1debf493e987233c7b41dd7ba1329
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
+  Google-Mobile-Ads-SDK: 7d7074359c040f5add4e0963bf860e14690060d0
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleAppMeasurement: a08a43b8677b95ed51fcef880e36737334d804fd
+  GoogleDataTransport: 574a983e829327d7c18f2627f65d9e80164ea8a4
+  GoogleDataTransportCCTSupport: cad3cd6cdbdbad6b5c2c9206ec413402755faaaa
+  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
+  GoogleUtilities: f8de7ddf8c706f58e9b405d53e38bbdaa2731e5a
+  IQKeyboardManagerSwift: 2e7dc7f98c111458c1ea2b373f893e8cf95e2b97
+  Localize-Swift: 4bed4f0ccac8be2ec3517ee359da80ba2adb0fae
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
+  Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Sourcery: 3ed61be7c8a1218fce349266139379dba477efe0
+  Stripe: db667d8dcf6cfa216ee9ad9b937c7126ca9f8c35
+  SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+  TDOnboarding: 2885b251825a593df18d29185cbd709d1fa71089
+  TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
+  YandexMobileMetrica: 072fc59d216c8824d83d1d54bdc6e96d9cfcc59c
+
+PODFILE CHECKSUM: 3d75300acc50907d69f826c337759c762fc49243
+
+COCOAPODS: 1.10.1
