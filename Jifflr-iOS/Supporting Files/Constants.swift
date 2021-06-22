@@ -98,7 +98,14 @@ enum Environment: String {
     }
     
     var stripeKey: String {
-        return Secrets.stripeKey
+        switch self {
+        case .staging:
+            return Secrets.stagingStripeKey
+        case .testing:
+            return Secrets.stagingStripeKey
+        case .production:
+            return Secrets.productionStripeKey
+        }
     }
 }
 

@@ -109,6 +109,7 @@ class CMSAdvertViewController: BaseViewController {
             self.player?.playerDelegate = self
             self.player?.playbackDelegate = self
             self.player?.playbackLoops = false
+            self.player?.autoplay = false
             self.player?.fillMode = PlayerFillMode.resizeAspectFit.avFoundationType
             self.player?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             
@@ -193,7 +194,10 @@ class CMSAdvertViewController: BaseViewController {
         default:
             controller = BinaryFeedbackViewController.instantiateFromStoryboard(campaign: self.campaign, content: self.content, questionAnswers: [], mode: self.mode)
         }
-        
+        self.player?.removeFromParentViewController()
+        self.player?.view.removeFromSuperview()
+        self.player?.url = nil
+        self.player?.playbackDelegate = nil
         self.player = nil
         self.navigationController?.pushViewController(controller, animated: true)
     }

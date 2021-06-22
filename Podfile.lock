@@ -150,7 +150,7 @@ PODS:
   - Player (0.8.4)
   - PromisesObjC (1.2.8)
   - Sourcery (0.17.0)
-  - Stripe (15.0.2)
+  - Stripe (15.0.3)
   - SwiftLint (0.38.2)
   - TDOnboarding (2.1)
   - TTRangeSlider (1.0.6)
@@ -198,7 +198,7 @@ DEPENDENCIES:
   - Parse (= 1.19.0)
   - Player (= 0.8.4)
   - Sourcery
-  - Stripe (= 15.0.2)
+  - Stripe (= 15.0.3)
   - SwiftLint
   - TDOnboarding
   - TTRangeSlider
@@ -310,12 +310,12 @@ SPEC CHECKSUMS:
   Player: e45514e9e5fb8ff18f50eb2ba6f84dac9b6a0024
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Sourcery: 3ed61be7c8a1218fce349266139379dba477efe0
-  Stripe: 40b542089231348ec40fa5e7cd69a7c2716a32e8
+  Stripe: db667d8dcf6cfa216ee9ad9b937c7126ca9f8c35
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
   TDOnboarding: 2885b251825a593df18d29185cbd709d1fa71089
   TTRangeSlider: 78188bea83f6471a06f75adbc88da5e990baeafe
   YandexMobileMetrica: 072fc59d216c8824d83d1d54bdc6e96d9cfcc59c
 
-PODFILE CHECKSUM: e0bf4faad2be5de47e1861856087d6e4040b6570
+PODFILE CHECKSUM: 3d75300acc50907d69f826c337759c762fc49243
 
 COCOAPODS: 1.10.1
