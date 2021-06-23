@@ -181,8 +181,18 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
             if let createdAt = pendingFriend.createdAt {
                 cell.dateLabel.text = dateFormatter.string(from: createdAt)
             }
-
-            cell.setCellActive(isActive: !pendingFriend.isSignedUp)
+            
+            let isSignedUp = pendingFriend.isSignedUp
+            var isWithin2Weeks = true
+            
+            if let createdAt = pendingFriend.createdAt {
+                let components = Calendar.current.dateComponents([.day], from: createdAt, to: Date())
+                isWithin2Weeks = (components.day) ?? 0 <= 14
+            }
+            
+            print("Name: \(pendingFriend.name). isSignedUp: \(isSignedUp). isWithin2Weeks: \(isWithin2Weeks)")
+            
+            cell.setCellActive(isActive: !isSignedUp && isWithin2Weeks)
 
             return cell
         }
