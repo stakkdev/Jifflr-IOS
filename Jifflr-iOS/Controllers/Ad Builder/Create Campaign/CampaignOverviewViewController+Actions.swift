@@ -129,7 +129,7 @@ extension CampaignOverviewViewController {
             return
         }
         
-        let title = "alert.deleteCampaign.title".localized()
+        let title = self.campaign.status == CampaignStatusKey.availableActive ? "alert.deleteCampaign.title".localized() : "alert.deleteCampaignShortly.title".localized()
         let message = "alert.deleteCampaign.message".localized()
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
