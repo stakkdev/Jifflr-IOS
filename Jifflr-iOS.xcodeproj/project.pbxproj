@@ -90,6 +90,7 @@
 		1AFD725B2089FBE100417496 /* CampaignOverviewViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD725A2089FBE100417496 /* CampaignOverviewViewController+Actions.swift */; };
 		5C3733017B0A68C0E0131A8C /* Pods_Jifflr_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003D5C3A4521E65A71AB3A39 /* Pods_Jifflr_iOS.framework */; };
 		95CBB5A725DACD4A00570AA8 /* MyBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CBB5A625DACD4A00570AA8 /* MyBalance.swift */; };
+		9B737E8426FDA70700841A97 /* env-vars.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9B737E8326FDA70700841A97 /* env-vars.sh */; };
 		B001E8902E65885FA0ABB90D /* Pods_Jifflr_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5175AF0890FF6156BC35FEE7 /* Pods_Jifflr_iOSTests.framework */; };
 		B400EDF421B6D2120016B492 /* Secrets.stencil in Resources */ = {isa = PBXBuildFile; fileRef = B400EDF321B6D2120016B492 /* Secrets.stencil */; };
 		B400EDF821B6D5260016B492 /* Secrets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B400EDF721B6D5260016B492 /* Secrets.generated.swift */; };
@@ -326,6 +327,7 @@
 		827907C105A8172341DA6B8F /* Pods-Jifflr-iOSTests.release (production) .xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (production) .xcconfig"; path = "Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (production) .xcconfig"; sourceTree = "<group>"; };
 		95CBB5A625DACD4A00570AA8 /* MyBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyBalance.swift; path = "Models/Local Models/MyBalance.swift"; sourceTree = "<group>"; };
 		98A0865927BBD047E5E59B41 /* Pods-Jifflr-iOS.release (production) .xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOS.release (production) .xcconfig"; path = "Target Support Files/Pods-Jifflr-iOS/Pods-Jifflr-iOS.release (production) .xcconfig"; sourceTree = "<group>"; };
+		9B737E8326FDA70700841A97 /* env-vars.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "env-vars.sh"; sourceTree = SOURCE_ROOT; };
 		A819D2CFF459DC76A2863F8B /* Pods-Jifflr-iOSTests.release (staging).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jifflr-iOSTests.release (staging).xcconfig"; path = "Target Support Files/Pods-Jifflr-iOSTests/Pods-Jifflr-iOSTests.release (staging).xcconfig"; sourceTree = "<group>"; };
 		B400EDF321B6D2120016B492 /* Secrets.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; name = Secrets.stencil; path = "Supporting Files/Secrets.stencil"; sourceTree = "<group>"; };
 		B400EDF721B6D5260016B492 /* Secrets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.generated.swift; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 		E9A717711F8B89AC00B07414 /* Jifflr-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9B737E8326FDA70700841A97 /* env-vars.sh */,
 				E941BDD9203D8D3F00FC9B61 /* Jifflr-iOS.entitlements */,
 				E9A717A11F8B89AC00B07414 /* Assets.xcassets */,
 				E9A717A31F8B89AC00B07414 /* Info.plist */,
@@ -1270,6 +1273,7 @@
 				E9A717881F8B89AC00B07414 /* Settings.bundle in Resources */,
 				E9A717991F8B89AC00B07414 /* ReadMe.md in Resources */,
 				E9A7178C1F8B89AC00B07414 /* GoogleService-Info.plist in Resources */,
+				9B737E8426FDA70700841A97 /* env-vars.sh in Resources */,
 				E97B9E23203B04D90097BC65 /* FAQs.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1872,7 +1876,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21.06.2021;
+				CURRENT_PROJECT_VERSION = 08.11.2021;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXCLUDED_ARCHS = "";
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -1883,7 +1887,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2035,7 +2039,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21.06.2021;
+				CURRENT_PROJECT_VERSION = 08.11.2021;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXCLUDED_ARCHS = "";
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -2046,7 +2050,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.8;
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2066,7 +2070,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21.06.2021;
+				CURRENT_PROJECT_VERSION = 08.11.2021;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				ENABLE_TESTABILITY = NO;
 				EXCLUDED_ARCHS = "";
@@ -2078,7 +2082,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2194,7 +2198,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21.06.2021;
+				CURRENT_PROJECT_VERSION = 08.11.2021;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXCLUDED_ARCHS = "";
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -2205,7 +2209,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2296,7 +2300,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Jifflr-iOS/Jifflr-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21.06.2021;
+				CURRENT_PROJECT_VERSION = 08.11.2021;
 				DEVELOPMENT_TEAM = R9G6XLVW54;
 				EXCLUDED_ARCHS = "";
 				EXPANDED_CODE_SIGN_IDENTITY = "-";
@@ -2307,7 +2311,7 @@
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jifflr.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

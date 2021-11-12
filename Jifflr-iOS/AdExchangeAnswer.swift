@@ -59,6 +59,6 @@ final class AdExchangeAnswer: PFObject {
 
 extension AdExchangeAnswer: PFSubclassing {
     static func parseClassName() -> String {
-        return "AdExchangeAnswer"
+        return "AdExchangeAnswers"
     }
 }
